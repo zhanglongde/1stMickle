@@ -1,0 +1,14 @@
+//
+   Created by zhanglongde on 2016/8/29.
+html
+    body
+        div.container
+            - var friends = 0
+            case friends
+                when 0
+                    p you have no friends
+                when 1
+                    p you have a friend
+                default
+                    p you have #{friends} friends
+

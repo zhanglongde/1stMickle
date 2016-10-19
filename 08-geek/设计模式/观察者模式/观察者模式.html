@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../../../jquery-1.11.3.min.js"></script>
+<script>
+    ~(function(){
+        var o = $({});
+        $.jianting = function(){
+            o.on.apply(o,arguments);
+//            o.on(arguments[0],arguments[1]);
+            o.on(arguments);  //存在问题，此时的arguments作用域为on非jianting
+        };
+        $.fabu = function(){
+            o.trigger.apply(o,arguments);
+//            o.trigger(arguments[0],arguments[1]);
+//            o.trigger(arguments);
+        };
+        $.qingchu = function(){
+            o.off(arguments[0],arguments[1]);
+            o.off.apply(o,arguments);
+        };
+
+    })();
+
+    $.jianting('/test/ls',function(e,a,b,c){
+        console.log(a+'||'+b+'||'+c);
+    });
+
+    $.jianting('/test/ls',function(e,a,b,c){
+        console.log("OK");
+    });
+
+    setTimeout(function(){
+        $.fabu('/test/ls',[1,2,3]);
+    },1000);
+
+
+</script>
+</body>
+</html>

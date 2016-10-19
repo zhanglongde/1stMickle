@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="./zepto.min.js"></script>
+<script>
+//    document.write('test');
+//    var token = '';
+//    var url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx9d210c46f0641a53&secret=4007a7e78c7b5e9c8e5f9fcfa1ea05a0';
+//    $.get(url,function(data){
+//        document.write(data);
+//        console.log(data);
+//    },'json');
+
+wx.getLocation({
+    type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+    success: function (res) {
+        var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+        var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+        var speed = res.speed; // 速度，以米/每秒计
+        var accuracy = res.accuracy; // 位置精度
+        console.log(latitude);
+        console.log(longitude);
+        console.log(speed);
+        console.log(accuracy);
+    }
+});
+
+
+</script>
+</body>
+</html>

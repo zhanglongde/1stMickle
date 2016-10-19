@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    (function(){
+        function zaomen(huawen){
+            if(!(this instanceof zaomen)){
+            console.log("new zaomen");
+                return zaomen();
+            }
+
+            var _huawen = '普通';
+
+            if(huawen){
+                _huawen = huawen;
+            }
+
+            this.suo = '普通';
+            this.huawen = _huawen;
+            this.create = function(){
+                return "【锁头】"+this.suo+"【花纹】"+this.huawen;
+            }
+        }
+
+        var xiaozhang = new zaomen();
+        console.log("xiaozhang:"+xiaozhang.create());
+
+        var xiaoli = new zaomen("绚丽");
+        console.log("xiaoli:"+xiaoli.create());
+
+    })();
+
+</script>
+
+
+<script>
+    var AA = {
+        zaomen:function(huawen) {
+//            if (!(this instanceof zaomen)) {
+//                return this.zaomen();
+//            }
+
+            var _huawen = '普通';
+
+            if (huawen) {
+                _huawen = huawen;
+            }
+
+            this.suo = '普通';
+            this.huawen = _huawen;
+            this.create = function () {
+                return "【锁头】" + this.suo + "【花纹】" + this.huawen;
+            }
+        }
+    };
+
+    var BB = {
+        zaomen:function(huawen) {
+//            if (!(this instanceof zaomen)) {
+//                return zaomen();
+//            }
+
+            var _huawen = '普通';
+
+            if (huawen) {
+                _huawen = huawen;
+            }
+
+            this.suo = '普通';
+            this.huawen = _huawen;
+            this.create = function () {
+                return "【锁头】" + this.suo + "【花纹】" + this.huawen;
+            }
+        }
+    };
+
+    var xiaozhang = new AA.zaomen();
+    console.log("xiaozhang:"+xiaozhang.create());
+
+    var xiaoli = new BB.zaomen("绚丽");
+    console.log("xiaoli:"+xiaoli.create());
+</script>
+</body>
+</html>

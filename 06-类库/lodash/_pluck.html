@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="./lodash.js"></script>
+<script>
+    var users = [
+        { 'user': 'barney', 'age': 36 },
+        { 'user': 'fred',   'age': 40 }
+    ];
+
+    var a =_.pluck(users, 'user');
+    // => ['barney', 'fred']
+
+    var userIndex = _.indexBy(users, 'user');
+    var b =_.pluck(userIndex, 'age');
+    // => [36, 40] (iteration order is not guaranteed)
+
+
+    console.log(a);
+    console.log(userIndex);
+    console.log(b);
+</script>
+</body>
+</html>
