@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{width:130px;
+            height: 50px;border-radius:25px;border:1px solid #aaa;}
+        .circle{
+            width: 48px;
+            height: 48px;border-radius:50%;
+            background-color: #fff;
+            box-shadow: 0 0 1px 1px #aaa;
+            visibility: hidden;
+        }
+        .left{float:left;  }
+        .right{float:right;}
+        .left:hover .circle
+        {
+            visibility: visible;
+        }
+        .right:hover .circle
+        {
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="left"><div class="circle"></div></div>
+    <div class="right"><div class="circle"></div></div>
+</div>
+</body>
+</html>

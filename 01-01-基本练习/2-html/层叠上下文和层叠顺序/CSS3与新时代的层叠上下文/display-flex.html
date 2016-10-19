@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box {
+            /*将子元素变为层叠上下文*/
+            display: flex;
+        }
+        .box > div {
+            /*opacity:.99;*/
+            background-color: blue; z-index: 1; }    /* 此时该div是普通元素，z-index无效 */
+        .box > div > img {
+            position: relative; z-index: -1; right: -150px;     /* 注意这里是负值z-index */
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div>
+        <img src="../../../images/mm1.jpg">
+    </div>
+</div>
+</body>
+</html>

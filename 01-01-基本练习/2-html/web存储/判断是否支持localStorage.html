@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function(){
+            function supports_html5_storage() {
+                try {
+                    return 'localStorage' in window && window['localStorage'] !== null;
+                } catch (e) {
+                    return false;
+                }
+            }
+            var is_support = supports_html5_storage();
+            console.log(is_support);
+            console.dir(window['localStorage']);
+        };
+    </script>
+</head>
+<body>
+
+</body>
+</html>

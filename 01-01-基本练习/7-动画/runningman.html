@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .layout{width:90px;height:10px;position:absolute;top:52%;left:70%;}
+        .bar{width:100%;height:100%;position:absolute;
+            -webkit-animation-name:loading;				/*要绑定的keyframes的名称，语义化命名最好*/
+            -webkit-animation-duration:4s;				/*完成这个动画需要花费的时间*/
+            -webkit-animation-timing-function:linear;		/*速度曲线，有快有慢*/
+            -webkit-animation-delay:0;				/*延迟动画开始*/
+            -webkit-animation-iteration-count:1;			/*动画播放次数，infinite为无限制*/
+            -webkit-animation-direction:normal;			/*是否需要反向播放*/
+            -webkit-animation-fill-mode:backwards;			/*动画播放完之后的状态，backwards回调到动画最开始画面，forwords 则相反*/
+            -webkit-animation-play-state:running;			/*规定动画暂停还是运动*/
+        }
+        @-webkit-keyframes loading{
+            0%{
+                background-color:#e23263;
+                width:0;
+            }
+            80%{
+                background-color:#e23263;
+                width:80%;
+            }
+            85%{
+                background-color:#e23263;
+                width:85%;
+            }
+            90%{
+                background-color:#e23263;
+                width:90%;
+            }
+            95%{
+                background-color:#e23263;
+                width:95%;
+            }
+            100%{background-color:#e23263;width:100%;}
+        }
+        .running{
+            height:60px;
+            width:90px;
+            position:absolute;
+            top:50%;left:70%;
+            background:url(http://img.xiaoho.com/2014/12/test.png) no-repeat 0 0;
+            visibility:hidden;
+            -webkit-animation:run 350ms steps(1) infinite 5s;
+        }
+
+        @-webkit-keyframes run {
+            0% {
+                visibility:visible;
+                background-position:0;
+            }
+            20% {
+                background-position:-90px 0;
+            }
+            40% {
+                background-position:-180px 0;
+            }
+            60% {
+                background-position:-270px 0;
+            }
+            80% {
+                background-position:-360px 0;
+            }
+            100% {
+                background-position:-450px 0;
+            }
+
+        }
+    </style>
+</head>
+<body>
+<div class="running"></div>
+<div class="layout">
+    <div class="bar"></div>
+</div>
+</body>
+</html>

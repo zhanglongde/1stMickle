@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery-2.2.3.js"></script>
+    <script>
+        $(function(){
+            function default_param(param = 1000){
+                console.log(param);
+            }
+            default_param();
+
+            function hebin(param){//模拟jQuery中的extend,对于多余的参数，并没有合并
+                var defaults = {
+                    a:1,b:2,c:3
+                };
+                defaults.a = param.a||defaults.a;
+                defaults.b = param.b||defaults.b;
+                defaults.c = param.c||defaults.c;
+                console.dir(defaults);
+            }
+            hebin({b:300});
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>

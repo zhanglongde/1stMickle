@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../jquery-2.2.3.js"></script>
+    <script>
+
+        window.onload = function(){
+             var join_url_params = function(url_temp,params){
+                 var url = url_temp;
+                 var i = 0;
+                 for(var key in params){
+                     if(i==0){
+                         url = url+'?'+key+'='+encodeURIComponent(params[key]);
+                     }else{
+                         url = url+'&'+key+'='+encodeURIComponent(params[key]);
+                     }
+                     i++;
+                 }
+//                 var temp =url.split('');
+//                 temp.pop();
+//                 url =temp.join("");
+//                 console.log(url);
+                 window.location.href = url;
+             };
+
+             $("#skip").on('click',function(){
+//                 var name = '&张龙德';
+//                 var type = '?&&&&类型';
+//                 name = encodeURIComponent(name);
+//                 type = encodeURIComponent(type);
+//                 console.log(name);
+                 join_url_params("./url.html",{
+                     type:"类型#&",
+                     name:"?张龙的&"
+                 });
+//                 window.location.href = "./url.html"+'?type='+type+'&name='+name;
+             });
+        };
+    </script>
+</head>
+<body>
+<a href="#" id="skip">跳转</a>
+</body>
+</html>

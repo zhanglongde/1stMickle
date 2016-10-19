@@ -1,0 +1,128 @@
+/*Created by zhanglongde on 2016/8/25.*/
+/*Created by zhanglongde on 2016/8/25.*/
+/*Created by zhanglongde on 2016/8/25.*/
+* {
+  margin: 0;
+  padding: 0;
+}
+/*Created by zhanglongde on 2016/8/25.*/
+/*Created by zhanglongde on 2016/8/25.*/
+body {
+  font-family: "微软雅黑", Airal, Serif;
+  font-size: 14px;
+  line-height: 1.428578;
+  background-color: #fff;
+  color: #333;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:visited:active:hover {
+  color: inherit;
+}
+ul li {
+  list-style: none;
+}
+.table-hd,
+.table-bd,
+.table-ft {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+/*页头部分*/
+.container-header {
+  box-sizing: border-box;
+  width: 1000px;
+  height: 110px;
+  padding: 10px;
+  margin: auto;
+  background-color: #194a7b;
+  color: #fff;
+}
+.content-header {
+  position: relative;
+  width: 980px;
+  height: 90px;
+}
+.content-header .wrapper-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.content-header .wrapper-nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.container-bd {
+  width: 1000px;
+  height: auto;
+  margin: auto;
+  background-color: #5ba;
+  color: #999999;
+}
+.content-bd {
+  background-color: #fff;
+  color: inherit;
+}
+.left-nav {
+  background-color: #2c3f50;
+  color: #fff;
+  width: 270px;
+}
+.left-nav .nav-item {
+  height: 60px;
+  width: inherit;
+  text-align: center;
+}
+.left-nav .nav-item:nth-child(n) {
+  display: inline-block;
+}
+.left-nav .nav-item:after {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.right-table-bd {
+  width: 870px;
+  height: 700px;
+}
+.right-table-bd .table-hd {
+  width: inherit;
+  height: 100px;
+}
+.right-table-bd .table-bd {
+  width: inherit;
+  height: 550px;
+}
+.right-table-bd .table-ft {
+  width: inherit;
+  height: 50px;
+}
+.container-footer {
+  width: 1000px;
+  height: 110px;
+  margin: auto;
+  background-color: #dcdcdc;
+  color: #665;
+  position: relative;
+}
+.content-footer {
+  width: 900px;
+  height: 90px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+.content-footer p {
+  width: 880px;
+  height: 70px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  line-height: 1.8;
+  text-align: justify;
+}

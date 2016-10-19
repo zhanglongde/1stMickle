@@ -1,0 +1,31 @@
+/*Created by zhanglongde on 2016/8/25.*/
+@import "variable";
+
+body{
+  font-family:"微软雅黑",Airal,Serif;
+  font-size: 14px;
+  line-height:1.428578;
+  background-color: @default-bgcolor;
+  color:@default-color;
+}
+
+a{
+  text-decoration: none;
+  color:inherit;
+  &:visited:active:hover
+  {
+    color:inherit;
+  }
+}
+
+ul li{
+  list-style: none;
+}
+
+.table-size(@w:@table-width,@h:@table-height){
+  width: @w;  height: @h;
+}
+
+.table-hd,.table-bd,.table-ft{
+  border:@border-style-table;
+}

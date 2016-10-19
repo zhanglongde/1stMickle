@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+
+
+//    求中值解法1
+    function median1(){
+        let values = [2,56,3,41,0,4,100,23];
+
+        values.sort((a,b)=> a-b);
+        console.log(values);
+        let middle = Math.floor(values.length/2);
+
+        let median = values[middle];
+
+        console.log(median);
+    }
+
+
+//   求中值解法2
+    function midian2(){
+        let values = [2,56,3,41,0,4,100,23];
+        values.sort(function(a,b){return a-b;});
+        let median = values[values.length >>1 ];
+        console.log(median);
+    }
+
+
+    //求平均值解法1
+    function ave1(){
+        let values = [2,56,3,41,0,4,100,23];
+        let sum = values.reduce((pre,cur)=>cur+=pre);
+        let ave = sum/values.length;
+        console.log(ave);
+    }
+
+//求平均值解法2
+    function ave2(){
+        let values = [2,56,3,41,0,4,100,23];
+        let sum = values.reduce(function(pre,cur){
+            console.log("pre:"+pre+"  cur:"+cur);
+            return cur+=pre;
+        });
+        let ave = sum/values.length;
+        console.log(ave);
+    }
+    ave2();
+</script>
+</body>
+</html>

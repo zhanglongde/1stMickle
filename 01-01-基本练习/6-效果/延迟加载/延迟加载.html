@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../../lib/css/bootstrap.css"/>
+    <script src="../../../lib/jquery-2.2.3.js"></script>
+    <script src="../../../lib/js/bootstrap.js"></script>
+    <style>
+        body{  background-color: #efefef;}
+        div[class^=div]
+        {  height:400px;  width:1330px; position:relative;border-radius:5px;margin:30px 0;
+              overflow: hidden;}
+        .div1{  top:0;  right:-1620px;  background-color: #CC00FF;box-shadow: 6px 6px 3px #CC00FF;}
+        .div2{  top:0px;  left:-1620px;  background-color: #b2dba1;box-shadow: 8px 8px 8px #b2dba1;}
+        .div3{  top:0px;  right:-1620px;  background-color: #bce8f1;box-shadow: 6px 6px 3px #bce8f1;}
+        .div4{  top:0px;  left:-1620px;  background-color: #00d4b4;box-shadow: 6px 6px 3px #00d4b4;}
+        .div5{  top:0px;  right:-1620px;  background-color: #ffcc99;box-shadow: 6px 6px 3px #ffcc99;}
+    </style>
+    <script>
+        $(function(){
+            var div1Top = $('.div1').offset().top;
+            var div2Top = $('.div2').offset().top;
+            var div3Top = $('.div3').offset().top;
+            var div4Top = $('.div4').offset().top;
+            var div5Top = $('.div5').offset().top;
+            var windowHeight = $(window).height();
+            console.log(div2Top);
+            console.log(windowHeight);
+            if(div1Top<windowHeight){
+                $(".div1").animate({right:0},600);
+                $(".div1").css("overflow","visible");
+            }
+            if(div2Top<windowHeight){
+
+                $(".div2").animate({left:0},600);
+                $(".div2").css("overflow","visible");
+            }
+            if(div3Top<windowHeight){
+                $(".div3").animate({right:0},600);
+                $(".div3").css("overflow","visible");
+            }
+            if(div4Top<windowHeight){
+                $(".div4").animate({left:0},600);
+                $(".div4").css("overflow","visible");
+            }
+            if(div5Top<windowHeight){
+                $(".div5").animate({right:0},600);
+                $(".div5").css("overflow","visible");
+            }
+
+            $(window).on("scroll",function(){
+                var scrollTop = $(window).scrollTop();
+                if(scrollTop+windowHeight>div2Top+60){
+                    $(".div2").animate({left:0},600);
+                    $(".div2").css("overflow","visible");
+                }
+                if(scrollTop+windowHeight>div3Top+60){
+                    $(".div3").animate({right:0},600);
+                    $(".div3").css("overflow","visible");
+                }
+                if(scrollTop+windowHeight>div4Top+60){
+                    $(".div4").animate({left:0},600);
+                    $(".div4").css("overflow","visible");
+                }
+                if(scrollTop+windowHeight>div5Top+60){
+                    $(".div5").animate({right:0},600);
+                    $(".div5").css("overflow","visible");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="div1">1</div>
+<div class="div2">2</div>
+<div class="div3">3</div>
+<div class="div4">4</div>
+<div class="div5">5</div>
+</body>
+</html>

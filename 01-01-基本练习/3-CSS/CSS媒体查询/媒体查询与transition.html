@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .demo{margin:auto;}
+        .demo img {
+            width: 200px;
+            -webkit-transition: width 2s ease;
+            -moz-transition: width 2s ease;
+            -o-transition: width 2s ease;
+            -ms-transition: width 2s ease;
+            transition: width 2s ease;
+        }
+        @media only screen and (max-width: 1024px) {
+            /*浏览器宽度小于1024时，图片宽度150px*/
+            .demo img {
+                width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="demo">
+    <img src="../../images/mm1.jpg" alt="">
+</div>
+</body>
+</html>

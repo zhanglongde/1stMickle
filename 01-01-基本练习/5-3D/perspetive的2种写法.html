@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{display:block;
+            width: 200px;
+            height: 200px;
+            margin:50px;border:1px solid #bbb;}
+        .box{
+            width: 100%;
+            height: 100%;
+            opacity: .75;}
+        #darkred .box{
+            background-color: darkred;transform:perspective(600px) rotateY(45deg);}
+
+        #darkblue{perspective: 600px;}
+        #darkblue .box{
+            background-color: darkblue;
+            transform: rotateY(45deg);}
+    </style>
+</head>
+<body>
+<section id="darkred" class="container">
+    <div class="box"></div>
+</section>
+<section id="darkblue" class="container">
+    <div class="box"></div>
+</section>
+</body>
+</html>

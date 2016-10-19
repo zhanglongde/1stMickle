@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//sort reverse
+    var arr = [45,3,87,4,0,6,7];
+    
+    var sort_arr = arr.sort(function(a,b){
+        return a-b;//从小到达排序
+    });
+    console.log(sort_arr);
+    var sort_arr2 = arr.sort(function(a,b){
+        return b-a;//从大到小排序
+    });
+    console.log(sort_arr2);
+
+    var sort_arr3 = arr.sort();//没有回调函数的情况下，默认从小到大
+    console.log(sort_arr3);
+
+
+    var reverse_arr = arr.reverse();//逆序，没有回调函数的说法
+    console.log(reverse_arr);
+</script>
+</body>
+</html>

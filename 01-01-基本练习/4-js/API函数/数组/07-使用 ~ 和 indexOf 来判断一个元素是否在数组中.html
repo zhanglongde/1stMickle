@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+判断一个元素是否在数组中，代码很简单，也就一个 if 判断了事
+
+var t = {val:2};
+if([1,2,3,4,5].indexOf(t.val) >= 0){
+alert('Yes');
+}
+PS：indexOf 来自 ES5 ，IE9一下不支持
+
+使用 ~ 符号却能简化判断语句，如下：
+
+if( ~[1,2,3,4,5].indexOf(t.val) ){
+// other things
+}
+</body>
+</html>

@@ -1,0 +1,44 @@
+/*Created by zhanglongde on 2016/8/25.*/
+@fix-width: 1000px;
+@fix-height: 30px;
+
+.middle(@v: auto,@h: auto){
+   margin:@h @v;
+
+}
+body{
+  min-height:100vh;
+  .header{
+    width: @fix-width;
+    height: @fix-height;
+    .middle;
+  }
+  .container{
+    width: @fix-width;
+    min-height:100vh - @fix-height - @fix-height;
+    .middle;
+  }
+  .footer{
+    width: @fix-width;
+    height:@fix-height;
+    .middle;
+  }
+}
+
+
+@the-border: 1px;
+@base-color: #111;
+@red:        #842210;
+
+.header{
+  background-color: #bd3;
+  color:@base-color * 3;
+  border-color:desaturate(@red, 10%);
+}
+.container{
+  background-color: #d56;
+}
+.footer{
+  background-color: #bd3;
+  color:@base-color + #003300;
+}

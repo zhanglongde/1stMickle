@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="./css/select2.min.css">
+    <!--<script src="../../../lib/jquery-1.11.3.min.js"></script>-->
+    <script src="../../../lib/zepto.min.js"></script>
+    <!--<script src="./js/select2.full.min.js"></script>-->
+    <script src="./js/select2.js"></script>
+</head>
+<body>
+
+<div>
+    <select class="search-select" name="" placeholder="请选择" style="width:200px;" id="bank_select">
+        <option value="0" selected disabled>请选择银行</option>
+        <option value="1">上海银行</option>
+        <option value="2">南京银行</option>
+    </select>
+</div>
+
+
+<script>
+//    $("select").select2({
+//        minimumResultsForSearch: Infinity
+//    });
+    $(document).ready(function() {
+        $("select").select2();
+    });
+</script>
+</body>
+</html>

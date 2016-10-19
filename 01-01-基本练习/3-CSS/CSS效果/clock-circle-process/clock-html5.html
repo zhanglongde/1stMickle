@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5的canvas实现的环形进度的时钟</title>
+    <style>
+        /* 钟表样式 */
+        .clock {
+            display: inline-block;
+        }
+        .clock .time-box {
+            float: left;
+            margin: 0 10px;
+        }
+        .clock .time-box .time {
+            color: #666;
+            font-size: 48px;
+            line-height: 130px;
+        }
+        .clock .time-box .time-info {
+            color: #ccc;
+            font-size: 25px;
+            margin-left: 5px;
+        }
+
+        /* 圆环样式 */
+        .circle {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .hourCircle, .minuteCircle, .secondCircle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 130px;
+            height: 130px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="clock">
+    <div class="time-box hour circle">
+        <canvas id="hourCircle" class="hourCircle" width="130" height="130"></canvas>
+        <span id="hourText" class="time">00</span><span class="time-info">h</span>
+    </div>
+    <div class="time-box minute circle">
+        <canvas id="minuteCircle" class="minuteCircle" width="130" height="130"></canvas>
+        <span id="minuteText" class="time">00</span><span class="time-info">m</span>
+    </div>
+    <div class="time-box second circle">
+        <canvas id="secondCircle" class="secondCircle" width="130" height="130"></canvas>
+        <span id="secondText" class="time">00</span><span class="time-info">s</span>
+    </div>
+</div>
+<script>
+    var hourCircle = document.getElementById("hourCircle");
+    var hourText = document.getElementById("hourText");
+    var hourCircleValue = {
+        x: 65,
+        y: 65,
+        r: 50,
+        beginAngle: - Math.PI / 2,
+        endAngle: 0,
+        strokeStyle: "#6FEC6F",
+        lineWidth: 15
+    };
+    // 声明当前的小时
+    var hour;
+
+    // 声明定时器
+    var hourTimer = null;
+    // 实现动态加载小时显示的定时器
+    function getHour() {
+        // 动态获取当前的小时
+        var now = new Date();
+        hour = now.getHours();
+        function changeHour() {
+            // 动态显示进度条
+            changeProgress(hourCircle, hourText, hourCircleValue, hour, 24);
+        }
+        changeHour();
+        // 设置定时器循环
+        hourTimer = setTimeout(getHour, 3600000);
+    }
+    getHour();
+
+    // 分钟指示进度
+    var minuteCircle = document.getElementById("minuteCircle");
+    var minuteText = document.getElementById("minuteText");
+    var minuteCircleValue = {
+        x: 65,
+        y: 65,
+        r: 50,
+        beginAngle: - Math.PI / 2,
+        endAngle: 0,
+        strokeStyle: "#8CECBF",
+        lineWidth: 15
+    };
+    var minute;
+    var minuteTimer = null;
+    function getMinute() {
+        var now = new Date();
+        minute = now.getMinutes();
+        function changeMinute() {
+            changeProgress(minuteCircle, minuteText, minuteCircleValue, minute, 64);
+        }
+        changeMinute();
+        minuteTimer = setTimeout(getMinute, 60000);
+    }
+    getMinute();
+
+    // 秒钟指示进度
+    var secondCircle = document.getElementById("secondCircle");
+    var secondText = document.getElementById("secondText");
+    var secondCircleValue = {
+        x: 65,
+        y: 65,
+        r: 50,
+        beginAngle: - Math.PI / 2,
+        endAngle: 0,
+        strokeStyle: "#F3AFAF",
+        lineWidth: 15
+    };
+    var second;
+    var secondTimer = null;
+    function getSecond() {
+        var now = new Date();
+        second = now.getSeconds();
+        function changeSecond() {
+            changeProgress(secondCircle, secondText, secondCircleValue, second, 64);
+        }
+        changeSecond();
+        secondTimer = setTimeout(getSecond, 1000);
+    }
+    getSecond();
+
+    // 进度条变化动画函数
+    function changeProgress(canvas, timeTextBox, circleValue, timeValue, timeRange) {
+        timeTextBox.innerHTML = timeValue < 10 ? "0" + timeValue : timeValue;
+        var circleWidth = canvas.width;
+        var circleHeight = canvas.height;
+        var circleContext = canvas.getContext("2d");
+        // 环形样式
+        circleContext.lineWidth = circleValue.lineWidth;
+        circleContext.strokeStyle = circleValue.strokeStyle;
+        // 描绘进度圆环
+        function drawCircle() {
+            circleContext.restore();
+            // 清空当前路径
+            circleContext.clearRect(0, 0, circleWidth, circleHeight);
+            // 把range的度数值换成Math.PI值
+            var percent = timeValue / timeRange; // 滑动条获得的是度数值
+            circleValue.endAngle = circleValue.beginAngle + percent * 2 * Math.PI;
+            circleContext.beginPath();
+            // 绘制圆弧
+            circleContext.arc(circleValue.x, circleValue.y, circleValue.r, circleValue.beginAngle, circleValue.endAngle, false);
+            circleContext.stroke();
+            circleContext.save();
+        }
+        drawCircle();
+    }
+
+</script>
+</body>
+</html>

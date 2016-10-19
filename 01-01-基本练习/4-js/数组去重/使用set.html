@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+//    Set和Map是ES6中新增的数据结构
+//    Set直接可以存储不重复的一组key,这个key也可以是对象,字符串等
+
+    var arr = [1,34,2,78,34,7,9,1,0];
+    var s = new Set(arr);
+    console.log(s);
+
+    var tar_arr = [];
+    s.forEach(function(ele,set){
+         tar_arr.push(ele)
+    });
+    console.log(tar_arr);
+</script>
+</body>
+</html>

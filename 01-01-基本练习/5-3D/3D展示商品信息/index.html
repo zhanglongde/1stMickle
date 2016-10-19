@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <style type="text/css">
+
+
+        .wapper
+        {
+            margin: 100px auto 0;
+            width: 100px;
+            height: 100px;
+            -webkit-perspective: 1200px;
+            -moz-perspective: 1200px;
+            font-size: 50px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .cube
+        {
+
+            position: relative;
+            width: 100px;
+            -webkit-transform: rotateX(-40deg) rotateY(32deg);
+            -moz-transform: rotateX(-40deg) rotateY(32deg);
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+        }
+
+        .side
+        {
+            text-align: center;
+            line-height: 100px;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 99, 71, 0.6);
+            border: 1px solid rgba(0, 0, 0, 0.5);
+            position: absolute;
+        }
+
+        .front
+        {
+            -webkit-transform: translateZ(50px);
+            -moz-transform: translateZ(50px);
+        }
+
+        .top
+        {
+            -webkit-transform: rotateX(90deg) translateZ(50px);
+            -moz-transform: rotateX(90deg) translateZ(50px);
+        }
+
+        .right
+        {
+            -webkit-transform: rotateY(90deg) translateZ(50px);
+            -moz-transform: rotateY(90deg) translateZ(50px);
+        }
+
+        .left
+        {
+            -webkit-transform: rotateY(-90deg) translateZ(50px);
+            -moz-transform: rotateX(-90deg) translateZ(50px);
+        }
+
+        .bottom
+        {
+            -webkit-transform: rotateX(-90deg) translateZ(50px);
+            -moz-transform: rotateX(-90deg) translateZ(50px);
+        }
+
+        .back
+        {
+            -webkit-transform: rotateY(-180deg) translateZ(50px);
+            -moz-transform: rotateY(180deg) translateZ(50px);
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+<div class="wapper">
+    <div class="cube">
+        <div class="side  front">1</div>
+        <div class="side   back">6</div>
+        <div class="side  right">4</div>
+        <div class="side   left">3</div>
+        <div class="side    top">5</div>
+        <div class="side bottom">2</div>
+    </div>
+</div>
+
+<div class="wapper">
+    <div class="cube">
+        <div class="side  front">1</div>
+        <div class="side   back">6</div>
+        <div class="side  right">4</div>
+        <div class="side   left">3</div>
+        <div class="side    top">5</div>
+        <div class="side bottom">2</div>
+    </div>
+</div>
+
+
+</body>
+</html>

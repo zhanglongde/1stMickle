@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="test">Add+1</button>
+<button id="t2">自定义事件</button>
+<script src="../../../jquery-1.11.3.min.js"></script>
+<script>
+    $(function(){
+        var i = 0;
+
+        $("#test").on('click',function(){
+            i++;
+            console.log(i);
+        });
+
+        var e = jQuery.Event("variant");
+
+        $("#t2").on("variant",function(){
+            console.log("variant:"+i);
+        });
+
+        setInterval(function(){
+            if(i!= 0 && i%5 == 0){
+//                console.log(i);
+                $("#t2").trigger(e);
+            }
+        },1000);
+    });
+</script>
+</body>
+</html>

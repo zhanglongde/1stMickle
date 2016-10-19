@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+//        document.createElement("ball");
+//        document.createElement("shadow");
+    </script>
+    <style>
+        .demo {
+            height: 600px;
+            position: relative;
+        }
+        ball {
+            width: 100px; height: 100px; border-radius: 100px;
+            position: absolute; left: 50%; top: 500px;
+            margin-left: -50px;
+            background-color: #34538b;
+            background-image: -webkit-radial-gradient(100px 100px at 50px 20px, #a0b3d6, #34538b);
+            background-image:    -moz-radial-gradient(100px 100px at 50px 20px, #a0b3d6, #34538b);
+            background-image:         radial-gradient(100px 100px at 50px 20px, #a0b3d6, #34538b);
+            cursor: move;
+            z-index: 1;
+        }
+        shadow {
+            position: absolute;
+            width: 100px; height: 30px;
+            position: absolute; left: 50%; bottom: 5px;
+            margin-left: -50px;
+            background-image: -webkit-radial-gradient(ellipse closest-side, rgba(0,0,0,.75), rgba(0,0,0,0));
+            background-image:    -moz-radial-gradient(ellipse closest-side, rgba(0,0,0,.75), rgba(0,0,0,0));
+            background-image:         radial-gradient(ellipse closest-side, rgba(0,0,0,.75), rgba(0,0,0,0));
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <div id="body" class="light">
+        <div id="content" class="show">
+            <div class="demo">
+                <h4>向上拖动小球然后放下</h4>
+                <ball></ball><shadow></shadow>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="http://libs.baidu.com/jquery/1.4.4/jquery.min.js"></script>
+<script src="requestAnimationFrame.js"></script>
+<script src="tween.js"></script>
+<script>
+    var ball = $("ball"), shadow = $("shadow");
+    var objBall = {};
+    var shadowWithBall = function(top) {
+        // 0 ~ 500
+        var top = top || parseInt(ball.css("top")),
+                scale = 1 + (500 - top) / 300;
+        opacity = 1 - (500 - top) / 300;
+        if (opacity < 0) opacity = 0;
+        shadow.css("opacity", opacity)
+                .css("WebkitTransform", "scale("+ [scale, scale].join(",") +")")
+                .css("transform", "scale("+ [scale, scale].join(",") +")");
+    }, funFall = function() {
+        var start = 0, during = 100;
+        var _run = function() {
+            start++;
+            var top = Tween.Bounce.easeOut(start, objBall.top, 500 - objBall.top, during);
+            ball.css("top", top);
+            shadowWithBall(top);
+            if (start < during) requestAnimationFrame(_run);
+        };
+        _run();
+    };
+    ball.bind("mousedown", function(event) {
+        objBall.pageY = event.pageY;
+        objBall.flagFollow = true;
+    });
+    $(document).bind("mousemove", function(event) {
+        if (objBall.flagFollow) {
+            var pageY = event.pageY;
+            objBall.top = 500 - (objBall.pageY - pageY);
+            if (objBall.top < 0) {
+                objBall.top = 0;
+            } else if (objBall.top > 500) {
+                objBall.top = 500;
+            }
+            //cosnole.log(objBall.top);
+            ball.css("top", objBall.top);
+            shadowWithBall(objBall.top);
+        }
+    });
+    $(document).bind("mouseup", function(event) {
+        if (objBall.flagFollow) funFall();
+        objBall.flagFollow = false;
+    });
+</script>
+</body>
+</html>

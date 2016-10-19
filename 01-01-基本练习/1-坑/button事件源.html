@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="test">
+    <img src="http://www.google.cn/favicon.ico" />
+</button>
+<script>
+    document.getElementById("test").onclick=function(e){
+        if (!e) {
+            e = window.event;
+        }
+        if (!e.target && e.srcElement) {
+            e.target = e.srcElement;
+        }
+        alert(e.target.tagName);
+    }
+</script>
+</body>
+</html>

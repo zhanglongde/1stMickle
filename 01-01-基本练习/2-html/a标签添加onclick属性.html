@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>a标签中的onclick和href的使用</title>
+</head>
+<body>
+
+
+<a href="javascript:test();">利用href属性</a>
+<a href="javascript:;" onclick="test();">利用onclick属性1</a>
+<a href="javascript:void(0);" onclick="test();">利用onclick属性2</a>
+<script>
+    function test(){
+        console.log('test....');
+    }
+</script>
+</body>
+</html>

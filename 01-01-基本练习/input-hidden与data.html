@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+    <script src="../jquery-2.2.3.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script>
+        $(function(){
+            $(".input-container input").each(function(){
+                var val=$(this).val();
+                var attr=$(this).attr("type");
+                console.log(val);
+                console.log(attr);
+                var vl = $(this).data('validate');
+                console.log(vl);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="input-container">
+        <input type="hidden" value="hidden" data-validate="1"/>
+        <input type="text" value="text" data-validate="2"/>
+        <input type="date" value="date" data-validate="3"/>
+        <input type="file" value="file" data-validate="4"/>
+        <input type="password" value="password" data-validate="5"/>
+    </div>
+</body>
+</html>

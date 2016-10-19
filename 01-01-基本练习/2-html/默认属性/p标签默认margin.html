@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    第二种情况可能是最令人意外的，只读属性会阻止[[Prototype]]链下层隐式创建（屏蔽）
+    同名属性。这样做主要是为了模拟类属性的继承。你可以把原型链上层的foo看作是父类中的
+    属性，它会被myObject继承（复制），这样一来myObject中的foo属性也是只读，所以无法创建。但
+    是一定要注意，实际上并不会发生类似的继承复制（参见第4章和第5章）。这看起来有点奇
+    怪，myObject对象竟然会因为其他对象中有一个只读foo就不能包含foo属性。更奇怪的是，这个
+    限制只存在于=赋值中，使用Object.defineProperty(..)并不会受到影响。
+</p>
+</body>
+</html>

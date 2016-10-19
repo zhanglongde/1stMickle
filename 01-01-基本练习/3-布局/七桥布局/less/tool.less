@@ -1,0 +1,36 @@
+/*Created by zhanglongde on 2016/8/25.*/
+
+//宽高固定的垂直、水平居中
+.en_middle(@method:2) when(@method = 1)
+{
+    margin:auto;
+}
+//绝对定位+3D变形   宽高不固定的垂直居中方法
+.en_middle(@method:2) when(@method = 2)
+{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate3d(-50%,-50%,0);
+}
+//绝对定位 已知元素自身宽高
+.en_middle(@method:2,@w,@h) when(@method = 3)
+{
+  position:absolute;
+  top:50%;left:50%;
+  margin-top:-@h/2;
+  margin-left:-@w/2;
+}
+
+.en_v_middle(@h)
+{
+   line-height:@h;
+}
+
+
+.en_left(){
+  position:absolute;top:0;left:0;
+}
+
+.en_right(){
+  position:absolute;top:0;right:0;
+}

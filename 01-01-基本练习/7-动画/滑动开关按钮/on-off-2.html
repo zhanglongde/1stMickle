@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{width:130px;  height: 50px;border-radius:25px;border:1px solid #aaa;}
+        .circle{
+            width: 48px;
+            height: 48px;border-radius:50%;
+            background-color: #fff;
+            box-shadow: 0 0 1px 1px #aaa;
+            visibility: hidden;
+        }
+        .c1{}
+        .c2{background-color: #9c3;transform:translateY(0px)
+        }
+        .c2 .circle{float:right;  }
+        .container:hover .circle
+        {
+            visibility: visible;
+        }
+        /*.c1:hover{*/
+            /*visibility: hidden;*/
+        /*}*/
+        /*.c2:hover{*/
+            /*visibility: hidden;*/
+        /*}*/
+        .container:hover .circle
+        {
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+<div class="container c1">
+    <div class="circle"></div>
+</div>
+<div class="container c2">
+    <div class="circle"></div>
+</div>
+</body>
+</html>

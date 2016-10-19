@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        获取计算后的样式：
+        window下，直接通过getComputedStyle
+        document下，必须通过defaultView
+        IE 为currentStyle
+    </title>
+    <style>
+        #test{
+            background-color: #fc3;
+        }
+    </style>
+</head>
+<body>
+
+
+<div id="test" style="color:#85a;">获取样式</div>
+
+<script>
+    var obj = document.querySelector('#test');
+//    console.log(obj.style.backgroundColor);
+    console.log(obj.style.color); //此种方式，仅能获取内联样式
+    console.log(window.getComputedStyle(obj,null).backgroundColor);//第二个参数为伪元素
+    console.log(document.defaultView.getComputedStyle(obj,null).backgroundColor);
+    console.log(window.getComputedStyle(obj,null).getPropertyValue('background-color'));
+
+
+</script>
+</body>
+</html>

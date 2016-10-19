@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        map() 方法返回一个由原数组中的每个元素调用一个指定方法后的返回值组成的新数组，
+        forEach为数组中的每个元素执行一次回调函数。
+    </title>
+</head>
+<body>
+<!--ES5 没有set-->
+<!--forEach map  回调函数的参数基本一致value index array-->
+
+<!--filter  返回满足回调函数的数组，回调函数一个参数-->
+
+<!--every  some-->
+<!--some 在有true的时候停止-->
+<!--every 在有false的时候停止-->
+<script>
+    function isBigEnough(ele){
+        return ele>=10;
+    }
+    var arr = [1,34,23,70,4,230,23];
+
+    var passed = arr.every(isBigEnough); //返回bool值
+    console.log(passed);
+
+    var some_passed = arr.some(isBigEnough);//返回bool值
+    console.log(some_passed);
+
+    var tar_arr = arr.filter(isBigEnough);//返回满足条件的过滤数组
+    console.log(tar_arr);
+
+
+
+    function add10(value,index,array){  //map的回调函数，可以有三个参数
+        return value+100;
+    }
+    var map_arr = arr.map(add10);
+    console.log(map_arr);
+
+
+    function conlog(value,index,array){//forEach函数的参数基本与map的回调函数一直,但是并不返回
+        console.log(index+':'+value);
+    }
+    arr.forEach(conlog);
+</script>
+    
+</body>
+</html>

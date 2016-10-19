@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var myName = 'zhanglongde';
+    function Person(){
+        this.myName = 'zhangld';
+        return function (){
+            var myName = this.myName;
+            console.log(myName);
+        }
+    }
+
+    var getName = Person();
+    getName();
+
+</script>
+</body>
+</html>

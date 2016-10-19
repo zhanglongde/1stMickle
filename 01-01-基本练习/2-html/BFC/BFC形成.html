@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .c2{
+            /*归纳为：dof paf*/
+
+            /*制造BFC,解决浮动元素高度塌陷问题*/
+            /*形成框*/
+            /*display:inline-block;*/
+            /*未验证：  display的值为 table-cell, table-caption, inline-block, flex, 或者 inline-flex中的其中一个*/
+
+            /*制造BFC最优解*/
+            /*任然独占一行*/
+            /*overflow非visible*/
+            /*overflow:auto;*/
+            /*overflow:hidden;*/
+            /*overflow:scroll;*/
+
+            /*形成框*/
+            /*float:left;*/
+            /*float:right;*/
+
+            /*position:absolute;*/
+            /*position:fixed;*/
+        }
+        .c2 img{
+            float:left;
+        }
+    </style>
+</head>
+<body>
+<div style="margin:20px;border:3px solid #eee;">
+    <img src="../../radio-checked.png" alt="1"/>
+    <img src="../../radio-unchecked.png" alt="2"/>
+</div>
+<div style="margin:20px;border:3px solid #eee;" class="c2">
+    <img src="../../radio-checked.png" alt="1"/>
+    <img src="../../radio-unchecked.png" alt="2"/>
+</div>
+</body>
+</html>

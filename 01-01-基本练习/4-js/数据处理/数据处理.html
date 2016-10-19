@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var ob = [];
+    var idx = [];
+    var data=[{id:"1",parentId:"",tittle:"D"},{id:"2",parentId:"1",tittle:"dfas"},{id:"1441",parentId:"2",tittle:"D"}];
+    for(var i =0;i<data.length;i++){
+//        for(var v in data[i]){
+//            console.log(data[i][v]);
+//        }
+        var pid = $.inArray(data[i].parentId,idx);
+        if(data[i].parentId == ''){
+            ob.push([]);
+            ob[ob.length].push(data[i]);
+            idx.push(data[i].parentId);
+        }
+        if(pid ){
+
+        }
+    }
+</script>
+</body>
+</html>

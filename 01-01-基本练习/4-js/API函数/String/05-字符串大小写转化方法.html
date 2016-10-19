@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+//    loLocalLowerCase toLocalUpperCase针对特定地区，超过26个字母
+(function(){
+    var str = 'hello world!';
+    var STR = 'HELLO WORLD!@';
+    console.log(STR.toLowerCase());  //并不改变原字符串
+    console.log(STR);
+    console.log(str.toUpperCase());
+    console.log(str);
+})();
+</script>
+</body>
+</html>

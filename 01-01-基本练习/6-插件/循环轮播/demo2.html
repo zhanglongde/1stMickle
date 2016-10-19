@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		#mydiv{
+			position: relative;
+			width: 500px;
+			height: 100px;
+			right: -300px;
+			background-color: antiquewhite;
+
+		}
+        #mydiv1{
+			width: 100px;
+			height: 100px;
+			background-color: black;
+
+		}
+	</style>
+<script type="text/javascript">
+
+//复制节点：cloneNode(): 如果参数是true,就一起复制里面的子节点，如果参数是false,就不会复制里面的子节点
+
+window.onload = (function(){
+	/*var aUl = document.getElementsByTagName('div');
+	aUl[0].style.right = '20px';*/
+	var aul2 =document.getElementById('mydiv1');
+	aul2.style.marginRight = '50px';
+	aul2.style.position = 'absolute';
+	aul2.style.right = 0;
+
+});
+</script>
+</head>
+
+<body>
+<div id="mydiv">
+	<div id="mydiv1">aaaaaaaaa</div>
+</div>
+</body>
+</html>

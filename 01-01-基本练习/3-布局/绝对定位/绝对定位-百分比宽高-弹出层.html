@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../animate.css"/>
+    <script src="../../jquery-2.2.3.js"></script>
+    <style>
+        .hidden{  display:none;  }
+        .show{  display:block;  }
+        .pop-wrapper{width:724px;height:500px;}
+        .pop-mask{  width:100%;  height:100%;  opacity:.5;filter: opacity(50);
+            background-color: #000;  position: absolute;  top:0;  left:0;
+        }
+        .content-layer{  position: fixed;  width:700px;  height:300px;  background-color: #00b3ee;
+            color:#fff;  left:50%;  margin-left:-350px;  top:50%;  margin-top:-150px;
+            border:3px solid #eee;
+            border-radius:5px;  /*为什么圆角无效了？被遮挡*/
+            /*box-shadow:inset -5px -5px 10px #bce8f1;*/
+        }
+        .popup-title{height:40px;width:700px;line-height:2.8;background-color:#009fe8;position:relative;border-bottom: 1px  solid #eee;}
+        .popup-content{height:240px;width:660px;background-color: #fff;color:#000;
+            /*margin-top:0px;*/
+            /*为什么加上这个就阻隔了父子容器间的上外边距折叠*/
+            padding:10px 20px;
+            /*制造BFC，阻止margin折叠*/
+            overflow:auto;
+            text-align: center;
+
+        }
+        .popup-title .popup-title-word{margin-left:25px;}
+        .popup-title .popup-title-btn-close{position:absolute;right:12px;top:0px;width:20px;height:20px;cursor:pointer;}
+        .popup-title .popup-title-btn-close:hover{
+            opacity: .5;filter: opacity(50);
+        }
+        .popup-content .row{margin:30px auto;width:100%;}
+        .btn{
+            border:none;
+            padding:8px 15px;background-color: #00b3ee;color:#fff;border-radius: 5px;outline:none;
+        }
+        .btn:active{
+            box-shadow: inset 0 3px 1px rgba(0,0,0,200);
+        }
+        .popup-content .row .btn-choose-file{
+            width:100px;height:40px;
+        }
+        .popup-content .row .btn-upload-file{
+            width:180px;height:40px;background-color: #8dc21f;
+        }
+    </style>
+    <script>
+        (function(){
+                    $.fn.extend({
+                        animateCss: function (animationName) {
+                            var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+                            $(this).addClass('animated ' + animationName).one(animationEnd, function() {
+                                if(animationName == 'zoomOut'){//customized by close button
+                                    $(".pop-wrapper").removeClass("show").addClass("hidden");
+                                }
+                                $(this).removeClass('animated ' + animationName);
+                            });
+                        }
+                    });
+                }
+        )();
+        $(function(){
+            $("#btn-popup").on('click',function(){
+                $("body").append($(".pop-wrapper").addClass("show"));
+                $(".content-layer").animateCss('zoomIn');
+//                $(".content-layer").animateCss("rollIn");
+            });
+            $(".popup-title-btn-close").on("click",function(){
+                $(".content-layer").animateCss('zoomOut');
+//                sleep(300);
+//                $(".pop-wrapper").removeClass("show").addClass("hidden");
+            });
+        });
+    </script>
+</head>
+<body>
+<button id="btn-popup">弹出</button>
+<div class="pop-wrapper hidden">
+    <div class="pop-mask">
+    </div>
+    <div class="content-layer">
+        <div class="popup-title">
+            <div class="popup-title-word">上传头像</div>
+            <div class="popup-title-btn-close">&times;</div>
+        </div>
+        <div class="popup-content">
+            <div class="row">
+                <input type="file"/>
+                <button class="btn btn-choose-file">选择文件</button>
+            </div>
+            <div class="row">
+                <span>（温馨提示：您可以上传JPG、GIF或PNG文件，图片最大4M）</span>
+            </div>
+            <div class="row">
+                <button class="btn btn-upload-file">上传</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

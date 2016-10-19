@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3实现的环形进度的时钟</title>
+    <style>
+        /* 钟表样式 */
+        .clock {
+            display: inline-block;
+        }
+        .clock .time-box {
+            float: left;
+            margin: 0 10px;
+        }
+        .clock .time-box .time {
+            color: #666;
+            font-size: 48px;
+            line-height: 130px;
+        }
+        .clock .time-box .time-info {
+            color: #ccc;
+            font-size: 25px;
+            margin-left: 5px;
+        }
+
+        /* 进度条样式 */
+        .circle {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            text-align: center;
+        }
+        .circle .track, .circle .mask, .circle .left, .circle .right {
+            width: 130px;
+            height: 130px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            border: 20px #e7e7e7 solid;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .circle .mask, .circle .left, .circle .right {
+            clip: rect(0, 65px, 130px, 0);
+        }
+        .circle .left, .circle .right {
+            border-color: #6FEC6F;
+        }
+        .circle .right {
+            opacity: 0;
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+        /* 时、分、秒的进度条颜色分别为#6FEC6F、#8CECBF、#F3AFAF */
+        .clock .minute .left, .clock .minute .right {
+            border-color: #8CECBF;
+        }
+        .clock .second .left, .clock .second .right {
+            border-color: #F3AFAF;
+        }
+
+        /* 环形进度条动画 */
+        .transition-rotate {
+            -webkit-transition: transform .2s;
+            -moz-transition: transform .2s;
+            -ms-transition: transform .2s;
+            -o-transition: transform .2s;
+            transition: transform .2s;
+        }
+    </style>
+</head>
+<body>
+<div class="clock">
+    <div class="time-box hour circle" id="hour">
+        <div class="track"></div>
+        <div class="left transition-rotate"></div>
+        <div class="right transition-rotate"></div>
+        <div class="mask"></div>
+        <span id="hourText" class="time">00</span><span class="time-info">h</span>
+    </div>
+    <div class="time-box minute circle" id="minute">
+        <div class="track"></div>
+        <div class="left transition-rotate"></div>
+        <div class="right transition-rotate"></div>
+        <div class="mask"></div>
+        <span id="minuteText" class="time">00</span><span class="time-info">m</span>
+    </div>
+    <div class="time-box second circle" id="second">
+        <div class="track"></div>
+        <div class="left transition-rotate"></div>
+        <div class="right transition-rotate"></div>
+        <div class="mask"></div>
+        <span id="secondText" class="time">00</span><span class="time-info">s</span>
+    </div>
+</div>
+
+<script>
+    // 小时指示进度
+    // 获取小时区的DOM节点
+    var hourBox = document.getElementById("hour");
+    var hourMask = hourBox.querySelectorAll(".mask")[0];
+    var hourLeft = hourBox.querySelectorAll(".left")[0];
+    var hourRight = hourBox.querySelectorAll(".right")[0];
+    var hourText = document.getElementById("hourText");
+    // 声明当前的小时
+    var hour;
+
+    // 声明定时器
+    var hourTimer = null;
+    // 实现动态加载小时显示的定时器
+    function getHour() {
+        // 动态获取当前的小时
+        var now = new Date();
+        hour = now.getHours();
+        function changeHour() {
+            // 24小时显示制
+            hourText.innerHTML = hour < 10 ? "0" + hour : hour;
+            var n = Math.floor(hour / 24 * 100);
+            // 动态显示进度条
+            changeProgress(n, hourLeft, hourRight, hourMask);
+        }
+        changeHour();
+        // 设置定时器循环
+        hourTimer = setTimeout(getHour, 3600000);
+    }
+    getHour();
+
+    // 分钟指示进度
+    var minuteBox = document.getElementById("minute");
+    var minuteMask = minuteBox.querySelectorAll(".mask")[0];
+    var minuteLeft = minuteBox.querySelectorAll(".left")[0];
+    var minuteRight = minuteBox.querySelectorAll(".right")[0];
+    var minuteText = document.getElementById("minuteText");
+    var minute;
+
+    var minuteTimer = null;
+    function getMinute() {
+        var now = new Date();
+        minute = now.getMinutes();
+        function changeMinute() {
+            minuteText.innerHTML = minute < 10 ? "0" + minute : minute;
+            var n2 = Math.floor(minute / 60 * 100);
+            changeProgress(n2, minuteLeft, minuteRight, minuteMask);
+        }
+        changeMinute();
+        minuteTimer = setTimeout(getMinute, 60000);
+    }
+    getMinute();
+
+    // 秒钟指示进度
+    var secondBox = document.getElementById("second");
+    var secondMask = secondBox.querySelectorAll(".mask")[0];
+    var secondLeft = secondBox.querySelectorAll(".left")[0];
+    var secondRight = secondBox.querySelectorAll(".right")[0];
+    var secondText = document.getElementById("secondText");
+    var second;
+
+    var secondTimer = null;
+    function getSecond() {
+        var now = new Date();
+        second = now.getSeconds();
+        function changeSecond() {
+            secondText.innerHTML = second < 10 ? "0" + second : second;
+            var n2 = Math.floor(second / 60 * 100);
+            changeProgress(n2, secondLeft, secondRight, secondMask);
+        }
+        changeSecond();
+        secondTimer = setTimeout(getSecond, 1000);
+    }
+    getSecond();
+
+
+// 进度条变化动画函数
+function changeProgress(n, left, right, mask) {
+    if(n <= 50) {
+        left.style.webkitTransform="rotate(" + 3.6 * n + "deg)";
+        right.style.opacity = 0;
+        mask.style.opacity = 1;
+    }else {
+        right.style.opacity = 1;
+        mask.style.opacity = 0;
+        left.style.webkitTransform="rotate(" + 180 + "deg)";
+        right.style.webkitTransform="rotate(" + 3.6 * n + "deg)";
+    }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./swiper-3.3.1.min.css">
+    <script src="./zepto.min.js"></script>
+    <script src="./swiper-3.3.1.jquery.min.js"></script>
+    <style>
+        .swiper-slide{
+            width:300px;height:300px;
+            margin:auto;
+            text-align: center;
+        }
+        .swiper-slide:nth-of-type(0){
+            background-color: #e87d0d;
+        }
+        .swiper-slide:nth-of-type(1){
+            background-color: #9c3;
+        }
+        .swiper-slide:nth-of-type(2){
+            background-color: #58a;
+        }
+    </style>
+</head>
+<body>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" style="background-color: #e87d0d;">slider1</div>
+        <div class="swiper-slide" style="background-color: #9c3;">slider2</div>
+        <div class="swiper-slide" style="background-color: #58a;">slider3</div>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+
+<script>
+    var mySwiper = new Swiper('.swiper-container',{
+//        autoplay:5000,
+        loop: true,
+        pagination: '.swiper-pagination',
+        paginationClickable: true
+    });
+</script>
+</body>
+</html>

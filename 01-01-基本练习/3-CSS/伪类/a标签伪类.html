@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*href做了改变，就会起作用*/
+        #test1:link{
+            /*保存在缓存中，清除浏览记录，可以恢复正常*/
+            color:red;
+        }
+        #test2:link{
+            color:yellow;
+        }
+        #test2:visited{
+            color:#CC00FF;
+        }
+    </style>
+</head>
+<body>
+<a href="#1" id="test1">eeeeeeeeeeeeee</a>
+<a href="#2" id="test2">ffffff</a>
+</body>
+</html>

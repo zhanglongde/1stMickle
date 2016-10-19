@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../jquery-1.11.3.min.js"></script>
+    <script>
+        // Using YQL and JSONP
+//        $.ajax({
+//            url: "http://query.yahooapis.com/v1/public/yql",
+//
+//            // the name of the callback parameter, as specified by the YQL service
+//            jsonp: "callback",
+//
+//            // tell jQuery we're expecting JSONP
+//            dataType: "jsonp",
+//
+//            // tell YQL what we want and that we want JSON
+//            data: {
+//                q: "select title,abstract,url from search.news where query=\"cat\"",
+//                format: "json"
+//            },
+//
+//            // work with the response
+//            success: function( response ) {
+//                console.log( response ); // server response
+//            }
+//        });
+        $.ajax({
+            url: "http://localhost:63342/plug-in/front-end-plugins/detail/mockajax/demo.html",
+
+            // the name of the callback parameter, as specified by the YQL service
+            jsonp: "callback",
+
+            // tell jQuery we're expecting JSONP
+            dataType: "jsonp",
+
+            // tell YQL what we want and that we want JSON
+            data: {
+                q: "select title,abstract,url from search.news where query=\"cat\"",
+                format: "json"
+            },
+
+            // work with the response
+            success: function( response ) {
+                console.log( response ); // server response
+            }
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

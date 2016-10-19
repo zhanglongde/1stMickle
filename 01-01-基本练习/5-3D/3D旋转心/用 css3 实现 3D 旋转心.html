@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>旋转心</title>
+    <meta charset="utf-8" />
+    <style>
+        body{background-color:black;}
+        .heart_div{
+            width:200px;
+            height:320px;
+            transform-style:preserve-3d;
+            position: relative;
+            left: 0;top:0;bottom: 0;right: 0;
+            margin:200px auto;
+            /*border:1px solid yellow;*/
+        }
+        .heart_div [class^=heart]{
+            width:200px;
+            height:320px;
+            border:solid red;
+            border-width:2px 2px 0 0;
+            border-radius:50% 50% 0%/40% 50% 0%;
+            position: absolute;
+        }
+    </style>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+<div class="heart_div"></div>
+<script>
+    var heart_div = document.getElementsByClassName("heart_div")[0];
+    for(var i = 1;i<37;i++){
+        /*给heart_div添加36个子元素 且类名为 heart1 heart2 ...*/
+        var div = document.createElement("div");
+        div.className = "heart"+i;
+        div.style.transform="rotateY("+i*10+"deg)  rotateZ(45deg) translateX(60px)";
+        heart_div.appendChild(div);
+    }
+</script>
+</body>
+</html>

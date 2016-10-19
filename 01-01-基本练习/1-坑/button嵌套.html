@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        button嵌套input,引发的浏览器兼容性问题
+        用a标签，就没有此问题
+    </title>
+    <style>
+        .btn{outline:none;border:none;
+            color:#fff;
+            background-color: #58a;}
+        .btn-container{width:200px;height:50px;}
+        input{width:65px;height:30px;}
+    </style>
+</head>
+<body>
+<button class="btn btn-container"><input type="file">选择文件</button>
+
+<a href="#"><input type="file">点击</a>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/bootstrap.css"/>
+    <script src="../../jquery-2.2.3.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <style>
+        /*.container{width:1000px;}/!*默认1140+15*2*!/*/
+        .col-md-4{background-color: #cccccc;}
+        .tri-border{
+            width:0;
+            height:0;
+            border:20px transparent;
+            border-style:solid;
+            border-right:thick double #00CCFF;
+            border-left-color:#ffff00;
+        }
+    </style>
+    <script src="../console.js"></script>
+    <script src="jquery.cityselect.js"></script>
+    <script>
+        $(function(){
+            $("#person_city_select").citySelect({
+                url:"./city.min.js",
+                prov:"浙江",
+                city:"杭州",
+                dist:"拱墅区",
+                nodat:"none",
+                required:true
+            })
+        });
+
+        $(function(){
+            var bank =[{
+                "city_bank":"杭州银行",
+                "branch_bank":[{"option":"官巷口支行"}]
+            },{
+                "city_bank":"工商银行",
+                "branch_bank":[{"option":"拱宸桥支行"},{"option":"拱墅区支行"}]
+            }];
+            var load_bank = function(){
+                $("#citybank_select").empty().attr("disabled","true");
+                var options = '<option value="请选择银行">'+'请选择银行'+'</option>';
+                console.log(bank);
+                for(var i = 0 ; i<bank.length; i++){
+                    console.dir(bank[i].bank);
+                    options += '<option value="'+bank[i].bank+'">'+ bank[i].bank+'</option>';
+                }
+                $("#citybank_select").html(options).attr("disabled","false");
+            };
+
+            load_bank();
+            $("#citybank_select").on("change",load_bank);
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="tri-border"></div>
+            <div class="tri-border"></div>
+            <div class="tri-border"></div>
+        </div>
+        <div class="col-md-4" id="test1">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div id="person_city_select">
+                <select name="" id="" class="prov"></select>
+                <select name="" id="" class="city" disabled="disabled"></select>
+                <select name="" id="" class="dist" disabled="disabled"></select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <!--
+            如果一个输入项的disabled设为true，则该表单输入项不能获取焦点，用户的所有操作（鼠标点击和键盘输入等）对该输入项都无效，
+            最重要的一点是当提交表单时，这个表单输入项将不会被提交。
+
+            而readonly只是针对文本输入框这类可以输入文本的输入项，如果设为true，用户只是不能编辑对应的文本，但是仍然可以聚焦焦点，
+            并且在提交表单的时候，该输入项会作为form的一项提交。
+            -->
+            <input type="text" disabled="disabled" value="disabled=disabled"/>
+            <input type="text" disabled="true" value="disabled=true"/>
+            <input type="text" readonly="true" value="readonly=true"/>
+        </div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <select id="citybank_select"></select>
+            <select id="branchbank_select"></select>
+        </div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+</div>
+</body>
+<script>
+
+</script>
+</html>

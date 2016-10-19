@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Title</title>
+
+    <style type="text/css">
+        *{ padding: 0px; margin: 0px; }
+        body, html { font-family: arial; font-size: 14px; }
+        a, a:active, a:focus {
+            outline:none;
+            blr:expression(this.onFocus=this.blur());
+        }
+
+        #div {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: black;
+
+            border-radius: 50px;
+        }
+    </style>
+
+    <script src="../../../lib/jquery-1.11.3.min.js"></script>
+    <script src="./jquery.easing/jquery.easing.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var x = $(window).width() / 2;
+            var y = $(window).height() / 2;
+
+            // queue设置为false，这样水平和垂直的动画同时进行
+            $("#div").animate({left: x}, {queue: false, duration: 2000, easing: "linear"}).animate({top: y}, 2000, "easeOutBounce");
+
+            //$("#div").animate({left: x}, 2000, "linear").animate({top: y}, 2000, "easeOutBounce");
+        });
+    </script>
+</head>
+
+<body>
+<div id="div"></div>
+</body>
+</html>

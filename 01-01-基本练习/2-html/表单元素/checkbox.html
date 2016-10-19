@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        label{}
+        label[for=male]:before,
+        label[for=female]:before
+        {
+            content: '';
+            display: inline-block;margin-right:5px;
+            width:10px;height:10px;
+            border:1px solid #aaa;
+            border-radius:2px;
+            vertical-align: middle;
+        }
+        #male,#female
+        {display: none;}
+        #female:checked+label:before,
+        #male:checked+label:before
+        {
+            content: '✓';
+            display: inline-block;margin-right:5px;
+            width:10px;height:10px;
+            border:1px solid #aaa;
+            border-radius:2px;
+            color:#58a;font-size:5px;
+            vertical-align: middle;
+        }
+        /**+
+        「一个元素文档树内容之前和之后的内容」就是指这个元素是要可以插入内容的，
+        也就是说这个元素要是一个容器。
+       input，img，iframe等元素都不能包含其他元素，所以不能通过伪元素插入内容。
+       至于Chrome 中checkbox和radio可以插入，那应该是Bug了，要么就是姿势不对了。
+        **/
+        /*#male:after{content:'hh';}*/ /*input等替换行内元素没有before和after伪元素*/
+    </style>
+</head>
+<body>
+<input type="checkbox" id="male">  <label for="male">male</label>
+<input type="checkbox" id="female"><label for="female">female</label>
+
+<div style="margin-top:100px;">
+    ✓	U+2713	CHECK MARK（勾号）
+    ✔	U+2714	HEAVY CHECK MARK（粗勾号）
+    ☐	U+2610	BALLOT BOX（方格）
+    ☑	U+2611	BALLOT BOX WITH CHECK（打勾方格
+</div>
+</body>
+</html>

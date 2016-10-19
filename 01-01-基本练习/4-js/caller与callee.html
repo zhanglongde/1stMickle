@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function inner(){
+        console.log(arguments.callee);
+        console.log(arguments.callee.caller);
+        console.log(inner.caller);
+    }
+
+    function outer(){
+        inner();
+    }
+
+    outer();
+
+
+//    callee放回正在执行的函数本身的引用，它是arguments的一个属性
+//    caller 返回一个函数的引用，这个函数调用了当前的函数。
+//
+//    严格模式下，不允许访问arguments.callee和arguments.caller属性，主要体现在arguments.[[Get]]内部方法
+//
+//    严格模式下，arguments，arguments.callee，arguments.caller，arguments.callee.caller也不允许再被赋值
+    
+    'use strict';
+    void function fn(a){
+        console.log(arguments[0]);
+        a=2;
+        console.log(arguments);
+    }(1);
+
+    //function(){}(); 会运行错误, 如下可以正确被运行.
+
+    void function(){
+        console.log('hi');//hi
+    }();
+</script>
+</body>
+</html>

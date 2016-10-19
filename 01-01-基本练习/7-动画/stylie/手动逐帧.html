@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        运动原理可以分解为：水平方向匀速运动，垂直方向重力加速度运动
+        位移途径为： 1. （水平）s = vt 2.（垂直）h = gt*t/2
+        假如我们已起抛点为原点，就可以根据运行时间，计算出，物体x轴、y轴运行的距离，
+        通过细时间间隔，利用css3属性tanslate3d（x，y，z）进行精细的位移，
+        那么我们就能形成抛物线运动了， 那么我们试验一下。
+    </title>
+    <link rel="stylesheet" href="./manual.css">
+</head>
+<body>
+<h2>抛物线运动曲线 水平移动距离600px 速度 200px/s  默认垂直方向为重力加速度</h2>
+
+<div class="tab">
+    <span class="sg">垂直方向重力加速度</span>
+    <span class="sg50">垂直方向50px/s</span>
+    <span class="sg100">垂直方向100px/s</span>
+</div>
+<div class="ball sg"></div>
+
+<script>
+    document.querySelector('.sg').onclick=function(){
+        document.querySelector('.ball').className = 'ball animg';
+    };
+    document.querySelector(".sg50").onclick =function(){
+        document.querySelector(".ball").className = "ball animg50";
+    };
+    document.querySelector(".sg100").onclick =function(){
+        document.querySelector(".ball").className = "ball animg100";
+    };
+</script>
+
+</body>
+</html>

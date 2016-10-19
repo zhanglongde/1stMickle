@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        call省略第一个参数，即为window或者global
+        call:第2个参数，为参数列表
+        apply:第2个参数为数组实例，或者类数组对象（arguments,string,Nodelist）
+    </title>
+</head>
+<body>
+
+<ul>
+    <li>li1</li>
+    <li>li2</li>
+    <li>li3</li>
+    <li>li4</li>
+    <li>li5</li>
+</ul>
+
+<script>
+    var los = document.getElementsByTagName('li');
+//    var targets = Array.prototype.slice.call(los);
+    var targets = [].slice.call(los);
+
+    targets.forEach(function(val,index,arr){ //仅仅遍历，不返回
+        console.log(val.textContent);
+    });
+
+
+    var str = 'zhanglongde';
+    var ts = [].slice.call(str);
+    console.log(typeof str);
+    console.log(typeof ts);
+</script>
+</body>
+</html>

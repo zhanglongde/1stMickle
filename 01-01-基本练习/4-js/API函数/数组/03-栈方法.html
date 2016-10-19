@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var parkFees = {};
+
+    parkFees.options = [];
+
+    for(var i = 0;i<3;i++){
+        var obj = {};
+        obj['id'] = '<%= price.id %>'+i;
+        obj['value'] = '<%= price.unit %>';
+        obj['text'] = '<%= "#{price.price} / #{price.unit_label}" %>';
+//        parkFees.options.push(obj);
+        var l = parkFees.options.length;
+        parkFees.options[l] = obj;
+    }
+
+    console.log(parkFees.options[0]);
+    console.log(parkFees.options[1]);
+    console.log(parkFees.options[2]);
+</script>
+</body>
+</html>

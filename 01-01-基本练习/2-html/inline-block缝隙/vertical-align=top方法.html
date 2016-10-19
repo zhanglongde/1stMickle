@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .test{
+            /*height:100px;width:300px;*/
+            border:1px solid #aaa;
+            vertical-align: top;
+        }
+        .test:nth-of-type(1){vertical-align: top;
+            background-color: #fc0;}
+        .test:nth-of-type(2){vertical-align: top;
+            background-color: #9c3;
+
+        }
+
+        .sd{
+            height:100px;width:300px; /*不起作用*/
+        }
+        .sd:nth-of-type(1){
+            background-color: #5ba;
+        }
+        .sd:nth-of-type(2){
+            background-color: #e66;
+            margin-left:-0.5em;
+        }
+    </style>
+</head>
+<body>
+<img src="../../../images/bg.gif" alt="图1" class="test">
+<img src="../../../images/mm1.jpg" alt="图2" class="test">
+
+<div>
+    <span class="sd">11111111111</span>
+    <span class="sd">22222222222</span>
+</div>
+</body>
+</html>

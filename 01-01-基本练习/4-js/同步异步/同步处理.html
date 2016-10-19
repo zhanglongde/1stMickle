@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/bootstrap.css"/>
+    <script src="../../jquery-2.2.3.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="./layer/layer.js"></script>
+    <style>
+        /*.container{width:1000px;}/!*默认1140+15*2*!/*/
+        .col-md-4{background-color: #00CCFF;}
+    </style>
+    <script>
+        $(function(){
+//            //返回的是deferred对象
+//            $.ajax("./弹性布局.html")
+//                    .done(function(){ alert("哈哈，成功了！"); })
+//                    .fail(function(){ alert("出错啦！"); })
+//                    .done(function(){ alert("第二个回调函数！");} );
+
+
+//            $.ajax({
+//                url : './弹性布局.html',
+//                data: {},
+//                cache : false,//true使用缓存 。 false不使用缓存
+//                async : true,//true异步加载。 false同步加载
+//                type : "POST",
+//                dataType : 'json',//json/xml/html
+//                success : function (obj){
+//                    if(obj > 0){
+//                        alert("发送成功");
+//                    }else{
+//                        alert("发送失败");
+//                    }
+//                },
+//                beforeSend: function(){
+//                    console.log("loading", "正在读取数据...");
+//                }
+//            });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4" id="test1">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="loading-0.gif" alt="" class="loadingicon" style="display:none;"/>
+        </div>
+        <div class="col-md-4">
+            <button id="click_test1" class="btn1" >点击1-asyn-no-response</button>
+            <button id="click_test2" class="btn2" >点击2-settimeout-block-animate</button>
+            <br/>
+            <button id="click_test3" class="btn3" >点击3-fail</button>
+            <button id="click_test4" class="btn4" >点击4-done</button>
+            <button id="click_test5" class="btn5" >点击5-超时</button>
+            <button id="click_test6" class="btn6" >点击6-采用默认参数</button>
+            <button id="click_test7" class="btn7" >点击7-采用默认参数-适配项目</button>
+        </div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+</div>
+<script src="async.js" charset="GB2312"></script>
+</body>
+</html>

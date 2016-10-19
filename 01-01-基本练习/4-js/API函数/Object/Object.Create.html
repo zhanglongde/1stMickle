@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+//    Object.create(proto[, propertiesObject])
+    var o2 = Object.create({}, {
+        p: {
+            value: 42,
+            writable: true,
+            enumerable: true,
+            configurable: true
+        }
+    });
+
+    console.log(o2);
+
+
+    var o1 = Object.create({name:'zhanglongde'},{Person:{age:'26'}});
+    console.log(o1);
+</script>
+</body>
+</html>

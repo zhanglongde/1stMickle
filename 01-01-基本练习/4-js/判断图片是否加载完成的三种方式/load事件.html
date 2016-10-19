@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>所有浏览器都显示出了“loaded”，说明所有浏览器都支持img的load事件。
+    </title>
+    <style>
+        #img1{
+            width: 500px;
+            height: 500px;}
+    </style>
+</head>
+<body>
+<p id="p1">loading...</p>
+
+<img id="img1" src="http://pic1.win4000.com/wallpaper/f/51c3bb99a21ea.jpg">
+<script type="text/javascript">
+    var i = 0;
+    img1.onload = function() {
+        p1.innerHTML = 'loaded'
+        i++;
+    }
+    console.log('.....go on');
+    console.log(i);
+</script>
+</body>
+</html>

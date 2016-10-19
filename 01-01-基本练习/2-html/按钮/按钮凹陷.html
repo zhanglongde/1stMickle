@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/bootstrap.css"/>
+    <style>
+         a{
+             outline:none;
+         }
+        .btn-collapse{
+            width: 260px;
+            height: 50px;
+            margin-top: 30px;
+            font-size: 20px;
+            line-height: 50px;
+            border-radius: 5px;
+            background-color: #FF9933;
+            color: white;
+        }
+        .btn-collapse.active,.btn-collapse:active{
+            outline:none;
+            /*box-shadow: inset 0 3px 10px rgba(0,0,0,.125);*/
+        }
+         .btn:hover,.btn:focus{
+             color:#fff;
+         }
+         a, a:hover, a:link, a:visited {
+             /*去除默认下划线*/
+             text-decoration: none;
+         }
+    </style>
+</head>
+<body>
+<a class="btn btn-collapse">collapse</a>
+<a class="btn btn-collapse active">collapse2</a>
+</body>
+</html>

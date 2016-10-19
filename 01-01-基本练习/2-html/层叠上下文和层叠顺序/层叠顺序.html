@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--层叠上下文和层叠水平是概念，而这里的层叠顺序是规则-->
+    <style>
+        .container{
+            width:1000px;
+            height:700px;
+            background-color: #fc3;
+        }
+        .inline{
+            background-color: #85a;
+
+        }
+        .left{
+            /*width:50px;*/
+            /*height:30px;*/
+            /*float: left;*/
+            background-color: #efa;
+            /*opacity:.7;*/
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--<div class="left">-->
+        <img src="../../../images/mm1.jpg" alt="" style="float: left;"/>
+    <!--</div>-->
+    <!--<div class="inline">-->
+        层叠上下文和层叠水平是概念，而这里的层叠顺序是规则.
+        层叠顺序，从上到下依次如下：
+
+        1.正z-index
+        2.z-index:auto或者看成z-index:0
+        3.inline/inline-block水平盒子       -->内容
+        4.float浮动盒子                     -->布局
+        5.block块状水平盒子                  -->布局
+        6.负z-index
+        7.层叠上下文 background/border       -->装饰
+        <!--<div class="fl" style="float:left;">左浮动</div>-->
+    <!--</div>-->
+</div>
+</body>
+</html>

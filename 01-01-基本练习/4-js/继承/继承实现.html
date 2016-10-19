@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function Base(){
+        this.str = 'base str';
+        this.conlog = function(){
+             console.log.apply(this,arguments);//借用console.log方法，arguments为类数组参数类表
+        }
+    }
+    Base.prototype.get_str = function(){
+        return this.str;//原型对象可调用私有属性
+    };
+    var base_init = new Base();
+    base_init.conlog('test base');
+    var base_str = base_init.get_str();
+    console.log(base_str);
+
+
+    function Sub(){
+        this.sub_str = 'sub str';
+        this.print = function(){
+            var _arguments = arguments;//错误做法，会将参数列表转化为数组类型
+            console.log(_arguments);
+        }
+    }
+    Sub.prototype = base_init;//Sub 继承Base
+    var sub_init = new Sub();
+    var sub_str = sub_init.get_str();//调用基类原型方法
+    console.log(sub_str);
+    sub_init.print('test sub');//调用子类自身方法
+    sub_init.conlog('sub call base');//调用基类方法
+
+</script>
+</body>
+</html>

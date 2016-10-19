@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/bootstrap.css"/>
+    <script src="../../jquery-2.2.3.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <style>
+    </style>
+    <script src="../console.js"></script>
+    <script src="bankSelect.js"></script>
+    <script>
+        $(function(){
+            $("#bank_select").bankSelect({
+//               city_bank:null,
+//               branch_bank:null
+           });
+
+            $("#bank_select22").bankSelect({
+                city_bank:"#citybank_select2",
+                branch_bank:"#branchbank_select2"
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div id="bank_select">
+                <select id="citybank_select4"></select>
+                <select id="branchbank_select"></select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="col-md-4">
+                <div id="bank_select2">
+                    <select id="citybank_select2"></select>
+                </div>
+        </div>
+        <div class="col-md-4">
+            <select id="branchbank_select2"></select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+</div>
+</body>
+<script>
+
+</script>
+</html>

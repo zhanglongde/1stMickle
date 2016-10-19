@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>无标题文档</title>
+<style type="text/css">
+	*{ margin:0; padding:0;}
+	li{ list-style:none;}
+	#div1{ width:320px; height:60px; border:1px #000000 solid; position:relative; margin:0 auto; overflow:hidden;}
+	#div1 ul{ position:absolute;left:0;}
+	#div1 ul li{ width:80px; height:60px;  float: right;}
+</style>
+<script type="text/javascript" src="move.js"></script>
+<script type="text/javascript">
+window.onload = (function () {
+	Scroll("inputL","inputR","ScrollContainer","li");
+});
+
+function Scroll(sLA,sRA,sContainer,sLi) {
+	var oLInput = document.getElementById(sLA);
+	var oRInput = document.getElementById(sRA);
+	var oUl = document.getElementById(sContainer);
+	var aLi = oUl.getElementsByTagName(sLi);
+
+	var oneSize = aLi[0].offsetWidth;
+	var iNum = 1;
+	var bBtn = true;
+	var bBtn2 = true;
+
+	function getWidth(i) {
+		oUl.style.width =(aLi.length+i) * oneSize +'px';
+	}
+	getWidth(0);
+
+	oLInput.onclick = function () {
+		if (bBtn) {
+			bBtn = false;
+			for (var i = 0; i < iNum; i++) {
+				var oLi = aLi[3].cloneNode(true);
+				getWidth(1);
+				oUl.insertBefore(oLi,oUl.childNodes[0]);
+			}
+
+			startMove(oUl, {left: -iNum * oneSize}, function () {
+
+				for (var i = 0; i < iNum; i++) {
+					oUl.removeChild(aLi[4]);
+					oUl.style.left = 0;
+					getWidth(0);
+				}
+
+				bBtn = true;
+
+			});
+		}
+	};
+
+	oRInput.onclick = function () {
+		if (bBtn2) {
+			bBtn2 = false;
+			for (var i = iNum; i > 0; i--) {
+				var oLi = aLi[i-1].cloneNode(true);
+				oUl.style.left = -oneSize + 'px';
+				getWidth(1);
+				oUl.appendChild(oLi);
+
+			}
+			startMove(oUl, {left: 0}, function () {
+
+				for (var i = 0; i < iNum; i++) {
+					oUl.removeChild(aLi[iNum-1]);
+					getWidth(0);
+					oUl.style.left = 0;
+
+				}
+
+				bBtn2 = true;
+
+			});
+		}
+	}
+}
+</script>
+
+</head>
+
+<body>
+<input type="button" value="<" id="inputL" />
+<input type="button" value=">" id="inputR" />
+<div id="div1">
+	<ul id="ScrollContainer">
+    	<li><img src="img/1.jpg" /></li>
+        <li><img src="img/2.jpg" /></li>
+        <li><img src="img/3.jpg" /></li>
+        <li><img src="img/4.jpg" /></li>
+        <!--<li><img src="img/5.jpg" /></li>-->
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--Note that JavaScript is case-sensitive.-->
+    <script>
+        window.onload = function(){
+            function supports_web_workers() {
+                return !!window.Worker;
+            }
+            var v = supports_web_workers();
+            console.log(v);
+            console.dir(window.Worker);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

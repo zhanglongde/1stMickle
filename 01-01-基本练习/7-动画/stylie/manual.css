@@ -1,0 +1,60 @@
+body{  background-color: #e66;}
+
+/******小球******/
+.ball{
+    width: 20px;
+    height: 20px;
+    background-color: #fc3;border-radius:50%;cursor:pointer;}
+
+/********水平移动距离600 速度 200m/s  重力加速度的运动速度**************/
+.tab span{
+    display:inline-block;
+    padding:10px;
+    color:#fff;
+    border:2px solid #5ba;
+}
+
+.animg{-webkit-animation:pao 3s linear both;}
+.animg50{-webkit-animation:pao50 3s linear both;}
+.animg100{-webkit-animation:pao100 3s linear both;}
+@-webkit-keyframes pao{
+    0%{-webkit-transform:translate3d(0px,0,0)}
+    10%{-webkit-transform:translate3d(60px,0.45px,0)}
+    20%{-webkit-transform:translate3d(120px,1.8px,0)}
+    30%{-webkit-transform:translate3d(180px,4.05px,0)}
+    40%{-webkit-transform:translate3d(240px,7.2px,0)}
+    50%{-webkit-transform:translate3d(300px,11.25px,0)}
+    60%{-webkit-transform:translate3d(360px,16.2px,0)}
+    70%{-webkit-transform:translate3d(420px,22.05px,0)}
+    80%{-webkit-transform:translate3d(480px,28.8px,0)}
+    90%{-webkit-transform:translate3d(540px,36.45,0)}
+    100%{-webkit-transform:translate3d(600px,45px,0)}
+}
+@-webkit-keyframes pao50{
+    0%{-webkit-transform:translate3d(0px,0,0)}
+    10%{-webkit-transform:translate3d(60px,2.25px,0)}
+    20%{-webkit-transform:translate3d(120px,9px,0)}
+    30%{-webkit-transform:translate3d(180px,20.25px,0)}
+    40%{-webkit-transform:translate3d(240px,36px,0)}
+    50%{-webkit-transform:translate3d(300px,56.25px,0)}
+    60%{-webkit-transform:translate3d(360px,81px,0)}
+    70%{-webkit-transform:translate3d(420px,110.25px,0)}
+    80%{-webkit-transform:translate3d(480px,144px,0)}
+    90%{-webkit-transform:translate3d(540px,182.25,0)}
+    100%{-webkit-transform:translate3d(600px,225px,0)}
+}
+@-webkit-keyframes pao100{
+    0%{-webkit-transform:translate3d(0px,0,0)}
+    10%{-webkit-transform:translate3d(60px,4.5px,0)}
+    20%{-webkit-transform:translate3d(120px,18px,0)}
+    30%{-webkit-transform:translate3d(180px,40.5px,0)}
+    40%{-webkit-transform:translate3d(240px,72px,0)}
+    50%{-webkit-transform:translate3d(300px,112.5px,0)}
+    60%{-webkit-transform:translate3d(360px,162px,0)}
+    70%{-webkit-transform:translate3d(420px,220.5px,0)}
+    80%{-webkit-transform:translate3d(480px,288px,0)}
+    90%{-webkit-transform:translate3d(540px,364.5,0)}
+    100%{-webkit-transform:translate3d(600px,450px,0)}
+}
+
+.margin{margin-top:450px}

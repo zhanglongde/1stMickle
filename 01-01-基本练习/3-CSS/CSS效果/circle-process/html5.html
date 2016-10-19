@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5实现环形进度条</title>
+    <style>
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<canvas id="circle" width="130" height="130"></canvas>
+<input id="range" type="range" min="0" max="360" step="1" value="0">
+
+<script>
+    var range = document.getElementById("range");
+    var rangeValue; // 滑动条获得的是度数值
+
+    var circle = document.getElementById("circle");
+    var circleWidth = circle.width;
+    var circleHeight = circle.height;
+    var circleContext = circle.getContext("2d");
+
+    var circleValue = {
+        x: 65,
+        y: 65,
+        r: 45,
+        beginAngle: - Math.PI / 2,
+        endAngle: 0
+    };
+
+    // 样式
+    circleContext.lineWidth = 20;
+    circleContext.strokeStyle = "#6FEC6F";
+
+    // 描绘进度圆环
+    function drawCircle() {
+        circleContext.restore();
+        // 清空当前路径
+        circleContext.clearRect(0,0, circleWidth, circleHeight);
+        // 把range的度数值换成Math.PI值
+        rangeValue = Number(range.value);
+        // 滑动条获得的是度数值
+        circleValue.endAngle = circleValue.beginAngle + (rangeValue / 360) * 2 * Math.PI;
+        circleContext.beginPath();
+        // 绘制圆弧
+        circleContext.arc(circleValue.x, circleValue.y, circleValue.r, circleValue.beginAngle, circleValue.endAngle, false);
+        circleContext.stroke();
+        circleContext.save();
+    }
+    // 滚动条滑动动画
+    range.oninput = drawCircle;
+    drawCircle();
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{width:110px;
+            height: 50px;border-radius:25px;border:1px solid #aaa;
+            position:relative;
+        }
+        .circle{
+            width: 44px;
+            height: 44px;border-radius:50%;
+            background-color: #fff;
+            box-shadow: 0 0 1px 1px #aaa;
+            position:absolute;top:3px;
+            /*left:3px;*/
+        }
+        @keyframes parent-spin {
+            from{background-color: #fff;}
+            to{background-color: #9c3;}
+        }
+        @keyframes spin {
+            from{
+                /*left:3px;*/
+            }
+            to{
+                left:calc(100% - 44px);
+            }
+        }
+        .animate{
+            /*animation:spin 1s linear .1s;*/
+            /*animation-fill-mode: forwards;*/
+            /*animation-play-state: paused;*/
+        }
+        .animate:hover{
+            /*animation-iteration-count: 1;*/
+            animation:spin 1s linear .1s;
+            /*animation-direction: alternate;*/
+            animation-fill-mode: forwards;
+            /*animation-play-state: running;*/
+        }
+        .parent-animate{
+            animation:parent-spin 1s linear .1s infinite;
+            animation-play-state: paused;
+        }
+        .parent-animate:hover{
+            animation-play-state: running;
+        }
+    </style>
+</head>
+<body>
+<div class="container parent-animate">
+    <div class="circle animate"></div>
+</div>
+</body>
+</html>

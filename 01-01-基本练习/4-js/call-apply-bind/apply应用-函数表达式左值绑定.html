@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function Person(){
+        this.myName = 'zhangld';
+        this.sayName = function(){
+            console.log(this.myName);
+        }
+    }
+
+    var p = new Person();
+    //    p.sayName();
+    var sayName = p.sayName;
+    sayName.call(p);
+</script>
+</body>
+</html>

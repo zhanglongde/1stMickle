@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../../jquery-1.11.3.min.js"></script>
+
+<script>
+    function catchErroMessageAll(){
+        if(window.addEventListener){
+            window.addEventListener('error', function (e) {
+
+                var message="";
+                var filename="";
+                var lineno="";
+                var str="";
+                if(e.message){
+                    message+=e.message.toString();
+                }
+                if(e.filename){
+                    filename+=e.message.toString();
+                }
+                if(e.lineno){
+                    lineno+=e.message.toString();
+                }
+                str="html5error: "+message+'\n'+"filename"+filename+'\n'+"lineno"+lineno;
+//                G$.AIPSendErrorLogMessage(str);
+                console.log(str);
+            });
+        }else if(window.attachEvent){
+            window.attachEvent('onerror', function (e) {
+                var stack = e.error.stack;
+                var message = e.error.toString();
+                if (stack) {
+                    message += '\n' + stack;
+                }
+                console.log(message);
+//                alert(message);
+//                G$.AIPSendErrorLogMessage(message);
+
+            });
+        }else{
+            window.onerror = function(e){
+                var stack = e.error.stack;
+                var message = e.error.toString();
+                if (stack) {
+                    message += '\n' + stack;
+                }
+                console.log(message);
+//                alert(message);
+//                G$.AIPSendErrorLogMessage(message);
+            }
+        }
+    }
+</script>
+<script>
+//    $(document).ready(function(){
+////       $("window").on("error",function(e){
+////               var stack = e.error.stack;
+////               var message = e.error.toString();
+////               if (stack) {
+////                   message += '\n' + stack;
+////               }
+////               console.log(message);
+////       });
+//
+////        $(window).error(function(msg, url, line){
+////            console.log( msg, url, line );
+////        });
+//
+//    });
+catchErroMessageAll();
+</script>
+<script>
+    x
+</script>
+</body>
+</html>

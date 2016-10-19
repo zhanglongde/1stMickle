@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>textContent文档中的换行、空格保留，不会进行合并</title>
+</head>
+<body>
+
+<div id="demo">
+    hello<div id="son">son</div>
+    <div id="son2">son</div>
+</div>
+
+<script>
+//    一.innerText属性:
+//    此属性获取到的是浏览器解析后的内容，但是会删除文本的修饰格式信息，同时会保留一些布局格式信息，如下:
+//    1.<br/>会被转换为换行符。
+//    2.多个空格或者换行会被忽略，只会保留一个空格。
+
+
+//    二.textContent属性:
+//    此属性获取的是innerHTML内容去除标签后的内容。它不会对html标签进行解释，如下:
+//    1.<br/>标签会直接被忽略，不会导致换行。
+//    2.原有的换行会被保留，而不会合并成一个空格。
+    console.log(document.getElementById('demo').textContent);
+    console.log(document.getElementById('demo').innerText);
+//    console.log(document.getElementById('demo').innerText);
+
+/*
+与innerText的区别
+Internet Explorer 引入了 element.innerText，目的是相似的，不过有下面几点不同之处：
+textContent 会获取所有元素的内容，包括<script> 和 <style> 元素，然而 IE 专有属性 innerText 不会。
+innerText 会受样式的影响，它不返回隐藏元素的文本，但 textContent 返回。
+由于 innerText 受 CSS 样式的影响，它会触发重排（reflow），但textContent 不会。
+*/
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../jquery-2.2.3.js"></script>
+    <style>
+        .d{
+            width:200px;
+            height:0px;
+            background-color: #ff7700;
+            border:20px solid #CC00FF;
+        }
+        .container{
+            transition:height 0.6s;
+        }
+    </style>
+    <script>
+        $(function(){
+            var display = false;
+            $("#btn-toggle").on("click",function(){
+                display = !display;
+                if(display){
+                    $(".container").css("height","200px");
+                }
+                else{
+                    $(".container").css("height","0");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<button id="btn-toggle">toggle</button>
+<div class="d1 d container" id="div1"></div>
+
+</body>
+</html>

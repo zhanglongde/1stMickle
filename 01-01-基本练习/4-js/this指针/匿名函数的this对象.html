@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function(){
+            function Test(){
+                //匿名函数的执行环境具有全局性，因此其this对象通常指向window
+                // (当然，在通过call()和apply()改变函数执行环境时，this指向其他对象)。
+                var test4 = function(){
+                    console.log("---------------------test4");
+                    console.dir(this);
+                };
+
+
+                w = 9;
+                var s = window.w;
+                console.log(s);
+
+                //任何没有var声明的变量都挂在window下面，包括函数对象
+                function T6(){
+                    console.log("---------------------test6");
+                    console.dir(this);
+                    test4();
+                };
+                T6();
+
+
+                this.test7 = function(){
+                    console.log("---------------------test7");
+                    console.dir(this);
+                };
+                this.test7();
+            };
+            new Test()
+//             Test();
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

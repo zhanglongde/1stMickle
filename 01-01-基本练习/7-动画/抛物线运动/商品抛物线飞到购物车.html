@@ -1,0 +1,152 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="description" content="JS抛物线动画与购物车效果 » 张鑫旭-鑫空间-鑫生活" />
+    <meta name="description" content="张鑫旭web前端学习实例页面 JS抛物线动画与购物车效果" />
+    <meta name="keywords" content="抛物线, 动画, javascript" />
+    <meta name="author" content="张鑫旭, zhangxixnu" />
+    <title>JS抛物线动画与购物车效果 » 张鑫旭-鑫空间-鑫生活</title>
+    <link rel="stylesheet" href="./demo.css" type="text/css" />
+    <link rel="stylesheet" href="./hl.css" type="text/css" />
+    <style>
+        body { overflow-x: hidden; }
+        img { vertical-align: bottom; }
+        .width_limit { width: 1194px; margin-left: auto; margin-right: auto; }
+        .image_limit { position: relative; }
+        .shop_cart { width: 283px; height: 25px; line-height: 25px; padding-top: 8px; background: url(shopping-cart.png); font-family: 'microsoft yahei'; font-size: 12px; text-indent: 34px; color: #000; position: fixed; right: 10px; bottom: 0; }
+        .add_cart_large, .add_cart_small { position: absolute; background: url(about:blank); text-indent: -99em; overflow: hidden; }
+        .add_cart_large { width: 167px; height: 33px; left: 724px; top: 511px; }
+        .add_cart_small { width: 82px; height: 25px; left: 1098px; top: 1014px; }
+
+        .fly_item { border: 2px solid #B30000; width: 50px; height: 50px; overflow: hidden; position: absolute; visibility: hidden; opacity: .5; filter: alpha(opacity=50); }
+    </style>
+</head>
+
+<body>
+<div id="header">
+    <a href="/" class="logo" title="回到鑫空间-鑫生活首页">
+        <img src="http://www.zhangxinxu.com/php/image/zxx_home_logo.png" border="0" />
+    </a>
+</div>
+<div id="main">
+    <h1>JS抛物线动画与购物车效果实例页面</h1>
+    <div id="body" class="light">
+        <div id="content" class="show">
+            <h3>展示</h3>
+            <div class="article_new"><a href="http://www.zhangxinxu.com/wordpress/?p=3855">回到相关文章 »</a></div>
+            <div class="demo">
+                <div class="width_limit">
+                    <p>下面这个是截图，只有两个“加入购物车”按钮可以点击：</p>
+                    <div class="image_limit">
+                        <img src="http://image.zhangxinxu.com/image/blog/201412/2013-12-30_103800.png" width="1194" height="1051" alt="天猫某商品页面的部分截图" />
+                        <a href="javascript:" class="add_cart_large btnCart" title="加入购物车">加入购物车</a>
+                        <a href="javascript:" class="add_cart_small btnCart" title="加入购物车">加入购物车</a>
+                    </div>
+                </div>
+                <div id="shopCart" class="shop_cart">购物车 <span>0</span></div>
+                <div id="flyItem" class="fly_item"><img src="/study/201312/item-pic.jpg" width="50" height="50" /></div>
+            </div>
+            <h3>代码</h3>
+            <h5>JS代码：</h5>
+            <pre name="code" class="js">
+/* 本demo演示脚本基于ieBetter.js, 项目地址：https://github.com/zhangxinxu/ieBetter.js */
+
+// 元素以及其他一些变量
+var eleFlyElement = document.querySelector("#flyItem"), eleShopCart = document.querySelector("#shopCart");
+var numberItem = 0;
+// 抛物线运动
+var myParabola = funParabola(eleFlyElement, eleShopCart, {
+    speed: 400,
+    curvature: 0.002,
+    complete: function() {
+        eleFlyElement.style.visibility = "hidden";
+        eleShopCart.querySelector("span").innerHTML = ++numberItem;
+    }
+});
+// 绑定点击事件
+if (eleFlyElement && eleShopCart) {
+    [].slice.call(document.getElementsByClassName("btnCart")).forEach(function(button) {
+        button.addEventListener("click", function() {
+            // 滚动大小
+            var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+                scrollTop = document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+            eleFlyElement.style.left = event.clientX + scrollLeft + "px";
+            eleFlyElement.style.top = event.clientY + scrollTop + "px";
+            eleFlyElement.style.visibility = "visible";
+
+            // 需要重定位
+            myParabola.position().move();
+        });
+    });
+}
+            </pre>
+        </div>
+    </div>
+</div>
+
+<script src="http://rawgithub.com/zhangxinxu/ieBetter.js/master/ieBetter.js"></script>
+<script src="./parabola.js"></script>
+<script>
+    // 元素以及其他一些变量
+    var eleFlyElement = document.querySelector("#flyItem"), eleShopCart = document.querySelector("#shopCart");
+    var numberItem = 0;
+    // 抛物线运动
+    var myParabola = funParabola(eleFlyElement, eleShopCart, {
+        speed: 400,
+        curvature: 0.002,
+        complete: function() {
+            eleFlyElement.style.visibility = "hidden";
+            eleShopCart.querySelector("span").innerHTML = ++numberItem;
+        }
+    });
+    // 绑定点击事件
+    if (eleFlyElement && eleShopCart) {
+        [].slice.call(document.getElementsByClassName("btnCart")).forEach(function(button) {
+            button.addEventListener("click", function(event) {
+                // 滚动大小
+                var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+                        scrollTop = document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+                eleFlyElement.style.left = event.clientX + scrollLeft + "px";
+                eleFlyElement.style.top = event.clientY + scrollTop + "px";
+                eleFlyElement.style.visibility = "visible";
+
+                // 需要重定位
+                myParabola.position().move();
+            });
+        });
+    }
+</script>
+
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="../js/hl_all.js"></script>
+<script type="text/javascript">
+    DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+<div id="footer">
+    Designed &amp; Powerd by <a href="http://www.zhangxinxu.com/">zhangxinxu</a><br />
+    Copyright© 张鑫旭-鑫空间-鑫生活<br>
+    <a href="http://www.miibeian.gov.cn/" target="_blank">鄂ICP备09015569号</a>
+</div>
+<div id="ad">
+    <script type="text/javascript">	google_ad_client = "pub-0090627341039040";google_ad_slot = "2041257798";google_ad_width = 468;google_ad_height = 60;</script>
+    <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-11205167-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = 'http://www.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</div>
+</body>
+</html>

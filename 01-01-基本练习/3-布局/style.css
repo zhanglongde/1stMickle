@@ -1,0 +1,20 @@
+*{margin:0;padding:0;}
+.by-content{  width: 1000px;height:1000px;margin:0 auto;padding:0;position:relative;}
+
+/*内容与容器分离*/
+.page-head-nav{  height: 120px;  min-width:1280px;  background-color: #5ba;  }
+.nav-content{position:relative;height:100%;width:1000px;margin:0 auto;
+    background-color: #fff;}
+
+.page-container{  width: 100%;  min-width: 1280px;  max-width: 1920px;  position:relative;
+    background-color: #fb3; }
+.main-content{height:1000px;position:relative;}
+.left-menu-container{width:210px;height:1000px;float:left;
+    background-color: #0000cc;}
+.right-data-container{height:1000px;width:1000px;position:absolute;left:50%;margin-left: -500px;
+    border: 2px solid #dcdcdc;}
+.right-data{width:860px;height:1000px;background-color: #00a300;float: right;}
+
+.page-footer{position:relative;height:120px;
+    background-color: #dcdcdc;}
+

@@ -1,0 +1,38 @@
+/*Created by zhanglongde on 2016/8/24.*/
+
+.rounded-corners (@radius: 5px) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
+#header {
+  .rounded-corners;
+}
+#footer {
+  .rounded-corners(20px);
+}
+
+.skin (@bgc: #fff,@fc: #000){
+   background-color: @bgc;
+   color: @fc;
+}
+
+body{
+  #header{
+    width: 1000px;
+    height: 100px;
+    .skin(#85a,#f73);
+  }
+  .container{
+    width: 1000px;
+    height: auto;
+    .skin;
+  }
+  #footer{
+    width: 1000px;
+    height: 100px;
+    //background-color: #f73;
+    .skin(#f73,#85a);
+  }
+}

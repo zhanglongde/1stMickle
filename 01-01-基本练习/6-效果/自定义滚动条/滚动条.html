@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+    <title>自定义滚动条 by 司徒正美</title>
+
+</head>
+<body>
+<style>
+    /* Turn on a 13x13 scrollbar */
+    ::-webkit-scrollbar {
+        width: 13px;/*对垂直流动条有效*/
+        height: 13px;/*对水平流动条有效*/
+    }
+    /*垂直滚动条的按钮*/
+    ::-webkit-scrollbar-button:vertical {
+        background-color: red;
+        border: 1px dashed blue;
+    }
+    /*CSS的坐标系，左上角为(0,0),往右往下为增加，往上往左为减少*/
+    /*显示滚动条上方的渐增按钮*/
+    ::-webkit-scrollbar-button:start:decrement,
+        /*显示滚动条上方的渐减按钮*/
+    ::-webkit-scrollbar-button:end:increment {
+        display: block
+    }
+
+    /*隐藏滚动条上方的渐增按钮*/
+    ::-webkit-scrollbar-button:vertical:start:increment,
+    ::-webkit-scrollbar-button:vertical:end:decrement {
+        display: none;
+
+    }
+
+    /* 定义垂直滚动条渐增按扭的样式 */
+    ::-webkit-scrollbar-button:vertical:increment {
+        background-color: white;
+        border: 1px dashed blue;
+    }
+
+    /* 定义垂直滚动条渐减按扭的样式 */
+    ::-webkit-scrollbar-button:vertical:decrement {
+        background-color: purple;
+        border: 1px dashed blue;
+    }
+    /*　　scrollbar-track　　　　上面是　scrollbar-track-piece　　*/
+    /*　　scrollbar-track-piece　上面是　四个按扭与scrollbar-track-piece:start与scrollbar-track-piece:end与scrollbar-thumb　*/
+    /* 垂直滚动条的第一层轨道*/
+    ::-webkit-scrollbar-track:vertical {
+        background-color: blue;
+        border: 1px dashed pink;
+    }
+
+
+    /* 垂直滚动条的第二层轨道　*/
+    ::-webkit-scrollbar-track-piece {
+        background-color: green;
+    }
+    /* 垂直滚动条的第三层轨道的上段　*/
+    ::-webkit-scrollbar-track-piece:vertical:start {
+        border: 1px solid #000;
+    }
+
+    /* 垂直滚动条的第三层轨道的下段　*/
+    ::-webkit-scrollbar-track-piece:vertical:end {
+        border: 1px dashed pink;
+    }
+
+    /* 垂直滚动条的滑动块 */
+    ::-webkit-scrollbar-thumb:vertical {
+        height: 50px;
+        background-color: yellow;
+    }
+
+    /* Corner */
+    ::-webkit-scrollbar-corner:vertical {
+        background-color: black;
+    }
+    /*  http://www.cssportal.com/css-properties/resize.htm  */
+    /* Resizer */
+    ::-webkit-scrollbar-resizer:vertical {
+        background-color:orange;
+    }
+</style>
+
+
+<div style="width:200px;height: 200px;overflow: scroll;resize:both;">
+    <div style="background: red;width:400px;height: 400px;"></div>
+</div>
+</body>
+</html>

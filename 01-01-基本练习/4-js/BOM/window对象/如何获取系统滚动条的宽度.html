@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <h1>scroll bar width</h1>
+        <div style="overflow:scroll; width:320px; height:240px; background-color:#eeeeee;"></div>
+        <div id="output">
+
+         </div>
+         <script type="text/javascript">
+                var __scrollBarWidth = null;
+                 function getScrollBarWidth() {
+                         if (__scrollBarWidth) return __scrollBarWidth;
+
+                        var scrollBarHelper = document.createElement("div");
+                        // if MSIE
+                        // 如此设置的话，scroll bar的最大宽度不能大于100px（通常不会）。
+                         scrollBarHelper.style.cssText = "overflow:scroll;width:100px;height:100px;";
+                         // else OTHER Browsers:
+                        // scrollBarHelper.style.cssText = "overflow:scroll;";
+                         document.body.appendChild(scrollBarHelper);
+                         if (scrollBarHelper) {
+                                __scrollBarWidth = {
+                                         horizontal: scrollBarHelper.offsetHeight - scrollBarHelper.clientHeight,
+                                             vertical: scrollBarHelper.offsetWidth - scrollBarHelper.clientWidth
+                                 };
+                             }
+                         document.body.removeChild(scrollBarHelper);
+                        return __scrollBarWidth;
+                     }
+                 function test() {
+                         var scrollBarWidth = getScrollBarWidth();
+                        document.getElementById("output").innerHTML += "scroll bar width : horizontal : " + scrollBarWidth.horizontal
+                          + " vertical : " + scrollBarWidth.vertical + "<br />";
+                     }
+                 test();
+             </script>
+</body>
+</html>

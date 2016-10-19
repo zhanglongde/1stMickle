@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="by-container" style="background:#efefef">
+    <div class="by-content" style="padding:30px 0 100px 0;">
+        <div style="background: #fff;padding:0 20px;">
+            <div class=""
+                 style="font-size:24px; text-align: center;color:#575757;border-bottom:2px solid #009fe8;padding:20px 0 15px 0">
+                新增借款人
+            </div>
+            <div style="position: relative">
+                <span style="color: #ff9933;font-size: 12px;position: absolute;top: 5px;left: 360px;"><span class="fa fa-warning"></span> 您还没有新建借款人，请您先填写以下借款人信息</span>
+                <div class="form-row" style="padding-bottom:20px;padding-top:30px">
+                    <label style="display:inline-block;width:200px;color:#666;font-size:18px;font-weight: 100;text-align:right;">借款人类型</label>
+
+                    <div>
+                        <span class="type-radio radio selected" data-value="personal">个人</span>
+                        <span class="type-radio radio" data-value="enterprise" style="margin-left:50px;">企业</span>
+                    </div>
+                </div>
+                <div id="personal" class="type-section hidden">
+                    <div class="form-row">
+                        <label>真实姓名</label>
+
+                        <div>
+                            <input id="personal_name" type="text"
+                                   style="height:50px;width:140px;border:1px solid #efefef;border-radius: 4px;"
+                                   by-validation="required" by-validation-on="blur"
+                                   by-validation-error-class="input-error-border"/>
+
+                            <div style="width:60px;text-align: left;padding:0 0 0 0 ;font-size: 12px;vertical-align: middle;margin-left:0px;overflow:hidden">
+                                <div class="by-validation-error" by-validation-error="personal_name"
+                                     style="padding:0;height:30px;text-align:left;color:red">最多十个汉字文本内容
+                                </div>
+                            </div>
+                        </div>
+                        <label style="padding-left:38px;">性别</label>
+
+                        <div>
+                            <select name="" placeholder="请选择" style="width:100px;">
+                                <option>男</option>
+                                <option>女</option>
+                            </select>
+                        </div>
+                        <label style="padding-left:10px;">婚姻状况</label>
+
+                        <div style="display:inline-block">
+                            <select name="" placeholder="请选择" style="width:100px;">
+                                <option>已婚</option>
+                                <option>未婚</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label>所在地址</label>
+
+                        <div style="display:inline-block">
+                            <select name="" placeholder="请选择" style="width:200px;" by-validation="required"
+                                    by-validation-error-class="input-error-border">
+                                <option value="">省</option>
+                                <option value="010">北京</option>
+                            </select>
+                        </div>
+                        <div style="display:inline-block">
+                            <select name="" placeholder="请选择" style="width:184px;" by-validation="required"
+                                    by-validation-error-class="input-error-border">
+                                <option value="">市</option>
+                                <option value="010">北京</option>
+                            </select>
+                        </div>
+                        <div style="display:inline-block">
+                            <select name="" placeholder="请选择" style="width:184px;" by-validation="required"
+                                    by-validation-error-class="input-error-border">
+                                <option value="">区</option>
+                                <option value="010">东城区</option>
+                            </select>
+                        </div>
+                        <div style="width:60px;text-align: left;padding:0 0 0 0 ;font-size: 12px;vertical-align: middle;margin-left:0px;overflow:hidden">
+                            <div class="by-validation-error" by-validation-error="company_location"
+                                 style="padding:0;height:30px;text-align:left;color:red">最多十个汉字文本内容
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label>详细地址</label>
+
+                        <div style="display:inline-block">
+                            <input id="personal_address" type="text"
+                                   style="height:50px;width:608px;border:1px solid #efefef;border-radius: 4px;"
+                                   by-validation="required" by-validation-on="blur"
+                                   by-validation-error-class="input-error-border"/>
+
+                            <div style="width:60px;text-align: left;padding:0 0 0 0 ;font-size: 12px;vertical-align: middle;margin-left:0px;overflow:hidden">
+                                <div class="by-validation-error" by-validation-error="personal_address"
+                                     style="padding:0;height:30px;text-align:left;color:red">最多十个汉字文本内容
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label>身份证号码</label>
+
+                        <div style="display:inline-block">
+                            <input type="text"
+                                   style="height:50px;width:608px;border:1px solid #efefef;border-radius: 4px;"/>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label>手机号码</label>
+
+                        <div style="display:inline-block">
+                            <input id="personal_cellphone" type="text"
+                                   style="height:50px;width:285px;border:1px solid #efefef;border-radius: 4px;"
+                                   by-validation="required" by-validation-on="blur"
+                                   by-validation-error-class="input-error-border"/>
+
+                            <div style="width:60px;text-align: left;padding:0 0 0 0 ;font-size: 12px;vertical-align: middle;margin-left:0px;overflow:hidden">
+                                <div class="by-validation-error" by-validation-error="personal_cellphone"
+                                     style="padding:0;height:30px;text-align:left;color:red">最多十个汉字文本内容
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label>身份证上传</label>
+
+                        <div style="display:inline-block;font-size:12px;color: #ff9933;">
+                            附件一次性上传不超过50M，支持jpg、tif、png、jpeg、pdf格式图片
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-top:-10px;">
+                        <label>&nbsp;</label>
+
+                        <div style="height:40px;display:inline-block;">
+                            <span style="color:#999;font-size: 18px;padding-right:5px;font-weight: 100">正面</span>
+                            <input type="text"
+                                   class="upload-pending"
+                                   style="height:40px;width:240px;border:1px solid #efefef;border-radius: 4px;"
+                                   readonly/>
+                            <span class="upload-success hidden" style="line-height: 40px;"><span style="color:#666">Filename</span><span class="fa fa-check-circle fa-lg" style="color:#8dc21f !important;margin-left:10px;"></span> </span>
+                            <button class="upload-pending btn upload-button-sm" style="background: #8dc21f"><input type="file" class=""
+                                                                                                                   style="width:80px;height:30px;opacity: 0;position:absolute;cursor: pointer;"/>选择
+                            </button>
+                            <button class="upload-pending btn upload-button-sm disabled" onclick="uploadFileSuccess(this)">上传</button>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label>&nbsp;</label>
+
+                        <div style="display:inline-block;">
+                            <span style="color:#999;font-size: 18px;padding-right:5px;font-weight: 100">反面</span>
+                            <input type="text"
+                                   class="upload-pending"
+                                   style="height:40px;width:240px;border:1px solid #efefef;border-radius: 4px;" readonly/>
+                            <span class="upload-success hidden" style="line-height: 40px;"><span style="color:#666">Filename</span><span class="fa fa-check-circle fa-lg" style="color:#8dc21f !important;margin-left:10px;"></span> </span>
+                            <button class="upload-pending btn upload-button-sm" style="background: #8dc21f"><input type="file" class="" style="width:80px;height:30px;opacity: 0;position:absolute;cursor: pointer;"/>选择
+                            </button>
+                            <button class="upload-pending btn upload-button-sm disabled" onclick="uploadFileSuccess(this)">上传</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="enterprise" class="type-section">
+                    <div class="form-row">
+                        <label>企业名称</label>
+
+                        <div>
+                            <input id="company_name" type="text"
+                                   style="height:50px;width:608px;border:1px solid #efefef;border-radius: 4px;"
+                                   by-validation="required" by-validation-on="blur"
+                                   by-validation-error-class="input-error-border"/>
+                            <div style="width:60px;text-align: left;padding:0 0 0 0 ;font-size: 12px;vertical-align: middle;margin-left:0px;overflow:hidden">
+                                <div class="by-validation-error" by-validation-error="company_name"
+                                     style="padding:0;height:30px;text-align:left;color:red">最多十个汉字文本内容
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label>法人代表</label>
+
+                        <div>
+                            <input id="company_faren" type="text"
+                                   style="height:50px;width:190px;border:1px solid #efefef;border-radius: 4px;"
+                                   by-validation="required" by-validation-on="blur"
+                                   by-validation-error-class="input-error-border"/>
+
+                            <div style="width:60px;text-align: left;padding:0 0 0 0 ;font-size: 12px;vertical-align: middle;margin-left:0px;overflow:hidden">
+                                <div class="by-validation-error" by-validation-error="company_faren"
+                                     style="padding:0;height:30px;text-align:left;color:red">最多十个汉字文本内容
+                                </div>
+                            </div>
+                        </div>
+                        <label style="padding-left:54px;">实际控制人</label>
+                        <div>
+                            <input id="controller" type="text"
+                                   style="height:50px;width:190px;border:1px solid #efefef;border-radius: 4px;"/>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label>成立时间</label>
+
+                        <div>
+                            <input id="start_date" type="text" class="by-date-input" style="width:190px;"
+                                   by-validation="required" by-validation-error-class="input-error-border"/>
+                            <div style="width:60px;text-align: left;padding:0 0 0 0 ;font-size: 12px;vertical-align: middle;margin-left:0px;overflow:hidden">
+                                <div class="by-validation-error" by-validation-error="start_date"
+                                     style="padding:0;height:30px;text-align:left;color:red">最多十个汉字文本内容
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label>所在地址</label>
+                        <div style="display:inline-block">
+                            <select name="" placeholder="请选择" style="width:200px;" by-validation="required"
+                                    by-validation-error-class="input-error-border">
+                                <option value="">省</option>
+                                <option value="010">北京</option>
+                            </select>
+                        </div>
+                        <div style="display:inline-block">
+                            <select name="" placeholder="请选择" style="width:184px;" by-validation="required"
+                                    by-validation-error-class="input-error-border">
+                                <option value="">市</option>
+                                <option value="010">北京</option>
+                            </select>
+                        </div>
+                        <div style="display:inline-block">
+                            <select name="" placeholder="请选择" style="width:184px;" by-validation="required"
+                                    by-validation-error-class="input-error-border">
+                                <option value="">区</option>
+                                <option value="010">东城区</option>
+                            </select>
+                        </div>
+                        <div style="width:60px;text-align: left;padding:0 0 0 0 ;font-size: 12px;vertical-align: middle;margin-left:0px;overflow:hidden">
+                            <div class="by-validation-error" by-validation-error="company_location"
+                                 style="padding:0;height:30px;text-align:left;color:red">最多十个汉字文本内容
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <label>详细地址</label>
+
+                        <div style="display:inline-block">
+                            <input id="company_address" type="text"
+                                   style="height:50px;width:608px;border:1px solid #efefef;border-radius: 4px;"
+                                   by-validation="required" by-validation-on="blur"
+                                   by-validation-error-class="input-error-border"/>
+
+                            <div style="width:60px;text-align: left;padding:0 0 0 0 ;font-size: 12px;vertical-align: middle;margin-left:0px;overflow:hidden">
+                                <div class="by-validation-error" by-validation-error="company_address"
+                                     style="padding:0;height:30px;text-align:left;color:red">最多十个汉字文本内容
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label>联系人</label>
+
+                        <div>
+                            <input id="company_contact" type="text"
+                                   style="height:50px;width:190px;border:1px solid #efefef;border-radius: 4px;"
+                                   by-validation="required" by-validation-on="blur"
+                                   by-validation-error-class="input-error-border"/>
+
+                            <div style="width:60px;text-align: left;padding:0 0 0 0 ;font-size: 12px;vertical-align: middle;margin-left:0px;overflow:hidden">
+                                <div class="by-validation-error" by-validation-error="company_contact"
+                                     style="padding:0;height:30px;text-align:left;color:red">最多十个汉字文本内容
+                                </div>
+                            </div>
+                        </div>
+                        <label style="padding-left:72px;">联系电话</label>
+
+                        <div>
+                            <input id="company_phone" type="text"
+                                   style="height:50px;width:190px;border:1px solid #efefef;border-radius: 4px;"
+                                   by-validation="required" by-validation-on="blur"
+                                   by-validation-error-class="input-error-border"/>
+
+                            <div style="width:60px;text-align: left;padding:0 0 0 0 ;font-size: 12px;vertical-align: middle;margin-left:0px;overflow:hidden">
+                                <div class="by-validation-error" by-validation-error="company_phone"
+                                     style="padding:0;height:30px;text-align:left;color:red">最多十个汉字文本内容
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label>是否五证合一</label>
+
+                        <div>
+                            <span class="allinone-radio radio selected" data-value="all-in-one">是</span>
+                            <span class="allinone-radio radio" data-value="non-all-in-one"
+                                  style="margin-left:50px;">否</span>
+                        </div>
+                    </div>
+                    <div class="form-row company all-in-one">
+                        <label>统一代码</label>
+
+                        <div style="display:inline-block">
+                            <input id="company_id_1" type="text"
+                                   style="height:50px;width:608px;border:1px solid #efefef;border-radius: 4px;"
+                                   by-validation="required" by-validation-on="blur"
+                                   by-validation-error-class="input-error-border"/>
+
+                            <div style="width:60px;text-align: left;padding:0 0 0 0 ;font-size: 12px;vertical-align: middle;margin-left:0px;overflow:hidden">
+                                <div class="by-validation-error" by-validation-error="company_id_1"
+                                     style="padding:0;height:30px;text-align:left;color:red">最多十个汉字文本内容
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row company non-all-in-one">
+                        <label>工商注册号</label>
+
+                        <div style="display:inline-block">
+                            <input id="company_id_2" type="text"
+                                   style="height:50px;width:520px;border:1px solid #efefef;border-radius: 4px;"
+                                   by-validation="required" by-validation-on="blur"
+                                   by-validation-error-class="input-error-border"/>
+
+                            <div style="width:60px;text-align: left;padding:0 0 0 0 ;font-size: 12px;vertical-align: middle;margin-left:0px;overflow:hidden">
+                                <div class="by-validation-error" by-validation-error="company_id_2"
+                                     style="padding:0;height:30px;text-align:left;color:red">最多十个汉字文本内容
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row company all-in-one">
+                        <label>附件上传</label>
+
+                        <div style="display:inline-block;font-size:12px;color: #ff9933;">
+                            附件一次性上传不超过50M，支持jpg、tif、png、jpeg、pdf格式图片
+                        </div>
+                    </div>
+                    <div class="form-row company all-in-one" style="margin-top:-10px">
+                        <label>&nbsp;</label>
+
+                        <div style="display:inline-block;">
+                            <span style="color:#999;font-size: 18px;padding-right:5px;font-weight: 100">营业执照</span>
+                            <input type="text"
+                                   class="upload-pending"
+                                   style="height:40px;width:240px;border:1px solid #efefef;border-radius: 4px;" readonly/>
+                            <span class="upload-success hidden" style="line-height: 40px;"><span style="color:#666">Filename</span><span class="fa fa-check-circle fa-lg" style="color:#8dc21f !important;margin-left:10px;"></span> </span>
+                            <button class="upload-pending btn upload-button-sm" style="background: #8dc21f"><input type="file" class=""
+                                                                                                                   style="width:80px;height:30px;opacity: 0;position:absolute;cursor: pointer;"/>选择
+                            </button>
+                            <button class="upload-pending btn upload-button-sm disabled" onclick="uploadFileSuccess(this)">上传</button>
+                        </div>
+                    </div>
+                    <div class="form-row company non-all-in-one">
+                        <label>附件上传</label>
+
+                        <div style="display:inline-block;font-size:12px;color: #ff9933;">
+                            附件一次性上传不超过50M，支持jpg、tif、png、jpeg、pdf格式图片
+                        </div>
+                    </div>
+                    <div class="form-row company non-all-in-one" style="margin-top:-10px">
+                        <label>&nbsp;</label>
+
+                        <div style="display:inline-block;">
+                            <span style="color:#999;font-size: 18px;padding-right:5px;font-weight: 100">　营业执照</span>
+                            <input type="text"
+                                   class="upload-pending"
+                                   style="height:40px;width:240px;border:1px solid #efefef;border-radius: 4px;" readonly/>
+                            <span class="upload-success hidden" style="line-height: 40px;"><span style="color:#666">Filename</span><span class="fa fa-check-circle fa-lg" style="color:#8dc21f !important;margin-left:10px;"></span> </span>
+                            <button class="upload-pending btn upload-button-sm" style="background: #8dc21f"><input type="file" class=""
+                                                                                                                   style="width:80px;height:30px;opacity: 0;position:absolute;cursor: pointer;"/>选择
+                            </button>
+                            <button class="upload-pending btn upload-button-sm disabled" onclick="uploadFileSuccess(this)">上传</button>
+                        </div>
+                    </div>
+                    <div class="form-row company non-all-in-one">
+                        <label>&nbsp;</label>
+
+                        <div style="display:inline-block;">
+                            <span style="color:#999;font-size: 18px;padding-right:5px;font-weight: 100">税务登记证</span>
+                            <input type="text"
+                                   class="upload-pending"
+                                   style="height:40px;width:240px;border:1px solid #efefef;border-radius: 4px;" readonly/>
+                            <span class="upload-success hidden" style="line-height: 40px;"><span style="color:#666">Filename</span><span class="fa fa-check-circle fa-lg" style="color:#8dc21f !important;margin-left:10px;"></span> </span>
+                            <button class="upload-pending btn upload-button-sm" style="background: #8dc21f"><input type="file" class=""
+                                                                                                                   style="width:80px;height:30px;opacity: 0;position:absolute;cursor: pointer;"/>选择
+                            </button>
+                            <button class="upload-pending btn upload-button-sm disabled" onclick="uploadFileSuccess(this)">上传</button>
+                        </div>
+                    </div>
+                    <div class="form-row company non-all-in-one">
+                        <label>&nbsp;</label>
+
+                        <div style="display:inline-block;">
+                            <span style="color:#999;font-size: 18px;padding-right:5px;font-weight: 100">开户许可证</span>
+                            <input type="text"
+                                   class="upload-pending"
+                                   style="height:40px;width:240px;border:1px solid #efefef;border-radius: 4px;" readonly/>
+                            <span class="upload-success hidden" style="line-height: 40px;"><span style="color:#666">Filename</span><span class="fa fa-check-circle fa-lg" style="color:#8dc21f !important;margin-left:10px;"></span> </span>
+                            <button class="upload-pending btn upload-button-sm" style="background: #8dc21f"><input type="file" class=""
+                                                                                                                   style="width:80px;height:30px;opacity: 0;position:absolute;cursor: pointer;"/>选择
+                            </button>
+                            <button class="upload-pending btn upload-button-sm disabled" onclick="uploadFileSuccess(this)">上传</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="" style="text-align: center;padding: 31px 0 80px 0">
+                    <button class="btn"
+                            style="background: #ff9933;color:white;width:240px; height:50px;font-size:24px;font-weight:100">
+                        提&nbsp;交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

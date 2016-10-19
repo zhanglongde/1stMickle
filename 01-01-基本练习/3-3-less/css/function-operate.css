@@ -1,0 +1,31 @@
+/*Created by zhanglongde on 2016/8/25.*/
+body {
+  min-height: 100vh;
+}
+body .header {
+  width: 1000px;
+  height: 30px;
+  margin: auto auto;
+}
+body .container {
+  width: 1000px;
+  min-height: 40vh;
+  margin: auto auto;
+}
+body .footer {
+  width: 1000px;
+  height: 30px;
+  margin: auto auto;
+}
+.header {
+  background-color: #bd3;
+  color: #333333;
+  border-color: #7d2717;
+}
+.container {
+  background-color: #d56;
+}
+.footer {
+  background-color: #bd3;
+  color: #114411;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul li {list-style: none;}
+    </style>
+</head>
+<body>
+<ul id="demo">
+    <li>15</li>
+    <li>25</li>
+    <li>35</li>
+    <li>45</li>
+    <li>55</li>
+</ul>
+<button id="btn-click">点击</button>
+
+<script>
+    var container = document.getElementById('demo');
+    var children = container.childNodes;
+//    console.log(children);
+
+    document.getElementById('btn-click').addEventListener('click',function(event){
+        event.stopPropagation(); //加上这句话之后，点击button，就不会触发其父容器的点击事件
+        for(var i = 0,LEN = children.length;i<LEN;i++){
+            var currNode = children[i];
+            if(currNode.nodeType == 3)//文本节点，跳过，继续遍历下一个节点
+            {
+                continue;
+            }
+            try{
+                currNode.textContent = 'text'+i;
+                currNode.style.cssText = 'background-color:#9c3;';
+            }catch(err){
+                console.log(err);
+            }finally{
+                console.log('next');
+            }
+        }
+    });
+
+    var Count = 0;
+    document.body.addEventListener('click',function(){
+        console.log(++Count);
+    });
+</script>
+</body>
+</html>

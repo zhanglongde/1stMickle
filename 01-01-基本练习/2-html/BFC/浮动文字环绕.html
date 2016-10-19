@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*//CSS*/
+        .box {width:210px;border: 1px solid #000;float: left;}
+        .img {width: 100px;height: 100px;background: #696;float: left;}
+        .info {background: #ccc;color: #fff;
+            /*形成BFC，消除对左边元素的影响*/
+            overflow:auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <div class="img">image</div>
+    <p class="info">
+        信息信息信息信息信息信息信息信息信息信息信息信
+        信息信息信息信息信息信息信息信息信息信息信息信
+        信息信息信息信息信息信息信息信息信息信息信息信
+        信息信息信息信息信息信息信息信息信息信息信息信
+    </p>
+</div>
+</body>
+</html>

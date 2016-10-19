@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+折叠的结果：
+
+两个相邻的外边距都是正数时，折叠结果是它们两者之间较大的值。
+两个相邻的外边距都是负数时，折叠结果是两者绝对值的较大值。
+两个外边距一正一负时，折叠结果是两者的相加的和。
+产生折叠的必备条件：margin必须是邻接的!
+
+而根据w3c规范，两个margin是邻接的必须满足以下条件：
+
+必须是处于常规文档流（非float和绝对定位）的块级盒子,并且处于同一个BFC当中。
+没有线盒，没有空隙（clearance，下面会讲到），没有padding和border将他们分隔开
+都属于垂直方向上相邻的外边距，可以是下面任意一种情况
+元素的margin-top与其第一个常规文档流的子元素的margin-top
+元素的margin-bottom与其下一个常规文档流的兄弟元素的margin-top
+height为auto的元素的margin-bottom与其最后一个常规文档流的子元素的margin-bottom
+高度为0并且最小高度也为0，不包含常规文档流的子元素，并且自身没有建立新的BFC的元素的margin-top和margin-bottom
+</body>
+</html>

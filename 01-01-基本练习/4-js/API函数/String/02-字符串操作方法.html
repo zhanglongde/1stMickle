@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        注意：字符串没有splice方法
+    </title>
+</head>
+<body>
+
+<script>
+    (function(){
+        var stringValue = 'hello';
+        var result = stringValue.concat(' world!');
+        console.log(result);
+        
+        var slicevalue = 'zhangld';
+        console.log(slicevalue.slice(3));  //从下标3到n
+        console.log(slicevalue.slice(1,3)); //不包括结尾索引3
+        console.log(slicevalue); //slice并不改定原string
+
+        var substringvalue = 'zhanglongbao';
+        console.log(substringvalue.substring(3));
+        console.log(substringvalue.substring(3,7));//不包括结尾索引7
+        console.log(substringvalue);//substring并不改变原string
+
+        var substrvalue = 'zhanglongcheng';
+        console.log(substrvalue.substr(3));
+        console.log(substrvalue.substr(3,5));//第二个参数表示长度，不表示索引
+        console.log(substrvalue);//substr并不改变原string
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../jquery-2.2.3.js"></script>
+    <script>
+        (function(){
+            var service = {};
+
+            service.display_this = function(params){
+                console.log("---------------------service.display_this");
+                console.dir(this);
+                console.dir(params);
+            };
+
+            window.Service = service;
+        })();
+        $(function(){
+            var test1 = function(){
+                console.dir(this);
+                var test2 = function(param){
+                    console.log("---------------------test2");
+                    console.dir(this);
+                    console.dir(param);
+                };
+
+                this.test3 = function(param){
+                    console.log("---------------------test3");
+                    console.dir(this);
+                    console.dir(param);
+                };
+
+                test2(this);
+                this.test3(this);
+
+                Service.display_this(this);
+                Service.display_this.apply(this,[this]);
+                Service.display_this.call(this,this);
+                Service.display_this();
+            };
+            test1();
+        });
+
+        $(function(){
+            function a(xx) {
+                this.b = xx;//共有属性
+            }
+            var o = {};
+            a.apply(o, [5]);
+            console.log(a.b);    // undefined
+            console.log(o.b);    // 5
+        });
+
+
+        (function(){
+            var service = {};
+
+            service.display_this = function(params){
+                console.log("---------------------service.display_this");
+                console.dir(this);
+                console.dir(params);
+            };
+
+            window.Service = service;
+        })();
+        $(function(){
+            function Test(){
+                var test4 = function(){
+                    console.log("---------------------test4");
+                    console.dir(this);
+                };
+                test4();
+            };
+            new Test();
+        });
+
+        $(function(){
+            function Test(){
+                function test5(){
+                    console.log("---------------------test5");
+                    console.dir(this);
+
+                    this.inner_func = function(){
+                        console.log("inner_func");
+                    };//当前对象
+
+                };
+                test5.prototype.hello = function(){
+                    console.log("hello");
+                }
+                var t5 = new test5();//构造函数调用
+                t5.hello();
+                t5.inner_func();
+                console.dir(t5);
+            };
+            new Test();
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>img - complete attribute</title>
+</head>
+<body>
+<p id="p1">loading...</p>
+<img id="img1" src="http://pic1.win4000.com/wallpaper/f/51c3bb99a21ea.jpg">
+<script type="text/javascript">
+    function imgLoad(img, callback) {
+        var timer = setInterval(function() {
+            if (img.complete) {
+                callback(img)
+                clearInterval(timer)
+            }
+        }, 50)
+    }
+    imgLoad(img1, function() {
+        var p1 = document.querySelector('#p1');
+        console.log(p1);
+        console.log('加载完毕');
+        p1.innerText='加载完毕';
+    })
+</script>
+</body>
+</html>

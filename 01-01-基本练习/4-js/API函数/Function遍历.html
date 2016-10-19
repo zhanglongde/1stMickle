@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function Person(){
+        this.a = 'test';
+        this.sayHello = function(){
+            console.log('hello');
+        }
+        this.name = 'zhangld';
+
+        var b = 'M';
+        function Age(){
+            return 26;
+        }
+
+        var bb = 'fuzhou';
+    }
+
+    for(var key in Person){
+        console.log(key);
+        console.log(Person.key);
+    }
+
+    var p = new Person();
+    console.log('init...');
+    for(var k in p){
+        console.log(k+':');
+        console.log(p[k]);
+    }
+</script>
+</body>
+</html>

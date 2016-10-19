@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>默认vertical-align:bottom
+        利用高度等于容器高度，再结合vertical-align:center可实现居中对齐</title>
+    <style>
+        .parent{display:inline-block;
+            width: 300px;  height: 300px;
+            background-color: #fed;}
+        .son1{display: inline-block;
+            /*vertical-align: middle;*/
+            width:30px;height:50px;
+            background-color: #5ba;}
+        .son2{display:inline-block;
+            /*vertical-align: middle;*/
+            width:100px;height:100px;
+            background-color: #9c3;}
+    </style>
+</head>
+<body>
+<div class="parent">
+    <div class="son1"></div>
+    <div class="son2"></div>
+</div>
+</body>
+</html>

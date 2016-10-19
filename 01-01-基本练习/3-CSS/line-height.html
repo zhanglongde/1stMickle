@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*块级元素，line-height与height等高的时候，就居中对齐了*/
+        /*font-size占据line-height的中间，整个文字区域靠容器上面*/
+        body{
+            /*采取向下整，不是四舍五入*/
+            line-height:1.42858;
+            font-size:14px;
+        }
+        .t1{
+            height:70px;
+            background-color: #ff7700;
+            line-height:5;
+        }
+        .t2{
+            height:30px;
+            background-color: #bce8f1;
+            line-height:2;
+        }
+        .t3{
+            /*行内元素，行高超过字体大小，就会居中了*/
+            line-height:5;
+            font-size:14px;
+            background-color: #CC00FF;
+        }
+    </style>
+</head>
+<body>
+<div class="test t1">11111111111111111111111</div>
+<div class="test" style="height:10px;">11111111111111111111111</div>
+<div class="test t2">22222222222222222222222</div>
+<span class="t3">3333333，行内元素撑开高度，不撑开盒子模型</span>
+<div style="border:3px solid #bce8f1">
+    <span class="t3">444444444,容器不设置高度</span>
+</div>
+<div style="border:3px solid #bce8f1;height:100px;">
+    <span class="t3">555555555555，考上面对齐</span>
+</div>
+</body>
+</html>

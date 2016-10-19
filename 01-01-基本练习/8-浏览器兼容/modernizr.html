@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./Modernizr.js"></script>
+    <script>
+        window.onload = function(){
+            if (Modernizr.touchevents) {
+                // supported
+                console.log("supported");
+            } else {
+                // not-supported
+                console.log("not supported");
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

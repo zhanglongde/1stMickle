@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {padding: 0; margin: 0;}
+        #b1 {
+            width: 300px;
+            height: 100px;
+            margin-bottom: 4em;
+            background-color: #0d8ba1;
+        }
+        #F {
+            float: left;
+            width: 100px;
+            height: 70px;
+            background-color: yellow;
+            opacity:.7;
+        }
+        #b2 {
+            /*清楚浮动，消除折叠*/
+            clear: both;
+            width: 300px;
+            height: 100px;
+            background-color: red;
+            margin-top: 2em;
+        }
+    </style>
+</head>
+<body>
+<div id="b1">n1</div>
+<div id="F">f</div>
+<div id="b2">b2</div>
+</body>
+</html>

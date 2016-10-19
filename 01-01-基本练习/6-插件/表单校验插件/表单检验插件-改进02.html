@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/bootstrap.css"/>
+    <script src="../../jquery-2.2.3.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <style>
+        .error-content{
+            color:red;
+            width:200px;
+            height:50px;
+        }
+        div>label{width:100px;}
+    </style>
+    <script>
+        $(function(){
+            $("#commit").on("click","#blurtest",function(){
+                var id_str = $(this).attr("id");
+                alert(id_str);
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <span id="error-content1" style="color:red;width:200px;height: 50px;">
+              333
+        </span>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" id="form_container" style="border:2px solid #eee;">
+            <span id="error-content" style="color:red;width:200px;height: 50px;">
+            </span>
+            <div id="user_name_container">
+                <label for="">用户名</label>
+                <input type="text" class="input-lg form-neglect" id="user_name"/>
+                <div class="error-content" id="user_name_error">1</div>
+            </div>
+            <div id="the_amount_container">
+                <label for="">金额</label>
+                <input type="text" class="input-lg" id="the_amount"/>
+                <div class="error-content" id="the_amount_error">2</div>
+            </div>
+            <div id="user_mobile_container">
+                <label for="">手机号码</label>
+                <input type="text" class="input-lg" id="user_mobile"/>
+                <div class="error-content" id="user_mobile_error">3</div>
+            </div>
+            <div id="user_checkcode_container">
+                <label for="">手机验证码</label>
+                <input type="text" class="input-lg" id="user_checkcode"/>
+                <div class="error-content" id="user_checkcode_error">4</div>
+            </div>
+            <label for="male">male</label>
+            <input type="radio" id="male" class="form-neglect"/>
+            <button id="form_submit" class="btn btn-primary">提交</button>
+        </div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+</div>
+<script type="text/javascript" src="check-plugin-02.js"></script>
+</body>
+</html>

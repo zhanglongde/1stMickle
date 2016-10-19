@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    var src = 'http://pic1.win4000.com/wallpaper/f/51c3bb99a21ea.jpg';
+//    $("<img/>",{id:'test'}).attr(src);
+////    prependTo('body');
+//
+//    $('#test').on('load',function() {
+//        var realWidth = this.width;
+//        var realHeight = this.height;
+//        console.log(realWidth);
+//        console.log(realHeight);
+//    });
+
+    var imgWidth, imgHeight;
+    // 这里创建一个图像保存到内存，并没有添加到 HTML 中，只是个参考
+    $("<img/>").attr("src", "http://pic1.win4000.com/wallpaper/f/51c3bb99a21ea.jpg").load(function() {
+        imgWidth = this.width;
+        imgHeight = this.height;
+    });
+</script>
+</body>
+</html>

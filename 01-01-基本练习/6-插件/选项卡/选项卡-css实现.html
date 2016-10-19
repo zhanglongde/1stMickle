@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+       .nav{width:700px;height:44px;margin:auto;
+           background-color:rgba(0,0,0,0);
+           box-sizing: border-box;border-radius: 2px;
+           /*display:table-cell;*/
+           text-align: center;
+           position:relative;
+       }
+        ul{list-style: none;}
+        a{text-decoration: none;color:white;}
+        a:hover{color:#ff7700;}
+        .nav>ul{
+            /*display: inline-block;*/
+            margin:auto;
+            width:260px;
+            height:44px;
+
+        }
+        .nav>ul>li{float:left;width:80px;line-height: 40px;border:2px solid #ccc;background-color: #0066cc;}
+        ul li a{background-color: #0066cc;}
+        ul li ul {position:absolute;top:45px;left:0;background-color: #236677;width:700px;height:300px;
+            display:none;
+            padding-left:0;
+            border-radius:5px;;
+            color:white;
+            box-shadow: inset -10px -10px #eee;
+        }
+       ul li:hover{border-radius:5px;opacity:.7;}
+       ul li:hover ul{display:block;}
+    </style>
+</head>
+<body>
+<div class="nav">
+    <ul>
+        <li><a href="">1年级</a>
+            <ul>
+                <li>1年级1班</li>
+                <li>2班</li>
+                <li>3班</li>
+            </ul>
+        </li>
+        <li><a href="">2年级</a>
+            <ul>
+                <li>2年级1班</li>
+                <li>2班</li>
+                <li>3班</li>
+            </ul>
+        </li>
+        <li><a href="">3年级</a>
+            <ul>
+                <li>3年级1班</li>
+                <li>2班</li>
+                <li>3班</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

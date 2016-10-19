@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/bootstrap.css"/>
+    <script src="../../jquery-2.2.3.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <style>
+    </style>
+    <script src="../console.js"></script>
+    <script>
+        $(function(){
+            var bank =[{
+                "city_bank":"杭州银行",
+                "branch_bank":[{"option":"官巷口支行"}]
+            }, {
+                "city_bank":"工商银行",
+                "branch_bank":[{"option":"拱宸桥支行"},{"option":"拱墅区支行"}]
+            }];
+            var load_city_bank = function(){
+                $("#citybank_select").empty();
+                var options = '<option value="请选择银行">'+'请选择银行'+'</option>';
+//                console.log(bank);
+                for(var i = 0 ; i<bank.length; i++){
+//                    console.dir(bank[i].city_bank);
+                    options += '<option value="'+bank[i].city_bank+'">'+ bank[i].city_bank+'</option>';
+                }
+                $("#citybank_select").html(options);
+            };
+            var load_branch_bank = function(){
+                $("#branchbank_select").empty();
+                var options = '<option value="请选择银行">'+'请选择支行'+'</option>';
+                $("#branchbank_select").html(options);
+            };
+            var change_branch_bank = function(){
+                var city_bank_id = $("#citybank_select").get(0).selectedIndex-1;
+                console.log(city_bank_id);
+                $("#branchbank_select").empty();
+                var options = '<option value="请选择银行">'+'请选择支行'+'</option>';
+                if(city_bank_id >= 0)
+                {
+                    var branch_bank = bank[city_bank_id].branch_bank;
+                    for(var i = 0 ; i<branch_bank.length; i++){
+                        console.dir(branch_bank[i].option);
+                        options += '<option value="'+branch_bank[i].option+'">'+ branch_bank[i].option +'</option>';
+                    }
+                }
+                $("#branchbank_select").html(options);
+            };
+
+            var load_bank = function(){
+                load_city_bank();
+                load_branch_bank();
+            };
+
+            load_bank();
+            $("#citybank_select").on("change",change_branch_bank);
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div id="bank_select">
+                <select id="citybank_select"></select>
+                <select id="branchbank_select"></select>
+            </div>
+        </div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+</div>
+</body>
+<script>
+
+</script>
+</html>

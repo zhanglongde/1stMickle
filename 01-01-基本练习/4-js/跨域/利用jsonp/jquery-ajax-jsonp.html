@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../../../../lib/jquery-2.2.3.js"></script>
+<script>
+    function GetCoupons(data){
+         console.log(data);
+    }
+    var url = "http://192.168.0.105:81/data.js";
+    var aa =$.ajax({
+        url:url,
+        dataType:'jsonp',
+        data:'',
+        jsonp:'GetCoupons',
+        success:function(data) {
+            consoledir(data)
+            for(var i in data) {
+                Log.conlog(i+":"+data[i]);//循环输出a:1,b:2,etc.
+            }
+        },
+        error:function(error){
+            console.dir(error);
+        },
+        timeout:3000
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="test">div</div>
+
+<script>
+    var h1 = document.createElement('h1');//新节点
+    h1.textContent = 'hello world';
+    var wr = document.getElementById('test');//要被替换的节点
+    document.body.replaceChild(h1,wr);
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+//    这里利用了JS对象的实现就是hash表的特性key-value键值对，不可重复
+    var arr = [1,34,2,78,34,7,9,1,0];
+
+    function unique3(arr){
+        var tar_arr = [],hash = {};
+        for(var i = 0,LEN=arr.length;i<LEN;i++){
+            if(!hash[arr[i]]){
+                hash[arr[i]]= true;
+                tar_arr.push(arr[i]);
+            }
+        }
+        return tar_arr;
+    }
+    
+    console.log(unique3(arr));
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li {
+            list-style: none;
+            margin-bottom: 1em;
+        }
+        input {
+            border: 1px solid black;
+        }
+        input:in-range {
+            background-color: rgba(0, 255, 0, 0.25);
+        }
+        input:out-of-range {
+            background-color: rgba(255, 0, 0, 0.25);
+            border: 2px solid red;
+        }
+        input:in-range + label::after {
+            content:' OK';
+        }
+        input:out-of-range + label::after {
+            content:'out of range!';
+        }
+    </style>
+</head>
+<body>
+<form action="" id="form1">
+    <ul>Values between 1 and 10 are valid.
+        <li>
+            <input id="value1" name="value1" type="number" placeholder="1 to 10" min="1" max="10" value="12">
+            <label for="value1">Your value is </label>
+        </li>
+    </ul>
+</form>
+</body>
+</html>

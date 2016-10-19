@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .parent{
+            background-color: #00f;
+            margin:auto;
+            position:relative;
+        }
+        .left{
+            background-color: #e87d0d;
+            width:100px;height:500px;
+            float:left;
+        }
+        .right{
+            background-color: #3fa;
+            width:100px;height:500px;
+            float:right;
+        }
+        .middle{
+            /*margin-left:120px;*/
+            /*margin-right:120px;*/
+            background-color: #f00;
+            margin:auto;
+            width:calc(100% - 110px - 110px);
+            height:500px;
+        }
+    </style>
+</head>
+<body>
+<div class="parent">
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="middle"></div>
+</div>
+</body>
+</html>

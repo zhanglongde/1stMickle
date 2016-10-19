@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .media{padding:10px;}
+        .media:after{content:'';display:table-cell;clear: both;}
+        .media-image-container{float:left;margin-right:10px;}
+        .media-image{display:block;}
+        .media-body{overflow: hidden;height:320px;}
+
+        .media-shadow{box-shadow: 1px 1px 3px rgba(0,0,0,.5);}
+    </style>
+</head>
+<body>
+<div class="media media-shadow">
+    <div class="media-image-container">
+        <img src="./avartar.jpg" alt="media image" class="media-image">
+    </div>
+    <div class="media-body">
+        <p class="media-text">
+            OOCSS，即面向对象CSS，由Nicole Sullivan 提出的理论。
+            起主要两个原则是：
+            1）seperate strcuture and skin(结构与皮肤分离)；
+            2）seperate container and content(容器与内容分离)。
+        </p>
+        <p class="media-text">
+            操作指南
+            可以看出，OOCSS风格的css可以描述为两点：
+            1)增加class
+            2)不使用继承选择符
+            OOCSS追求元件的复用，其class命名比较抽象，一般不体现具体内容。
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

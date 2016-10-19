@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0;padding:0;}
+        .container{
+            width: 500px;
+            height: 500px;
+            background-color: #fb3;
+            margin:200px 200px;
+            position:relative;
+            /*overflow:auto;  !*非visible，形成BFC框*!*/
+            display:inline-block;/*形成BFC，防止son的margi-top与container的margin-top折叠*/
+        }
+        .son{
+            margin-left:-30px;margin-top:-50px;
+            width: 100px;
+            height: 100px;
+            background-color: #333;
+
+        }
+        /*.son2{width:100px;height:100px;*/
+            /*position: absolute;*/
+            /*top:-10px;left:-10px;*/
+            /*background-color: #9c3;}*/
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="son"></div>
+    <div class="son2"></div>
+</div>
+</body>
+</html>

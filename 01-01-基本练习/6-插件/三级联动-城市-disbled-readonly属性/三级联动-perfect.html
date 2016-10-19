@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/bootstrap.css"/>
+    <script src="../../jquery-2.2.3.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="jquery.cityselect2.js"></script>
+    <script>
+        $(function(){
+//           $("#city_select_container").citySelect({
+//               url:"./city2.min.js"
+//               ,prov: "浙江"
+//               , city: "杭州"
+//               , dist: "拱墅区"
+//               , nodata: "none"
+//               , required:true
+//           });
+            $("#city_select_container").citySelect({
+               url:"./city2.min.js"
+               ,prov: "请选择"
+               , city: "请选择"
+               , dist: "请选择"
+               , nodata: "none"
+               , required:true
+           });
+        });
+    </script>
+</head>
+<body>
+    <div class="col-md-4">
+        <div id="city_select_container">
+            <select name="" id="" class="prov"></select>
+            <select name="" id="" class="city" disabled="disabled"></select>
+            <select name="" id="" class="dist" disabled="disabled"></select>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+
+    </div>
+</body>
+</html>

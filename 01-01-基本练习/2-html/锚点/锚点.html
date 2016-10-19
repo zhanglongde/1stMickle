@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../jquery-2.2.3.js"></script>
+    <script>
+        $(function(){
+            $("#ease_change").on("click",function(){
+                $("html,body").animate({scrollTop: $("#box").offset().top}, 1000);
+            });
+        });
+    </script>
+</head>
+<body>
+<a href="#1">锚点1</a>
+<button id="ease_change">平滑过渡</button>
+<div style="height:2000px;width:200px;background: #ff7700;"></div>
+<div id="1">222</div>
+<div id="box"></div>
+<div style="height:2000px;width:200px;background: #ff0000;"></div>
+</body>
+</html>

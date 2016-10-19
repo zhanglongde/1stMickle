@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="file" id="filechooser" />
+<img alt="Image Previewer" id="previewer">
+
+<script>
+    var filechooser = document.getElementById('filechooser');
+    var previewer = document.getElementById('previewer');
+
+    filechooser.onchange = function() {
+        var files = this.files;
+        var file = files[0];
+
+        // 接受 jpeg, jpg, png 类型的图片
+        if (!/\/(?:jpeg|jpg|png)/i.test(file.type)) return;
+
+        var reader = new FileReader();
+
+        reader.onload = function() {
+            var result = this.result;
+            console.log(result);
+            previewer.src = result;
+//            console.log(previewer.src);
+
+            // 清空图片上传框的值
+            filechooser.value = '';
+        };
+
+        reader.onloadend = function(){
+            var result = this.result;
+            console.log('-------------------onloadend');
+            console.log(result);
+        }
+
+        reader.onerror = function(){
+            var result = this.result;
+            console.log('读取文件错误');
+            console.log(result);
+        }
+
+        reader.readAsDataURL(file);
+//        reader.readAsBinaryString(file);
+//        reader.readAsText(file,'utf-8');
+    };
+
+    function isSupportFileApi() {
+        if(window.File && window.FileList && window.FileReader && window.Blob) {
+            return true;
+        }
+        return false;
+    }
+
+</script>
+</body>
+</html>

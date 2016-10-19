@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../jquery-1.11.3.min.js"></script>
+    <script>
+        window.onload = function(){
+            $.ajax({
+                url: 'http://localhost:63342/plug-in/front-end-plugins/detail/mockajax/demo.html?callback=get-test',
+                dataType: 'json'
+            }).done(function(data) {
+                console.log(data.data);
+            });
+        };
+
+    </script>
+    <script src="./get-test"></script>
+    <script type="text/javascript">
+        function dosomething(jsondata){
+            //处理获得的json数据
+            console.log("dhjsjj");
+        }
+    </script>
+    <script src="./1.js"  onload = "dosomething(3)"></script>
+
+</head>
+<body>
+<script type="text/javascript">
+    function test(){
+//        var iframe = document.getElementById('ifame');
+//        var win = document.contentWindow;//可以获取到iframe里的window对象，但该window对象的属性和方法几乎是不可用的
+//        var doc = win.document;//这里获取不到iframe里的document对象
+//        var name = win.name;//这里同样获取不到window对象的name属性
+        console.log("hello")
+    }
+</script>
+<!--<iframe id = "iframe" src="./2.html" onload = "test(3)"></iframe>-->
+<!--<iframe id = "iframe" src="./1.js" onload = "dosomething(3)"></iframe>-->
+</body>
+</html>

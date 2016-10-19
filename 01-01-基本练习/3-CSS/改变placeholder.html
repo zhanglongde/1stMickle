@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        HTML  CSS  Result
+        EDIT ON
+        label {
+            display: block;
+            color: white;
+            margin: 0 0 4px;
+        }
+        input {
+            border: #000;
+            padding: 10px;
+            font-size: 1.2em;
+            width: 100%;
+        }
+        label, input {
+            font-family: sans-serif;
+        }
+        form {
+            width: 65%;
+        }
+
+        body {
+            background: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        input[placeholder], [placeholder], *[placeholder] {
+            color:red !important;
+        }
+        /* 通用 */
+        ::-webkit-input-placeholder { color:#f00; }
+        ::-moz-placeholder { color:#f00; } /* firefox 19+ */
+        :-ms-input-placeholder { color:#f00; } /* ie */
+        input:-moz-placeholder { color:#f00; }
+    </style>
+</head>
+<body>
+<form action="">
+
+    <div>
+        <label for="school">School Name:</label>
+        <input id="school" name="schoo" type="text" placeholder="Cherry River Middle School">
+    </div>
+
+</form>
+</body>
+</html>

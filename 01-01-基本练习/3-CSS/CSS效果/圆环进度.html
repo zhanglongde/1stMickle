@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /* 进度条样式 */
+        .circle {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            text-align: center;
+        }
+        .circle .track, .circle .mask, .circle .left, .circle .right {
+            width: 130px;
+            height: 130px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            border: 20px #e7e7e7 solid;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .circle .mask, .circle .left, .circle .right {
+            clip: rect(0 65px 130px 0);
+        }
+        .circle .left, .circle .right {
+            border-color: #6FEC6F;
+        }
+        .circle .right {
+            opacity: 0;
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+        /* 进度显示文字样式 */
+        .circle #hour {
+            color: #666;
+            font-size: 48px;
+            line-height: 130px;
+        }
+        .circle .percent {
+            font-size: 20px;
+            color: #999;
+            margin-left: 5px;
+        }
+        .transition-rotate {
+            -webkit-transition: transform .1s ease-in-out;
+            -moz-transition: transform .1s ease-in-out;
+            -ms-transition: transform .1s ease-in-out;
+            -o-transition: transform .1s ease-in-out;
+            transition: transform .1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+<div class="circle">
+    <div class="track"></div>
+    <div class="left transition-rotate"></div>
+    <div class="right transition-rotate"></div>
+    <div class="mask"></div>
+    <span id="hour">0</span><span class="percent">%</span>
+</div>
+
+<input id="range" type="range" min="0" max="100" step="1" value="0">
+
+<script>
+    var circle = document.querySelectorAll(".circle")[0];
+    var mask  = document.querySelectorAll(".mask")[0];
+    var left = document.querySelectorAll(".left")[0];
+    var right = document.querySelectorAll(".right")[0];
+    var range = document.getElementById("range");
+
+    var hour = document.querySelectorAll("#hour")[0];
+
+    var n;
+    changeHour();
+    range.oninput = changeHour;
+    function changeHour() {
+        hour.innerHTML = range.value;
+        n = range.value;
+        if(n <= 50) {
+            left.style.webkitTransform="rotate(" + 3.6 * n + "deg)";
+            right.style.opacity = 0;
+            mask.style.opacity = 1;
+        }else {
+            right.style.opacity = 1;
+            mask.style.opacity = 0;
+            left.style.webkitTransform="rotate(" + 180 + "deg)";
+            right.style.webkitTransform="rotate(" + 3.6 * n + "deg)";
+        }
+    }
+</script>
+</body>
+</html>

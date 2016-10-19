@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>标题页</title>
+    <script language="JavaScript">
+        function nextSize(i,incMethod,textLength)//获取随机字体大小的方法
+        {
+            if (incMethod == 1) return (72*Math.abs( Math.sin(i/(textLength/3.14))) );
+            if (incMethod == 2) return (255*Math.abs( Math.cos(i/(textLength/3.14))));
+        }
+        function sizeCycle(text,method,dis)
+        {
+            output = "";
+            for (i = 0; i < text.length; i++)
+            {
+                size = parseInt(nextSize(i +dis,method,text.length));   //获取随机的字体大小
+                output += "<font style='font-size: "+ size +"pt'>" +text.substring(i,i+1)+ "</font>";
+            }
+            myDiv.innerHTML = output;  //动态输出指定字体大小的文本
+        }
+        function doWave(n)
+        {
+            theText = "欢迎光临";   //要浏览的文本
+            sizeCycle(theText,1,n); //实现跳动的方法
+            if (n > theText.length) {n=0}  //如果文本显示完毕,则从头再开始
+            setTimeout("doWave(" + (n+1) + ")", 50); //不断调用该方法-实现循环作用
+        }
+    </script>
+</head>
+<body bgcolor="#fef4d9" onload=doWave(0);>
+<div ID="myDiv" align="center">
+</div></body>
+</html>

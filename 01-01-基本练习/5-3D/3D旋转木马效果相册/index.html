@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <link href="css/reset.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="jquery-1.8.3.js"></script>
+
+    <script type="text/javascript">
+        //       alert( 120 / Math.tan(20 / 180 * Math.PI)) 329...;
+        var transform = function (element, value, key)
+        {
+            key = key || "Transform";
+            ["Moz", "O", "Ms", "Webkit", ""].forEach(function (prefix)
+            {
+                element.style[prefix + key] = value;
+            });
+
+            return element;
+        }
+
+
+        $(function ()
+        {
+            var deg = -40 , i = 1;
+            $("#container").click(function ()
+            {
+                transform($(this)[0], "rotateY(" + (deg * i++) + "deg)")
+            });
+        });
+
+
+    </script>
+
+    <style type="text/css">
+
+        img
+        {
+            width: 128px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+            position: absolute;
+            bottom: 0;
+        }
+
+        #stage
+        {
+            width: 900px;
+            min-height: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 100px 50px;
+            -webkit-perspective: 800px;
+            -moz-perspective: 800px;
+            -ms-transform:perspective(800px) ;
+            position: relative;
+        }
+
+        #container
+        {
+            width: 128px;
+            height: 100px;
+            margin-left: -64px;
+            -webkit-transition: -webkit-transform 1s;
+            -moz-transition: -webkit-transform 1s;
+            -ms-transition: -webkit-transform 1s;
+            transition: transform 1s;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            position: absolute;
+            left: 50%;
+        }
+
+        img:nth-child(0)
+        {
+            -webkit-transform: rotateY(0deg) translateZ(300px);
+            -moz-transform: rotateY(0deg) translateZ(300px);
+            -ms-transform: rotateY(0deg) translateZ(300px);
+
+        }
+
+        img:nth-child(1)
+        {
+            -webkit-transform: rotateY(40deg) translateZ(300px);
+            -moz-transform: rotateY(40deg) translateZ(300px);
+            -ms-transform: rotateY(40deg) translateZ(300px);
+        }
+
+        img:nth-child(2)
+        {
+            -webkit-transform: rotateY(80deg) translateZ(300px);
+            -moz-transform: rotateY(80deg) translateZ(300px);
+            -ms-transform: rotateY(80deg) translateZ(300px);
+        }
+
+        img:nth-child(3)
+        {
+            -webkit-transform: rotateY(120deg) translateZ(300px);
+            -moz-transform: rotateY(120deg) translateZ(300px);
+            -ms-transform: rotateY(120deg) translateZ(300px);
+        }
+
+        img:nth-child(4)
+        {
+            -webkit-transform: rotateY(160deg) translateZ(300px);
+            -moz-transform: rotateY(160deg) translateZ(300px);
+            -ms-transform: rotateY(160deg) translateZ(300px);
+        }
+
+        img:nth-child(5)
+        {
+            -webkit-transform: rotateY(200deg) translateZ(300px);
+            -moz-transform: rotateY(200deg) translateZ(300px);
+            -ms-transform: rotateY(200deg) translateZ(300px);
+        }
+
+        img:nth-child(6)
+        {
+            -webkit-transform: rotateY(240deg) translateZ(300px);
+            -moz-transform: rotateY(240deg) translateZ(300px);
+            -ms-transform: rotateY(240deg) translateZ(300px);
+        }
+
+        img:nth-child(7)
+        {
+            -webkit-transform: rotateY(280deg) translateZ(300px);
+            -moz-transform: rotateY(280deg) translateZ(300px);
+            -ms-transform: rotateY(280deg) translateZ(300px);
+        }
+
+        img:nth-child(8)
+        {
+            -webkit-transform: rotateY(320deg) translateZ(300px);
+            -moz-transform: rotateY(320deg) translateZ(300px);
+            -ms-transform: rotateY(320deg) translateZ(300px);
+        }
+
+        img:nth-child(9)
+        {
+            -webkit-transform: rotateY(360deg) translateZ(300px);
+            -moz-transform: rotateY(360deg) translateZ(300px);
+            -ms-transform: rotateY(360deg) translateZ(300px);
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+<div id="stage">
+    <div id="container">
+        <img src="imgs/1.jpg"/>
+        <img src="imgs/2.jpg"/>
+        <img src="imgs/3.jpg"/>
+        <img src="imgs/4.jpg"/>
+        <img src="imgs/5.jpg"/>
+        <img src="imgs/6.jpg"/>
+        <img src="imgs/7.jpg"/>
+        <img src="imgs/8.jpg"/>
+        <img src="imgs/9.jpg"/>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .menu-container{  margin:auto; background-color:#6cbcd5;width:700px;height:44px; }
+        ul{list-style: none;}
+        a{  display:block;  padding:0 10px;  height:40px;  text-decoration: none;  color:white;  }
+        a:hover{
+            background-color: #6cbcd5;
+            color:#ffaa00;
+        }
+        ul li a{width:80px;}
+        ul li{float:left;line-height:40px;text-align:center;position:relative;border:2px solid #ccc;}
+        ul li ul li{float:none;
+            background-color: #6cbcd5;
+            /*margin-top:2px;*/
+        }
+        ul li ul{position:absolute;left:10%;top:40px;
+            padding: 0;
+            display:none;
+        }
+        ul li ul li a{width:80px;}
+        ul li:hover ul{display: block;}
+    </style>
+</head>
+<body>
+<div class="menu-container">
+<ul class="no1-class">
+    <li>
+        <a href="javascript:;">1年级</a>
+        <ul class="no2-class">
+            <li><a href="">1班</a></li>
+            <li><a href="">2班</a></li>
+            <li><a href="">3班</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascript:;">2年级</a>
+        <ul class="no2-class">
+            <li><a href="">1班</a></li>
+            <li><a href="">2班</a></li>
+            <li><a href="">3班</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascript:;">3年级</a>
+        <ul class="no2-class">
+            <li><a href="">1班</a></li>
+            <li><a href="">2班</a></li>
+            <li><a href="">3班</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascript:;">4年级</a>
+        <ul class="no2-class">
+            <li><a href="">1班</a></li>
+            <li><a href="">2班</a></li>
+            <li><a href="">3班</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascript:;">5年级</a>
+        <ul class="no2-class">
+            <li><a href="">1班</a></li>
+            <li><a href="">2班</a></li>
+            <li><a href="">3班</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascript:;">6年级</a>
+        <ul class="no2-class">
+            <li><a href="">1班</a></li>
+            <li><a href="">2班</a></li>
+            <li><a href="">3班</a></li>
+        </ul>
+    </li>
+</ul>
+</div>
+</body>
+</html>
+
+<!--.no1-class>li{-->
+<!--position:relative;-->
+<!--width:100px;-->
+<!--float:left;-->
+<!--line-height: 40px;-->
+<!--background-color: #6cbcd5;-->
+<!--color:#ffffff;-->
+<!--text-align:center;-->
+<!--border-radius:4px;-->
+<!--}-->
+<!--.no1-class>li>a{-->
+<!--background-color: #6cbcd5;-->
+<!--color:white;-->
+<!--font-size:20px;-->
+<!--font-weight: 700;-->
+<!--}-->
+<!--.no1-class>li:hover{-->
+<!--background-color: #4671d5;-->
+<!--}-->
+<!--.no2-class{-->
+<!--position:absolute;-->
+<!--top:40px;-->
+<!--left:0px;-->
+<!--display:none;-->
+<!--}-->
+<!--.no2-class>li{-->
+<!--float:none;-->
+<!--font-size:16px;-->
+<!--}-->
+<!--.no2-class>li a{-->
+<!--width:80px;-->
+<!--}-->
+<!--.no1-class li:hover ul{-->
+<!--display:block;-->
+<!--}-->

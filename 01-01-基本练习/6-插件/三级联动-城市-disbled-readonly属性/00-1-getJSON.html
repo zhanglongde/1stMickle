@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/bootstrap.css"/>
+    <script src="../../jquery-2.2.3.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <style>
+        /*.container{width:1000px;}/!*默认1140+15*2*!/*/
+        .col-md-4{background-color: #cccccc;}
+        .tri-border{
+            width:0;
+            height:0;
+            border:20px transparent;
+            border-style:solid;
+            border-right:thick double #00CCFF;
+            border-left-color:#ffff00;
+        }
+    </style>
+    <script src="../console.js"></script>
+    <script src="jquery.cityselect.js"></script>
+    <script>
+        $(function(){
+              $("#getJSon").prepend("1---------------------------------------");
+              $("#json_test").on("click",function(){
+                  console.log("begin  test...");
+                  $.getJSON("./city.min.js",function(result){
+//                      console.dir(result);
+                      $.each(result,function(k,field){
+//                        console.dir(field);
+                          console.log("k:"+k);
+                          $("#getJSon").append("2---------------------------------------");
+
+                          for(var pro in field){
+//                              console.dir(field[key]);
+                              for(var city in field[pro]){
+                                  console.dir(field[pro][city]);
+                              }
+                          }
+                          $("#getJSon").css("color","red").text(k);
+                          $("#getJSon").append("field"+field);
+                      })
+                  })
+              });
+
+//            $("#person_city_select").citySelect({
+//                url:"./city.min.js"
+//                , prov:"浙江"
+//                , city:"杭州"
+//                , dist:"拱墅区"
+//                , nodata:"none"
+//                , required:false
+//            });
+            $("#person_city_select").citySelect({
+                url:"./city.min.js"
+                , prov:"请选择"
+                , city:"请选择"
+                , dist:"请选择"
+                , nodata:"none"
+                , required:false
+            });
+
+            $("#btn-empty").on("click",function(){
+                $("#empty_test").empty();
+                $("#empty_select1").empty().attr("disabled","true");
+                $("#empty_select2").empty();//不加attr,不会立即生效，必须点击之后，才会删除子元素
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+
+            <div class="tri-border"></div>
+            <div class="tri-border"></div>
+            <div class="tri-border"></div>
+        </div>
+        <div class="col-md-4" id="test1">
+            <button class="btn btn-info" id="btn-empty">empty测试</button>
+            <div style="width:100px;height:100px;background-color:#ffff00;" id="empty_test">
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            </div>
+            <select name="" id="empty_select1">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <select name="" id="empty_select2">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div id="person_city_select">
+                <select name="" id="" class="prov"></select>
+                <select name="" id="" class="city" disabled="disabled"></select>
+                <select name="" id="" class="dist" disabled="disabled"></select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <!--
+            如果一个输入项的disabled设为true，则该表单输入项不能获取焦点，用户的所有操作（鼠标点击和键盘输入等）对该输入项都无效，
+            最重要的一点是当提交表单时，这个表单输入项将不会被提交。
+
+            而readonly只是针对文本输入框这类可以输入文本的输入项，如果设为true，用户只是不能编辑对应的文本，但是仍然可以聚焦焦点，
+            并且在提交表单的时候，该输入项会作为form的一项提交。
+            -->
+            <input type="text" disabled="disabled" value="disabled=disabled"/>
+            <input type="text" disabled="true" value="disabled=true"/>
+            <input type="text" readonly="true" value="readonly=true"/>
+        </div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <button id="json_test">点击获得JSON数据</button>
+    <div id="getJSon" style="background-color: #cccccc;width:300px;height: 400px;">
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var arr = [1,2,3,4,5];
+    arr.splice(1,1);//删除第二个元素
+    console.log(arr);
+
+    var arr_1 = [6,9,9,0,25,1,99];
+    var aa =arr_1.slice(3,5);//删除第4,5项元素,返回删除的元素
+    console.log(aa);
+    console.log(arr_1);//原数组并不会发生变化
+
+    //如何删除指定value了？
+    var arr_2 = [8,9,34,78,2,0];
+    var index = arr_2.indexOf(34);
+//    console.log(index);
+    arr_2.splice(index,1);
+    console.log(arr_2);
+</script>
+</body>
+</html>

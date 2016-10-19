@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <link href="css/reset.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="jquery-1.8.3.js"></script>
+
+    <script type="text/javascript">
+        // alert( 64 / Math.tan(20 / 180 * Math.PI));
+        var transform = function (element, value, key)
+        {
+            key = key || "Transform";
+            ["Moz", "O", "Ms", "Webkit", ""].forEach(function (prefix)
+            {
+                element.style[prefix + key] = value;
+            });
+
+            return element;
+        }
+
+
+        $(function ()
+        {
+            var deg = -40 , i = 1;
+            $("#container").click(function ()
+            {
+                transform($(this)[0], "rotateY(" + (deg * i++) + "deg)")
+            });
+        });
+
+    </script>
+
+    <style type="text/css">
+
+
+        li
+        {
+            width: 128px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+            position: absolute;
+            bottom: 0;
+        }
+
+        li img
+        {
+            width: 128px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+            vertical-align: middle;
+        }
+
+        li span
+        {
+            display: block;
+            width: 128px;
+            text-align: center;
+            color: #333;
+            font-size: 8px;
+        }
+
+        #stage
+        {
+
+            width: 900px;
+            min-height: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 100px 50px;
+            -webkit-perspective: 800px;
+            position: relative;
+        }
+
+        #container
+        {
+            background: url("imgs/1.jpg") no-repeat 0 0;
+            margin-top: 200px;
+            width: 128px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+            height: 100px;
+            margin-left: -64px;
+            -webkit-transition: -webkit-transform 1s;
+            transition: transform 1s;
+            -webkit-transform-style: preserve-3d;
+            position: absolute;
+            left: 50%;
+        }
+
+        li:nth-child(0)
+        {
+            -webkit-transform: rotateY(0deg) translateZ(300px);
+        }
+
+        li:nth-child(1)
+        {
+            -webkit-transform: rotateY(40deg) translateZ(300px);
+        }
+
+        li:nth-child(2)
+        {
+            -webkit-transform: rotateY(80deg) translateZ(300px);
+        }
+
+        li:nth-child(3)
+        {
+            -webkit-transform: rotateY(120deg) translateZ(300px);
+        }
+
+        li:nth-child(4)
+        {
+            -webkit-transform: rotateY(160deg) translateZ(300px);
+        }
+
+        li:nth-child(5)
+        {
+            -webkit-transform: rotateY(200deg) translateZ(300px);
+        }
+
+        li:nth-child(6)
+        {
+            -webkit-transform: rotateY(240deg) translateZ(300px);
+        }
+
+        li:nth-child(7)
+        {
+            -webkit-transform: rotateY(280deg) translateZ(300px);
+        }
+
+        li:nth-child(8)
+        {
+            -webkit-transform: rotateY(320deg) translateZ(300px);
+        }
+
+        li:nth-child(9)
+        {
+            -webkit-transform: rotateY(360deg) translateZ(300px);
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+<div id="stage">
+    <ul id="container">
+        <li>
+            <img src="imgs/1.jpg"/>
+            <span>Do one thing at a time, and do well..</span>
+        </li>
+        <li>
+            <img src="imgs/2.jpg"/> <span>Do one thing at a time, and do well..</span>
+        </li>
+        <li>
+            <img src="imgs/3.jpg"/> <span>Keep on going never give up.</span>
+        </li>
+        <li>
+            <img src="imgs/4.jpg"/> <span>Whatever is worth doing is worth doing well.</span>
+        </li>
+        <li>
+            <img src="imgs/5.jpg"/> <span>Believe in yourself.</span>
+        </li>
+        <li>
+            <img src="imgs/6.jpg"/> <span>Action speak louder than words.</span>
+        </li>
+        <li>
+            <img src="imgs/7.jpg"/> <span>Never put off what you can do today until tomorrow.</span>
+        </li>
+        <li>
+            <img src="imgs/8.jpg"/> <span>Jack of all trades and master of none.</span>
+        </li>
+        <li>
+            <img src="imgs/9.jpg"/> <span>Judge not from appearances.</span>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

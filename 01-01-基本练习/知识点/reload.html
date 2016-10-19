@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function(){
+             var re_dom = document.getElementsByTagName("a");
+
+             for(var i = 0;i<re_dom.length;i++){
+                 re_dom[i].addEventListener("click",function(){
+                     setTimeout(function(){
+                         console.log("reload");
+                         window.location.reload();
+                     },3000);
+                 });
+             };
+        };
+    </script>
+</head>
+<body>
+<a href="javascript:void(0);">reload</a>
+</body>
+</html>

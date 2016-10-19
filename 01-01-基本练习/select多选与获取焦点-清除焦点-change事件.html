@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery-2.2.3.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#input-change").on("keyup",function(){
+                console.log($(this).val());
+            });
+            $("#test").on("change",function(){//表单元素的值发生变化
+                console.log($(this).val());
+            });
+            $("#btn-focusin").on("click",function(){
+                $("#test2").focus();
+            });
+            $("#btn-focusin2").on("click",function(){
+                $("#male").focus();
+            });
+            $("#btn-focusin3").on("click",function(){
+                $("#ball1").focus();
+            });
+
+            $(".group").on("focusout",function(){//子元素失去焦点
+                console.dir($(this).get(0));
+            })
+        });
+    </script>
+</head>
+<body>
+<div class="group" style="border:3px solid #ccc;">
+    <input type="text" id="input-change" val="1"/>
+    <select name="" id="test" multiple="multiple" size="2">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+
+    <button id="btn-focusin">select获得焦点</button>
+    <button id="btn-focusin2">radio获得焦点</button>
+    <button id="btn-focusin3">checkbox获得焦点</button>
+</div>
+<div class="group2">
+    <select name="" id="test2">
+        <option value="1">11</option>
+        <option value="2">22</option>
+        <option value="3">33</option>
+        <option value="4">44</option>
+    </select>
+</div>
+<div class="group3">
+    <label for="male">male</label>
+    <input type="radio" id="male" name="gender"/>
+    <label for="female">female</label>
+    <input type="radio" id="female" name="gender"/>
+</div>
+<div class="group4">
+    <label for="ball1">ball1</label><input type="checkbox" name="ball" id="ball1"/>
+    <label for="ball2">ball2</label><input type="checkbox" name="ball" id="ball2"/>
+    <label for="ball3">ball3</label><input type="checkbox" name="ball" id="ball3"/>
+</div>
+</body>
+</html>

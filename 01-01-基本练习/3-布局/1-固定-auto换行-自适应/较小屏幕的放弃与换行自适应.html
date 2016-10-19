@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            width: 1000px;/*注释掉，随着屏幕变小，子元素会自动换行*/
+            height:70px;
+            background-color: #58a;
+            margin:auto;
+        }
+        input{
+            width: 300px;/*如果设为400px,则400px*3=1200px>1000px,也会自动换行*/
+            /*width: 400px;*/
+            height:30px;
+            border:1px solid rgba(0,0,0,.3);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <input type="text" value="1">
+    <input type="text" value="2">
+    <input type="text" value="3">
+</div>
+</body>
+</html>

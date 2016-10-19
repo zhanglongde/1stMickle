@@ -1,0 +1,39 @@
+
+.heart_div{
+    width:200px;
+    height:320px;
+    transform-style:preserve-3d;
+    position: relative;
+    left: 0;top:0;bottom: 0;right: 0;
+    margin:200px auto;
+    animation:play 10s linear infinite;
+    -webkit-animation:play 10s linear infinite;
+    -moz-animation:play 10s linear infinite;
+    -o-animation:play 10s linear infinite;
+    -ms-animation:play 10s linear infinite;
+}
+@keyframes play{
+    to{
+        transform:rotateY(360deg) rotateX(360deg) rotateZ(360deg);
+    }
+}
+@-webkit-keyframes play{
+    to{
+        transform:rotateY(360deg) rotateX(360deg) rotateZ(360deg);
+    }
+}
+@-moz-keyframes play{
+    to{
+        transform:rotateY(360deg) rotateX(360deg) rotateZ(360deg);
+    }
+}
+@-o-keyframes play{
+    to{
+        transform:rotateY(360deg) rotateX(360deg) rotateZ(360deg);
+    }
+}
+@-ms-keyframes play{
+    to{
+        transform:rotateY(360deg) rotateX(360deg) rotateZ(360deg);
+    }
+}

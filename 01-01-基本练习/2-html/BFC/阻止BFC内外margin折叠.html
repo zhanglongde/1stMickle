@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .container{
+            width:300px;
+            height: 300px;
+            background-color: #ff7700;
+            /*如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。*/
+            /*overflow默认值为visible  内容不被修剪*/
+            overflow: auto;/*消除父子元素的margin折叠*/
+        }
+
+        .row{
+            width:100px;
+            height:20px;
+            margin:20px auto;/*形成margin折叠  父容器margin为0也会折叠？*/
+            background-color: #b4b472;
+            /*float:left;*/
+        }
+        .normal{
+            width: 100px;height:100px;
+            background-color: #85a;}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="normal">normal</div>
+</div>
+</body>
+</html>

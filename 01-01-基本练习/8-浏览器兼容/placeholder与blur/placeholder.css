@@ -1,0 +1,21 @@
+.placeholder {
+    color: #c2c2c2;
+    line-height: 1.8;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #c2c2c2;
+    line-height: 1.8;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #c2c2c2;
+    line-height: 1.8;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #c2c2c2;
+    line-height: 1.8;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:    #c2c2c2;
+    line-height: 1.8;
+}

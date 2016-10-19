@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<script>
+//    向一个数组中插入元素是平时很常见的一件事情。
+//    你可以使用push在数组尾部插入元素,
+//      可以用unshift在数组头部插入元素,
+//      也可以用splice在数组中间插入元素。
+
+//    向数组末尾添加元素
+//最快的为
+//1. arr[arr.length] = 6; // 平均 5 632 856 ops/sec
+//2. arr.push(6); // 慢35.64%
+//3. arr2 = arr.concat([6]); // 慢62.67%
+    var arr = [1,2,3,4,5];
+    var arr2 = [];
+
+    arr.push(6);
+    arr[arr.length]=6;
+    arr2 = arr.concat([6]);
+//    console.log(arr);
+//    console.log(arr2);
+
+
+
+//向数组的头部添加元素
+//最快的为
+//1. [0].concat(arr); // 平均4 972 622 ops/sec
+//2. arr.unshift(0); // 慢64.70%
+var arr = [1,2,3,4,5];
+    console.log(arr.unshift(0));
+    console.log([0].concat(arr));
+
+
+//向数组中间添加元素
+    var items = ['one','two','three','four'];
+    items.splice(items.length/2,0,'hello','world');//插入元素第二参数，都为0
+    console.log(items);
+</script>
+</body>
+</html>

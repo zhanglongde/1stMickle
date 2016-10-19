@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>timing-function</title>
+    <style>
+        @-webkit-keyframes up-side {
+            0% {
+                top: 0;
+            }
+            100% {
+                top: -450px;
+            }
+        }
+        @-moz-keyframes up-side {
+            0% {
+                top: 0;
+            }
+            100% {
+                top: -450px;
+            }
+        }
+        @-o-keyframes up-side {
+            0% {
+                top: 0;
+            }
+            100% {
+                top: -450px;
+            }
+        }
+        @keyframes up-side {
+            0% {
+                top: 0;
+            }
+            100% {
+                top: -450px;
+            }
+        }
+        @-webkit-keyframes right-side {
+            0% {
+                left: 0;
+            }
+            100% {
+                left: 450px;
+            }
+        }
+        @-moz-keyframes right-side {
+            0% {
+                left: 0;
+            }
+            100% {
+                left: 450px;
+            }
+        }
+        @-o-keyframes right-side {
+            0% {
+                left: 0;
+            }
+            100% {
+                left: 450px;
+            }
+        }
+        @keyframes right-side {
+            0% {
+                left: 0;
+            }
+            100% {
+                left: 450px;
+            }
+        }
+        #wrapper {
+
+        }
+        .ball {
+            position: absolute;
+            top: 0;
+            left: 0;
+            -webkit-transform: translate(40px, 490px);
+            -moz-transform: translate(40px, 490px);
+            -ms-transform: translate(40px, 490px);
+            -o-transform: translate(40px, 490px);
+            transform: translate(40px, 490px);
+            width: 20px;
+            height: 20px;
+            background: red;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+            -webkit-animation: up-side 3s steps(3, start) infinite alternate, right-side 3s linear infinite alternate;
+            -moz-animation: up-side 3s steps(3, start) infinite alternate, right-side 3s linear infinite alternate;
+            -o-animation: up-side 3s steps(3, start) infinite alternate, right-side 3s linear infinite alternate;
+            animation: up-side 3s steps(3, start) infinite alternate, right-side 3s linear infinite alternate;
+        }
+        #step-end {
+            display: none;
+            background: blue;
+            -webkit-animation: up-side 3s steps(3, end) infinite alternate, right-side 3s linear infinite alternate;
+            -moz-animation: up-side 3s steps(3, end) infinite alternate, right-side 3s linear infinite alternate;
+            -o-animation: up-side 3s steps(3, end) infinite alternate, right-side 3s linear infinite alternate;
+            animation: up-side 3s steps(3, end) infinite alternate, right-side 3s linear infinite alternate;
+        }
+        #graph {
+            position: relative;
+            width: 586px;
+            height: 541px;
+            background: url(graph.png);
+        }
+        input, label {
+            cursor: pointer;
+        }
+        #end:checked ~ #graph #step-start {
+            display: none;
+        }
+        #end:checked ~ #graph #step-end {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <input type="radio" name="animation" id="start" checked="checked">
+    <label for="start">steps(3, start)</label>
+    <input type="radio" name="animation" id="end">
+    <label for="end">steps(3, end)</label>
+    <div id="graph">
+        <div id="step-start" class="ball"></div>
+        <div id="step-end" class="ball"></div>
+    </div>
+    <p>注：IE 下可能需要刷新页面</p>
+</div>
+</body>
+</html>

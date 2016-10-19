@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>表现为line-height,font-size独立于height的情形
+    实例：1.居中容器中的文字，对该容器使用text-align即居中
+         原理：对于行内元素的父容器使用text-align:center可居中容器内的行内元素，
+              而容器内的文字内容可以看做是行内元素
+    </title>
+    <style>
+        body{
+            font-size: 20px;
+        }
+        .test{
+            height:14px;
+            background-color: #b2dba1;
+            overflow:hidden;
+        }
+        .block{
+            background-color: #CC00FF;
+            /*在块级元素中，line-height 决定文字，不影响后面的布局*/
+            line-height:2.5;
+            /*height决定背景色,影响后面的布局，但不影响文字的显示*/
+            /*height:10px;*/
+        }
+        /*块级元素有height属性，只需要把line-height设置为height相同即可实现居中*/
+        .block-height{
+            background-color: #bce8f1;
+            height:50px;
+            /*line-height相对于当前元素*/
+            /*line-height:2.5;*/
+            line-height:10px;
+            /*overflow:hidden;*/
+        }
+        /*在行内元素中，line-height影响后面的布局*/
+        .container{
+            background-color: yellow;
+            /*line-height < font-size ,框以line-height为标准，文字在视觉上除非设置overflow，不受影响*/
+            line-height:8px;
+            /*overflow:hidden;*/
+        }
+        /*一个为被设定高度的容器被设定一个行高时，内联元内容的上下会增加2个空白内容的高度。*/
+        .container2 span{
+            background-color: #CC00FF;
+            line-height: 40px;
+            /*如果容器的高度已经被设定，那么超出容器下边界线的部分则不影响布局。*/
+            height:30px;
+            margin-bottom:10px;
+        }
+        .container3 span{
+            background-color: #bce8f1;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="test">
+    test
+</div>
+<div class="block">
+    block elemment ,height auto;
+</div>
+<div class="block-height">
+    block element width fixed height;
+</div>
+<div class="container">
+    block element ,line-height<\font-size;
+</div>
+<br/><br/><br/>
+
+
+
+<div class="container2">
+    <span>
+        inline element, line-height > font-size;line-height>height
+    </span>
+</div>
+<div class="container3">
+    <span>
+         inline element, line-height > font-size;without height;
+    </span>
+</div>
+<div class="" style="background-color: #b2dba1">
+    <span style="line-height:2;background-color: yellow;">son inline element1111</span>
+    <span style="line-height:3;background-color: #bce8f1;">son inline element2222</span>
+    <span style="line-height:4;background-color: #b4b472;">son inline element3333</span>
+</div>
+
+<div class="" style="background-color: #b2dba1">
+    <span style="line-height:8px;background-color: yellow;">son inline element1111</span>
+</div>
+<div class="" style="background-color: #b2dba1">
+    <span style="line-height:0.8;background-color: #bce8f1;">son inline element2222</span>
+</div>
+<div class="" style="background-color: #b2dba1">
+    <span style="line-height:2;background-color: #b4b472;">
+        son inline element3333
+        <br/>
+        line3
+    </span>
+</div>
+</body>
+</html>

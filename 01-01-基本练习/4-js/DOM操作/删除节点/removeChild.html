@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>div1<button id="test">点击</button></div>
+<div>div2</div>
+<div>div3</div>
+<div>div4</div>
+<div id="rm">div5</div>
+
+
+<script>
+    document.body.addEventListener('click',function(event){
+        console.log(event.target);
+       if(event.target == document.getElementById('test')){
+           console.log('removeChild');
+           try{
+               document.body.removeChild(document.getElementById('rm'));
+           }catch(err){
+               console.log(err);
+           }finally{
+
+           }
+           
+       }
+    });
+</script>
+</body>
+</html>

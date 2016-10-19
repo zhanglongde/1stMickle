@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*缺陷是：设置一个relative父容器*/
+        .container{
+            border:2px solid #b4b472;
+            position:relative;
+            width:700px;
+            height:700px;
+            margin:auto;
+        }
+        .left,.right{
+            background-color: #bce8f1;
+            width:20%;
+            height:100%;
+        }
+        .left{
+            position:absolute;
+            top:0;
+            left:0;
+        }
+        .right{
+            position:absolute;
+            top:0;
+            right:0;
+        }
+        .middle{
+            background-color: #ff7700;
+            width:50%;
+            height:100%;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="middle"></div>
+    <div class="left"></div>
+
+    <div class="right"></div>
+</div>
+</body>
+</html>

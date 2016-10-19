@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*select::-ms-expand {*/
+            /*display: none;*/
+        /*}*/
+        #parent {
+            background: url('yourimage') no-repeat;
+            width: 100px;
+            height: 30px;
+            overflow: hidden;
+        }
+
+        #parent select {
+            background: transparent;
+            border: none;
+            padding-left: 10px;
+            width: 120px;
+            height: 100%;
+        }
+        #parent select option{
+            width:100px;
+        }
+    </style>
+</head>
+<body>
+<!--<select name="" id="test1">-->
+    <!--<option value="1">1</option>-->
+    <!--<option value="2">2</option>-->
+    <!--<option value="3">3</option>-->
+<!--</select>-->
+
+
+<div id="parent">
+    <select>
+        <option>what</option>
+        <option>the</option>
+        <option>hell</option>
+    </select>
+</div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+/*Created by zhanglongde on 2016/8/25.*/
+@import "variable";
+@import "reset";
+@import "tool";
+@import "lib";
+
+
+/*页头部分*/
+.container-header{
+  box-sizing: border-box;
+  width:@fix-width;
+  height:@fix-height;
+  padding:@padding-size;
+  margin:auto;
+  background-color: @bgcolor-hd;
+  color:@color-hd;
+}
+.content-header{
+  position:relative;
+  width:@fix-width - @padding-size*2;
+  height:@fix-height - @padding-size*2;
+  .wrapper-logo{
+    .en_left();
+  }
+  .wrapper-nav{
+    .en_right();
+  }
+}
+
+//主体部分
+.container-bd{
+  width:@fix-width;
+  height:auto;
+  margin:auto;
+  background-color: @bgcolor-bd;
+  color: @color-bd;
+}
+.content-bd{
+  background-color: @default-bgcolor;
+  color:inherit;
+}
+.left-nav{
+  background-color: @bgcolor-nav;
+  color:@color-nav-item;
+  width:@left-nav-width;
+  .nav-item{
+     height:@nav-item-height;
+     width:inherit;
+     //margin:0 auto;
+     text-align: center;
+     &:nth-child(n){
+       display:inline-block;
+     }
+     &:after{
+       content:'';
+       display:inline-block;
+       height:100%;
+       vertical-align: middle;
+     }
+  }
+}
+.right-table-bd{
+  .table-size();
+  .table-hd{
+     width:inherit;
+     height:@table-hd-height;
+  }
+  .table-bd{
+     width:inherit;
+     height:@table-height - @table-hd-height - @table-ft-height;
+  }
+  .table-ft{
+    width:inherit;
+    height:@table-ft-height;
+  }
+}
+
+
+
+
+//页脚部分
+.container-footer{
+  width:@fix-width;
+  height:@fix-height;
+  margin:auto;
+  background-color: @bgcolor-ft;
+  color: @color-ft;
+  position:relative;
+}
+.content-footer{
+  //.en_middle(2);
+  @w:@fix-width - 100px;
+  @h:@fix-height - @padding-size * 2;
+  width:@w;
+  height:@h;
+
+  .en_middle();
+  p{
+    width:@w - @padding-size *2;
+    height:@h - @padding-size *2;
+    .en_middle();
+    line-height:1.8;
+    text-align:justify; //两端对齐，默认左对齐
+    //text-indent:2em; //段首空两格
+  }
+}
+

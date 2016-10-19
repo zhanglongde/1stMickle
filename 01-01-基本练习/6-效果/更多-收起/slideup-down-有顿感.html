@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../jquery-2.2.3.js"></script>
+    <style>
+        .d{
+            width:200px;
+            height:200px;
+            background-color: #ff7700;
+            border:20px solid #CC00FF;
+        }
+    </style>
+    <script>
+        $(function(){
+            $(".d").hide();
+            $("#btn-toggle").on("click",function(){
+                console.log("-----------------------------");
+                $("#div1").slideToggle();
+            });
+        });
+    </script>
+</head>
+<body>
+<button id="btn-toggle">toggle</button>
+<div class="d1 d" id="div1"></div>
+<!--<div class="d2 d"></div>-->
+</body>
+</html>

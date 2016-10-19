@@ -1,0 +1,107 @@
+/*对于舞台元素*/
+.rect-wrap{
+    position: relative;
+    perspective: 1600px;}
+
+/*对于容器*/
+.container{
+    width: 800px;
+    height: 800px;
+transform-style:preserve-3d;
+/*设置3d空间的原点在平面中心再向Z轴移动200px的位置*/
+transform-origin: 50% 50% 200px;
+}
+
+/*立方体的每个面*/
+.slide{
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    opacity: .7;
+}
+
+/*立方体顶面*/
+.top{left:200px;top:-200px;transform:rotateX(-90deg);
+transform-origin: bottom;
+    background-color: #eff;}
+
+/*底面*/
+.bottom {
+    left: 200px;
+    bottom: -200px;
+    transform: rotateX(90deg);
+    transform-origin: top;
+    background-color: #fb3;
+}
+
+/*左面*/
+.left {
+    left: -200px;
+    top: 200px;
+    transform: rotateY(90deg);
+    transform-origin: right;
+    background-color: #fc0;
+}
+/*右面*/
+.right {
+    left: 600px;
+    top: 200px;
+    transform: rotateY(-90deg);
+    transform-origin: left;
+    background-color: #5ba;
+}
+
+.front {
+    left: 200px;
+    top: 200px;
+    transform: translateZ(400px);  /*立方体前面正对着屏幕，所以不用旋转，只需向Z轴前移动距离*/
+    background-color: #efa;
+}
+
+.back {
+    left: 200px;
+    top: 200px;
+    transform: translateZ(0);   /*立方体后面正对着屏幕，所以不用旋转，只需向Z轴后移动距离*/
+    background-color: #9b3;
+}
+
+
+@keyframes rotate-frame {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    10% {
+        transform: rotateX(0deg) rotateY(180deg);
+    }
+    20% {
+        transform: rotateX(-180deg) rotateY(180deg);
+    }
+    30% {
+        transform: rotateX(-360deg) rotateY(180deg);
+    }
+    40% {
+        transform: rotateX(-360deg) rotateY(360deg);
+    }
+    50% {
+        transform: rotateX(-180deg) rotateY(360deg);
+    }
+    60% {
+        transform: rotateX(90deg) rotateY(180deg);
+    }
+    70% {
+        transform: rotateX(0) rotateY(180deg);
+    }
+    80% {
+        transform: rotateX(90deg) rotateY(90deg);
+    }
+    90% {
+        transform: rotateX(90deg) rotateY(0);
+    }
+    100% {
+        transform: rotateX(0) rotateY(0);
+    }
+}
+
+.container{
+    animation: rotate-frame 30s linear infinite;
+}

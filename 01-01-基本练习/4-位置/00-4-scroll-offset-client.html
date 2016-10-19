@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+    <script src="../jquery-2.2.3.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <style>
+        /*.container{width:1000px;}/!*默认1140+15*2*!/*/
+        .col-md-4{background-color: #00CCFF;}
+        body{
+            background-color: #008000;
+            text-align:center;
+            padding:10px;
+            border:20px solid #CC00FF;
+            margin:30px;
+        }
+        .ct{
+            width: 200px;
+            height: 200px;
+            background-color: #cccccc;
+            padding: 10px;
+            border:20px solid #ffff00;
+            margin:30px;
+        }
+    </style>
+    <script>
+        $(function(){
+//            console.log(window.screenTop);
+//            console.log($("#test1").clientTop);
+//            网页可见区域宽： document.body.clientWidth;
+//            网页可见区域高： document.body.clientHeight;
+//            网页可见区域宽： document.body.offsetWidth   (包括边线的宽);
+//            网页可见区域高： document.body.offsetHeight  (包括边线的宽);
+//            网页正文全文宽： document.body.scrollWidth;
+//            网页正文全文高： document.body.scrollHeight;
+//            网页被卷去的高： document.body.scrollTop;
+//            网页被卷去的左： document.body.scrollLeft;
+//            网页正文部分上： window.screenTop;
+//            网页正文部分左： window.screenLeft;
+//            屏幕分辨率的高： window.screen.height;
+//            屏幕分辨率的宽： window.screen.width;
+//            屏幕可用工作区高度： window.screen.availHeight;
+//            屏幕可用工作区宽度：window.screen.availWidth;
+              var b_cw = document.body.clientWidth;
+
+            var b_ch=document.body.clientHeight;
+            var b_os=document.body.offsetWidth;
+            var b_oh=document.body.offsetHeight;
+            var b_sw=document.body.scrollWidth;
+            var b_sh=document.body.scrollHeight;
+            var b_st=document.body.scrollTop;
+            var b_sl=document.body.scrollLeft;
+            var w_st=window.screenTop;
+            var w_sl=window.screenLeft;
+            var w_sh=window.screen.height;
+            var w_sw=window.screen.width;
+        });
+    </script>
+</head>
+<body>
+
+<div>
+    <div>你好你好</div>
+    <div>你好h&nbsp;ni</div>
+</div>
+<div class="ct">
+</div>
+</body>
+</html>

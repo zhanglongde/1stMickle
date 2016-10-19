@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>????</title>
+</head>
+<body>
+<script>
+    function Person(){
+        this.name = 'zhangld';
+
+        function sayName(){
+            console.log(this.name);
+        }
+
+        this.sayName=sayName;
+    }
+
+//    Person();
+    var p = new Person();
+    p.sayName();
+</script>
+</body>
+</html>

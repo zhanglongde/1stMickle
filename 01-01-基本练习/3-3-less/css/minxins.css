@@ -1,0 +1,29 @@
+/*Created by zhanglongde on 2016/8/24.*/
+#header {
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+#footer {
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+}
+body #header {
+  width: 1000px;
+  height: 100px;
+  background-color: #85a;
+  color: #f73;
+}
+body .container {
+  width: 1000px;
+  height: auto;
+  background-color: #fff;
+  color: #000;
+}
+body #footer {
+  width: 1000px;
+  height: 100px;
+  background-color: #f73;
+  color: #85a;
+}

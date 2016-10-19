@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .parent{margin:auto;position: relative;}
+        .left{
+            position:absolute;left:0;top:0;
+            background-color: #ef7;width:150px;height:200px;}
+        .right{
+            position:absolute;right:0;top:0;
+            background-color: #9c3;width:150px;height:200px;}
+        .middle{
+            background-color: #e66;width:calc(100% - 160px - 160px);height:200px;margin:auto;}
+    </style>
+</head>
+<body>
+<div class="parent">
+    <div class="left"></div>
+    <div class="middle">
+        不管采用何种方案，要想实现中间自适应，则中间部分必须margin:auto,
+        并且为两边留出固定的空白区域；
+        然后想办法使得固定的两边定位到或者浮动到空白的区域
+    </div>
+    <div class="right"></div>
+</div>
+</body>
+</html>

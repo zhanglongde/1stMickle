@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<script>
+//    concat join
+//    slice splice  都返回裁剪之后的数组，splice对元素产生了影响
+
+
+    var arr = ["1",'2','3','4','5','6'];
+    var str = arr.join(':');//返回拼装好后的数组
+    console.log(str);
+
+
+
+
+    var slice_arr = arr.slice(1,3);//第二个参数为结束索引，不包括该索引
+    console.log(slice_arr);
+    console.log(arr);
+    
+    var splice_arr = arr.splice(0,1);//第二个参数为参数个数
+    console.log(splice_arr);
+    console.log(arr);
+    
+    var insert_arr = arr.splice(0,0,'hello','world','!');//往数组里面增加元素，第二个参数为0
+    console.log(insert_arr);
+    console.log(arr);
+
+</script>
+</body>
+</html>

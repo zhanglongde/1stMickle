@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*input:valid{border:3px solid green;}*/
+        input:not(:focus):valid{
+            border:3px solid #e66;
+        }
+        input:not(:focus):valid+span::after{
+            content:'✓';
+            color:#5ba;
+            background-color: #f73;
+        }
+    </style>
+</head>
+<body>
+    <input type="email" required>
+    <span></span>
+    <input type="number" required>
+    <span></span>
+    <input type="date" required>
+    <span></span>
+
+
+
+</body>
+</html>

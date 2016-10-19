@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>position:center shape:circle:ellipse size:farthest-corner</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+        }
+        .test1{
+            background: radial-gradient(#9c3,#efa);
+        }
+        .test2{
+                                             /*第一个数值为水平半径，第二个数值为垂直半径；也可以为百分比*/
+            background: radial-gradient(ellipse 50% 30%,#5ba,#eff);
+        }
+    </style>
+</head>
+<body>
+<div class="test1"></div>
+<div class="test2"></div>
+</body>
+</html>

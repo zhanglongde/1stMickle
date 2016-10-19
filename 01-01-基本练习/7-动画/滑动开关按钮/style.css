@@ -1,0 +1,67 @@
+.ui-check {
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+    vertical-align: top;
+}
+
+.ui-check label {
+    position: relative;
+    display: block;
+    padding: 1px;
+    border-radius: 24px;
+    height: 22px;
+    background-color: #eee;
+    cursor: pointer;
+
+/*// 这里设置user-select为none是防止拖拽选中label*/
+-webkit-user-select: none;
+    -webkit-transition: all 0.3s ease;
+}
+
+.ui-check label::before {
+    content: '';
+    display: block;
+    border-radius: 24px;
+    height: 22px;
+    background-color: white;
+
+    -webkit-transform: scale(1, 1);
+    -webkit-transition: all 0.3s ease;
+}
+
+.ui-check label::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -11px;
+    margin-left: -11px;
+    display: block;
+    border-radius: 100%;
+    width: 22px;
+    height: 22px;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.08);
+
+    -webkit-transform: translateX(-9px);
+    -webkit-transition: all 0.3s ease;
+}
+
+.ui-check input[type=checkbox] {
+/*// 将原来的checkbox隐藏起来，界面上只显示label*/
+display: none;
+}
+
+.ui-check input[type=checkbox]:checked~label {
+/*// 修改label的底色为高亮的绿色*/
+background-color: #4cda64;
+}
+
+.ui-check input[type=checkbox]:checked~label::before {
+    -webkit-transform: scale(0, 0);
+}
+
+.ui-check input[type=checkbox]:checked~label::after {
+    -webkit-transform: translateX(9px);
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Why does HTML5 ignore line-height smaller than font-size
+        line-height-does-not-match-the-font-size
+    </title>
+    <style>
+        div{
+            width: 200px;
+            height: 300px;
+            border:10px solid #85a;
+            /*padding:20px;*/
+            background-color: #5ba;
+
+        }
+        span{
+            /*vertical-align: top;*/
+            line-height:1;
+            font-size:38px;
+        }
+        .span1{
+            background-color: #e66;
+        }
+        .span2{
+            background-color: #fc3;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <span class="span1">spanspan5</span>
+        <span class="span2">spanspan7</span>
+        <span class="span2">spanspan7</span>
+        <span class="span2">spanspan7</span>
+        <a href="#" style="background-color: #fff;">hello</a>
+        <a href="#" style="background-color: #fff;">hello</a>
+        <a href="#" style="background-color: #fff;">hello</a>
+    </div>
+
+    <script>
+        var a = '<li>中文</li>'
+    </script>
+</body>
+</html>

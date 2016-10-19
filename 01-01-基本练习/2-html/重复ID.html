@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/bootstrap.css"/>
+    <script src="../../jquery-2.2.3.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+</head>
+<body>
+<div id="repeat">111111</div>
+<div id="repeat">222222</div>
+<div id="repeat">222222</div>
+<div id="repeat">222222</div>
+<div id="repeat">222222</div>
+<script>
+//    jQuery与原生都是选择第一个符合要求的DOM
+//    $("#repeat").css("background-color","red");
+
+    var dom = document.getElementById("repeat");
+    dom.style.backgroundColor = "red";
+    dom.style.cssText += "color:blue;";
+</script>
+</body>
+</html>

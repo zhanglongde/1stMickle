@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        (function () {
+            //
+            if (!window.console){
+                window.console = {};
+                alert("不支持console");
+            }
+
+            if (!window.console.log){
+                window.console.log = function () { };
+                alert("不支持console.log");
+            }
+
+            window.console.log = function () { };
+            console.log("nihao");
+        })();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            min-width: 550px;      /* 2x LC width + RC width */
+        }
+        #container {
+            padding-left: 200px;   /* LC width */
+            padding-right: 150px;  /* RC width */
+            overflow:hidden;/*padding内的依然可见*/
+        }
+        #container .column {
+            height: 200px;
+            float: left;
+            position: relative;
+        }
+        #center {
+            background-color: #e9e9e9;
+            width: 100%;
+        }
+        #left {
+            background-color: red;
+            width: 200px;  /* LC width */
+            margin-left:-100%;
+            opacity:.5;
+            right:200px;
+        }
+        #right {
+            background-color: blue;
+            width: 150px;  /* RC width */
+            opacity:.5;
+            margin-right:-150px;
+        }
+        #footer {
+            clear: both;
+        }
+
+        /*** IE6 Fix ***/
+        * html #left {
+            left: 150px;           /* RC width */
+        }
+    </style>
+</head>
+<body>
+<div id="header">#header</div>
+
+<div id="container">
+    <div id="center" class="column">#center</div>
+    <div id="left" class="column">#left</div>
+    <div id="right" class="column">#right</div>
+</div>
+
+<div id="footer">#footer</div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <link href="css/reset.css" rel="stylesheet" type="text/css">
+
+    <style type="text/css">
+        html
+        {
+            background: -webkit-radial-gradient(center, ellipse, #430d6d 0%, #000000 100%);
+            background: radial-gradient(ellipse at center, #430d6d 0%, #000000 100%);
+            height: 100%;
+        }
+
+        .stage
+        {
+            -webkit-perspective: 1000px;
+            width: 20em;
+            height: 20em;
+            left: 50%;
+            top: 50%;
+            margin-left: -10em;
+            margin-top: -10em;
+            position: absolute;
+        }
+
+        .cube
+        {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-transform-style: preserve-3d;
+            -webkit-transform: rotateX(-20deg) rotateY(-20deg);
+        }
+
+        .cube *
+        {
+            background: -webkit-linear-gradient(
+                left,
+                rgba(54, 226, 248, 0.5) 0px,
+                rgba(54, 226, 248, 0.5) 3px,
+                rgba(0, 0, 0, 0) 0px),
+                        -webkit-linear-gradient(
+                top,
+                rgba(54, 226, 248, 0.5) 0px,
+                rgba(54, 226, 248, 0.5) 3px,
+                rgba(0, 0, 0, 0) 0px);
+
+            -webkit-background-size: 2.5em 2.5em;
+
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(54, 226, 248, 0.5);
+            -webkit-box-shadow: 0 0 5em rgba(0, 128, 0, 0.4);
+
+        }
+
+        .font
+        {
+            -webkit-transform: translateZ(10em);
+        }
+
+        .back
+        {
+            -webkit-transform: rotateX(180deg) translateZ(10em);
+        }
+
+        .left
+        {
+            -webkit-transform: rotateY(-90deg) translateZ(10em);
+        }
+
+        .right
+        {
+            -webkit-transform: rotateY(90deg) translateZ(10em);
+        }
+
+        .top
+        {
+            -webkit-transform: rotateX(90deg) translateZ(10em);
+        }
+
+        .bottom
+        {
+            -webkit-transform: rotateX(-90deg) translateZ(10em);
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+
+<div class="stage">
+    <div class="cube">
+        <div class="font"></div>
+        <div class="back"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="top"></div>
+        <div class="bottom"></div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

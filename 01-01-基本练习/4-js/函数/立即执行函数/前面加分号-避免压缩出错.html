@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // 模块1
+    // 前面有若干代码
+    var Manager = {
+        prop: '',
+        method: function () {
+
+        }
+    };
+
+
+    // 模块2，开头是个立即执行函数
+    ;(function () {//加上分号，无论之前的模块末尾是否有分号，都不会出错
+        // 代码
+        console.log("function at once");
+    })()
+</script>
+</body>
+</html>

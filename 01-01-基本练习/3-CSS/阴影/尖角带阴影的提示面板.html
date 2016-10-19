@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            margin: 40px; padding: 50px;
+            background-color: #eee;
+            position: relative;
+            font-size: 24px;
+        }
+        .cor {
+            position: absolute;
+            left: -40px;
+            width: 0; height: 0;
+            overflow: hidden;
+            border: 20px solid transparent;
+            border-right-color: #eee;
+        }
+        .box-shadow {
+            box-shadow: 5px 5px 10px black;
+        }
+        .drop-shadow {
+            filter: drop-shadow(5px 5px 10px black);
+            -webkit-filter: drop-shadow(5px 5px 10px black);
+        }
+    </style>
+</head>
+<body>
+<div class="box box-shadow">
+    <i class="cor"></i>
+    box-shadow
+</div>
+<div class="box drop-shadow">
+    <i class="cor"></i>
+    filter: drop-shadow
+</div>
+</body>
+</html>

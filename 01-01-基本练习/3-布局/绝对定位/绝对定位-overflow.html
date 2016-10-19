@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .parent{
+            position:relative;
+            width:100px;
+            height:100px;
+            background-color: #0066cc;
+            overflow:hidden;/*绝对定位超出部分也会被忽略*/
+        }
+        .son{
+            position:absolute;
+            width:200px;
+            height:200px;
+            opacity:.6;
+            background-color: #ff7700;
+        }
+    </style>
+</head>
+<body>
+<div class="parent">
+    <div class="son"></div>
+</div>
+</body>
+</html>

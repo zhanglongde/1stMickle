@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <script type="text/javascript" src="../../../lib/jquery-1.11.3.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            function rollOne(){
+                $(".picBox").animate({left:"-200px"},2000,"linear",function(){
+                    $(this).css({left:"0px"});
+                    $(this).children("li").first().remove().clone(true).appendTo(".picBox");
+                });
+            }
+            var startRollOne=setInterval(rollOne,2000);
+            $(".box").hover(function () {
+                clearInterval(startRollOne);
+            }, function () {
+                startRollOne=setInterval(rollOne,2000);
+            });
+        });
+    </script>
+    <style>
+        .box{
+            width: 600px;
+            height: 260px;
+            margin: 160px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .box p{
+            text-align: center;
+        }
+        .picBox{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+            width: 1500px;
+            position: absolute;
+        }
+        .picBox:hover{
+            cursor: pointer;
+        }
+        .picBox li{
+            float: left;
+        }
+        .picBox img{
+            width: 200px;
+            height: 240px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <p> 图片轮播</p>
+    <ul class="picBox">
+        <li><img src="img/1.jpg" /></li>
+        <li><img src="img/2.jpg" /></li>
+        <li><img src="img/3.jpg" /></li>
+        <li><img src="img/4.jpg" /></li>
+        <li><img src="img/5.jpg" /></li>
+    </ul>
+</div>
+</body>
+</html>

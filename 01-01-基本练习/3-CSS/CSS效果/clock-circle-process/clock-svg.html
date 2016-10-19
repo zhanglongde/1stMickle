@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SVG实现的环形进度的时钟</title>
+    <style>
+        /* 钟表样式 */
+        .clock {
+            display: inline-block;
+        }
+        .clock .time-box {
+            float: left;
+            margin: 0 10px;
+        }
+        .clock .time-box .time {
+            color: #666;
+            font-size: 48px;
+            line-height: 130px;
+        }
+        .clock .time-box .time-info {
+            color: #ccc;
+            font-size: 25px;
+            margin-left: 5px;
+        }
+
+        /* 圆环样式 */
+        .circle {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .hourCircle, .minuteCircle, .secondCircle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 130px;
+            height: 130px;
+            stroke-dasharray: 255%;
+            stroke-dashoffset: 25%;
+            stroke: #6FEC6F;
+            fill: none;
+            -webkit-transform: rotate(-90deg);
+            -moz-transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg);
+            -o-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+        }
+
+        /* 时、分、秒的进度条颜色分别为#6FEC6F、#8CECBF、#F3AFAF */
+        .clock .minute #minuteCircle {
+            stroke: #8CECBF;
+        }
+        .clock .second #secondCircle {
+            stroke: #F3AFAF;
+        }
+
+        /* 环形进度条动画 */
+        .transition-rotate {
+            -webkit-transition: all .5s;
+            -moz-transition: all .5s;
+            -ms-transition: all .5s;
+            -o-transition: all .5s;
+            transition: all .5s;
+        }
+    </style>
+</head>
+<body>
+
+<div class="clock">
+    <div class="time-box hour circle">
+        <svg class="hourCircle" xmlns="http://www.w3.org/2000/svg">
+            <circle id="hourCircle" class="transition-rotate" cx="50%" cy="50%" r="40%" stroke-width="10%"></circle>
+        </svg>
+        <span id="hourText" class="time">00</span><span class="time-info">h</span>
+    </div>
+    <div class="time-box minute circle">
+        <svg class="minuteCircle" xmlns="http://www.w3.org/2000/svg">
+            <circle id="minuteCircle" class="transition-rotate" cx="50%" cy="50%" r="40%" stroke-width="10%"></circle>
+        </svg>
+        <span id="minuteText" class="time">00</span><span class="time-info">m</span>
+    </div>
+    <div class="time-box second circle">
+        <svg class="secondCircle" xmlns="http://www.w3.org/2000/svg">
+            <circle id="secondCircle" class="transition-rotate" cx="50%" cy="50%" r="40%" stroke-width="10%"></circle>
+        </svg>
+        <span id="secondText" class="time">00</span><span class="time-info">s</span>
+    </div>
+</div>
+<script>
+    // 小时指示进度
+    var hourCircle = document.getElementById("hourCircle");
+    var hourText = document.getElementById("hourText");
+    var hour = 0;
+
+    var hourTimer = null;
+    function getHour() {
+        var now = new Date();
+        hour = now.getHours();
+        function changeHour() {
+            changeProgress(hour, hourText, hourCircle, 24);
+        }
+        changeHour();
+        hourTimer = setTimeout(getHour, 360000);
+    }
+    getHour();
+
+    // 分钟指示进度
+    var minuteCircle = document.getElementById("minuteCircle");
+    var minuteText = document.getElementById("minuteText");
+    var minute = 0;
+
+    var minuteTimer = null;
+    function getMinute() {
+        var now = new Date();
+        minute = now.getMinutes();
+        function changeMinute() {
+            changeProgress(minute, minuteText, minuteCircle, 60);
+        }
+        changeMinute();
+        minuteTimer= setTimeout(getMinute, 60000);
+    }
+    getMinute();
+
+    // 秒钟指示进度
+    var secondCircle = document.getElementById("secondCircle");
+    var secondText = document.getElementById("secondText");
+    var second = 0;
+
+    var secondTimer = null;
+    function getSecond() {
+        var now = new Date();
+        second = now.getSeconds();
+        function changeSecond() {
+            changeProgress(second, secondText, secondCircle, 60);
+        }
+        changeSecond();
+        secondTimer= setTimeout(getSecond, 1000);
+    }
+    getSecond();
+
+
+    // 进度条变化动画函数
+    function changeProgress(timeValue, timeTextBox, circle, range) {
+        timeTextBox.innerHTML = timeValue < 10 ? "0" + timeValue : timeValue;
+        var percent = timeValue / range;
+        circle.setAttribute("stroke-dashoffset", (255 - percent * 255) + "%");
+    }
+</script>
+</body>
+</html>

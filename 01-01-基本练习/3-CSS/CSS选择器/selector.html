@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/bootstrap.css"/>
+    <script src="../../jquery-2.2.3.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <style>  /*nth-child IE8以后*/
+        /*.container{width:1000px;}/!*默认1140+15*2*!/*/
+        .col-md-4{background-color: #00CCFF;}
+
+        /*逗号选择器*/
+        .test1 .btn1,/* 逗号表达式  与 空格，空格优先级由于逗号*/
+        .test1 .btn2{
+             color:red;
+        }
+
+        /*相邻兄弟选择器*/
+        .test2 .div1+.div2{/* 加号表达式  与 空格，加号优先级由于空格*/  /*对加号后面紧邻的元素起作用，不能跨越，不能向前*/
+            color:blue;
+        }
+
+        /*普通兄弟选择器*/
+        .test2 .div1~.div3,/*跨越*/
+        .test2 .div1~.div4
+        {
+        color:yellow;
+        }
+
+        /*属性选择器*/
+        /*^ * $  属性选择器，有点类似正则表达式*/
+
+
+        div:not(#not-test) {
+            background-color: #cccccc;
+        }
+
+
+        /*结构性伪类*/
+        .child_test li:nth-child(2){/*从1开始*/ /*不是li的DOM元素也作为计数标准*/
+            border:3px solid #ffff00;
+        }
+        .child_test li:nth-of-type(2){/*从1开始*/
+            border:3px solid #ffff00;
+        }
+
+        .child_test li:nth-child(3n){/*从1开始*/
+            color:red;
+        }
+        .child_test li:nth-of-type(2n){
+            background-color:#CC00FF;
+        }
+        p:only-of-type
+        {
+            color:#ff0000;
+        }
+
+        .child_test li:nth-child(n+4){
+            list-style: none;
+        }
+        .child_test li:nth-of-type(-n+4){
+            font-size:30px;
+        }
+
+        ul.ul_test li:nth-child(n+4){/*从第4个开始,包括第4个*/
+            color:purple;
+        }
+
+        ul.ul_test li:nth-child(n+4):nth-child(-n+7){/*从第4开始到结束的集合，与前7个的集合，取交集*/
+            background-color: #003300;
+        }
+
+        ul.ul_test li:not(:nth-child(3n+1)){
+            /*border:3px solid #ffff00;*/
+            list-style: none;
+        }
+
+
+        ul.ul_test li:nth-child(-n+4):not(:nth-child(-n+2)){
+            font-size: 35px;
+        }
+
+        /*nth-of-type 其实，前面可以不加冒号*/
+        div.set_test :nth-of-type(2){
+            color:#ffff00;
+        }
+
+        /*链接性伪类*/
+        /*行为性伪类*/
+        /*状态性伪类*/
+
+
+        /*单个冒号（:）和双冒号（::）   双冒号是CSS3属性*/
+
+
+        p::selection{
+            background-color: #ffff00;
+        }
+    </style>
+    <script>
+        $(function(){
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <button class="btn2">
+                 btn2
+            </button>
+        </div>
+        <div class="col-md-4 test1">
+            <button class="btn1">btn1</button>
+            <button class="btn2">btn2</button>
+        </div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="div2">
+                div2
+            </div>
+            <div class="div4" id="not-test">
+                div4
+            </div>
+        </div>
+        <div class="col-md-4 test2">
+            <div class="div1">div1</div>
+            <div class="div2">div2</div>
+            <div class="div3">div3</div>
+            <div class="div4">div4</div>
+            <div class="div5">div5</div>
+        </div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <ul class="child_test">
+                <div>div-fix</div>
+                <li class="li_test">li1</li>
+                <li class="li_test">li2</li>
+                <li class="li_test">li3</li>
+                <li class="li_test">li4</li>
+                <li class="li_test">li5</li>
+                <li class="li_test">li6</li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <div>
+                <p>这是一个段落。</p>
+            </div>
+
+            <div>
+                <p>这是一个段落。</p>
+                <p>这是一个段落。</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <ul class="ul_test">
+                <li>li1</li>
+                <li>li2</li>
+                <li>li3</li>
+                <li>li4</li>
+                <li>li5</li>
+                <li>li6</li>
+                <li>li7</li>
+                <li>li8</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 set_test">
+            <p>p1</p>
+
+            <p>p2</p>
+
+            <p>p3</p>
+
+            <p>p4</p>
+
+            <p>p5</p>
+
+            <div class="set_div">div1</div>
+            <div class="set_div">div2</div>
+            <div class="set_div">div3</div>
+            <div class="set_div">div4</div>
+            <div class="set_div">div5</div>
+            <div class="set_div">div6</div>
+            <div class="set_div">div7</div>
+            <div class="set_div">div8</div>
+        </div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <p class="p_selection">
+                的人在浏览网页时，喜欢一边选中文本一边阅读（博主就是这类强迫症患者）。
+                在浏览某些个性鲜明的网站时，当我们划选文本时突然发现跟平时不太一样，比如下图，
+
+                经过实验，我们知道::selection伪类只能设置color、background、cursor、outline这几个属性。
+                如果想要给选中文本设置font-size等属性，很可惜目前还不行。
+            </p>
+        </div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+</div>
+</body>
+</html>

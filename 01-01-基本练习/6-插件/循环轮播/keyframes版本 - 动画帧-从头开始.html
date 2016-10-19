@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            width:460px;height:100px;
+            border:1px solid #aaa;
+            margin:auto;
+            white-space:nowrap;
+            overflow:hidden;
+            position:relative;
+        }
+
+        @keyframes carousel {
+            50%{left:-450px;}
+            50.1%{left:-20px;}
+            100%{left:-450px;}
+        }
+        .content{
+            position: absolute;
+            top:20px;left:20px;
+            animation:carousel 6s linear .1s infinite;
+            /*animation-direction: alternate;*/
+        }
+        .content:hover{animation-play-state: paused;}
+        img{position:relative;}
+        img::after{content:'hello';position:absolute;width:50px;height:50px;color:red;}
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <img src="./img/1.jpg" alt="pic1">
+        <img src="./img/2.jpg" alt="pic2">
+        <img src="./img/3.jpg" alt="pic3">
+        <img src="./img/4.jpg" alt="pic4">
+        <img src="./img/5.jpg" alt="pic5">
+        <img src="./img/1.jpg" alt="pic1">
+        <img src="./img/2.jpg" alt="pic2">
+        <img src="./img/3.jpg" alt="pic3">
+        <img src="./img/4.jpg" alt="pic4">
+        <img src="./img/5.jpg" alt="pic5">
+    </div>
+</div>
+</body>
+</html>

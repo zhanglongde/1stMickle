@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/bootstrap.css"/>
+    <script src="../../jquery-2.2.3.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <style>
+        /*.container{width:1000px;}/!*默认1140+15*2*!/*/
+        .col-md-4{background-color: #00CCFF;}
+
+    </style>
+    <script>
+        $(function(){
+           $("#d1").on("click",function(){
+               var obj1 = $("#closest").closest(".test1");//注意，自身也可能是最近的
+               console.log(obj1.text());
+               console.dir(obj1);
+               console.dir(obj1.get(0));
+               console.dir(obj1.get(0).innerText);
+               console.dir(obj1.get(0).outerText);
+               obj1.get(0).outerText = '888888888888888888888888';
+               console.dir(obj1.get(0).outerHTML);
+           });
+
+            $("#d2").on("click",function(){
+                $(".test1").wrap(function(){
+                    return "<b></b>";
+                });
+
+                $(".test1").wrapInner(function(){
+                    return "<div style='border:2px solid #ccc;'></div>";
+                });
+            });
+
+            $("#d3").on("click",function(){
+                var obj2 = $("span").parentsUntil("div.test1");
+
+                console.dir(obj2);
+            });
+            $("#d4").on("click",function(){
+                var obj3 = $("#closest").siblings();//所有同胞元素
+                console.dir(obj3);
+
+                var obj4 = $("#closest").siblings("div");
+                console.dir(obj4);
+            });
+            $("#d5").on("click",function(){
+                var obj3 = $.contains("#closest","span");//所有同胞元素
+                console.dir(obj3);
+
+            });
+
+            //clone与add
+            $("#d6").on("click",function(){
+                var obj3 = $("#closest").clone(true).add(this).add($("#closest").clone(true));
+                console.dir(obj3);
+
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="test1">
+                test1
+                <div>li1</div>
+                <div>li2</div>
+                <div id="closest"><span>66666</span></div>
+                <div>li4</div>
+                <div>li5</div>
+                <div>li6</div>
+                <div>li7</div>
+                <div>li8</div>
+                <span>span</span>
+            </div>
+        </div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">
+            <button class="btn btn-info" id="d1">点击1-closest</button>
+            <button class="btn btn-info" id="d2">点击1-wrapper</button>
+            <button class="btn btn-info" id="d3">点击1-parentsUtil</button>
+            <button class="btn btn-info" id="d4">点击1-siblings</button>
+            <button class="btn btn-info" id="d5">点击1-contains</button>
+            <button class="btn btn-info" id="d6">点击1-clone与add</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+</div>
+</body>
+</html>

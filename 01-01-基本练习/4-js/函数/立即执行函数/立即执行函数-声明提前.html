@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //变量、函数声明提前
+
+    (function(){
+        console.log(test);
+        if(test){
+            console.log("1test:"+test);
+        }
+        else{
+            console.log("2test:"+test);
+        }
+
+        m = 'world';  //立即执行函数也是声明
+    })();
+
+    console.log(m);   //world
+    var m = 'hello';  //仅仅声明提前赋值并不会提前
+    var test = 2;
+
+    console.log(m);    //hello
+</script>
+</body>
+</html>

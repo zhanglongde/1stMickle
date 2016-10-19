@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .parent{
+            position:relative;
+            width:100px;
+            height:100px;
+            background-color: #0066cc;
+        }
+        .son{
+            position:absolute;
+            top:20px;
+            left:20px;
+            width:200px;
+            height:200px;
+            opacity:.6;
+            background-color: #ff7700;
+            float:left;/*此时无效*/
+        }
+    </style>
+</head>
+<body>
+<div class="parent">
+    <div class="son"></div>
+</div>
+</body>
+</html>

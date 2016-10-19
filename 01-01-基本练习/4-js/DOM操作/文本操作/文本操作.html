@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="row">row</div>
+
+<script>
+//    textContent，innerText、innerHTML和outerHTML区别:
+//            本章节简单介绍一下标题中三个属性的用法和区别，需要的朋友可以做一下参考。
+//    （1）.innerHTML属性用来读取或设置某个节点内的HTML代码。
+//    （2）.outerHTML属性用来读取或设置HTML代码时，会把节点本身包括在内。
+//    （3）.textContent属性用来读取或设置节点包含的文本内容。
+//    主要区别如下:
+//            （1）.innerText属性和outerText属性在读取元素节点的文本内容时，得到的值是不一样的。
+//    （2）.它们的不同之处在于设置一个节点的文本属性时，outerText属性会使得原来的元素节点被文本节点替换掉。
+//    （3）.innerText受CSS影响，textcontent没有这个问题。比如，如果CSS规则隐藏了某段文本，innerText就不会返回这段文本，textcontent则照样返回。
+//    （4）.innerText返回的文本，会过滤掉空格、换行和回车键，textcontent则不会。
+//    特别说明:innerText是非标准属性，Firefox不支持。
+    var outContainer = document.createElement('div');
+    outContainer.setAttribute('id','test');
+    outContainer.innerText = 'test div';
+    outContainer.innerHTML = '<div id="test2">gghhgdhhghghgfhdhhdhg</div>';
+
+    var row = document.getElementById('row');
+    row.appendChild(outContainer);
+</script>
+</body>
+</html>

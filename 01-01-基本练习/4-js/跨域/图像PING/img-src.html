@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+图像 Ping 最常用于跟踪用户点击页面或动态广告曝光次数。图像 Ping 有两个主要的缺点，
+一是只能发送 GET 请求，
+二是无法访问服务器的响应文本。
+因此，图像 Ping 只能用于浏览器与服务器间的单向通信。
+
+
+<script>
+    function GetCoupons(data){
+        console.log(data);
+    }
+
+
+    var img = new Image();
+    img.onload = img.onerror = function(){
+        console.log("Done!");
+    };
+    img.src = "http://192.168.0.105:81/data.js?callback=GetCoupons";
+    img.setAttribute('alt','测试');
+
+    document.body.appendChild(img);
+</script>
+</body>
+</html>
