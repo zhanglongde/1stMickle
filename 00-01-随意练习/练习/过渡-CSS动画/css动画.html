@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+    <style>
+        .bounce-transition{
+            display:inline-block;/*不加，动画不起作用*/
+        }
+        .bounce-enter{
+            animation: bounce-in 1.5s forwards;
+        }
+        .bounce-leave{
+            animation:bounce-out 1.5s forwards;
+        }
+        @keyframes bounce-in {
+            0%{
+                transform:scale(0) translateX(0);
+            }
+            50%{
+                transform:scale(1.5) translateX(300px);
+            }
+            100%{
+                transform:scale(1) translateX(500px);
+            }
+        }
+        @keyframes bounce-out {
+            0%{
+                transform:scale(1) translateX(500px);
+            }
+            50%{
+                transform:scale(1.5) translateX(300px);
+            }
+            0%{
+                transform:scale(0) translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div>
+        <span v-show="show" transition="bounce">Look at me</span>
+    </div>
+
+    <button @click="switch">切换</button>
+</div>
+
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            show:false
+        },
+        methods:{
+            switch: function () {
+                this.show = !this.show;
+            }
+        }
+    });
+</script>
+</body>
+</html>

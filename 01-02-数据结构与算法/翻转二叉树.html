@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function TreeNode (val, left, right) {
+        this.val = val
+        this.left = left
+        this.right = right
+        return this
+    }
+
+    var invertTree = function(root) {
+
+        //遍历每个节点
+        function loop (node) {
+            var temp = null
+            if (node && typeof node !== 'number') { //节点如果是节点对象则翻转左右节点
+                temp = node.right
+                node.right = node.left
+                node.left = temp
+                //尝试继续翻转节点
+                loop(node.left)
+                loop(node.right)
+            }
+        }
+
+        loop(root)
+
+        return root
+    }
+
+    var node1 = new TreeNode(7, 9, 6)
+    var node2 = new TreeNode(2, 3, 1)
+    var root = new TreeNode(4, node1, node2)
+
+    invertTree(root)
+</script>
+</body>
+</html>

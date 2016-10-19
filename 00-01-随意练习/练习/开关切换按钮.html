@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .check-block{
+            display: block;
+            width:53.55px;
+            height:32.55px;
+            position:relative;
+            background-color: #ccc;
+            border-radius:16.45px;
+        }
+        .check-block .slider{
+            position: absolute;
+            display:block;
+            width:28.35px;
+            height:28.35px;
+            top:2.1px;
+            left:1.75px;
+            right:auto;
+            background-color:#fff;
+            border-radius:50%;
+            -webkit-transition: left 0.2s ease-in;
+            transition:left 0.2s ease-in;
+        }
+        .check-block.checked{
+            background-color: #44db5e;
+        }
+        .check-block.checked .slider{
+            left:23.45px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var o = document.querySelector('.check-block');
+            o.addEventListener('click',function(){
+                var that = this;
+//                var test = this.style.cssText = 'check-block checked';
+                that.attributes["class"].value = that.attributes["class"].value == 'check-block'?'check-block checked':'check-block';
+
+            },false)
+        }
+    </script>
+</head>
+<body>
+<label for="" class="check-block">
+    <span class="slider"></span>
+</label>
+</body>
+</html>

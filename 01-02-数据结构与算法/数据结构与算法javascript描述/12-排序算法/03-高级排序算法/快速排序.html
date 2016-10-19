@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    function QuickSort(arr){
+        if(arr.length == 0){
+            return [];
+        }
+        var lesser = [];
+        var greater = [];
+        var pivot = arr[0];
+        for(var i = 1,LEN = arr.length;i<LEN;i++){
+            if(arr[i]>pivot){
+                greater.push(arr[i]);
+            }else{
+                lesser.push(arr[i]);
+            }
+        }
+        return QuickSort(lesser).concat(pivot,QuickSort(greater));
+    }
+
+    var arr = [1,20,3,4,9,5,6];
+    var result = QuickSort(arr);
+    console.log(result);
+</script>
+</body>
+</html>

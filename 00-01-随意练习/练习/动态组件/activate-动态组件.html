@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<button @click="toggleComp">I am a button</button>
+<component :is="currentView"></component>
+</body>
+
+<script>
+    var mixin = {
+        activate: function(done) {
+            console.log('hook activate');
+            done();
+        }
+    };
+
+    var vue = new Vue({
+        el:'body',
+        data:{
+            currentView:'comp1'
+        },
+        components:{
+            comp1:{
+                mixins:[mixin],
+                template:'<h1>I am comp1</h1>',
+                activate: function(done) {
+                    console.log('comp1 activate');
+                    done();
+                }
+            },
+            comp2:{
+                mixins:[mixin],
+                template:'<h1>I am comp2</h1>',
+                activate: function(done) {
+                    console.log('comp2 activate');
+                    done();
+                }
+            }
+        },
+        methods:{
+            toggleComp:function() {
+                this.currentView = this.currentView === 'comp1' ? 'comp2':'comp1'
+            }
+        }
+    })
+</script>
+</html>

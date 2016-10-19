@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+    <script src="../zepto.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <ul>
+        <li v-for="item in items | limitBy 3 | filterBy name">
+            {{item.name}}{{item.age}}
+        </li>
+    </ul>
+    <input type="text" @input="funcInput">
+</div>
+
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            name:'',
+            partItems:[{name:"zhanglongde",age:26}],
+            items:[{name:"zhanglongde",age:26},{name:"wangmingsheng",age:26},{name:"zhanglongbao",age:25}]
+        },
+        methods:{
+            funcInput:function(event){
+                var that = event.target;
+//                console.log(event.target);
+//                console.log($(that).val());
+                  this.name= $(that).val();
+            }
+        }
+    });
+</script>
+</body>
+</html>
