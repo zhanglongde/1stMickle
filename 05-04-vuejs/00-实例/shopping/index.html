@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="data.js"></script>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <template v-if="data.length">
+            <div class="products">
+                <div class="item">
+                    <span>商品名称</span>
+                    <span>商品单价</span>
+                    <span>购买数量</span>
+                    <span>操作</span>
+                </div>
+                <div class="item" v-for="item in data">
+                    <span>{{ item.name }}</span>
+                    <span>{{ item.price | currency '￥' 0 }}</span>
+                <span>
+                    <em :class="{off: item.count == 1}" @click="reduce($index)">-</em>
+                    {{ item.count }}
+                    <em :class="{off: item.count == 10}" @click="add($index)">+</em>
+                </span>
+                <span>
+                    <i @click="remove($index)">移除</i>
+                </span>
+                </div>
+            </div>
+            <div class="info">
+                <label>收件人:</label>
+                <input type="text" v-model="name" placeholder="收件人姓名">
+                <label>收货地址:</label>
+                <input type="text" v-model="address" placeholder="请填写收货地址">
+            </div>
+            <div class="result" v-show="data.length && name != '' && address != ''">
+                <h3>清单</h3>
+                商品总价: {{ price | currency '￥' 0 }}
+                <br>
+                收件人: {{ name }}
+                <br>
+                收货地址: {{ address }}
+            </div>
+        </template>
+        <template v-else>
+            购物车为空
+        </template>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            computed: {
+                price: function() {
+                    var price = 0;
+                    for (var i = 0; i < this.data.length; i++) {
+                        var self = this.data[i];
+                        price += self.price * self.count;
+                    }
+                    return price;
+                }
+            },
+            data: {
+                data: data,
+                address: '',
+                name: ''
+            },
+            methods: {
+                add: function(index) {
+                    var item = this.data[index];
+                    if (item.count == 10) {
+                        return false;
+                    }
+                    item.count++;
+                },
+                reduce: function(index) {
+                    var item = this.data[index];
+                    if (item.count == 1) {
+                        return false;
+                    }
+                    item.count--;
+                },
+                remove: function(index) {
+                    this.data.splice(index, 1);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

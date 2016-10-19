@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        $('body')  $().attr()  $().data()
+    </title>
+</head>
+<body>
+<div class="container">
+    <ul>
+        <li id="test">li1</li>
+        <li data="data2" id="dt">li2</li>
+        <li>li3</li>
+    </ul>
+    <img src="" alt="你好">
+</div>
+
+<script>
+//    1.find nodes
+      var li_objs = document.querySelectorAll('li');
+      var arr_lis = [].slice.call(li_objs);
+      arr_lis.forEach(function(key,value){
+          console.log(key);
+          console.log(value);
+      });
+//2.find body
+      document.body.style.backgroundColor = '#58a';
+//3.find attribute
+       var img_attr = document.querySelector('img').getAttribute('alt');
+       console.log(img_attr);
+//    4.find data attribute
+       var li_attr = document.querySelector('#dt').getAttribute('data')
+       console.log(li_attr);
+     
+</script>
+</body>
+</html>

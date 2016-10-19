@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../vue.js"></script>
+
+</head>
+<body>
+<template id="home">
+    <div>home</div>
+</template>
+<template id="posts">
+    <div>posts</div>
+</template>
+<template id="archive">
+    <div>archive</div>
+</template>
+
+<div id="app">
+   <component :is="currentView"></component>
+    <button @click="homeClick">homeClick</button>
+    <button @click="postsClick">postsClick</button>
+    <button @click="archiveClick">archiveClick</button>
+</div>
+
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            currentView:'home'
+        },
+        methods:{
+            homeClick:function(){
+               this.currentView = 'home';
+            },
+            postsClick:function(){
+                this.currentView = 'posts';
+            },
+            archiveClick:function(){
+                this.currentView = 'archive';
+            }
+        },
+        components:{
+            home:{template:'#home'},
+            posts:{template:'#posts'},
+            archive:{template:'#archive'}
+        }
+    });
+</script>
+</body>
+</html>

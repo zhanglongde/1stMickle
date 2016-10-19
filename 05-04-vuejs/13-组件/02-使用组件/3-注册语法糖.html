@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VUe.js自动调用Vue.extend()</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+<div id="global">
+    <g-component></g-component>
+</div>
+<div id="local">
+    <Parent></Parent>
+</div>
+
+<script>
+    //在一个步骤中扩展与注册
+    //全局注册，直接扩展
+    Vue.component('g-component',{
+        template:'<div>global component 语法糖</div>'
+    });
+
+    new Vue({
+        el:'#global'
+    });
+
+    //局部注册中直接扩展子组件
+    var Parent = Vue.extend({
+        template:'<div>parent</div><son-component></son-component>',
+        components:{
+            'son-component':{
+                template:'<div>son component</div>'
+            }
+        }
+    })
+    //在实例中，直接使用，限定作用域为#local
+    new Vue({
+        el:'#local',
+        components:{
+            'Parent':Parent
+        }
+    })
+</script>
+</body>
+</html>

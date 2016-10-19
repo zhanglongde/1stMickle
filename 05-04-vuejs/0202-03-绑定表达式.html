@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="demo">
+    <h1>{{number+1}}</h1>
+    <h1>{{OK?'YES':'NO'}}</h1>
+    <h1>{{message.split('').reverse().join('')}}</h1>
+</div>
+
+<!-- 这是一个语句，不是一个表达式： -->
+{{ var a = 1 }}
+
+<!-- 流程控制也不可以，可改用三元表达式 -->
+{{ if (ok) { return message } }}
+
+<script src="./vue.js"></script>
+<script>
+//    每个绑定只能包含单个表达式
+    var demo = new Vue({
+        el:'#demo',
+        data:{
+            number:10,
+            OK:true,
+            message:'bye-bye'
+        }
+    });
+</script>
+</body>
+</html>

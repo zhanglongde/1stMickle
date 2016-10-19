@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../zepto.js"></script>
+<script>
+//    Zepto 中并没有为原型定义extend方法，所以如果要是要在 Zepto 的原型上拓展方法可以使用的方式是：
+    // For example
+    // Extend a function named 'sayHello' to the protorype of Zepto
+    Zepto(function($) {
+        sayHello: function() {
+            $(this).html('Hello !');
+        }
+    });
+    Zepto('body').sayHello();
+</script>
+</body>
+</html>

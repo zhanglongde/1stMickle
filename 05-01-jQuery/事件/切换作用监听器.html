@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="btn1">This method signature was deprecated in jQuery 1.8 and removed in jQuery 1.9.</div>
+<div id="target">
+    Click here
+</div>
+<script src="../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    $('#btn1').toggle(
+            function(){
+                console.log('1');
+            },function(){
+                console.log('2');
+            }
+//            ,function(){
+//                console.log('3');
+//            }
+    );//根据点了几下切换调用第几个方法
+
+
+    $( "#target" ).toggle(function() {
+        alert( "First handler for .toggle() called." );
+    }, function() {
+        alert( "Second handler for .toggle() called." );
+    });
+</script>
+</body>
+</html>

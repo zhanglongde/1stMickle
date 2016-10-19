@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        获取HTML集合，包含长度以及没有用的5个函数
+    </title>
+</head>
+<body>
+<div class="container">
+    <ul>
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+    </ul>
+</div>
+
+<script>
+    var hset = document.querySelectorAll('li');//返回符合要求的NodeList
+    for(var k in hset){
+        console.log(hset[k]);
+    }
+</script>
+</body>
+</html>

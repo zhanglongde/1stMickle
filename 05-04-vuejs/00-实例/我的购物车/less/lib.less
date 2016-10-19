@@ -1,0 +1,32 @@
+/*Created by zhanglongde on 2016/9/2.*/
+//通用样式库
+
+@import "variable";
+@import "skin";
+
+*{box-sizing: content-box;}
+
+html{
+  font-family: "微软雅黑",Airal,san-serif;font-size:20px;line-height:1;
+  color:@font-color;
+  background-color: @bg-color;
+}
+
+.btn{
+  height:30px;border-radius:5px;
+  background-color: @btn-color;}
+.btn:active{box-shadow: inset 0 6px 6px @btn-inset-color;}
+.btn-disabled{
+  cursor:not-allowed;
+  background-color: #ccc !important;}
+
+input{
+  width:180px;height:25px;
+  padding:3px 8px;
+  border-radius:@border-radius-2;
+}
+input::-webkit-input-placeholder{
+  color:@light-grey-1;
+}
+input::-moz-placeholder{color:@light-grey-1;}
+input:-ms-input-placeholder{color:@light-grey-1;}

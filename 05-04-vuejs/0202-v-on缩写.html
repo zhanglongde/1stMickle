@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <button v-on:click="doSomething" >测试</button>
+    <button @click="doSomething2" >hello test</button>
+</div>
+
+<script>
+    var demo = new Vue({
+        ele:'#demo',
+        data:{
+
+        },
+        methods:{
+            doSomeThing:function(){
+                console.log('test');
+            },
+            doSomething2:function(){
+                console.log('hello test!');
+            }
+        }
+    });
+</script>
+</body>
+</html>

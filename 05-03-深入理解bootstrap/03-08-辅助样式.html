@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+    <script src="../jquery-2.2.3.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <style>
+        /*.container{width:1000px;}/!*默认1140+15*2*!/*/
+        .col-md-4{background-color: #00CCFF;}
+    </style>
+    <script>
+        $(function(){
+             console.log("8**************88")
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <button type="button" class="close">&times;</button>
+            <a href="javascript:;" class="close">&times;</a>
+            <a href="">blink</a>
+        </div>
+        <div class="col-md-4" id="test1">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <form action="./03-08-辅助样式.html" method="get">
+                <input name="test" value="ggg">1111</input>
+                <button type="submit">submit</button>
+            </form>
+            <form action="./03-08-辅助样式.html" method="post">
+                <input name="test2" value="ggg2">222</input>
+                <button type="submit">submit2</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <form>
+                <label for="male">Male</label>
+                <input type="radio" name="sex" id="male" value="m"> </input>
+                <br />
+                <label for="female">Female</label>
+                <input type="radio" name="sex" id="female" value="f" checked> </input>
+                <button type="submit">submit3</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <label for="d1">Male</label> <input type="checkbox" name="digit" id="d1">1</input>
+            <label for="d2">Male</label> <input type="checkbox" checked  name="digit" id="d2">2</input>
+            <label for="d3">Male</label> <input type="checkbox" name="digit" id="d3">3</input>
+            <label for="d4">Male</label> <input type="checkbox" name="digit" id="d4">4</input>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="caret"></div>
+            <div class="dropup"></div>
+        </div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+</div>
+</body>
+</html>

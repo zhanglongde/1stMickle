@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery胜</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;border:1px solid #aaa;
+            background-color: #fc3;}
+    </style>
+</head>
+<body>
+<div class="a">aaaaa</div>
+<div class="b">bbbbb</div>
+<script src="../zepto.js"></script>
+<script>
+    var $doc = $(document);
+
+    // Class 'a' bind event 'a'
+    $doc.on('click', '.a', function () {
+        alert('a事件');
+        // Class 'a' change to class 'b'
+        $(this).removeClass('a').addClass('b');
+    });
+
+    // Class 'b' bind event 'b'
+    $doc.on('click', '.b', function () {
+        alert('b事件');
+    });
+</script>
+</body>
+</html>

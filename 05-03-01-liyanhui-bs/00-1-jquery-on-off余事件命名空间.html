@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+    <script src="../jquery-2.2.3.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <style>
+        /*.container{width:1000px;}/!*默认1140+15*2*!/*/
+        .col-md-4{background-color: #00CCFF;}
+        .col-md-4 .col-md-3{background-color: #00b3ee;}
+    </style>
+    <script>
+        $(function(){
+            $("#ontest1").on("click.tomxu",function(){
+                 $("#ontest1").off("click.tomxu");
+                alert("1");
+            });
+            $("#ontest1").on("click",function(){
+                 alert("2");
+            });
+            $("#ontest1").on("click",function(){
+                alert("3");
+            });
+            $("#ontest2").on("click",function(){
+                $("#ontest1").trigger("click.tomxu");
+//                alert("tom.xu");
+            });
+
+            $("body").on("click","#ontest2",function(){
+                alert("propagation");
+            })
+        });
+    </script>
+</head>
+<body>
+<div class="container" style="background-color: red;">
+    ttest1
+</div><div class="container-fluid" style="background-color: #eee;border:1px solid #ccc;">
+    ttest2
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="container" style="background-color: red;">
+                <button class="btn btn-primary" id="ontest1">点击</button>
+                <button class="btn btn-info" id="ontest2">Trigger</button>
+            </div>
+        </div>
+        <div class="col-md-4"><!--内部容器用container-fluid-->
+            <div class="container-fluid" style="background-color: #00CC00;">
+                no2
+            </div>
+        </div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row"><!--列嵌套列-->
+        <div class="col-md-4" style="padding: 0;">
+            <div class="col-md-3">1</div>
+            <div class="col-md-3">2</div>
+            <div class="col-md-3">3</div>
+            <div class="col-md-3">4</div>
+        </div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="col-md-9 col-md-push-3">1</div>
+            <div class="col-md-3 col-md-pull-9">2</div>
+        </div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+</div>
+</body>
+</html>
+</body>
+</html>

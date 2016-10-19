@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        对对象、数组序列化，返回一串字符串
+    </title>
+</head>
+<body>
+
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    var test_obj =[
+        { name: "first", value: "Rick" },
+        { name: "last", value: "Astley" },
+        { name: "job", value: "Rock Star" }
+    ];
+
+    var str = $.param(test_obj);
+    $('body').prepend(str);
+
+
+    var Person = {name:'zhangld',age:'26'};
+    var obj_str = $.param(Person);
+//    document.body.insertBefore(document.body,'</br>');
+    $('body').prepend('</br>');
+    $('body').prepend(obj_str);
+</script>
+</body>
+</html>

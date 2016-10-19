@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+<div id="example-1">
+    Hello {{name}}
+</div>
+
+<div id="example-2">
+    <p v-if="greeting">Hello! greeting</p>
+</div>
+
+<div id="demo">
+    <!--加上星号，只在更新的时候加载一次-->
+    <span>This will never change: {{*message }}</span>
+    <p>{{message}}</p>
+    <input v-model="message"/>
+</div>
+</body>
+<script src="vue.js"></script>
+<script src="example-1-model.js"></script>
+<script src="example-2-v-if.js"></script>
+<script>
+    var demo = new Vue({
+        el: '#demo',
+        data: {
+            message: 'Hello Vue.js!'
+        }
+    })
+</script>
+</html>

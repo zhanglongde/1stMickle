@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+<div id="demo"></div>
+
+
+<script>
+//    不好的做法
+//    var vm = new Vue({
+//        el:'#demo',
+//        template:'<div>{{msg}}</div>'
+//    });
+//
+//    vm.$set('msg','hello');
+
+var vm = new Vue({
+    el:'#demo',
+    data: {
+        // 以一个空值声明 `msg`
+        msg: ''
+    },
+    template: '<div id="test">{{msg}}</div>'
+});
+// 然后设置 `msg`
+vm.msg = 'Hello!';
+</script>
+</body>
+</html>

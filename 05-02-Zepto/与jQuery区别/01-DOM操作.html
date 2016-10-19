@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Query 操作 ul 元素时，添加 id 不会生效。</title>
+</head>
+<body>
+
+<script src="../../lib/jquery-2.2.3.js"></script>
+
+<script>
+    (function(){
+        var $list = $('<ul><li>插入</li></ul>',{
+            id:'insert-by-jQuery'
+        });
+
+        var $div = $('<div>div tset</div>',{
+            'id':'div-test',
+            'class':'hello'
+        });
+        $list.appendTo('body');
+        $div.appendTo('body');
+    })();
+</script>
+</body>
+</html>

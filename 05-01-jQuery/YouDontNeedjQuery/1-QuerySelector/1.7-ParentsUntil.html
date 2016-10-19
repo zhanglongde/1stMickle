@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        获取当前每一个匹配元素集的祖先，不包括匹配元素的本身。
+        $().parentsUntil(element,filer)//如果只有一个参数，则只表示element
+        element 指示在何处停止对祖先元素的匹配。//如果指定无效，则一直囊括到根元素html
+        filter 过滤器
+    </title>
+</head>
+<body>
+<div id="wrapper">
+    <div class="container">
+        <ul>
+            <li id="test">li1</li>
+            <li data="data2" id="dt">li2</li>
+            <li>li3</li>
+        </ul>
+        <img src="" alt="你好">
+    </div>
+</div>
+
+
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    var $pu = $('#dt').parentsUntil('div#wrapper');//从#dt,直到div.wrapper的父元素，不包括#dt
+    console.log($pu);
+//    var eles = $pu.toArray();//砍掉多余的元素
+    var eles = [].slice.call($pu);//砍掉多余的元素
+    eles.forEach(function(value,key,array){
+        console.log(value);
+    })
+</script>
+</body>
+</html>

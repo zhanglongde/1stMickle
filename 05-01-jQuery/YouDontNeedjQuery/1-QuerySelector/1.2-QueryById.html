@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取HTML集合，包含长度以及没有用的元素</title>
+</head>
+<body>
+<div class="container">
+    <ul>
+        <li id="test">li1</li>
+        <li>li2</li>
+        <li>li3</li>
+    </ul>
+</div>
+
+<script>
+    var t_obj = document.querySelector('#test');//返回第一个匹配条件的element
+    console.log(t_obj);
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="example-2">
+    <button v-on:click="say('hi')">Say Hi</button>
+    <button v-on:click="say('what')">Say What</button>
+</div>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:'#example-2',
+        methods:{
+            say: function (msg) {
+                console.log(msg);
+            }
+        }
+    });
+</script>
+</body>
+</html>

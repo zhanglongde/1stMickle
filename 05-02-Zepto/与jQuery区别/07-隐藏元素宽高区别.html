@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery胜</title>
+    <style>
+        #hidden{display:none;}
+    </style>
+</head>
+<body>
+<div id="hidden">Zepto 无法获取隐藏元素宽高，jQuery 可以。</div>
+<script src="../../lib/jquery-2.2.3.js"></script>
+<!--<script src="../zepto.js"></script>-->
+<script>
+    console.log($('#hidden').width());
+    console.log($('#hidden').height());
+</script>
+</body>
+</html>

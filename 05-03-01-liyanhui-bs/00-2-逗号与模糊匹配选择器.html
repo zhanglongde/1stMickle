@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+    <script src="../jquery-2.2.3.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <style>
+        html,body{font-size:14px;}
+        /*.container{width:1000px;}/!*默认1140+15*2*!/*/
+        .col-md-4{background-color: #00CCFF;}
+        .col-md-4 .col-md-3{background-color: #00b3ee;}
+        .test-zld,.test-zlc{color:#ffff00;font-weight: 700;}
+        .container .test-zld,.test-zlc{color:#00CCFF;font-weight: 900;font-size: 1.428rem;}
+        [class^=col] {font-size: 1.428rem;}
+        [class$=md-4] {font-size: 3rem;}
+        [class*=md-3] {font-size: 2.5rem;}
+        [class~="important"] {font-size: 2rem;color:yellow;}
+    </style>
+</head>
+<body>
+<div class="container" style="background-color: red;">
+    ttest1
+</div><div class="container-fluid" style="background-color: #eee;border:1px solid #ccc;">
+    ttest2
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="container" style="background-color: red;">
+                <div class="test-zld important">zld</div>
+                <div class="important">important</div>
+                <div class="test-zlb">zlb</div>
+                <div class="test-zld">zld</div>
+                <div class="test-zlb">zlb</div>
+                <div class="test-zld">zld</div>
+                <div class="test-zlc">zlc</div>
+            </div>
+        </div>
+        <div class="col-md-4"><!--内部容器用container-fluid-->
+            <div class="container-fluid" style="background-color: #00CC00;">
+                no2
+            </div>
+        </div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row"><!--列嵌套列-->
+        <div class="col-md-4" style="padding: 0;">
+            <div class="col-md-3">1</div>
+            <div class="col-md-3">2</div>
+            <div class="col-md-3">3</div>
+            <div class="col-md-3">4</div>
+        </div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="col-md-9 col-md-push-3">1</div>
+            <div class="col-md-3 col-md-pull-9">2</div>
+        </div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+</div>
+</body>
+</html>
+</body>
+</html>

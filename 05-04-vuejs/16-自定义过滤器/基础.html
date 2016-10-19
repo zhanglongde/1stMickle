@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!-- 'abc' => 'cba' -->
+    <span v-text="message | reverse"></span>
+
+    <!--<template>-->
+        <ul v-for="item in arr|limitNumber 4">
+            <li>{{item}}</li>
+        </ul>
+    <!--</template>-->
+
+</div>
+
+
+<script src="../vue.js"></script>
+<script>
+    Vue.filter('reverse', function (value) {
+        return value.split('').reverse().join('')
+    })
+
+    Vue.filter('limitNumber',function(arr,num){
+        var arrays = [].concat(arr);
+
+        arrays.splice(num,arr.length-num);
+        return arrays;
+    });
+
+    new Vue({
+        el:'#app',
+        data:{
+            message:'test',
+            arr:["1","2","3","4"]
+        }
+    });
+</script>
+</body>
+</html>

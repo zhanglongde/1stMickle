@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$watch 数据变化了，才会回调</title>
+    <script src="./vue.js"></script>
+    <script src="../lib/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <div>1111111111111111</div>
+    <button @click="testFct">test</button>
+</div>
+
+<div>777</div>
+<script>
+    var testVm = new Vue({
+        el:'#app',
+        data:{
+            test:'test'
+        },methods:{
+            testFct: function(){
+                this.$data.test = 'change';
+            }
+        }
+    });
+
+    var count = 1;
+    setInterval(function(){
+        testVm.$data.test += count;
+        count++;
+    },2000);
+//
+    testVm.$watch('test',function(newVal,oldVal){
+        console.log(newVal);
+        console.log(oldVal);
+        $('<div>newVal</div>').appendTo('#app');
+    });
+
+
+</script>
+</body>
+</html>

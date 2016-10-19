@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    var zip, city, state;
+    $.get('http://ipinfo.io',function(location){
+        console.log(location);
+        zip = location.postal;
+        city = location.city;
+        state = location.region;
+        console.log(zip);
+        console.log(city);
+        console.log(state);
+    },'json');
+</script>
+</body>
+</html>

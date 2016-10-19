@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        <ul>
+            <li>li*1</li>
+            <li>li*2
+                <button id="btn1">事件1</button>
+            </li>
+            <li>li*3</li>
+            <li>li*4
+                <a href="#" id="btn2">事件2</a>
+            </li>
+            <li>li*5</li>
+        </ul>
+    </div>
+</div>
+
+<script src="../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    $('body').on('click',function(event){
+        var t = $(event.target);
+        if(t.is('#btn1')){
+            console.log(event.target);
+        }
+        if(t.is('#btn2')){
+            console.log('this is btn2');
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        除el和data选项，
+        Vue构造器的多数选项可以用在Vue.extend()中
+
+        data、el 选项用在 Vue.extend() 中时须是一个函数
+    </title>
+</head>
+<body>
+<div id="app">
+    <my></my>
+</div>
+
+<script src="../../vue.js"></script>
+<script>
+    //定义组件,使用一个函数作为data选项，让这个函数返回一个新对象
+    //否则所有实例，将共用一个data数据项
+    var My = Vue.extend({
+        template:'hello',
+        data:function(){
+            return {a:1}
+        }
+    });
+
+    //注册为全局组件
+    Vue.component('my',My);
+
+    //构造器创建根实例
+    new Vue({
+        el:'#app'
+    });
+</script>
+</body>
+</html>

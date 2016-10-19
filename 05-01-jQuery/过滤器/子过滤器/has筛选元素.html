@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$().length'<1 来判断一个元素是否存在</title>
+</head>
+<body>
+<div>
+    <p>hello</p>
+</div>
+<div>Hello again!</div>
+<script src="../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    $('div:has(p)').css("background-color","#d66");
+    var bl = $('div:has(h1)');
+
+    console.log(bl.get(0));
+    console.log(bl.length);
+    if(bl.get(0) == undefined){  //undefined是一种数据类型
+        console.log('undefined');
+    }
+    console.log(bl);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="parent">
+    <div class="son">son1</div>
+    <div class="son" id="test">son2</div>
+    <div class="son">son3</div>
+</div>
+<!--<script src="../../jquery-1.11.3.min.js"></script>-->
+<script src="../../jquery-2.2.3.js"></script>
+<script>
+    var id = $(".son:parent").children().size();
+    console.log(id);
+</script>
+</body>
+</html>

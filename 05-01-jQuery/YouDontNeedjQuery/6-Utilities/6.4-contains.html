@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        contains方法
+    :contains('')过滤器
+    </title>
+</head>
+<body>
+
+<div id="test">
+    zhanglongde is a front end soft engineer.
+</div>
+
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    var isa = $.contains(document.body,'#test');
+    var isb = $.contains('#test','elongde');
+    console.log(isa);
+    console.log(isb);
+
+    console.log($.contains(document.documentElement,document.body));
+
+    console.log($('#test').contains('longde'));
+</script>
+</body>
+</html>

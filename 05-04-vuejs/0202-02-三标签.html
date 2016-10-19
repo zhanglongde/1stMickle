@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="demo">
+    {{{h_test}}}
+</div>
+<script src="./vue.js"></script>
+<script>
+    var demo = new Vue({
+        el:'#demo',
+        data:{
+            h_test:'<div><h1>h_test</h1></div>'
+        }
+    });
+</script>
+</body>
+</html>

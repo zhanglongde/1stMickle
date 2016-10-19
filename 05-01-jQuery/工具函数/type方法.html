@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../../jquery-1.11.3.min.js"></script>
+<script>
+    var i = 0;
+    var s1= $.type(i);
+
+    console.log(typeof i);
+    console.log(s1);
+
+
+    function test(){
+
+    }
+    f = new test();
+
+    console.log(typeof test);
+    console.log(typeof f);
+    console.log(f instanceof Function);
+    console.log(f instanceof Object);
+
+    console.log("type:"+$.type(f));
+    console.log("isFunction:"+$.isFunction(f));
+
+    console.log(typeof null)
+    console.log(null instanceof Object)
+    console.log($.type(null));
+</script>
+</body>
+</html>

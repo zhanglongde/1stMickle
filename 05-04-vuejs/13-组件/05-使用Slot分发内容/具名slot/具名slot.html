@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+<!--定义子组件模板-->
+<template id="son">
+    <div>
+        <slot name="one"></slot>
+        <slot name="two"></slot>
+        <slot></slot>
+    </div>
+</template>
+
+<!--父组件模板-->
+<div id="app">
+    <div>父组件模板</div>
+    <multi-insertion>
+        <p slot="one">one</p>
+        <p slot="two">two</p>
+        <p>Default</p>
+        <div>你好!</div>
+    </multi-insertion>
+</div>
+
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+
+        },
+        components:{//局部注册子组件
+            'multi-insertion':{
+                template:'#son'
+            }
+        }
+    });
+</script>
+</body>
+</html>

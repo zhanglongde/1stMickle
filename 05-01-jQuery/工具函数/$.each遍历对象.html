@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../../jquery-1.11.3.min.js"></script>
+<script>
+    function Test(){
+        var v =1;
+        var v2 = 2;
+        this.t=3;
+        this.t2=4;
+    };
+    Test.prototype.Print = function(){
+        console.log("pt!");
+    };
+
+    var f = new Test();
+
+    $.each(f,function(key,value){
+        console.log(key);
+        console.log(value);
+//        console.log($(this).val());
+    });
+</script>
+</body>
+</html>

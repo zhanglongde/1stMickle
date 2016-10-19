@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    var object1 = {
+        apple: 0,
+        banana: { weight: 52, price: 100 },
+        cherry: 97
+    };
+    var object2 = {
+        banana: { price: 200 },
+        durian: 100
+    };
+    var object3 = {
+        apple:1,
+        banane:{height:3,price:400}
+    }
+
+    // Merge object2 into object1, recursively
+    $.extend( true, object1, object2 );
+    $.extend(object3,object2);//浅拷贝，后面的对象直接覆盖前面的对象
+
+    console.log(JSON.stringify(object1));
+    console.log(JSON.stringify(object3));
+</script>
+</body>
+</html>

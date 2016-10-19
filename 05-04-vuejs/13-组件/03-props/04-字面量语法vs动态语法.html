@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        字面量语法传递的是字符串，不是数值
+    </title>
+</head>
+<body>
+<div id="app">
+    <comp some-prop="1"></comp>  <!--字面量语法-->
+    <dynamic :prop="22"></dynamic> <!--动态语法-->
+</div>
+
+<script src="../../vue.js"></script>
+<script>
+    /**
+     * 字面量语法
+     */
+    Vue.component('comp',{
+        props:['someProp'],
+        template:'<div>test:{{someProp}}-{{bb}}</div>',
+        data:function(){
+            return {bb:'bb'};
+        },
+        ready:function(){
+            var test = this.someProp;
+            console.log(typeof test);
+        }
+    });
+
+    /**
+     * 动态语法
+     */
+    Vue.component('dynamic',{
+        props:['prop'],
+        ready:function(){
+            var test = this.prop;
+            console.log(typeof test);
+        }
+    });
+
+    /**
+     * 根实例初始化
+     */
+    new Vue({
+        el:'#app',
+        data:{}
+    });
+</script>
+</body>
+</html>

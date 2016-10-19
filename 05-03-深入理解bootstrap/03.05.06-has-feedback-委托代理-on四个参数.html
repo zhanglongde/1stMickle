@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+    <script src="../jquery-2.2.3.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <style>
+        /*.container{width:1000px;}/!*默认1140+15*2*!/*/
+        .col-md-4{background-color: #00CCFF;}
+    </style>
+    <script>
+        var a = 0;
+        $(function(){
+//            $("#test1").on("click",function(){
+//                var count = $(this).data().count;
+//                if($(this).data().count === undefined)
+//                    count = 1;
+//                console.log(count);
+//                if(count %2 == 1)
+//                    $("#feedback").removeClass("glyphicon glyphicon-ok").addClass("glyphicon glyphicon-ok ");
+//                else
+//                    $("#feedback").removeClass("glyphicon glyphicon-ok");
+//                count++;
+//                $(this).data().count = count;
+//                alert($(this).data().xxx);
+//            });
+            var oddeven = function(event){
+                var count = event.data.count;
+                if(event.data.count === undefined)
+                    count = 1;
+                console.log(count);
+                if(count %2 == 1)
+                    $("#feedback").removeClass("glyphicon glyphicon-ok").addClass("glyphicon glyphicon-ok ");
+                else
+                    $("#feedback").removeClass("glyphicon glyphicon-ok");
+                count++;
+                event.data.count = count;
+            };
+            var oddeven2 = function(event){
+                console.log(event.target);
+                console.log($(event.target).attr("id"));
+//                console.log($(this));
+                if($(event.target).attr("id") !== "test3") return;
+                oddeven(event);
+            };
+            $("body").on("click","#test1",{count:1},oddeven);
+            $("body").on("click","#test2",{count:1},oddeven);
+            $("body").on("click",{count:1},oddeven2);
+
+            var blur_delegate = function(event){
+                var id = $(this).attr("id");
+                console.log(id);
+                switch(id)
+                {
+                    case "blur1":
+                        alert(id);
+                        break;
+                    case "blur2":
+                        alert(id);
+                        break;
+                    case "blur3":
+                        alert(id);
+                        break;
+                    default:
+                        break;
+                }
+
+
+            };
+            $("#blurtest input").on("blur",{count:1},blur_delegate);//blur 事件不冒泡
+
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group has-success has-feedback">
+                <label class="controllabel" for="inputSuccess2">Input with success</label>
+                <input type="text" class="form-control" id="inputSuccess2" />
+                <span class="form-control-feedback" id="feedback"></span>
+            </div>
+            <button id="test1" data-count="1" data-xxx="xxx">点击</button>
+            <button id="test2" data-count="1" data-xxx="xxx">点击</button>
+            <button id="test3" data-count="1" data-xxx="xxx">点击</button>
+        </div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" id="blurtest">
+            <input type="text" class="input-lg" id="blur1"/>
+            <input type="text" class="input-lg" id="blur2"/>
+            <input type="text" class="input-lg" id="blur3"/>
+        </div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">NO1</div>
+        <div class="col-md-4">NO2</div>
+        <div class="col-md-4">NO3</div>
+    </div>
+</div>
+</body>
+</html>

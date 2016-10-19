@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <div id="parent">
+        <user-profile v-ref:profile></user-profile>
+    </div>
+</div>
+
+
+<script>
+    var parent = new Vue({
+        el:'#app',
+        data:{
+          test:'test'
+        },
+        components:{
+            'user-profile':{
+                template:'<div>profile component</div>'
+            }
+        }
+    });
+
+    var child = parent.$refs.profile;
+
+    console.log(typeof parent._data);
+    console.log(typeof parent.$data);
+    console.log(parent._data == parent.$data);
+    console.log(child);
+</script>
+</body>
+</html>

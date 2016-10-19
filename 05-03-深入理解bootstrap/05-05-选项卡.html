@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+    <script src="../jquery-2.2.3.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <style>
+        .nav{
+            border:2px solid #eee;
+        }
+        .nav-container{width:400px;}
+        .nav-stacked{width:200px;}
+        .nav .nav-divider{
+            background-color: #ff7700;
+        }
+    </style>
+</head>
+<body>
+<!--声明式用法-->
+
+<!--基本选项卡-->
+<!--选项卡导航-->
+<div class="nav-container"><!--nav-justified充满整个父容器-->
+    <ul class="nav nav-tabs nav-justified">
+        <li><a href="#home" data-toggle="tab">home</a></li>
+        <li><a href="#profile" data-toggle="tab">profile</a></li>
+        <li><a href="#message" data-toggle="tab">message</a></li>
+        <li><a href="#setting" data-toggle="tab">setting</a></li>
+    </ul>
+</div>
+
+<!--胶囊式选项卡-->
+<!--选项卡导航-->
+<ul class="nav nav-pills">
+    <li><a href="#home" data-toggle="tab">home</a></li>
+    <li><a href="#profile" data-toggle="tab">profile</a></li>
+    <li><a href="#message" data-toggle="tab">message</a></li>
+    <li><a href="#setting" data-toggle="tab">setting</a></li>
+</ul>
+<!--堆叠式选项卡-->
+<!--选项卡导航-->
+<ul class="nav  nav-pills nav-stacked">
+    <!--<li class=" nav-divider"></li>-->
+    <li><a href="#home" data-toggle="tab">home</a></li>
+    <!--<li class=" nav-divider"></li>-->
+    <li><a href="#profile" data-toggle="tab">profile</a></li>
+    <!--<li class=" nav-divider"></li>-->
+    <li><a href="#message" data-toggle="tab">message</a></li>
+    <!--<li class=" nav-divider"></li>-->
+    <li><a href="#setting" data-toggle="tab">setting</a></li>
+    <!--<li class=" nav-divider"></li>-->
+</ul>
+
+<!--选项卡面板-->
+<div class="tab-content">
+    <div class="tab-pane fade in active" id="home">tab1</div>
+    <div class="tab-pane fade" id="profile">tab2</div>
+    <div class="tab-pane fade" id="message">tab3</div>
+    <div class="tab-pane fade" id="setting">tab4</div>
+</div>
+</body>
+</html>

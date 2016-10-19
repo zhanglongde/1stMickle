@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../../lib/jquery-2.2.3.js"></script>
+
+<script>
+    // For example
+    // Extend a function named 'sayHello' to the protorype of jQuery
+    (function($) {
+        $.fn.extend({
+            sayHello: function() {
+                $(this).html('Hello !');
+            }
+        });
+
+    })(window.jQuery);
+
+    jQuery('body').sayHello();
+</script>
+</body>
+</html>

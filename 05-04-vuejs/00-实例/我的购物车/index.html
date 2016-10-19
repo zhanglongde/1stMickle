@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用vue.js做的购物车</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./vue.js"></script>
+    <script src="./data.js"></script>
+</head>
+<body>
+<div class="cart-container" id="cart-app">
+    <template v-if="data.length">
+    <div class="cart-content">
+        <div class="commodity-search-box">
+            <input type="text" placeholder="请输入商品名称" v-model="selectedCommodity" @keyup.enter="searchCommodity">
+            <a href="javascript:;" @click="searchCommodity">搜索</a>
+        </div>
+        <div class="cart-hd"><div class="cart-title">我的购物车</div></div>
+        <div class="cart-bd">
+            <div class="theader">
+                <div class="trow">
+                    <div class="tcol">商品名称</div>
+                    <div class="tcol">商品单价</div>
+                    <div class="tcol">购买数量</div>
+                    <div class="tcol">操作</div>
+                </div>
+            </div>
+            <div class="tbody">
+                <div class="trow" v-for="item in data">
+                    <div class="tcol">{{item.name}}</div>
+                    <div class="tcol">{{item.price | currency '￥' 0}}</div>
+                    <div class="tcol">
+                        <button :class="{'btn':true,'btn-sub':true,'btn-disabled': item.count <= 1}" @click="sub($index)">-</button>
+                        <span class="purchase-amount">{{item.count}}</span>
+                        <button :class="{'btn':true,'btn-add':true,'btn-disabled': item.count >= 10}" @click="add($index)">+</button>
+                    </div>
+                    <div class="tcol">
+                        <button class="btn btn-remove" @click="remove($index)">移除</button>
+                    </div>
+                </div>
+                <!--<div class="trow">-->
+                    <!--<div class="tcol"></div>-->
+                    <!--<div class="tcol"></div>-->
+                    <!--<div class="tcol">-->
+                        <!--<button class="btn btn-sub">-</button>-->
+                        <!--<span class="purchase-amount">1</span>-->
+                        <!--<button class="btn btn-add">+</button>-->
+                    <!--</div>-->
+                    <!--<div class="tcol">-->
+                        <!--<button class="btn btn-remove">移除</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="trow">-->
+                    <!--<div class="tcol"></div>-->
+                    <!--<div class="tcol"></div>-->
+                    <!--<div class="tcol">-->
+                        <!--<button class="btn btn-sub">-</button>-->
+                        <!--<span class="purchase-amount">1</span>-->
+                        <!--<button class="btn btn-add">+</button>-->
+                    <!--</div>-->
+                    <!--<div class="tcol">-->
+                        <!--<button class="btn btn-remove">移除</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="cart-ft">
+            <div class="ft-row">
+                <div class="receive-info">
+                    <div class="receive-item">
+                        <div>收件人</div>
+                        <input type="text" placeholder="收件人姓名" v-model="name">
+                    </div>
+                    <div class="receive-item">
+                        <div>收货地址</div>
+                        <input type="text" placeholder="请填写收货地址" v-model="address">
+                    </div>
+                    <a href="javascript:;" @click="payMoney" v-if="isPayMoney">收起</a>
+                    <a href="javascript:;" @click="payMoney" v-else>结算</a>
+                </div>
+            </div>
+            <div class="ft-row">
+                <div class="list" v-show="data.length && isPayMoney">
+                    <div class="list-header">清单</div>
+                    <div class="list-item-amount">
+                        <div class="list-label">商品总价:</div>
+                        <div class="list-show">{{price | currency '￥' 0}}</div>
+                    </div>
+                    <div class="list-item-receiver">
+                        <div class="list-label">收件人:</div>
+                        <div class="list-show">{{name}}</div>
+                    </div>
+                    <div class="list-item-address">
+                        <div class="list-label">收货地址:</div>
+                        <div class="list-show">{{address}}</div>
+                    </div>
+                    <button class="btn btn-confirm">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </template>
+    <template v-else>
+        <div class="cart-content" >
+            <div class="cart-bd" style="margin-top:100px;">购物车为空</div>
+        </div>
+    </template>
+</div>
+
+<script src="./index.js"></script>
+</body>
+</html>

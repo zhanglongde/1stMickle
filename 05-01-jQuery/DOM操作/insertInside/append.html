@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        添加为元素内部的尾元素
+        与appendto相比，只是选择器与目标元素前后调换位置
+    </title>
+</head>
+<body>
+
+<div id="parent" style="background-color: #58a;width:100px;height:100px;">
+    容器
+</div>
+
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    $('#parent').append('<button>按钮</button>');
+</script>
+</body>
+</html>

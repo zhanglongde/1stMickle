@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="parent" style="background-color: #58a;width:100px;height:100px;">
+    容器<div>再一层</div>
+</div>
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+
+<script>
+//    获取html
+    var o = $('#parent').html();
+    console.log(o);
+
+//    设置html
+    $('#parent').html('<h1>标题1</h1>')
+</script>
+</body>
+</html>

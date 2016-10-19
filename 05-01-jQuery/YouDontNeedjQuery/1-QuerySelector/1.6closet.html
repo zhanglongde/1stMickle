@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        $('').closest('')
+        获得匹配选择器的第一个祖先元素
+    </title>
+</head>
+<body>
+<div class="container">
+    <ul>
+        <li id="test">li1</li>
+        <li data="data2" id="dt">li2</li>
+        <li>li3</li>
+    </ul>
+    <img src="" alt="你好">
+</div>
+
+<script>
+    // Native
+    function closest(el, selector) {
+        const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
+
+        while (el) {
+            if (matchesSelector.call(el, selector)) {
+                return el;
+            } else {
+                el = el.parentElement;
+            }
+        }
+        return null;
+    }
+    var t = document.querySelector('#dt');
+    var p_o = closest(t,'ul');
+    console.log(p_o);
+</script>
+</body>
+</html>

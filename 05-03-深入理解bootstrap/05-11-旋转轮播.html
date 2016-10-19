@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+    <script src="../jquery-2.2.3.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <style>
+        .carousel{
+            width:260px;
+            height:260px;
+            margin:auto;/*固定宽度margin:auto才有效*/
+        }
+        .carousel-control.left{
+            background-image:none;
+        }
+        .carousel-control.right{
+            background-image:none;
+        }
+
+        .carousel-indicators li{
+            background-color: #000 \9;
+            background-color: rgba(0, 0, 0, 0);
+            border: 1px solid #6cbcd5;
+        }
+        .carousel-indicators .active{
+            background-color: #6cbcd5;
+        }
+    </style>
+    <script>
+        $(function(){
+            $(".carousel").carousel({
+                interval:2000
+            });
+        });
+    </script>
+</head>
+<body>
+<div data-ride="carousel" class="carousel slide" id="carousel-container">
+     <!--图片容器-->
+    <div class="carousel-inner">
+        <div class="item">
+            <img src="./images/product-1-1.png" alt="第1张图"/>
+            <div class="carousel-caption">
+                第1张图
+                <!--<h3>第1张图，标题</h3>-->
+                <p>第1张图，图片描述</p>
+            </div>
+        </div>
+        <div class="item active">
+            <img src="./images/product-2.png" alt="第2张图"/>
+            <div class="carousel-caption">第2张图</div>
+        </div>
+        <div class="item">
+            <img src="./images/product-3.png" alt="第3张图"/>
+            <div class="carousel-caption">第3张图</div>
+        </div>
+    </div>
+    <!--圆圈指示符-->
+    <ol class="carousel-indicators">
+        <li data-slide-to="0" data-target="#carousel-container"></li>
+        <li data-slide-to="1" data-target="#carousel-container" class="active"></li>
+        <li data-slide-to="2" data-target="#carousel-container"></li>
+    </ol>
+    <!--左右控制按钮-->
+    <a href="#carousel-container" data-slide="prev" class="left carousel-control">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a href="#carousel-container" data-slide="next" class="right carousel-control">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div>
+</body>
+</html>

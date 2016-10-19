@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="vue.js"></script>
+    <script type="text/javascript">
+        // 注册 partial
+        Vue.partial('my-partial', '<p>This is a partial! {{ msg }}</p>')
+
+        window.onload = function () {
+            new Vue({
+                el: "body",
+                data: {
+                    msg: "111",
+                    template: '<partial name="my-partial"></partial>'
+                },
+                methods: {
+                }
+            })
+        }
+    </script>
+</head>
+<body id="parent">
+<div v-html="template"></div>
+<partial name="my-partial"></partial>
+</body>
+</html>

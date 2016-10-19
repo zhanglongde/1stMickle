@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../vue.js"></script>
+    <link rel="stylesheet" href="../animate.css">
+    <style>
+        /*必须*/
+        .expand-transition{
+            transition:all .3s ease;
+            height:30px;
+            padding:10px;
+            background-color:#eee;
+            overflow: hidden;
+        }
+        /*定义进入的状态*/
+        /*定义离开的结束状态*/
+        .expand-enter,.expand-leave{
+            height:0;
+            padding:0 10px;
+            opacity:0;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div v-if="show" transition="expand">hello</div>
+    <button @click="look">点击看过渡</button>
+
+    <div v-show="show" class="animated" transition="bounce">Watch me bounce</div>
+</div>
+
+<script>
+//    Javascript钩子
+    Vue.transition('expand',{
+        beforeEnter:function(el){
+            el.textContent = 'beforeEnter'
+        },
+        enter:function(el){
+            el.textContent = 'enter'
+        },
+        afterEnter:function(el){
+            el.textContent = 'afterEnter'
+        },
+        enterCancelled:function(el){
+
+        },
+        beforeLeave:function(el){
+
+        },
+        leave:function(el){
+
+        },
+        afterLeave:function(el){
+
+        },
+        leaveCancelled:function(el){
+
+        }
+    });
+    Vue.transition('bounce',{
+        enterClass:'bounceInLeft',
+        leaveClass:'bounceOutRight'
+    });
+
+new Vue({
+    el:'#app',
+    data:{
+        show:false
+    },
+    methods:{
+        look:function(){
+            this.$data.show = true;
+        }
+    }
+});
+</script>
+</body>
+</html>

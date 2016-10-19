@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        转化为数组之后可以去掉没有用的元素
+    </title>
+</head>
+<body>
+<div class="container">
+    <ul>
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+    </ul>
+</div>
+
+<script>
+    var hset = document.querySelectorAll('li');
+//    var arr_hset = [].slice.call(hset);  //直接返回执行结果
+//    var arr_hset = [].slice.apply(hset);  //直接返回执行结果
+    var fct = [].slice.bind(hset);  //bind，将返回一个转化后的函数，而非执行结果
+    var arr_hset = fct();
+    for(var key in arr_hset){
+        console.log(arr_hset[key]);
+    }
+</script>
+</body>
+</html>

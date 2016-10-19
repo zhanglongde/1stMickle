@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        $('a[target=_blank]')
+    </title>
+</head>
+<body>
+<a href="#">a1</a>
+<a href="" target="_blank">a2</a>
+<a href="">a3</a>
+<a href="" target="_blank">a4</a>
+
+<script>
+    var t_obj = document.querySelectorAll('a[target=_blank]');//jQuery $('a[target=_blank]')
+
+    for(var k in t_obj){  //for in适用于数组和对象
+        console.log(t_obj[k]);
+    }
+    var obj = [].slice.call(t_obj);
+    
+    obj.forEach(function(v){//函数才有forEach函数
+        console.log(v);
+    });
+</script>
+</body>
+</html>

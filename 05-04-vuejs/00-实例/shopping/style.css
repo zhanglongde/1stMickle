@@ -1,0 +1,42 @@
+.item span{
+    display: inline-block;
+    border: 1px solid #eee;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+}
+.item span em{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    font-style: normal;
+    background: #f60;
+    color: #fff;
+}
+.item span em.off{
+    background: #eee;
+    cursor: default;
+}
+.item span i{
+    cursor: pointer;
+    background: #f60;
+    font-style: normal;
+    color: #fff;
+    padding: 10px;
+}
+.result{
+    width: 400px;
+    padding: 5px 10px;
+    border: 1px solid #b2b2b2;
+    margin-top: 15px;
+}
+.info{
+    margin: 30px 0;
+}
+input{
+    width: 200px;
+}

@@ -1,0 +1,22 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'D:\\program\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\zhanglongde\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'start' ]
+2 info using npm@3.8.7
+3 info using node@v4.4.2
+4 verbose stack Error: ENOENT: no such file or directory, open 'E:\3-learning\6-bootstrap\bs-exe\react\05-redux\package.json'
+4 verbose stack     at Error (native)
+5 verbose cwd E:\3-learning\6-bootstrap\bs-exe\react\05-redux
+6 error Windows_NT 10.0.10586
+7 error argv "D:\\program\\nodejs\\node.exe" "C:\\Users\\zhanglongde\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "start"
+8 error node v4.4.2
+9 error npm  v3.8.7
+10 error path E:\3-learning\6-bootstrap\bs-exe\react\05-redux\package.json
+11 error code ENOENT
+12 error errno -4058
+13 error syscall open
+14 error enoent ENOENT: no such file or directory, open 'E:\3-learning\6-bootstrap\bs-exe\react\05-redux\package.json'
+15 error enoent ENOENT: no such file or directory, open 'E:\3-learning\6-bootstrap\bs-exe\react\05-redux\package.json'
+15 error enoent This is most likely not a problem with npm itself
+15 error enoent and is related to npm not being able to find a file.
+16 verbose exit [ -4058, true ]

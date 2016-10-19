@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        An event-delegation approach attaches an event handler to only one element, the ul,
+        and the event only needs to bubble up one level (from the clicked tr to ul)
+    </title>
+</head>
+<body>
+<ul>
+    <li>li1</li>
+    <li>li2</li>
+    <li id="test">li3 <div id="son">div</div></li>
+    <li>li4</li>
+    <li>li5</li>
+    <li>li6</li>
+</ul>
+<script src="../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    //注意#son  先与li执行：冒泡
+    $('#son').on('click',function(event){
+        console.log('1-----------------------------------------');
+        console.log('son');
+//        event.stopPropagation();//阻止冒泡，即阻止了li和ul事件
+    });
+
+    //双击没有委托
+    $( 'body' ).on( "click", "li", function(event) {
+        console.log('2-----------------------------------------');
+        console.log( $( this ).text() );
+        console.log(event.currentTarget);
+        console.log(event.delegateTarget);
+        console.log(this);
+    });
+
+
+
+    $( "ul" ).on( "click",  function(event) {
+        console.log('3-----------------------------------------');
+        console.log( $( this ).text() );
+        console.log(event.currentTarget);
+        console.log(event.delegateTarget);
+        console.log(this);
+    });
+</script>
+</body>
+</html>

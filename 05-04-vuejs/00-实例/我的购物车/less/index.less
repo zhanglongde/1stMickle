@@ -1,0 +1,81 @@
+/*Created by zhanglongde on 2016/9/1.*/
+@import "variable";
+@import "reset";
+@import "lib";
+@import "skin";
+
+
+.btn-add,.btn-sub{width:30px;}
+.btn-remove{width:100px;}
+
+.cart-container{
+  width:1000px;
+  height:600px;margin:20px auto;
+  border-radius:@border-radius-1;
+  color:inherit;
+  background: @bg-cart-color;
+  background:
+          linear-gradient(to bottom left,transparent 20px,@folded-corner-color 0) no-repeat top right / 28px 28px,
+          linear-gradient(-135deg,transparent 20px,@bg-cart-color 0);
+  box-shadow: 10px 0 10px -10px rgba(0,0,0,.5);
+}
+
+.cart-content{
+  width: 700px;
+  height:auto;
+  margin:auto;padding:10px;
+  position:relative;
+  .commodity-search-box{
+    position:absolute;
+    top:25px;right:10px;
+  }
+}
+.cart-content>:nth-of-type(n){
+  margin:50px auto;
+}
+
+.cart-hd{
+    .cart-title{.title-text-style()}
+}
+.cart-bd{
+    [class$=col]{
+      display:table-cell;
+      line-height:40px;  text-align:center;  //居中
+      width:160px;height:40px;
+      border:@border-style-1;border-radius:@border-radius-2;
+    }
+    .theader .tcol{color:@font-label-color;}
+}
+.cart-ft>:nth-of-type(n){
+    margin:30px auto;
+    .receive-info{
+      &>:nth-of-type(n){display:inline-block;}
+      .receive-item{display: inline-block;
+        &>:nth-of-type(n){display: inline-block;}
+      }
+      .receive-item{width:45%;}
+      .receive-item>div{color:@font-label-color;}
+    }
+
+    .list{
+      border:@border-style-1;padding:20px;
+      position:relative;
+
+      &>:nth-of-type(n){margin-bottom:10px;}
+
+      .list-header{.title-text-style;}
+      .list-label{display:inline-block;width:100px;color:@font-label-color;}
+      .list-show{display:inline-block;width:400px;}
+
+      .btn-confirm{width:100px;position:absolute;bottom:0;right:10px;}
+    }
+}
+
+
+
+
+
+
+
+
+

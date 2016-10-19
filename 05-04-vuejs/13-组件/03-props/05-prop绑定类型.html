@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        prop默认单向绑定
+        绑定修饰符：.sync强制双向绑定 或者.once强制单次绑定
+    </title>
+</head>
+<body>
+<div id="app">
+    <input v-model="parentMsg" type="text">
+    <child1 :msg1="parentMsg"></child1>
+    <child2 :msg2.sync="parentMsg"></child2>
+    <child3 :msg3.once="parentMsg"></child3>
+</div>
+
+<script src="../../vue.js"></script>
+<script>
+     Vue.component('child1',{
+         props:['msg1'],
+         template:'<div>{{msg1}}</div>'
+     });
+     Vue.component('child2',{
+         props:['msg2']
+//         ,template:'<input type="text" value="{{msg2}}">'
+         ,template:'<input type="text" v-model="msg2"">'
+     });
+     Vue.component('child3',{
+         props:['msg3'],
+         template:'<div>{{msg3}}</div>'
+     });
+
+     new Vue({
+         el:'#app',
+         data:{
+             parentMsg:'parentMsg'
+         }
+     });
+</script>
+</body>
+</html>

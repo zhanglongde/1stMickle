@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <select v-model="provincse.selected">
+        <option v-for='option in provinces.options' :value="option.value">{{option.text}}</option>
+    </select>
+    <select></select>
+</div>
+
+<script src="./vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            provinces:{
+                selected:'上海',
+                options:[
+                    {text:'请选择',value:'请选择'},
+                    {text:'浙江省',value:'杭州市'},
+                    {text:'上海',value:'上海'}
+                ]
+            },
+            cities:{
+                province:'',
+                city:{
+
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

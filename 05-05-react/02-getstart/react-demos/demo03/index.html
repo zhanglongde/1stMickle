@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <style>
+      .hone{
+        background-color: #ffff00;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      var arr = [
+        <h1>Hello world!</h1>,
+        <h2>React is awesome</h2>,
+        <div  class="hone"></div>
+      ];
+      ReactDOM.render(
+        <div>{arr}</div>,
+        document.getElementById('example')
+      );
+    </script>
+  </body>
+</html>

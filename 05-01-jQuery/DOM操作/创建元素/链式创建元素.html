@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>可以实现链式创建</title>
+</head>
+<body>
+
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+
+    $('<button></button>',{text:'点击1',id:'btn1',click:function(){
+        console.log(this.innerText);
+    }}).css({border:'2px solid #aaa',backgroundColor:'#e66'}).prependTo('body');
+
+    $('<button></button>',{text:'点击2',id:'btn2'}).css({color:'#9c3'}).appendTo('body');
+
+    //注意标签内部不能有属性、text等，否则后面的对象失效,下面为错误做法
+//    $('<button>点击响应事件</button>',{id:'btn11',click:function(){
+//        console.log(this.innerText);
+//    }}).insertAfter('#parent');
+</script>
+</body>
+</html>

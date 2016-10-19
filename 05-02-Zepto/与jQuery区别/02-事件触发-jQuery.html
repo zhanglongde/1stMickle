@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态加载script,使用 jQuery 时 load 事件的处理函数不会执行。</title>
+</head>
+<body>
+
+<script src="../../lib/jquery-2.2.3.js"></script>
+<script src="../zepto.js"></script>
+<script>
+    (function($) {
+        $(function() {
+            $script = $('<script />', {
+                src: 'http://cdn.amazeui.org/amazeui/1.0.1/js/amazeui.js',
+                id: 'ui-jquery'
+            });
+
+            $script.appendTo($('body'));
+
+            $script.on('load', function() {
+                console.log('jQ script loaded');
+            });
+        });
+    })(window.jQuery);
+
+
+    Zepto(function($) {
+        $script = $('<script />', {
+            src: 'http://cdn.amazeui.org/amazeui/1.0.1/js/amazeui.js',
+            id: 'ui-zepto'
+        });
+
+        $script.appendTo($('body'));
+
+        $script.on('load', function() {
+            console.log('zepto script loaded');
+        });
+    });
+</script>
+</body>
+</html>

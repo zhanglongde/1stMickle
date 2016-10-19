@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li id="foo">foo</li>
+    <li id="bar">bar</li>
+    <li id="baz">baz</li>
+</ul>
+
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    var listItem = document.getElementById( "bar" );
+    console.log( "Index: " + $( "li" ).index( listItem ) );
+</script>
+</body>
+</html>

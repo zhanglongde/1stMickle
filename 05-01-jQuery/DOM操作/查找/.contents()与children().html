@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        .contents()包括文本元素
+        children()
+        childNode Node节点
+    </title>
+</head>
+<body>
+
+<p>Hello <a href="http://ejohn.org/">John</a>, how are you doing?</p>
+
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+
+    $('p').children().toArray().forEach(function(value){
+        console.log(value);
+    });
+
+    $('p').contents().filter(function(){
+        return this.nodeType === 1; //元素节点
+    }).toArray().forEach(function(value){
+        console.log(value);
+    })
+
+
+
+    $( "p" ).contents()
+            .filter(function(){
+                return this.nodeType !== 1;  //文本节点
+            })
+            .wrap( "<b></b>");
+</script>
+</body>
+</html>

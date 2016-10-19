@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<p id="test">thi2s i3s my favorite home!</p>
+<p>this is my favorite home!2</p>
+<h3>hello everyone</h3>
+
+<script src="../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    var a = $.contains("#test","is");
+    console.log(a);
+
+    $("p:contains('is')").css("background-color","#fb3");
+</script>
+</body>
+</html>

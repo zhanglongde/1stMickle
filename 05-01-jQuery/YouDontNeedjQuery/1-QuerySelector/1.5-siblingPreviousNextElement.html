@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        prev()
+        next()
+        siblings();
+    </title>
+</head>
+<body>
+<div class="container">
+    <ul>
+        <li id="test">li1</li>
+        <li data="data2" id="dt">li2</li>
+        <li>li3</li>
+    </ul>
+    <img src="" alt="你好">
+</div>
+
+<script>
+    //1.previous element
+    var pre = document.querySelector('#dt').previousElementSibling;//element
+    console.log(pre);
+    console.log(pre.innerText);
+
+    var pre2 = document.querySelector('#dt').previousSibling;//Node
+    console.log(pre2);
+    console.log(pre2.innerText);
+
+    console.log('---------------------------------------');
+//    2.next element
+    var next = document.querySelector('#dt').nextElementSibling;
+    console.log(next);
+
+    console.log('---------------------------------------');
+//    3.获取所有兄弟节点
+    var curr = document.querySelector('#dt');
+//    var alls = curr.parentNode.childNodes;  //会有多余的换行节点
+    var alls = curr.parentNode.children;
+    var siblings = [].filter.call(alls,function(e){
+        return curr != e;
+    });
+    console.log(siblings);
+    siblings.forEach(function(value,key,array){
+        console.log(key);
+        console.log(value);
+    });
+</script>
+</body>
+</html>

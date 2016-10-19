@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        每当父组件的数据变化时，也会传导给子组件
+    </title>
+    <!--<script src="../../vue.js"></script>-->
+</head>
+<body>
+<div id="app">
+    <input v-model="parentMsg">
+    <child v-bind:my-message="parentMsg"></child>
+</div>
+
+<script src="../../vue.js"></script>
+<script>
+    Vue.component('child',{
+        props:['myMessage'],
+        template:'<span>{{myMessage}}</span>'
+    })
+
+    new Vue({
+        el:'#app'
+        ,data:{
+            parentMsg:'parentMsg'
+        }
+    });
+</script>
+</body>
+</html>

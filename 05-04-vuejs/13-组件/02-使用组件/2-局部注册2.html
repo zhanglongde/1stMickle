@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+<div id="example">
+    <parent> </parent>
+</div>
+<script>
+    //自定义子组件
+    var Child = Vue.extend({
+        template:"<div>子集的模版</div>"
+    });
+
+    //在父组件内使用子组件
+    var Parent = Vue.extend({
+        template:"<div>父集的模版</div><my-component></my-component>",
+        components:{   //将子集的组件注册到父集
+            'my-component': Child  //注册到父集之后就直接使用my-component这个模版吗？
+        }
+    });
+
+    //局部注册父组件到根实例
+    new Vue({
+        el: '#example',
+        components: {
+            'parent': Parent
+        }
+    });
+</script>
+</body>
+</html>

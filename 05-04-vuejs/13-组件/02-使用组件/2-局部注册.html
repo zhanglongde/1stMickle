@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        与全局注册，少了Vue.component
+        多了一个父组件对子组件的定义：Vue.extend
+
+        局部注册，同样适用于指令、过滤器和过渡
+    </title>
+</head>
+<body>
+<div id="example">
+    <parent-component></parent-component>
+</div>
+
+<script src="../../vue.js"></script>
+<script>
+    //自定义子组件
+    var Child = Vue.extend({
+        template:'<div>局部注册子组件</div>'
+    });
+
+    //父组件，注册自定义子组件
+    var Parent = Vue.extend({
+        template:'<div>this is parent component</div> <son-component></son-component> <son-component2></son-component2>',
+        components:{
+            //<son-component>只能用在父组件模板内
+            'son-component':Child,
+            'son-component2':{
+               template:'<div>局部注册子组件2</div>'
+            }
+        }
+    });
+
+    //全局注册父组件
+    Vue.component('parent-component',Parent);
+
+    //创建父组件的根实例
+    var pvm = new Vue({
+        el:'#example'
+    });
+</script>
+</body>
+</html>
