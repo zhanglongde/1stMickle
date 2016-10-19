@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // 例一
+    var set = new Set([1, 2, 3, 4, 4]);
+    console.dir([...set]);
+    // [1, 2, 3, 4]
+
+    // 例二
+    var items = new Set([1, 2, 3, 4, 5, 5, 5, 5]);
+    console.log(items.size) // 5
+
+    // 例三
+    function divs () {
+        return [...document.querySelectorAll('div')];
+    }
+
+    var set = new Set(divs());
+    console.log(set.size) // 56
+
+    // 类似于
+    divs().forEach(div => set.add(div));
+    console.log(set.size) // 56
+</script>
+</body>
+</html>

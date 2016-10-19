@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    try {
+        throw function () {
+            console.log(this);
+        };
+    } catch (e) {
+        e(); // ES3标准里是__catchObject, ES5标准里是global
+    }
+</script>
+</body>
+</html>

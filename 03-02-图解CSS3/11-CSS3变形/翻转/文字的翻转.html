@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        文字默认变形与舞台元素Hover上去的变性相仿，
+        文字默认为隐藏变形，舞台元素Hover为隐藏变形
+
+        舞台元素为绝对定位，如果没有变性，基本与舞台元素重叠
+    </title>
+    <style>
+        .rect{
+            width: 300px;
+            height: 400px;
+            background-color: #9c3;
+
+        }
+        .item{
+            height: 100px;
+            /*其所有子元素位于3D空间中*/
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transition: -webkit-transform .6s;
+            -moz-transition: -moz-transform .6s;
+            -ms-transition: -ms-transform .6s;
+            -o-transition: -o-transform .6s;
+            transition: transform .6s;
+        }
+        .item:hover {
+            /*正好是文字默认变形的饭方向*/
+            -webkit-transform: translateZ(-50px) rotateX(95deg);
+            -moz-transform: translateZ(-50px) rotateX(95deg);
+            -ms-transform: translateZ(-50px) rotateX(95deg);
+            -o-transform: translateZ(-50px) rotateX(95deg);
+            transform: translateZ(-50px) rotateX(95deg);
+        }
+        .item:hover .information {
+            box-shadow: 0px 3px 8px rgba(0,0,0,0.3);
+            border-radius: 3px;
+        }
+        .item .information {
+            display: block;
+            position: absolute;
+            top: 0;
+            height: 80px;
+            width: 290px;
+            text-align: left;
+            border-radius: 15px;
+            padding: 10px;
+            font-size: 12px;
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+            box-shadow: none;
+            background: rgb(236,241,244);
+            background: -webkit-linear-gradient(to bottom,  rgba(236,241,244,1) 0%,rgba(190,202,217,1) 100%);
+            background: -ms-linear-gradient(to bottom,  rgba(236,241,244,1) 0%,rgba(190,202,217,1) 100%);
+            background: linear-gradient(to bottom,  rgba(236,241,244,1) 0%,rgba(190,202,217,1) 100%);
+
+            -webkit-transform: rotateX(-90deg) translateZ(50px);
+            -moz-transform: rotateX(-90deg) translateZ(50px);
+            -ms-transform: rotateX(-90deg) translateZ(50px);
+            -o-transform: rotateX(-90deg) translateZ(50px);
+            transform: rotateX(-90deg) translateZ(50px);
+            -webkit-transition: all .6s;
+            -moz-transition: all .6s;
+            -ms-transition: all .6s;
+            -o-transition: all .6s;
+            transition: all .6s;
+
+        }
+    </style>
+</head>
+<body>
+<div class="item rect">
+    <span class="information">
+      <strong>Contact Form</strong> The easiest way to add a contact form to your shop.
+    </span>
+</div>
+</body>
+</html>

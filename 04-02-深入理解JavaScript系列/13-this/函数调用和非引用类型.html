@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        当调用括号的左边不是引用类型而是其他类型，这个值自动设置为null
+        结果为全局对象。
+    </title>
+</head>
+<body>
+
+<script>
+//    我们有一个函数对象但不是引用类型的对象（它不是标示符，也不是属性访问器），相应地，this值最终设为全局对象。
+    (function(){
+        console.log(this);
+    })();
+
+
+var foo = {
+    bar: function () {
+        console.log(this);
+    }
+};
+
+foo.bar(); // Reference, OK => foo
+(foo.bar)(); // Reference, OK => foo,第一组括号，并不是分组运算符，仅仅是提升优先级的括号而已
+
+
+//以下三个例子第一组括号都是分组运算符，
+//经过分组运算符，返回的将是一个匿名的表达式运算结果值
+(foo.bar = foo.bar)(); // global?，这是典型的立即函数执行形式,等价于=》
+//(function bar() {
+//    console.log(this);
+//})();
+
+(false || foo.bar)(); // global? 调用完属性访问器再调用函数，等价于(false || (var a = foo.bar;a();))();
+(foo.bar, foo.bar)(); // global?
+
+
+</script>
+</body>
+</html>

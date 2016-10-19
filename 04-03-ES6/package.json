@@ -1,0 +1,22 @@
+{
+  "name": "webpack-es6",
+  "version": "1.0.0",
+  "description": "webpack es6 babel",
+  "main": "bundle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "zhaoda",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "css-loader": "^0.21.0",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

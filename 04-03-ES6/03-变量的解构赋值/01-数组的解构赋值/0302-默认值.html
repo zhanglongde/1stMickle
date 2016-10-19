@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+//        ES6内部使用严格相等运算符（===），判断一个位置是否有值。
+//        所以，如果一个数组成员不严格等于undefined，默认值是不会生效的。
+
+        function f() {
+            console.log('aaa');
+        }
+
+        let [x = f()] = [null];
+    </script>
+</head>
+<body>
+
+</body>
+</html>

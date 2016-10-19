@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var s = new Set();
+    var a =[2,3,5,4,5,2,2].map(x=> s.add(x));
+
+    console.dir(a);
+    for(let i of s){
+        console.log(i);
+    }
+</script>
+</body>
+</html>

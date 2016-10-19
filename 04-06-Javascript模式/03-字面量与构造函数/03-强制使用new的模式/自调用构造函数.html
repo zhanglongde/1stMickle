@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function Waffle(){
+//        if(!(this instanceof Waffle)){
+//            return new Waffle();//递归调用。第二次调用时，this指向Waffle的时候，隐式返回this
+//        }
+        if(!(this instanceof arguments.callee)){  //更具复用性，严格模式下，无法使用
+              return new arguments.callee();
+        }
+
+        this.tastes = 'yummy';
+    }
+    Waffle.prototype.wantAnother = true;
+
+    var first = new Waffle(),
+            second = Waffle();
+
+    console.log(first.tastes);
+    console.log(second.tastes);
+
+    console.log(first.wantAnother);
+    console.log(second.wantAnother);
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0;padding:0;}
+        body{text-align: center;}
+        #demo1{  width: 700px;height:700px;margin:auto;border:1px solid #aaa;}
+        .target{  width:100px;  height: 100px;  margin:20px;}
+        .target_1{background-color: #9b3;}
+        .target_2{background-color: #5ba;}
+        .target_3{background-color: #fc3;}
+
+        .target.animate {  animation-name: move_1;  animation-duration: 2s;  animation-delay: 1s;
+            animation-iteration-count: 2;/*动画进行2个周期*/
+            animation-timing-function:cubic-bezier(.17,.67,.83,.67);
+            animation-direction:alternate; /*动画下一周期，逆向运动*/
+        }
+        /*动画开始，如果有多个运动周期，第一次运动开始，首先运动至from对应的关键帧*/
+        .target_1 {  animation-fill-mode: backwards;  }
+        /*动画结束，如果有多个运动周期，最后一次运动结束，运动至to对应的关键帧*/
+        .target_2 {  animation-fill-mode: forwards;  }
+        .target_3 {  animation-fill-mode: both;  }
+        .target_4{animation-fill-mode: none;}
+
+        @keyframes move_1 {
+            0% {  transform: translate(-100px, 0);  }
+            50% {  transform: translate(0, 0);  }
+            100% {  transform: translate(100px, 0);  }
+        }
+    </style>
+    <!--<link rel="stylesheet" href="./style.less">-->
+</head>
+<body>
+<div id="demo1">
+    <div class="target animate target_1"></div>
+    <div class="target animate target_2"></div>
+    <div class="target animate target_3"></div>       
+    <div class="target animate target_4"></div>
+</div>
+</body>
+</html>

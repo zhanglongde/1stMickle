@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="./module.js"></script>
+<script src="./module-01.js"></script>
+<script src="./module-02.js"></script>
+<script>
+    var blogModule2 = (function (old) {
+        var my = {},
+                key;
+
+        for (key in old) {
+            if (old.hasOwnProperty(key)) {
+                my[key] = old[key]; //给对象添加属性
+            }
+        }
+
+        var oldAddPhotoMethod = old.AddPhoto;
+        my.AddPhoto = function () {
+            // 克隆以后，进行了重写，当然也可以继续调用oldAddPhotoMethod
+            oldAddPhotoMethod();
+            console.log("override");
+        };
+
+        return my;
+    } (blogModule));
+
+    blogModule.AddPhoto('my phonto');
+
+    blogModule2.AddTopic('deep in javascript');
+    blogModule2.AddPhoto('my phonto2');
+</script>
+</body>
+</html>

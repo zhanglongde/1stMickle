@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var f = (function(){
+        var f,g;
+        if(true){
+            f = function g (){
+//                console.log("g1");
+            }
+        }else{
+            f = function g (){
+//                console.log("g2");
+            }
+        }
+
+        //设置g为null以后，它就不会占用内存了
+        //垃圾回收器就把g引用的那个隐式函数给回收掉了
+        g= null;
+        return f;
+    })();
+
+//    f();
+    var arr = [ ];
+    for (var i=0; i<10000; i++) {
+        arr[i] = f();
+    }
+</script>
+</body>
+</html>

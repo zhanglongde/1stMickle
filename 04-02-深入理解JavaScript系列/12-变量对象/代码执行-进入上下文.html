@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        函数声明是在当进入上下文时填入的；
+        同一周期，在进入上下文的时候还有一个 变量声明x;
+
+        变量声明在顺序上，跟在函数声明和形式参数声明之后，
+        而且在进入上下文截断，变量声明不会干扰VO中已经存在的函数声明和形式参数声明
+    </title>
+</head>
+<body>
+<script>
+    console.log(x);
+
+    var x = 10;
+    console.log(x);
+
+    x=20;
+
+//    function x(){console.log('test')}
+
+    console.log(x);
+</script>
+</body>
+</html>

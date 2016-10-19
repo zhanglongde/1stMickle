@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    if (true) {
+        function foo(){
+            console.log("function foo");
+            return 1;
+        }
+    }
+    var s = String(foo); // function foo() { return 1; }
+    console.log(typeof s);
+    console.log(s);
+
+    var f = Function("foo");
+    console.log(typeof f);
+    f();
+
+    var all_func = Function(s);
+    all_func();
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--JavaScript有一个特性叫做隐式全局变量，不管一个变量有没有用过，-->
+<!--JavaScript解释器反向遍历作用域链来查找整个变量的var声明，-->
+<!--如果没有找到var，解释器则假定该变量是全局变量-->
+
+<script src="../../jquery-1.11.3.min.js"></script>
+<!--显示调用全局变量-->
+<script>
+    (function ($) {
+        // 这里，我们的代码就可以使用全局的jQuery对象了，YAHOO也是一样
+    } (jQuery));
+
+//    匿名函数模块
+var blogModule = (function(){
+    var my = {},privateName = '博客园';
+
+    function privateAddTopic(data){
+        console.log(privateName);
+        console.log(data);
+    }
+
+    my.Name = privateName;
+    my.AddTopic = function(data){
+        privateAddTopic(data);
+    };
+
+    return my;  //返回对象，讲共有方法和属性统一打包对外
+}());
+
+    blogModule.Name = 'zhanglongde';
+    blogModule.AddTopic('hello world!');
+</script>
+</body>
+</html>

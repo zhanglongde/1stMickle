@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="eq">test</div>
+<div id="test"></div>
+<div id="my"></div>
+<div id="sub"></div>
+<script>
+    var Calculator = function (eq) {
+        //这里可以声明私有成员
+
+        var eqCtl = document.getElementById(eq);
+
+        return {
+            // 暴露公开的成员
+            add: function (x, y) {
+                var val = x + y;
+                eqCtl.innerHTML = val;
+            }
+            ,
+            sub:function(x,y){
+                var val = x -y;
+                eqCtl.innerHTML = val;
+            }
+        };
+    };
+
+    var calculator = new Calculator('eq');
+    calculator.add(2, 2);
+
+    var calculator2 = new Calculator('test');
+    calculator2.add(2, 8);
+
+    var cal = new Calculator('sub');
+    cal.sub(5,3);
+
+</script>
+</body>
+</html>

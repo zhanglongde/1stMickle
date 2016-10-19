@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script src="./module.js"></script>
+<script src="./module-01.js"></script>
+<script src="./module-02.js"></script>
+<!--//紧耦合扩展限制了加载顺序，但是提供了我们重载的机会-->
+<script>
+    var blogModule = (function(my){
+        var oldAddPhotoMethod = my.AddPhoto;
+
+        my.AddPhoto = function(){
+            // 重载方法，依然可通过oldAddPhotoMethod调用旧的方法
+            oldAddPhotoMethod();
+            console.log('a new method');
+        };
+
+        return my;
+    }(blogModule));
+
+    blogModule.AddPhoto('my phonto');
+</script>
+</body>
+</html>

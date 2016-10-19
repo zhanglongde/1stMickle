@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        ES5中，两次字面量相同的字面量对象已变成同一个对象
+        new RegExp与RegExp一致
+    </title>
+</head>
+<body>
+
+<script>
+    function getRE(){
+        var re = /[a-z]/;
+        re.foo = 'bar';
+        return re;
+    }
+
+    var reg = getRE(),
+        re2 = getRE();
+
+    console.log(reg === re2);
+    reg.foo = 'baz';
+    console.log(re2.foo);
+</script>
+</body>
+</html>

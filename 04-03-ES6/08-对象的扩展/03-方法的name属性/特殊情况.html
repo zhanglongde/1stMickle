@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var ano = (new Function()).name // "anonymous"
+
+    var doSomething = function() {
+        // ...
+    };
+    var bd = doSomething.bind().name // "bound doSomething"
+
+    console.log(ano);
+    console.log(bd);
+</script>
+</body>
+</html>

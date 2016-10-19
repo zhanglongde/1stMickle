@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var age = 33;
+    var alien = {
+        age:26,
+        sayHi:function(who){
+            return 'Hello' + (who ? ","+who:"")+"!"+this.age;
+        }
+    };
+
+    var s1 = alien.sayHi('world')
+    var s2 = alien.sayHi.apply(alien,['zhanglongde'])
+    var sayHi = alien.sayHi;
+    var s3 = sayHi('test.no.bind');//this指向了全局
+
+    console.log(s1);
+    console.log(s2);
+    console.log(s3);
+
+
+
+
+    function Person(){
+        this.myName = 'zhangld';
+        this.sayName = function(){
+            console.log(this.myName);
+        }
+    }
+
+    var p = new Person();
+//    p.sayName();
+    var sayName = p.sayName;
+    sayName.call(p);
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>li1</li>
+    <li>li2</li>
+    <li>li3</li>
+    <li>li4</li>
+</ul>
+
+<script>
+    //类数组对象
+    let arrayLike = {
+        0:'a',
+        1:'b',
+        2:'c',
+        length:3
+    }
+    let arr2 = Array.from(arrayLike,x=>x+'*');
+    console.log(typeof arr2);
+    console.log(arr2 instanceof Array);
+    console.log(arr2);
+
+
+    let eles = document.querySelectorAll('li');
+    console.log(eles);
+    eles.forEach(function(value,index,array){
+        console.log(value);
+    });
+
+    let n_list = Array.from(eles);
+    console.log(n_list);
+
+    console.log('---------------------------');
+</script>
+</body>
+</html>

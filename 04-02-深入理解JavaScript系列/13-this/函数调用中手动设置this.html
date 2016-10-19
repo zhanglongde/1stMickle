@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        在函数Fuction原型中定义的两个方法apply和call,允许去手动设置函数调用的this值
+        接受第一个参数多为this值，this在调用的作用域中使用。
+        apply第二个参数必须是（类）数组；call接受任何参数
+    </title>
+</head>
+<body>
+
+<script>
+    var b =10;
+    function a(c){
+        console.log(this.b);
+        console.log(c);
+    }
+    console.log('--------------------------------------------------------');
+    a(20);
+    console.log('--------------------------------------------------------');
+    a.call({b:20},30);
+    console.log('--------------------------------------------------------');
+    a.apply({b:30},[40]);
+    console.log('--------------------------------------------------------');
+    console.log(a.prototype);
+    console.log(Array.prototype.slice.call);
+</script>
+</body>
+</html>

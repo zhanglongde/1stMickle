@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    let s = new Set([1,3,45,6,65]);
+    for(let key of s.keys()){
+        console.log(key);
+    }
+    for(let value of s.values()){
+        console.log(value);
+    }
+    for(let ent of s.entries()){
+        console.log(ent);
+    }
+    
+    console.log('------------------------------------------');
+    s.forEach((value,key)=>console.log(value));
+
+    console.log('------------------------------------------');
+
+</script>
+</body>
+</html>
