@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>递归实现版本</title>
+</head>
+<body>
+
+
+<script>
+    // 题目要求！
+
+    function repeat (func, times, wait) {
+        var count = 0;
+
+        var _fct = function(str){
+            setTimeout(function(){
+                func(str);
+                count++;
+                if(count<times){
+                    _fct(str);//递归调用定时器
+                }
+            },wait);
+        };
+
+        return function (str){
+            if(!func) return;
+
+            _fct(str);
+        };
+    }
+    // 这个函数能返回一个新函数，比如这样用
+    var repeatedFun = repeat(console.log, 10, 2000);
+//    调用这个 repeatedFun ("hellworld")
+//    会alert十次 helloworld, 每次间隔5秒
+
+    repeatedFun ("hellworld");
+</script>
+</body>
+</html>

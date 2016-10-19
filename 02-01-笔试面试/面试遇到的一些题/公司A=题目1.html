@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        不用jquery等框架/库，查找一个页面上有多少种标签，每种标签的个数，伪代码实现亦可
+        nodeType tagName childNodes
+    </title>
+</head>
+<body>
+<header></header>
+
+<div>
+    <div>
+        <span></span>
+    </div>
+</div>
+<div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <h1></h1>
+</div>
+
+<footer></footer>
+
+<script>
+    var map ={};//键值对存储
+
+    function dfs(node){
+        if(node.nodeType === 1){//节点类型，1为元素节点，3为文本节点
+            var tagName = node.tagName;//节点名称
+            map[tagName] = map.hasOwnProperty(tagName)?map[tagName]+1:1;//已经存在该类型节点，数量加1
+            var children = node.childNodes;//类型的还有：firstChild lastChild nextChild previousChild
+            for(var i = 0,len=children.length;i<len;i++){
+                dfs(children[i]);
+            }
+        }
+    }
+    dfs(document.body);
+    console.log(map);
+</script>
+</body>
+</html>

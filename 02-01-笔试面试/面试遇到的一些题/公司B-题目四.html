@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        有一个数组譬如有十个数字，一秒钟打印一个怎么实现？
+    </title>
+</head>
+<body>
+
+<script>
+    var arr = [1,2,3,4,5,6,7,8,9,0];
+
+    function myLog(arr){
+
+        if(!Array.isArray(arr)){
+            return;
+        }
+        console.log(arr);
+        for(var i = 0,LEN= arr.length;i<LEN;i++){
+            setTimeout(function(){
+                console.log(arr[i]);
+            },1000);
+        }
+    }
+
+    myLog(arr);
+
+</script>
+</body>
+</html>

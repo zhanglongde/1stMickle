@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*奇怪的background-position*/
+        @keyframes panoramic {
+            to{background-position:100% 0;}
+        }
+        .panoramic{
+            width: 150px;
+            height: 150px;
+            background: url("./panoramic.jpg");
+            background-size:auto 100%;
+            /*background-position: 100% 0;*/
+            animation:panoramic 10s linear infinite alternate;
+            animation-play-state:paused;
+        }
+        .panoramic:hover,.panoramic:focus{
+            animation-play-state:running;
+        }
+        .reference{
+            width: 100vw;height:150px;
+            background: url("./panoramic.jpg") no-repeat;
+            -webkit-background-size:auto 100%;
+            background-size:auto 100%;}
+    </style>
+</head>
+<body>
+    <div class="reference"></div>
+    <div class="panoramic"></div>
+</body>
+</html>

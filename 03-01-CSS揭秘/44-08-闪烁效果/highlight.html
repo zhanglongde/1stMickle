@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: #e66;}
+      @keyframes blink {
+          50% {color:transparent;}
+      }
+      /*注意步进函数属于时间曲线范畴*/
+        /*.highlight{animation: 1s blink 3 steps(1)}*/
+        .highlight{animation: 1s blink 3 step-end}
+    </style>
+</head>
+<body>
+<div class="highlight">highlight</div>
+</body>
+</html>

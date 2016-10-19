@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>带自动化</title>
+    <style>
+        @keyframes typing {
+            from{width:0;}
+        }
+        @keyframes caret {
+            50%{border-right-color:transparent;}  /*闪烁效果*/
+        }
+
+        h1{
+            font: bold 200% Consolas, Monaco,monospace; /*必须保证为等宽字体，才不会因为各个字符宽度的不同导致擦除字符不干净，产生锯齿边*/
+            width:15ch;  /*15个空格字符的宽度*/
+            white-space: nowrap;
+            overflow: hidden;
+            border-right:.1em solid #9c3;
+            animation:typing 8s steps(15) infinite alternate,/*15个字符，每一个字符一个步调，分15步，完成动画*/
+                      caret 1s steps(1) infinite; /*一部完成动画，一步里面是一个曲线从0-50%-100%*/
+            /*animation-direction: alternate;!*偶数次的时候翻转*!*/
+        }
+    </style>
+</head>
+<body>
+<h1>CSS is awesome!</h1>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+//    function Animal() {
+//        this.name = 'animal';
+//    }
+//    Animal.prototype.sayName = function(){
+//        console.log('name:'+this.name);
+//    };
+//
+//    function Person() {
+//        this.gender = 'MM';
+//    }
+//    Person.prototype = Animal.prototype; // 人继承自动物
+//    Person.prototype.constructor = 'Person'; // 更新构造函数为人
+//
+//    var p = new Person();
+//    console.log(p.__proto__);
+//    p.sayName();
+
+
+    function Animal() {
+        this.name = 'animal';
+    }
+    Animal.prototype.sayName = function(){
+        console.log(this.name);
+    };
+    function Person() {}
+
+    Person.prototype = new Animal();//子类的原型对象，赋以基类的实例
+    var p = new Person();
+    p.sayName();
+    console.log(p.name);
+</script>
+</body>
+</html>

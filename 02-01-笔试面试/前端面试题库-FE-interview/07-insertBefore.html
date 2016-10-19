@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>补充代码,鼠标单击Button1后将Button1移动到Button2的后面</title>
+    <style>
+        body{text-align: center;}
+        input[type=button]{
+            background-color: #5ba;color:#fff;border:1px solid #aaa;
+            border-radius:5px;
+            box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.48);
+            width:100px;height:50px;
+            line-height: 30px;
+        }
+        input[type=button]:active,
+        input[type=button]:visited,
+        input[type=button]:focus  /*去掉默认focus状态的outline*/  /*button有默认border*/
+        {outline:none;}
+    </style>
+</head>
+<body>
+<div>
+    <input type="button" value="1" id="button1">
+    <input type="button" value="2" id="button2">
+</div>
+
+<script>
+    var btn1=document.getElementById('button1');
+    var btn2=document.getElementById('button2');
+
+    addListener(btn1,'click',function(event){
+        event.stopPropagation();
+//        方法1
+//        btn1.parentNode.insertBefore(btn2,btn1);
+
+//        方法2
+        var b1 = btn1.cloneNode();
+        btn2.parentNode.removeChild(btn1);
+        btn2.parentNode.appendChild(b1);
+
+        var testNode = document.createElement('div');
+        testNode.innerText = 'createElement';
+        btn2.parentNode.appendChild(testNode);
+
+
+        var tn1 = document.createElement('input');
+        tn1.setAttribute('type','password');
+        tn1.value = '1234';
+        btn2.parentNode.appendChild(tn1);
+
+        var tn2 = document.createElement('div');
+        tn2.innerHTML = '<button style="width:100px;height:30px;border:none;background-color: #fb3;">button</button>';
+        btn2.parentNode.appendChild(tn2);
+    });
+
+    function addListener(elem,type,handler){
+        if(elem.addEventListener){
+            elem.addEventListener(type,handler,false);
+        }else if(elem.attachEvent){
+
+        }
+    }
+</script>
+</body>
+</html>

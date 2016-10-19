@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .lightbox{
+            position:fixed;
+            top:50%;left:50%;margin:-200px;
+            box-shadow:0 0 0 50vmax rgba(0,0,0,.8);
+        }
+        #dialog{
+            visibility: hidden;
+            width:300px;height:300px;
+        }
+        #dialog::backdrop{
+            background: rgba(0,0,0,.8);
+        }
+    </style>
+</head>
+<body>
+<button id="show" onclick="showModal();">click me</button>
+<div id="dialog" style="">
+    click <button id="close" onclick="close1();">close</button>
+</div>
+
+<script>
+
+//    document.querySelector('#modal').showModal()
+    function showModal(){
+        console.log('show');
+        var d = document.querySelector('#close');
+        d.style.visibility = 'visible';
+    }
+    function close1(){
+        console.log('close');
+        var d = document.querySelector('#close');
+        d.style.visibility='hidden';
+    }
+</script>
+</body>
+</html>

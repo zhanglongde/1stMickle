@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>setTimeout-事件处理函数递归实现版本 防内存泄漏</title>
+</head>
+<body>
+
+
+<script>
+    // 题目要求！
+
+    function repeat (func, times, wait) {
+        return function (str){
+            if(!func || !times || !wait) return;
+
+            var count = 0;
+
+            var handler = function(){
+                func(str);
+                count++;
+                if(count<times){
+                    setTimeout(handler,wait);
+                }
+            };
+
+            setTimeout(handler,wait);
+        };
+    }
+    // 这个函数能返回一个新函数，比如这样用
+    var repeatedFun = repeat(console.log, 10, 2000);
+//    调用这个 repeatedFun ("hellworld")
+//    会alert十次 helloworld, 每次间隔5秒
+
+    repeatedFun ("hellworld");
+</script>
+</body>
+</html>

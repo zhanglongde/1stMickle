@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>比较适合多元素并排居中</title>
+    <style>
+        /* This parent can be any width and height */
+        .block {
+            text-align: center;
+
+            /* May want to do this if there is risk the container may be narrower than the element inside */
+            white-space: nowrap;
+        }
+
+        /* The ghost, nudged to maintain perfect centering */
+        .block:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -0.25em; /* Adjusts for spacing */
+        }
+
+        /* The element to be centered, can also be of any width and height */
+        .centered {
+            display: inline-block;
+            vertical-align: middle;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="block" style="height: 300px;">
+
+    <div class="centered">
+        <h1>Some text</h1>
+        <p>But he stole up to us again, and suddenly clapping his hand on my shoulder, said&mdash;"Did ye see anything looking like men going towards that ship a while ago?"</p>
+    </div>
+
+</div>
+
+<div class="block" style="height: 200px;">
+
+    <div class="centered">
+        <h1>Some text</h1>
+        <p>But he stole up to us again, and suddenly clapping his hand on my shoulder, said&mdash;"Did ye see anything looking like men going towards that ship a while ago?"</p>
+    </div>
+
+</div>
+
+<div class="block" style="height: 600px;">
+
+    <div class="centered">
+        <h1>Some text</h1>
+        <p>But he stole up to us again, and suddenly clapping his hand on my shoulder, said&mdash;"Did ye see anything looking like men going towards that ship a while ago?"</p>
+    </div>
+
+</div>
+</body>
+</html>

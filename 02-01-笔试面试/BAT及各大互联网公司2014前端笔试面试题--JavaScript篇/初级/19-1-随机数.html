@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        用js实现随机选取10--100之间的10个数字，存入一个数组，并排序。
+    </title>
+</head>
+<body>
+
+<script>
+    /**
+     * Math.random(),产生一个0-1之间的小数，要产生[0-N]的随机数，只需要将产生的0-1之间的随机数乘以N，取整数即可
+     * @returns {Array}
+     */
+    function getRandom(){
+        var arr = [];
+        for(var i =0;i<10;i++){
+            arr[i] = Math.floor(Math.random()*90)+10;
+        }
+        return arr;
+    }
+
+    var arr = getRandom();
+    console.log(arr);
+    console.log(arr.sort());//默认从小到大
+    console.log(arr.sort((a,b)=>{return b-a;}));//使用箭头函数，从大到小，注意箭头函数return语句用大括号
+</script>
+</body>
+</html>

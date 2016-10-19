@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function Animal(){
+        this.name = 'dog';
+        this.age = 10;
+    }
+    Animal.prototype.sayHello = function(){
+        console.log(this.name+':'+this.age);
+    }
+
+    function Person(){
+        this.gender = 'M';
+    }
+
+    for(var prop in Animal.prototype){
+        Person.prototype[prop] = Animal.prototype[prop];
+        Person.prototype.constructor = 'Person';
+    }
+    var p = new Person();
+    console.log(p.__proto__);
+    p.sayHello()
+</script>
+</body>
+</html>

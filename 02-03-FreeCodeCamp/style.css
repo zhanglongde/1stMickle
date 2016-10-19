@@ -1,0 +1,77 @@
+#tempWeather1,  #tempWeather2, wi-farenheight {
+    display: inline-block;
+}
+
+.well {
+
+    background-color: rgba(245, 245, 245, .4);
+    box-shadow: .2em .2em .2em #000;;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+
+body {
+    margin-top: 30px;
+    font-family: "Times new roman"
+
+
+}
+
+.day {
+    background-image: url("http://i38.photobucket.com/albums/e138/tecjohnprof/FreeCodeCamp/day_zpseqbgfie2.jpg");
+    background-color: black;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color:#44555c;
+}
+
+.night {
+    background-image: url("http://i38.photobucket.com/albums/e138/tecjohnprof/FreeCodeCamp/night_zpsifzqnlpe.jpg");
+    background-color: black;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #001233
+}
+
+.sunset {
+    background-image: url("http://i38.photobucket.com/albums/e138/tecjohnprof/FreeCodeCamp/sunset_zps8e3hjdwg.jpg");
+    background-color: black;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #e29e63;
+}
+
+.red {
+    color: red;
+}
+
+.white {
+    color: white
+}
+
+.blue {
+    color: blue
+}
+
+.btn-link {
+    padding: 0px;
+}

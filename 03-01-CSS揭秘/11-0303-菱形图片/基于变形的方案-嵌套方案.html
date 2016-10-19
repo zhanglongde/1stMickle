@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基于变形的方案</title>
+    <style>
+        div{
+            margin:100px;
+            width:400px;
+            height: 400px;
+            transform:rotate(45deg);
+            overflow:hidden;
+
+        }
+        div>img{
+            max-width: 100%;
+            transform:rotate(-45deg) scale(1.42);
+            transition:1s transform;
+        }
+        img:hover{
+            transform:scale(1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="picture"><img src="./adamcatlace.jpg" alt=""></div>
+</body>
+</html>

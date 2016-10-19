@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<select name="" id="test">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+</select>
+<input type="radio" id="male" name="gender">   <label for="male">男</label>
+<input type="radio" id="female" name="gender"> <label for="female">女</label>
+
+
+<script src="../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    $('select').on('change',function(){
+        console.log(this.value);
+    });
+
+    $('input[type=radio]').on('change',function(){
+        console.log(this);
+    });
+</script>
+</body>
+</html>

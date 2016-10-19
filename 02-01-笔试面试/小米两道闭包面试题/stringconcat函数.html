@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    // 题目要求！
+
+
+    function stringconcat(a,b){
+//      this.prefix = function(str){
+        return a+'+'+b;
+    }
+
+    //如果在函数定义时，声明的函数方法，不论是var还是this，又或者定义在prototype上，函数自身都访问不到，
+    // 函数的实例可以this和原型上的方法，而var方法只能在函数内部访问
+    //必须是后添加的方法，构造函数自身才可以访问
+    stringconcat.prefix=function(str){
+        return function (aa,bb){
+            return str+'+'+aa+'+'+bb;
+        }
+    };
+
+    var result1 = stringconcat("a", "b"); //result1 = "a+b"
+    var stringconcatWithPrefix = stringconcat.prefix("hellworld");
+    var result2 = stringconcatWithPrefix("a", "b")  // result2 = "hellworld+a+b"
+
+    console.log(result1);
+    console.log(result2);
+
+</script>
+</body>
+</html>

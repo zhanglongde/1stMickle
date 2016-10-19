@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .button{
+            position:relative;
+            text-decoration: none;
+            color:white;
+            width: 200px;
+            height: 70px;
+            /*line-height:70px;*/
+        }
+        .button:before{
+            content:'';  /*用伪元素生成一个矩形*/
+            width: 200px;
+            height: 70px;
+            position: absolute;
+            top:0;left:0;right:0;bottom:0;
+            z-index: -1;  /*将伪元素置于宿主元素之下，否则会挡住文字内容*/
+            background: #58a;
+            -webkit-transform: skew(45deg);
+            -moz-transform: skew(45deg);
+            -ms-transform: skew(45deg);
+            -o-transform: skew(45deg);
+            transform: skew(45deg);
+        }
+    </style>
+</head>
+<body>
+<a href="#" class="button">Click</a>
+</body>
+</html>

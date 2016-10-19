@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .zero-bug{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate3d(-50%,-50%,0);
+            -moz-transform: translate3d(-50%,-50%,0);
+            -ms-transform: translate3d(-50%,-50%,0);
+            -o-transform: translate3d(-50%,-50%,0);
+            transform: translate3d(-50%,-50%,0);
+            width: 300px;
+            height: 130px;
+            background: linear-gradient(#fb3 30%,#5ba 0);
+            background-size:100% 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="zero-bug">
+    如果某个色标的位置值比整个列表中，在它之前的色标的位置值都要 小，
+    则该色标的位置值会被设置为它前面所有色标位置值得最大值
+</div>
+</body>
+</html>

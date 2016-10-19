@@ -1,0 +1,112 @@
+html{
+    font-size:62.5%;
+}
+div.container{
+    width: 20rem;
+    height: 30rem;
+    margin: 10rem auto;
+    border: 1px solid #f0f0f0;
+    background: #FFFFFF;
+}
+.feature{
+    position: relative;
+    float:right;
+}
+.feature img{
+    position: absolute;
+    width:10rem;
+    height:10rem;
+    top:0;
+    right: 0;
+    display: block;
+}
+a{
+    position: static;
+}
+.feature:before{
+    z-index: 1;
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -10rem;
+    border: solid 5rem;
+    border-color: transparent transparent #fff #fff;
+}
+.feature:after{
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10rem;
+    height: 10rem;
+    background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODgwIiBoZWlnaHQ9IjcyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik03IDBoNzN2NzNsLTczLTczeiIgZmlsbD0iI0Y2RjZGNiIvPjxwYXRoIGQ9Ik04NyAwbDY1LjggNy4yIDcuMiA2NS44LTczLTczeiIgZmlsbD0iI0U5RTlFOSIvPjxwYXRoIGQ9Ik0xNjcgMGw1Ny44OCAxNC40IDE1LjEyIDU4LjYtNzMtNzN6IiBmaWxsPSIjRTBFMEUwIi8+PHBhdGggZD0iTTI0NyAwbDUwLjY4IDIxLjYgMjIuMzIgNTEuNC03My03M3oiIGZpbGw9IiNENkQ2RDYiLz48cGF0aCBkPSJNMzI3IDBsNDQuMiAyOC44IDI4LjggNDQuMi03My03M3oiIGZpbGw9IiNjY2MiLz48cGF0aCBkPSJNNDg4LTFsMjguOCA0NC4yIDQ0LjIgMjguOC03My03M3oiIGZpbGw9IiM5MDAiLz48cGF0aCBkPSJNNTY4LTFsMjEuNiA1MS40IDUxLjQgMjEuNi03My03M3oiIGZpbGw9IiNBNTAwMEIiLz48cGF0aCBkPSJNNjQ4LTFsMTQuNCA1OC42IDU4LjYgMTQuNC03My03M3oiIGZpbGw9IiNCMzAwMTkiLz48cGF0aCBkPSJNNzI4LTFsNy4yIDY1LjggNjUuOCA3LjItNzMtNzN6IiBmaWxsPSIjQkYwMDI2Ii8+PHBhdGggZD0iTTgwOC0xdjczaDczbC03My03M3oiIGZpbGw9IiNjMDMiLz48L3N2Zz4=') no-repeat;
+    background-position: -1.5rem -4rem;
+    background-size: 127rem 18rem;
+}
+
+.container:hover .feature:before {
+    -webkit-animation: corner-reverse .15s steps(10);
+    -moz-animation: corner-reverse .15s steps(10);
+    animation: corner-reverse .15s steps(10);
+    z-index: 1;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+}
+
+.container:hover .feature:after{
+    -webkit-animation: corner-forward .15s steps(10);
+    animation: corner-forward .15s steps(10);
+    -moz-animation: corner-forward .15s steps(10);
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    z-index: 2;
+}
+/**
+透明背景
+*
+*/
+@keyframes corner-forward {
+    from {
+        background-position: -1.5rem;
+    }
+
+    to {
+        background-position: -117rem;
+    }
+}
+@-webkit-keyframes corner-forward {
+    from {
+        background-position: -1.5rem;
+    }
+
+    to {
+        background-position: -117rem;
+    }
+}
+
+
+@keyframes corner-reverse {
+    from {
+        background-position: -59rem;
+    }
+
+    to {
+        background-position: -1.5rem;
+    }
+}
+
+@-webkit-keyframes corner-reverse {
+    from {
+        background-position: -59rem;
+    }
+
+    to {
+        background-position: -1.5rem;
+    }
+}
+
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div>
+    完成一个函数,接受数组作为参数,数组元素为整数或者数组,数组元素包含整数或数组,函数返回扁平化后的数组
+    如：[1, [2, [ [3, 4], 5], 6]] => [1, 2, 3, 4, 5, 6]
+</div>
+<script>
+    var data =  [1,1.5, [2, [ [3, 4], 5], 6]];
+
+    console.log(data[2]);
+    console.log(typeof data[2]);
+    //传入一个非扁平化数组，带出一个扁平化数组
+    function flat(data){
+        var LEN = data.length;
+        var result = [];
+        for(var i = 0;i<LEN;i++){
+            var curr = data[i];
+            if(typeof curr == 'number'){ //数值类型,注意不能写成Number
+                result.push(curr);
+            }else if(Array.isArray(curr)){ //数组类型
+                return result.concat(flat(curr));
+            }else {
+                console.log('unknown data type');
+            }
+        }
+        return result;
+    }
+    
+    var r = flat(data);
+    console.log(r);
+</script>
+</body>
+</html>

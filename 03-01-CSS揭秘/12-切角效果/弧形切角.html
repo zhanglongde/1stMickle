@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0;padding:0;}
+        body{font-size:20px; line-height:1.2;color:#fff;
+            text-align: center;
+        }
+        .bevel-four-corner{
+            position:absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate3d(-50%,-50%,0);
+            -moz-transform: translate3d(-50%,-50%,0);
+            -ms-transform: translate3d(-50%,-50%,0);
+            -o-transform: translate3d(-50%,-50%,0);
+            transform: translate3d(-50%,-50%,0);
+            width: 320px;
+            height: 320px;padding:10px;
+            text-shadow:0 1px 3px hsla(0,0%,0%,.3);
+            border-radius:5px;
+            background-color: #5ba;/*回退方案*/
+
+            background: radial-gradient(circle at bottom right,transparent 15px,#f73 0) bottom right,
+            radial-gradient(circle at bottom left,transparent 15px,#f73 0) bottom left,
+            radial-gradient(circle at top left,transparent 15px,#f73 0) top left,
+            radial-gradient(circle at top right,transparent 15px,#f73 0) top right; /*右下角*/
+            background-size:50% 50%;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+<div class="bevel-four-corner">
+    Hey, focus! You’re supposed to be looking at my corners,
+    not reading my text. The text is just placeholder!
+</div>
+</body>
+</html>

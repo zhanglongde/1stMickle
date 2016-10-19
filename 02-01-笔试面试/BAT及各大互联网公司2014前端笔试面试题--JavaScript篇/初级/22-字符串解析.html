@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        有这样一个URL：http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e，
+        请写一段JS程序提取URL中的各个GET参数(参数名和参数个数不确定)，
+        将其按key-value形式返回到一个json结构中，如{a:'1', b:'2', c:'', d:'xxx', e:undefined}。
+    </title>
+</head>
+<body>
+
+<script>
+    var url = 'http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e';
+
+    function getParam(url){
+        if(typeof url !== 'string'){
+            console.log('type error');
+            return;
+        }
+
+        var arr = url.split('?');//url与参数分离的数组
+        console.log(arr);
+        if(arr.length < 2){
+            console.log('parse url error!');
+            return;
+        }
+
+        var params = arr[1].split('&');//个参数对分离的数组
+        var obj = {};
+        params.forEach(function(value,index,arr){//不考虑参数重复，后面覆盖前面的情况
+            var pairs = value.split('=');//键值对分离的数组
+            if(pairs.length == 2){
+                obj[pairs[0]]=pairs[1];
+            }else if(pairs.length == 1){
+                obj[pairs[0]]='';
+            }else{
+                console.log('exception error!');
+            }
+        });
+        var json = JSON.stringify(obj);
+        console.log(json);
+    }
+
+    console.log('------------------------------');
+    var json = getParam(url);
+    console.log(json);
+</script>
+</body>
+</html>

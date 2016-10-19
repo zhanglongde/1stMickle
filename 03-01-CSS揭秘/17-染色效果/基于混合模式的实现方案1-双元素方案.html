@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        luminosity 混合模式会保留上层元素的 HSL 亮度信
+        息，并从它的下层吸取色相和饱和度信息。
+
+        混合模式不支持动画
+    </title>
+    <style>
+        a{
+            width:600px;height:400px;
+            display:block;
+            background-color: hsl(335,100%,50%);}
+        img{
+            width:600px;height:400px;
+            mix-blend-mode: luminosity;
+        }
+    </style>
+</head>
+<body>
+<a href="">
+    <img src="./tiger.jpg" alt="">
+</a>
+</body>
+</html>

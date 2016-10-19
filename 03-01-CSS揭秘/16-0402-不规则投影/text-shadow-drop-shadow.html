@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*drop-shadow用法与drop-shadow基本一致，只是没有扩张半径，inset关键字，逗号表达式*/
+        /*drop-shadow会给非透明部分加上投影*/
+        div{
+            /*font-size:20px;*/
+            width: 1.6in;
+            height: 1in;
+            color:deeppink;
+            border:5px solid;
+            text-shadow: .1em .2em yellow;
+        }
+
+        .original{
+            -webkit-filter:drop-shadow(.5em .5em .1em gray)
+        }
+
+        .compare{
+
+        }
+    </style>
+</head>
+<body>
+
+<div class="original">Yo dawg,I heard u like shadows...</div>
+<div class="compare">Yo dawg,I heard u like shadows...</div>
+</body>
+</html>

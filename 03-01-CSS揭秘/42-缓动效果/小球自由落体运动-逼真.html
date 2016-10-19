@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            /*对于webkit的linear-gradient才有起止点top bottom参数*/
+            /*标准的linear-gradient,使用to bottom,to top*/
+            background: linear-gradient(to bottom,skyblue,white 450px,yellowgreen 0);  /*最后一个色标为0，停止渐变*/
+            min-height:100vh;}
+
+        @keyframes bounce {
+            60%,80%,to{
+                transform:translateY(394px);
+                animation-timing-function: cubic-bezier(.215,.61,.355,1) ; /*ease等同于 cubic-bezier(.25,.1,.25,1)*/
+            }
+            70%{transform: translateY(300px)}
+            90%{transform:translateY(360px)}
+        }
+        .ball{  width: 0;  height: 0;margin:auto;
+            padding: 1.5em;   /*background-image默认情况下，能够渗透到padding,即padding-box*/
+            border-radius:50%;
+            background: #f00 radial-gradient(at 30% 30%,#fdd,#f00);
+            animation: bounce 3s cubic-bezier(.755,.05,.855,.06) forwards;/*动画结束停留在最后一帧*/
+
+        }
+    </style>
+</head>
+<body>
+<div class="ball"></div>
+</body>
+</html>
