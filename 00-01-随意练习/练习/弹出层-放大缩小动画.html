@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./vue.js"></script>
+    <style>
+        .mask{
+            width:100vw;
+            height:100vh;
+            opacity:0.1;
+            background-color: #000;
+            position:relative;
+        }
+        .popup{
+            position:absolute;z-index:1000;
+            left:50%;
+            right:50%;
+            /*transform: translate(-50% -50%);*/
+            transition:0.4s all ease-in-out;
+            opacity: 0;
+            transform:scale(0);
+        }
+        .popup.show{
+            opacity:1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="mask"></div>
+<div :class="['popup',{'show':isShow}]">
+    <div class="popup-title">
+        <span>{{title}}</span>
+        <span @click="closeAlert">X</span>
+    </div>
+    <div class="popup-body">主题</div>
+    <div class="popup-submit"></div>
+</div>
+
+<button @click="myAlert">弹出</button>
+
+<script>
+    new Vue({
+        el:'body',
+        data:{
+            title:'我的标题',
+            isShow:false
+        },
+        methods:{
+            myAlert:function(){
+                this.isShow = true;
+            },
+            closeAlert:function(){
+                this.isShow = false;
+            }
+        }
+    });
+</script>
+</body>
+</html>
