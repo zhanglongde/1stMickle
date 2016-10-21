@@ -38,6 +38,8 @@
         .modal-default-button{
             float:right;
         }
+        .modal-transition{
+        }
         .modal-enter,.modal-leave{
             opacity:0;
         }
@@ -50,7 +52,6 @@
 </head>
 <body>
 <script type="x/template" id="modal-template">
-
     <div class="modal-mask" v-show="show" transition="modal">
         <div class="modal-wrapper">
             <div class="modal-container">
@@ -80,6 +81,11 @@
     <button id="show-modal" @click="showModal=true">Show Modal</button>
     <modal :show.sync="showModal">
         <h3 slot="header">custom header</h3>
+        <ul slot="body">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
     </modal>
 </div>
 
