@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>树状视图</title>
+    <script src="../vue.js"></script>
+    <style>
+        body{
+            font-family:Menlo,Consolas,monospace;
+            color:#444;
+        }
+        .item{
+            cursor: pointer;
+        }
+        .bolder{
+            font-weight:bold;
+        }
+        ul{
+            padding-left:1em;
+            line-height:1.5em;
+            list-style-type:dot;
+        }
+    </style>
+</head>
+<body>
+
+
+<script type="text/x-template" id="item-template">
+    <li>
+        <div :class="{bold: isFolder}" @click="toggle" @dbclick="changeType">
+            {{model.name}}
+            <span v-if="isFolder">[{{open?'-':'+'}}]</span>
+        </div>
+    </li>
+    <ul v-show="open" v-if="isFolder">
+        <item class="item" v-for="model in model.children" :model="model"></item>
+        <li @click="addChild">+</li>
+    </ul>
+</script>
+
+
+<ul id="demo">
+    <p>(You can double click on an item to turn it into a folder.)</p>
+    <item class="item" :model="treeData"></item>
+</ul>
+
+<script>
+//    定义目录树数据结构
+    var data = {
+        name:'My Tree',
+        children:[
+            {name:'hello'},
+            {name:'wat'},
+            {
+                name:'child folder',
+                children:[{
+                    name:'child folder',
+                    children:[
+                        {name:'hello'},
+                        {name:'wat'}
+                    ]
+                },
+                    {name:'hello'},
+                    {name:'wat'},{
+                        name:'children folder',
+                        children:[
+                            {name:'hello'},
+                            {name:'wat'}
+                        ]
+                    }]
+            }
+        ]
+    };
+
+//    定义item组件
+    Vue.component('item',{
+        template:'#item-template',
+        props:{
+            model:Object
+        },
+        data:function(){
+            return{
+                open:false
+            }
+        },
+        computed:{
+            isFolder:function(){
+                return this.model.children && this.model.children.length;
+            }
+        },
+        methods:{
+            toggle:function(){
+                if(this.isFolder){
+                    this.open = !this.open;
+                }
+            },
+            changeType:function(){
+                if(!this.isFolder){
+                    Vue.set(this.model,'children',[]);
+                    this.addChild();
+                    this.open = true;
+                }
+            },
+            addChild:function(){
+                this.model.children.push({
+                    name:'new stuff'
+                });
+            }
+        }
+    });
+
+//    实例
+    var demo=new Vue({
+        el:'#demo',
+        data:{
+            treeData:data
+        }
+    });
+</script>
+
+</body>
+</html>
