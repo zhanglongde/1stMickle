@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>target tab效果</title>
+    <style>
+        *{  margin:0;padding:0;  box-sizing: border-box;}
+        a{text-decoration: none;}
+
+        .tab{border:1px solid #9c9c9c;box-shadow:0 0 4px #9c9c9c;
+          width:700px;height:300px;  margin:30px auto;  position:relative;}
+        .tab-page{  width: 100%;height:70%;  }
+
+        .tab .tab-page a{ position:absolute;
+            width:245px;height:30px;display:inline-block;text-align: center;
+            background: #fff;color:#9c9c9c;  padding:5px;border:1px dashed #9c9c9c;}
+        .tab .tab-page:nth-of-type(1) a{  top:0;left:0;  background-color: #28d;}
+        .tab .tab-page:nth-of-type(2) a{  top:0;left:32.5%;  background-color: #9c3;}
+        .tab .tab-page:nth-of-type(3) a{  top:0;left:65%;  background-color: #d66;}
+        .tab .tab-page:nth-of-type(2) .tab-body{background-color: #28d;}
+        .tab .tab-page:nth-of-type(2) .tab-body{background-color: #9c3;}
+        .tab .tab-page:nth-of-type(3) .tab-body{background-color: #d66;}
+
+        .tab-page:target a
+        {  background: #28d;color:#fff;  }
+
+
+        .tab-page .tab-body{
+            /*display: none;*/
+            visibility: hidden;
+            padding:10px;
+            background-color: #fff;  /*遮住下层*/
+            position:absolute;top:30px;left:0;
+            /*opacity:0;*/
+            transition:all .4s ease;
+            /*z-index:1;*/
+            width:100%;
+            height:270px;
+        }
+        .tab-page:target .tab-body{
+            /*display:block;*/
+            visibility: visible;
+            /*z-index:2;*/
+            /*opacity:1;*/
+        }
+    </style>
+</head>
+<body>
+<div class="tab">
+    <div class="tab-page" id="tab1">
+        <a href="#tab1">tab1</a>
+        <div class="tab-body">
+            tab1
+        </div>
+    </div>
+    <div class="tab-page" id="tab2">
+        <a href="#tab2">tab2</a>
+        <div class="tab-body">
+            tab2
+        </div>
+    </div>
+    <div class="tab-page" id="tab3">
+        <a href="#tab3">tab3</a>
+        <div class="tab-body">
+           tab3
+        </div>
+    </div>
+</div>
+</body>
+</html>

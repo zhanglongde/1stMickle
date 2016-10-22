@@ -21,6 +21,7 @@
 
 .accordionMenu h2 a{
     background-color: #8f8f8f;
+    background:linear-gradient(top,#cecece, #8f8f8f);
     color:#424242;
     border-radius:5px;
     display:block;
@@ -33,6 +34,7 @@
 .accordionMenu h2 a:hover,
 .accordionMenu h2 a:active{
     background-color: #28d;
+    background:linear-gradient(top,#6bb2ff, #2288dd);
     color:#fff;
 }
 
