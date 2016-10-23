@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>渐变、border的对比色可以借助chrome浏览器进行调整</title>
+    <style>
+        *{margin:0;padding:0;}
+        /*input[type=submit]{border:none;}*/ /*采用深色作为层次border*/
+        .btn:active,
+        input:focus
+        {outline:none;}/*去除outline,要具体到具体状态*/
+
+        .search-container{margin:30px auto;width:450px;
+            padding: 8px;/*撑出高度*/
+            background-color: #f6f6f6;
+            background-image: -webkit-linear-gradient(top, #f6f6f6, #eae8e8);
+            background-image: linear-gradient(top, #f6f6f6, #eae8e8);
+
+            border-radius:10px;
+            /*整体立体效果的关键所在*/
+            box-shadow: 0 3px 3px rgba(255,255,255,.1), 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 5px #444;
+        }
+        .search{  width: 330px;  height: 20px;  padding:10px 5px;  border-radius:3px;}
+        .search::-webkit-input-placeholder{color:#999;font-weight: bold;}
+
+        .btn{width:100px;height:42px;cursor:pointer;
+            text-transform:uppercase;/*小写转化为大写*/
+            color:#fafafa;
+            background-color: #0483a0;/*回退效果*/
+            background-image:linear-gradient(top,#31b2c3, #0483a0);/*不起作用*/
+            background-image: -webkit-linear-gradient(top, #31b2c3, #0483a0);
+
+            border: 1px solid #00748f;/*形成外围多出一层相对于背景色更深的border*/
+            border-radius:3px;
+        }
+        .btn:hover,
+        .btn:focus{
+            background-color: #31b2c3;/*回退效果*/
+            /*形成从上到深色到浅色 渐变的立体效果*/
+            background-image: -webkit-linear-gradient(top, #0483a0, #31b2c3);
+        }
+        .btn:active{
+            /*形成点击的时候，上边沿向内阴影的塌陷效果*/
+            box-shadow:0 1px 4px rgba(0,0,0,0.5) inset;}
+        .button{float:right;}
+    </style>
+</head>
+<body>
+<form action="" class="search-container">
+    <div class="search-content">
+        <input type="text" class="search" required oninvalid="setCustomValidity('输入搜索内容')" placeholder="Search for CSS3, HTML5, jQuery ...">
+        <input type="submit" class="btn button" value="go">
+    </div>
+</form>
+</body>
+</html>
