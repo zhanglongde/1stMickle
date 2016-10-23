@@ -1,0 +1,79 @@
+
+/*加载幻灯片动画*/
+@keyframes load {
+    0%{opacity:0;}
+    50%{opacity:0;}
+    100%{opacity:1;}
+}
+
+/*从右往左动画*/
+@keyframes toRight {
+   0%{left:-500px;}
+   100%{left:0;}
+}
+
+/*从左往右动画*/
+@keyframes toLeft {
+   0%{left:500px;}
+   100%{left:0;}
+}
+
+/*从上往下动画*/
+@keyframes toBottom {
+    0%{top:-350px;}
+    100%{top:0;}
+}
+
+/*从下往上动画*/
+@keyframes toTop {
+    0%{top:350px;}
+    100%{top:0;}
+}
+
+/*逐渐放大动画*/
+@keyframes zoomIn {
+    0%{transform:scale(0);}
+    100%{transform:none;}
+    /*100%{transform:scale(1);}*/
+}
+
+/*逐渐缩小动画2倍到正常大小*/
+@keyframes zoomOut {
+    0%{transform:scale(2);}
+    100%{transform:none;}
+    /*100%{transform:scale(1);}*/
+}
+
+/*逆时针旋转，并逐渐放大的动画*/
+@keyframes rotateBigger {
+    0%{transform:rotate(-360deg) scale(0);}
+    100%{transform:none;}
+}
+
+@keyframes notTarget {
+    0%{z-index:52;}
+    100%{z-index:52;}
+}
+
+
+.slider-wrapper{animation:load 1s ease-in-out 1;}
+
+ul.s-slides li.toRight:target{animation:toRight 1s ease 1;z-index:60;}
+ul.s-slides li.toLeft:target{animation:toLeft 1s ease 1;z-index:60;}
+ul.s-slides li.toBottom:target{animation:toBottom 1s ease 1;z-index:60;}
+ul.s-slides li.toTop:target{animation:toTop 1s ease 1;z-index:60;}
+ul.s-slides li.zoomIn:target{animation:zoomIn 1s ease 1;z-index:60;
+    top:4px; /*为什么？可能是放大时候圆心的问题*/
+    /*transform-origin: 254px 179px;*/
+}
+ul.s-slides li.zoomOut:target{animation:zoomOut 1s ease 1;z-index:60;}
+ul.s-slides li.rotateBigger:target{animation:rotateBigger 1s ease 1;z-index:60;
+    top:4px;
+    /*transform-origin: 254px 183px;*/
+}
+
+/*默认第一张在最上面。如果不加，则默认最后一张根据后来居上原则，在最上面*/
+ul.s-slides li.toRight{z-index:51;}
+/*保证每次切换，底图始终是上一次的图片*/
+/*选中的图片在动画，失去选中target的图片也同时在动画*/
+ul.s-slides li:not(:target){animation: notTarget 1s ease 1;}
