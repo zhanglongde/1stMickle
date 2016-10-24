@@ -1,0 +1,39 @@
+button {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 10px 30px;
+    background: #0090d3;
+    color: #fff;
+    border: 1px solid #0090d3;
+    border-radius: 3px;
+    outline: 0;
+    transition: .4s ease-out;
+}
+
+button:hover,
+button:focus {
+    opacity: 0.8;
+    cursor: pointer;
+    transition: .15s ease-in;
+}
+
+template {
+    display: none;
+}
+
+
+.btn-danger {
+    padding: 5px 15px;
+    border: 1px solid salmon;
+    background: salmon;
+}
+
+.btn-save {
+    border: 1px solid #0090d3;
+    background: #0090d3;
+}
+
+.btn-close {
+    border: 1px solid #ccc;
+    background: #ccc;
+}

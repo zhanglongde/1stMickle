@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D模态框</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <modal-dialog v-bind:show.sync="show">
+        <header class="dialog-header" slot="header">
+            <h1 class="dialog-title">dialog title</h1>
+        </header>
+        <div class="dialog-body" slot="body">
+            dialog body
+        </div>
+    </modal-dialog>
+
+    <button @click="showModal">弹出模态框</button>
+
+    <template id="dialog-template">
+        <div class="dialogs">
+            <div class="dialog" v-bind:class="{'dialog-active':show}">
+                <div class="dialog-content">
+                    <div class="close rotate">
+                        <span @click="close">&times;</span>
+                    </div>
+                    <slot name="header"></slot>
+                    <slot name="body"></slot>
+                    <slot name="footer"></slot>
+                </div>
+            </div>
+            <div class="dialog-overlay"></div>
+        </div>
+    </template>
+
+</div>
+
+
+<script>
+    //注册全局模态组件
+    Vue.component('modal-dialog',{
+        template:'#dialog-template',
+        props: ['show'],
+        methods:{
+            close:function(){
+                this.show = false
+            }
+        }
+    })
+
+    new Vue({
+        el:'#app',
+        data:{
+            show:false
+        },
+        methods:{
+            showModal: function () {
+                this.show = true;
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, simhei, Arial, sans-serif;
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    margin-top: 10px;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
