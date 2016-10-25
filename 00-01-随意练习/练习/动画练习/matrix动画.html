@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0;padding:0;}
+        body>:nth-child(1){margin:50px auto;}
+        .avatar{
+            width:100px;height:100px;
+            background-image: -webkit-linear-gradient(top,#5080a0,#90c300);
+            border:2px solid #eee;
+            /*border-radius:51px;*/
+
+            transition:all .5s;
+
+            text-align:center;
+            line-height:100px;
+
+        }
+
+        .avatar:hover{
+            transform:matrix(0,1,1,0,0,1); /*y=x镜像对称*/
+        }
+    </style>
+</head>
+<body>
+<div class="avatar">你好</div>
+</body>
+</html>
