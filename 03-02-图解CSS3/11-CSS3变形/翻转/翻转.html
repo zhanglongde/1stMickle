@@ -2,7 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        技巧：与屏幕垂直即不可见
+        包裹元素作为舞台元素，同时作为图片元素和文字元素的定位参照，容器元素设置变形类型和渐变属性
+        正常状态为：图片贴在屏幕上，文字元素朝屏幕外旋转90度，使得文字元素不可见（正面朝下），
+                   形成文字元素与图片元素垂直
+        hover状态：整个容器元素屏幕里面旋转90度，使得文字元素贴在屏幕上，图片元素与屏幕垂直
+                   作为修饰:hover的同时，border和border-shadow也在变化
+    </title>
     <style>
         .wrapper {
             display: inline-block;
@@ -19,40 +26,13 @@
             -o-perspective: 4000px;
             perspective: 4000px;
         }
-        .rect{
-            /*width: 300px;*/
-            /*height: 400px;*/
-            /*background-color: #9c3;*/
-        }
         .item{
             height: 100px;
             /*其所有子元素位于3D空间中*/
             -webkit-transform-style: preserve-3d;
-            -moz-transform-style: preserve-3d;
-            -ms-transform-style: preserve-3d;
-            -o-transform-style: preserve-3d;
             transform-style: preserve-3d;
             -webkit-transition: -webkit-transform .6s;
-            -moz-transition: -moz-transform .6s;
-            -ms-transition: -ms-transform .6s;
-            -o-transition: -o-transform .6s;
             transition: transform .6s;
-        }
-        .item:hover {
-            -webkit-transform: translateZ(-50px) rotateX(95deg);
-            -moz-transform: translateZ(-50px) rotateX(95deg);
-            -ms-transform: translateZ(-50px) rotateX(95deg);
-            -o-transform: translateZ(-50px) rotateX(95deg);
-            transform: translateZ(-50px) rotateX(95deg);
-        }
-        .item:hover img {
-            box-shadow: none;
-            border-radius: 15px;
-        }
-
-        .item:hover .information {
-            box-shadow: 0px 3px 8px rgba(0,0,0,0.3);
-            border-radius: 3px;
         }
         .item img {
             display: block;
@@ -86,31 +66,36 @@
             box-shadow: none;
             background: rgb(236,241,244);
             background: -webkit-linear-gradient(to bottom,  rgba(236,241,244,1) 0%,rgba(190,202,217,1) 100%);
-            background: -ms-linear-gradient(to bottom,  rgba(236,241,244,1) 0%,rgba(190,202,217,1) 100%);
             background: linear-gradient(to bottom,  rgba(236,241,244,1) 0%,rgba(190,202,217,1) 100%);
 
             -webkit-transform: rotateX(-90deg) translateZ(50px);
-            -moz-transform: rotateX(-90deg) translateZ(50px);
-            -ms-transform: rotateX(-90deg) translateZ(50px);
-            -o-transform: rotateX(-90deg) translateZ(50px);
             transform: rotateX(-90deg) translateZ(50px);
             -webkit-transition: all .6s;
-            -moz-transition: all .6s;
-            -ms-transition: all .6s;
-            -o-transition: all .6s;
             transition: all .6s;
 
         }
 
+        .item:hover {
+            -webkit-transform: translateZ(-50px) rotateX(95deg);
+            transform: translateZ(-50px) rotateX(95deg);
+        }
+        .item:hover img {
+            box-shadow: none;
+            border-radius: 15px;
+        }
+        .item:hover .information {
+            box-shadow: 0px 3px 8px rgba(0,0,0,0.3);
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body>
 <div class="wrapper">
-    <div class="item rect">
+    <div class="item">
         <img src="../../contact.png" />
-    <span class="information">
-      <strong>Contact Form</strong> The easiest way to add a contact form to your shop.
-    </span>
+        <span class="information">
+          <strong>Contact Form</strong> The easiest way to add a contact form to your shop.
+        </span>
     </div>
 </div>
 </body>
