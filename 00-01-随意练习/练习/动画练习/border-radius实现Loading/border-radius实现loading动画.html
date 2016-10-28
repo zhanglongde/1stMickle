@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @keyframes rotateCircle {
+            0%{transform:rotate(-360deg); opacity:0.7;}
+            100%{transform:rotate(0deg);opacity:1;}
+        }
+        .loading{
+            width:50px;height:50px;
+            margin:100px auto;
+            border:2px solid #9c3;
+            border-right-color:transparent;
+            border-radius:26px;
+
+        }
+        .loading:hover{
+            animation:rotateCircle .418s linear infinite;
+        }
+    </style>
+</head>
+<body>
+<div class="loading"></div>
+</body>
+</html>
