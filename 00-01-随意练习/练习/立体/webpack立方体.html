@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        并没有使用景深perspective，却有立体感觉。
+        3d旋转 3d缩放 3d位移   解析几何透视原理：沿X轴和Y轴旋转，更有透视感觉
+        径向渐变
+        伪类嵌套伪元素
+        BEM命名方法:.block{} .block__element{} .block--modifier{}
+        https://webpack2.leanapp.cn/
+
+        figure元素 标签规定独立的流内容（图像、图表、照片、代码等等）。
+                   figure 元素的内容应该与主内容相关，但如果被删除，则不应对文档流产生影响。
+    </title>
+    <style>
+        .cube{position:relative;display:inline-block;transform-style: preserve-3d;
+            transform: rotateX(-33.5deg) rotateY(45deg);
+            /*transform: perspective(430px) rotateX(-33.5deg) rotateY(45deg);*/
+            /*transform: perspective(430px) rotateX(-134.5deg) rotateY(53deg);*/
+            /*transform: perspective(430px) rotateX(-62.5deg) rotateY(53deg);*/
+        }
+
+        .cube__outer,.cube__inner{display:inline-block;transform-style: preserve-3d;  transition:transform 750ms;  }
+        .cube__inner{position:absolute;top:0;left:0;}
+
+        .cube__face{position:absolute;  width: 100%;  height: 100%;backface-visibility: hidden;
+        background:-webkit-radial-gradient(transparent 30%,rgba(5,17,53,0.2) 100%);}
+        .cube__face:after{content:'';position:absolute;display:block;  width: 100%;  height: 100%;  transition:background 750ms;}
+        .cube:hover .cube__face:after{  background:rgba(126,169,232,0.5);  }
+
+
+        .cube--dark .cube__outer .cube__face:after {
+            background: rgba(126, 169, 232, 0.5); }
+        .cube--dark .cube__inner .cube__face:after {
+            background: rgba(16, 58, 177, 0.4); }
+        .cube--dark:hover .cube__outer .cube__face:after {
+            background: rgba(51, 51, 51, 0.2); }
+        .cube--dark:hover .cube__inner .cube__face:after {
+            background: rgba(243, 156, 18, 0.6); }
+        .cube--light .cube__outer .cube__face:after {
+            background: rgba(141, 214, 249, 0.4); }
+        .cube--light .cube__inner .cube__face:after {
+            background: rgba(29, 120, 193, 0.8); }
+        .cube--light:hover .cube__outer .cube__face:after {
+            background: rgba(141, 214, 249, 0.3); }
+        .cube--light:hover .cube__inner .cube__face:after {
+            background: #1D78C1; }
+    </style>
+</head>
+<body>
+<span class="cube cube--dark splash__cube" style="width:150px;margin-left:75px;padding-bottom:75px;">
+    <figure class="cube__outer" style="width:150px;height:150px;transform:translateX(-50%)
+              scale3d(1,1,1)
+              rotateX(0deg)
+              rotateY(0deg)
+              rotateZ(0deg);">
+        <section class="cube__face" style="transform:rotateX(0deg) translateZ(75px);"></section>
+        <section class="cube__face" style="transform:rotateX(-90deg) translateZ(75px);"></section>
+        <section class="cube__face" style="transform:rotateX(90deg) translateZ(75px);"></section>
+        <section class="cube__face" style="transform:rotateY(-90deg) translateZ(75px);"></section>
+        <section class="cube__face" style="transform:rotateY(90deg) translateZ(75px);"></section>
+        <section class="cube__face" style="transform:rotateY(180deg) translateZ(75px);"></section>
+    </figure>
+    <figure class="cube__inner" style="width:150px;height:150px;transform:translateX(-50%)
+              scale3d(0.5,0.5,0.5)
+              rotateX(0deg)
+              rotateY(0deg)
+              rotateZ(0deg);">
+        <section class="cube__face" style="transform:rotateX(0deg) translateZ(75px);"></section>
+        <section class="cube__face" style="transform:rotateX(-90deg) translateZ(75px);"></section>
+        <section class="cube__face" style="transform:rotateX(90deg) translateZ(75px);"></section>
+        <section class="cube__face" style="transform:rotateY(-90deg) translateZ(75px);"></section>
+        <section class="cube__face" style="transform:rotateY(90deg) translateZ(75px);"></section>
+        <section class="cube__face" style="transform:rotateY(180deg) translateZ(75px);"></section>
+    </figure>
+</span>
+
+<figure>test</figure>
+<span>hello</span>
+</body>
+</html>
