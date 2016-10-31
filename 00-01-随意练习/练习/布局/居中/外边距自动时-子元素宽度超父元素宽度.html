@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        margin:auto 由浏览器自动计算居中
+        当子元素宽度大于父元素宽度时，子元素左上角与父元素左上角对其，向下向右撑开父元素
+        如果父元素设置overflow:hidden,则子元素超出的宽度和高度将被截断
+    </title>
+    <style>
+        .container{
+            position:absolute;
+            margin:auto;
+            top:0;left:0;bottom:0;right:0;
+
+            width:500px;height:500px;
+            background-color: #58a;
+
+            overflow: hidden;
+        }
+
+        .content{
+            margin:auto;
+            width:600px;height:600px;
+            background-color: #e66;
+            border:2px solid #9c3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content">content</div>
+</div>
+</body>
+</html>
