@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        hack方式
+        active结合transition
+
+        无法反转
+    </title>
+    <style>
+        .container{
+            /*容器居中*/
+            position:absolute;
+            margin:auto;top:0;left:0;right:0;bottom:0;
+            width:500px;height:500px;
+
+            background-color: #eee;
+            box-shadow: 5px 0 5px rgba(0,0,0,0.4);
+            border-radius:3px;
+        }
+
+        /*内容居中*/
+        .container:before{
+            content:'';
+            display:inline-block;
+            height:100%;
+            vertical-align: middle; /*必须*/
+        }
+        .content{
+            display:inline-block;
+            vertical-align: middle; /*可以不写*/
+            width:300px;
+            height:50px;
+        }
+
+        .btn{
+            /*布局*/
+            display:inline-block;width:100px;height:40px;
+
+            /*文字居中*/
+            line-height:40px;text-align: center;
+
+            /*皮肤*/
+            background-color: #9c3;  color:#fff;
+            border-radius:3px;box-shadow:0 3px 0 #983;
+
+            /*动态样式*/
+            outline:none;
+        }
+        .btn:hover{
+            cursor:pointer;
+        }
+        .btn+.to-be-changed{
+            transition:all 0s 9999999s;
+        }
+        .btn:active + .to-be-changed{
+            transition:all 0s;
+            background-color: #58a;
+            color:#fff;
+        }
+        
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <span class="btn" tabindex="0">Click me!</span>
+        <span class="to-be-changed">hello,morning!</span>
+    </div>
+</div>
+</body>
+</html>
