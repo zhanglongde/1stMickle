@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{font-size:16px;}
+        h1{font-size:1.5em;}
+
+        .center{
+            position: absolute;
+            top:50%;left: 50%;
+            transform:translate(-50%,-50%);
+        }
+        .underline{
+            width:400px;height:200px;
+            text-align: center;
+
+            color:white;
+            background-color: #85a;
+            font-size:110%;
+            border-radius:.5em;
+        }
+
+        .u1,.u2,.u3{
+            cursor:pointer;
+            position:absolute;left:16%;
+            text-shadow:.1em 0 #00aabb,-.1em 0 #00aabb;
+            transition:1s;
+        }
+        .u1{
+            top:10%;
+            background: -webkit-linear-gradient(white,white) no-repeat;
+            background-size:100% 1px;
+            background-position: -10em 1.15em;
+        }
+        .u1:hover{  background-position: 0 1.15em;}
+
+        .u2{
+            top:38%;
+            background:
+                    linear-gradient(90deg,white 50%, transparent 0) repeat-x;
+            background-size: .2em 2px;
+            background-position: -3em 1.15em;
+        }
+        .u2:hover{
+            background-position: 0 1.15em;
+        }
+
+        .u3{
+            top:66%;
+            background:
+                    linear-gradient(-45deg, transparent 40%, white 0, white 60%, transparent 0) 0 1em,
+                    linear-gradient(45deg, transparent 40%, white 0, white 60%, transparent 0) .1em 1em;
+            background-repeat: repeat-x;
+            background-size: .15em .1em;
+            background-position: -3em 1.15em;
+        }
+        .u3:hover{
+            background:
+                    linear-gradient(-45deg, transparent 40%, deeppink 0, deeppink 60%, transparent 0) 0 1em,
+                    linear-gradient(45deg, transparent 40%, deeppink 0, deeppink 60%, transparent 0) .1em 1em;
+            background-repeat: repeat-x;
+            background-size: .15em .1em;
+            background-position: 0 1.15em;
+        }
+    </style>
+</head>
+<body>
+<div class="underline center">
+    <h1 class="u1">.underline1-ajkpys</h1>
+    <h1 class="u2">.underline2-ajkpys</h1>
+    <h1 class="u3">.underline3-ajkpys</h1>
+</div>
+</body>
+</html>

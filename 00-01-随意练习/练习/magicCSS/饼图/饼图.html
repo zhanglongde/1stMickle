@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        利用伪类、线性渐变、旋转实现 hover动态饼图
+        分三层：背景色 背景图片 遮罩层
+    </title>
+    <style>
+        .center{
+            position:absolute;
+            top:50%;left:50%;
+            transform:translate(-50%,-50%);
+        }
+        .pie{
+            width:200px;
+            overflow: hidden;
+            line-height:200px;/*通过文字框撑开div高度*/
+            text-align:center;
+
+            border-radius:50%;
+            color:white;
+            font-size:200%;
+            background-color: yellowgreen;  /*最底层*/
+            background-image: linear-gradient(to right,transparent 50%,#655 0);/*第二层*/
+            cursor:pointer;
+        }
+
+        /*遮住右半圆的矩形遮罩层*/
+        .pie:before{
+            content:'';
+            position:absolute;
+            top:0;left:50%;
+            width:50%;height:100%;
+
+            background-color: inherit;
+
+            transform-origin:left;
+            z-index:-1;
+            transform:rotate(0.1turn); /*旋转36度*/
+        }
+
+        .pie:hover:before{
+            transition:all 1s;
+            transform:rotate(.45turn);
+        }
+    </style>
+</head>
+<body>
+<div class="pie center">.pie</div>
+</body>
+</html>

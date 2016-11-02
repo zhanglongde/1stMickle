@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="" rel="stylesheet">
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body{
+            padding: 10px;
+        }
+
+        input[type="search"]::-webkit-search-decoration,
+        input[type="search"]::-webkit-search-cancel-button,
+        input[type="search"]::-webkit-search-results-button,
+        input[type="search"]::-webkit-search-results-decoration {
+            -webkit-appearance: none;
+        }
+
+        input[type=search] {
+            -webkit-appearance:textfield;
+            -webkit-box-sizing:content-box;
+        }
+
+        input[type="search"] {
+            display: block;
+            height: 33px;
+            border: 1px solid #e9e9e9;
+            border-radius: 3px;
+            width: 100%;
+            outline: none;
+            transition: border .3s;
+            position: relative;
+        }
+
+        input[type="search"]::-webkit-input-placeholder {
+            color: #c9c9c9;
+        }
+
+        input[type="search"]::-webkit-search-cancel-button:after {
+            content: '';
+            display: block;
+            width: 14px;
+            height: 14px;
+
+            background-image: url(http://a1.itc.cn/sceapp/fws/wap2.1.10/phone/images/tg_bg04_b202f6d3142273d155926022fe29874b.gif);
+            background-repeat: no-repeat;
+            background-size: 14px;
+            background-position: all left;
+        }
+
+        input[type="search"]::-webkit-search-results-decoration:after {
+            content: '';
+            position: relative;
+            display: block;
+            width: 17px;
+            height: 17px;
+            margin-left: 5px;
+            margin-right: 2px;
+            top: 0;
+
+            background-image: url(http://a1.itc.cn/sceapp/fws/wap2.1.10/phone/images/tg_bg13_f623876c116de4034c359b75df3ac642.png);
+            background-repeat: no-repeat;
+            background-size: 34px;
+            background-position: 0 0;
+        }
+
+        input[type="search"]:focus::-webkit-search-results-decoration:after{
+            background-position: -17px 0;
+        }
+
+        input[type="search"]:focus {
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+<body>
+<input type="search" results placeholder="请输入手机号码"></input>
+</body>
+</html>
