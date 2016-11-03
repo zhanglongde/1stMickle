@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0;padding:0;border:none;outline:none;}
+
+        .center-v{margin:auto;}
+        p,p+div{width:200px;height:50px;
+
+            text-align: center;
+
+            background-color: #9c3;color:#fff;}
+
+        .center{position:absolute;margin:auto;top:0;left:0;right:0;bottom:0;}
+        .circle{width:200px;height:200px;
+
+            text-align:center;line-height:200px;
+            font-size:150px;
+            text-shadow:0 0 20px rgba(0,0,0,.5);
+
+            border-radius:50%;
+            /*background-color: #58a;*/
+            color:#fff;
+            cursor:pointer;
+            box-shadow: 0 0 20px rgba(0,0,0,.8);
+        }
+    </style>
+    <script src="http://www.heibaipig.com/front/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+</head>
+<body>
+<p class="center-v">鼠标拖动箭头旋转</p>
+<div class="center-v" id="show">旋转<span></span>度</div>
+<div class="circle center" id="demo">↑</div>
+
+
+<script>
+$(function () {
+
+
+    $(window).on("mousedown",function (ev) {
+        ev = ev || window.event;
+//        console.log(ev)
+        document.onmouseover = function (ev) {
+        
+        }
+        document.onmouseup=function () {
+        
+        }
+    });
+});
+</script>
+</body>
+</html>

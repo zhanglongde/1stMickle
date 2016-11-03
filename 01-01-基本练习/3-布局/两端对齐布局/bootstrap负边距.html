@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        boostrap 百分比宽度，微调
+        排列元素设置相等的padding
+        内容器col，作为辅助作用，用左右负边距抵消首排列元素的padding-left和右排列元素的padding-right
+        外容器container,左右两边的padding用于调节首位排列元素需要留出的padding
+
+        横向上从外带内形成:可调节正padding-负margin-正padding(container-row-col)的布局
+    </title>
+    <style>
+        *{margin:0;padding:0;
+            /*box-sizing: content-box;*/
+        }
+
+        .center1{
+            position:absolute; /*用相对定位不行*/
+            margin:auto;top:0;left:0;right:0;bottom:0;
+        }
+        .br1{border-radius:3px;} /*LESS SASS中可以用变量定义*/
+
+        /*外容器*/
+        .container{
+            /*position: relative;*/
+            width:800px;
+            height:300px;
+            /*用于控制首位元素是否留出padding或者留出不一样的padding*/
+            /*padding:0 5px;*/
+            overflow: hidden;
+
+            background-color: #9c3;
+            color:#fff;
+        }
+        /*内容器inner*/
+        .row {
+            height:80%;
+            margin:0 -15px;
+        }
+        /*排列元素*/
+        .col{
+            float:left;
+            width:21.14%;height:80%;
+            margin-top:45px;padding:0 15px;
+            border:1px solid #bdbdbd;
+
+            background-color: #58a;
+            /*background-origin: content-box;*/
+            background-clip: content-box;
+        }
+    </style>
+</head>
+<body>
+<div class="container center1 br1">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+    </div>
+</div>
+</body>
+</html>

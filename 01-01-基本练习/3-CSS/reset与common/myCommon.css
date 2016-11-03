@@ -1,0 +1,39 @@
+/*标签通用*/
+html,body{
+    font-family: "Microsoft YaHei",Helvetica,Arial,Sans-Serif;
+    font-size:14px;
+    line-height:1.42857143;
+
+    color:#333;
+    background-color: #fff;
+}
+button{color:#fff !important;  }
+button:hover,button:focus,button:active{
+    color:#fff;
+}
+textarea{overflow: auto;resize:vertical;}
+
+/*类通用*/
+.center1{
+    position:absolute;
+    margin:auto;top:0;left:0;right:0;bottom:0;
+}
+.fl{float:left;}
+.fr{float:right;}
+.clearFix{clear: both;}
+
+.hide{display:block !important;}
+.show{display:none !important;}
+
+.ellipsis{
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.break{
+    word-break:break-all;
+    word-wrap:break-word;
+}
+
+.by-container{margin:auto;}
+.br1{border-radius:3px;} /*LESS SASS中可以用变量定义*/

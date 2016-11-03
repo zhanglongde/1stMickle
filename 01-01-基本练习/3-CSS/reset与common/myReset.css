@@ -1,0 +1,16 @@
+/*Reset*/
+html,body,
+div,ul,li,ol,dl,dd,dt,h1,h2,h3,h4,h5,h6,form,p,pre,table,tbody,thead,tfoot,tr,td,
+section,header,footer,article,aside,nav,audio,video,
+span,a,
+button,label,input,select,textarea,
+img
+{   margin:0;padding:0;
+    border:none;outline:none;
+}
+/*button,input,select{border:none;outline:none;}*/
+a{text-decoration: none;}
+dl,ol,ul,li{list-style: none;}
+table{border-collapse: collapse;border-spacing: 0;}
+button,select{text-transform: none;} /*文字大小写*/
+input,select{-webkit-appearance: none;} /*手机上的显示外观*/

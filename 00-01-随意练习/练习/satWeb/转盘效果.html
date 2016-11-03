@@ -1,0 +1,77 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <style>
+        * { padding:0; margin:0; text-align:center}
+        #demo {
+            position:absolute;
+            left:50%; margin-left:-100px; width:200px; height:200px; top:50%; margin-top:-100px;
+            background:#F00; cursor:pointer;
+            font-size:10rem; color:#fff; line-height:200px;
+            border-radius:100px;
+            -webkit-transform-origin:center center;
+            -webkit-box-shadow:0 0 10px rgba(0,0,0,1);
+            text-shadow:0 0 20px rgba(0,0,0,1);
+        }
+
+        #show span {
+            color:#F00;
+            font-weight:bold
+        }
+        p {
+            font-size:36px;
+            font-weight:bold;
+        }
+    </style>
+    <script src="http://www.heibaipig.com/front/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+</head>
+<body>
+<p>鼠标拖动旋转</p>
+<div id="show">当前箭头角度：<span>0</span>°</div>
+<div id="demo">↑</div>
+</body>
+<script>
+    $(function(){
+        var eDeg = 0, oDeg = 0;
+        var obj = $('#demo');
+//        计算圆心坐标
+        var oX = obj.offset().left + obj.width()/2;
+        var oY = obj.offset().top + obj.height()/2;
+
+        $(window).mousedown(function(ev){
+            ev = ev || window.event;
+            var sDeg = calDeg(pageXY(ev).y, pageXY(ev).x);
+
+            document.onmousemove = function (ev){
+                eDeg = calDeg(pageXY(ev).y, pageXY(ev).x);
+                var _deg = oDeg + eDeg - sDeg
+                obj.css('transform','rotate('+ _deg +'deg)');
+                $('#show span').html(_deg.toFixed(0)); /*四舍五入*/
+            };
+
+            document.onmouseup = function (){
+//                保存终值
+                oDeg = oDeg + eDeg - sDeg;
+                document.onmousemove = null;
+                document.mousedown = null;
+            };
+            return false;
+        });
+
+//        计算鼠标位置到圆心位置的长度和宽度
+        function pageXY(ev){
+            var x = ev.pageX - oX;
+            var y = ev.pageY - oY;
+            return {'x': x, 'y': y};
+        }
+
+//        计算旋转角度
+        function calDeg(x, y){
+            return -Math.atan2(y, x)/Math.PI * 180;
+        }
+    });
+</script>
+</html>
