@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            window.latitude = position.coords.latitude;//纬度
+            window.longitude = position.coords.longitude;//经度
+            console.log(latitude)
+            console.log(longitude)
+        });
+    }
+
+</script>
+</body>
+</html>

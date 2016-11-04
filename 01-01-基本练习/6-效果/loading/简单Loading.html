@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .loading{
+            position: absolute;
+            left:60px;
+            top:60px;
+            width:40px;
+            backgrouond:#efefef;
+        }
+        .loading>span{
+            display: inline-block;
+            width:10px;
+            height:10px;
+            border-radius: 50%;
+            background:#ccc;
+            -webkit-animation: beat 0.7s infinite linear;
+            animation: beat 0.7s infinite linear;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+
+        .loading>span:nth-child(odd){
+            -webkit-animation-delay: 0s;
+            animation-delay: 0s;
+        }
+        .loading>span:nth-child(even){
+            -webkit-animation-delay: 0.35s;
+            animation-delay: 0.35s;
+        }
+
+        @-webkit-keyframes beat{
+            50%{
+                -webkit-transform: scale(0.75);
+                opacity: 0.2;
+            }
+            100%{
+                -webkit-transform: scale(1);
+                opacity: 1;
+            }
+        }
+        @keyframes beat{
+            50%{
+                transform: scale(0.75);
+                opacity: 0.2;
+            }
+            100%{
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="loading">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+</body>
+</html>

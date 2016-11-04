@@ -1,0 +1,2019 @@
+.aenima {
+    font-family: Helvetica, Arial, serif;
+    font-size: 13px;
+    overflow: hidden;
+    opacity: 1;
+    transition-duration: .75s;
+    transition-property: opacity, transform, -webkit-transform, -moz-transform, -ms-transform
+}
+
+.aenima label {
+    cursor: pointer
+}
+
+.aenima input[type=range] {
+    background: 0 0;
+    border: 0;
+    border-radius: 1em;
+    cursor: ew-resize;
+    width: 100%;
+    -moz-appearance: none;
+    -webkit-appearance: none
+}
+
+.aenima input[type=range]::-webkit-slider-runnable-track {
+    background: 0 0;
+    border-radius: 1em;
+    border: solid 1px #fff;
+    -webkit-appearance: none
+}
+
+.aenima input[type=range]::-webkit-slider-thumb {
+    background: #fff;
+    border: 0;
+    border-radius: 1em;
+    height: 1em;
+    width: 1em;
+    -webkit-appearance: none
+}
+
+.aenima input[type=range]::-moz-range-track {
+    background: 0 0;
+    border-radius: 1em;
+    border: solid 1px #fff;
+    height: 1em;
+    -moz-appearance: none
+}
+
+.aenima input[type=range]::-moz-range-thumb {
+    background: #fff;
+    border: 0;
+    border-radius: 1em;
+    height: 1em;
+    width: 1em;
+    -moz-appearance: none
+}
+
+.aenima input[type=range]::-moz-range-thumb:checked {
+    transform: rotate(0deg)
+}
+
+.aenima button {
+    background: #222;
+    border-radius: 2px;
+    border: solid 1px #888;
+    color: #ddd;
+    padding-top: 3px
+}
+
+.aenima button.wide {
+    display: block;
+    font-size: 1.2em;
+    margin: .5em auto 0;
+    width: 75%
+}
+
+.aenima button:active {
+    background: #353535
+}
+
+.aenima button.glyphicon {
+    background: 0 0;
+    border: 0;
+    color: #aaa;
+    font-size: 1.2em;
+    padding: 5px 12px;
+    position: relative
+}
+
+.aenima button.center {
+    display: block;
+    margin: 0 auto
+}
+
+.aenima label[title] {
+    cursor: help
+}
+
+.aenima, .aenima .fill {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0
+}
+
+.aenima .hide {
+    display: none
+}
+
+.aenima .row {
+    display: block;
+    padding-bottom: 1em;
+    position: relative
+}
+
+.aenima .scrollable::-webkit-scrollbar {
+    width: 10px
+}
+
+.aenima .scrollable::-webkit-scrollbar-thumb {
+    background: #d0d0d0;
+    border-radius: 10px
+}
+
+.aenima .scrollable::-webkit-scrollbar-track {
+    border: solid 1px #d0d0d0;
+    border-radius: 10px
+}
+
+.aenima .flex-image-wrapper img {
+    width: 100%
+}
+
+.aenima .transparent {
+    opacity: 0;
+    pointer-events: none
+}
+
+.aenima .fadable {
+    transition-duration: .2s;
+    transition-property: opacity
+}
+
+.aenima button.bordered-icon {
+    border: solid .125em #fff;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 1.85em;
+    margin-left: 1em;
+    margin-top: -2px;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    height: 1.85em;
+    width: 1.85em;
+    line-height: 1.6em;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .27), 0 .1em 0 rgba(0, 0, 0, .04), 0 0 12px rgba(0, 0, 0, .21)
+}
+
+.safari .aenima button.bordered-icon {
+    line-height: 1.5em
+}
+
+.aenima button.bordered-icon i {
+    top: .08em
+}
+
+.firefox .aenima button.bordered-icon i {
+    top: .1em
+}
+
+.safari .aenima button.bordered-icon i {
+    top: .07em
+}
+
+/*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%
+}
+
+body {
+    margin: 0
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+    display: block
+}
+
+audio, canvas, progress, video {
+    display: inline-block;
+    vertical-align: baseline
+}
+
+audio:not([controls]) {
+    display: none;
+    height: 0
+}
+
+[hidden], template {
+    display: none
+}
+
+a {
+    background: 0 0
+}
+
+a:active, a:hover {
+    outline: 0
+}
+
+abbr[title] {
+    border-bottom: 1px dotted
+}
+
+b, strong {
+    font-weight: 700
+}
+
+dfn {
+    font-style: italic
+}
+
+h1 {
+    font-size: 2em;
+    margin: .67em 0
+}
+
+mark {
+    background: #ff0;
+    color: #000
+}
+
+small {
+    font-size: 80%
+}
+
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline
+}
+
+sup {
+    top: -.5em
+}
+
+sub {
+    bottom: -.25em
+}
+
+img {
+    border: 0
+}
+
+svg:not(:root) {
+    overflow: hidden
+}
+
+figure {
+    margin: 1em 40px
+}
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0
+}
+
+pre {
+    overflow: auto
+}
+
+code, kbd, pre, samp {
+    font-family: monospace, monospace;
+    font-size: 1em
+}
+
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0
+}
+
+button {
+    overflow: visible
+}
+
+button, select {
+    text-transform: none
+}
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer
+}
+
+button[disabled], html input[disabled] {
+    cursor: default
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+    border: 0;
+    padding: 0
+}
+
+input {
+    line-height: normal
+}
+
+input[type=checkbox], input[type=radio] {
+    box-sizing: border-box;
+    padding: 0
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+    height: auto
+}
+
+input[type=search] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box
+}
+
+input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {
+    -webkit-appearance: none
+}
+
+fieldset {
+    border: 1px solid silver;
+    margin: 0 2px;
+    padding: .35em .625em .75em
+}
+
+legend {
+    border: 0;
+    padding: 0
+}
+
+textarea {
+    overflow: auto
+}
+
+optgroup {
+    font-weight: 700
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+td, th {
+    padding: 0
+}
+
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url(../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.eot);
+    src: url(../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix) format("embedded-opentype"), url(../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.woff) format("woff"), url(../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.ttf) format("truetype"), url(../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format("svg")
+}
+
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.glyphicon-asterisk:before {
+    content: "\2a"
+}
+
+.glyphicon-plus:before {
+    content: "\2b"
+}
+
+.glyphicon-euro:before {
+    content: "\20ac"
+}
+
+.glyphicon-minus:before {
+    content: "\2212"
+}
+
+.glyphicon-cloud:before {
+    content: "\2601"
+}
+
+.glyphicon-envelope:before {
+    content: "\2709"
+}
+
+.glyphicon-pencil:before {
+    content: "\270f"
+}
+
+.glyphicon-glass:before {
+    content: "\e001"
+}
+
+.glyphicon-music:before {
+    content: "\e002"
+}
+
+.glyphicon-search:before {
+    content: "\e003"
+}
+
+.glyphicon-heart:before {
+    content: "\e005"
+}
+
+.glyphicon-star:before {
+    content: "\e006"
+}
+
+.glyphicon-star-empty:before {
+    content: "\e007"
+}
+
+.glyphicon-user:before {
+    content: "\e008"
+}
+
+.glyphicon-film:before {
+    content: "\e009"
+}
+
+.glyphicon-th-large:before {
+    content: "\e010"
+}
+
+.glyphicon-th:before {
+    content: "\e011"
+}
+
+.glyphicon-th-list:before {
+    content: "\e012"
+}
+
+.glyphicon-ok:before {
+    content: "\e013"
+}
+
+.glyphicon-remove:before {
+    content: "\e014"
+}
+
+.glyphicon-zoom-in:before {
+    content: "\e015"
+}
+
+.glyphicon-zoom-out:before {
+    content: "\e016"
+}
+
+.glyphicon-off:before {
+    content: "\e017"
+}
+
+.glyphicon-signal:before {
+    content: "\e018"
+}
+
+.glyphicon-cog:before {
+    content: "\e019"
+}
+
+.glyphicon-trash:before {
+    content: "\e020"
+}
+
+.glyphicon-home:before {
+    content: "\e021"
+}
+
+.glyphicon-file:before {
+    content: "\e022"
+}
+
+.glyphicon-time:before {
+    content: "\e023"
+}
+
+.glyphicon-road:before {
+    content: "\e024"
+}
+
+.glyphicon-download-alt:before {
+    content: "\e025"
+}
+
+.glyphicon-download:before {
+    content: "\e026"
+}
+
+.glyphicon-upload:before {
+    content: "\e027"
+}
+
+.glyphicon-inbox:before {
+    content: "\e028"
+}
+
+.glyphicon-play-circle:before {
+    content: "\e029"
+}
+
+.glyphicon-repeat:before {
+    content: "\e030"
+}
+
+.glyphicon-refresh:before {
+    content: "\e031"
+}
+
+.glyphicon-list-alt:before {
+    content: "\e032"
+}
+
+.glyphicon-lock:before {
+    content: "\e033"
+}
+
+.glyphicon-flag:before {
+    content: "\e034"
+}
+
+.glyphicon-headphones:before {
+    content: "\e035"
+}
+
+.glyphicon-volume-off:before {
+    content: "\e036"
+}
+
+.glyphicon-volume-down:before {
+    content: "\e037"
+}
+
+.glyphicon-volume-up:before {
+    content: "\e038"
+}
+
+.glyphicon-qrcode:before {
+    content: "\e039"
+}
+
+.glyphicon-barcode:before {
+    content: "\e040"
+}
+
+.glyphicon-tag:before {
+    content: "\e041"
+}
+
+.glyphicon-tags:before {
+    content: "\e042"
+}
+
+.glyphicon-book:before {
+    content: "\e043"
+}
+
+.glyphicon-bookmark:before {
+    content: "\e044"
+}
+
+.glyphicon-print:before {
+    content: "\e045"
+}
+
+.glyphicon-camera:before {
+    content: "\e046"
+}
+
+.glyphicon-font:before {
+    content: "\e047"
+}
+
+.glyphicon-bold:before {
+    content: "\e048"
+}
+
+.glyphicon-italic:before {
+    content: "\e049"
+}
+
+.glyphicon-text-height:before {
+    content: "\e050"
+}
+
+.glyphicon-text-width:before {
+    content: "\e051"
+}
+
+.glyphicon-align-left:before {
+    content: "\e052"
+}
+
+.glyphicon-align-center:before {
+    content: "\e053"
+}
+
+.glyphicon-align-right:before {
+    content: "\e054"
+}
+
+.glyphicon-align-justify:before {
+    content: "\e055"
+}
+
+.glyphicon-list:before {
+    content: "\e056"
+}
+
+.glyphicon-indent-left:before {
+    content: "\e057"
+}
+
+.glyphicon-indent-right:before {
+    content: "\e058"
+}
+
+.glyphicon-facetime-video:before {
+    content: "\e059"
+}
+
+.glyphicon-picture:before {
+    content: "\e060"
+}
+
+.glyphicon-map-marker:before {
+    content: "\e062"
+}
+
+.glyphicon-adjust:before {
+    content: "\e063"
+}
+
+.glyphicon-tint:before {
+    content: "\e064"
+}
+
+.glyphicon-edit:before {
+    content: "\e065"
+}
+
+.glyphicon-share:before {
+    content: "\e066"
+}
+
+.glyphicon-check:before {
+    content: "\e067"
+}
+
+.glyphicon-move:before {
+    content: "\e068"
+}
+
+.glyphicon-step-backward:before {
+    content: "\e069"
+}
+
+.glyphicon-fast-backward:before {
+    content: "\e070"
+}
+
+.glyphicon-backward:before {
+    content: "\e071"
+}
+
+.glyphicon-play:before {
+    content: "\e072"
+}
+
+.glyphicon-pause:before {
+    content: "\e073"
+}
+
+.glyphicon-stop:before {
+    content: "\e074"
+}
+
+.glyphicon-forward:before {
+    content: "\e075"
+}
+
+.glyphicon-fast-forward:before {
+    content: "\e076"
+}
+
+.glyphicon-step-forward:before {
+    content: "\e077"
+}
+
+.glyphicon-eject:before {
+    content: "\e078"
+}
+
+.glyphicon-chevron-left:before {
+    content: "\e079"
+}
+
+.glyphicon-chevron-right:before {
+    content: "\e080"
+}
+
+.glyphicon-plus-sign:before {
+    content: "\e081"
+}
+
+.glyphicon-minus-sign:before {
+    content: "\e082"
+}
+
+.glyphicon-remove-sign:before {
+    content: "\e083"
+}
+
+.glyphicon-ok-sign:before {
+    content: "\e084"
+}
+
+.glyphicon-question-sign:before {
+    content: "\e085"
+}
+
+.glyphicon-info-sign:before {
+    content: "\e086"
+}
+
+.glyphicon-screenshot:before {
+    content: "\e087"
+}
+
+.glyphicon-remove-circle:before {
+    content: "\e088"
+}
+
+.glyphicon-ok-circle:before {
+    content: "\e089"
+}
+
+.glyphicon-ban-circle:before {
+    content: "\e090"
+}
+
+.glyphicon-arrow-left:before {
+    content: "\e091"
+}
+
+.glyphicon-arrow-right:before {
+    content: "\e092"
+}
+
+.glyphicon-arrow-up:before {
+    content: "\e093"
+}
+
+.glyphicon-arrow-down:before {
+    content: "\e094"
+}
+
+.glyphicon-share-alt:before {
+    content: "\e095"
+}
+
+.glyphicon-resize-full:before {
+    content: "\e096"
+}
+
+.glyphicon-resize-small:before {
+    content: "\e097"
+}
+
+.glyphicon-exclamation-sign:before {
+    content: "\e101"
+}
+
+.glyphicon-gift:before {
+    content: "\e102"
+}
+
+.glyphicon-leaf:before {
+    content: "\e103"
+}
+
+.glyphicon-fire:before {
+    content: "\e104"
+}
+
+.glyphicon-eye-open:before {
+    content: "\e105"
+}
+
+.glyphicon-eye-close:before {
+    content: "\e106"
+}
+
+.glyphicon-warning-sign:before {
+    content: "\e107"
+}
+
+.glyphicon-plane:before {
+    content: "\e108"
+}
+
+.glyphicon-calendar:before {
+    content: "\e109"
+}
+
+.glyphicon-random:before {
+    content: "\e110"
+}
+
+.glyphicon-comment:before {
+    content: "\e111"
+}
+
+.glyphicon-magnet:before {
+    content: "\e112"
+}
+
+.glyphicon-chevron-up:before {
+    content: "\e113"
+}
+
+.glyphicon-chevron-down:before {
+    content: "\e114"
+}
+
+.glyphicon-retweet:before {
+    content: "\e115"
+}
+
+.glyphicon-shopping-cart:before {
+    content: "\e116"
+}
+
+.glyphicon-folder-close:before {
+    content: "\e117"
+}
+
+.glyphicon-folder-open:before {
+    content: "\e118"
+}
+
+.glyphicon-resize-vertical:before {
+    content: "\e119"
+}
+
+.glyphicon-resize-horizontal:before {
+    content: "\e120"
+}
+
+.glyphicon-hdd:before {
+    content: "\e121"
+}
+
+.glyphicon-bullhorn:before {
+    content: "\e122"
+}
+
+.glyphicon-bell:before {
+    content: "\e123"
+}
+
+.glyphicon-certificate:before {
+    content: "\e124"
+}
+
+.glyphicon-thumbs-up:before {
+    content: "\e125"
+}
+
+.glyphicon-thumbs-down:before {
+    content: "\e126"
+}
+
+.glyphicon-hand-right:before {
+    content: "\e127"
+}
+
+.glyphicon-hand-left:before {
+    content: "\e128"
+}
+
+.glyphicon-hand-up:before {
+    content: "\e129"
+}
+
+.glyphicon-hand-down:before {
+    content: "\e130"
+}
+
+.glyphicon-circle-arrow-right:before {
+    content: "\e131"
+}
+
+.glyphicon-circle-arrow-left:before {
+    content: "\e132"
+}
+
+.glyphicon-circle-arrow-up:before {
+    content: "\e133"
+}
+
+.glyphicon-circle-arrow-down:before {
+    content: "\e134"
+}
+
+.glyphicon-globe:before {
+    content: "\e135"
+}
+
+.glyphicon-wrench:before {
+    content: "\e136"
+}
+
+.glyphicon-tasks:before {
+    content: "\e137"
+}
+
+.glyphicon-filter:before {
+    content: "\e138"
+}
+
+.glyphicon-briefcase:before {
+    content: "\e139"
+}
+
+.glyphicon-fullscreen:before {
+    content: "\e140"
+}
+
+.glyphicon-dashboard:before {
+    content: "\e141"
+}
+
+.glyphicon-paperclip:before {
+    content: "\e142"
+}
+
+.glyphicon-heart-empty:before {
+    content: "\e143"
+}
+
+.glyphicon-link:before {
+    content: "\e144"
+}
+
+.glyphicon-phone:before {
+    content: "\e145"
+}
+
+.glyphicon-pushpin:before {
+    content: "\e146"
+}
+
+.glyphicon-usd:before {
+    content: "\e148"
+}
+
+.glyphicon-gbp:before {
+    content: "\e149"
+}
+
+.glyphicon-sort:before {
+    content: "\e150"
+}
+
+.glyphicon-sort-by-alphabet:before {
+    content: "\e151"
+}
+
+.glyphicon-sort-by-alphabet-alt:before {
+    content: "\e152"
+}
+
+.glyphicon-sort-by-order:before {
+    content: "\e153"
+}
+
+.glyphicon-sort-by-order-alt:before {
+    content: "\e154"
+}
+
+.glyphicon-sort-by-attributes:before {
+    content: "\e155"
+}
+
+.glyphicon-sort-by-attributes-alt:before {
+    content: "\e156"
+}
+
+.glyphicon-unchecked:before {
+    content: "\e157"
+}
+
+.glyphicon-expand:before {
+    content: "\e158"
+}
+
+.glyphicon-collapse-down:before {
+    content: "\e159"
+}
+
+.glyphicon-collapse-up:before {
+    content: "\e160"
+}
+
+.glyphicon-log-in:before {
+    content: "\e161"
+}
+
+.glyphicon-flash:before {
+    content: "\e162"
+}
+
+.glyphicon-log-out:before {
+    content: "\e163"
+}
+
+.glyphicon-new-window:before {
+    content: "\e164"
+}
+
+.glyphicon-record:before {
+    content: "\e165"
+}
+
+.glyphicon-save:before {
+    content: "\e166"
+}
+
+.glyphicon-open:before {
+    content: "\e167"
+}
+
+.glyphicon-saved:before {
+    content: "\e168"
+}
+
+.glyphicon-import:before {
+    content: "\e169"
+}
+
+.glyphicon-export:before {
+    content: "\e170"
+}
+
+.glyphicon-send:before {
+    content: "\e171"
+}
+
+.glyphicon-floppy-disk:before {
+    content: "\e172"
+}
+
+.glyphicon-floppy-saved:before {
+    content: "\e173"
+}
+
+.glyphicon-floppy-remove:before {
+    content: "\e174"
+}
+
+.glyphicon-floppy-save:before {
+    content: "\e175"
+}
+
+.glyphicon-floppy-open:before {
+    content: "\e176"
+}
+
+.glyphicon-credit-card:before {
+    content: "\e177"
+}
+
+.glyphicon-transfer:before {
+    content: "\e178"
+}
+
+.glyphicon-cutlery:before {
+    content: "\e179"
+}
+
+.glyphicon-header:before {
+    content: "\e180"
+}
+
+.glyphicon-compressed:before {
+    content: "\e181"
+}
+
+.glyphicon-earphone:before {
+    content: "\e182"
+}
+
+.glyphicon-phone-alt:before {
+    content: "\e183"
+}
+
+.glyphicon-tower:before {
+    content: "\e184"
+}
+
+.glyphicon-stats:before {
+    content: "\e185"
+}
+
+.glyphicon-sd-video:before {
+    content: "\e186"
+}
+
+.glyphicon-hd-video:before {
+    content: "\e187"
+}
+
+.glyphicon-subtitles:before {
+    content: "\e188"
+}
+
+.glyphicon-sound-stereo:before {
+    content: "\e189"
+}
+
+.glyphicon-sound-dolby:before {
+    content: "\e190"
+}
+
+.glyphicon-sound-5-1:before {
+    content: "\e191"
+}
+
+.glyphicon-sound-6-1:before {
+    content: "\e192"
+}
+
+.glyphicon-sound-7-1:before {
+    content: "\e193"
+}
+
+.glyphicon-copyright-mark:before {
+    content: "\e194"
+}
+
+.glyphicon-registration-mark:before {
+    content: "\e195"
+}
+
+.glyphicon-cloud-download:before {
+    content: "\e197"
+}
+
+.glyphicon-cloud-upload:before {
+    content: "\e198"
+}
+
+.glyphicon-tree-conifer:before {
+    content: "\e199"
+}
+
+.glyphicon-tree-deciduous:before {
+    content: "\e200"
+}
+
+.bezierizer-canvas-container {
+    height: 310px;
+    position: relative;
+    width: 310px
+}
+
+.bezierizer-canvas-container canvas {
+    background: #555;
+    height: 310px;
+    width: 310px
+}
+
+.bezierizer-canvas-container .bezierizer-handle-container {
+    height: 330px;
+    left: -10px;
+    position: absolute;
+    top: -10px;
+    width: 330px
+}
+
+.bezierizer-canvas-container .bezierizer-handle {
+    border-radius: 12px;
+    border: solid 4px #333;
+    height: 24px;
+    left: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    width: 24px
+}
+
+.bezierizer-canvas-container .bezierizer-handle, .bezierizer-canvas-container .bezierizer-handle:active {
+    background: #999
+}
+
+.bezierizer-canvas-container .bezierizer-handle:focus {
+    outline: 0
+}
+
+.tabs .tab.tab-show {
+    font-weight: 700
+}
+
+.tabs .tab-content {
+    display: none
+}
+
+.tabs .tab-content.tab-show {
+    display: block
+}
+
+.stylie-container-view.loading {
+    opacity: 0;
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -webkit-transform: scale(0);
+    transform: scale(0)
+}
+
+.stylie-container-view.aenima.embedded {
+    transition-duration: 200ms
+}
+
+.stylie-container-view.aenima.standalone .workspace {
+    top: 5em
+}
+
+.stylie-container-view .sidebar-controls {
+    bottom: 0;
+    position: absolute;
+    right: 0
+}
+
+.stylie-container-view .sidebar-controls .bordered-icon {
+    background: 0 0;
+    margin: 0 .75em .75em 0
+}
+
+.modal-view {
+    color: #666;
+    cursor: pointer;
+    position: absolute;
+    z-index: 20
+}
+
+.modal-view h1, .modal-view h2 {
+    color: #333;
+    font-weight: lighter
+}
+
+.modal-view h1 {
+    font-size: 3em
+}
+
+.modal-view h2 {
+    font-size: 2em
+}
+
+.modal-view a:active, .modal-view a:hover, .modal-view a:link, .modal-view a:visited {
+    color: #0052ff;
+    font-weight: 700;
+    text-decoration: none
+}
+
+.modal-view a:hover {
+    color: #001fff
+}
+
+.modal-view p {
+    font-size: 1.1em;
+    line-height: 1.4em
+}
+
+.modal-view .content-wrapper {
+    margin: 1.5em;
+    overflow: auto
+}
+
+.modal-view .modal-wrapper {
+    border-radius: .5em;
+    bottom: 3em;
+    cursor: auto;
+    left: 3em;
+    position: absolute;
+    right: 3em;
+    top: 3em;
+    background-size: 100%;
+    background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0%, #fff), color-stop(100%, #e5e5e5));
+    background-image: -moz-linear-gradient(top, #fff, #e5e5e5);
+    background-image: -webkit-linear-gradient(top, #fff, #e5e5e5);
+    background-image: linear-gradient(to bottom, #fff, #e5e5e5)
+}
+
+.stylie-header-view {
+    color: #454545;
+    height: 5em;
+    padding-left: 4em;
+    z-index: 20;
+    background-size: 100%;
+    background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0%, #fff), color-stop(100%, #e5e5e5));
+    background-image: -moz-linear-gradient(top, #fff, #e5e5e5);
+    background-image: -webkit-linear-gradient(top, #fff, #e5e5e5);
+    background-image: linear-gradient(to bottom, #fff, #e5e5e5);
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center
+}
+
+.stylie-header-view.fill {
+    bottom: auto
+}
+
+.stylie-header-view h1 {
+    font-weight: lighter;
+    font-size: 1.4em;
+    padding-left: .3em
+}
+
+.stylie-header-view a:active, .stylie-header-view a:hover, .stylie-header-view a:link, .stylie-header-view a:visited {
+    color: #454545;
+    font-weight: 700;
+    text-decoration: none
+}
+
+.stylie-header-view a:hover {
+    color: #111
+}
+
+.stylie-header-view img.logo {
+    margin-top: .3em;
+    width: 85%
+}
+
+.stylie-header-view .help {
+    background-size: 100%;
+    background-image: -moz-radial-gradient(50% 50%, #ffda7c, #f5bd2e);
+    background-image: -webkit-radial-gradient(50% 50%, #ffda7c, #f5bd2e);
+    background-image: radial-gradient(50% 50%, #ffda7c, #f5bd2e)
+}
+
+.stylie-header-view .help:active {
+    background-size: 100%;
+    background-image: -moz-radial-gradient(50% 50%, #f5bd2e, #ffda7c);
+    background-image: -webkit-radial-gradient(50% 50%, #f5bd2e, #ffda7c);
+    background-image: radial-gradient(50% 50%, #f5bd2e, #ffda7c)
+}
+
+.stylie-header-view .reset {
+    background-size: 100%;
+    background-image: -moz-radial-gradient(50% 50%, #ff6f6f, #ff4e4e);
+    background-image: -webkit-radial-gradient(50% 50%, #ff6f6f, #ff4e4e);
+    background-image: radial-gradient(50% 50%, #ff6f6f, #ff4e4e)
+}
+
+.stylie-header-view .reset:active {
+    background-size: 100%;
+    background-image: -moz-radial-gradient(50% 50%, #ff4e4e, #ff6f6f);
+    background-image: -webkit-radial-gradient(50% 50%, #ff4e4e, #ff6f6f);
+    background-image: radial-gradient(50% 50%, #ff4e4e, #ff6f6f)
+}
+
+.stylie-help-view img {
+    display: block;
+    margin: 3em auto
+}
+
+.stylie-help-view img.screenshot {
+    max-width: 550px;
+    width: 50%
+}
+
+.stylie-help-view table {
+    color: #333;
+    font-size: 1.3em;
+    margin: 2em auto
+}
+
+.stylie-help-view table th {
+    padding-bottom: 1.5em
+}
+
+.stylie-help-view table tr td {
+    padding-bottom: 8px
+}
+
+.stylie-help-view table tr td:first-child {
+    font-weight: 700;
+    padding-right: 40px
+}
+
+.stylie-help-view ul {
+    line-height: 1.8em
+}
+
+.stylie-help-view ul li {
+    list-style-type: none
+}
+
+.stylie-help-view ul.bulleted {
+    padding-left: 2.5em
+}
+
+.stylie-help-view ul.bulleted li {
+    list-style-type: disc
+}
+
+.stylie-help-view ul.bulleted .nested {
+    list-style-type: none
+}
+
+.stylie-help-view ul.bulleted .nested li {
+    list-style-type: circle
+}
+
+.stylie-help-view ul.bulleted .nested ul {
+    padding-left: 1.5em
+}
+
+.stylie-help-view .badge img {
+    margin: 0
+}
+
+.standalone .stylie-help-view .modal-wrapper {
+    top: 8em
+}
+
+.stylie-too-small-message-view {
+    color: #666;
+    display: none;
+    padding: 2em;
+    z-index: 20;
+    background-size: 100%;
+    background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0%, #fff), color-stop(100%, #e5e5e5));
+    background-image: -moz-linear-gradient(top, #fff, #e5e5e5);
+    background-image: -webkit-linear-gradient(top, #fff, #e5e5e5);
+    background-image: linear-gradient(to bottom, #fff, #e5e5e5)
+}
+
+@media (max-width: 600px) {
+    .stylie-too-small-message-view {
+        display: block
+    }
+}
+
+.stylie-too-small-message-view h1, .stylie-too-small-message-view h2 {
+    color: #333;
+    font-weight: lighter
+}
+
+.stylie-too-small-message-view a:active, .stylie-too-small-message-view a:hover, .stylie-too-small-message-view a:link, .stylie-too-small-message-view a:visited {
+    color: #0052ff;
+    font-weight: 700;
+    text-decoration: none
+}
+
+.stylie-too-small-message-view a:hover {
+    color: #001fff
+}
+
+.stylie-too-small-message-view p {
+    font-size: 1.1em;
+    line-height: 1.4em
+}
+
+.control-panel-view {
+    background: #353535;
+    color: #ddd;
+    overflow: hidden;
+    width: 360px;
+    z-index: 20
+}
+
+.control-panel-view h1 {
+    font-size: 1.8em;
+    font-weight: lighter;
+    margin-top: 0;
+    text-align: center
+}
+
+.control-panel-view p {
+    line-height: 1.4em
+}
+
+.control-panel-view p:first-child {
+    margin-top: 0
+}
+
+.control-panel-view p:last-child {
+    margin-bottom: 0
+}
+
+.control-panel-view ul {
+    margin: 0;
+    padding: 0
+}
+
+.control-panel-view button.glyphicon {
+    top: .2em
+}
+
+.control-panel-view label.invalid input {
+    background: #ff8;
+    color: red
+}
+
+.control-panel-view label[data-label-text].invalid:after {
+    color: red;
+    content: attr(data-label-text);
+    display: block;
+    padding-top: .5em
+}
+
+.control-panel-view input[type=email], .control-panel-view input[type=number], .control-panel-view input[type=password], .control-panel-view input[type=text] {
+    background: #555;
+    border: 0;
+    border-radius: 2px;
+    color: #ddd;
+    padding: 4px
+}
+
+.control-panel-view input[type=number] {
+    width: 3.5em
+}
+
+.control-panel-view textarea {
+    background: #555;
+    border: 0;
+    border-radius: 2px;
+    color: #ddd;
+    padding: 4px;
+    font-family: Monaco, monospace;
+    height: 12em;
+    resize: vertical;
+    width: calc(100% - (8px))
+}
+
+.control-panel-view select {
+    background: #555;
+    border: solid 1px #555;
+    color: #ddd;
+    font-size: 1.2em;
+    margin-left: .7em;
+    width: 12em
+}
+
+.control-panel-view hr {
+    border-color: #555;
+    margin-bottom: 1em;
+    width: 100%
+}
+
+.control-panel-view .error {
+    color: red
+}
+
+.control-panel-view .btn-hidden-label-wrapper span {
+    color: #aaa;
+    left: .3em;
+    opacity: 0;
+    position: relative;
+    transition: all .3s
+}
+
+.control-panel-view .btn-hidden-label-wrapper:hover span {
+    left: 0;
+    opacity: 1
+}
+
+.control-panel-view .row span {
+    display: block;
+    padding-bottom: .8em
+}
+
+.control-panel-view .row span:after {
+    content: ":"
+}
+
+.control-panel-view .row input.mid {
+    width: 14em
+}
+
+.control-panel-view .row input.wide {
+    width: calc(100% - (8px))
+}
+
+.control-panel-view .row.checkbox-wrapper {
+    font-size: 1.2em
+}
+
+.control-panel-view .row.checkbox-wrapper span {
+    display: inline
+}
+
+.control-panel-view .row.checkbox-wrapper span:after {
+    content: ""
+}
+
+.control-panel-view .tabs-container, .control-panel-view .tabs-content-container {
+    list-style-type: none
+}
+
+.control-panel-view .tabs-container {
+    background: #1a1a1a;
+    overflow: auto
+}
+
+.control-panel-view .tabs-container .tab {
+    border-radius: 2px 2px 0 0;
+    float: left;
+    margin: 0 4px
+}
+
+.control-panel-view .tabs-container .tab a:active, .control-panel-view .tabs-container .tab a:hover, .control-panel-view .tabs-container .tab a:link, .control-panel-view .tabs-container .tab a:visited {
+    color: #ddd;
+    display: block;
+    height: 1.2em;
+    font-weight: 700;
+    padding: 8px;
+    text-decoration: none
+}
+
+.control-panel-view .tabs-container .tab .glyphicon {
+    top: -1px
+}
+
+.control-panel-view .tabs-container .tab-show {
+    background: #353535;
+    border: solid 1px #454545;
+    border-bottom-color: #353535
+}
+
+.control-panel-view .tabs-container .tab-show a:active, .control-panel-view .tabs-container .tab-show a:hover, .control-panel-view .tabs-container .tab-show a:link, .control-panel-view .tabs-container .tab-show a:visited {
+    padding: 7px
+}
+
+.control-panel-view .tab-content {
+    padding: 1em
+}
+
+.control-panel-view .tab-content a:active, .control-panel-view .tab-content a:hover, .control-panel-view .tab-content a:link, .control-panel-view .tab-content a:visited {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none
+}
+
+.control-panel-view .tab-content a:hover {
+    text-decoration: underline
+}
+
+.control-panel-view .tab-content > .row:last-child {
+    padding-bottom: 0
+}
+
+.stylie-control-panel-view {
+    border-radius: 4px;
+    bottom: auto
+}
+
+.stylie-control-panel-view .tabs-container {
+    cursor: move;
+    padding-top: 2em
+}
+
+.bezierizer-view .bezierizer-canvas-container {
+    margin: 0 auto
+}
+
+.bezierizer-view .bezierizer-container {
+    padding-bottom: 1em
+}
+
+.bezierizer-view .row.handles span {
+    display: inline;
+    padding-left: .25em
+}
+
+.stylie-keyframes-panel-view {
+    position: relative
+}
+
+.stylie-keyframes-panel-view .add-keyframe-wrapper {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 20
+}
+
+.stylie-keyframes-panel-view .keyframes-list {
+    margin-top: 1.5em;
+    max-height: 40em;
+    overflow: auto
+}
+
+.stylie-keyframe-form-view {
+    border-left: solid 0 #999;
+    margin: 1em 0;
+    overflow: auto;
+    padding-left: 0;
+    position: relative;
+    transition-duration: .1s;
+    transition-property: padding-left, border
+}
+
+.stylie-keyframe-form-view form {
+    overflow: auto;
+    padding-bottom: 2px
+}
+
+.stylie-keyframe-form-view:first-child {
+    padding-top: 0
+}
+
+.stylie-keyframe-form-view:first-child .millisecond-input-container {
+    cursor: auto
+}
+
+.stylie-keyframe-form-view:first-child .property {
+    float: left;
+    width: 30%
+}
+
+.stylie-keyframe-form-view .millisecond-input-container {
+    cursor: pointer
+}
+
+.stylie-keyframe-form-view .millisecond-input-container input.millisecond, .stylie-keyframe-form-view .millisecond-input-container.editing .millisecond-display {
+    display: none
+}
+
+.stylie-keyframe-form-view .millisecond-input-container.editing input.millisecond {
+    display: inline
+}
+
+.stylie-keyframe-form-view:nth-child(2) .delete-wrapper {
+    display: none
+}
+
+.stylie-keyframe-form-view .millisecond-input-container {
+    display: block
+}
+
+.stylie-keyframe-form-view .millisecond-input-container .unit-label {
+    color: #aaa
+}
+
+.stylie-keyframe-form-view .delete-wrapper {
+    position: absolute;
+    right: 0;
+    top: -.5em
+}
+
+.stylie-keyframe-form-view .property {
+    margin-top: 1em
+}
+
+.stylie-keyframe-form-view .property span {
+    float: left;
+    line-height: 1.75em;
+    width: 1.8em
+}
+
+.stylie-keyframe-form-view .property span:after {
+    content: ":"
+}
+
+.stylie-keyframe-form-view.selected {
+    border-left-width: 2px;
+    padding-left: .8em
+}
+
+.motion-panel-view > .row:last-child {
+    padding-bottom: .3em
+}
+
+.motion-panel-view .checkbox-wrapper:after {
+    content: attr(data-label-text);
+    font-size: .75em;
+    left: 0;
+    opacity: 0;
+    position: relative;
+    transition: all .3s
+}
+
+.motion-panel-view .checkbox-wrapper:hover:after {
+    left: .3em;
+    opacity: 1
+}
+
+.export-panel-view fieldset {
+    border: 0;
+    padding: 0 0 1.5em
+}
+
+.export-panel-view .export-control-containers {
+    list-style-type: none
+}
+
+.export-panel-view .export-control-containers > li {
+    background: #444;
+    border-radius: 2px;
+    padding: .5em
+}
+
+.export-panel-view .export-control-containers > li .row:last-child {
+    padding-bottom: 0
+}
+
+.export-panel-view .orientation-form label {
+    padding-right: 2em
+}
+
+.css-export-panel-view textarea {
+    height: 100px
+}
+
+.css-export-panel-view fieldset {
+    padding-bottom: 0
+}
+
+.css-export-panel-view .vendors label {
+    float: left;
+    padding-bottom: .3em;
+    width: 33%
+}
+
+.css-export-panel-view .range-container {
+    padding: 1em 0 2em;
+    position: relative
+}
+
+.css-export-panel-view .range-container:after, .css-export-panel-view .range-container:before {
+    opacity: 0;
+    position: absolute;
+    top: 4.5em;
+    transition: all .3s
+}
+
+.css-export-panel-view .range-container:hover:after, .css-export-panel-view .range-container:hover:before {
+    opacity: 1
+}
+
+.css-export-panel-view .range-container:before {
+    content: "Smaller output";
+    left: 0
+}
+
+.css-export-panel-view .range-container:after {
+    content: "Higher quality";
+    right: 0
+}
+
+.management-panel-view label {
+    margin-bottom: .5em
+}
+
+.management-panel-view select {
+    margin-left: 0
+}
+
+.management-panel-view input, .management-panel-view select {
+    margin-right: .5em
+}
+
+.management-panel-view .glyphicon {
+    padding-left: .5em
+}
+
+.stylie-preview-view {
+    background: url(../img/bg_grid.png)
+}
+
+.stylie-crosshair-view {
+    height: 60px;
+    width: 60px
+}
+
+.shift-down .stylie-crosshair-view {
+    display: none
+}
+
+.stylie-crosshair-view .dashmark-container {
+    cursor: move
+}
+
+.stylie-crosshair-view .dashmark-container .dashmark {
+    background: #0c0;
+    height: 4px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 4px
+}
+
+.stylie-crosshair-view .dashmark-container .dashmark.horiz {
+    top: 28px;
+    width: 100%
+}
+
+.stylie-crosshair-view .dashmark-container .dashmark.vert {
+    height: 100%;
+    left: 28px
+}
+
+.stylie-crosshair-view .rotation-control {
+    left: 29px;
+    position: absolute;
+    top: 29px
+}
+
+.stylie-crosshair-view:before {
+    border-radius: 50%;
+    border: solid 4px #fff;
+    content: "";
+    display: none;
+    height: 150%;
+    left: calc(-25% - 4px);
+    opacity: .5;
+    position: relative;
+    top: calc(-25% - 4px);
+    width: 150%;
+    -moz-transform: scale(1);
+    -moz-animation-name: selected-transform-keyframes;
+    -moz-animation-duration: 3500ms;
+    -moz-animation-fill-mode: forwards;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+    -webkit-transform: scale(1);
+    -webkit-animation-name: selected-transform-keyframes;
+    -webkit-animation-duration: 3500ms;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    transform: scale(1);
+    animation-name: selected-transform-keyframes;
+    animation-duration: 3500ms;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out
+}
+
+.stylie-crosshair-view.selected:before {
+    display: block
+}
+
+@-moz-keyframes selected-transform-keyframes {
+    50% {
+        -moz-transform: scale(1.5)
+    }
+}
+
+@-webkit-keyframes selected-transform-keyframes {
+    50% {
+        -webkit-transform: scale(1.5)
+    }
+}
+
+@keyframes selected-transform-keyframes {
+    50% {
+        transform: scale(1.5)
+    }
+}
+
+.keyframe-selection-mode-enabled .stylie-crosshair-view, .keyframe-selection-mode-enabled .stylie-crosshair-view .dashmark-container {
+    cursor: pointer !important
+}
+
+.stylie-actor-container-view .actor-wrapper {
+    font-size: 0;
+    position: absolute
+}
+
+.stylie-actor-container-view .actor-wrapper.centered {
+    -moz-transform-origin: 0 0 0;
+    -ms-transform-origin: 0 0 0;
+    -webkit-transform-origin: 0 0 0;
+    transform-origin: 0 0 0
+}
+
+.stylie-timeline-scrubber-view {
+    background: #353535;
+    border-radius: 2px;
+    bottom: 10px;
+    left: 10px;
+    padding: .5em 0;
+    position: absolute;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center
+}
+
+.stylie-timeline-scrubber-view button, .stylie-timeline-scrubber-view input {
+    float: left
+}
+
+.stylie-timeline-scrubber-view input[type=range] {
+    position: relative;
+    width: 20em
+}
