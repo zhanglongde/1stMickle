@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        1.内部为文字
+        auto高度只会随内容的高度在同步变化，即使内容已经溢出容器高度
+        并不会去“自适应”容器的高度
+        2.内部为元素
+        父容器高度auto,子元素float或者定位，则会导致父容器高度塌陷
+    </title>
+    <style>
+        *{margin:0;padding:0;border:none;outline:none;}
+        .container{
+            position:absolute;
+            width:200px;height:200px;
+            margin-top:50px;
+
+            background-color: #ff9;
+        }
+        .test{
+            float:left;
+            border:3px solid #979797;
+            padding:4px;
+            margin:5px;
+            /*margin-left:155px;*/
+
+            background-color:#f1f1f1;
+            background-clip:content-box;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="test">由上文可见元素的auto高度只会一直随内容的高度在同步变化，并不会去“自适应”容器的高度，即使元素已经溢出容器：
+        当然，上面只是讨论了元素内容为文本的情况，所以auto高度才这么老实地跟随内容变化。而如果内容是块级元素，
+        虽然一般情况下auto高度还是随内容高度变化的，但若内容采用绝对定位或浮动时，就会导致我们很熟悉的“溢出”（高度塌陷）了：
+        结论就是：在默认定位的情况下，元素的auto宽度始终都会自适应于容器的宽度；而auto高度则和元素内容的高度有关，除非遇到内容浮动或绝对定位时引发的高度塌陷。
+
+        若采用相对定位，结果和上面也是一样的。原理也很好理解，毕竟相对定位时元素还是在原位置渲染的，只是多了个可以设置相对偏移罢了，各位可以自己试试看~
+    </div>
+    <!--<span class="test">使用初始代码</span>-->
+</div>
+</body>
+</html>

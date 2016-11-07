@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        宽度自动时，
+        块元素：元素的宽度+左右padding+左右border+左右margin=容器宽度
+        行内元素：
+    </title>
+    <style>
+        *{margin:0;padding:0;border:none;outline:none;}
+        .container{
+            position:absolute;
+            width:200px;height:200px;
+            margin-top:50px;
+
+            vertical-align: top;
+
+            background-color: #ff9;
+        }
+        .test{
+
+            border:3px solid #979797;
+            padding:4px;
+            margin:5px;
+
+            vertical-align: top;
+
+            background-color:#f1f1f1;
+            background-clip:content-box;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--<div class="test">使用初始代码</div>-->
+    <span class="test">使用初始代码</span>
+</div>
+</body>
+</html>

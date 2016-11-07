@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        宽度自动时，
+        块元素：宽度可以实现自适应，即：元素的宽度+左右padding+左右border+左右margin=容器宽度
+               同时,margin-left过大导致内部文字块换行(由于容器高度自动)
+        行内元素：按内容自然伸展
+                 同时，margin-left过大导致换行
+    </title>
+    <style>
+        *{margin:0;padding:0;border:none;outline:none;}
+        .container{
+            position:absolute;
+            width:200px;height:200px;
+            margin-top:50px;
+
+            background-color: #ff9;
+        }
+        .test{
+            border:3px solid #979797;
+            padding:4px;
+            margin:5px;
+            /*margin-left:155px;*/
+
+            background-color:#f1f1f1;
+            background-clip:content-box;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="test">使用初始代码</div>
+    <!--<span class="test">使用初始代码</span>-->
+</div>
+</body>
+</html>
