@@ -1,29 +1,6 @@
-/*reset*/
-*{margin:0;padding:0;}
-
-/*通用样式库*/
-.center1{
-    position:absolute;margin:auto;top:0;left:0;right:0;bottom:0;/*居中*/
-}
-.overlay1{
-    position:absolute;
-    top:0;left:0;right:0;bottom:0;/*铺满容器*/
-}
-.close-bottom1{
-    position:absolute;
-    bottom:0;left:0;right:0;/*达到紧贴底部的效果*/
-}
-.fl{float:left;}
-.fr{float:right;}
-.cl{clear:both;}
-.br1{border-radius: 3px;}
-.cursor-pointer{cursor:pointer;}
-.box-padding1{ padding:5px 10px;}
-
-/*页面样式库*/
-.page-container{
-    width:1000px;margin:auto;
-}
+/*@import "./reset1.css"*/
+/*@import "./common1.css"*/
+/*@import "./pageCommon1.css"*/
 
 /*页面样式*/
 /*页头样式*/
@@ -34,18 +11,24 @@
 }
 .public-header{
     position:relative;
-    width:90%;height:100px;padding:10px;
+
+    /*width:90%;*/
+    height:100px;
+    margin:auto;
 }
 
 /*页面主体样式*/
 .page-body{
-    position:absolute;top:120px;bottom:0;
+    position:absolute;
+    top:120px;bottom:0;
 
-    background-color: #85a;}
+    background-color: #85a;
+}
 
 /*搜索条样式*/
 .search-bar{
-    position:absolute;right:50px;top:20px;
+    position:absolute;
+    right:50px;top:20px;
 }
 .search-content,.search-content+button{
     display: inline-block;
@@ -70,14 +53,17 @@
     position:absolute;
     width:500px;height:500px;
 
-    color:#fff;
-    background-color: #9c3;}
+    color:#333;
+    background-color: #fff;
+}
 .popup-box .popup-header{
     height:40px;/*宽度自适应，不需要设置*/
     /*width:500px;*/
     overflow: hidden; /*BFC，计算子元素高度，达到清除浮动的作用*/
 
+    color:#fff;
     background-color: #58a;
+    border-bottom:1px solid #bdbdbd;
 }
 .popup-box .popup-body{
     position:absolute;
@@ -92,10 +78,37 @@
 .popup-box .popup-header .close,.popup-box .popup-header .title{
     line-height:40px;/*行内元素垂直居中,行盒垂直方向总是line-height居中  line-height=容器高度50px-上padding-下padding*/
 }
+.popup-box .popup-header .title{
+    padding-left:20px;
+}
 
 .popup-box .popup-footer{
     position:absolute;
-
     height:50px;
+
+    /*background-color: #58a;*/
+    border-top:1px dashed #bdbdbd;
+}
+
+.slideTop{
+    position:absolute;
+    top:0;left:0;right:0;
+    z-index:9999;
+    /*display:none;*/
+    visibility:hidden;
+    height:0;opacity:0;
+
+    color:#fff;
     background-color: #58a;
+
+    transition:all 5s ease;
+    -webkit-transition:all 5s ease;
+}
+.slideTop.fadeIn{
+    /*display:block;*/
+    visibility:visible;
+    height:50px;  opacity:0.7;
+}
+.slideTop-l{
+    line-height:50px;
 }

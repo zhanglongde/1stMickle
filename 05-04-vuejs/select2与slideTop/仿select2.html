@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="./vue.js"></script>
+    <script src="../vue.js"></script>
+    <link rel="stylesheet" href="./reset1.css">
+    <link rel="stylesheet" href="./common1.css">
+    <link rel="stylesheet" href="./pageCommon1.css">
     <link rel="stylesheet" href="./select2.css">
+    <style>
+        .ofy{
+            overflow-y:hidden;
+        }
+    </style>
 </head>
-<body>
+<body :class="{'ofy':isPopupBox}">
 <div id="app">
-    <div class="page-container public-header-container">
+    <div class="page-container public-header-container page-padding1">
         <div class="public-header">
             <div class="search-bar">
                 <div class="search-content">
@@ -22,22 +30,38 @@
         </div>
     </div>
 
-    <div class="page-container page-body center1"></div>
+    <div class="page-container center1 page-body page-padding1">
+        <div class="page-body-content">
+            <ul>
+                <li v-for="searchItem in searchList">
+                    <input type="checkbox"><label for="">{{searchItem.name}}</label>
+                </li>
+            </ul>
+            <button @click="slideTop">slideTop</button>
+        </div>
+    </div>
 
     <div class="popup-mask overlay1" v-if="isPopupBox">
         <div class="popup-box center1 br1">
             <div class="popup-header br1 box-padding1"><span class="title fl">联系人</span><span class="close fr cursor-pointer" @click="closePopup">&times;</span></div>
-            <div class="popup-body br1">
+            <div class="popup-body br1 box-padding1">
                 <span>名字:</span><span>{{selectedItem.name}}</span>
                 <div class="popup-footer close-bottom1 br1 box-padding1"></div>
             </div>
         </div>
     </div>
+
+    <div :class="['slideTop',{'fadeIn':isSlideTop}]" v-if="isSlideTop">
+        <div class="slideTop-l cursor-pointer" @click="closeSlideTop"><- 返回</div>
+        <div class="slideTop-body"></div>
+        <div class="slideTop-r"></div>
+    </div>
+
 </div>
 
 <script>
     new Vue({
-        el:'#app',
+        el:'body',
         data:{
             iptContent:'',
             selectedItem:{},
@@ -49,7 +73,8 @@
                 { name: 'Tom' },
                 { name: 'Jackie' }
             ],
-            isPopupBox:false
+            isPopupBox:false,
+            isSlideTop:false
         },
         methods:{
             closePopup: function () {
@@ -59,6 +84,12 @@
 //              console.log(index)
                 this.selectedItem = this.searchList[index]
                 this.isPopupBox = true;
+            },
+            slideTop: function() {
+                this.isSlideTop = !this.isSlideTop;
+            },
+            closeSlideTop: function() {
+                this.isSlideTop = false;
             }
         }
     });

@@ -1,0 +1,19 @@
+/*通用样式库*/
+.center1{
+    position:absolute;
+    margin:auto;top:0;left:0;right:0;bottom:0;/*居中*/
+}
+.overlay1{
+    position:absolute;
+    top:0;left:0;right:0;bottom:0;/*铺满容器*/
+}
+.close-bottom1{
+    position:absolute;
+    bottom:0;left:0;right:0;/*达到紧贴底部的效果*/
+}
+.fl{float:left;}
+.fr{float:right;}
+.cl{clear:both;}
+.br1{border-radius: 3px;}
+.cursor-pointer{cursor:pointer;}
+.box-padding1{ padding:5px 10px;}

@@ -1,0 +1,11 @@
+/*reset*/
+*{
+    margin:0;padding:0;
+}
+
+ul,li,ol,dl,dd{
+    list-style:none;
+}
+a{
+    text-decoration:none;
+}
