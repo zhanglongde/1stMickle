@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        inline-block内部元素存在与否，影响对齐
+    </title>
+    <style>
+        span{
+            background-color: #9c3;}
+        .container:nth-child(n){
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+<div style="overflow:visible;background-color: #58a;" class="container">
+    <span>囧</span>囧囧囧<div style="display:inline-block;width:300px;height:300px;background-color: #d66;">123<br/>123<br/>123</div><span>囧囧</span>
+</div>
+
+
+</body>
+</html>

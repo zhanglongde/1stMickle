@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>去除文字环绕效果，BFC的区域不会与float box叠加</title>
+    <style>
+        body {
+            width: 300px;
+            position: relative;
+        }
+        .aside {
+            width: 100px;
+            height: 150px;
+            float: left;
+            background: blue;
+            border:5px solid #58a;
+        }
+        .main {
+            height: 200px;
+            background: #f00;
+            /*overflow: hidden;*/  /*没加，浮动文字环绕效果*/
+            border:9px solid #85a;
+        }
+    </style>
+</head>
+<body>
+<div class="aside"></div>
+<div class="main">main</div>
+<!--<div style="width:700px;background-color: #9c3;">-->
+    <!--<div style="height:100px;background-color: #fc3;"></div>-->
+<!--</div>-->
+</body>
+</html>

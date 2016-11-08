@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算BFC的高度时，浮动元素也参与计算</title>
+    <style>
+        .BFC {
+            border: 5px solid #f00;
+            width: 300px;
+            overflow:hidden;
+        }
+
+        .box {
+            border: 5px solid blue;
+            width:100px;
+            height: 100px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div class="BFC">
+    <div class="box">
+
+    </div>
+    <div class="box">
+
+    </div>
+</div>
+</body>
+</html>

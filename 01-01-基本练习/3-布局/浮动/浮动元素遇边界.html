@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        浮动inline-block内部元素存在与否，不影响对齐
+
+        浮动跟随：第一个浮动元素跟随边界，
+                 后面挨个跟随在浮动元素后面
+                 如果一个方向上存在清除浮动，则所有浮动元素跟随边界
+    </title>
+    <style>
+        span{
+            background-color: #58a;}
+    </style>
+</head>
+<body>
+<div style="background-color: #777;overflow: hidden">
+    <span>囧</span>囧囧囧<div style="display:inline-block;width:300px;height:300px;float:left;background-color: #85a;opacity:0.5;">123<br/>123<br/>123</div><span>囧囧</span>
+</div>
+</body>
+</html>
