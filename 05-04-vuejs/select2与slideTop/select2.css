@@ -7,22 +7,51 @@
 .public-header-container{
     position:relative;
 
-    background-color: #eee;
 }
 .public-header{
     position:relative;
-
     /*width:90%;*/
     height:100px;
     margin:auto;
+
+    color:#fff;
+    background-color: #fce;
 }
 
 /*页面主体样式*/
 .page-body{
     position:absolute;
     top:120px;bottom:0;
+}
+.contact-item{
+    position:relative;
+}
+.contact-item .emailList-title{
+    display:inline-block;
+}
+.emailList-title .arrow{
+    display:inline-block;
+    height:0;width:0;
 
-    background-color: #85a;
+    border:7px solid transparent;
+    border-top-color:#ccc;
+}
+.emailList-box{
+    position:absolute;z-index:20;
+    display:block;
+    left:130px;top:50px;
+    width:300px;
+
+    color:#777;
+    background-color: #fff;
+    border-radius:3px;
+    box-shadow:0 3px 5px rgba(0,0,0,0.4);
+}
+.emailList-box li{
+    display:block;
+}
+.emailList-box li:hover{
+    background-color: #ddd;
 }
 
 /*搜索条样式*/
@@ -34,10 +63,12 @@
     display: inline-block;
 }
 .search-content{position:relative;}
-.search-list{position: absolute;top:20px;}
+.search-list{position: absolute;z-index:10;}
 .search-item{display:block;}
-.search-item:hover{
-    background-color: #aaa;
+.search-item:hover,
+.search-item:focus
+{
+    background-color: #ccc;
 }
 .ipt-search .search-item{
     height:50px;width:300px;
@@ -46,6 +77,7 @@
 /*弹出层样式*/
 .popup-mask{
     position:absolute;
+    z-index:100;
 
     background-color: rgba(0,0,0,.4);
 }
@@ -73,7 +105,10 @@
     /*方案2：流式宽度自适应。由于高度自适应，所以需要一个百分比宽度达到宽度自适应*/
     /*width:100%;*/
 
-    text-align: center;
+    text-align: left;
+}
+.popup-body button{
+
 }
 .popup-box .popup-header .close,.popup-box .popup-header .title{
     line-height:40px;/*行内元素垂直居中,行盒垂直方向总是line-height居中  line-height=容器高度50px-上padding-下padding*/
@@ -89,11 +124,16 @@
     /*background-color: #58a;*/
     border-top:1px dashed #bdbdbd;
 }
+.popup-footer button{
 
+}
+
+
+/*slideTop提示框样式*/
 .slideTop{
     position:absolute;
     top:0;left:0;right:0;
-    z-index:9999;
+    z-index:200;
     /*display:none;*/
     visibility:hidden;
     height:0;opacity:0;
@@ -109,6 +149,36 @@
     visibility:visible;
     height:50px;  opacity:0.7;
 }
+.slideTop>:nth-last-child(n){
+    display:inline-block;
+}
 .slideTop-l{
     line-height:50px;
+}
+
+
+.tooltip-box{
+    position:absolute;
+    z-index:30;
+    left:130px;top:65px;
+    width:200px;
+    height:50px;
+    /*overflow:hidden;*/
+
+    line-height:60px;
+    text-align: center;
+
+    background-color: rgba(0,0,0,0.6);
+    color:#fff;
+    border-radius:3px;
+}
+.tooltip-box:after{
+    content:'';
+    position:absolute;left:50%;top:-19px;
+    margin-left:-5px;
+    display:block;
+    width:0;height:0;
+    border:10px solid transparent;
+
+    border-bottom-color: rgba(0,0,0,0.6);
 }

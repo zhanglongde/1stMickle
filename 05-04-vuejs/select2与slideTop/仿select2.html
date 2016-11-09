@@ -10,86 +10,293 @@
     <link rel="stylesheet" href="./select2.css">
     <style>
         .ofy{
+            /*防止右侧出现滚动条时的抖动*/
             overflow-y:hidden;
         }
     </style>
 </head>
-<body :class="{'ofy':isPopupBox}">
+<body :class="{'ofy':isPopupBox}" @focusin="isSearchBarFocusout" @click="isSearchBarFocusout">
+<template id="infoList">
+    <ul class="emailList-box">
+        <li v-for="infoItem in infoList"><span class="box-padding1">{{infoItem.email}}</span></li>
+    </ul>
+</template>
+
+<template id="tooltip">
+    <div class="tooltip-box" v-if="isShow">
+        <slot></slot>
+    </div>
+</template>
+
 <div id="app">
-    <div class="page-container public-header-container page-padding1">
-        <div class="public-header">
-            <div class="search-bar">
+    <div class="page-container public-header-container page-padding1 bc1">
+        <div class="public-header br1">
+            <div class="search-bar" id="search-bar-container" @keydown="searchKeydown">
                 <div class="search-content">
-                    <input type="text" class="ipt-search" value="{{iptContent}}" v-model="iptContent">
-                    <div class="search-list" v-if="iptContent !== ''">
-                        <input  @click="selectItem($event,$index)" v-for="searchItem in searchList | filterBy iptContent in 'name'" type="text" class="search-item" readonly value="{{searchItem.name}}">
+                    <input type="text" @keyup.enter="searchContacts" @focus="searchBarFocus" class="ipt-search literal-item" value="{{iptContent}}" v-model="iptContent" placeholder="搜索任何要找的人">
+                    <div class="search-list" v-if="isAutoBox">
+                        <input  @focus="searchBarFocus" @click="selectItem($event,searchItem.id)" @keyup.enter="selectItem($event,searchItem.id)" v-for="searchItem in searchList | filterBy iptContent in 'name'" type="text" class="search-item literal-item" readonly value="{{searchItem.name}}">
                     </div>
-                </div><input type="button" class="btn-search" value="搜索">
+                </div>
+                <button class="btn btn-sm btn-search" id="btn-search" @click="searchContacts">搜索</button>
             </div>
-            <span>{{iptContent}}</span>
         </div>
     </div>
 
-    <div class="page-container center1 page-body page-padding1">
+    <div class="page-container center1 page-body page-padding1 bc1">
         <div class="page-body-content">
             <ul>
-                <li v-for="searchItem in searchList">
-                    <input type="checkbox"><label for="">{{searchItem.name}}</label>
+                <li v-for="searchItem in selectedList" class="contact-item li-dotted1" track-by="$index">
+                    <input type="checkbox" @click="checkedContactItem" data-id="{{searchItem.id}}"><span class="box-padding1">{{searchItem.id}}</span><span class="box-padding1" role="button" @click="selectItem($event,searchItem.id)">{{searchItem.name}}</span>
+                    <div @mouseover="emailTitleMouseover" @mouseout="emialTitleMouseout" class="emailList-title" v-if="isCurEmailProm(searchItem)"><span class="box-padding1">{{searchItem.emailList[0].email}}</span><div @click="showEmailList(searchItem.id)" class="arrow" role="button" v-if="searchItem.emailList && searchItem.emailList.length > 1"></div></div>
+                    <!--<ul class="emailList-box" v-if="0 && searchItem.emailList && searchItem.emailList.length > 1">-->
+                        <!--<li v-for="emailItem in searchItem.emailList"><span class="box-padding1">{{emailItem.email}}</span></li>-->
+                    <!--</ul>-->
                 </li>
             </ul>
-            <button @click="slideTop">slideTop</button>
+            <!--<tooltip>向此联系人发送电子邮件</tooltip>-->
+            <info-list v-if="isInfoList" :info-list="currentEmailList"></info-list>
+            <tooltip v-if="isEmailProm" @mouseover="emailTitleMouseover">向此联系人发送电子邮件</tooltip>
         </div>
     </div>
 
-    <div class="popup-mask overlay1" v-if="isPopupBox">
+    <div class="popup-mask overlay1" v-if="isPopupBox" @click="closePopup">
         <div class="popup-box center1 br1">
             <div class="popup-header br1 box-padding1"><span class="title fl">联系人</span><span class="close fr cursor-pointer" @click="closePopup">&times;</span></div>
             <div class="popup-body br1 box-padding1">
-                <span>名字:</span><span>{{selectedItem.name}}</span>
-                <div class="popup-footer close-bottom1 br1 box-padding1"></div>
+                <ul>
+                    <li class="li-dotted1"><span>ID:</span><span>{{selectedItem.id}}</span></li>
+                    <li class="li-dotted1"><span>名字:</span><span>{{selectedItem.name}}</span></li>
+                    <li class="li-dotted1"><span>邮箱:</span><span>{{selectedItem.email1}}</span></li>
+                    <li class="li-dotted1"><span>邮箱:</span><span>{{selectedItem.email2}}</span></li>
+                </ul>
+                <div class="popup-footer close-bottom1 br1 box-padding1">
+                    <button @click="closePopup" class="btn btn-nm fr">取消</button>
+                    <button @click="closePopup" class="btn btn-nm fr">确定</button>
+                </div>
             </div>
         </div>
     </div>
 
     <div :class="['slideTop',{'fadeIn':isSlideTop}]" v-if="isSlideTop">
-        <div class="slideTop-l cursor-pointer" @click="closeSlideTop"><- 返回</div>
-        <div class="slideTop-body"></div>
+        <div class="slideTop-l cursor-pointer" @click="closeSlideTop">
+            <button class="btn btn-sm"><- 返回</button>
+        </div>
+        <div class="slideTop-body">
+            <span>已选择</span><span>{{checkedList.length}}</span><span>个</span>
+        </div>
         <div class="slideTop-r"></div>
     </div>
 
 </div>
 
 <script>
-    new Vue({
+    var infoList = Vue.extend({
+        template: '#infoList',
+        data:function(){
+            return {
+
+            }
+        },
+        props:['infoList']
+    })
+    var tooltip = Vue.extend({
+        template:'#tooltip',
+        data:function () {
+            return {
+                isShow:false
+            }
+        },
+        ready: function () {
+           this.isShow = true
+        }
+    })
+
+    Vue.component('info-list',infoList)
+    Vue.component('tooltip',tooltip)
+
+    var contactCom = new Vue({
         el:'body',
         data:{
             iptContent:'',
             selectedItem:{},
             searchList: [
-                { name: 'Bruce' },
-                { name: 'Chuck' },
-                { name: 'Marry' },
-                { name: 'Rose' },
-                { name: 'Tom' },
-                { name: 'Jackie' }
-            ],
+                { id:1,name: 'Bruce' ,emailList:[{email:"1039326495@qq.com"},{email:"zhanglongde314@gmail.com"}]},
+                { id:2,name: 'Chuck' ,emailList:[{email:"1039326495@fomail.com"},{email:"zhanglongde314@tt.com"}]},
+                { id:3,name: 'Marry' },
+                { id:4,name: 'Rose' },
+                { id:5,name: 'Tom' },
+                { id:6,name: 'Jackie' },
+                { id:7,name: '张龙德' ,emailList:[{email:"9360865425@qq.com"}]},
+                { id:8,name: '李四' },
+                { id:9,name: '王五' },
+                { id:10,name: 'My' },
+                { id:11,name: 'Kim' },
+                { id:12,name: '张三' }
+            ],//联系人列表
+            selectedList:[],//搜索到的联系人列表
+            checkedList:[],//选中的联系人列表
             isPopupBox:false,
-            isSlideTop:false
+            switchSlideTop:false,
+            isInfoList: false,
+            currentEmailList:[],
+            isEmailProm:false
+        },
+        computed:{
+            isAutoBox:function () {
+                if (this.iptContent) {
+                    return true
+                }
+                return false
+            },
+            isSlideTop:function () {
+                if(this.checkedList.length < 1){
+                    return false
+                }
+                return true
+            }
         },
         methods:{
             closePopup: function () {
-              this.isPopupBox = false;
+                this.isPopupBox = false;
             },
-            selectItem: function (event,index) {
-//              console.log(index)
-                this.selectedItem = this.searchList[index]
+
+            getContainer: function () {
+               return document.getElementById('search-bar-container')
+            },
+            getInputEles: function () {
+                return document.getElementById('search-bar-container').getElementsByClassName('literal-item');
+            },
+            getActiveEles: function () {
+                return document.activeElement;
+            },
+            searchContacts:function () {
+                var self = this;
+                self.selectedList=[]
+                this.isEmailProm = false
+                this.isInfoList = false
+                if (self.iptContent === '') {
+                    return
+                }
+                for(var i = 0,LEN=self.searchList.length; i < LEN; i++){
+                    var str = self.searchList[i].name.toLowerCase()
+                    var searchedStr = self.iptContent.trim().toLowerCase()
+                    if (str.indexOf(searchedStr) >= 0) {
+                        self.selectedList.push(self.searchList[i]);
+                    }
+                }
+                self.iptContent = ''
+            },
+            selectItem: function (event,id) {
+                for(var i = 0,LEN=this.searchList.length; i < LEN; i++){
+                    if(id === this.searchList[i].id){
+                        this.selectedItem = this.searchList[i]
+                    }
+                }
                 this.isPopupBox = true;
             },
-            slideTop: function() {
-                this.isSlideTop = !this.isSlideTop;
+            searchKeydown: function (event) {
+                var inputEles=this.getInputEles();
+                var focusEle=this.getActiveEles();
+                var containerEle = this.getContainer()
+                if(!containerEle.contains(focusEle)) {
+                    return;
+                }
+                var e=window.event||event;
+                var keyCode=e.keyCode;
+
+                for(var i= 0,LEN=inputEles.length; i<LEN; i++)
+                {
+                    if(inputEles[i]===focusEle) break; //找到当前焦点所在位置
+                }
+                switch(keyCode)
+                {
+                    case 38: //上
+                        inputEles[(i-1+LEN)%LEN].focus();
+                        break;
+                    case 40: //下
+                        inputEles[(i+1+LEN)%LEN].focus();
+                        break;
+                    case 27: //ESC
+                        this.iptContent = ''
+                        break;
+                    default:
+                        break;
+                }
+            },
+            isSearchBarFocusout: function (e) {
+                var inputEles=this.getInputEles()
+                var focusEle=this.getActiveEles();
+                var containerEle = this.getContainer()
+                var searchBtn = document.getElementById('btn-search')
+                var clickEle = e.target;
+
+                if (clickEle ===searchBtn  || focusEle === searchBtn) {
+                  return
+                }
+                if(this.iptContent === '')
+                   return
+                if(!containerEle.contains(focusEle) || !containerEle.contains(clickEle)) {
+                    this.iptContent = ''
+                }
+                for(var i= 0,LEN=inputEles.length; i<LEN; i++)
+                {
+                    if(inputEles[i]===focusEle || inputEles[i]===clickEle) return; //找到当前焦点所在位置
+                }
+
+                this.iptContent = ''
+            },
+            searchBarFocus: function (e) {
+//                console.dir(e)
+//                this.iptContent = e.target.value;
+            },
+
+            checkedContactItem: function (e) {
+                var id = parseInt(e.target.getAttribute('data-id'))
+                for(var i = 0,LEN=this.selectedList.length; i < LEN; i++){
+                    if(id === this.selectedList[i].id){
+                        if(!e.target.checked){
+                            this.checkedList.pop(this.selectedList[i]);
+                        }else{
+                            this.checkedList.push(this.selectedList[i]);
+                        }
+                    }
+                }
             },
             closeSlideTop: function() {
-                this.isSlideTop = false;
+//                this.switchSlideTop = false;
+                this.checkedList = [];
+                var nl = document.querySelectorAll('[type=checkbox]');
+                for(var i = 0,LEN=nl.length; i < LEN; i++){
+                    nl[i].checked = false
+                }
+            },
+
+            showEmailList: function (id) {
+                this.currentEmailList = []
+                for(var i = 0,LEN=this.searchList.length; i < LEN; i++){
+                    if(id === this.searchList[i].id){
+                        this.currentEmailList = this.searchList[i].emailList
+                    }
+                }
+//                this.currentEmailList = this.searchList[id].emailList;
+                this.isInfoList = !this.isInfoList
+            },
+            emailTitleMouseover: function (e) {
+              console.log('mouseover')
+                e.stopPropagation();
+                this.isEmailProm = true
+            },
+            emialTitleMouseout: function (e) {
+                console.log('mouseout')
+                e.stopPropagation();
+                this.isEmailProm = false
+            },
+            isCurEmailProm: function (searchItem) {
+                if(searchItem.emailList && searchItem.emailList.length > 0)
+                    return true
+
+                return false
             }
         }
     });

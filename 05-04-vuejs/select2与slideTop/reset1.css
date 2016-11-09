@@ -9,3 +9,7 @@ ul,li,ol,dl,dd{
 a{
     text-decoration:none;
 }
+button,input{
+    border:none;
+    outline:none;
+}

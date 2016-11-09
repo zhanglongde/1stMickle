@@ -1,7 +1,67 @@
 /*页面样式库*/
+button,.btn,input[type=button],input[type=submit]{
+    color:#fff;
+    background-image:-webkit-linear-gradient(top left,#5080a0,#5080E1);
+    border:1px solid #5080a0;
+    border-radius:3px;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.418);
+}
+button:active,.btn:active,input[type=button]:active,input[type=submit]:active
+{
+    box-shadow: inset 0 5px 3px rgba(0,0,0,0.118),0 3px 3px rgba(0,0,0,0.418);
+    background-image:-webkit-linear-gradient(top left,#5080a0,#5080E1);
+}
+button:focus,.btn:focus,input[type=button]:focus,input[type=submit]:focus{
+    background-image:-webkit-linear-gradient(top left,#5080a0,#5080E1);
+}
+.btn.btn-lg{
+    width:200px;height:50px;
+}
+.btn.btn-sm{
+    width:100px;height:30px;
+}
+.btn.btn-nm{
+    width:150px;height:40px;
+}
+
+input[type=checkbox]{
+    vertical-align:middle;
+}
+input[type=checkbox]+label{
+    padding:10px;
+
+    vertical-align:middle;
+
+    color:#fc3;
+}
+input[type=text]{
+    width:300px;height:24px;
+    padding:3px 5px;
+
+    border-radius:3px 0 0 3px;
+    border:1px solid #bdbdbd;
+}
+input::-webkit-input-placeholder{
+    color:#bdbdbd;
+}
+
+.li-dotted1{
+    height:50px;
+    line-height:50px;
+
+    border-bottom:1px dotted #bdbdbd;
+}
+.br1{border-radius: 3px;}
+.box-padding1{ padding:5px 15px;}
+
 .page-container{
-    width:970px;margin:auto;
+    width:970px;
+    margin:auto;
 }
 .page-padding1{
     padding:15px;
+}
+.bc1{
+    color:#fff;
+    background-color: #85a;
 }
