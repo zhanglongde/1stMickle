@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../lib/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <div id="test">test</div>
+</div>
+
+<div class="other">other <span id="span">span</span></div>
+<div class="other">other2</div>
+
+<script>
+    var contains  = function(root, el) {
+        if (root.compareDocumentPosition)
+            return root === el || !!(root.compareDocumentPosition(el) & 16);
+        if (root.contains && el.nodeType === 1){
+            return root.contains(el) && root !== el;
+        }
+        while ((el = el.parentNode))
+            if (el === root) return true;
+        return false;
+    }
+
+    var c = document.getElementById('app')
+    var t = document.getElementById('test')
+    var o = document.getElementsByClassName('other')[0]
+    var span = document.getElementById('span')
+    var is = contains(c,t)
+    console.log(is)
+
+    is = contains(c,o)
+    console.log(o)
+    console.log(is)
+
+
+    console.log($.contains(c,t))
+    console.log($.contains(o,span))
+</script>
+</body>
+</html>

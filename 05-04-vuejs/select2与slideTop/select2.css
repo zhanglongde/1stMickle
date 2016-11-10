@@ -10,7 +10,6 @@
 }
 .public-header{
     position:relative;
-    /*width:90%;*/
     height:100px;
     margin:auto;
 
@@ -26,31 +25,35 @@
 .contact-item{
     position:relative;
 }
-.contact-item .emailList-title{
+.info-cell{
+    position:relative;
     display:inline-block;
+    width:270px;
 }
-.emailList-title .arrow{
+.info-cell .arrow{
+    position: absolute;top:20px;right:10px;
     display:inline-block;
     height:0;width:0;
 
     border:7px solid transparent;
     border-top-color:#ccc;
 }
-.emailList-box{
+/*info-list组件样式*/
+.info-cell-group{
     position:absolute;z-index:20;
     display:block;
-    left:130px;top:50px;
-    width:300px;
+    left:0;top:50px;
+    width:270px;
 
     color:#777;
     background-color: #fff;
     border-radius:3px;
     box-shadow:0 3px 5px rgba(0,0,0,0.4);
 }
-.emailList-box li{
+.info-cell-group li{
     display:block;
 }
-.emailList-box li:hover{
+.info-cell-group li:hover{
     background-color: #ddd;
 }
 
@@ -134,6 +137,7 @@
     position:absolute;
     top:0;left:0;right:0;
     z-index:200;
+    overflow: hidden;
     /*display:none;*/
     visibility:hidden;
     height:0;opacity:0;
@@ -147,20 +151,24 @@
 .slideTop.fadeIn{
     /*display:block;*/
     visibility:visible;
-    height:50px;  opacity:0.7;
+    height:50px;  opacity:0.85;
 }
-.slideTop>:nth-last-child(n){
-    display:inline-block;
+.slideTop-l,.slideTop-r{
+    width:300px;
+
+    line-height:50px;
+    text-align: center;
 }
-.slideTop-l{
+.slideTop-body{
     line-height:50px;
 }
 
 
+/*提示框组件样式*/
 .tooltip-box{
     position:absolute;
     z-index:30;
-    left:130px;top:76px;
+    left:0;top:62px;
     width:200px;
     height:50px;
     /*overflow:hidden;*/
@@ -168,8 +176,9 @@
     line-height:60px;
     text-align: center;
 
+    font-size:16px;
     background-color: rgba(0,0,0,0.6);
-    color:#fff;
+    color:#bdbdbd;
     border-radius:3px;
 }
 .tooltip-box:after{
@@ -178,7 +187,7 @@
     margin-left:-5px;
     display:block;
     width:0;height:0;
-    border:10px solid transparent;
 
+    border:10px solid transparent;
     border-bottom-color: rgba(0,0,0,0.6);
 }

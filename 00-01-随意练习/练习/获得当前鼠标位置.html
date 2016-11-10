@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            position:absolute;
+            top:0;left:0;bottom:0;right:0;
+
+            background-color: #9c3;
+        }
+    </style>
+</head>
+<body>
+<div class="container"></div>
+
+<script>
+    window.onload= function () {
+      document.body.onmousemove = function (e) {
+        console.log(e.pageX)
+        console.log(e.pageY)
+      }
+    }
+</script>
+</body>
+</html>

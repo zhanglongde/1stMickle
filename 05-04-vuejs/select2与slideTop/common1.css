@@ -15,6 +15,12 @@
 .fr{float:right;}
 .cl{clear:both;}
 .cursor-pointer{cursor:pointer;}
-[role=button]{
+[role=button],button,[type=button],[type=submit]{
     cursor:pointer;
+}
+
+.ellipsis{
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
