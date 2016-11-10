@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <style>
+        .container{
+            position:absolute;
+            top:0;left:0;right:0;bottom:0;margin:auto;
+            width:300px;height:100px;
+            overflow:hidden;
+
+            background-color: #aaa;
+        }
+        .touch-box{
+            position:absolute;top:0;right:0;
+            z-index:3;
+            width:100%;
+            height:50px;
+
+
+            background-color: #9c3;
+        }
+        .move{
+            position:absolute;right:80px;top:0;
+            z-index:2;
+            width:80px;height:50px;
+
+            line-height:50px;
+            text-align:center;
+
+            color:#fff;
+            background-color: #999;
+        }
+        .del{
+            position:absolute;right:0;top:0;z-index:2;
+            width:80px;height:50px;
+
+            line-height:50px;
+            text-align:center;
+
+            color:#fff;
+            background-color: #f00;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="touch-box" id="touch-box">
+    </div>
+    <div class="move">移动</div>
+    <div class="del">删除</div>
+</div>
+
+<script>
+    var box = document.getElementById('touch-box')
+    box.onclick = function(event){
+    }
+    var x, y, w;
+    box.ontouchstart = function(event){
+//        alert(event.pageX+'  '+event.pageY);
+        x = event.pageX
+        y = event.pageY
+    }
+
+    box.ontouchmove = function(em){
+        w = x-em.pageX
+//        window.getComputedStyle(box,null).right=w+'px'
+        if(w > 160 || w < 0){
+            return;
+        }
+        box.style.right = w + 'px'
+    }
+
+    box.ontouchend = function(ee){
+        var ew = x-ee.pageX
+//        if(ew < 40){
+//            box.style.right = 0 + 'px'
+//        }
+//        else if(ew >= 40 && ew <= 120){
+//            box.style.right = 80 + 'px'
+//        }
+//        else if(ew > 120 && ew < 160){
+//            box.style.right = 160 + 'px'
+//        }
+//        else{
+//            alert(ew)
+//        }
+        if(ew <= 80){
+            box.style.right = 0 + 'px'
+        }else if(ew > 80 && ew <= 160){
+            box.style.right = 160 + 'px'
+        }
+    }
+
+</script>
+</body>
+</html>
