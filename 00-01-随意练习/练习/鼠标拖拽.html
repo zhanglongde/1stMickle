@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        onmousedown可以嵌套
+        onmousemove
+        onmouseup
+    </title>
+    <style>
+        .container{
+            width:375px;height:576px;
+            position: absolute;top:0;left:0;right:0;bottom:0;
+            margin:auto;
+
+            background-color: #fff;
+            box-shadow: 0 0 3px 3px rgba(0,0,0,0.4);
+            border-radius:3px;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="app">
+
+</div>
+
+<script>
+    var app = document.getElementById('app')
+    app.onmousedown = function (event) {
+        console.log(event.pageX)
+        console.log(event.pageY)
+        app.onmousemove = function (eMouve) {
+           console.log(eMouve.pageX)
+           console.log(eMouve.pageY)
+        }
+
+        app.onmouseup = function (eUp) {
+           console.log(eUp.pageX)
+           console.log(eUp.pageY)
+        }
+    }
+</script>
+</body>
+</html>
