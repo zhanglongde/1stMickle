@@ -34,6 +34,10 @@ input[type=checkbox]+label{
 
     color:#fc3;
 }
+input[type=checkbox]:checked{
+    background-color: #000;
+    color:#fff;
+}
 input[type=text]{
     width:300px;height:24px;
     padding:3px 5px;
@@ -62,6 +66,8 @@ input::-webkit-input-placeholder{
     padding:15px;
 }
 .bc1{
-    color:#fff;
-    background-color: #85a;
+    color:#333;
+    background-color: #fff;
+    opacity:0.8;
+    box-shadow:0 0 3px 3px rgba(0,0,0,.4);
 }

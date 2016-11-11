@@ -6,7 +6,6 @@
 /*页头样式*/
 .public-header-container{
     position:relative;
-
 }
 .public-header{
     position:relative;
@@ -20,7 +19,7 @@
 /*页面主体样式*/
 .page-body{
     position:absolute;
-    top:120px;bottom:0;
+    top:130px;bottom:0;
 }
 .contact-item{
     position:relative;
@@ -30,6 +29,9 @@
     display:inline-block;
     width:270px;
 }
+.info-cell .info-title:hover{
+    text-decoration: underline;
+}
 .info-cell .arrow{
     position: absolute;top:20px;right:10px;
     display:inline-block;
@@ -38,6 +40,10 @@
     border:7px solid transparent;
     border-top-color:#ccc;
 }
+.info-cell .arrow:hover{
+    border-top-color:#333;
+}
+
 /*info-list组件样式*/
 .info-cell-group{
     position:absolute;z-index:20;
@@ -62,10 +68,10 @@
     position:absolute;
     right:50px;top:20px;
 }
-.search-content,.search-content+button{
+.search-box,.search-box+button{
     display: inline-block;
 }
-.search-content{position:relative;}
+.search-box{position:relative;}
 .search-list{position: absolute;z-index:10;}
 .search-item{display:block;}
 .search-item:hover,

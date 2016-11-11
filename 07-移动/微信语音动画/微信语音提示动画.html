@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        有小到大逐渐提示
+    </title>
+    <style>
+        .container{
+            position:absolute;margin:auto;left:0;top:0;right:0;bottom:0;
+            width:200px;height:100px;
+
+            text-align:center;
+
+            background-color: #fff;
+            box-shadow:0 0 3px 3px rgba(0,0,0,0.4);
+        }
+        @keyframes fade {
+            0%{opacity:0;}
+            /*50%{opacity:0;}*/
+            100%{opacity:1;}
+        }
+        .anim-audio{
+            display:none;
+        }
+        .anim-audio+label{
+            position:relative;
+            display:inline-block;
+            width:4px;height:4px;
+
+            border-radius:3px;
+            border:1px solid transparent;
+            border-left-color: #bdbdbd;
+        }
+        .anim-audio+label:before{
+            content:'';
+            position:absolute;
+            top:-8px;left:-8px;
+            width:18px;height:18px;
+
+            border-radius:10px;
+            border:1px solid transparent;
+            border-left-color: #bdbdbd;
+        }
+        .anim-audio+label:after{
+            content:'';
+            position:absolute;
+            width:28px;height:28px;
+            top:-13px;left:-16px;
+
+            border-radius:15px;
+            border:1px solid transparent;
+            border-left-color: #bdbdbd;
+        }
+        .anim-audio:checked+label:before{
+            animation:fade 2s ease;
+        }
+        .anim-audio:checked+label:after{
+            animation:fade 4s ease;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div ></div>
+    <input type="checkbox" class="anim-audio" id="anim-audio"><label for="anim-audio"></label>
+</div>
+</body>
+</html>

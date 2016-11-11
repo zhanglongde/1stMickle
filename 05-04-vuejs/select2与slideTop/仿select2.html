@@ -34,7 +34,7 @@
     <div class="page-container public-header-container page-padding1 bc1">
         <div class="public-header br1">
             <div class="search-bar" id="search-bar-container" @keydown="searchKeydown">
-                <div class="search-content">
+                <div class="search-box">
                     <input type="text" @keyup.enter="searchContacts" @focus="searchBarFocus" class="ipt-search literal-item" value="{{iptContent}}" v-model="iptContent" placeholder="搜索任何要找的人">
                     <div class="search-list" v-if="isAutoBox">
                         <input  @focus="searchBarFocus" @click="selectItem($event,searchItem.id)" @keyup.enter="selectItem($event,searchItem.id)" v-for="searchItem in searchList | filterBy iptContent in 'name'" type="text" class="search-item literal-item" readonly value="{{searchItem.name}}">
@@ -52,10 +52,10 @@
                     <input type="checkbox" @click="checkedContactItem" data-id="{{searchItem.id}}">
                     <span class="box-padding1">{{searchItem.id}}</span>
                     <span class="box-padding1" role="button" @click="selectItem($event,searchItem.id)">{{searchItem.name}}</span>
-                    <div v-if="isCurEmailCell(searchItem)" @mouseover="emailTitleMouseover(searchItem.id)" @mouseout="emailTitleMouseout(searchItem.id)" class="info-cell">
-                        <span class="box-padding1">{{searchItem.emailList[0].email}}</span>
-                        <div v-if="isShowEmailArrow(searchItem)" @click="showEmailList(searchItem.id)" class="arrow" role="button"></div>
-                        <info-list v-if="isShowInfoList(searchItem.id)" :info-list="searchItem.emailList"></info-list>
+                    <div v-if="isShowInfoCell(searchItem)" @mouseover="infoCellMouseover(searchItem.id)" @mouseout="infoCellMouseout(searchItem.id)" class="info-cell">
+                        <span class="info-title box-padding1">{{searchItem.emailList[0].email}}</span>
+                        <div v-if="isShowInfoArrow(searchItem)" @click="showInfoList(searchItem.id)" class="arrow" role="button"></div>
+                        <info-list v-if="isShowInfoList(searchItem.id)" :info-list="currentInfoList"></info-list>
                         <tooltip v-if="isShowTooltip(searchItem.id)">向此联系人发送电子邮件</tooltip>
                     </div>
                     <div class="info-cell">
@@ -126,8 +126,10 @@
             iptContent:'',//搜索框中输入的内容
             selectedItem:{},//选中单项联系人
             searchList: [
-                { id:1,name: 'Bruce' ,emailList:[{email:"1039326495@qq.com"},{email:"zhanglongde314@gmail.com"}],
-                  phoneList: [{phone:"18950478549"},{phone:"18950478548"}]
+                {
+                    id:1,name: 'Bruce' ,
+                    emailList:[{email:"1039326495@qq.com"},{email:"zhanglongde314@gmail.com"}],
+                    phoneList: [{phone:"18950478549"},{phone:"18950478548"}]
                 },
                 { id:2,name: 'Chuck' ,emailList:[{email:"1039326495@fomail.com"},{email:"zhanglongde314@tt.com"}]},
                 { id:3,name: 'Marry' ,emailList:[{email:"103932649@fomail.com"}]},
@@ -145,7 +147,7 @@
             checkedList:[],//选中的联系人列表
             isPopupBox:false,
             switchSlideTop:false,
-            currentEmailList:[],
+            currentInfoList:[],
             curTooltipItemId:undefined, //显示当前Tooltip的ID
             curInfoListItemId:undefined //显示当前信息列表框的ID
         },
@@ -286,35 +288,35 @@
             },
 
 //            点击下拉箭头 toggle infolist
-            showEmailList: function (itemId) {
+            showInfoList: function (itemId) {
                 if (this.curInfoListItemId > 0) {
                     this.curInfoListItemId = undefined
                     return
                 }
 
-                this.currentEmailList = []
+                this.currentInfoList = []
                 for(var i = 0,LEN=this.searchList.length; i < LEN; i++){
                     if(itemId === this.searchList[i].id){
-                        this.currentEmailList = this.searchList[i].emailList
+                        this.currentInfoList = this.searchList[i].emailList
                     }
                 }
                 this.curInfoListItemId = itemId
             },
-            emailTitleMouseover: function (itemId) {
+            infoCellMouseover: function (itemId) {
                 this.curTooltipItemId = itemId
             },
-            emailTitleMouseout: function (itemId) {
+            infoCellMouseout: function (itemId) {
                 this.curTooltipItemId = undefined
             },
-//            是否显示邮箱单元格
-            isCurEmailCell: function (searchItem) {
+//            是否显示单元格
+            isShowInfoCell: function (searchItem) {
                 if (searchItem.emailList && searchItem.emailList.length > 0)
                     return true
 
                 return false
             },
 //            当邮箱多与1个的时候，显示下拉箭头
-            isShowEmailArrow: function (searchItem) {
+            isShowInfoArrow: function (searchItem) {
                if (searchItem.emailList && searchItem.emailList.length > 1) {
                   return true
                }
@@ -334,6 +336,9 @@
                 }
                 return true
             }
+        },
+        ready: function () {
+          this.selectedList = this.searchList
         }
     });
 </script>
