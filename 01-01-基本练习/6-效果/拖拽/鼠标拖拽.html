@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        onmousedown可以嵌套
+        onmousemove
+        onmouseup
+        先不嵌套，先不考虑event不存在的情形，先不考虑left或者top:auto的情形
+
+
+        ①鼠标按下+鼠标移动 → 拖拽
+        ②鼠标松开 → 无拖拽
+        ③鼠标偏移 → 拖拽距离
+        用JavaScript事件方法表示就是：
+        ① onmousedown + onmousemove → startDrag()
+        ② onmouseup → stopDrag()
+        ③ ……
+    </title>
+    <style>
+        .container{
+            width:375px;height:476px;
+            position: absolute;
+            /*top:0;left:0;right:0;bottom:0;*/
+            top:50px;left:50px;
+            /*margin:auto;*/
+
+            background-color: #fff;
+            box-shadow: 0 0 3px 3px rgba(0,0,0,0.4);
+            border-radius:3px;
+        }
+        #bar{
+            height:50px;
+
+            line-height:50px;
+            text-align:center;
+
+            background-color: hsla(200,70%,50%,0.6);
+        }
+        #bar:hover{
+            cursor:move;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="box">
+    <div id="bar">
+        <span>拖拽标题栏有效</span>
+    </div>
+    <div id="content"></div>
+</div>
+
+<script>
+    var flag = false
+    var bar = document.getElementById('bar')
+    var box = document.getElementById('box')
+//    var rect = box.getBoundingClientRect()
+//    var oTop = rect.top || 0;
+//    var oLeft = rect.left || 0
+    var startX=0,startY=0,curTop=0,curLeft=0
+    bar.addEventListener('mousedown',function (event) {
+        startX = event.pageX  //event.pageX?
+        startY = event.pageY
+        flag = true
+    },false)
+
+    //为什么要用document，不用bar?
+    document.addEventListener('mouseup',function (eUp) {
+//        console.log(eUp.pageX)
+//        console.log(eUp.pageY)
+        flag = false
+        console.log('-------------------------------------------stop')
+    },false)
+
+    document.addEventListener('mousemove',function (eMove) {
+        if(!flag) return;
+
+        var moveX = eMove.pageX
+        var moveY = eMove.pageY
+        var distanceW = moveX - startX
+        var distanceH = moveY - startY
+        console.log("distanceW:"+distanceW)
+        console.log("distanceH:"+distanceH)
+
+//        curTop = document.defaultView.getComputedStyle(box,false).top
+//        curLeft = document.defaultView.getComputedStyle(box,false).left
+//        curTop = rect.top
+//        curLeft = rect.left
+//        console.log(curTop)
+//        console.log(curLeft)
+
+//        box.style.left = parseInt(curTop)+distanceW+'px'
+        box.style.left = startX+distanceW+'px'
+        box.style.top = startY+distanceH+'px'
+    },false)
+
+
+
+</script>
+</body>
+</html>

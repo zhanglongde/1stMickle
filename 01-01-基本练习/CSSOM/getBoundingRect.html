@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            position:absolute;margin:auto;top:0;left:0;right:0;bottom:0;
+
+            width:376px;height:576px;
+            color:#fff;
+            background-color: hsl(270,50%,50%);
+        }
+    </style>
+</head>
+<body>
+<div class="container"><div id="test">
+    getClientRects()方法是跟着line box模型走的，其返回的每个矩形区域歧视就是一个line boxes，也就是一行文字内容。如果您对inline box模型不熟悉，可以在我博客右上区域的搜索框中搜索“inline box模型”，会有几个相关的文章，里面基本上都有所介绍的。
+也就是说，例如一段文字在一个span标签下，如果这个span标签内的文字有两行，则getClientRects()返回的就是含有两个Rect对象的列表；如果文字是三行就三个。
+</div></div>
+
+
+<script>
+    function showRect() {
+        var div = document.getElementById('test')
+        var pl = div.getBoundingClientRect();
+        console.dir(pl)
+    }
+    window.onload = function () {
+        showRect();
+    }
+    window.onresize = function () {
+        showRect();
+    }
+</script>
+</body>
+</html>

@@ -10,6 +10,8 @@
     </title>
     <style>
         #test{
+            position:absolute;top:30px;left:50px;
+
             background-color: #fc3;
         }
     </style>
@@ -26,8 +28,16 @@
     console.log(window.getComputedStyle(obj,null).backgroundColor);//第二个参数为伪元素
     console.log(document.defaultView.getComputedStyle(obj,null).backgroundColor);
     console.log(window.getComputedStyle(obj,null).getPropertyValue('background-color'));
+    console.log('--------------------------------------')
+    console.log(document.defaultView.getComputedStyle(obj,null).top)
+    console.log(window.getComputedStyle(obj,null).top)
+    console.log(document.defaultView.getComputedStyle(obj,null).left)
+    console.log(window.getComputedStyle(obj,null).left)
 
+    console.log('--------------------------------------')
 
+    console.log(obj.getBoundingClientRect().top)
+    console.log(obj.getBoundingClientRect().left)
 </script>
 </body>
 </html>
