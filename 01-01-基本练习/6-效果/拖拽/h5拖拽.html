@@ -2,9 +2,127 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        line-height text-align
+        color background-color 都能继承
+
+        整个拖拽过程的起止事件：ondragstart ondragend
+        在目标元素上的起始、过程、终止事件：ondragenter ondragover ondrop
+    </title>
+    <style>
+        *{margin:0;padding:0;}
+        .fl{float:left;}
+        .fr{float:right;}
+        .clear{clear:both;}
+
+        .container{
+            position:absolute;margin:auto;top:0;left:0;right:0;bottom:0;
+            width:700px;height:500px;
+
+            text-align: left;
+
+            border:1px solid #bdbdbd;
+            border-radius:3px;
+        }
+
+        .dustbin{
+            width:35%;height:80%;
+
+            background-color: hsla(70,50%,50%,0.8);
+        }
+        .dragbox{
+            width:60%;height:80%;
+
+            text-align: left;
+
+            color:#fff;
+        }
+        .draglist{
+            height:50px;
+            border:1px solid #bdbdbd;
+
+            line-height:50px;
+
+            background-color: #58a;
+        }
+        .draglist:hover{
+            cursor:move;
+        }
+    </style>
 </head>
 <body>
+<div class="container">
+    <div class="dustbin fl">垃圾箱</div>
+    <div class="dragbox fr">
+        <div class="draglist" draggable="true">列表1</div>
+        <div class="draglist" draggable="true">列表2</div>
+        <div class="draglist" draggable="true">列表3</div>
+        <div class="draglist" draggable="true">列表4</div>
+        <div class="draglist" draggable="true">列表5</div>
+        <div class="draglist" draggable="true">列表6</div>
+    </div>
+    <div class="dragremind clear"></div>
+</div>
 
+<script>
+    window.onload = function () {
+      var eleDustbin = document.querySelector('.dustbin') //直接取数组收个元素
+      var eleDrags = document.querySelectorAll('.draglist')
+        //用于提示的元素
+        var eleRemind = document.querySelector('.dragremind')
+        var eleDrag = null  //当前被拖拽元素
+
+        for(var i = 0,LEN = eleDrags.length; i < LEN; i++){
+            eleDrags[i].onselectstart = function () {
+               return false
+            }
+
+//            拖拽开始
+            eleDrags[i].ondragstart = function (ev) {
+//            拖拽效果
+                console.log('%c ondragstart-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+                ev.dataTransfer.effectAllowed = 'move'
+//                ev.dataTransfer.setData('text',ev.target.innerHTML)
+                ev.dataTransfer.setDragImage(ev.target,0,0)
+                eleDrag = ev.target
+                return true
+            }
+//            拖拽结束
+            eleDrags[i].ondragend = function (ev) {
+                console.log('%c ondragend-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+//                ev.dataTransfer.clearData('text')
+                eleDrag = null
+                return false
+            }
+        }
+
+//        拖拽元素在目标元素上移动的时候
+        eleDustbin.ondragover = function (ev) {
+            console.log('%c ondragover-----------------------------------------------------------', 'background-color:#58a;color:#fff;font-size:30px;')
+            ev.preventDefault()
+            return true;
+        }
+
+//        拖拽元素刚进入目标元素的时候
+        eleDustbin.ondragenter = function (ev) {
+            console.log('%c ondragenter-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+            this.style.color = '#fc3'
+            ev.preventDefault()
+        }
+
+//        拖拽元素在目标元素上，同时松开鼠标
+        eleDustbin.ondrop = function (ev) {
+            console.log('%c ondrop-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+            if (eleDrag) {
+//                设置提示语句
+              eleRemind.innerHTML = '<strong>'+eleDrag.innerHTML+'</strong> 被扔进了垃圾箱'
+                //删除当前被拖拽元素
+                eleDrag.parentNode.removeChild(eleDrag)
+            }
+            this.style.color = '#d66'
+            return false
+        }
+    }
+</script>
 </body>
 </html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+
+    </title>
+    <style>
+        .container{
+            position:absolute;margin:auto;top:0;left:0;right:0;bottom:0;
+            width:500px;height:500px;
+
+            text-align:center;
+
+            color:#333;
+            background-color: #fff;
+            border-radius:3px;
+            box-shadow:0 0 3px 3px rgba(0,0,0,0.4)
+        }
+        .row {height:100px;}
+        .col{
+            float:left;
+            width:25%;height:100%;
+
+            line-height:100px;
+
+            background-color: #d66;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="container">
+    <div class="row">
+            <div class="col">1</div>
+            <div class="col">2</div>
+            <div class="col">3</div>
+            <div class="col">4</div>
+    </div>
+    <div class="row">
+        <input type="text">
+        <input type="search">
+    </div>
+</div>
+
+<script>
+    var flag = false
+    var startX=0,startY=0,curTop=0,curLeft=0
+    var box
+
+//    碰撞检测
+    var collTest = function (objA, objB) {
+        var l1 = objA.getBoundingClientRect().left
+        var r1 = l1 + objA.offsetWidth
+        var t1 = objA.getBoundingClientRect().top
+        var b1 = t1 + objA.offsetHeight
+        var l2 = objB.getBoundingClientRect().left
+        var r2 = l2 + objB.offsetWidth
+        var t2 = objB.getBoundingClientRect().top
+        var b2 = t2 + objB.offsetHeight
+        if (r1 < l2 || r2 < l1 || b1 < t2 || b2 < t1) {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    var cols = document.querySelectorAll('.col')
+
+    document.addEventListener('mousedown',function (event) {
+        startX = event.pageX  //event.pageX?
+        startY = event.pageY
+
+        box = document.createElement('div')
+        box.style.position = 'absolute'
+        box.style.top = startY+'px'
+        box.style.left = startX+'px'
+        box.style.height = '0px'
+        box.style.width = '0px'
+        box.style.borderRadius = '3px'
+        box.style.border = '1px solid #bdbdbd'
+        box.style.backgroundColor = '#9c3'
+        box.style.opacity = '0.3'
+
+        document.body.appendChild(box)
+        flag = true
+    },false)
+
+    //为什么要用document，不用bar?
+    document.addEventListener('mouseup',function (eUp) {
+//        console.log(eUp.pageX)
+//        console.log(eUp.pageY)
+        for(var i = 0,LEN=cols.length; i < LEN; i++){
+            if(collTest(box,cols[i])){
+                console.log(cols[i].textContent)
+                cols[i].style.backgroundColor = '#58a'
+            }
+        }
+        document.body.removeChild(box)
+        flag = false
+        console.log('-------------------------------------------stop')
+    },false)
+
+    document.addEventListener('mousemove',function (eMove) {
+        if(!flag) return;
+
+        var moveX = eMove.pageX
+        var moveY = eMove.pageY
+        var distanceW = moveX - startX
+        var distanceH = moveY - startY
+
+        box.style.height = distanceH+'px'
+        box.style.width = distanceW+'px'
+
+    },false)
+
+
+</script>
+</body>
+</html>
