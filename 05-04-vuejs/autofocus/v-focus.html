@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <ul>
+        <li v-repeat="fields">
+            <input v-model="text" v-focus v-on="keyup: newField | key 'enter'"></input>
+            <input v-focus v-on="keyup: newField | key 'enter'"></input>
+        </li>
+    </ul>
+</div>
+<p>vue: ~0.12.8 (https://cdn.rawgit.com/yyx990803/vue/0.12.8/dist/vue.min.js)</p>
+
+<script>
+    function buildField() {
+        return { text: '' };
+    }
+
+    var focusDirective = {
+        bind: function() {
+            Vue.nextTick(function() {
+                this.el.focus();
+            }.bind(this));
+        }
+    };
+
+    new Vue({
+        el: '#demo',
+        data: {
+            fields: [
+                buildField()
+            ]
+        },
+        directives: {
+            'focus': focusDirective
+        },
+        methods: {
+            newField: function() {
+                var field = buildField();
+                this.fields.push(field);
+            }
+        }
+    });
+</script>
+</body>
+</html>

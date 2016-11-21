@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+<!-- Email [POST] -->
+<div class="" id="email" v-show="activeStep == 'email'">
+    <form action="onboarding-5.html" @submit.prevent="submitForm('email', 'password')">
+        <div class="form-row">
+            <input type="email" autofocus required placeholder="email">
+        </div>
+        <p>
+            <button type="submit" class="button">Ok <i class="icon arrow-right"></i></button>
+        </p>
+    </form>
+</div>
+
+<!-- Password [POST] -->
+<div class="onboarding-content-wrap" id="password" v-show="activeStep == 'password'">
+    <form action="onboarding-6.html">
+        <div class="form-row">
+            <input type="password" autofocus required placeholder="password">
+        </div>
+        <p>
+            <button type="submit" class="button">Ok <i class="icon arrow-right"></i></button>
+        </p>
+    </form>
+</div>
+
+
+<script>
+    new Vue({
+        el: 'body',
+
+        data: {
+            activeStep: 'email',
+        },
+
+        methods: {
+
+            // Show the step as active
+            getNextStep: function (nextStep) {
+                this.activeStep = nextStep;
+            },
+
+            submitForm: function (currentStep, nextStep) {
+                this.getNextStep(nextStep);
+                console.log(response.data);
+            }
+        }
+    });
+</script>
+</body>
+</html>
