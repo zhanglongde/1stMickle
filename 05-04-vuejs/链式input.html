@@ -39,9 +39,21 @@
 <body>
 <div id="app">
     <div class="container">
-        <label for="" ><input class="lbl-txt" value="工作邮箱"><span class="caret">▼</span><input type="text" v-model="email1"><span class="close">&times;</span></label>
-        <label for="" v-show="isSecondEmail"><input class="lbl-txt" value="个人邮箱"><span class="caret">▼</span><input type="text" v-model="email2"><span class="close">&times;</span></label>
-        <label for="" v-show="isThirdEmail"><input class="lbl-txt" value="其他邮箱"><span class="caret">▼</span><input type="text" v-model="email3"><span class="close">&times;</span></label>
+        <label for="" >
+            <input class="lbl-txt" value="工作邮箱"><span class="caret">▼</span>
+            <input autofocus tabindex="0" type="text" v-model="email1">
+            <span v-if="isEmail1Close" @click="closeEmail1" class="close">&times;</span>
+        </label>
+        <label for="" v-show="isSecondEmail">
+            <input tabindex="1" class="lbl-txt" value="个人邮箱"><span class="caret">▼</span>
+            <input type="text" v-model="email2">
+            <span v-if="isEmail2Close" @click="closeEmail2" class="close">&times;</span>
+        </label>
+        <label for="" v-show="isThirdEmail">
+            <input tabindex="2" class="lbl-txt" value="其他邮箱"><span class="caret">▼</span>
+            <input type="text" v-model="email3">
+            <span v-if="isEmail3Close" @click="closeEmail3" class="close">&times;</span>
+        </label>
     </div>
 </div>
 
@@ -59,6 +71,37 @@
             },
             isThirdEmail: function () {
                return this.email2
+            },
+            isEmail1Close: function () {
+               return this.email1 && (this.email1.length > 0)
+            },
+            isEmail2Close: function () {
+               return this.email2 && (this.email2.length > 0)
+            },
+            isEmail3Close: function () {
+               return this.email3 && (this.email3.length > 0)
+            }
+        },
+        methods: {
+            closeEmail1: function () {
+              if (this.email2) {
+                 this.email1 = this.email2
+                 this.email2 = this.email3
+                  this.email3 = ''
+              }else{
+                  this.email1 = ''
+              }
+            },
+            closeEmail2: function () {
+              if (this.email3) {
+                 this.email2 = this.email3
+                  this.email3 = ''
+              }else{
+                  this.email2 = ''
+              }
+            },
+            closeEmail3: function () {
+              this.email3 = ''
             }
         }
     })

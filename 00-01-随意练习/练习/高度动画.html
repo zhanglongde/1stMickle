@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0;padding:0;}
+        ul,li{
+            list-style: none;
+        }
+
+        .container{
+            width:200px;
+            height: 300px;
+            position: absolute;margin:auto;top:0;left:0;right:0;bottom:0;
+            overflow: hidden;
+
+            background-color: #fff;
+            box-shadow: 0 0 3px 3px rgba(0,0,0,0.4);
+            border-radius:3px;
+        }
+        .item{
+            /*position:relative;*/
+        }
+        .title{
+            position:absolute;top:0;left:0;right:0;z-index:1;
+            height:40px;
+            padding-left:10px;
+
+            line-height: 40px;
+
+            /*background-color: #587;*/
+            background-color: #e66;
+            color:#fff;
+        }
+        .content li{
+            height:40px;
+            padding-left:30px;
+
+            line-height: 40px;
+        }
+        .title>.caret{
+            float:right;
+            display:block;
+            margin-right:10px;
+            -webkit-transition:all .218s;
+            transition: all .218s;
+        }
+        .rotate{
+            transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+        }
+        .content{
+            position:absolute;
+            margin-top:40px;
+            top:-100%;
+            left:0;right:0;  /*绝对定位会使得div宽度自适应失效*/
+            /*opacity:0;*/
+            transition:top .8s ease,opacity .8s linear;
+
+            background-color: #85a;
+            color:#fff;
+        }
+        .stretch{
+            top:0;
+            /*opacity:1;*/
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="left-nav">
+        <div class="item">
+            <div class="title"><span>群组</span><span class="caret">
+              <svg  width="5px" height="10px" viewBox="60 271 5 10">
+                  <polyline stroke="none" fill="#818B98" transform="translate(62.612603,
+            275.976759) rotate(-90.000000) translate(-62.612603, -275.976759) " points="63.4699862 276.953201
+            60.0244615 274 58 274 62.6126027 277.953518 67.2252054 274 65.2007439 274 62.6059087
+            276.224065 61.7552192 276.953201"></polyline>
+              </svg></span>
+            </div>
+            <ul class="content">
+                <li>群组1</li>
+                <li>群组2</li>
+                <li>群组3</li>
+                <li>群组4</li>
+                <li>群组5</li>
+            </ul>
+        </div>
+        <div class="item" style="position:absolute;">
+            <div><span>圈子</span><span class="caret">
+              <svg  width="5px" height="10px" viewBox="60 271 5 10">
+                  <polyline stroke="none" fill="#818B98" transform="translate(62.612603,
+            275.976759) rotate(-90.000000) translate(-62.612603, -275.976759) " points="63.4699862 276.953201
+            60.0244615 274 58 274 62.6126027 277.953518 67.2252054 274 65.2007439 274 62.6059087
+            276.224065 61.7552192 276.953201"></polyline>
+              </svg></span>
+            </div>
+            <ul>
+                <li>圈子1</li>
+                <li>圈子2</li>
+                <li>群组3</li>
+                <li>群组4</li>
+                <li>群组5</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var oTitle = document.querySelector('.title')
+    var oCaret = document.querySelector('.caret')
+    var oContent = document.querySelector('.content')
+    oTitle.addEventListener('click',function () {
+//      if (oCaret.classList.contains('rotate')) {
+//          oCaret.classList.remove('rotate')
+//      }else{
+//          oCaret.classList.add('rotate')
+//      }
+        oCaret.classList.toggle('rotate')
+        oContent.classList.toggle('stretch')
+    },false)
+</script>
+</body>
+</html>

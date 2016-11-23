@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="title">{{title}}</div>
+</div>
+
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            title:'控制台测试'
+        },
+        ready: function () {
+          console.log(this.title)
+        },
+        route:{
+            activate: function (next) {
+                console.log('activate...')
+                next()
+            }
+        }
+    })
+</script>
+</body>
+</html>
