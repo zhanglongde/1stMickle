@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .container{
+            width:300px;
+            height:100px;
+
+            background-color: #58a;
+        }
+        .modal {
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            z-index: 1050;
+            width: 560px;
+            margin-left: -280px;
+            background-color: #ffffff;
+            border: 1px solid #999;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            *border: 1px solid #999;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            border-radius: 6px;
+            outline: none;
+            -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+            -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+            -webkit-background-clip: padding-box;
+            -moz-background-clip: padding-box;
+            background-clip: padding-box;
+        }
+
+        .modal.fade {
+            top: -25%;
+            -webkit-transition: opacity 0.3s linear, top 0.3s ease-out;
+            -moz-transition: opacity 0.3s linear, top 0.3s ease-out;
+            -o-transition: opacity 0.3s linear, top 0.3s ease-out;
+            transition: opacity 0.3s linear, top 0.3s ease-out;
+        }
+
+        .modal.fade.in {
+            top: 10%;
+        }
+
+
+    </style>
+</head>
+<body>
+  <div class="modal fade container">container</div>
+  <button id="look">触发</button>
+
+  <script>
+      window.onload=function () {
+        var o = document.getElementById('look')
+          o.addEventListener('click',function (e) {
+              var oModal = e.target.previousElementSibling
+//              if ( oModal.className.match(/(?:^|\s)in(?!\S)/) ){
+              if ( oModal.classList.contains('in') ){
+//                  oModal.className = oModal.className.replace( /(?:^|\s)in(?!\S)/g , '' )
+                  oModal.classList.remove('in')
+                  return
+              }
+//              oModal.className += ' in'
+              oModal.classList.add('in');
+          },false)
+      }
+  </script>
+</body>
+</html>

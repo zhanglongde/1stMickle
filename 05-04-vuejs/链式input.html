@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./vue.js"></script>
+    <style>
+        label{
+            display:block;
+            height:50px;
+        }
+        .container{
+            position:absolute;margin:auto;top:0;left:0;right:0;bottom:0;
+            width:500px;height:400px;
+
+            box-shadow: rgba(0,0,0,.4);
+        }
+        .container .lbl-txt{
+            display: inline-block;
+            width:100px;
+            outline:none;
+            border:none;
+        }
+        .container .close{
+            display:none;
+            width:50px;
+            margin-left:20px;
+        }
+        .container label:hover .close{
+            display:inline-block;
+        }
+        .container .caret{
+            display:inline-block;
+            width:30px;
+            font-size:6px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="container">
+        <label for="" ><input class="lbl-txt" value="工作邮箱"><span class="caret">▼</span><input type="text" v-model="email1"><span class="close">&times;</span></label>
+        <label for="" v-show="isSecondEmail"><input class="lbl-txt" value="个人邮箱"><span class="caret">▼</span><input type="text" v-model="email2"><span class="close">&times;</span></label>
+        <label for="" v-show="isThirdEmail"><input class="lbl-txt" value="其他邮箱"><span class="caret">▼</span><input type="text" v-model="email3"><span class="close">&times;</span></label>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            email1:'',
+            email2:'',
+            email3:''
+        },
+        computed:{
+            isSecondEmail: function () {
+               return this.email1
+            },
+            isThirdEmail: function () {
+               return this.email2
+            }
+        }
+    })
+</script>
+</body>
+</html>
