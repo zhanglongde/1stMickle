@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        块元素宽度自适应，绝对定位情况下，失效
+    </title>
+    <style>
+        .container{
+            position:absolute;margin:auto;top:0;left:0;bottom:0;right:0;
+
+            width: 500px;height:400px;
+            background-color: #fff;
+            box-shadow: 0 0 3px 3px rgba(0,0,0,0.4);
+            border-radius:3px;
+        }
+        .content{
+            position:absolute;
+            height:200px;
+
+            background-color: #587;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        content
+        content
+        content
+        content
+        content
+        content
+        content
+        content
+        content
+        content
+        <br>
+        content
+    </div>
+</div>
+</body>
+</html>
