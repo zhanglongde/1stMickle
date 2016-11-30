@@ -15,10 +15,19 @@
     console.log(s);
 
     var tar_arr = [];
+// 两种遍历方法  forEach for...of
     s.forEach(function(ele,set){
          tar_arr.push(ele)
     });
     console.log(tar_arr);
+
+
+//    对象对象数组，去重失效
+    var st = new Set([{'name':'zld'},{'name':'zlb'},{'name':'zld'}])
+console.log(st)
+    st.forEach(function (e,s) {
+      console.log(e)
+    })
 </script>
 </body>
 </html>
