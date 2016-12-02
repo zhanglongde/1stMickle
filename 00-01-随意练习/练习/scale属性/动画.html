@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        scale属性不会引起重排
+
+        scale和zoom差异
+        1.zoom引起重排，scale不会引起；
+        缩放的中心点，zoom不能更改，而scale可以更改
+    </title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        body{
+            overflow: hidden;
+        }
+        .target{
+            width:400px;
+            height:300px;
+            position:absolute;
+            margin:auto;top:0;left:0;right:0;bottom:0;
+
+            background-color: #58a;
+        }
+        @keyframes pulse {
+            0%{
+                transform:scale3d(1,1,1)
+            }
+            50%{
+                transform:scale3d(1.05,1.05,1.05)
+            }
+            100%{
+                transform: scale3d(1,1,1)
+            }
+        }
+        .target:hover{
+          animation:pulse 2s ease alternate-reverse;
+        }
+    </style>
+</head>
+<body>
+<div class="target"></div>
+</body>
+</html>

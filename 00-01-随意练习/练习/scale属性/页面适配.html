@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .page1-wrap{
+            position:absolute;top:0;left:0;right:0;bottom:0;
+
+            background-color: #587;
+        }
+        .container{
+            position:absolute;top:0;left:0;right:0;bottom:0;
+            margin:auto;
+            width:500px;height:400px;
+
+            background-color: #85a;
+        }
+    </style>
+</head>
+<body>
+<div class="page1-wrap">
+    <div class="container"></div>
+</div>
+
+<script>
+    function scale(origin_h,origin_w) {
+      if ((typeof origin_h === 'number') || (typeof origin_w !== 'number')) {
+//        return
+      }
+        var obj = document.querySelector('.page1-wrap')
+        var win_h = obj.getBoundingClientRect().height
+        var win_w = obj.getBoundingClientRect().width
+        var ratio_h =  origin_h / win_h
+        var ratio_w =  origin_w / win_w
+
+        console.log(obj)
+        if (ratio_h < ratio_w) {
+          obj.style.transform = 'scale('+ratio_h+')'
+        }
+        else {
+            obj.style.transform = 'scale('+ratio_w+')'
+        }
+    }
+    window.onload = function () {
+
+       scale(335,667)
+    }
+</script>
+</body>
+</html>

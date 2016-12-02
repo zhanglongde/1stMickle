@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>
+        对比伪元素::selection
+    </title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        [class^='row']{
+            height:50px;
+            width:500px;
+            line-height:50px;
+            border:1px solid #eee;
+        }
+        .row1{
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        .row2{
+            -webkit-user-select: all;
+            user-select: all;
+        }
+        .row3{
+            -webkit-user-select: text;
+            user-select: text;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row1">row1</div>
+    <div class="row2">row2  只能选中全部文字</div>
+    <div class="row3">row3 可以选中部分文字</div>
+</div>
+</body>
+</html>
