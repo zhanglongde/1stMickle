@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        window的resize事件可以添加多个
+    </title>
+    <style>
+        .container{
+            position:absolute;
+            top:0;left:0;right:0;bottom:0;margin:0;
+
+            background-color: #35a;
+        }
+    </style>
+</head>
+<body>
+  <div class="container"></div>
+<script>
+    window.onload = function () {
+        window.addEventListener('resize',function () {
+            console.log('%c-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+        })        
+        window.addEventListener('resize',function () {
+            var h = document.documentElement.getBoundingClientRect().height;
+            var w = document.documentElement.getBoundingClientRect().width;
+            console.log(h)
+            console.log(w)
+        })
+    }
+</script>
+</body>
+</html>
