@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .btn{
+            background-color: #35a;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+
+<button>点击</button>
+
+<script>
+    var count = 0
+    window.onload = function () {
+        var obj = document.querySelector('button')
+        // 第三个参数与可以省略，默认冒泡
+//        obj.addEventListener('click',function (e) {
+//            obj.classList.toggle('btn')
+//            console.log('click...')
+//        },false)
+
+//        obj.addEventListener('dblclick',function (e) {
+//            console.log('dblclick...')
+//        },false)
+
+        //用单击事件模拟双击事件
+        obj.addEventListener('click',function (e) {
+            obj.classList.toggle('btn')
+            console.log('click...')
+        },false)
+    }
+</script>
+</body>
+</html>

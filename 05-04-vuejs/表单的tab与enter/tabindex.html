@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        死循环，在一个表单内循环，无法调到地址栏的TabIndex=0
+    </title>
+</head>
+<body>
+<div id="app">
+    <label for="">name:</label><input type="text" tabIndex="1" autofocus>
+    <label for="">gender</label><input type="text" tabIndex="2">
+    <label for="">age</label><input type="text" tabIndex="3">
+    <label for="">bornedPlace</label><input type="text" tabIndex="4">
+</div>
+
+<script>
+    window.onload = function () {
+        var objs = document.querySelectorAll('input')
+        console.log(objs)
+        for(var i = 0,LEN=objs.length;i<LEN;i++){
+            objs[i].addEventListener('blur',function (e) {
+                var tabIndex = e.target.getAttribute('tabIndex')
+                console.log(tabIndex)
+                e.target.setAttribute('tabIndex',tabIndex+4)
+            })
+        }
+    }
+</script>
+</body>
+</html>
