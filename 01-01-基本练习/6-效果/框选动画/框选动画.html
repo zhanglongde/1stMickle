@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        .container{
+            position:absolute;margin:auto;top:0;left:0;right:0;bottom:0;
+
+            background-color: #efa;
+        }
+        .top{
+            position:fixed;
+            width:100%;height:100px;
+
+            background-color: #9c3;
+        }
+        .left{
+            position:absolute;top:100px;left:0;
+            /*bottom:0;*/
+            width:40%;
+            height:calc(100% - 100px);
+
+            background-color: #38a;
+        }
+        .right{
+            position:absolute;top:100px;
+            bottom:0;
+            left:40%;right:0;
+
+            background-color: #58a;
+        }
+        .bottom{
+            position:absolute;bottom:0;
+            left:0;
+            width:100%;
+            height:300px;
+            background-color: #38a;
+            box-shadow:0 0 4px rgba(0,0,0,0.4);
+
+            transition:0.5s;
+            transition-property: top,left,width,height;
+        }
+        .tran{
+            top:100px;left:0;
+            /*bottom:0;*/
+            width:40%;
+            height:calc(100% - 100px);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="top">top
+    <button class="test">toggle</button>
+    </div>
+    <div class="left">left</div>
+    <div class="right">
+        right
+        <a href="http://dabblet.com/gist/d76ac0acc80923d47106">参考</a>
+    </div>
+    <div class="bottom">
+        bottom
+    </div>
+</div>
+<script>
+    window.onload = function () {
+      var obj = document.querySelector('.test')
+        obj.addEventListener('click',function () {
+          var target = document.querySelector('.bottom')
+            target.classList.toggle('tran')
+        })
+    }
+</script>
+
+</body>
+</html>
