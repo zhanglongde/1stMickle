@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0;padding:0;}
+        a{text-decoration: none;}
+
+        .container{
+            position:absolute;margin:auto;top:0;left:0;right:0;bottom:0;
+            width:50%;height:50%;
+
+            background-color: #9c3;
+            box-shadow: 0 0 4px rgba(0,0,0,0.4);
+        }
+
+        .container a {
+            position:absolute;
+            display: inline-block;
+            font-size: 60px;
+            margin: 30px 0 20px;
+        }
+        .link-mallki {
+            position:relative;
+            color: #fc3;
+            overflow: hidden;
+            -webkit-transition: color .5s .25s;
+            transition: color .5s .25s;
+        }
+        [class*="link-"] {
+            display: inline-block;
+            line-height: 1;
+            outline: none;
+            text-decoration: none;
+        }
+        .link-mallki span {
+            height: 50%;
+            left: 0;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            display:inline-block;
+        }
+        .link-mallki span:nth-child(2) {
+            top: 50%;
+        }
+        .link-mallki::before {
+            background: #fff;
+            content: '';
+            height: 2px;
+            left: 0;
+            margin: -3px 0 0;
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translate3d(-100%,0,0);
+            transform: translate3d(-100%,0,0);
+            -webkit-transition: -webkit-transform .4s;
+            transition: transform .4s;
+            -webkit-transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+            transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+            width: 100%;
+        }
+        .link-mallki:hover::before{
+            transform: translate3d(100%,0,0);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="http://css.w3ctech.com/" class="link-mallki">
+        <div>中国 CSS 开发者大会</div>
+        <span data-letters="中国 CSS 开发者大会">中国 CSS 开发者大会</span>
+        <span data-letters="中国 CSS 开发者大会">中国 CSS 开发者大会</span>
+    </a>
+</div>
+</body>
+</html>
