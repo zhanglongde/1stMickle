@@ -52,7 +52,15 @@
 </head>
 <body>
 <div class="container">
-    <div class="dustbin fl">垃圾箱</div>
+    <div class="dustbin fl">
+        垃圾箱
+        <ul>
+            <li>li1</li>
+            <li>li2</li>
+            <li>li3</li>
+            <li>li4</li>
+        </ul>
+    </div>
     <div class="dragbox fr">
         <div class="draglist" draggable="true">列表1</div>
         <div class="draglist" draggable="true">列表2</div>
@@ -98,7 +106,7 @@
 
 //        拖拽元素在目标元素上移动的时候
         eleDustbin.ondragover = function (ev) {
-            console.log('%c ondragover-----------------------------------------------------------', 'background-color:#58a;color:#fff;font-size:30px;')
+//            console.log('%c ondragover-----------------------------------------------------------', 'background-color:#58a;color:#fff;font-size:30px;')
             ev.preventDefault()
             return true;
         }
@@ -107,6 +115,12 @@
         eleDustbin.ondragenter = function (ev) {
             console.log('%c ondragenter-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
             this.style.color = '#fc3'
+            ev.preventDefault()
+        }
+
+        eleDustbin.ondragleave = function (ev) {
+            console.log('%c ondragleave-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+            this.style.color = '#9c3'
             ev.preventDefault()
         }
 
