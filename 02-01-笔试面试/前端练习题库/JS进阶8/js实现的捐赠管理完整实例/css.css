@@ -1,0 +1,62 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    width: 900px;
+    margin: 0px auto;
+    padding-top: 20px;
+}
+
+h1 {
+    padding: 15px;
+    text-align: center;
+}
+
+#container {
+    width: 900px;
+    height: auto;
+}
+
+.header, .search {
+    width: 900px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #0094ff;
+    margin-top: 3px;
+    padding: 0px 5px;
+}
+
+.tbList {
+    width: 912px;
+    height: auto;
+}
+
+.tbList th {
+    border: 1px solid #000;
+    background: #0094ff;
+    height: 30px;
+    font-weight: bold;
+    line-height: 30px;
+    color: #fff;
+}
+
+.inputShort {
+    width: 100px;
+}
+
+.btn {
+    width: 70px;
+    height: 25px;
+    line-height: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+td {
+    border: 1px solid;
+    height: 25px;
+    text-indent: 1em;
+    border-collapse: collapse;
+}

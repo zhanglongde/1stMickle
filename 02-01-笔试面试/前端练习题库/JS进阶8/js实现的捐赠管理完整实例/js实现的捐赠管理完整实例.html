@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>js捐赠管理</title>
+    <link href="./css.css" rel="Stylesheet" type="text/css" />
+    <script type="text/javascript">
+        //受捐单位数组
+        var listOrgs = [
+            { "id": "1", "comName": "壹基金" },
+            { "id": "2", "comName": "宋庆龄基金" },
+            { "id": "3", "comName": "慈济基金" },
+            { "id": "4", "comName": "红十字会" },
+            { "id": "5", "comName": "狼图腾" }
+        ];
+        //给listOrgs数组对象动态添加一个匿名方法
+        listOrgs.getOrgsById = function (id) {
+            for (var i = 0; i < listOrgs.length; i++) {
+                if (listOrgs[i].id == id) {
+                    return listOrgs[i];//返回一个对象
+                }
+            }
+        };
+
+        //捐款数据数组
+        var listData = [
+            { "id": "1", "perName": "成龙", "orgId": "1", "money": "10000", "date": "2012-3-3" },
+            { "id": "2", "perName": "李连杰", "orgId": "2", "money": "10000", "date": "2012-3-3" },
+            { "id": "3", "perName": "陈光标", "orgId": "3", "money": "10000", "date": "2012-3-3" },
+            { "id": "4", "perName": "胡锦涛", "orgId": "1", "money": "10000", "date": "2012-3-3" },
+            { "id": "5", "perName": "周星池", "orgId": "2", "money": "10000", "date": "2012-3-3" },
+            { "id": "6", "perName": "黎明", "orgId": "3", "money": "10000", "date": "2012-3-3" },
+            { "id": "7", "perName": "狼人", "orgId": "3", "money": "10000", "date": "2012-3-3" },
+            { "id": "8", "perName": "狂魔", "orgId": "3", "money": "10000", "date": "2012-3-3" },
+            { "id": "9", "perName": "三疯", "orgId": "3", "money": "10000", "date": "2012-3-3" }
+        ];
+        //分页查询数组
+        listData.fenyeQuery = function (pageNow, pageSize) {
+            var res = new Array();
+            //1.按pageSize为5，第1页就是listData[0]-listData[4],第2页就是listData[5]-listData[9]
+            //第3页就是listData[10]-listData[14]
+
+            var start = (pageNow - 1) * pageSize;
+            var end = listData.length > (pageNow * pageSize) ? (pageNow * pageSize) : listData.length;
+
+            for (var i = start ; i < end; i++) {
+                res[res.length] = listData[i];
+            }
+            return res;
+        };
+
+        listData.queryByOrId = function (orid) {
+            var arr = new Array();
+            for (var i = 0; i < listData.length; i++) {
+                if (listData[i].orgId == orid) {
+                    arr[arr.length] = listData[i];
+                }
+            }
+
+            return arr;
+        };
+
+        listData.idNum = listData.length;
+
+        listData.addRec = function(rec) {
+            listData.idNum++;
+            var newRec = { "id": listData.idNum, "perName": rec.perName, "orgId": rec.orgId, "money": rec.money, "date": rec.date };
+            listData[listData.length] = newRec;
+            return newRec;
+        };
+
+        listData.updateRec = function(obj) {
+            for (var i = 0; i < listData.length; i++) {
+                if (listData[i].id = obj.id) {
+                    listData[i] = obj;
+                    break;
+                }
+            }
+        };
+
+        //定义一个全局的变量 ，检测是否取消个性
+        var isCancelUpdate = false;
+        //定义三个文本input控件
+        var InputPerName = document.createElement("input");
+        InputPerName.type = "text";
+
+        var InputMoney = document.createElement("input");
+        InputPerName.type = "text";
+
+        var InputDate = document.createElement("input");
+        InputPerName.type = "text";
+
+        var SeleteOrg = document.createElement("select");
+
+        listData.delRecById = function (id) {
+            for (var i = 0; i < listData.length; i++) {
+                if (listData[i].id == id) {
+                    //删除
+                    /*
+                     1.将从这个ID所在的位置开始，将后面的每一个元素都往前面移动一位
+                     2.最后一个元素重复了，要将其清除
+                     */
+                    for (var j = i; j < listData.length - 1; j++) {
+                        listData[j] = listData[j + 1];
+                    }
+                }
+            }
+            listData.length = listData.length - 1;
+        };
+
+        //把文本换成input文本框
+        function txtToInput(tdName, inputName) {
+            tdName.setAttribute("oldValue", tdName.innerHTML);//先保存原来的内容，如果取消，就恢复
+            inputName.value = tdName.innerHTML;
+            tdName.appendChild(inputName);
+            tdName.removeChild(tdName.firstChild);
+        }
+
+        function txtToSelect(tdName, selObj) {
+            tdName.appendChild(selObj);
+            tdName.removeChild(tdName.firstChild);
+            selObj.value = tdName.getAttribute("orgId");
+        }
+
+        function selectorText(tdName) {
+            var orid = SeleteOrg.value;
+            var orgName = listOrgs.getOrgsById(orid).comName;
+            // tdName.setAttribute("orgId", SeleteOrg.value);
+            tdName.innerHTML = orgName;
+        }
+
+        //把input变回文本
+        function InputToTxt(tdName, inputName) {
+            //如果点击的是取消
+            if (isCancelUpdate) {
+                tdName.innerHTML = tdName.getAttribute("oldValue");
+                return;
+            }
+            //点击确定修改
+            tdName.innerHTML = inputName.value;
+        }
+
+        //把select控件变回文本
+        function seleToTxt(tdName, selName) {
+            // tdName.appendChild(selName);
+            var orgId = SeleteOrg.value;
+            //删除之前的
+            tdName.innerHTML = (listOrgs.getOrgsById(orgId)).comName;
+        }
+
+        //取消���改
+        function CancelUp(obj) {
+            isCancelUpdate = true;//点击的是取消
+            doCancel(obj);
+            isCancelUpdate = false;
+        }
+
+        function  doCancel(obj) {
+            var trCur = obj.parentElement.parentElement;
+            var tds = trCur.childNodes;
+            //全部使用原始的td下面的值(保存在Attribute中)
+            tds[1].innerHTML = tds[1].getAttribute("oldValue");
+            tds[2].innerHTML = listOrgs.getOrgsById(tds[2].getAttribute("orgId")).comName;
+            tds[3].innerHTML = tds[3].getAttribute("oldValue");
+            tds[4].innerHTML = tds[4].getAttribute("oldValue");
+            tds[5].innerHTML = "<a href='#' onclick='DelObj(this)' >删除</a> <a href='#' onclick='UpObj(this)'>修改</a>";
+            // isCancelUpdate = false;
+            //确定取消成功后就要置trCur为null
+            trCur = null;
+        }
+        var trCur = null;
+
+        function UpObj(obj) {
+            if (trCur != null) {
+                //说明有行处于编辑状态，要取消其修改
+                isCancelUpdate = true;
+                //取消那一行的编辑
+                doCancel(trCur.childNodes[5].firstChild);//trCur.childNodes[5].firstChild,就是上一行的<a 修改>
+            }
+
+            //得到当前所在的行
+            trCur = obj.parentElement.parentElement;
+            var tds = trCur.childNodes;
+            //捐赠人input修改
+            txtToInput(tds[1], InputPerName);
+            //金额
+            txtToInput(tds[3], InputMoney);
+            //受捐日期
+            txtToInput(tds[4], InputDate);
+            //下拉选择单位
+            txtToSelect(tds[2], SeleteOrg);
+
+            //修改链接变成取消
+            tds[5].innerHTML = "<a href='#' onclick='doUpObj(this)' >确定</a> <a href='#' onclick='CancelUp(this)'>取消</a>";
+        }
+
+        //确定修改
+        function doUpObj(obj) {
+            isCancelUpdate = false;
+            trCur = obj.parentElement.parentElement;
+            //1.修改数组中对应的记录
+            var rec = { "id": trCur.childNodes[0].innerHTML, "perName": trCur.childNodes[1].childNodes[0].value, "orgId": trCur.childNodes[2].childNodes[0].value, "money": trCur.childNodes[3].childNodes[0].value, "date": trCur.childNodes[4].childNodes[0].value };
+            //调用方法来修改ListData中相应的记录
+            listData.updateRec(rec);
+            //2.修改表格中的记录
+
+            InputToTxt(trCur.childNodes[1], InputPerName);
+            seleToTxt(trCur.childNodes[2], SeleteOrg);
+            InputToTxt(trCur.childNodes[3], InputMoney);
+            InputToTxt(trCur.childNodes[4], InputDate);
+            trCur.childNodes[5].innerHTML = "<a href='#' onclick='DelObj(this)' >删除</a> <a href='#' onclick='UpObj(this)'>修改</a>";
+            //trCur.childNodes[2].setAttribute("orgId", SeleteOrg.value);
+            //确定修改成功后就要置trCur为null
+            trCur = null;
+        }
+        //删除一行数据
+        function DelObj(obj) {
+            //删除数组中对应的数组
+            //1.要得到选中的行
+            var curTr = obj.parentElement.parentElement;
+            //2.从第一个列中取到id的值
+            var delId = curTr.cells[0].innerHTML;
+            // window.alert(delId);
+            //3.根据id删除一条记录(数组中listData)
+            listData.delRecById(delId);
+            //4.删除表格视图中���显示行
+            curTr.parentElement.removeChild(curTr);
+        }
+        function gel(id) {
+            return document.getElementById(id);
+        }
+
+        //1.查询单位名称的绑定,selEle是:selet元素节点
+        function LoadOrgList(selEle) {
+            for (var i = 0; i < listOrgs.length; i++) {
+                var opt = new Option(listOrgs[i].comName, listOrgs[i].id);
+                selEle.options.add(opt);
+            }
+        }
+        //2.绑定表格和绑定表格和listData的方法
+        function LoadDataList() {
+            //for (var i = 0; i < listData.length; i++) {
+            //    addRow(listData[i]);
+            //}
+            //分页显示
+            showPage();
+        }
+        function addRow(obj) {
+            var trnew = gel("tbList").insertRow(-1);
+            var tdnew = trnew.insertCell(-1);
+            tdnew.innerHTML = obj.id;
+            trnew.insertCell(-1).innerHTML = obj.perName;
+            var trOrgName = trnew.insertCell(-1);
+            trOrgName.setAttribute("orgId", obj.orgId);
+            trOrgName.innerHTML = (listOrgs.getOrgsById(obj.orgId)).comName;
+            trnew.insertCell(-1).innerHTML = obj.money;
+            trnew.insertCell(-1).innerHTML = obj.date;
+            trnew.insertCell(-1).innerHTML = "<a href='#' onclick='DelObj(this)' >删除</a> <a href='#' onclick='UpObj(this)'>修改</a>";
+        }
+        window.onload = function() {
+            //绑定查询
+            LoadOrgList(gel("selSearchOrg"));
+            //绑定受捐赠单位
+            LoadOrgList(gel("selAddOrg"));
+            LoadOrgList(SeleteOrg);
+            //绑定表格和listData
+            LoadDataList();
+            //给新增按钮绑定一个事件
+            gel("btnAdd").onclick = function() {
+                if ((!(gel("txtName").value)) || (!(gel("txtMoney").value) || (!(gel("txtDate").value)))) {
+                    alert("输入不能为空");
+                    return;
+                }
+
+                //1.得到输入的内容，打包成一个对象(按照listData的格式)
+                var arr = { "perName": gel("txtName").value, "orgId": gel("selAddOrg").value, "money": gel("txtMoney").value, "date": gel("txtDate").value };
+                //2.添加到listData数组中
+                var res = listData.addRec(arr);
+                //3.显示在表格中
+                var trnew = gel("tbList").insertRow(-1);
+                trnew.insertCell(-1).innerHTML = res.id;
+                trnew.insertCell(-1).innerHTML = res.perName;
+
+                var tdOrg = trnew.insertCell(-1);
+                tdOrg.setAttribute("orgId", res.orgId);
+                tdOrg.innerHTML = listOrgs.getOrgsById(res.orgId).comName;
+                trnew.insertCell(-1).innerHTML = res.money;
+                trnew.insertCell(-1).innerHTML = res.date;
+                trnew.insertCell(-1).innerHTML = "<a href='#' onclick='DelObj(this)' >删除</a> <a href='#' onclick='UpObj(this)'>修改</a>";
+            };
+
+            //给查询按钮绑定事件
+            gel("btnSearch").onclick = function () {
+                if (gel("selSearchOrg").value == -1) {
+                    return;
+                }
+
+                //1.获取要查询的受捐赠单位的orgid
+                var orgId = gel("selSearchOrg").value;
+                //2.在ListData数组中定义一个根据orgid查询的方法,并在这里调用
+                var arrRes = listData.queryByOrId(orgId);
+                //3.将旧的表格数据移除显示,一定要从下到上清空显示
+                var trs = gel("tbList").rows;
+
+                for (var j = trs.length-1; j>0; j--) {
+                    gel("tbList").deleteRow(j);
+                }
+                //4.显示新的数据arrRes
+                for (var i = 0; i < arrRes.length; i++) {
+                    addRow(arrRes[i]);
+                }
+            };
+            //给上一页绑定事件
+            gel("btnprePage").onclick = function() {
+                if (pageNow > 1) {
+                    pageNow--;
+                    showPage();
+                } else {
+                    alert("已经是第一页!")
+                }
+            };
+            //给下一页绑定事件
+            gel("btnnextPage").onclick = function () {
+                if(pageNow<listData.length/pageSize)
+                {
+                    pageNow++;
+                    showPage();
+                }else
+                {
+                    alert("已经是最后一页!");
+                }
+            };
+        };
+        var pageNow = 1;
+        var pageSize = 5;
+        function showPage() {
+            var trs = gel("tbList").rows;
+
+            for (var j = trs.length - 1; j > 0; j--) {
+                gel("tbList").deleteRow(j);
+            }
+
+            //1.根据pageNow和pageSize返回一个数组
+            var res = listData.fenyeQuery(pageNow, pageSize);
+            for (var i = 0; i < res.length; i++) {
+                addRow(res[i]);
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="container">
+    <h1>捐赠管理</h1>
+    <div class="search">
+        受捐单位
+        <select id="selSearchOrg">
+            <option value="-1">--请选择--</option>
+        </select>
+        <input type="button" id="btnSearch" value="查询" class="btn" /> <input type="button" value="上一页" class="btn" id="btnprePage" /> <input type="button" value="下一页" class="btn" id="btnnextPage" /><span id="pageBar"></span>
+    </div>
+    <div class="search">
+        捐赠人：<input type="text" id="txtName" class="inputShort" size="8" />
+        受捐单位：
+        <select id="selAddOrg">
+        </select>
+        金额：<input type="text" id="txtMoney" class="inputShort" size="8" />
+        受捐日期：<input type="text" id="txtDate" class="inputShort" size="10" />
+        <input type="button" id="btnAdd" value="新增" class="btn" />
+    </div>
+    <table id="tbList" class="tbList" cellspacing="0" cellpadding="0">
+        <tr class="th">
+            <td>序号</td>
+            <td>捐赠人</td>
+            <td>受捐单位</td>
+            <td>金额</td>
+            <td>受捐日期</td>
+            <td>操作</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        log('hello','world')
+        控制台输出 'hello wolrd';
+        log('I','am','Jack');
+        控制台输出 'I am Jack';
+    </title>
+</head>
+<body>
+
+<script>
+    function log() {
+        //首先明确:this指的是调用log的对象：window对象;arguments存储在变量对象VO之中，而VO有作用域即执行上下文决定
+        // 【改变上下文为this】改变this对象之后，arguments会去寻找this对象对应的值（即改变了作用域链的开始位置，否则会从当前作用域开始，进而找到当前函数的arguments）
+        console.log(this);
+        //方法1：apply第二个参数为数组或者类数组对象
+//        console.log.apply(this,arguments)
+//        console.log.apply(null,arguments)
+
+        //方法2：利用es6将类数组对象转化为数组
+//        console.log.apply(this,Array.from(arguments))
+
+        //方法3，借用Array对象的slice方法，将类数组对象转化为数组
+//        console.log.apply(this,Array.prototype.slice.call(arguments))
+//        console.log.apply(this,[].slice.call(arguments))
+
+        //方法4：利用es6的扩展运算符，将类数组对象转化为参数列表
+//        console.log.call(this, ...arguments)
+    }
+
+    window.onload = function () {
+        log('hello','world')
+        log('I','am','Jack')
+    }
+</script>
+</body>
+</html>

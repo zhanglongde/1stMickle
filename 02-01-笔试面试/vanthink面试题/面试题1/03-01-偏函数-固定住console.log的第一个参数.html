@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        var info = logger('INFO:')
+        info('this is an info message')
+        // INFO: this is an info message
+
+        var warn = logger('WARN:')
+        warn('this is a warning message', 'with more info')
+        // WARN: this is a warning message with more info
+    </title>
+
+</head>
+<body>
+
+<script>
+    /**
+     * 常规实现方法
+     * @param namespace
+     * @returns {Function}
+     */
+   function logger(namespace) {
+       return function () {
+           //改变作用域
+//           console.log.apply(console,[namespace].concat(Array.prototype.slice.call(arguments)))
+//           console.log.apply(console,[namespace].concat([].slice.call(arguments)))
+//           console.log.apply(console,[namespace].concat(Array.from(arguments)))
+
+//           变种：利用rest参数与call实现
+           console.log.call(console,namespace,...arguments)
+       }
+   }
+
+    /**
+     * 利用bind函数的简洁实现
+     * @param namespace
+     * @returns {*}
+     */
+   function log(namespace) {
+       return console.log.bind(null,namespace)
+   }
+
+   var info = logger('info:')
+    info('this is an info message!')
+
+    var warn = log('warn:')
+    warn('this is a Warn message!')
+</script>
+</body>
+</html>
