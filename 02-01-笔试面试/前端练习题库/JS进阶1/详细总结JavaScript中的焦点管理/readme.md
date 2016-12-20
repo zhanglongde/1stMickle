@@ -16,3 +16,9 @@
   
 5.document.hasFocus  
  表示当前文档是否有元素被激活或者或者获得焦点
+ 
+6.失去焦点
+  blur
+7. 焦点事件
+  不会冒泡：blur focus
+  触发冒泡：focusin focusout
