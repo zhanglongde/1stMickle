@@ -1,0 +1,34 @@
+<html>
+　　<head>
+    　　<link rel="stylesheet" type="text/css" href="basic.css">
+    　　　　<script>
+    window.onload=function(){
+        var sheet=document.styleSheets[0];
+        //【新增样式规则】
+        //　sheet.insertRule('.div1{font-size:16px;color:red;}',0);　　　　 IE8及以上不支持　　//第一个参数是样式，第二个是样式的位置
+        //　sheet.addRule('.div1','font-size:20px;color:orange;font-weight:bold;',0);　　　　//IE都支持　　　　//第一个参数是样式名，第二个样式位置是样式规则，第三个是样式位置
+        function insertCss(element,csName,position){　　　　　　　　　　　　　　　　　　　　　　　　//跨浏览器兼容　　　　　　
+            if(sheet.insertRule){　　　　　　　　　　　　　　　　　　　　 // sheet.insertRule 非IE的时候会读取到一个函数，IE8即以上的时候会读取到undefined
+                sheet.insertRule(element+'{'+csName+'}',position);
+            }else if(sheet.addRule){
+                sheet.addRule(element,csName,position);
+            }
+        }
+        insertCss('.div1','font-size:16px;color:orange',0);
+        //【删除样式规则】
+        //sheet.deleteRule(position) ; //删除样式 参数为位置　　　　　　　　//IE8及以上不支持
+        //sheet.removeRule(position) ; //删除样式 参数为位置　　　　　　　　//IE支持
+        function deleteCss(position){　　　　　　　　//跨浏览器兼容
+            if(sheet.deleteRule){
+                sheet.deleteRule(position);
+            }else if(sheet.removeRule){
+                sheet.removeRule(position);
+            }
+            deleteCss(0);
+        }
+
+    }
+</script>
+    　　</head>
+　　<body></body>
+</html>

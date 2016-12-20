@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        注意：
-        1.dragover必须阻止默认行为；
-        2.setDragImage第一个参数必须是图片元素;
-        3.enter与leave指的是：鼠标;
-        4.子元素上hover触发enter和leave事件是先enter再leave
+        注意：dragover必须阻止默认行为； setDragImage第一个参数必须是图片元素;enter与leave指的是：鼠标
         line-height text-align
         color background-color 都能继承
 
@@ -172,14 +168,21 @@
 
 //        拖拽元素刚进入目标元素的时候
         eleDustbin.ondragenter = function (ev) {
-            console.log('%c ondragenter-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
             ev.preventDefault()
-            ev.target.classList.add('drop-ele')
         }
 
         eleDustbin.ondragleave = function (ev) {
-            console.log('%c ondragleave-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
             ev.preventDefault()
+        }
+
+        eleDustbin.onmouseenter = function (ev) {
+            console.log('%c onmouseenter-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+            ev.target.classList.add('drop-ele')
+        }
+
+        eleDustbin.onmouseleave = function (ev) {
+            console.log('%c onmouseleave-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+//            ev.preventDefault()
 
             console.log($('.dustbin'))
             console.log($(ev.target))

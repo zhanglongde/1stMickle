@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="test" style="height:30px;width:100px;background:lightgreen;">div</div>
+<button id="btn">div元素获得焦点</button>
+
+<script>
+    window.onload = function () {
+      var test = document.getElementById('test')
+      var btn = document.getElementById('btn')
+        btn.addEventListener('click',function () {
+            test.tabIndex = -1
+            test.focus()
+        },false)
+
+        test.addEventListener('focus',function () {
+            this.style.background = 'pink'
+        })
+    }
+</script>
+</body>
+</html>

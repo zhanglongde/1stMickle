@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <meta charset=utf-8 />
+    <title>JS Bin</title>
+    <style>
+        .dragged{
+            height:50px;width:300px;
+            background-color: #9c3;
+        }
+        #bidi{
+            height:300px;width:500px;
+            padding:10px;
+
+            background-color: #fc3;
+            color:#fff;
+        }
+        #bidi div{
+            height:100px;
+            background-color: #e66;
+        }
+        a{
+            display:block;
+            width:200px;height:50px;
+
+            border:1px solid #58a;
+        }
+    </style>
+</head>
+<body>
+<div class="dragged" draggable="true">dfdsafsafsafsds</div>
+<div id="bidi">
+    <a href="#">children element1</a>
+    <a href="#">children element2</a>
+    <div>
+        <ul>
+            <li>li1</li>
+            <li>li2</li>
+            <li>li3</li>
+        </ul>
+    </div>
+    <a href="#">children element3</a>
+</div>
+
+<div id="debug"></div>
+
+
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    $(function() {
+        var destination = $('#bidi').get(0);
+        var leaveEle = null
+
+        $('#bidi').on('dragenter', function(event) {
+//            destination = event.target;
+//            console.log(event.relatedTarget)
+//            console.log($(destination).find(leaveEle).size())
+            console.log('%c-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+            console.log(event.target,'.....')
+            console.log(event.currentTarget,'-----')
+            if ($(destination).is(event.target) && (1)) {//enter元素为容器，并且离开元素不能为容器的子元素
+//                console.log(destination)
+                $('#debug').append("ENTERED ELEMENT<br />");
+            }
+        });
+
+        $('#bidi').on('dragleave', function(event) {
+            console.log('%c-----------------------------------------------------------', 'background-color:#e66;color:#fff;font-size:30px;')
+            console.log(event.target.clientX,'.....')
+            console.log(event.currentTarget,'-----')
+//            console.log(event.toElement)
+//            if (!$(this).find(destination).size() && !$(this).find(event.target).size()) {
+            if ($(destination).is(event.target) && ($(event.target).is($(event.currentTarget)))) {
+                $('#debug').append("LEFT ELEMENT<br />");
+            }
+        });
+
+    });
+</script>
+</body>
+</html>

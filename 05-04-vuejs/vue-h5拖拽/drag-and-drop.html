@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #eee;
+        }
+        .q div {
+            width: 200px;
+            height: 50px;
+            border: solid 1px #ccc;
+            box-shadow: 0 1px 2px 0px #888;
+            background-color: #f8f8f8;
+            margin: 5px;
+            display: inline-block;
+            position: absolute;
+            transition: top 400ms;
+        }
+        .q div#placeholder {
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body>
+<div id="some-list" class="q" droppable="true" v-on="dragover:dragover,drop:drop">
+    <div v-for="item in items" draggable="true" v-on="dragstart:dragstart,dragend:dragend,dragover:dragover,
+         dragenter:dragenter">{{item}}
+    </div>
+    <div id="placeholder">placeholder</div>
+</div>
+
+<script src="../vue.js"></script>
+<script>
+   new Vue({
+       el:'#some-list',
+       data:{
+           items:['item1','item2','item3','item4','item5'],
+           _dragElem:null,
+           _insertIndex:null,
+           _placeholder:document.getElementById('placeholder')
+       },
+       methods:{
+           reorder:function () {
+             var sty_elem = document.createElement('style')
+             document.heda.appendChild(sty_elem)
+
+             sty_elem.appendChild(document.createTextNode(''))
+               s= sty_elem.sheet
+
+               for (var i = 0; i < this.items; i++) {
+                 var e =i
+                   if (this._dragElem) {
+                     var sourceIndex = this._dragElem.$index
+                       --e
+                   }
+               }
+           },
+           dragstart:function (ev) {
+               this._dragElem = ev.targetVM
+               this._dragNode = ev.target
+
+               this.reorder()
+               var st = this._dragNode.style
+               Vue.nextTick(function () {
+                 st.opacity = 0
+                   st.height = 0
+               })
+               this.$el.insertBefore(this._placeholder, ev.target)
+           },
+           dragend:function (ev) {
+               this.$el.removeChild(this._placeholder)
+               this._dragNode.style.opacity = 1
+               this._dragNode.style.height = '50px'
+
+               this._dragNode = null
+               this._dragElem = null
+
+               this.reorder()
+               ev.preventDefault()
+           },
+           drop:function (ev) {
+               var insertIndex = this._insertIndex
+               var sourceIndex = this._dragElem.$index
+               if(sourceIndex == insertIndex) return true
+
+               var removed = this.items.splice(sourceIndex, 1)
+               this.items.splice(insertIndex, 0, removed[0])
+
+               this.dragend(ev)
+           },
+           dragover:function (ev) {
+             ev.preventDefault()
+               return true
+           },
+           dragenter:function (ev) {
+               var sourceIndex = this._dragElem.$index
+               var insertIndex = ev.targetVM.$index
+               this._insertIndex = insertIndex
+
+               if (sourceIndex < insertIndex){
+                   var posElem = ev.target
+               } else {
+                   var posElem =ev.target.previousSibling
+               }
+
+               this.$el.insertBefore(this._placeholder, posElem.nextSibling)
+
+               ev.preventDefault()
+               return true
+           },
+           created:function () {
+             this.reorder()
+           }
+       }
+   })
+</script>
+</body>
+</html>
