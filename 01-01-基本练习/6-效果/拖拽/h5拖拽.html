@@ -22,6 +22,7 @@
 
         .container{
             position:absolute;margin:auto;top:0;left:0;right:0;bottom:0;
+            z-index:1;
             width:700px;height:500px;
 
             text-align: left;
@@ -56,7 +57,7 @@
         }
 
         .dragbg{
-            position:absolute;
+            position:absolute; z-index: -1;
             width:400px;height:50px;
 
             /*visibility: hidden;*/
@@ -73,7 +74,14 @@
             color:#000;
             box-shadow: 0 0 0 4px rgba(0,0,0,0.4);
         }
-        .dragbg{text-align: center;}
+        .dragbg{
+            /*display:none;*/
+            text-align: center;
+            position:absolute;
+            z-index:-1;
+
+            background-color: #9c3;
+        }
 
         ul,li{
             list-style: none;
@@ -82,10 +90,10 @@
     </style>
 </head>
 <body>
-<div class="dragbg">
-    <img src="../../../images/mm1.jpg" alt="drag image" width="300px" height="40px;">
-</div>
 <div class="container">
+    <div class="dragbg">
+        <img src="../../../images/mm1.jpg" alt="drag image" width="300px" height="40px;" draggable="false">
+    </div>
     <div class="dustbin fl">
         <div>垃圾箱</div>
         <ul>
@@ -118,7 +126,6 @@
             ev.preventDefault()
         }
         $('li').ondragenter = function (ev) {
-            console.log('.....')
             ev.stopPropagation()
             ev.preventDefault()
         }
@@ -144,18 +151,17 @@
 //            拖拽开始
             eleDrags[i].ondragstart = function (ev) {
 //            拖拽效果
-                console.log('%c ondragstart-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
                 ev.dataTransfer.effectAllowed = 'move'
 //                ev.dataTransfer.setData('text',ev.target.innerHTML)
 //                ev.dataTransfer.setDragImage(ev.target,0,0)
-                ev.dataTransfer.setDragImage($('img')[0], -10, -10);
+                ev.dataTransfer.setDragImage($('.dragbg').get(0),0,0)
+//                ev.dataTransfer.setDragImage($('img')[0], -10, -10);
                 eleDrag = ev.target
                 ev.target.classList.add('dragged-ele')
                 return true
             }
 //            拖拽结束
             eleDrags[i].ondragend = function (ev) {
-                console.log('%c ondragend-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
 //                ev.dataTransfer.clearData('text')
                 eleDrag = null
                 ev.target.classList.remove('dragged-ele')
@@ -165,24 +171,19 @@
 
 //        拖拽元素在目标元素上移动的时候
         eleDustbin.ondragover = function (ev) {
-//            console.log('%c ondragover-----------------------------------------------------------', 'background-color:#58a;color:#fff;font-size:30px;')
             ev.preventDefault()
             return true;
         }
 
 //        拖拽元素刚进入目标元素的时候
         eleDustbin.ondragenter = function (ev) {
-            console.log('%c ondragenter-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
             ev.preventDefault()
             ev.target.classList.add('drop-ele')
         }
 
         eleDustbin.ondragleave = function (ev) {
-            console.log('%c ondragleave-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
             ev.preventDefault()
 
-            console.log($('.dustbin'))
-            console.log($(ev.target))
 //            if ($(ev.target).is($('.dustbin')[0]))
             {
                 ev.target.classList.remove('drop-ele')
@@ -191,7 +192,6 @@
 
 //        拖拽元素在目标元素上，同时松开鼠标
         eleDustbin.ondrop = function (ev) {
-            console.log('%c ondrop-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
             if (eleDrag) {
 //                设置提示语句
               eleRemind.innerHTML = '<strong>'+eleDrag.innerHTML+'</strong> 被扔进了垃圾箱'

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        对父元素使用弹性盒，子元素生效
+        margin:auto,必须放在子元素中
+    </title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        /*html,body{*/
+            /*width:100%;*/
+            /*height:100%;*/
+        /*}*/
+        /*.wrap{*/
+            /*display:flex;*/
+            /*align-items: center;*/
+            /*justify-content: center;*/
+            /*width:100%;*/
+            /*height:100%;*/
+            /*background-color: #ccc;*/
+        /*}*/
+        /*.ele{*/
+            /*background-color: #333;*/
+        /*}*/
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+
+        .wrap{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            background-color: #ccc;
+
+        }
+        .ele{
+            margin:auto;
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="ele">
+        居中居中居中居中居中居中居中<br>
+        居中居中居中居中居中居中居中<br>
+        居中居中居中居中居中居中居中<br>
+        居中居中居中居中居中居中居中<br>
+        居中居中居中居中居中居中居中
+    </div>
+</div>
+</body>
+</html>

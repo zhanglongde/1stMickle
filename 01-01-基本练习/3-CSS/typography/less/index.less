@@ -1,0 +1,33 @@
+@base-line-height: 1.4;
+@base-font-size: 1.25rem;
+@vertical-rhythm: @base-line-height * @base-font-size;
+
+body {
+  line-height: @base-line-height;
+}
+
+p {
+  font-size: @base-font-size;
+  margin-bottom: @vertical-rhythm;
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: @vertical-rhythm * 2;
+}
+
+h2 {
+  font-size: 2em;
+  margin-bottom: @vertical-rhythm;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin-bottom: @vertical-rhythm;
+}
+
+.page-container {
+  padding: (@vertical-rhythm * 2) 2rem;
+}
+
+
