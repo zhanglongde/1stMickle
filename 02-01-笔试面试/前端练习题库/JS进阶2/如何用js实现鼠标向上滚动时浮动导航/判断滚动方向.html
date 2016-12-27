@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{
+            height:300%;width:100%;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+<script>
+    scroll(function (direction) {
+        console.log(direction)
+    })
+    function scroll(fn) {
+        var beforeScollTop = document.body.scrollTop
+        fn = fn || function () {}
+        window.addEventListener('scroll',function () {
+          var afterScrollTop = document.body.scrollTop,
+                  delta = afterScrollTop - beforeScollTop
+            if (delta === 0) {
+              return false
+            }
+            fn(delta > 0 ? "down" : "up")
+            beforeScrollTop = afterScrollTop
+        },false)
+    }
+</script>
+</html>

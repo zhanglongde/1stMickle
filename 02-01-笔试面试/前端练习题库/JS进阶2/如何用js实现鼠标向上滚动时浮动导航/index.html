@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{
+            width:100%;
+            height:300%;
+        }
+        .nav{width:980px; margin:0 auto;}
+        .nav li{display:inline-block; *display:inline; *zoom:1; margin:0 10px;}
+        .nav li a{display:block; padding:5px 10px;}
+        .fixed-nav{
+            position: fixed;
+            width:100%;
+            top:-40px;
+            -webkit-transition: top .5s;
+            -moz-transition: top .5s;
+            -o-transition: top .5s;
+            transition: top .5s;
+            -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.1);
+            -moz-box-shadow: 0 2px 2px rgba(0,0,0,.1);
+            box-shadow: 0 2px 2px rgba(0,0,0,.1);
+        }
+        .fixed-nav-appear{top:0;}
+    </style>
+</head>
+<body>
+<div id="Jnav">
+    <ul class="nav">
+        <li><a href="http://caibaojian.com/">WEB前端开发</a></li>
+        <li><a href="#">前端开发博客</a></li>
+        <li><a href="#">前端开发</a></li>
+        <li><a href="#">前端开发</a></li>
+    </ul>
+</div>
+
+
+</body>
+<script src="../../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    var $nav = $('#Jnav'), navTop = $nav.offset().top, navH = $nav.outerHeight(),winTop_1=0,winWidth=$(window).width(), holder=jQuery('<div>');
+    $(window).on('scroll',function(){
+        var winTop_2 = $(window).scrollTop();
+        holder.css('height',navH);
+        //开始浮动，不过不显示
+        if(winTop_2>navTop && winWidth>980){
+            holder.show().insertBefore($nav);
+            $nav.addClass('fixed-nav');
+        }else{
+            holder.hide();
+            $nav.removeClass('fixed-nav');
+        }
+        //判断鼠标向上滚动，显示出来
+        if(winTop_2>winTop_1 && winWidth>980){
+            $nav.removeClass('fixed-nav-appear');
+        }else if(winTop_2<winTop_1){
+            $nav.addClass('fixed-nav-appear');
+        }
+        winTop_1 = $(window).scrollTop();
+    })
+</script>
+</html>

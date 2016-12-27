@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        jquery 委托过滤（选择器过滤）
+        事件监听，消耗性能
+        原理：事件冒泡
+        事件委托好处：
+        1）提高性能
+        2）新添加元素的事件，可以进行
+    </title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        .container{
+            position: absolute;margin:auto;top:0;left:0;
+            right:0;bottom:0;
+            width:500px;height:500px;
+
+            background-color: #9c3;
+            color:#fff;
+        }
+        .row{
+            width:100%;height:100px;
+
+            background-color: #fc3;
+            border-bottom:1px solid #bdbdbd;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul class="row target">
+        <li>hhh</li>
+    </ul>
+    <div class="row"></div>
+    <div class="row"></div>
+</div>
+<button class="btn-click">动态添加</button>
+</body>
+
+<script src="../../../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    $(function () {
+        $(document).on("click",'.btn-click',function (e) {
+            console.log('btn-click...')
+            $('<li>').addClass('aaa').html('1111').appendTo($('.target'))
+        })
+
+        $(document).on('click','li[class=aaa]',function (e) {
+            console.log(e.target)
+        })
+    })
+</script>
+</html>

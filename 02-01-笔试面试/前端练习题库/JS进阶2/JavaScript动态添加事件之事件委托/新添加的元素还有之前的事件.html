@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        原生不委托 VS 原生事件委托
+    </title>
+    <style>
+        ul,li{
+            list-style: none;
+        }
+        li{
+            height:50px;
+            line-height:50px;
+            border-bottom:1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="btn" value="add"/>
+<ul id="ul">
+    <li>aaaaaaaa</li>
+    <li>bbbbbbbb</li>
+    <li>cccccccc</li>
+</ul>
+</body>
+
+<script>
+    window.onload = function () {
+      var oBtn = document.querySelector('#btn')
+        var oUl = document.querySelector('#ul')
+        var oLis = document.querySelectorAll('li')
+        oBtn.addEventListener('click',function () {
+            var oTxt = document.createTextNode('liTest')
+            var oLi = document.createElement('li')
+            oLi.appendChild(oTxt)
+            oLi.style.backgroundColor = '#fff'
+            oLi.style.color = '#333'
+            oUl.appendChild(oLi)
+        })
+
+        //不用事件委托
+//        for (var i = 0,LEN=oLis.length; i < LEN; i++) {
+//            oLis[i].addEventListener('mouseover',function (e) {
+//                console.log('....mouseover')
+//                this.style.border = "1px solid #bdbdbd" // 不能加分号！！！！
+//                this.style.backgroundColor = "#9c3"
+//            })
+//
+//            oLis[i].addEventListener('mouseout',function (e) {
+//                e.target.style.border = 'none'
+//                e.target.style.backgroundColor = '#fff'
+//            })
+//        }
+
+        // 用事件委托处理
+        oUl.addEventListener('mouseover',function (e) {
+            var target = e.target
+            if (target.tagName.toLowerCase() === 'li') {
+               target.style.backgroundColor = '#9c3'
+            }
+        })
+        oUl.addEventListener('mouseout',function (e) {
+             var target = e.target
+            if (target.tagName.toLowerCase() === 'li') {
+              target.style.backgroundColor = '#fff'
+            }
+        })
+    }
+</script>
+</html>

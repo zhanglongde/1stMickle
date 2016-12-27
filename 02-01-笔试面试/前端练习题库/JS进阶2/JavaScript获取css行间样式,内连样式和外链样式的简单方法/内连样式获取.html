@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+　　<style>.div2 {
+    background-color:red;
+       }
+　　</style>
+</head>
+<body>
+　　　　<div id="div1" class="div2">测试</div>
+
+</body>
+　　　　<script>
+
+    var odiv=document.getElementById('div1');  　　　　//先获取到要获取样式的元素标签，也就是获取到div1
+
+    //console.log(getComputedStyle(odiv,null).background);   getComputedStyle("元素"，"伪类") 是获取到计算后的样式，第二个参数是伪类，如果没有直接使用null  但是万恶的IE8及之前不支持所以需要用到下面的方法
+
+    //console.log(currentStyle.background)  这个只有IE本身支持 也是获取到计算后的样式
+
+    console.log(window.getComputedStyle?getComputedStyle(odiv,null).background:odiv.currentStyle);　　　　　　//跨浏览器兼容
+
+</script>
+</html>

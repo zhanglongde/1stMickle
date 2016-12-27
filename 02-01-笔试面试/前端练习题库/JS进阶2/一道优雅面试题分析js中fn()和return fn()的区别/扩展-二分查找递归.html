@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+//    function search(arr,target,left,right) {
+//        if (!Array.isArray(arr)) {
+//          return
+//        }
+//        if (arr.length === 1) {
+//          return 0
+//        }
+//        var left = left || 0,right= right || arr.length-1;
+//        var midIndex = Math.floor((right+left)/2);
+//        var midValue = arr[midIndex]
+//        if (target > midValue) {
+//           left = midIndex
+//            return search(arr,target,left,right)
+//        } else if(target < midValue){
+//            right = midIndex
+//            return search(arr,target,left,right)
+//        } else{
+//            return midIndex
+//        }
+//    }
+//
+//    var arr1 = [1,2,23,32,666,8,0,34]
+//    var targetIndex = search(arr1 , 8)
+//    console.log(targetIndex)
+
+var arr = [1,2,23,32,666,8,0,34]
+var mid = Math.floor((arr.length - 1) / 2);
+
+function search(n, mid) {
+    if (n > arr[mid]) {
+        mid = Math.floor((mid + arr.length) / 2);
+        return search(n, mid);
+    } else if (n < arr[mid]) {
+        mid = Math.floor((mid - 1) / 2);
+        return search(n, mid);
+    } else {
+        return mid;
+    }
+}
+
+var index = search(8, mid);
+console.log(index);
+</script>
+</body>
+</html>

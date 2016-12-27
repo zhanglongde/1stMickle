@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="height:5000px;">
+    <div id="demo" style="position:fixed;"></div>
+</div>
+
+<script>
+    var COUNT = 0,demo = document.getElementById('demo')
+    function testFn() {
+        ++COUNT
+        demo.innerHTML += 'testFn 被调用了' + COUNT + '次<br>'
+    }
+    var throttle = function (fn,delay,atleast) {
+       var timer = null
+        var previous = null
+        return function () {
+          var now = +new Date()
+            if (!previous) {
+              previous = now
+            }
+            if (atleast && now-previous > atleast) {
+              fn()
+                previous = now
+                clearTimeout(timer)
+            } else {
+                clearTimeout(timer)
+                timer = setTimeout(function () {
+                  fn()
+                    previous = null
+                },delay)
+            }
+        }
+    }
+//    window.onscroll = throttle(testFn,200)
+    window.onscroll = throttle(testFn,200,500)
+</script>
+</body>
+</html>

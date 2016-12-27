@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        cssRules获取到的样式与getComputedStyle获取到的样式有一些不同
+    </title>
+    <link rel="stylesheet" href="./basic.css">
+</head>
+<body>
+<div id="div1" class="div2">测试</div>
+<div class="test">test</div>
+<script>
+    var sheet = document.styleSheets[0]
+    var rule = sheet.cssRules[0]
+    console.log(rule.style.background)
+    console.log(sheet.cssRules["test"])
+
+    var oDiv = document.getElementById('div1')
+    var sty = window.getComputedStyle(oDiv,null)
+    console.log(sty.backgroundColor)
+</script>
+</body>
+</html>
