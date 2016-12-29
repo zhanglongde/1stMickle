@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        在box-sizing:content-box模式下
+        如果要垂直垂直居中，则需要line-height+上下border=height
+    </title>
+    <style>
+        .container{
+            position:absolute;margin:auto;top:0;left:0;right:0;bottom:0;
+
+            width:500px;height:300px;
+            background-color: #9c3;
+            color:#fff;
+        }
+        button{
+            height:28px; width:200px;
+            border:1px solid #58a;
+            line-height:28px;
+        }
+        .test{
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <button class="test">test</button>
+    <button>button具有默认padding</button>
+</div>
+</body>
+</html>
