@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        杭州西湖三日游出行名单
+
+        表格布局的流动性：
+        1.对table元素设置宽度和高度，内部元素就自动布局起来
+
+        表格特殊结构:
+        1.thead,tfoot 放置在tbody之前
+        2.thead,tfoot 中的单元格自动水平垂直居中，并且字体显示为粗体
+          tbody中的单元格水平居中必须手动设置
+
+
+        表格溢出效果的实现：
+        1.设置单元格宽高
+          一旦设置th的宽度，td宽度会跟随th宽度
+          如果设置了不换行nowrap，则不需要设置高度
+        2.溢出处理
+          盒子溢出隐藏
+          文字不换行
+          文字溢出省略号处理
+          注意：
+                溢出处理必须挂在td上面，挂在th上面，td并不会跟随
+                溢出之后，可以采用title作为查看被溢出部分的方式
+        3.将表格布局固定,使表格不具有流动性，table-layout:fixed;
+
+        表格边宽：
+        1.单元格边宽 通过设置th,td
+        2.行边宽 通过设置tr ，并且必须设置table元素的border-collapse: collapse;
+        3.默认情况下，设置border之后，单元格之间会存在缝隙，必须通过border-collapse属性去除
+    </title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        html,body{
+            width:100%;height:100%;
+        }
+        .container{
+            position:absolute;margin:auto;top:0;left:0;right:0;bottom:0;
+            width:90%;height:90%;
+
+            border:1px solid #bdbdbd;
+            border-radius:4px;
+        }
+
+        table{
+            margin:auto;
+            width:500px;height:300px; /*一旦设置好宽高。表格内的元素，自动等宽等高布局起来*/
+
+            text-align: center;/*thead和tfoot内的元素本来就居中，td会居中*/
+
+            /*去掉边框之间的缝隙*/
+            border-collapse: collapse;
+            border-spacing: 0;
+            table-layout: fixed;
+        }
+        table caption{
+            height:40px;
+            line-height:40px;
+        }
+        table thead tr,tfoot tr{
+            height:50px;
+        }
+        table tfoot td{
+            text-align: left;
+            text-indent: 10px;
+        }
+
+        /*th,td*/
+        tr {
+            /*tr的border不占用盒子模型？*/
+            /*tr 的border必须结合table的border-collapse属性*/
+            border: 1px solid #bdbdbd;
+        }
+        td{
+            /*设置的高度，其实是最小高度，还是会被撑开*/
+            /*height:40px;*/
+
+            white-space: nowrap;
+            word-wrap: break-word;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        /*如果不设置宽度，就会根据文字的宽度布局起来*/
+        /*一旦设置th宽度,td的宽度立马跟随*/
+        th:nth-child(1){
+            width:10%;
+        }
+        th:nth-child(2){
+            width:25%;
+        }
+        th:nth-child(3){
+            width:25%;
+        }
+        th:nth-last-child(1){
+            width:40%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <table>
+        <caption>杭州西湖三日游出行名单</caption>
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>联系电话</th>
+            <th>地址</th>
+        </tr>
+        </thead>
+        <tfoot><tr><td colspan="4">领导签字：</td></tr></tfoot>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td><span title="Jamson一月又一月晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕死">Jamson一月又一月晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕死</span></td>
+            <td>123-45678</td>
+            <td>xx市xx区xx号</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Grace</td>
+            <td>123-45678</td>
+            <td>xx市xx区xx号</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Dizzy</td>
+            <td>123-45678</td>
+            <td>xx市xx区xx号</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
