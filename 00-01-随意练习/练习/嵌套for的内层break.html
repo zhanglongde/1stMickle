@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        break  仅仅跳出当前for循环
+    </title>
+</head>
+<body>
+
+<script>
+    var arr1 = [1,2,3]
+    var arr2 = [11,22,33]
+    for (var i = 0,LEN=arr1.length; i < LEN; i++) {
+        console.log('%c-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+        console.log(arr1[i])
+      for (var j = 0,LENGTH = arr2.length; j < LENGTH; j++) {
+          if (arr2[j] === 22) {
+          break;
+          }
+          console.log(arr2[j])
+      }
+    }
+</script>
+</body>
+</html>

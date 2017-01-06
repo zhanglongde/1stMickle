@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    window.onload = function () {
+        //产生[0,1)的随机数(大于等于0，小于1的伪随机数)
+      var r1 = Math.random()
+        //产生[0,5）范围内的随机数
+      var r2 = Math.floor(Math.random()*5)
+        //产生[1，5)范围内的随机数
+        var r3 = Math.ceil(Math.random()*5)
+        //产生[1,5]范围内的随机数
+        var r4 = Math.floor(Math.random()*5)+1
+        /*产生[0,5]范围内的随机数*/
+        var r5 = Math.ceil(Math.random()*6)-1
+    }
+</script>
+</body>
+</html>
