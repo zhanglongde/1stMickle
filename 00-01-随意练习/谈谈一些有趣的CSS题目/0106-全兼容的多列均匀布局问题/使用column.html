@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0;padding:0;}
+        /*
+         说明：
+         1.column-count定义了对象的列数,例子中有4个模块，那么定义为4列
+         2.column-gap定义了对象中列与列的间距，间距不能设置为百分比，显得不够灵活
+        */
+        .demo{
+            -webkit-column-count:4;-moz-column-count:4;column-count:4;
+            -webkit-column-gap:20px;-moz-column-gap:20px;column-gap:20px;
+        }
+
+        .demo a{
+            display:block;
+            height:44px;
+            line-height:44px;
+            text-align:center;
+            border:1px solid #428cc8;
+            color:#666;
+            font-size:16px;
+            margin-bottom:5px;
+            border-radius:3px;
+            background-color:#fefefe;
+            background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0,#fefefe),color-stop(1,#eee));
+            color:#666;
+            text-decoration:none;
+        }
+    </style>
+</head>
+<body>
+<div class="demo">
+    <a class="link" href="#none">10元</a>
+    <a class="link" href="#none">20元</a>
+    <a class="link" href="#none">30元</a>
+    <a class="link" href="#none">50元</a>
+</div>
+</body>
+</html>

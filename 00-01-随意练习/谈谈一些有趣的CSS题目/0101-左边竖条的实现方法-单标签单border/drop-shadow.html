@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            position:absolute;
+            margin:auto;top:0;left:0;right:0;bottom:0;
+            width:500px;height:500px;
+
+            background-color: #fc3;
+        }
+        .box{
+            width:200px;height:50px;
+            background-color: #bdbdbd;
+            border-top:3px solid #58a;
+/*没有inset,没有扩展半径*/
+            filter:drop-shadow(-5px 0 0 deeppink);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            position:absolute;
+            margin:auto;top:0;left:0;right:0;bottom:0;
+            width:500px;height:500px;
+
+            background-color: #fc3;
+        }
+        .box{
+            width:200px;height:200px;
+            background-color: deeppink;
+            border:10px dashed #58a;
+            box-shadow: inset 0 0 0 100px white;
+
+            /*background-clip:content-box;*/
+            /*filter:drop-shadow(0 0 0 #85a);*/
+        }
+        .box:after{
+            /*content:"";*/
+            /*position: absolute;top:0;left:0;right:0;bottom:0;*/
+            /*background: #fff;*/
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box"></div>
+</div>
+</body>
+</html>

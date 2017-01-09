@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            position:absolute;
+            margin:auto;top:0;left:0;right:0;bottom:0;
+            width:500px;height:500px;
+
+            background-color: #fc3;
+
+            z-index:-2;
+        }
+        .box{
+            width:200px;height:200px;
+            background-color: white;
+            border:20px dashed #58a;
+
+            background-clip:content-box;
+            position: relative;
+        }
+        .box:after{
+            content:"";
+            position: absolute;top:-20px;left:-20px;right:-20px;bottom:-20px;
+            background: deeppink;
+            z-index:-1;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box"></div>
+</div>
+</body>
+</html>
