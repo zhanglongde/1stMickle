@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>碰撞运动</title>
+    <style>
+        body,div,p{ margin:0; padding:0;}
+        #div1{ width:300px; height:200px; background:red; position: relative;}
+        #div1 p{ text-align:center; line-height:200px; font-size:20px; color:white;}
+        #div1 a{ display:block; position:absolute; right:0; top:0; color:#ffffff;}
+    </style>
+    <script>
+        window.onload = function(){
+            var oDiv = document.getElementById('div1');
+            var oClose = document.getElementById('close');
+            var timer = null;
+            var ispeedX = 5;
+            var ispeedY = 5;
+            oClose.onclick = function(){ oDiv.style.display = 'none'; }
+            startMove(oDiv);
+
+            function startMove(obj){
+                obj.timer = setInterval(function(){
+                    var L = oDiv.offsetLeft + ispeedX;
+                    var T = oDiv.offsetTop + ispeedY;
+                    var viewHeight = document.documentElement.clientHeight || document.body.clientHeight;//可视区的高
+                    var viewWidth = document.documentElement.clientWidth || document.body.clientWidth;
+                    if(T > viewHeight-oDiv.offsetHeight){
+                        T = viewHeight-oDiv.offsetHeight;
+                        ispeedY *= -1;
+                    }
+                    else if(T<0){
+                        T = 0;
+                        ispeedY *= -1;
+                    }
+                    if(L > viewWidth-oDiv.offsetWidth){
+                        L = viewWidth-oDiv.offsetWidth;
+                        ispeedX *= -1;
+                    }
+                    else if(L<0){
+                        L = 0;
+                        ispeedX *= -1;
+                    }
+                    oDiv.style.left = L + 'px';
+                    oDiv.style.top = T + 'px';
+                },30);
+                obj.onmouseover = function(){
+                    clearInterval(obj.timer);
+                }
+                obj.onmouseout = function(){
+                    startMove(oDiv);
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+<div id="div1">
+    <p>这是一个碰撞窗口</p>
+    <a href="javascript:;" id="close">关闭</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <span class="close">x</span>
+    <span class="close">x</span>
+</div>
+</body>
+
+<script src="../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    window.onload= function () {
+      var t1 = $('.close').eq(0).text()
+      var t2 = $('.close').eq(1).text()
+
+        console.log(t1)
+        console.log(t2)
+        var isSame = $('.close').eq(0).is($('.close').eq(1).prev())
+        console.log(isSame)
+    }
+</script>
+</html>

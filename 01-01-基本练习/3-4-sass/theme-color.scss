@@ -1,0 +1,57 @@
+// ----
+// Sass (v3.3.14)
+// Compass (v1.0.3)
+// ----
+
+// Neutral color palette
+$palette-neutral--xdark:  #2C3643;
+$palette-neutral--dark:   #3B444F;
+$palette-neutral--base:   #67747C;
+$palette-neutral--light:  #99A9B3;
+$palette-neutral--xlight: #DBE6EC;
+
+// Primary color palette
+$palette-blue--dark:  #1D508D;
+$palette-blue--base:  #206FAC;
+$palette-blue--light: #288AD6;
+$palette-red:         #FA5E5B;
+$palette-green:       #16C98D;
+$palette-orange:      #FFC83F;
+$palette-yellow:      #FEEF6D;
+
+// Themes
+$themes: (
+        'brand': (
+                'primary': $palette-blue--base,
+                'secondary': $palette-blue--dark,
+                'contrast': white
+        ),
+        'highlight': (
+                'primary': $palette-yellow,
+                'secondary': $palette-orange,
+                'contrast': $palette-neutral--dark
+        ),
+        'neutral': (
+                'primary': $palette-neutral--light,
+                'secondary': $palette-neutral--xlight,
+                'contrast': $palette-neutral--xdark
+        )
+);
+
+// Button base
+.btn {
+  padding: 10px 16px;
+  border-radius: 4px;
+}
+
+// Button color variations
+@each $name, $theme in $themes {
+  .btn--#{$name} {
+    color: map-get($theme, 'contrast');
+    background: map-get($theme, 'primary');
+
+    &:hover {
+      background: map-get($theme, 'secondary');
+    }
+  }
+}

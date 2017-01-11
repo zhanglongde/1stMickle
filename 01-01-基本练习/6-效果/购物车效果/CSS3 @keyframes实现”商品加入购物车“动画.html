@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+<div id="goods">
+    <img src="../../../images/qiqiao_wechat_code.jpg" id="showimg" />
+    <h3>价格and商品名称</h3>
+    <div id="smallimg">
+        <img src="../../../images/mm1.jpg" />
+    </div>
+    <button type="button" id="btn">添加购物车</button>
+</div>
+<img src="../../../images/mm2.jpg" id="shopping" />
+</body>
+
+<script>
+    var doc = document,
+            btn = doc.getElementById("btn"),
+            good = doc.getElementById("smallimg");
+    btn.onclick = function() {
+        if (good.className == "") {
+            good.className = "addgood";//添加加入购物车动画
+        }
+        setTimeout(function() {
+            good.removeAttribute("class");
+        }, 1000);
+    };
+</script>
+</html>

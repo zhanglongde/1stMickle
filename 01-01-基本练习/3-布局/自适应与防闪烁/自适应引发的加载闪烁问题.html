@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #container {
+            width: 50%;
+            position: relative;
+            background-color: red;
+            overflow: hidden;  /*//需要触发BFC消除margin折叠的问题*/
+        }
+        .placeholder:after {
+            content: '';
+            display: block;
+            margin-top: 100%; /*//margin 百分比相对父元素宽度计算*/
+        }
+    </style>
+</head>
+<body>
+<div id="container" class="placeholder"></div>
+</body>
+</html>

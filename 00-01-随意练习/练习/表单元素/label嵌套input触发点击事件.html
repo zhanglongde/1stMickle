@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+     label{
+         display:block;
+     }
+    </style>
+</head>
+<body>
+<div class="container">
+    <label >
+        <input type="text" class="ipt-type" value="1">
+        <input type="text" class="ipt-value" value="2">
+        <div class="close">&times;</div>
+    </label>
+</div>
+
+<script>
+    window.onload = function () {
+      var oIptType = document.querySelector('.ipt-type')
+      var oIptValue = document.querySelector('.ipt-value')
+        oIptType.addEventListener('click',function (e) {
+          console.log('oIptType click...',e.target.value)
+        })
+
+        oIptType.addEventListener('focus', function () {
+          console.log('oIptType focus...')
+        })
+
+        oIptValue.addEventListener('click',function (e) {
+            console.log('oIptValue click...',e.target.value)
+        })
+
+        oIptValue.addEventListener('focus', function () {
+          console.log('oIptValue focus...')
+        })
+
+        var oClose = document.querySelector('.close')
+        oClose.addEventListener('click', function () {
+          console.log('close...')
+        })
+    }
+</script>
+</body>
+</html>

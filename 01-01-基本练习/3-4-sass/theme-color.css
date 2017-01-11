@@ -1,0 +1,23 @@
+.btn {
+  padding: 10px 16px;
+  border-radius: 4px; }
+
+.btn--brand {
+  color: white;
+  background: #206FAC; }
+  .btn--brand:hover {
+    background: #1D508D; }
+
+.btn--highlight {
+  color: #3B444F;
+  background: #FEEF6D; }
+  .btn--highlight:hover {
+    background: #FFC83F; }
+
+.btn--neutral {
+  color: #2C3643;
+  background: #99A9B3; }
+  .btn--neutral:hover {
+    background: #DBE6EC; }
+
+/*# sourceMappingURL=theme-color.css.map */

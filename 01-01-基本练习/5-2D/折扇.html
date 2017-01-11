@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html{
+            overflow:hidden;
+        }
+        body{
+            background:#00ffff;
+        }
+        div{
+            width:10px;
+            height:500px;
+            background:#ff83fa;
+            position:absolute;
+            top:10%;
+            left:50%;
+            transform-origin:center 90%;
+            transition: transform 2s;
+            border-left:1px solid pink;
+            border-right:1px solid pink;
+        }
+        div:before,
+        div:after{
+            content:'';
+            position:absolute;
+            height:300px;
+            width:20px;
+        }
+        div:before{
+            border-top:	300px solid #dddddd;
+            border-right:25px solid transparent;
+        }
+        div:after{
+            left:-35px;
+            border-top:300px solid white;
+            border-left:25px solid transparent;
+        }
+        div:first-of-type:after,
+        div:last-of-type:before,
+        div:last-of-type:after{
+            border-top:	300px solid #ff83fa;
+        }
+        body:hover div:nth-of-type(1){
+            transform:rotate(-70deg)
+        }
+        body:hover div:nth-of-type(2){
+            transform:rotate(-60deg)
+        }
+        body:hover div:nth-of-type(3){
+            transform:rotate(-50deg)
+        }
+        body:hover div:nth-of-type(4){
+            transform:rotate(-40deg)
+        }
+        body:hover div:nth-of-type(5){
+            transform:rotate(-30deg)
+        }
+        body:hover div:nth-of-type(6){
+            transform:rotate(-20deg)
+        }
+        body:hover div:nth-of-type(7){
+            transform:rotate(-10deg)
+        }
+        body:hover div:nth-of-type(8){
+            transform:rotate(0deg)
+        }
+        body:hover div:nth-of-type(9){
+            transform:rotate(10deg)
+        }
+        body:hover div:nth-of-type(10){
+            transform:rotate(20deg)
+        }
+        body:hover div:nth-of-type(11){
+            transform:rotate(30deg)
+        }
+        body:hover div:nth-of-type(12){
+            transform:rotate(40deg)
+        }
+        body:hover div:nth-of-type(13){
+            transform:rotate(50deg)
+        }
+        body:hover div:nth-of-type(14){
+            transform:rotate(60deg)
+        }
+        body:hover div:nth-of-type(15){
+            transform:rotate(70deg)
+        }
+    </style>
+</head>
+<body>
+<div></div><div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div><div></div>
+</body>
+
+<script>
+    document.addEventListener('mousemove', function(e) {
+        this.body.style.transform = 'rotateZ(-' + e.y / 50 + 'deg)'
+    }, false);
+</script>
+</html>

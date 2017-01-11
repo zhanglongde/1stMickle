@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .wrapper{
+            position:relative;
+        }
+        .box{
+            width:700px;height:60px;
+            background-color: #9c3;
+
+            /*border:2px solid #bdbdbd;*/
+        }
+        .container{
+            position:absolute;top:0px;left:650px;
+            height:60px;width:40px;
+            line-height:60px;
+            text-align: center;
+
+            background-color: #58a;
+        }
+        .container span{
+            /*line-height:60px;*/
+            font-size:20px;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="box">
+    </div>
+    <div class="container">
+        <span id="btn-close" class="close">x</span>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div class="box">
+    </div>
+    <div class="container">
+        <span id="btn-close2" class="close">x</span>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div class="box">
+    </div>
+    <div class="container">
+        <span id="btn-close3" class="close">x</span>
+    </div>
+</div>
+<div style="background-color: #fff;">
+    <svg width="15px" height="15px" viewBox="16 21 15 15" v-if="!selected">
+        <path d="M29.3333333,22.6666667 L29.3333333,34.3333333
+        L17.6666667,34.3333333 L17.6666667,22.6666667
+        L29.3333333,22.6666667 L29.3333333,22.6666667 Z M29.3333333,21
+        L17.6666667,21 C16.75,21 16,21.75 16,22.6666667 L16,34.3333333
+        C16,35.25 16.75,36 17.6666667,36 L29.3333333,36 C30.25,36 31,35.25
+        31,34.3333333 L31,22.6666667 C31,21.75 30.25,21 29.3333333,21
+        L29.3333333,21 L29.3333333,21 Z" stroke="none" fill="#B2B8C1" fill-rule="evenodd"></path>
+    </svg>
+    <svg width="15px" height="15px" viewBox="0 0 15 15" v-if="selected">
+        <g stroke="none" stroke-width="1" fill="none" fillrule="
+          evenodd">
+            <path d="M13.3333333,1.66666667 L13.3333333,13.3333333
+            L1.66666667,13.3333333 L1.66666667,1.66666667
+            L13.3333333,1.66666667 L13.3333333,1.66666667 Z M13.3333333,0
+            L1.66666667,0 C0.75,0 0,0.75 0,1.66666667 L0,13.3333333 C0,14.25
+            0.75,15 1.66666667,15 L13.3333333,15 C14.25,15 15,14.25 15,13.3333333
+            L15,1.66666667 C15,0.75 14.25,0 13.3333333,0 L13.3333333,0
+            L13.3333333,0 Z" fill="#778291"></path>
+            <rect id="Rectangle-23" fill="#778291" x="4" y="4" width="7" height="7" rx="1"></rect>
+        </g>
+    </svg>
+    <svg width="7px" height="13px" viewBox="20 6 7 4">
+        <polygon stroke="none" fill="#778291" fill-rule="evenodd" points="20 6 23.5 9.5 27 6"></polygon>
+    </svg>
+</div>
+
+</body>
+
+<script>
+    window.onload= function () {
+      var oClose = document.querySelector('#btn-close')
+        var oBox = document.querySelectorAll('.box')
+        oClose.addEventListener('click', function (e) {
+          console.log(e.target)
+        })
+
+        for (var i = 0,LEN=oBox.length; i < LEN; i++) {
+            oBox[i].addEventListener('mouseover', function (e) {
+                console.log('%c---------------------------------------over', 'background-color:#85a;color:#fff;font-size:30px;')
+                console.log(e.target)
+                console.log(e.relatedTarget)
+            })
+            oBox[i].addEventListener('mouseout', function (e) {
+                console.log('%c----------------------------------------out', 'background-color:#58a;color:#fff;font-size:30px;')
+                console.log(e.target)
+                console.log(e.relatedTarget)
+            })
+        }
+    }
+</script>
+</html>

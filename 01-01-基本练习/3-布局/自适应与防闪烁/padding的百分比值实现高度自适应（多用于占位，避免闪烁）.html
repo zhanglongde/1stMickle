@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        自适应用伪元素占住位置
+        内容用绝对定位布局
+    </title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        .box{
+            position:absolute;margin:auto;left:0;top:0;right:0;bottom:0;
+
+            width:500px;height:500px;
+        }
+        #container {
+            width: 50%;
+            position: relative;
+            background-color: red;
+            overflow: hidden;  /*需要触发BFC消除margin折叠的问题*/
+        }
+        .placeholder:after {
+            content: '';
+            display: block;
+            margin-top: 100%; /*margin 百分比相对父元素宽度计算*/
+        }
+        img {
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div id="container" class="placeholder">
+        <img src="../../../images/mm1.jpg" />
+    </div>
+</div>
+</body>
+</html>
