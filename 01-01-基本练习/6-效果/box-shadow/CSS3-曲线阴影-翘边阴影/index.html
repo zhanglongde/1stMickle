@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh">
+	<meta charset="utf-8">
+	<title>css3图片阴影效果</title>
+	<style type="text/css">
+		body,ul{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			font-family:Arial;
+			font-size: 20px;
+		}
+		li{
+			list-style: none;
+		}
+		.wrap{
+			width: 960px;
+			height: 200px;
+			margin: 50px auto;
+			background-color: #fff;
+			
+
+		}
+		.wrap h1{
+			font-size: 20px;
+			text-align: center;
+			line-height: 200px;
+		}
+		.effect{
+			position: relative;
+			box-shadow:0px 1px 4px rgba(0,0,0,0.3),0 0 30px rgba(0,0,0,0.1) inset ;
+			-webkit-box-shadow:0px 1px 4px rgba(0,0,0,0.3),0 0 30px rgba(0,0,0,0.1) inset ;
+			-moz-box-shadow:0px 1px 4px rgba(0,0,0,0.3),0 0 30px rgba(0,0,0,0.1) inset ;
+			-o-box-shadow:0px 1px 4px rgba(0,0,0,0.3),0 0 30px rgba(0,0,0,0.1) inset ;
+		}
+		.effect:after,.effect:before{
+			content:"";
+			z-index: -1;
+			background-color:transparent;
+			position: absolute;
+			top: 50%;
+			bottom: 0;
+			left: 20px;
+			right:20px;
+			box-shadow: 0 0px 20px rgba(0,0,0,0.7);
+			-webkit-box-shadow: 0 0px 20px rgba(0,0,0,0.7);
+			-moz-box-shadow: 0 1px 20px rgba(0,0,0,0.7);
+			-o-box-shadow: 0 1px 20px rgba(0,0,0,0.7);
+			border-radius: 100px/10px;
+		}
+/*****************************************/
+		.box{
+			width: 980px;
+			height: auto;
+			margin: 0 auto;
+			overflow: hidden;
+			clear: both;
+			
+		}
+		.box li{
+			width: 300px;
+			height: 220px;
+			margin: 20px 10px;
+			background-color: #fff;
+			position: relative;
+			float: left;
+			border: 2px solid #efefef; 
+			background-color: #fff;
+			box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 1px 40px rgba(0,0,0,0.1) inset;
+			-webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 1px 40px rgba(0,0,0,0.1) inset;
+			-moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 1px 40px rgba(0,0,0,0.1) inset;
+			-o-box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 1px 40px rgba(0,0,0,0.1) inset;		}
+		.box li img{
+			display:block;
+			width: 290px;
+			height: 210px;
+			margin: 5px;
+		}
+		.box li:after{
+			content: '';
+			position: absolute;
+			background:transparent;
+			z-index: -1;
+			width: 89%;
+			height: 80%;
+			bottom: 7px;
+			left: 20px;
+			box-shadow:0 8px 15px rgba(0,0,0,0.6) ;
+			-webkit-box-shadow:0 8px 15px rgba(0,0,0,0.6) ;
+			-moz-box-shadow:0 8px 15px rgba(0,0,0,0.6) ;
+			-o-box-shadow:0 8px 15px rgba(0,0,0,0.6) ;
+			transform:skew(-12deg) rotate(-4deg); 
+			-webkit-transform:skew(-12deg) rotate(-4deg);
+			-moz-transform:skew(-12deg) rotate(-4deg);
+			-o-transform:skew(-12deg) rotate(-4deg); 
+
+		}
+		.box li:before{
+			content: '';
+			position: absolute;
+			background: transparent;
+			z-index: -2;
+			width: 89%;
+			height: 80%;
+			bottom: 7px;
+			right: 20px;
+			box-shadow:0 8px 15px rgba(0,0,0,0.6) ;
+			-webkit-box-shadow:0 8px 15px rgba(0,0,0,0.6) ;
+			-moz-box-shadow:0 8px 15px rgba(0,0,0,0.6) ;
+			-o-box-shadow:0 8px 15px rgba(0,0,0,0.6) ;
+			transform: skew(12deg) rotate(4deg) ;
+			-webkit-transform:skew(12deg) rotate(4deg);
+			-moz-transform:skew(12deg) rotate(4deg);
+			-o-transform:skew(12deg) rotate(4deg); 
+
+		}
+		}
+	</style>
+</head>
+<body>	
+	<div class="wrap effect">
+		<h1>Shadow effect</h1>
+	</div>
+	<ul class="box">
+		<li><img src="images/photo1.jpg" alt=""></li>
+		<li><img src="images/photo2.jpg" alt=""></li>
+		<li><img src="images/photo3.jpg" alt=""></li>
+	</ul>
+</body>
+</html>	

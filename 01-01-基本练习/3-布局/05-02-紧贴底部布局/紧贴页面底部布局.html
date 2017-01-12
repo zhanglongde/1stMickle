@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <style type="text/css">
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        html,
+        body,
+        #wrap {
+            box-sizing: border-box;
+            height: 100%;
+            border: 1px solid green;
+        }
+
+        body> #wrap {
+            height: auto;
+            min-height: 100%;
+        }
+
+        #main {
+            padding-bottom: 150px;
+        }
+        /* 必须使用和footer相同的高度 */
+
+        #footer {
+            position: relative;
+            margin-top: -150px;
+            /* footer高度的负值 */
+            height: 150px;
+            clear: both;
+            background: red;
+        }
+
+        .clearfix:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        .clearfix {
+            display: inline-block;
+        }
+        /* Hides from IE-mac \*/
+
+        * html .clearfix {
+            height: 1%;
+        }
+
+        .clearfix {
+            display: block;
+        }
+        /* End hide from IE-mac */
+    </style>
+</head>
+
+<body>
+<div id="wrap">
+    <div id="main" class="clearfix">
+        <div id="content">
+            CSS的简单在于它易学，CSS的困难在于寻找更好的解决方案。在CSS的世界里，似乎没有完美这种说法。所以，现在介绍的CSS绝对底部，只是目前个人见过的方案中比较完美的吧。 先说我们为什么会使用到这个CSS底部布局解决方案: 当做一个页面时，如果页面内容很少，不足于填充一屏的窗口区域，按普通的布局，就会出现下面图片中的样子(也就是底部内容并没有位于窗口的底部，而留下了大量空白。
+        </div>
+        <div id="side">
+            对于追未完美的设计师来说，这是不美观的。网上有一些解决方案，但会出现当改变窗口高度时，底部和正文重叠的BUG。尽管没有多少人会有事没事儿的去改变窗口高度，但设计嘛，追求的就是尽善尽美。下面是我找到的一个比较完美的方法，来自国外的设计达人，纯CSS，可以实现: 当正文内容很少时，底部位于窗口最下面。当改变窗口高度时，不会出现重叠问题。甚至，创造该CSS的人还专门成立一个网站介绍这个CSS底部布局方案。不知道他有没有去申请专利:)
+        </div>
+
+    </div>
+</div>
+<div id="footer">
+    卧槽
+</div>
+</body>
+
+</html>

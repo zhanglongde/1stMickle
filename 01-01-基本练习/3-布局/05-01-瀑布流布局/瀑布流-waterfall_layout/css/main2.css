@@ -1,0 +1,24 @@
+.container{
+	margin: 0 auto;
+	-webkit-column-width: 202px;
+	/*-webkit-column-count: 6;*/
+	-webkit-column-gap: 15px;
+}
+
+.box{
+	padding: 10px 0 0 10px;
+}
+
+.pic{
+	width: 165px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0 0 5px #ccc;
+}
+
+.pic img{
+	display: block;
+	width: 165px;
+	height: auto;
+}

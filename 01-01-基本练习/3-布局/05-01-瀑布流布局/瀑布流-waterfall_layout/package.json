@@ -1,0 +1,14 @@
+{
+  "name": "waterfalllayout",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "lx7575000 <liu_narcisus@163.com> (https://github.com/lx7575000)",
+  "license": "ISC",
+  "devDependencies": {
+    "react": "^0.14.7"
+  }
+}

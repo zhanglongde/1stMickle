@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ripple Buttons
+        http://blog.zhangruipeng.me/2015/03/26/JavaScript-Ripple-Button/
+    </title>
+    <style type="text/css">
+        /*
+          button作为容器，其position需要设置为absolute来承载ripple背景
+          overflow:hidden用于掩盖ripple超出button的部分
+         */
+        button {
+            position: relative;
+            background-color: transparent;
+            border: none;
+            width: 120px;
+            height: 36px;
+            overflow: hidden;
+            color: #fff;
+            border-radius: 4px;
+            outline: none;
+        }
+        /*
+          button中的div为按钮的ripple背景，由JavaScript动态生成
+         */
+        button > div {
+            position:absolute;
+            background-color: rgba(255,255,255,0.3);
+            border-radius: 50%;
+        }
+        .success {background-color: #04A43B;}
+        .info {background-color: #0C9AF2;}
+        .danger {background-color: #dd0d32;}
+        .long {height: 200px; width: 90px;}
+    </style>
+</head>
+<body>
+<button class="success">Click Me!</button>
+<button class="info">Click Me!</button>
+<button class="danger long">Click Me!</button>
+</body>
+
+<script>
+    window.onload = function () {
+        var buttons = document.getElementsByTagName('button'), speed = 8;
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].onmousedown = function (e) {
+                var e = e || window.event,
+                        offsetX = e.offsetX,
+                        offsetY = e.offsetY,
+                        radiusX = (this.offsetWidth - offsetX > offsetX?this.offsetWidth - offsetX:offsetX),
+                        radiusY = (this.offsetHeight - offsetY > offsetY?this.offsetHeight - offsetY:offsetY),
+                        offsetSize = Math.sqrt(Math.pow(radiusX,2) + Math.pow(radiusY,2)),
+                        inner = document.createElement('div');
+                this.appendChild(inner);
+                var interval = setInterval(function () {
+                    inner.style.width = (inner.offsetWidth + speed) + 'px';
+                    inner.style.height = (inner.offsetWidth + speed) + 'px';
+                    inner.style.left = (offsetX - inner.offsetWidth/2) + 'px';
+                    inner.style.top = (offsetY - inner.offsetHeight/2) + 'px';
+                    inner.style.opacity = inner.offsetWidth/offsetSize/2;
+                    if(inner.offsetWidth >= offsetSize*2 && inner.offsetHeight >= offsetSize*2) {
+                        clearInterval(interval);
+                    }
+                }, 10);
+            }
+            buttons[i].onmouseup = function (e) {
+                var e = e || window.event,
+                        this_ = this,
+                        inner = this.children[0];
+                var interval = setInterval(function () {
+                    inner.style.opacity = inner.style.opacity - speed/this_.offsetWidth;
+                    if(inner.style.opacity <= 0) {
+                        this_.removeChild(inner);
+                        clearInterval(interval);
+                    }
+                }, 10);
+            }
+        };
+    }
+</script>
+</html>

@@ -1,0 +1,34 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.container{
+	position: relative;
+	margin: 0 auto;
+}
+
+.box{
+	width: 202px;
+	padding: 15px 0 0 15px;
+	float: left;
+}
+
+.pic{ 
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0 0 5px #ccc;
+}
+
+.pic img{
+	width: 165px;
+	height: auto;
+}
+
+.about{
+	font: 14px / 1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+	text-indent: 1em;
+	padding-left: 10px;
+}
