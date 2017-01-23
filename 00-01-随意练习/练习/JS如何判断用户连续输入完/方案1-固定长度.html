@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        如果用户输入的内容是是固定长度的文本，
+        比如说手机号码、身份证号码等等，则用keyup()事件监听input中内容length的变化，
+        一旦达到临界值，就表示输入完成，自动提交
+    </title>
+    <style>
+        .container{
+            position:absolute;margin:auto;top:0;left:0;right:0;bottom:0;
+            width:500px;height:300px;
+
+            background-color: #9c3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+   <label for="test">电话号码:</label><input type="text" id="test">
+</div>
+
+<script>
+    window.onload = function () {
+      var obj = document.querySelector('#test')
+        obj.addEventListener('input', function (e) {
+            var val = e.target.value
+            if (val.length ===  11) {
+              console.log('corret length!')
+            }
+        })
+    }
+</script>
+</body>
+</html>

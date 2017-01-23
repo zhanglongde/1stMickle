@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+
+    </title>
+
+</head>
+<body>
+<div class="container">
+    <label for="test">电话号码:</label><input type="text" id="test">
+</div>
+
+<script>
+    window.onload = function () {
+      var obj =document.querySelector('#test')
+        obj.addEventListener('change', function (e) {
+            // 失去焦点才有效
+          console.log(e.target.value)
+        })
+    }
+</script>
+</body>
+</html>
