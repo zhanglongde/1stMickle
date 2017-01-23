@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>宽度自适应的输入框</title>
+    <link rel="stylesheet" src="http://normalize-css.googlecode.com/svn/trunk/normalize.css" />
+    <style type="text/css">
+        .col{margin:0 auto; padding:10px; width:600px; background-color:#999;}
+        .fluid-input{display:inline-block; width:100%; _overflow:hidden;}
+        .fluid-input-inner{display:block; padding-right:10px; #zoom:1;}
+        .fluid-input .text,
+        .fluid-input textarea{padding:3px; width:100%; border:2px #ccc solid;}
+        .fluid-input textarea{height:300px;}
+    </style>
+</head>
+<body>
+<div class="col">
+    <b class="fluid-input"><b class="fluid-input-inner"><input class="text" type="text" value="22"></b></b>
+    <b class="fluid-input"><b class="fluid-input-inner"><textarea></textarea></b></b>
+</div>
+</body>
+</html>
