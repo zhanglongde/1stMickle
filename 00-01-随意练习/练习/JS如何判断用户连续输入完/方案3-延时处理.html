@@ -15,8 +15,10 @@
 <script>
     window.onload = function () {
         var obj =document.querySelector('#test')
+        var timer = null
         obj.addEventListener('input', function (e) {
-            setTimeout(function () {
+            clearTimeout(timer)
+            timer = setTimeout(function () {
                 console.log(e.target.value)
             },300)
         })

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        .container{
+            position:absolute;margin:auto;top:0;left:0;right:0;bottom:0;
+            width:500px;height:300px;
+
+            box-shadow: 0 0 4px rgba(0,0,0,0.4);
+        }
+        .row{
+            position:relative;
+            width:84px;
+            height:40px;
+            line-height:40px;
+        }
+        .row input{
+            width:84px;
+            /*height:40px;*/
+            line-height:40px;
+        }
+        .caret{
+            position: absolute;
+            top: 50%;
+            right: 0px;
+            width:0;height:0;
+            /*margin:0;padding:0;*/
+
+            border:5px solid transparent;
+            border-top-color: #778291;
+            -webkit-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <input type="text" placeholder="邮箱"><span class="caret"></span>
+    </div>
+</div>
+
+<script>
+    window.onload = function () {
+        var oIpt = document.querySelector('input')
+        var oCaret = document.querySelector('.caret')
+        oIpt.addEventListener('click', function (e) {
+          console.log(e.target)
+        })
+        oCaret.addEventListener('click', function (e) {
+          console.log(e.target)
+        })
+    }
+</script>
+</body>
+</html>
