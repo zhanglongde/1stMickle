@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .slt-container{
+            display:inline-block;
+            position:relative;
+            width:84px;
+            height:40px;
+
+            line-height:40px;
+        }
+        input{
+            width:84px;height:40px;
+            padding:0;
+        }
+        .caret{
+            display:inline-block;
+            position:absolute;
+            top:45%;
+            /*right:-45%;*/
+            right:14px;
+            width:0;height:0;
+            margin:0;padding:0;
+
+            border:5px solid transparent;
+            border-top-color: #778291;
+            line-height:40px;
+
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="slt-container">
+    <input type="text" placeholder="邮箱"><span class="caret" id="test"></span>
+</div>
+</body>
+<script> 
+    window.onload = function () {
+        var oTest = document.querySelector('#test')
+        oTest.addEventListener('click', function (e) {
+            console.log(e.target)
+        },false)
+    }
+</script>
+</html>

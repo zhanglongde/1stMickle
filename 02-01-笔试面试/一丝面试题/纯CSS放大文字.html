@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        纠结的面试题：使用一个标签和纯CSS <a href="#" title="订阅博客">订阅博客</a> 实现如图效果，文字始终保持左边距10px, 下边距5px，改变字体大小（12px-50px）时，边距保持不变，不使用 content:"订阅博客"，兼容现代浏览器
+    </title>
+    <style>
+        a{
+            position:relative;
+            display:inline-block;
+            width:300px;height:100px;
+            background-color: green;
+            color:#fff;
+            font-size:12px;
+            text-decoration:none;
+            text-indent:-999px;
+            border-bottom:5px solid red;
+            /*content:"订阅博客";*/
+            vertical-align: bottom;
+            transition: font-size 1s;
+        }
+        a:before{
+            content:attr(title);
+            position:absolute;
+            bottom:5px;
+            left:10px;
+            text-indent:0;
+        }
+        a:hover{
+            color:#666;
+            font-size:50px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+<a href="#" title="订阅博客"></a>
+</body>
+</html>

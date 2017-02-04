@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        一淘面试题来啦：使用 HTML+CSS 实现如图布局，
+        border-widht 5px，一个格子大小是 50*50，
+        hover时候边框变为红色（兼容IE6+，考虑语义化的结构）。
+    </title>
+    <style>
+        .container{
+            position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;
+            width:310px;height:310px;
+
+            box-shadow:0 0 4px rgba(0,0,0,0.4);
+        }
+        table{
+            width:300px;
+            height:300px;
+
+            border-collapse: collapse;
+            border-spacing: 0;
+            /*table-layout: fixed;*/
+
+            color:green;
+            text-align: center;
+        }
+        td{
+            border:2px solid blue;
+        }
+        td:hover{
+            border:2px solid red;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <table>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
