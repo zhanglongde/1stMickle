@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    window.onload = function () {
+      String.prototype.spacify = function () {
+        return this.split('').join(' ')
+      }
+      var w = 'Hello world'.spacify()
+        console.log(w)
+    }
+</script>
+</body>
+</html>

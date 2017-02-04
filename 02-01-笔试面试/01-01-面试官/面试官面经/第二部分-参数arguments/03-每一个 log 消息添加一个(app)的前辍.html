@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    window.onload = function () {
+        function log() {
+            var msg = [].slice.call(arguments)
+            var t = msg.unshift('(app)')
+          console.log.apply(console,msg)
+        }
+//        function log(){
+//            var args = Array.prototype.slice.call(arguments);
+//            args.unshift('(app)');
+//
+//            console.log.apply(console, args);
+//        };
+        log('Hello-','world!')
+    }
+</script>
+</body>
+</html>

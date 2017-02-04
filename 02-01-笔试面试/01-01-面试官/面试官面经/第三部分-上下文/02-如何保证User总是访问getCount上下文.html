@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    window.onload = function () {
+      var User = {
+          count:1,
+          getCount: function () {
+            return this.count;
+          }
+      }
+
+      var func = User.getCount.bind(User)
+        console.log(func())
+    }
+</script>
+</body>
+</html>
