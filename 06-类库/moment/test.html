@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="./moment.js"></script>
+<script>
+    window.onload = function () {
+        var a = moment('20111031','YYYYMMDD').fromNow()
+        var b = moment('20181031','YYYYMMDD').fromNow()
+        console.log(a);
+        console.log(b);
+
+
+        var c = moment().startOf('day').fromNow();        // 21 小时前
+        var d = moment().endOf('day').fromNow();          // 3 小时内
+        var e =moment().startOf('hour').fromNow();       // 16 分钟前
+        console.log(c);
+        console.log(d);
+        console.log(e);
+    }
+</script>
+</body>
+</html>
