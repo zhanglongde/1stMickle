@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        .container{
+            width:200px;
+        }
+        .test{
+            position:relative;
+            width:200px;
+            height:30px;
+
+            background-color: #9c3;
+        }
+        .light-border{
+            margin-top:15px;
+        }
+        .light-border:before{
+            content:'';
+            position:absolute;top:-15px;left:0;
+            height:5px;
+            width:100%;
+            border-top:5px solid #ccc;
+
+            margin-bottom:10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="test light-border"></div>
+</div>
+</body>
+</html>
