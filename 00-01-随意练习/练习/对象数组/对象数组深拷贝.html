@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    window.onload = function () {
+        var aa = [], bb = [{a: 111}, {b: 222}];
+        $.extend(true, aa, bb)
+
+        aa[0].a = 333
+        console.log(aa[0].a);
+        console.log(bb[0].a);
+    }
+</script>
+</body>
+</html>

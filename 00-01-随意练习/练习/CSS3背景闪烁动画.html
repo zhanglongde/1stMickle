@@ -31,6 +31,9 @@
         o.addEventListener('click', function (e) {
           e.target.classList.toggle('blink-bg')
         })
+        o.addEventListener('animationend', function () {
+            console.log('animation end...');
+        })
     }
 </script>
 </body>
