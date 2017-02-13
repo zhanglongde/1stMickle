@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    window.onload = function () {
+        var homes = [{
+            "h_id": "3",
+            "city": "Dallas",
+            "state": "TX",
+            "zip": "75201",
+            "price": "162500"
+        }, {
+            "h_id": "4",
+            "city": "Bevery Hills",
+            "state": "CA",
+            "zip": "90210",
+            "price": "319250"
+        }, {
+            "h_id": "5",
+            "city": "New York",
+            "state": "NY",
+            "zip": "00010",
+            "price": "962500"
+        }];
+
+        var ascending = homes.sort((a, b) => Number(a.price) - Number(b.price));
+        var descending = homes.sort((a, b) => Number(b.price) - Number(a.price));
+
+        console.log("ascending", ascending);
+        console.log("descending", descending);
+    }
+</script>
+</body>
+</html>

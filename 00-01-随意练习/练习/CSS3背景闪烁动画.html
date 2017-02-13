@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .blink-bg{
+            /*background-color: #58a;*/
+            animation:blink 1.5s reverse;
+            /*transition:backgound-color 1.5s;*/
+        }
+        @keyframes blink {
+            /*0%{*/
+                /*background-color:#fff;*/
+            /*}*/
+            /*50%{*/
+                /*transform:scale(1.5) translateX(300px);*/
+            /*}*/
+            100%{
+                background-color:#aaa;
+            }
+        }
+    </style>
+</head>
+<body>
+<button id="test">点击</button>
+
+<script>
+    window.onload = function () {
+      var o = document.querySelector('#test')
+        o.addEventListener('click', function (e) {
+          e.target.classList.toggle('blink-bg')
+        })
+    }
+</script>
+</body>
+</html>

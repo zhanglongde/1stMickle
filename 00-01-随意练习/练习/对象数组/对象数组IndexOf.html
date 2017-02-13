@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="http://stackoverflow.com/questions/8668174/indexof-method-in-an-object-array">对象数组</a>
+
+<script>
+    window.onload = function () {
+        var hello = {
+            name: 'world',
+            foo: 'bar',
+            id:0
+        };
+        var qaz = {
+            name: 'stevie',
+            foo: 'baz',
+            id:1
+        }
+        var zhanglongde = {
+            name: 'zhanglongde',
+            foo: 'baz',
+            id:2
+        }
+
+        var myArray = [];
+//        myArray.push(hello,qaz);
+        myArray.push(hello,qaz,zhanglongde);
+
+        //ES5做法
+        Array.prototype.indexOfObject = function arrayObjectIndexOf(property, value) {
+            for (var i = 0, len = this.length; i < len; i++) {
+                if (this[i][property] === value) return i;
+            }
+            return -1;
+        }
+
+        var i = myArray.indexOfObject("name", "stevie");
+        console.log(i)
+
+        //ES5 API
+        var index = myArray.findIndex(function(element) {
+            return element.name === 'world';
+        });
+        console.log(index)
+        var index2 = myArray.findIndex((element) => {
+            return  element.name === 'zhanglongde2';
+                });
+        console.log(index2)
+
+        // ES6做法
+        var o = myArray.map(x => x.name).indexOf('zhanglongde')
+        console.log(o)
+    }
+</script>
+</body>
+</html>
