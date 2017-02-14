@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var str = '2017 年的第 57 天'
+    var target = str.split(' ')[2]
+    console.log(target)
+    var i1 = str.indexOf('第')
+    var i2 = str.indexOf('天')
+    console.log(i1, i2)
+    var t = str.substr(i1+1,i2)
+    console.log(t)
+</script>
+</body>
+</html>
