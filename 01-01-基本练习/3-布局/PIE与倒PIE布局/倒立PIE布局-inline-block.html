@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        ul li{
+            list-style: none;
+        }
+        body{
+            position:relative;
+            line-height:1.412578;
+            font-family: "微软雅黑", Airal, san-serif;
+            font-size:14px;
+
+            background-color: #fff;
+            color:#333;
+
+            width:100vw;
+            height:100vh;
+        }
+        body:before{
+            content:'';
+            position:absolute;
+            top:0;left:0;right:0;bottom:0;
+
+            background-color: rgba(0,0,0,0.6);
+        }
+
+        .popup{
+            /*position:absolute;top:0;left:0;right:0;bottom:0;*/
+            /*margin:auto;*/
+            position:absolute;left:50%;top:50%;
+            -webkit-transform:translate(-50%,-50%);
+
+            width:840px;
+            border:1px solid #ccc;
+            background-color: #fff;
+        }
+        .popup-title{
+            height:50px;
+            line-height:50px;
+            text-align:center;
+
+            background-color: #58a;
+            color:#fff;
+        }
+        .popup-title>.close{
+            float:right;
+            margin-right:10px;
+
+            cursor:pointer;
+        }
+
+        .popup-body .left{
+            display:inline-block;
+            background-color: #9c3;
+        }
+        .popup-body .right{
+            display:inline-block;
+            background-color: #85a;
+        }
+        .popup-body::after{
+            content:'';
+            clear:both;
+            display: table;
+            /*display: block;*/
+
+            /*display: block;*/
+            /*visibility: hidden;*/
+            /*clear: both;*/
+            /*height: 0;*/
+            /*content: '.';*/
+        }
+
+        .popup-submit{
+            position:relative;
+            height:100px;line-height:100px;
+
+            background-color: #fff;
+            border-top:1px solid #bdbdbd;
+        }
+        .popup-submit:before{
+            content:'';
+            line-height:100px;height:100px;
+        }
+        span{
+            float:right;
+            line-height:100px;
+            /*height:100px;*/
+        }
+        button{
+
+            /*display:inline;*/
+            /*position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;*/
+            padding:5px 50px;
+            line-height:40px;
+            /*margin-top:25px;*/
+
+            border: 1px solid #58c;
+            background-color: #58a;
+            color:#fff;
+        }
+        button+button{
+            margin-right:20px;
+        }
+        textarea{
+            resize:none;
+        }
+    </style>
+</head>
+<body>
+<div class="popup">
+    <div class="popup-title"><span>标题</span><span class="close">&times;</span></div>
+    <div class="popup-body">
+        <div class="left">
+            <div class="popup-item">
+                <label for="">地点</label><input type="text">
+            </div>
+            <div class="popup-item">
+                <label for="">日历</label><input type="text">
+            </div>
+            <div class="popup-item">
+                <label for="">描述</label>
+                <textarea name="" id="" cols="30"
+                                                  rows="10"></textarea>
+            </div>
+            <div class="popup-item">
+                <label for="">状态</label><input type="radio" name="status" value="忙碌"><input
+                    type="radio" name="status" value="空闲">
+            </div>
+            <div class="popup-item">
+                <label for="">颜色</label>
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                </ul>
+            </div>
+            <div class="popup-item">
+                <label for="">公开程度</label>
+                <input type="radio" name="visibility" value="默认">
+                <input type="radio" name="visibility" value="公开">
+                <input type="radio" name="visibility" value="私人">
+            </div>
+        </div><div class="right">
+            <label for="">邀请对象</label>
+            <div>新增</div>
+            <input type="text" list="dl">
+            <datalist id="dl">
+                <option value="1">张龙德</option>
+                <option value="2">张龙宝</option>
+                <option value="3">张龙云</option>
+            </datalist>
+        </div>
+    </div>
+    <div class="popup-submit">
+        <span><button>确定</button></span>
+        <span><button>取消</button></span>
+    </div>
+</div>
+</body>
+</html>
