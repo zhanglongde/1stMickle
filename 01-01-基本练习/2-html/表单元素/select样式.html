@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        select {
+            width: 200px;
+            /*注意在下拉框中，width是包括border的宽度的*/
+
+            height: 30px;
+            border-radius: 5px;
+            /*border: 1px solid goldenrod;*/
+            background-color: white;
+            background-repeat: no-repeat;
+            /*背景图像的尺寸：第一个值为宽度，第二值为高度*/
+
+            background-size: 8px 8px, 8px 8px;
+            /*背景图片：多张图片用","分割*/
+            /*repeating-linear-gradient() 函数用于重复线性渐变：参数分别为角度，颜色1，颜色2,...*/
+
+            background-image: repeating-linear-gradient(225deg, #778291 0%, #778291 50%, transparent 50%, transparent 100%),
+                /*组合成三角形图标*/
+
+            repeating-linear-gradient(135deg, #778291 0%, #778291 50%, transparent 50%, transparent 100%);
+
+            background-position: right 16px center, right 8px center;
+            appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+        }
+
+        /*select {*/
+            /*font: 400 12px/1.3 "Helvetica Neue", sans-serif;*/
+            /*-webkit-appearance: none;*/
+            /*appearance: none;*/
+            /*border: 1px solid #778291;*/
+            /*line-height: 1;*/
+            /*outline: 0;*/
+            /*color: #778291;*/
+            /*border-color: #778291;*/
+            /*padding: 0.65em 2.5em 0.55em 0.75em;*/
+            /*border-radius: 3px;*/
+            /*background: linear-gradient(#778291, #778291) no-repeat,*/
+            /*linear-gradient(-135deg, rgba(255,255,255,0) 50%, white 50%) no-repeat,*/
+            /*linear-gradient(-225deg, rgba(255,255,255,0) 50%, white 50%) no-repeat,*/
+            /*linear-gradient(#778291, #778291) no-repeat;*/
+            /*background-color: white;*/
+            /*background-size: 1px 100%, 20px 20px, 20px 20px, 20px 60%;*/
+            /*background-position: right 20px center, right bottom, right bottom, right bottom;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div class="container">
+    <select>
+        <option value="1">11111</option>
+        <option value="2">22222</option>
+        <option value="3">33333</option>
+    </select>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        label{
+            vertical-align:baseline;
+        }
+        input[type=radio]:before{
+            content:'';
+            display:inline-block;
+            box-sizing: border-box;
+            height:15px;width:15px;
+            border-radius:50%;
+            border:2px solid #778291;
+        }
+        input[type=radio]{
+            -webkit-appearance: none;
+            outline:none;
+        }
+        input[type=radio]:checked:before{
+            padding:3px;
+            background-clip:content-box;
+            border:2px solid #3E82F7;
+            background-color: #3E82F7;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <label><input type="radio" value="accepted" name="attendStatus" checked><span>Yes</span></label>
+    <label><input type="radio" value="declined" name="attendStatus"><span>No</span></label>
+    <label><input type="radio" value="tentative" name="attendStatus"><span>Uncertainty</span></label>
+</div>
+</body>
+</html>
