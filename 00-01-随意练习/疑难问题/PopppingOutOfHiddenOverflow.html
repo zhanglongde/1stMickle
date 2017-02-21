@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        :root{
+            --c1: #0E8CE0;
+            --c2: #0064B3;
+            --c3: #00B99B;
+        }
+        *{
+            margin:0;padding:0;
+        }
+        ul li{
+            list-style: none;
+        }
+        .wrapper{
+            /*the wrapper acts as the submenus' positioned parent*/
+            position:relative;
+        }
+        ul {
+            width:200px;
+            max-height:250px;
+
+            /*use scrolling if necessary, but don't show a horizontal scrollbar*/
+            overflow-x:scroll;
+            overflow-y:auto;
+        }
+        li {
+            position:static;
+        }
+        li .wrapper{
+            position: absolute;
+            left:200px;
+            z-index: 10;
+            display:none;
+
+        /*these are not useful because our positioned parent is not the menu item*/
+        /*top: 0;*/
+        /*left: 75%;*/
+        }
+        li:hover>.wrapper{
+            display: block;
+        }
+
+        ul{
+            margin:1em;
+            color:white;
+            font-family: san-serif;
+            font-size:16px;
+        }
+        li{
+            padding:1em;
+        }
+        li ul{
+            margin:0;
+        }
+        li ul .wrapper{
+            cursor:auto;
+        }
+        li ul .wrapper li {
+            padding:0.5em;
+        }
+        li:nth-child(2n){
+            background-color: var(--c1);
+        }
+        li:nth-child(2n+1){
+            background-color: var(--c2);
+        }
+        li.parent{
+            background-color: var(--c3);
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+<a href="https://css-tricks.com/popping-hidden-overflow/">CSS-TRICKS解决方案</a>
+<div class="wrapper">
+    <ul>
+        <li>Abc</li>
+        <li>Def</li>
+        <li>Ghi</li>
+        <li>Jkl</li>
+        <li class="parent">Mno >
+            <div class="wrapper">
+                <ul>
+                    <li>Abc</li>
+                    <li>Def</li>
+                    <li>Ghi</li>
+                    <li>Jkl</li>
+                    <li class="parent">Mno >
+                        <div class="wrapper">
+                            <ul>
+                                <li>Abc</li>
+                                <li>Def</li>
+                                <li>Ghi</li>
+                                <li>Jkl</li>
+                                <li>Mno</li>
+                                <li>Pqr</li>
+                                <li>Stu</li>
+                                <li>Vw</li>
+                                <li>Xyz</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>Pqr</li>
+                    <li>Stu</li>
+                    <li>Vw</li>
+                    <li>Xyz</li>
+                </ul>
+            </div>
+        </li>
+        <li>Pqr</li>
+        <li>Stu</li>
+        <li>Vw</li>
+        <li>Xyz</li>
+        <li class="parent">Abc >
+            <div class="wrapper">
+                <ul>
+                    <li>Abc</li>
+                    <li>Def</li>
+                    <li>Ghi</li>
+                    <li>Jkl</li>
+                    <li>Mno</li>
+                    <li>Pqr</li>
+                    <li>Stu</li>
+                    <li>Vw</li>
+                    <li>Xyz</li>
+                </ul>
+            </div>
+        </li>
+        <li>Def</li>
+        <li>Ghi</li>
+        <li>Jkl</li>
+        <li>Mno</li>
+        <li>Pqr</li>
+        <li>Stu</li>
+        <li>Vw</li>
+        <li>Xyz</li>
+    </ul>
+</div>
+</body>
+</html>
