@@ -15,7 +15,7 @@
             <li>{{item}}</li>
         </ul>
     <!--</template>-->
-
+    <div>{{str | limitStr 7}}</div>
 </div>
 
 
@@ -32,11 +32,20 @@
         return arrays;
     });
 
+    Vue.filter('limitStr', function (value,number) {
+        console.log(value);
+        if (value.length > number) {
+          return value.substr(0, number).concat('...')
+        }
+        return value
+    })
+
     new Vue({
         el:'#app',
         data:{
             message:'test',
-            arr:["1","2","3","4"]
+            arr:["1","2","3","4"],
+            str: '1234567890'
         }
     });
 </script>
