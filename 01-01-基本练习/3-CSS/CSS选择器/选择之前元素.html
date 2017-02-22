@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .inverse{
+            direction: rtl;
+            display: inline-block; /* inline-block to keep parent at the left of window */
+        }
+        span:hover ~ span{ /* On hover target it's "previous";) elements */
+            background:gold;
+        }
+    </style>
+</head>
+<body>
+<div class="inverse">
+    <!-- Reverse the order of inner elements -->
+    <span>5</span>
+    <span>4</span>
+    <span>3</span>
+    <span>2</span>
+    <span>1</span>
+</div>
+</body>
+</html>
