@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../knockout-3.4.1.js"></script>
+</head>
+<body>
+<a data-bind="attr: { href: url, title: details ,target:target }">
+    Report
+</a>
+<script>
+    var viewModel = {
+    url: ko.observable("http://codepen.io/wikieswan/blog/the-css-binding"),
+    details: ko.observable("Report including final year-end statistics"),
+    target:ko.observable('_blank')
+    };
+    ko.applyBindings(viewModel);
+</script>
+</body>
+</html>
