@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../knockout-3.4.1.js"></script>
+</head>
+<body>
+<p>
+    <input type='checkbox' data-bind="checked: hasCellphone" />
+    I have a cellphone
+</p>
+<p>
+    Your cellphone number:
+    <input type='text' data-bind="value: cellphoneNumber, enable: hasCellphone" />
+</p>
+
+<button data-bind="enable: parseAreaCode(viewModel.cellphoneNumber()) != '555'">
+    Do something
+</button>
+
+<script type="text/javascript">
+    var viewModel = {
+        hasCellphone : ko.observable(false),
+        cellphoneNumber: ""
+    };
+</script>
+</body>
+</html>
