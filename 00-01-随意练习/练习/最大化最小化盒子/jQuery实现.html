@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #widnow{
+            width:400px;
+            border:solid 1px;
+        }
+
+        #title_bar{
+            background: #FEFEFE;
+            height: 25px;
+            width: 100%;
+        }
+        #button{
+            border:solid 1px;
+            width: 25px;
+            height: 23px;
+            float:right;
+            cursor:pointer;
+        }
+        #box{
+            height: 250px;
+            background: #DFDFDF;
+        }
+    </style>
+    <script src="../../../lib/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<div id="widnow">
+    <div id="title_bar">
+        <div id="button">-</div>
+    </div>
+    <div id="box">
+    </div>
+</div>
+
+<script>
+    $("#button").click(function(){
+        if($(this).html() == "-"){
+            $(this).html("+");
+        }
+        else{
+            $(this).html("-");
+        }
+        $("#box").slideToggle();
+    });
+</script>
+</body>
+</html>

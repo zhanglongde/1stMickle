@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Arsenal" rel="stylesheet"/>
+    <script src="https://use.fontawesome.com/6386545ece.js"></script>
+</head>
+
+<body>
+<script>
+    $(document).ready(function(e) {
+        $('#toggle').click(function(e) {
+            $('#box').toggleClass('min');
+        });
+        $('#close').click(function(e) {
+            $('#box').remove();
+        });
+    });
+</script>
+<div id="box">
+    <h2>
+        My Box
+        <span id ="close" class="fa fa-times"></span>
+        <span id ="toggle" class="fa fa-window-restore"></span>
+    </h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel congue enim, eu lobortis libero. Proin ut eleifend sapien, ut porttitor ex. Nunc lorem dui, commodo quis facilisis eget, eleifend at enim. Mauris bibendum pretium quam, sed ultrices sem. Praesent nec lacinia augue. Pellentesque efficitur, lectus a consectetur porttitor, elit libero maximus lacus, eget interdum arcu ipsum nec nibh. Curabitur cursus porta urna, id pellentesque dui sollicitudin a.
+</div>
+</body>
+</html>

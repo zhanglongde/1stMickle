@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A simple Bootstrap modal example</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <!-- font Awesome 4.5.0 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+
+        .modal-header .btnGrp{
+            position: absolute;
+            top: 8px;
+            right: 10px;
+        }
+
+
+        .min{
+            width: 250px;
+            height: 35px;
+            overflow: hidden !important;
+            padding: 0px !important;
+            margin: 0px;
+
+            float: left;
+            position: static !important;
+        }
+
+        .min .modal-dialog, .min .modal-content{
+            height: 100%;
+            width: 100%;
+            margin: 0px !important;
+            padding: 0px !important;
+        }
+
+        .min .modal-header{
+            height: 100%;
+            width: 100%;
+            margin: 0px !important;
+            padding: 3px 5px !important;
+        }
+
+        .display-none{display: none;}
+
+        button .fa{
+            font-size: 16px;
+            margin-left: 10px;
+        }
+
+        .min .fa{
+            font-size: 14px;
+        }
+
+        .min .menuTab{display: none;}
+
+        button:focus { outline: none; }
+
+        .minmaxCon{
+            height: 35px;
+            bottom: 1px;
+            left: 1px;
+            position: fixed;
+            right: 1px;
+            z-index: 9999;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <h1>Bootstrap Modal demo</h1>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#modal-1">
+        Open the modal with minimize and maximize options
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade mymodal" id="modal-1" trole="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"> <i class='fa fa-times'></i> </button>
+
+                    <button class="close modalMinimize"> <i class='fa fa-minus'></i> </button>
+                    <h4 class="modal-title" id="myModalLabel">Minimize/Maximize modal with content</h4>
+                </div>
+                <div class="modal-body">
+                    The body of the modal, where you can show a message in single or multi-line. Even include a video. <br />
+                    For example, embed a youtube video! OR <br />
+                    Add some picture.
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn btn-info" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn btn-warning" data-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="minmaxCon"></div>
+    <script>
+
+        $(document).ready(function(){
+
+
+            var $content, $modal, $apnData, $modalCon;
+
+            $content = $(".min");
+
+
+            //To fire modal
+            $(".mdlFire").click(function(e){
+
+                e.preventDefault();
+
+                var $id = $(this).attr("data-target");
+
+                $($id).modal({backdrop: false, keyboard: false});
+
+            });
+
+
+            $(".modalMinimize").on("click", function(){
+
+                $modalCon = $(this).closest(".mymodal").attr("id");
+
+                $apnData = $(this).closest(".mymodal");
+
+                $modal = "#" + $modalCon;
+
+                $(".modal-backdrop").addClass("display-none");
+
+                $($modal).toggleClass("min");
+
+                if ( $($modal).hasClass("min") ){
+
+                    $(".minmaxCon").append($apnData);
+
+                    $(this).find("i").toggleClass( 'fa-minus').toggleClass( 'fa-clone');
+
+                }
+                else {
+
+                    $(".container").append($apnData);
+
+                    $(this).find("i").toggleClass( 'fa-clone').toggleClass( 'fa-minus');
+
+                };
+
+            });
+
+            $("button[data-dismiss='modal']").click(function(){
+
+                $(this).closest(".mymodal").removeClass("min");
+
+                $(".container").removeClass($apnData);
+
+                $(this).next('.modalMinimize').find("i").removeClass('fa fa-clone').addClass( 'fa fa-minus');
+
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>
