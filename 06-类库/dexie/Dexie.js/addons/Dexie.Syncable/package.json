@@ -1,0 +1,92 @@
+{
+  "name": "dexie-syncable",
+  "version": "1.0.0-beta.3",
+  "description": "Addon to Dexie that makes it possible to sync indexeDB with remote databases.",
+  "main": "dist/dexie-syncable.js",
+  "module": "dist/dexie-syncable.es.js",
+  "jsnext:main": "dist/dexie-syncable.es.js",
+  "typings": "dist/dexie-syncable.d.ts",
+  "jspm": {
+    "format": "cjs",
+    "ignore": [
+      "src/"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dfahlander/Dexie.js.git"
+  },
+  "keywords": [
+    "indexeddb",
+    "dexie",
+    "addon",
+    "database",
+    "sync"
+  ],
+  "author": "David Fahlander <https://github.com/dfahlander>",
+  "contributors": [
+    "Nikolas Poniros <https://github.com/nponiros>",
+    "Martin Diphoorn <https://github.com/martindiphoorn>"
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/dfahlander/Dexie.js/issues"
+  },
+  "scripts": {
+    "build": "just-build",
+    "watch": "just-build --watch",
+    "test": "npm run build && npm run test:typings && npm run test:unit && npm run test:integration",
+    "test:unit": "karma start test/unit/karma.conf.js --single-run",
+    "test:integration": "karma start test/integration/karma.conf.js --single-run",
+    "test:typings": "tsc -p test/test-typings/",
+    "test:unit:debug": "karma start test/unit/karma.conf.js --log-level debug",
+    "test:integration:debug": "karma start test/integrations/karma.conf.js --log-level debug"
+  },
+  "just-build": {
+    "default": [
+      "just-build release"
+    ],
+    "dev": [
+      "just-build dexie-syncable"
+    ],
+    "dexie-syncable": [
+      "# Build UMD module and the tests (two bundles)",
+      "tsc --allowJs --moduleResolution node --lib es2015,dom -t es5 -m es2015 --outDir tools/tmp/es5 --rootDir ../.. --sourceMap src/Dexie.Syncable.js test/unit/unit-tests-all.js [--watch 'Compilation complete.']",
+      "rollup -c tools/build-configs/rollup.config.js",
+      "rollup -c tools/build-configs/rollup.tests.config.js",
+      "node tools/replaceVersionAndDate.js dist/dexie-syncable.js",
+      "# eslint ",
+      "eslint src --cache"
+    ],
+    "release": [
+      "just-build dexie-syncable",
+      "# Copy Dexie.Syncable.d.ts to dist and replace version in it",
+      "node -e \"fs.writeFileSync('dist/dexie-syncable.d.ts', fs.readFileSync('src/Dexie.Syncable.d.ts'))\"",
+      "node tools/replaceVersionAndDate.js dist/dexie-syncable.d.ts",
+      "# Minify the default ES5 UMD module",
+      "uglifyjs dist/dexie-syncable.js -m -c -o dist/dexie-syncable.min.js --source-map dist/dexie-syncable.min.js.map  --in-source-map dist/dexie-syncable.js.map"
+    ]
+  },
+  "homepage": "http://dexie.org",
+  "peerDependencies": {
+    "dexie": "^2.0.0-beta.7",
+    "dexie-observable": "^0.9.2 || ^1.0.0-beta"
+  },
+  "devDependencies": {
+    "dexie": "^2.0.0-beta.7",
+    "dexie-observable": "^0.9.2 || ^1.0.0-beta",
+    "eslint": "^3.14.0",
+    "just-build": "^0.9.13",
+    "karma": "^1.4.0",
+    "karma-browserstack-launcher": "^1.1.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-mocha-reporter": "^2.2.0",
+    "karma-qunit": "^1.2.1",
+    "qunitjs": "^1.23.1",
+    "rollup": "^0.41.4",
+    "rollup-plugin-sourcemaps": "^0.4.1",
+    "typescript": "^2.1.5",
+    "uglifyjs": "^2.4.10"
+  }
+}
