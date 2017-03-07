@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+</head>
+<body>
+
+<script>
+    var db = new Dexie("MyDatabase");
+    db.version(1).stores({
+        friends: "++id,name,age,*tags",
+        gameSessions: "id,score"
+    });
+//    db.friends.bulkPut([
+//        {id:4, name:'Foo2', age:34},
+//        {id:5, name:'Bar2', age:44}
+//    ])
+//    db.people.bulkAdd([{name:'Foo'},{name:'Bar'}])
+    db.friends.update(4, {name:'Bar'})
+//    db.friends.put({id: 4, name: "Foo", age: 33});
+</script>
+</body>
+</html>

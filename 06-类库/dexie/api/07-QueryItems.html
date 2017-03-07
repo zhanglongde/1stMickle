@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<script src="../dexie.min.js"></script>-->
+    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+</head>
+<body>
+
+<script>
+    var db = new Dexie("MyDatabase");
+    db.version(1).stores({
+        friends: "++id, name, age, *tags",
+        gameSessions: "id, score"
+    });
+//    db.friends.where('age').between(20,25).toArray().then(function (friends) {
+//        console.log(friends)
+//    })
+//    db.friends.where("name").equals('Bar2')
+//            .each(function (friend) {
+//              console.log("found :" + JSON.stringify(friend))
+//            })
+    db.friends.where("name").startsWithAnyOfIgnoreCase(['J', 'B'])
+            .first(function (friend) {
+                console.log("found :" + JSON.stringify(friend))
+            })
+</script>
+</body>
+</html>

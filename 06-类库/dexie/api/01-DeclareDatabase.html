@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../dexie.min.js"></script>
+</head>
+<body>
+<script>
+    var db = new Dexie('myDb')
+    db.version(1).stores({
+        friends: "++id, name, age, *tags",
+        gameSessions: "id, score"
+    })
+
+</script>
+</body>
+</html>
