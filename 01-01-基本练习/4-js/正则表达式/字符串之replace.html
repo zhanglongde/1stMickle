@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var res = 'abca'.replace(/a/g,function(match){
+        return match.toUpperCase();
+    });
+    console.log(res)
+
+
+    var str = '<div dir=\"ltr\">Hello everyone<div></div><div>  1.Axure预览方式</div><div>    1.1.在浏览器&quot;应用中心-搜索&quot;Axure&quot;</div><div><img src=\"cid:ii_15aa29432df9bfc8\" alt=\"内嵌图片 2\" width=\"301\" height=\"37\" style=\"margin-right: 0px;\"></div><div>    1.2.点击安装</div><div><img src=\"cid:ii_15aa29548e2110ca\" alt=\"内嵌图片 3\" width=\"305\" height=\"65\" style=\"margin-right: 0px;\"><br></div><div>    1.3.在管理我的应用中，找到Axure，红色线框中 勾选 “允许访问文件网址”</div><div><img src=\"cid:ii_15aa297150bb1f83\" alt=\"内嵌图片 4\" width=\"306\" height=\"97\" style=\"margin-right: 0px;\"><br></div><div> </div><div>    1.4.点击 index.html 文件​<br><div class=\"gmail_chip gmail_drive_chip\" style=\"width:396px;height:18px;max-height:18px;background-color:#f5f5f5;padding:5px;color:#222;font-family:arial;font-style:normal;font-weight:bold;font-size:13px;border:1px solid #ddd;line-height:1\"><a href=\"https://drive.google.com/a/nextcont.com/file/d/0B8NzMDpDyOSMd01VVmJGSV90bDg/view?usp=drive_web\" target=\"_blank\" style=\"display:inline-block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-decoration:none;padding:1px 0px;border:none;width:100%\"><img style=\"vertical-align: bottom; border: none;\" src=\"https://ssl.gstatic.com/docs/doclist/images/icon_9_archive_list.png\"> <span dir=\"ltr\" style=\"color:#15c;text-decoration:none;vertical-align:bottom\">邮件需求.zip</span></a></div>​</div></div>\r\n'
+    var r1 = str.match(/cid:ii_\w{16}/g)
+//    var r2 = str.replace(/cid:ii_\w{16}/g, 'test')
+    var r2 = str.replace(/cid:ii_\w{16}/g, function (match) {
+        return 'test:' + match
+    })
+    console.log(r1)
+    console.log(r2)
+//    console.log(str)
+</script>
+</body>
+</html>
