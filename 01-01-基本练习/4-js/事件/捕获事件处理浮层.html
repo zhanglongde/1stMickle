@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        window上设置click的全局事件，可以用来处理浮层的隐藏
+        尽管有些组件设置了阻止冒泡，但是捕获事件会首先到达
+    </title>
+    <style>
+        .parent{
+            width:200px;
+            height:300px;
+            background-color: #85a;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+<div class="parent">
+    <div class="son" id="son1">son1</div>
+    <div class="son">son2</div>
+    <div class="son">son3</div>
+</div>
+
+<script>
+    window.onload = function () {
+        document.querySelector('#son1').addEventListener('click', function (e) {
+            e.stopPropagation()
+          console.log('-------------------------------------1')
+        })
+        document.querySelector('.parent').addEventListener('click', function () {
+          console.log('-------------------------------------2')
+        })
+        window.addEventListener('click', function () {
+           console.log('捕获')
+        },true)
+    }
+</script>
+</body>
+</html>
