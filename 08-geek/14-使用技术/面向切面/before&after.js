@@ -12,7 +12,6 @@ Function.prototype.before = function(fn){
     }
 };
 
-
 Function.prototype.after = function(fn){
     var __self = this;
     return function(){
