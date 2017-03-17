@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="stop">停止</button>
+<button id="start">开始</button>
+
+<script>
+    var count = 0
+    var timer = null
+    function timerFunc() {
+        count ++
+        console.log(count)
+    }
+    function resume() {
+        return setInterval(timerFunc, 1000)
+    }
+    function stop() {
+        clearInterval(timer)
+    }
+    document.getElementById('stop').addEventListener('click', function () {
+        stop()
+    })
+    document.getElementById('start').addEventListener('click', function () {
+       timer = resume()
+    })
+</script>
+</body>
+</html>
