@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./moment.js"></script>
+</head>
+<body>
+
+<script>
+    window.onload = function () {
+      var t = moment(1487664301000).format('YYYY年MM月DD日 h点mm分 a')
+        console.log(t)
+        
+        var t2 = moment.unix(1487664301).format()
+        console.log(t2)
+    }
+</script>
+</body>
+</html>
