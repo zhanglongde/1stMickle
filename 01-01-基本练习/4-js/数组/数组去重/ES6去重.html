@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        整数、字符串数组
+    </title>
+</head>
+<body>
+
+<script>
+    var a = [1,2,3]
+    var a1 = [1,22,3]
+    var aa = a.concat(a1) // concat去不了重复
+    var aaa = Array.from(new Set(aa))
+    console.log(aaa)
+    
+    var b = [{name: 'zld'}, {name: 'marry'}]
+    var b1 = [{name: 'zld'}, {name: 'kate'}]
+    var bbb = Array.from(new Set(b.concat(b1))) // 对象数组无法去重
+    console.log(bbb)
+</script>
+</body>
+</html>
