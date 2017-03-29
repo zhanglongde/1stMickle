@@ -2,9 +2,90 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul,li{list-style: none;}
+        ul {
+            border: 1px solid #ccc;
+            width:200px;
+            height:500px;
+            margin:auto;
+        }
+        ul>li{
+            height:40px;
+            line-height:40px;
+            text-align: center;
+        }
+        li.active{
+            background-color: #9c3;
+        }
+    </style>
 </head>
 <body>
-$END$
+<ul>
+    <li v-for="thread in threadList" :class="{'active': $index === idx}">
+        {{thread.id}}
+        {{thread.name}}
+    </li>
+</ul>
+
+<script src="../../练习/vue.js"></script>
+<script>
+    new Vue({
+        el:'body',
+        data:{
+            idx: 0,
+            threadList: [
+                {
+                    id:1,name: 'Bruce' ,
+                    emailList:[{email:"1039326495@qq.com"},{email:"zhanglongde314@gmail.com"}],
+                    phoneList: [{phone:"18950478549"},{phone:"18950478548"}]
+                },
+                { id:2,name: 'Chuck' ,emailList:[{email:"1039326495@fomail.com"},{email:"zhanglongde314@tt.com"}]},
+                { id:3,name: 'Marry' ,emailList:[{email:"103932649@fomail.com"}]},
+                { id:4,name: 'Rose'  ,phoneList: [{phone:"110"}]},
+                { id:5,name: 'Tom' },
+                { id:6,name: 'Jackie' },
+                { id:7,name: '张龙德' ,emailList:[{email:"9360865425@qq.com"}]},
+                { id:8,name: '李四' },
+                { id:9,name: '王五' },
+                { id:10,name: 'My' },
+                { id:11,name: 'Kim' },
+                { id:12,name: '张三' }
+            ]
+        },
+        methods:{},
+        ready: function () {
+            window.onload = function () {
+                console.log(document.activeElement)
+            }
+            var self = this
+            document.activeElement.onkeydown = function (e) {
+                var keyCode=e.keyCode;
+                console.log(keyCode)
+                var LEN = self.threadList.length
+                switch(keyCode)
+                {
+                    case 38: //上
+//                        inputEles[(i-1+LEN)%LEN].focus();
+                        self.idx = (self.idx -1 + LEN)%LEN
+                        break;
+                    case 40: //下
+//                        inputEles[(i+1+LEN)%LEN].focus();
+                        self.idx = (self.idx+1 + LEN)%LEN
+                        break;
+                    case 27: //ESC
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    })
+</script>
 </body>
 </html>
