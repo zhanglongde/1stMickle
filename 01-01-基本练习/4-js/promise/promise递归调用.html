@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+
+<script>
+    var count = 8
+    function test(count) {
+      return new Promise((resolve, reject) => {
+          return resolve(count)
+      }).then((count) => {
+          console.log(count--)
+          if (count === 0) {
+            console.log('end')
+          } else {
+              console.log('continue')
+              return test(count)
+          }
+        })
+    }
+    test(count)
+</script>
 </body>
 </html>

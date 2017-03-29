@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script>
+    var p = [{name:'zhanglongde', age:27, gender: 'M'},{name:'zhanglongbao', age:26, gender: 'M'},{name:'zhanglongcheng', age:22, gender: 'M'}]
+    var a = p.map(x => x.name).indexOf('zhanglongbao')
+    console.log(a)
+    var b = p.find(x => x.name === 'zhanglongbao')
+    console.log(b)
+    var c = p.findIndex(x => x.name === 'zhanglongbao')
+    console.log(c)
+</script>
 </body>
 </html>

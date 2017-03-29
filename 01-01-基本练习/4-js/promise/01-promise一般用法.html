@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script>
+    window.onload = function () {
+      function test() {
+        console.log('test')
+        return new Promise((resolve, reject) => {
+            console.log('promise')
+            resolve()
+        })
+      }
+      test().then(() => {
+          console.log('then')
+      })
+    }
+</script>
 </body>
 </html>
