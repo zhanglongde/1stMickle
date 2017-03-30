@@ -32,6 +32,7 @@
         {{thread.name}}
     </li>
 </ul>
+<div id="test">test</div>
 
 <script src="../../练习/vue.js"></script>
 <script>
@@ -63,27 +64,51 @@
             window.onload = function () {
                 console.log(document.activeElement)
             }
+            document.querySelector('#test').addEventListener('keydown', function (e) {
+                console.log('%c-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+                console.log(e)
+            })
             var self = this
-            document.activeElement.onkeydown = function (e) {
+            document.activeElement && document.activeElement.addEventListener('keydown', (e) => {
                 var keyCode=e.keyCode;
-                console.log(keyCode)
-                var LEN = self.threadList.length
-                switch(keyCode)
-                {
-                    case 38: //上
+            console.log(keyCode)
+            var LEN = self.threadList.length
+            switch(keyCode)
+            {
+                case 38: //上
 //                        inputEles[(i-1+LEN)%LEN].focus();
-                        self.idx = (self.idx -1 + LEN)%LEN
-                        break;
-                    case 40: //下
+                    self.idx = (self.idx -1 + LEN)%LEN
+                    break;
+                case 40: //下
 //                        inputEles[(i+1+LEN)%LEN].focus();
-                        self.idx = (self.idx+1 + LEN)%LEN
-                        break;
-                    case 27: //ESC
-                        break;
-                    default:
-                        break;
-                }
+                    self.idx = (self.idx+1 + LEN)%LEN
+                    break;
+                case 27: //ESC
+                    break;
+                default:
+                    break;
             }
+            })
+//            document.activeElement.onkeydown = function (e) {
+//                var keyCode=e.keyCode;
+//                console.log(keyCode)
+//                var LEN = self.threadList.length
+//                switch(keyCode)
+//                {
+//                    case 38: //上
+////                        inputEles[(i-1+LEN)%LEN].focus();
+//                        self.idx = (self.idx -1 + LEN)%LEN
+//                        break;
+//                    case 40: //下
+////                        inputEles[(i+1+LEN)%LEN].focus();
+//                        self.idx = (self.idx+1 + LEN)%LEN
+//                        break;
+//                    case 27: //ESC
+//                        break;
+//                    default:
+//                        break;
+//                }
+//            }
         }
     })
 </script>
