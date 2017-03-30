@@ -2,9 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    dragstart: function (event) {
+        this.oldX = event.clientX
+        this.oldY = event.clientY
+        this.maxWidth = document.documentElement.clientWidth - 213 - 265
+        this.maxHeight = document.documentElement.clientHeight - 53 - 154
+        this.resizeflag = true
+    },
+    drag: function (event) {
+        if (!this.resizeflag) {
+            return
+        }
+        let distance = 0
+        if (global.labelLayout === '1') {
+            distance = event.clientX - this.oldX
+            let nextX = this.oldX + distance
+            let nextWidth = global.messageListWidth + distance
+            if (nextWidth <= this.minWidth) {
+                nextWidth = this.minWidth
+                nextX = this.oldX
+            }
+            if (nextWidth >= this.maxWidth) {
+                nextWidth = this.maxWidth
+                nextX = this.oldX
+            }
+            this.oldX = nextX
+            global.messageListWidth = nextWidth
+        }
+    },
+    dragdrop: function (event) {
+        this.resizeflag = false
+    }
+</script>
 </body>
 </html>
