@@ -2,9 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        .box{
+            display:block;
+            width: 100px;
+            height:100px;
+            margin:auto;
+
+            border-style: solid;
+            border-width:1px;
+            background-color: #0000ff;
+            -webkit-transition: width 2s,height 2s,background-color 2s,-webkit-transform 2s;
+        }
+        .box:hover{
+            background-color: #fff;
+            width:200px;
+            height:200px;
+            -webkit-transform:rotate(180deg);
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="box"></div>
+
+<script>
+    window.onload = function () {
+        var oBox = document.querySelector('.box')
+        oBox.addEventListener('transitionstart', function (e) {
+          console.log('transitionstart', window.getComputedStyle(e.target).width)
+        })
+        oBox.addEventListener('transitionrun', function (e) {
+          console.log('transitionrun', window.getComputedStyle(e.target).width)
+        })
+//        oBox.addEventListener('transitionend', function (e) {
+//          console.log('transitionend', window.getComputedStyle(e.target).width)
+//        },true)
+    }
+</script>
 </body>
 </html>

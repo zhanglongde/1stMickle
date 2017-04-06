@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        _.assign与_.extend顺序相反
+    </title>
+    <script src="./lodash.js"></script>
 </head>
 <body>
-$END$
+
+<script>
+    var o = _.assign({ 'user': 'barney' }, { 'age': 40 }, { 'user': 'fred' });
+    // => { 'user': 'fred', 'age': 40 }
+    console.log(o)
+</script>
 </body>
 </html>

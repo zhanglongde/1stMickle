@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <script src="../../../06-类库/lodash/lodash.js"></script>
 </head>
 <body>
-$END$
+<script>
+    var obj={
+        name:'zhanglongde',
+        age:26,
+        address:['shanghai','changningqu','xinjingzhen','guangyouxiaoqu'],
+        mother:{
+            name:'liuyunying',
+            age:50
+        }
+    }
+    
+    var o  = _.cloneDeep(obj)
+    o.name = 'test'
+    console.log(obj)
+    console.log(o)
+</script>
 </body>
 </html>

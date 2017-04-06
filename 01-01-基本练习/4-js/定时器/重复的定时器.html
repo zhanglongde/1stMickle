@@ -2,9 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        当使用setInterval()时，仅当没有该定时器的任何其他代码实例时，才将定时器代码添加到队列中。
+        这确保了定时器代码加入到队列中的最小时间间隔为指定间隔。
+
+        但仍存在两个问题
+
+        某些间隔会被跳过
+        多个定时器的代码执行之间的间隔可能会比预期小
+
+
+
+        //    解决方案
+        //
+        //    为了避免setInterval的这两个缺点，可以用链式setTimeout调用
+
+        setTimeout(function() {
+        // 其他代码
+        setTimeout(arguments.callee, interval);
+        }, interval);
+
+        //这样在前一个定时器代码执行完成之前，都不会再向队列插入新的定时器代码
+    </title>
 </head>
 <body>
-$END$
+
+<script>
+ var i = 1
+ setTimeout(function () {
+     console.log(arguments.callee, i++)
+     setTimeout(arguments.callee, 2000)
+ }, 2000)
+</script>
 </body>
 </html>

@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        JSON.stringify
+        JSON.parse
+        无法拷贝值为函数或者其他JSON的情况
+        http://stackoverflow.com/questions/20662319/javascript-deep-copy-using-json
+    </title>
 </head>
 <body>
-$END$
+
+<script>
+    var o = {
+        a: 1,
+        b: 2,
+        sum: function() { return a + b; }
+    };
+
+    var o2 = JSON.parse(JSON.stringify(o));
+    console.log(o2);
+</script>
 </body>
 </html>

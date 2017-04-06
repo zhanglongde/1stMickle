@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        注意顺序与jQuery.extend相反
+    </title>
+    <script src="./lodash.js"></script>
 </head>
 <body>
-$END$
+
+<script>
+    var a = _.defaults({ 'user': 'barney' }, { 'user':'zhanglongde', 'age': 36 }, { 'user': 'fred' });
+    console.log(a)
+</script>
 </body>
 </html>

@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        http://yanhaijing.com/javascript/2014/01/17/fun-with-javascript-native-array-functions/
+        利用reduce求和
+    </title>
 </head>
 <body>
-$END$
+
+<script>
+    var a = [1,2,3,4,5]
+    var sum = a.reduce((p, v) => p+v)
+    console.log(sum)
+
+    var b = [{name:'zhanglongde', age:27}, {name:'zhanglongbao', age:26}, {name:'zhanglongcheng', age:22}]
+    var sum2 = b.reduce((p,v,index) => {
+//        console.log(p, v,index)
+                return index > 1 ? p + v.age : p.age+v.age
+            })
+    console.log(sum2)
+</script>
 </body>
 </html>

@@ -2,9 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255,0,0,1);
+            transition-property: transform,background-color;
+            transition-duration: 2s;
+            transition-delay: 2s;
+        }
+
+        div:hover {
+            transform: rotate(90deg);
+            background-color: rgba(255,0,0,0);
+        }
+    </style>
 </head>
 <body>
-$END$
+<div></div>
+<script>
+    var divElem = document.querySelector('div');
+
+    divElem.addEventListener('webkitTransitionrun', function() {
+        console.log('transitionrun fired');
+    });
+
+    divElem.addEventListener('webkitTransitionstart', function() {
+        console.log('transitionstart fired');
+    });
+</script>
 </body>
 </html>
