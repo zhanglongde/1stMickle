@@ -2,9 +2,129 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        基于vue2.0
+        右键菜单的实现
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        #app{
+            min-width:100vw;
+            min-height:100vh;
+            color:#000;
+            background-color: #fff;
+        }
+        ul li {
+            list-style: none;
+        }
+        .contextmenu {
+            position:absolute;
+            width:200px;
+            box-shadow:0 0 4px rgba(0,0,0,0.4);
+            border-radius: 4px;
+        }
+        .contextmenu li {
+            height:40px;
+            padding: 5px 10px;
+            border-bottom: 1px solid #ccc;
+            text-align:left;
+            line-height:40px;
+            border-left:4px solid transparent;
+        }
+        .contextmenu li:hover{
+            color:#58a;
+        }
+        .contextmenu li.active{
+            border-left: 4px solid #58a;
+            background-color: #eff;
+        }
+    </style>
+    <script src="../vue.js"></script>
 </head>
 <body>
-$END$
+<div id="app" @contextmenu.prevent="contextmenu">
+    <ul v-if="showMenu" :class="['contextmenu']" :style="[{'left': left + 'px'}, {'top':top + 'px'}]">
+        <li v-for="(menuitem, $index) in menu" :class="[{'active': $index === index}]" @click="selectMenu($index)">{{menuitem}}</li>
+    </ul>
+</div>
+
+<script>
+    new Vue({
+        el:'#app',
+        data: {
+            menu:['回复','转发','删除','垃圾邮件','标记为未读','加星标'],
+            left:'auto',top:'auto',
+            showMenu: false,
+            index: 0
+        },
+        mounted () {
+            var self = this
+            window.addEventListener('click', function (e) {
+                if (!self.showMenu) {
+                  return
+                }
+                var oMenu = document.querySelector('.contextmenu')
+                var width = parseInt(window.getComputedStyle(oMenu).width)
+                var height = parseInt(window.getComputedStyle(oMenu).height)
+                if (e.pageX > self.left && e.pageX < self.left + width && e.pageY > self.top && e.pageY < self.top+height) {
+                  return
+                }
+                // 不在菜单区域，点击=>隐藏菜单
+                self.closeMenu()
+            },true)
+
+            document.activeElement && document.activeElement.addEventListener('keydown', function (e) {
+              self.handleKey(e.key)
+            })
+        },
+        methods: {
+            contextmenu (e) {
+                this.top = e.pageY
+                this.left = e.pageX
+                this.index = 0
+                this.showMenu = true
+            },
+            closeMenu () {
+                this.showMenu = false
+                this.top = 'auto'
+                this.left = 'auto'
+                this.index = 0
+            },
+            selectMenu (index) {
+                this.index = index
+                console.log('select:',index)
+            },
+            handleKey (key) {
+              if (!key) { // 无效按键
+                return
+              }
+              var LEN = this.menu.length
+              switch (key) {
+                  case 'ArrowUp':
+                      this.index = (this.index - 1 + LEN)%LEN
+                      console.log(this.index)
+                      break;
+                  case 'ArrowDown':
+                      this.index = (this.index + 1 + LEN)%LEN
+                      console.log(this.index)
+                      break;
+                  case 'Enter':
+                      this.selectMenu(this.index)
+                      break;
+                  case 'ESC':
+                      this.closeMenu()
+                      break;
+                  default:
+                      console.log(key)
+                      break;
+              }
+            }
+        }
+    })
+</script>
 </body>
 </html>
