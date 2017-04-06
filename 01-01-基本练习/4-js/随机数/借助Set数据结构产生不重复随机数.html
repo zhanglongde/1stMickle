@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        先获得三个随机数，然后三个随机数分别互相比较，当出现相等的情况时，那个随机数再随机一次，然后返回那三个随机数。这个方法low在：
+        每个数值都要比较一下，，数量少的时候，还可以写，数量多的时候，你一个个比一下试试看？
+
+
+        写在前面：整体思路：
+        先 random() 获取随机数，
+        indexOf() 排除相同的随机数，
+        push() 将不重复随机数添加到数组。
+    </title>
+</head>
+<body>
+
+<script>
+
+    var s = new Set()
+    for (; s.size < 9;) {
+        var a = Math.ceil(Math.random()*9)
+//        var index = arr.indexOf(a)
+//        index < 0 && arr.push(a)
+        s.add(a)
+    }
+    var arr = Array.from(s)
+    console.log(arr)
+</script>
+</body>
+</html>
