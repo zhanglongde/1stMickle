@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var originalData = [{"id":"Label_85","name":"test","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_86","name":"test/test01","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_91","name":"test/test01/test01-son1","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_92","name":"test/test01/test01-son1/testq1","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_93","name":"test/test01/test01-son1/testq1/testq2","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_94","name":"test/test01/test01-son1/testq1/testq2/testtesttesttestq3","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_95","name":"test/test01/test01-son1/testq1/testq2/testtesttesttestq3/tt","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_96","name":"test/test01/test01-son1/testq1/testq2/testtesttesttestq3/tt/ttttttttttttttttttttttttttttttttttttttttttttttttttttttt","type":"user"},{"id":"Label_87","name":"test/test02","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_90","name":"图片","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_89","name":"学习","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_88","name":"工作","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_76","name":"测试测试子标签","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_77","name":"测试测试子标签/子标签的子标签","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"}]
+    var data = []
+    function isRoot(label, parentName) {
+        if (!parentName) {
+            return label.name.indexOf('/') < 0
+        }
+        return label.name.lastIndexOf('/') === parentName.length
+    }
+    function getData(oldData, parentName) {
+        console.log('parentName:',parentName)
+        if (!Array.isArray(oldData) || oldData.length < 1) {
+          return
+        }
+        var rootData = []
+        var branchData = []
+        oldData.map(function (label) {
+//            var str = parentName ? parentName + '/' : '/'
+            if (isRoot(label, parentName)) {
+                rootData.push(label)
+            } else {
+                branchData.push(label)
+            }
+        })
+//        console.log(rootData, branchData)
+        rootData.map(function (label) {
+            var children = []
+            children  = branchData.filter(function (x) {
+            return x.name.indexOf(label.name + '/') >= 0
+          })
+            if (children.length > 0) {
+              label.children = getData(children, label.name)
+            }
+        })
+        return rootData
+    }
+    data = getData(originalData)
+    console.log(data)
+</script>
+</body>
+</html>

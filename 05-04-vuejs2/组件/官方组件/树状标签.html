@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        ul li {
+            list-style: none;
+        }
+        .roottree {
+            width:300px;
+            min-height:100vh;
+            padding:10px;
+            background-color: #495361;
+            color:#99A3B0;
+        }
+        .nav__tree {
+            padding-left:1em;
+        }
+        .nav__tree > .item {
+            cursor:pointer;
+        }
+        .nav__tree > .item .tree--branch--title:hover{
+            color:#fff;
+        }
+        .item-title{
+            position:relative;
+            height:30px;
+            line-height:30px;
+        }
+        .rect-caret {
+            display:none;
+        }
+        .rect-caret .caret{
+            margin-left:8px;
+            color:#99A3B0;
+        }
+        .nav__tree  .item-title:hover > .rect-caret {
+            display:inline-block;
+        }
+        .nav__tree  .item-title .tree--branch--title {
+            width:200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow:ellipsis;
+        }
+        .caret {
+            position:absolute;
+            transform-origin: 2px 50%;
+            top:50%;  transform:translate(-50%, -50%);
+            /*display:inline-block;*/
+            width:0;height:0;
+            border:4px solid transparent;
+            border-left-color: #58a;
+            transition: transform 0.3s;
+        }
+        .rect-caret {
+            position:absolute;
+            right:0;top:50%;  transform:translate(-50%, -50%);
+            /*display: inline-block;*/
+            width: 15px;
+            height: 15px;
+            /*margin-top: 8px;*/
+            /*margin-right: 10px;*/
+            border: 1px solid #99a3b0;
+            border-radius: 2px;
+        }
+
+        .item-title>.tree--branch--title{
+            display:inline-block;
+            padding-left:8px;
+        }
+        .rotate90deg{
+            /*transform-origin: 2px 2px;*/
+            transform-origin: 2px 50%;
+            transform:translate(-50%, -50%) rotate(90deg);
+        }
+    </style>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+
+<script type="text/x-template" id="item-template">
+    <li>
+        <div class="item-title">
+            <span :class="['caret',{'rotate90deg':open}]" v-if="isFolder" @click="toggle"></span>
+            <div class="tree--branch--title">{{model.name}}</div>
+            <span class="rect-caret"><span class="caret rotate90deg"></span></span>
+        </div>
+        <ul class="nav__tree" v-show="open">
+            <item class="item" v-for="model in model.children" :model="model"></item>
+        </ul>
+    </li>
+</script>
+
+<div id="app">
+    <ul class="nav__tree roottree">
+        <item class="item" :model="treeItem" v-for="treeItem in treeData"></item>
+    </ul>
+</div>
+
+
+<script>
+    var originalData = [{"id":"Label_85","name":"test","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_86","name":"test/test01","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_91","name":"test/test01/test01-son1","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_92","name":"test/test01/test01-son1/testq1","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_93","name":"test/test01/test01-son1/testq1/testq2","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_94","name":"test/test01/test01-son1/testq1/testq2/testtesttesttestq3","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_95","name":"test/test01/test01-son1/testq1/testq2/testtesttesttestq3/tt","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_96","name":"test/test01/test01-son1/testq1/testq2/testtesttesttestq3/tt/ttttttttttttttttttttttttttttttttttttttttttttttttttttttt","type":"user"},{"id":"Label_87","name":"test/test02","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_90","name":"图片","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_89","name":"学习","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_88","name":"工作","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_76","name":"测试测试子标签","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"},{"id":"Label_77","name":"测试测试子标签/子标签的子标签","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user"}]
+    var treeData = []
+    function isRoot(label, parentName) {
+        if (!parentName) {
+            return label.name.indexOf('/') < 0
+        }
+        return label.name.lastIndexOf('/') === parentName.length
+    }
+    function getData(oldData, parentName) {
+//        console.log('parentName:',parentName)
+        if (!Array.isArray(oldData) || oldData.length < 1) {
+            return
+        }
+        var rootData = []
+        var branchData = []
+        oldData.map(function (label) {
+//            var str = parentName ? parentName + '/' : '/'
+            if (isRoot(label, parentName)) {
+                rootData.push(label)
+            } else {
+                branchData.push(label)
+            }
+        })
+        rootData.map(function (label) {
+            var children = []
+            children  = branchData.filter(function (x) {
+                return x.name.indexOf(label.name + '/') >= 0
+            })
+            if (children.length > 0) {
+                label.children = getData(children, label.name)
+            }
+        })
+        return rootData
+    }
+    treeData = getData(originalData)
+    Vue.component('item', {
+        template: '#item-template',
+        props: {
+            model:Object
+        },
+        data: function () {
+            return {
+                open: false
+            }
+        },
+        computed: {
+          isFolder: function () {
+            return this.model.children && this.model.children.length
+          }
+        },
+        methods: {
+            toggle: function () {
+             this.open = ! this.open
+            }
+        }
+    })
+
+    var demo = new Vue({
+        el:'#app',
+        data: {
+            treeData:treeData
+        }
+    })
+</script>
+</body>
+</html>

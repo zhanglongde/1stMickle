@@ -23,7 +23,7 @@
     <script src="../../vue.js"></script>
 </head>
 <body>
-<script type="text/x-template"id="item-template">
+<script type="text/x-template" id="item-template">
     <li>
         <div :class="{bold:isFolder}" @click="toggle" @dblclick="changeType">{{model.name}}</div>
         <span v-if="isFolder">[{{open?'-':'+'}}]</span>
