@@ -2,9 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <script src="../../../06-类库/lodash/lodash.js"></script>
 </head>
 <body>
-$END$
+<script>
+    var object1 = {user: 'zhangld'}
+    var object2 = {user: 'zhangld'}
+    console.log(object1 == object2)
+    console.log(_.isEqual(object1,object2))
+</script>
 </body>
 </html>

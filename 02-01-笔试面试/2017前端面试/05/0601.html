@@ -1,10 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta charset="UTF-8" />
+    <title>MR_LP --> QQ : 3206064928</title>
 </head>
 <body>
-$END$
+
 </body>
+<script type="text/javascript" charset="utf-8">
+    /*
+     写一个方法，在一个未知对象中，找出所有的“李鹏”
+     并 console.log 对象输出它的引用地址，以及对应值
+     以及当前所在对象和当前对象有多少个目标值
+     * */
+    var targetObj = {
+        a:{
+            b:{
+                c:{
+                    d:{
+                        e:{
+                            name:"百度"
+                        }
+                    },
+                    l:{
+                        name:"李鹏--> QQ:3206064928"
+                    }
+                }
+            }
+        },
+        d:"90",
+        e:"90",
+        l:{
+            a:{
+                b:{
+                    c:{
+                        version:"1.0.0.1",
+                        name:"李鹏--> QQ:3206064928"
+                    }
+                }
+            }
+        },
+        f:{
+            name:"李鹏--> QQ:3206064928",
+            update:"2017年03月20日"
+        }
+    }
+
+    var aProps = Object.getOwnPropertyNames(targetObj)
+    console.log(aProps)
+
+    console.log(targetObj)
+</script>
 </html>

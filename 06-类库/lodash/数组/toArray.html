@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <script src="../lodash.js"></script>
 </head>
 <body>
-$END$
+
+<script>
+//    将对象或者类数组对象转化为数组  [].slice(0)
+    var a = _.toArray([1,2,3]).slice(1)
+    var b = _.toArray({age:26,cla:6})
+    console.log(a)
+    console.log(b)
+</script>
 </body>
 </html>

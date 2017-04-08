@@ -2,9 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        注意：object.keys获得的数组取决于对象中属性的书写顺序
+    </title>
 </head>
 <body>
-$END$
+
+<script>
+    function isEqual(object1,object2,order_matters) {
+        let keys1 = Object.keys(object1)
+        let keys2 = Object.keys(object2)
+        // 长度相同
+        if (keys1.length !== keys2.length) {
+           return false
+        }
+
+        // 键排序
+        if (!order_matters) {
+          keys1.sort()
+          keys2.sort()
+        }
+
+        // 键相同
+        let LEN=keys1.length
+        for (let i =0;i<LEN;i++) {
+            if (keys1[i] !== keys2[i]) {
+              return false
+            }
+        }
+
+        //值相同
+        for (let i =0;i<LEN;i++) {
+            if (object1(keys1[i]) !== object2(keys2[i])) {
+                return false
+            }
+        }
+        return true
+    }
+</script>
 </body>
 </html>

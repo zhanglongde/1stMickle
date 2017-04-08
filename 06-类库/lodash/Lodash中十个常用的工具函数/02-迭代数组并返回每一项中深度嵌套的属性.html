@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        原生方法map
+    </title>
+    <script src="../lodash.js"></script>
 </head>
 <body>
-$END$
+
+<script>
+    var ownerArr = [{
+        "owner": "Colin",
+        "pets": [{"name":"dog1"}, {"name": "dog2"}]
+    }, {
+        "owner": "John",
+        "pets": [{"name":"dog3"}, {"name": "dog4"}]
+    }];
+    var a = ownerArr.map((owner)=>owner.pets[0].name)
+    var b = _.map(ownerArr,'pets[0].name')
+    console.log(a,b)
+</script>
 </body>
 </html>

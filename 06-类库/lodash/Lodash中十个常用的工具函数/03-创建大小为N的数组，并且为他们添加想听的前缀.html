@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <script src="../lodash.js"></script>
 </head>
 <body>
-$END$
+
+<script>
+    var a  = _.times(6,_.uniqueId.bind(null,'ball_'))
+    console.log(a)
+
+
+    //原生方法
+    var b = Array.apply(null, Array(6)).map(function(item, index){
+                return "ball_" + index;
+            });
+    console.log(b)
+</script>
 </body>
 </html>

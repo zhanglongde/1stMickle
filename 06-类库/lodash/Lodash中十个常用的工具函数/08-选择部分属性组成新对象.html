@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <script src="../lodash.js"></script>
 </head>
 <body>
-$END$
+
+<script>
+    var obj = {
+        name:'zhanglongde',
+        age:27,
+        address:'shanghai',
+        gender:'M'
+    }
+    // 去掉属性，并拷贝出一个对象
+    var o = _.pick(obj,['age','gender'])
+    console.log(o)
+    o.name = 'zhangld'
+    console.log(obj)
+</script>
 </body>
 </html>

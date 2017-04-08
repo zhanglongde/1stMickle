@@ -2,9 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <script src="../lodash.js"></script>
 </head>
 <body>
-$END$
+
+<script>
+    var add = function (a,b,c) {
+        return a+b+c
+    }
+    var sum = _.curry(add)
+    var a = sum(1,2,3)
+    var b = sum(1)(2)(3)
+    var c = sum(1,2)(3)
+    console.log(a,b,c)
+</script>
 </body>
 </html>

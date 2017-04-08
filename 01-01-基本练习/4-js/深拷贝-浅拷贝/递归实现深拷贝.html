@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    function deepClone( obj ) {
+        if( !obj || true == obj ) //this also handles boolean as true and false
+            return obj;
+        var objType = typeof( obj );
+        if( "number" == objType || "string" == objType ) // add your immutables here
+            return obj;
+        var result = Array.isArray( obj ) ? [] : !obj.constructor ? {} : new obj.constructor();
+        if( obj instanceof Map )
+            for( var key of obj.keys() )
+                result.set( key, deepClone( obj.get( key ) ) );
+        for( var key in obj )
+            if( obj.hasOwnProperty( key ) )
+                result[key] = deepClone( obj[ key ] );
+        return result;
+    }
+</script>
 </body>
 </html>

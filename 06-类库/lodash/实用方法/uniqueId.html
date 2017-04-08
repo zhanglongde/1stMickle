@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <script src="../lodash.js"></script>
+
 </head>
 <body>
-$END$
+
+<script>
+    _.times(4, function () {
+        console.log(_.uniqueId('contact_'))
+        console.log(_.uniqueId())
+    })
+</script>
 </body>
 </html>

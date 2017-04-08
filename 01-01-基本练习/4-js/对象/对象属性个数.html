@@ -13,8 +13,12 @@
         sex:'M'
     }
     console.log(Object.entries(a)) //对象转数组
+    // 方法1 对象键值转数组
     var num = Object.keys(a).length
     console.log(num)
+    
+    // 方法2 ES5
+    console.log(Object.getOwnPropertyNames(a).length);
 </script>
 </body>
 </html>
