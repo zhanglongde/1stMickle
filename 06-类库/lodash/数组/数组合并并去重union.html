@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        concat方法无法去重
+        Array.from(new Set())
+    </title>
+    <script src="../lodash.js"></script>
+</head>
+<body>
+
+<script>
+    var a = _.union([1, 2], [4, 2], [2, 1]);
+    console.log(a)
+
+    //_.prototype.concat可以实现数组与非数组的合并
+
+</script>
+</body>
+</html>
