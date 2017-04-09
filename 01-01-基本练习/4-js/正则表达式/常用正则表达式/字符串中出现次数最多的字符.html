@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var str = 'kkkkkkkaaakkkkkkaaaaasddd';
+
+    function most(str) {
+        //排序，正则匹配子项
+        var arr = str.split('');
+        arr.sort();
+        str = arr.join('');
+        // 1匹配前面相同的,也就是说跟（w）相同的
+        var re = /(w)1+/g;
+        var num = 0;
+        var value = '';
+        //这里的$0就是找到的重复的整体
+        str.replace(re, function ($0, $1) {
+            //alert($0);
+            if (num.length) {
+                num = $0.length;
+                value = $1;
+            }
+        });
+        return '出现次数最多的字符是' + value + '出现了' + num + '次';
+    }
+    console.log(most(str));
+</script>
+</body>
+</html>

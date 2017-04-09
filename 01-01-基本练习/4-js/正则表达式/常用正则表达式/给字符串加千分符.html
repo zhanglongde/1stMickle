@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var str = 'ttt=12345432'
+    function spli(str) {
+        var re = /(?=(?!b)(d{3})+$)/g
+        return str.replace(re,',')
+    }
+    console.log(spli(str));
+</script>
+</body>
+</html>

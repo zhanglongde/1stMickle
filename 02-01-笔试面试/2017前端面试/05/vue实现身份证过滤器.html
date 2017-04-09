@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        运用angular中的filter服务，为身份证写一个过滤器，将身份证年月日转化为*
+        430682197905200825
+        430682********0825
+    </title>
+    <script src="../../../05-04-vuejs2/vue.js"></script>
+</head>
+<body>
+<div id="app">{{id | idFilter}}</div>
+
+<script>
+    // 全局注册过滤器
+    Vue.filter('id-star', function (value) {
+        if (typeof value !== 'string' || value.length !== 18) {
+            return value // 身份证格式不合法
+        }
+        // 简单做法1 substring 类比slice(start,end)不包括end,end可省略
+//        var before = value.substring(0,6)
+//        var after = value.substring(14)
+
+        // 简单做法2 substr 类比splice(start,num),num可以省略
+        var before = value.substr(0,6)
+        var after = value.substr(14)
+        return before + '********' + after
+    })
+    new Vue({
+        el:'#app',
+        data: {
+            id:'430682197905200825'
+        },
+        // 局部注册过滤器
+        filters: {
+          idFilter: function (value) {
+              //        正则表达式做法
+              return value.replace(/(\d{6})(\d{8})(\d{4})/ig, function(s,s1,s2,s3) {
+                  return s1 + '********' + s3
+              })
+          }
+        }
+    })
+</script>
+</body>
+</html>

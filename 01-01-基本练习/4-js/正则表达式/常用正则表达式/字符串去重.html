@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var str="aabbcdeeeffffgh";
+    var regexp=/([A-Za-z])\1+/g;
+    var ret=str.replace(regexp,"$1");
+    var ret2=str.replace(regexp,"$1$2");
+    console.log(ret);
+    console.log(ret2);
+</script>
+</body>
+</html>

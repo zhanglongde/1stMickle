@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        $.when(一个或者多个延迟对象)
+    </title>
+    <script src="../../lib/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+
+<script>
+//
+//    $.when($.ajax('')).then()
+    $.when({testing:123}).done(
+        function (x) {
+            console.log(x)
+        }
+    )
+</script>
+</body>
+</html>

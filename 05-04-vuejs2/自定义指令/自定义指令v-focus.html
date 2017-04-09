@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+      <input type="text" v-focus>
+      <input type="text">
+    </div>
+
+    <script>
+        // 全局注册
+        Vue.directive('focus', {
+           inserted: function (el) {
+             el.focus()
+           } //vue1中没有此钩子函数
+        })
+        new Vue({
+            el:'#app',
+            data: {
+
+            }
+        })
+    </script>
+</body>
+</html>

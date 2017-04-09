@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../lib/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+
+<script>
+    var defer = $.Deferred() // 生成D无法热热的对象
+    var wait = function (defer) {
+        var tasks = function () {
+            console.log('执行完毕')
+            defer.resolve()// 改变Deferrd对象的执行状态，手动出发resolve()
+        }
+        setTimeout(tasks, 5000)
+        return defer.promise()
+    }
+
+    $.when(wait(defer)).done(function () {
+        console.log('success!')
+    }).fail(function () {
+        console.log('fail')
+    })
+
+//    $.when(wait(defer)).then(function () {
+//        console.log('成功！')
+//    },function () {
+//        console.log('失败！')
+//    })
+
+
+    //  下面代码为什么不行？
+//    $.when(new Promise(function(resolve,reject){
+//        setTimeout(function() {
+//            console.log('time out 3s!');
+//            resolve()
+//        },3000)
+//    })).then(function () {
+//        console.log('execute done end')
+//    }, function () {
+//       console.log('execute fail end')
+//    })
+</script>
+</body>
+</html>

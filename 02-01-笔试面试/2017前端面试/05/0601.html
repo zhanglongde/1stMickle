@@ -46,9 +46,28 @@
         }
     }
 
-    var aProps = Object.getOwnPropertyNames(targetObj)
-    console.log(aProps)
+//    var aProps = Object.getOwnPropertyNames(targetObj)
 
-    console.log(targetObj)
+    // 递归方法实现
+    function getProp (obj, str) {
+      if (typeof obj !== 'object' || typeof str !== 'string') {
+        return []
+      }
+      var arr = []
+      for (var key in obj) {
+        if (typeof obj[key] === 'string' && obj[key].indexOf(str) >= 0) {
+//            arr.push(obj[key])
+            arr.push({name:obj[key],obj,keys:Object.keys(obj)})
+        }
+        if (typeof obj[key] === 'object') {
+            // 可以用loadsh的union去重或者Array.from(new Set())
+            arr = arr.concat(getProp(obj[key], str))
+        }
+      }
+      return arr
+    }
+
+    var result = getProp(targetObj, '李鹏')
+    console.log(result)
 </script>
 </html>

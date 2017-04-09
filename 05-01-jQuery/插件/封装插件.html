@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        封装alert插件
+    </title>
+    <script src="../../lib/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<button>test</button>
+
+<script>
+    (function ($) {
+        $.fn.alert = function () {
+            alert($(this).text())
+        }
+    })(jQuery);
+
+    window.onload = function () {
+        $('button').alert()
+    }
+</script>
+</body>
+</html>

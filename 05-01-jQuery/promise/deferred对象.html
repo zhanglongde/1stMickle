@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        http://www.ruanyifeng.com/blog/2011/08/a_detailed_explanation_of_jquery_deferred_object.html
+        deferred对象就是jQuery的回调函数解决方案
+        $.ajax()返回的是deferred对象，可进行链式操作
+    </title>
+    <script src="../../lib/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+
+<script>
+    $.ajax('test.html').done(function () {
+        console.log('success')
+    }).fail(function () {
+        console.log('failed')
+    })
+</script>
+</body>
+</html>
