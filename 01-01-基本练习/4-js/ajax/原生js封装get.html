@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function getAjax(url, succeedFun, errorFun) {
+
+        var ajax;
+        if(window.XMLHttpRequest) {
+            ajax = new XMLHttpRequest();
+        } else {
+            ajax = new ActiveXObject("Microsofe.XMLHTTP");
+        }
+
+        var time = new Date();
+        ajax.open("get", url + "?t=" + time, true);
+        ajax.send(null);
+
+        ajax.onreadystatechange = function() {
+            if(ajax.readyState == 4) {
+                if(ajax.status >= 200 && ajax.status < 207 || ajax.status == 304) {
+
+                    if(succeedFun) {
+                        succeedFun(ajax.response);
+                    } else {
+
+                        if(errorFun) {
+                            errorFun(ajax.status);
+                        }
+                    }
+                }
+            }
+        }
+</script>
+</body>
+</html>

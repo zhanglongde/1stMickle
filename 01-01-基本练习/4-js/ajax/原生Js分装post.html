@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function postAjax (url,sliceUrl,succeedFun,errorFun) {
+
+        var ajax;
+        if (window.XMLHttpRequest) {
+            ajax = new XMLHttpRequest();
+        } else{
+            ajax = new ActiveXObject("Microsofe.XMLHTTP");//IE
+        }
+
+        var time = new Date().getTime();
+        ajax.open("post",url+"?t="+time,true);
+
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+        ajax.send(sliceUrl);
+
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState == 4) {
+                if (ajax.status >= 200 && ajax.status < 207 || ajax.status == 304) {
+                    if (succeedFun) {
+                        succeedFun(ajax.responseText);
+                    }
+                } else{
+                    if (errorFun) {
+                        errorFun(ajax.status);
+                    }
+                }
+            }
+        }
+    }
+
+</script>
+</body>
+</html>
