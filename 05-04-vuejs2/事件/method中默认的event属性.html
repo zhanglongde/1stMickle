@@ -2,9 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        .box{
+            background-color: #58a;
+        }
+    </style>
+    <script src="../vue.js"></script>
 </head>
 <body>
-$END$
+<div id="app">
+    <div v-html="test"></div>
+    <button @click="clk">点击</button>
+</div>
+
+<script>
+    new Vue({
+        el:'#app',
+        data: {
+            test: '<div class="box">test</div>'
+        },
+        created () {
+            console.log('created')
+        },
+        mounted () {
+            console.log('mounted')
+        },
+        updated: function () {
+            console.log('updated')
+        },
+        methods: {
+            clk () {
+                console.log(event)
+                this.test = '<div>你好 <img src="../images/mm2.jpg" alt=""></div>'
+            }
+        }
+    })
+</script>
 </body>
 </html>
