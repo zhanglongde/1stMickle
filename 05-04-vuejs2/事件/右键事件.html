@@ -13,7 +13,7 @@
 <body>
 <div id="app">
     <div v-html="test"></div>
-    <button @contextmenu="contextmenu">点击</button>
+    <button @contextmenu="contextmenu" @click="clk">点击</button>
 </div>
 
 <script>
@@ -35,6 +35,9 @@
             contextmenu (e) {
                 console.log('contextmenu', e.target.innerText)
                 this.test = '<div>你好 <img src="../images/mm2.jpg" alt=""></div>'
+            },
+            clk () {
+                console.log(event)
             }
         }
     })
