@@ -2,9 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        .container{
+            width:500px;
+            height:300px;
+            background-color: #85a;
+        }
+        .container .son{
+            /*在[0,图片真实宽度]范围内。改变父元素宽度，内部图片子元素也跟随改变*/
+            width:140px;
+            /*height:100px;*/
+            height:auto;
+            background-color: #58a;
+        }
+        .img-fluid{
+            max-width:100%;
+            height:auto;
+        }
+    </style>
 </head>
 <body>
-$END$
+
+<div class="container">
+    <div class="son">
+        <img src="../../../images/mm2.jpg" alt="测试" class="img-fluid">
+    </div>
+</div>
 </body>
 </html>

@@ -2,9 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        .container{
+            width:500px;
+            height:300px;
+            background-color: #85a;
+        }
+        .container .son{
+            width:200px;
+            height:100px;
+            background-color: #58a;
+        }
+        .resizable{
+            resize: both;
+            overflow:auto;
+        }
+    </style>
 </head>
 <body>
-$END$
+
+<div class="container">
+    <div class="son resizable"></div>
+</div>
 </body>
 </html>
