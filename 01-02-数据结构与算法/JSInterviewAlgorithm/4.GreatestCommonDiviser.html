@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function greatestCommonDivisor(a, b) {
+      if (b == 0) {
+        return a
+      } else {
+          return greatestCommonDivisor(b, a%b)
+      }
+    }
+    var a = greatestCommonDivisor(14,21)
+    var b = greatestCommonDivisor(69,169)
+    console.log(a)
+    console.log(b)
+</script>
+</body>
+</html>
