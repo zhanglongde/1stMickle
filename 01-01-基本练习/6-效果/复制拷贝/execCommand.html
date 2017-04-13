@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div>你好</div>
+    <div>test</div>
+</div>
+<script>
+    var CopiedText = ''
+            window.onload = function () {
+      var ctn = document.querySelector('.container') // get HTML collection,not node
+        ctn.addEventListener('click', function () {
+//            event.preventDefault()
+//          console.log(event)
+            CopiedText = window.getSelection().toString()
+            console.log(CopiedText)
+            document.execCommand('copy', true)
+            if (document.execCommand('copy', true)) {
+                CopiedText = ''
+                 window.console.log(['复制成功', CopiedText])
+            }
+        })
+    }
+</script>
+</body>
+</html>
