@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script id="test">
+    var Person = (function (p) {
+        p.name = 'zhanglongde'
+
+        p.init = function (n) {
+          p.name = n
+        }
+        return p
+    })(Person || {})
+
+    window.onload = function () {
+        Person.init('zld')
+        console.log(document.currentScript)
+    }
+
+
+</script>
+
+</body>
+</html>

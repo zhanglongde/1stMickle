@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        期望代码的输出变成 0 -> 1 -> 2 -> 3 -> 4 -> 5
+        Promise的应用
+    </title>
+</head>
+<body>
+
+<script>
+const tasks = [];
+function timeLog (i) {
+    return new Promise(function(resolve) {
+        setTimeout(function () {
+            console.log(new Date, i);
+            resolve()
+        }, 1000 * i)
+    })
+}
+for(var i = 0; i< 5; i++){
+  tasks.push(timeLog(i))
+}
+Promise.all(tasks).then(function () {
+    setTimeout(function () {
+      console.log(new Date, i)
+    }, 1000)
+})
+</script>
+
+<!--<script>-->
+    <!--const tasks = []; // 这里存放异步操作的 Promise-->
+    <!--const output = (i) => new Promise((resolve) => {-->
+        <!--setTimeout(() => {-->
+        <!--console.log(new Date, i);-->
+        <!--resolve();-->
+    <!--}, 1000 * i);-->
+    <!--});-->
+
+    <!--// 生成全部的异步操作-->
+    <!--for (var i = 0; i < 5; i++) {-->
+        <!--tasks.push(output(i));-->
+    <!--}-->
+
+    <!--// 异步操作完成之后，输出最后的 i-->
+    <!--Promise.all(tasks).then(() => {-->
+        <!--setTimeout(() => {-->
+        <!--console.log(new Date, i);-->
+    <!--}, 1000);-->
+    <!--});-->
+<!--</script>-->
+</body>
+</html>

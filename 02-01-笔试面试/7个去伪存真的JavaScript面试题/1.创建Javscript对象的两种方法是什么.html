@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+//    1.单例模式
+//    2.new关键字
+//    3.ES6的class
+
+    var Person = {
+        name:'zhanglongde',
+        create: function (n) {
+          this.name= n
+        }
+    }
+    var o = Object.assign(Person)
+//    o.create('Hi')
+    console.log(o)
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function Base() {
+        this.str='aa'
+    }
+    // 1.创建空对象
+    var obj = {}
+//    2.将空对象的__proto__指向构造函数的prototype
+    obj.__proto__= Base.prototype;
+//    3.使用空对象作为上下文调用构造函数
+    Base.call(obj)
+    console.log(obj)
+
+//    var b = new Base()
+//    console.dir(b)
+</script>
+</body>
+</html>

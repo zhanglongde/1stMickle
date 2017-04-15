@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        变量提升，作用域的考察
+        期望代码的输出变成：5 -> 0,1,2,3,4
+        1.IIFE 立即执行函数解决闭包造成的问题
+        2.声明一个函数
+    </title>
+</head>
+<body>
+
+<script>
+    // 解法1
+//    for(var i = 0; i< 5; i++){
+//        (function (i) {
+//            setTimeout(function () {
+//              console.log(new Date(), i)
+//            }, 1000)
+//        })(i)
+//    }
+//    console.log(new Date(), i)
+</script>
+
+<script>
+    //解法2
+    function timeLog(i) {
+      setTimeout(function () {
+        console.log(new Date, i)
+      },1000)
+    }
+    for(var i = 0; i< 5; i++){
+      timeLog(i)
+    }
+    console.log(new Date, i)
+</script>
+</body>
+</html>

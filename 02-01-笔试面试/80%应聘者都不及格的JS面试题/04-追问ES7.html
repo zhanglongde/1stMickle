@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // 模拟其他语言中的 sleep，实际上可以是任何异步操作
+    function timeLog (i) {
+        return new Promise(function (resolve) {
+          setTimeout(function () {
+            console.log(new Date, i)
+              resolve()
+          }, 1000)
+        })
+    }
+    // 必须将函数声明为async,才能在内部使用await
+    (async ()=> {
+        for(var i = 0; i< 5; i++){
+          await timeLog(i)
+        }
+        await timeLog(i)
+    })();
+
+</script>
+</body>
+</html>
