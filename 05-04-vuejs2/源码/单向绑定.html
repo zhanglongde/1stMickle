@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    <span data-bind="fname">my name</span>
+    <span data-bind="lname">my name</span>
+</p>
+<p>
+    <button id="chbtn">Change Values</button>
+</p>
+
+<script>
+    var obj = {
+        fname:'zhang',
+        lname:'longde'
+    }
+    var cbinder = function (obj,elem,prop) {
+        Object.defineProperty(obj,prop,{
+            get: function (val) {
+              elem.innerText = val
+            },
+            set:function (val) {
+                elem.textContent = val;
+            }
+        })
+    }
+
+    window.onload = function () {
+        var elem = document.querySelectorAll('[data-bind]')
+        for(var i = 0; i< elem.length; i++){
+            var prop = elem[i].getAttribute('data-bind')
+            cbinder(obj,elem[i],prop)
+        }
+
+        var btn = document.querySelector('#chbtn');
+        btn.addEventListener('click', function (event) {
+            obj.fname = 'John'
+            obj.lname = 'Doe';
+        },false)
+    }
+
+</script>
+</body>
+</html>
