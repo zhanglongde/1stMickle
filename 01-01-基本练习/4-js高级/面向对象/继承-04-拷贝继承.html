@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        不如构造继承
+        类似工厂模式
+    </title>
 </head>
 <body>
-$END$
+
+<script>
+    function Animal() {
+        this.name='animal'
+    }
+    function Cat(name) {
+        var instance = new Animal()
+        for (key in instance) {
+            Cat.prototype[key] = instance[key]
+        }
+        Cat.prototype.name = name || 'Tom'
+    }
+    var c = new Cat()
+    console.log(c)
+    console.log(c.name)
+    var c2 = new Cat('Marry')
+    console.log(c2)
+    console.log(c2.name)
+</script>
 </body>
 </html>

@@ -2,9 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        堪称完美，但实现复杂
+        借助一个没有实例方法的类，以其原型对象来保存基类的原型对象,
+        从而避免了两次初始化基类实例的方法和属性
+    </title>
 </head>
 <body>
-$END$
+
+<script>
+    function Animal() {
+        this.name='animal'
+    }
+    function Cat(name) {
+        Animal.call(this)
+        this.name = name || 'default'//重载
+    }
+
+    (function () {
+        // 创建一个没有实力方法的类
+        var Super = function () {
+        }
+        Super.prototype = Animal.prototype;
+        //子类的原型对象赋以基类的原型对象
+        Cat.prototype = new Super()
+    })();
+
+
+
+    var c = new Cat()
+    console.log(c)
+    console.log(c.name)
+    var c2 = new Cat('Marry')
+    console.log(c2)
+    console.log(c2.name)
+</script>
 </body>
 </html>

@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script>
+    function Animal() {
+        this.name='animal'
+    }
+    function Cat(name) {
+        Animal.call(this)
+        this.name = name || 'Tom'
+    }
+    var c = new Cat()
+    console.log(c)
+    var c2 = new Cat('Marry')
+    console.log(c2)
+</script>
 </body>
 </html>

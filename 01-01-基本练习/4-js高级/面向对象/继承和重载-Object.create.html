@@ -2,9 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        Person里的属性并没有被真正复制到了Student中来，但是我们可以去存取。
+        这是因为Javascript用委托实现了这一机制。其实，这就是Prototype，Person是Student的Prototype。
+    </title>
 </head>
 <body>
-$END$
+
+<script>
+    var Person = Object.create(null);
+
+    Object.defineProperties
+    (
+            Person,
+            {
+                'name'  : {  value: 'Chen Hao'},
+                'email'  : { value : 'haoel@hotmail.com'},
+                'website': { value: 'http://coolshell.cn'}
+            }
+    );
+
+    Person.sayHello = function () {
+        var hello = "<p>Hello, I am "+ this.name  + ", <br>" +
+                "my email is: " + this.email + ", <br>" +
+                "my website is: " + this.website;
+        document.write(hello + "<br>");
+    }
+
+    var Student = Object.create(Person);
+    Student.no = "1234567"; //学号
+    Student.dept = "Computer Science"; //系
+
+    //使用Person的属性
+    document.write(Student.name + ' ' + Student.email + ' ' + Student.website +'<br>');
+
+    //使用Person的方法
+    Student.sayHello();
+
+    //重载SayHello方法
+    Student.sayHello = function (person) {
+        var hello = "<p>Hello, I am "+ this.name  + ", <br>" +
+                "my email is: " + this.email + ", <br>" +
+                "my website is: " + this.website + ", <br>" +
+                "my student no is: " + this. no + ", <br>" +
+                "my departent is: " + this. dept;
+        document.write(hello + '<br>');
+    }
+    //再次调用
+    Student.sayHello();
+
+    //查看Student的属性（只有 no 、 dept 和 重载了的sayHello）
+    document.write('<p>' + Object.keys(Student) + '<br>');
+</script>
 </body>
 </html>

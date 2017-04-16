@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        限制：Object.assign不能拷贝get/set属性
+    </title>
 </head>
 <body>
 
@@ -15,15 +17,15 @@
           console.log('hello')
         }
     }
-//    var p1 = Object.assign(Person,{
-//        gender: 'Man'
-//    })
-//    p1.sayHello()
-//    console.log(p1)
+    var p1 = Object.assign(Person,{
+        gender: 'Man'
+    })
+    p1.sayHello()
+    console.log(p1)
 
-    var p2 = Object.create(Person)
+//    var p2 = Object.create(Person)
 //    p2.home='fuzhou'
-    console.log(p2)
+//    console.log(p2)
 </script>
 </body>
 </html>

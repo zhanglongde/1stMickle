@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        原型继承和构造继承
+    </title>
 </head>
 <body>
-$END$
+
+<script>
+    function Animal() {
+        this.name='animal'
+    }
+    function Cat(name) {
+        Animal.call(this)
+        this.name = name || 'default'//重载
+    }
+    Cat.prototype = new Animal()
+    var c = new Cat()
+    console.log(c)
+    console.log(c.name)
+    var c2 = new Cat('Marry')
+    console.log(c2)
+    console.log(c2.name)
+</script>
 </body>
 </html>

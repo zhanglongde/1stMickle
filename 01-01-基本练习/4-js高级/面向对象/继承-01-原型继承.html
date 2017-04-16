@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        http://www.cnblogs.com/humin/p/4556820.html
+    </title>
 </head>
 <body>
-$END$
+
+<script>
+    function Animal() {
+        this.name='animal'
+    }
+    function Cat(name) {
+        this.age=3
+//        name && (this.name = name) //重载
+    }
+    Cat.prototype = new Animal()
+    var c1 = new Cat()
+    var c2 = new Cat('cat')
+    console.log(c1)
+    console.log(c2)
+</script>
 </body>
 </html>
