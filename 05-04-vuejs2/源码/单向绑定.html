@@ -20,9 +20,6 @@
     }
     var cbinder = function (obj,elem,prop) {
         Object.defineProperty(obj,prop,{
-            get: function (val) {
-              elem.innerText = val
-            },
             set:function (val) {
                 elem.textContent = val;
             }

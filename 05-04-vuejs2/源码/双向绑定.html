@@ -2,9 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<input type="text" id="text1">
+<input type="text" id="text2">
+
+<script>
+    var  input1 = document.querySelector('#text1')
+    var  input2 = document.querySelector('#text2')
+    var data = {}
+    Object.defineProperty(data,'name',{
+        configurable:true,
+        get: function () {
+            console.log(1111)
+            return input1.value
+        },
+        set: function (newValue) {
+          console.log(2222)
+            input1.value = newValue
+            input2.value = newValue
+        }
+    })
+
+    data.name = 'sss'
+    input1.onchange = function () {
+      console.log(333)
+        data.name = data.name
+    }
+    input2.onchange = function () {
+      console.log(444)
+        input1.value = this.value
+        console.log(data)
+    }
+</script>
 </body>
 </html>

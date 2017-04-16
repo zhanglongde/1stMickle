@@ -2,9 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        apply的性能要比call差很多
+
+    </title>
 </head>
 <body>
-$END$
+
+
+<script>
+    function print(text) {
+        console.log(this.value,text)
+    }
+    var a = {value:10,print:print}
+    var b = {value:20,print:print}
+    print('hello')
+//    a.print('a')
+//    b.print('b')
+//    a['print']('a')
+
+    print.call(a,'a')
+    print.call(b,'b')
+    print.apply(a,['a'])
+    print.apply(b,['b'])
+
+    console.log('%c-----------------------------------------------------------', 'background-color:#e66;color:#fff;font-size:30px;')
+    var p = print.bind(a)
+    p('a')
+    p.call(b,'b')
+    p.apply(b,['b'])
+</script>
 </body>
 </html>
