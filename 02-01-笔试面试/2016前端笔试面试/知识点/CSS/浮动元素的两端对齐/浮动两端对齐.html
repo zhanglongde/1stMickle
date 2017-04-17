@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0061)http://www.ddcat.net/web/css/float-justify/float-justify.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>浮动两端对齐</title>
+<style type="text/css">
+ul,li {margin:0;padding:0;}
+h2 {clear:both;font-size:1.2em;}
+.justify {
+width:320px;/* 1行3个li，li之间距离10px = 100px*3 + 10px*2 */
+overflow:hidden;
+margin:10px;border:1px solid #999999;}
+.justify ul {
+width:330px; /* 可容纳下3列的宽度 */
+margin-bottom:-10px;/* 隐藏掉最下面一行的margin-bottom */
+overflow:hidden;
+zoom:1;/* 触发IE的Layout */
+}
+*+html .justify ul {margin-bottom:0;/* 针对IE7中最后1行li的margin-bottom失效 */}
+.justify li {display:inline;float:left;list-style:none;width:100px;height:100px;margin:0 10px 10px 0;background:#EEEEEE;}
+
+.margin ul {width:auto;margin:0 -10px -10px 0;}
+
+.col-2 {width:210px;}
+.col-4 {width:430px;}
+</style>
+</head>
+
+<body>
+<div><a href="http://www.ddcat.net/blog/?p=1199" title="回到猫窝Blog">回到猫窝Blog</a></div>
+<h1>浮动两端对齐</h1>
+<h2>ul定宽</h2>
+<div class="justify">
+  <ul>
+    <li>靠左边</li>
+    <li>中间</li>
+    <li>靠右边</li>
+    <li>靠左边</li>
+    <li>中间</li>
+    <li>靠右边</li>
+    <li>靠左边</li>
+    <li>中间</li>
+    <li>靠右边</li>
+  </ul>
+</div>
+<h2>ul使用负margin值</h2>
+<div class="justify margin">
+  <ul>
+    <li>靠左边</li>
+    <li>中间</li>
+    <li>靠右边</li>
+    <li>靠左边</li>
+    <li>中间</li>
+    <li>靠右边</li>
+    <li>靠左边</li>
+    <li>中间</li>
+    <li>靠右边</li>
+  </ul>
+</div>
+<h2>两列</h2>
+<div class="justify margin col-2">
+  <ul>
+    <li>靠左边</li>
+    <li>靠右边</li>
+    <li>靠左边</li>
+    <li>靠右边</li>
+    <li>靠左边</li>
+    <li>靠右边</li>
+  </ul>
+</div>
+<h2>四列</h2>
+<div class="justify margin col-4">
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+  </ul>
+</div>
+<div><a href="http://www.ddcat.net/blog/?p=1199" title="回到猫窝Blog">回到猫窝Blog</a></div>
+
+</body></html>

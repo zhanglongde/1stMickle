@@ -1,0 +1,55 @@
+﻿<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>TAB中的图片延迟加载-图片延迟加载的演示</title>
+<style type="text/css">
+*{ margin:0; padding:0; }
+.box{width:210px;margin:10px auto 0;background:#fff;border:1px solid #d3d3d3;}
+.tab_menu{list-style:none;width:210px;overflow:hidden;}
+.tab_menu li{width:70px;float:left;height:30px;line-height:30px;color:#fff;background:#093;text-align:center;cursor:pointer;}
+.tab_menu li.current{color:#333;background:#fff;}
+.tab_box{padding:20px;height:120px;}
+.tab_box .hide{display:none;}
+</style>
+
+</head>
+<body>
+<h1>TAB中的图片延迟加载</h1>
+<hr />
+<div class="box">
+	<ul class="tab_menu">
+		<li class="current">menu1</li>
+		<li>menu2</li>
+		<li>menu3</li>
+	</ul>
+	<div class="tab_box">
+		<div class="img_box"><img src="http://ot.5173cdn.com/5173/data/201111/00/B1/RAKowE7RpSkAAAAAAABeZXGj9rA69.jpg" /></div>
+		<div class="hide"><img src="images/placeholder.png"  lazy-src="http://ot.5173cdn.com/5173/data/201202/00/78/RAKowE9ATvEAAAAAAABIynkMnN439.jpg" /></div>
+		<div class="hide"><img src="images/placeholder.png"  lazy-src="http://ot.5173cdn.com/5173/data/201202/00/57/RAKowE85tX4AAAAAAABPcxwszb401.jpg" /></div>
+	</div>
+</div>
+
+<div style="height:1600px;"></div>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.tabs.min.js"></script>
+<script type="text/javascript" src="js/imglazyload.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$( '.box' ).Tabs({
+		event : 'click',
+		callback : function(){
+			$( this ).find( '.tab_box div:not(.hide)' ).trigger( 'lazyload' );
+		}
+	});
+	
+	$( '.box div.hide' ).one( 'lazyload', function(){	
+		$( 'img', this ).imglazyload();
+	});
+});
+
+
+</script>
+</body>
+</html>

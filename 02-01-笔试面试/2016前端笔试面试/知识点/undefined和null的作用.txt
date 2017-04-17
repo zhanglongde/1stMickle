@@ -1,0 +1,12 @@
+undefined
+var 只声明不赋值，通过typeof返回的就是undefined
+undefined 经常用于浏览器兼容
+如：if(XMLHttpRequest)   因为如果如果某个浏览器如果没有内置对象，
+可能会返回undefined,最终导致if判断错误
+
+
+
+
+null的作用
+通过手动接触引用，方便垃圾收集器GC回收变量。
+

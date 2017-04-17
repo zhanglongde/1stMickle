@@ -1,0 +1,23 @@
+什么是伪数组
+
+能通过Array.prototype.slice转换为真正的数组的带有length属性的对象。
+
+这种对象有很多，比较特别的是arguments对象，还有像调用getElementsByTagName,document.childNodes之类的，它们都返回NodeList对象都属于伪数组。
+
+我们可以通过Array.prototype.slice.call(fakeArray)将伪数组转变为真正的Array对象。
+
+来看个示例：
+
+var fakeArray01 = {0:'a',1:'b',length:2};//这是一个标准的有伪数组对象
+         
+var arr01 = Array.prototype.slice.call(fakeArray01);
+alert(arr01[0]);//a
+         
+var arr02 =  [].slice.call(fakeArray01);
+alert(arr02[0]);//a
+
+
+
+slice 可以用来获取数组片段，它返回新数组，不会修改原数组。
+
+示例中可以看到fakeArray被成功的转换成了Array对象。也许大家对Array.prototype.slice.call这种写法比较陌生，其实我们也可以通过[].slice.call这种形式实现同样的效果，那为什么我们要通过prototype的形式实现呢，答案是以prototype的形式执行程序效率更高，同样代码也更加优美。

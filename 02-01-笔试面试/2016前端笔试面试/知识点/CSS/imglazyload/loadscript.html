@@ -1,0 +1,46 @@
+﻿<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>无阻塞加载javascript广告-图片延迟加载的演示</title>
+<style type="text/css">
+*{ margin:0; padding:0; }
+body{ font:12px/1.5 arial; }
+.img_box{ height:58px; width:132px; margin-bottom:300px; }
+.fragment_box{ display:none; }
+h1 a{ font-size:12px; font-weight:400; }
+</style>
+
+</head>
+<body>
+<h1>无阻塞加载javascript广告<a href="http://stylechen.com/rewrite-documentwrite.html" target="_blank">让document.write的广告无阻塞的加载</a></h1>
+<hr />
+<div class="wrapper" id="wrapper">
+<div class="img_box">
+<textarea class="fragment_box"><script type="text/javascript" src="http://gg.5173.com/adpolestar/5173/;ap=2EBE5681_1BA3_4663_FA3F_E73D2B83FBDC;ct=js;pu=5173;/?"></script></textarea>
+</div>
+<div class="img_box">
+<textarea class="fragment_box"><script type="text/javascript" src="http://gg.5173.com/adpolestar/5173/;ap=90DEC894_E244_E658_B105_2C2DC9836F31;ct=js;pu=5173;/?"></script></textarea>
+</div>
+<div class="img_box">
+<textarea class="fragment_box"><script type="text/javascript" src="http://gg.5173.com/adpolestar/5173/;ap=CA4D8E81_4F2A_9E33_71F5_64236E09CC90;ct=js;pu=5173;/?"></script></textarea>
+</div>
+<div class="img_box">
+<textarea class="fragment_box"><script type="text/javascript" src="http://gg.5173.com/adpolestar/5173/;ap=8678113C_A3F9_9E7B_ABC6_C13FC0A692E0;ct=js;pu=5173;/?"></script></textarea>
+</div>
+<div class="img_box">
+<textarea class="fragment_box"><script type="text/javascript" src="http://gg.5173.com/adpolestar/5173/;ap=FFA6D692_073A_0C73_7B81_94AD4F26F37A;ct=js;pu=5173;/?"></script></textarea>
+</div>
+</div>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/imglazyload.loadscript.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$( 'textarea.fragment_box' ).imglazyload({
+		loadScript : true
+	});
+});
+</script>
+</body>
+</html>
