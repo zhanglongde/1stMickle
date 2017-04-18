@@ -63,6 +63,7 @@
         },
         mounted () {
             var self = this
+            // 用箭头函数，可以避免使用self或者使用bind(this)
             window.addEventListener('click', function (e) {
                 if (!self.showMenu) {
                   return

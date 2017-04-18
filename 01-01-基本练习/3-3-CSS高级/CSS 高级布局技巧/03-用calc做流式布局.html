@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        流式三栏布局
+    </title>
+    <style>
+        nav{
+            position:fixed;
+            left:0;top:0;
+            width:5rem;
+            height:100%;
+            background-color: #58a;
+        }
+        aside{
+            position: fixed;
+            right:0;
+            top:0;
+            width:20rem;
+            height:100%;
+            background-color: #9c3;
+        }
+        main{
+            margin-left:5rem;
+            width:calc(100% - 25rem);
+            background-color: #85a;
+        }
+    </style>
+</head>
+<body>
+<nav>nav</nav>
+<main>main</main>
+<aside>aside</aside>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        http://www.css88.com/archives/7291
+    </title>
+</head>
+<body>
+
+<script>
+    //flatten 嵌套数组
+    var list1 = [[0, 1], [2, 3], [4, 5]];
+    var list2 = [0, [1, [2, [3, [4, [5]]]]]];
+
+    const flatten = arr => arr.reduce((acc,val)=> acc.concat(
+                    Array.isArray(val) ? flatten(val):val
+    )
+    )
+    console.log(flatten(list1))
+//    console.log(flatten(list2))
+</script>
+</body>
+</html>
