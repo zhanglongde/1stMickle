@@ -2,9 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        https://mp.weixin.qq.com/s?__biz=MzI1MTA2MDcyOQ==&mid=2649567428&idx=1&sn=39cdc91bde67283eb6bbf2c34f952154&chksm=f1e15852c696d14426b62040d5d83fc43ab6f44b24165fc751a93fe964a290f2ef6eb3e584a2&mpshare=1&scene=1&srcid=0414g4xG2uQjOvJshxynbEWs&key=1f96688189483de531441c99cda1f9cc5db58f350dc1fa6ab0dcb01196e92a3ccac1bbdb7f726585d05adb9f1c943a4b2ad01ee5432a3d73c9f88640050f2bdd3a7b96e57978987e74f17e377eeb0b3d&ascene=0&uin=MjQ1MzUxNDgw&devicetype=iMac+MacBookPro13%2C2+OSX+OSX+10.12.4+build(16E195)&version=12020110&nettype=WIFI&fontScale=100&pass_ticket=yU8B%2FfypxK9YwE%2BdBWPR%2FZf1ySKwuSqQkgr6VSfqrR4%3D
+    </title>
+    <style>
+        textarea {
+            display: block;
+            width: 300px;
+            height: 34px;
+            overflow: hidden;
+            padding: 5px 10px;
+            margin: 30px auto 0;
+            resize: none;
+            line-height: 24px;
+            font-size: 16px;
+            color: #666;
+            border: 1px solid #ccc;
+            outline: 0 none;
+            box-shadow: 0 0 5px #999;
+            border-radius: 3px;
+            box-sizing: border-box;
+            transition: all 200ms linear;
+        }
+
+        textarea:focus {
+            color: #277fe4;
+            border-color: #2196f3;
+            box-shadow: 0 0 5px #03a9f4;
+        }
+    </style>
 </head>
 <body>
+<textarea name="ta" id="ta" rows="1"></textarea>
 
+<script>
+    function $(id) {
+        return document.getElementById(id)
+    }
+
+    $('ta').onkeyup= function () {
+      this.style.height = 'auto'
+        this.style.height = this.scrollHeight + 'px';
+    }
+</script>
 </body>
 </html>
