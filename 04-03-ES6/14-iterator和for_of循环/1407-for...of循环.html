@@ -6,19 +6,22 @@
         for of使用范围更广
         for...of循环可以使用的范围包括数组、Set和Map结构、
         某些类似数组的对象（比如arguments对象、DOM NodeList对象）、后文的Generator对象，以及字符串。
+
+    所有具有iterator的都能for of :数组 nodelist arguements以及字符串等类数组对象
     </title>
-    所有具有iterator的都能for of :数组 nodelist arguements
     <script>
         const arr = ['red', 'green', 'blue'];
-        let iterator  = arr[Symbol.iterator]();
 
         for(let v of arr) {
-            console.log(v); // red green blue
+            console.log(v); // red green blue,可以获得键值
         }
 
-        for(let v in arr) {
-            console.log(v); // red green blue
+        for(let k in arr) {
+            console.log(k); // 0 1 2，只能获得键名
         }
+
+//        获得默认遍历器对象
+        let iterator  = arr[Symbol.iterator]();
 
         for(let v of iterator) {
             console.log(v); // red green blue

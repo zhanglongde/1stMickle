@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // 字符串的iterator接口
+    var str ='hi,zld'
+
+    // 获得遍历器函数
+    var iterator = str[Symbol.iterator]()
+    console.log(iterator.next())
+</script>
+</body>
+</html>
