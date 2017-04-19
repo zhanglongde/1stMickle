@@ -2,7 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        animate函数四个参数：
+        变化终值对象
+        事件
+        动画曲线
+        动画完成的回调函数
+    </title>
     <style>
         #test{
             width:300px;
@@ -21,13 +27,15 @@
 <script>
     var w= 0, h = 0;
     $(document).ready(function () {
-        $('#oBtn').toggle(function () {
+        $('#oBtn').on('click',function () {
             var o = document.querySelector('#test')
             w = window.getComputedStyle(o, null).width
             h = $('#test').height()
 
-            $('.test').animate({height:'100px', width:'100px'})
-        }, function () {
+            $('#test').animate({height:'100px', width:'100px',opacity:0.5}, 3000, 'linear', function () {
+               console.log('have done')
+            })
+            
             console.log(w)
             console.log(h)
             console.log($('#test').position())
