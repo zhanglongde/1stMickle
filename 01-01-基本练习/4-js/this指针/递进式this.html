@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script>
+    var socket = function () {
+      this.connection = null
+        this.connect = function () {
+          console.log(this.connection)
+        }
+    }
+    var s = new socket()
+    s.connect()
+</script>
 </body>
 </html>

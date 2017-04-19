@@ -2,9 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+       .container{
+       }
+       .inline-block{
+           display:inline-block;
+       }
+    </style>
 </head>
 <body>
-$END$
+<div class="container">
+  <iframe id="ifr" src="http://192.168.15.86/iframe.html" frameborder="0" width="800px" height="300px"></iframe> <div class="inline-block">inline-block</div>
+</div>
+
+<!--<script>-->
+    <!--window.addEventListener('message', function (event) {-->
+        <!--console.log(event.data)-->
+    <!--})-->
+<!--</script>-->
+<script type="text/javascript">
+    window.onload = function() {
+        var ifr = document.getElementById('ifr');
+        var targetOrigin = '*';  // 若写成'http://b.com/c/proxy.html'效果一样
+                                            // 若写成'http://c.com'就不会执行postMessage了
+        setInterval(function () {
+          ifr.contentWindow.postMessage('I was there!', targetOrigin);
+        },2000)
+    };
+</script>
 </body>
 </html>

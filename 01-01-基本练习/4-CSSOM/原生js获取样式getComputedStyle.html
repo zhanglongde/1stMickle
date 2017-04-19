@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .test{
+            width:200px;
+            height:100px;
+            background-color: #85a;
+        }
+    </style>
+</head>
+<body>
+<div class="test">test</div>
+
+<script>
+    window.onload = function () {
+      var o = document.querySelector('.test')
+//        方法1
+        let style = window.getComputedStyle(o, null)
+        console.log(style.width)
+        console.log(style.height)
+
+//        方法2
+        let stl = document.defaultView.getComputedStyle(o, null)
+        console.log(stl.height)
+        console.log(stl.width)
+
+//        方法3 用jQuery
+        $('.test').css('backgroundColor')
+    }
+</script>
+</body>
+</html>

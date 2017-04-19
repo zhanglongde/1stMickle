@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script>
+    var outer = {
+        name : 'zhanglongde',
+        func: function () {
+            var data = {
+                name : this.name
+            }
+            console.log(data)
+        }
+    }
+    console.log(outer)
+    outer.func()
+</script>
 </body>
 </html>

@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        进入当前目录，用http-server开启一个服务
+    </title>
     <style>
         .container{
             width: 500px;
@@ -18,5 +20,22 @@
 <div class="container">
     container
 </div>
+
+<!--<script>-->
+    <!--window.onload = function () {-->
+      <!--window.postMessage('I am here', 'http://localhost/iframe是inline-block元素.html')-->
+    <!--}-->
+<!--</script>-->
+<script type="text/javascript">
+    window.addEventListener('message', function(event){
+        console.log(event)
+        // 通过origin属性判断消息来源地址
+        if (event.origin == '*') {
+            alert(event.data);    // 弹出"I was there!"
+            alert(event.source);  // 对a.com、index.html中window对象的引用
+                                  // 但由于同源策略，这里event.source不可以访问window对象
+        }
+    }, false);
+</script>
 </body>
 </html>

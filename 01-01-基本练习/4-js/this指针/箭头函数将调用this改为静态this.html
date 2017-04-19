@@ -2,9 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        .container{
+            width:200px;
+            height:300px;
+            background-color: #58a;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="container"></div>
+
+<!--script是阻塞的-->
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        this.age = 27
+       var o = document.querySelector('.container')
+        o.addEventListener('click', function () {
+            console.log(this) // 执行时的this为div.container
+        })
+        o.addEventListener('click', () => {
+            console.log(this) // 绑定时的this为document
+            console.log(this.age)
+        })
+    })
+</script>
 </body>
 </html>

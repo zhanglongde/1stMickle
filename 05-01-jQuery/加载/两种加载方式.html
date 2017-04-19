@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<img src="../../images/mm1.jpg" alt="">
+
+<script src="../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    window.onload = function () {
+        console.log('window.onload')
+    }
+
+
+    // 从服务器载入数据并且将返回的HTML代码插入至匹配元素
+    $('img').load(function (e) {
+        console.log('load', e.target)
+    })
+    // 全部解析过，但是图片等异步资源不一定加载好
+    $(document).ready(function () {
+        console.log('ready')
+    })
+</script>
 </body>
 </html>

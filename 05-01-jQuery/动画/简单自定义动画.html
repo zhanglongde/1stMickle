@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #test{
+            width:300px;
+            height:300px;
+            background-color: #58a;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="test" style="color:red;">test</div>
+    <button id="oBtn">点击</button>
+</div>
+
+<script src="../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    var w= 0, h = 0;
+    $(document).ready(function () {
+        $('#oBtn').toggle(function () {
+            var o = document.querySelector('#test')
+            w = window.getComputedStyle(o, null).width
+            h = $('#test').height()
+
+            $('.test').animate({height:'100px', width:'100px'})
+        }, function () {
+            console.log(w)
+            console.log(h)
+            console.log($('#test').position())
+            console.log($('#test').css('color'))
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        jQuery:$().toggleClass('样式名')
+    </title>
+    <style>
+        .stl{
+            width:300px;
+            height:500px;
+            background-color: #9c3;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+<div class="test">
+    test
+</div>
+<button>点击</button>
+
+<script>
+    window.onload = function () {
+      var o = document.querySelector('.test')
+
+        var oBtn = document.querySelector('button')
+        oBtn.addEventListener('click', function () {
+            o.classList.toggle('stl')
+        },false)
+    }
+</script>
+</body>
+</html>
