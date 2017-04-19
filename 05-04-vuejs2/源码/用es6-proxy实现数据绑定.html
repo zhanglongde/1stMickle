@@ -2,9 +2,138 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        使用ES6的新特性Proxy来实现一个数据绑定实例
+        https://segmentfault.com/a/1190000007443611
+    </title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            font-size: 28px;
+            font-family: Microsoft Yahei;
+        }
+        #app {
+            margin: 0 auto;
+            height: 100%;
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #app p {
+            color: #333;
+            line-height: 46px;
+        }
+        #app p span {
+            color: #1E88E5;
+        }
+        #input-wrapper {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #input-wrapper input {
+            margin-left: 1em;
+            padding: 5px 10px;
+        }
+    </style>
 </head>
 <body>
+<div id="app">
+    <p>
+        Hello everyone, my name is <span>{{name}}</span>, I am a mini <span>{{lang}}</span> framework for just <span>{{work}}</span>. I can bind data from <span>{{supports.0}}</span>, <span>{{supports.1}}</span> and <span>{{supports.2}}</span>. What's more, I was created by <span>{{info.author}}</span>, and was written in <span>{{info.jsVersion}}</span>. My motto is "<span>{{motto}}</span>".
+    </p>
+</div>
+<div id="input-wrapper">
+    Motto: <input type="text" id="set-motto" autofocus>
+</div>
 
+<script>
+    class Mog {
+        constructor (options) {
+            this.$data = options.data
+            this.$el = options.el
+            this.$tpl = options.template
+            this._render(this.$tpl, this.$data)
+        }
+
+        $setData (dataObj, fn) {
+            let self = this
+            let once = false
+            let $d = new Proxy(dataObj, {
+                set (target, property, value) {
+                    if (!once) {
+                        target[property] = value
+                        once = true
+                        self._render(self.$tpl, self.$data)
+                    }
+                    return true
+                }
+            })
+            fn($d)
+        }
+
+        _render (tplString, data) {
+            document.querySelector(this.$el).innerHTML = this._replaceFun(tplString, data)
+        }
+
+        _replaceFun(str, data) {
+            let self = this
+            return str.replace(/{{([^{}]*)}}/g, (a, b) => {
+                        let r = self._getObjProp(data, b);
+            console.log(a, b, r)
+            if (typeof r === 'string' || typeof r === 'number') {
+                return r
+            } else {
+                return self._getObjProp(r, b.split('.')[1])
+            }
+        })
+        }
+
+        _getObjProp (obj, propsName) {
+            let propsArr = propsName.split('.')
+            function rec(o, pName) {
+                if (!o[pName] instanceof Array && o[pName] instanceof Object) {
+                    return rec(o[pName], propsArr.shift())
+                }
+                return o[pName]
+            }
+            return rec(obj, propsArr.shift())
+        }
+
+    }
+
+    /*
+     * ----------------------------------------------------------------
+     * ----------------------------------------------------------------
+     */
+
+    let template = document.querySelector('#app').innerHTML
+
+    let mog = new Mog({
+        template: template,
+        el: '#app',
+        data: {
+            name: 'mog',
+            lang: 'javascript',
+            work: 'data binding',
+            supports: ['String', 'Array', 'Object'],
+            info: {
+                author: 'Jrain',
+                jsVersion: 'Ecma2015'
+            },
+            motto: 'Every dog has his day'
+        }
+    })
+
+    document.querySelector('#set-motto').oninput = (e) => {
+        mog.$setData(mog.$data, ($d) => {
+            $d.motto = e.target.value
+    })
+    }
+</script>
 </body>
 </html>
