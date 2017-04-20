@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="jquery.resizableColumns.css">
+</head>
+<body>
+<table data-resizable-columns-id="demo-table">
+    <thead>
+    <tr>
+        <th data-resizable-column-id="#">#</th>
+        <th data-resizable-column-id="first_name">First Name</th>
+        <th data-resizable-column-id="last_name">Last Name</th>
+        <th data-resizable-column-id="username">Username</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--<tr>-->
+        <!--<td>td 1</td>-->
+        <!--<td>td 2</td>-->
+        <!--<td>td 3</td>-->
+        <!--<td>td 4</td>-->
+    <!--</tr>-->
+    </tbody>
+</table>
+
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script src="./store.js"></script>
+<script src="./jquery.resizableColumns.js"></script>
+<script>
+    $(function(){
+        $("table").resizableColumns({
+            store: store
+        });
+    });
+</script>
+</body>
+</html>

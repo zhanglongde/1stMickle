@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            border-width: 1px;
+            border-style: solid;
+            border-color: black;
+            border-collapse: collapse;
+        }
+
+        table td {
+            border-width: 1px;
+            border-style: solid;
+            border-color: black;
+        }
+
+        table th {
+            border: 1px;
+            border-style: solid;
+            border-color: black;
+            background-color: green;
+            cursor: col-resize;
+        }
+
+        table th.resizing {
+            cursor: col-resize;
+        }
+
+        .noCrsr {
+            cursor: default;
+            margin-right: +5px;
+        }
+
+        .noSelect {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>
+            <div class="noCrsr">th 1</div>
+        </th>
+        <th>
+            <div class="noCrsr">th 2</div>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>td 1</td>
+        <td>td 2</td>
+    </tr>
+    </tbody>
+</table>
+
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    $(function() {
+        var pressed = false;
+        var start = undefined;
+        var startX, startWidth;
+
+        $("table th").mousedown(function(e) {
+            start = $(this);
+            pressed = true;
+            startX = e.pageX;
+            startWidth = $(this).width();
+            $(start).addClass("resizing");
+            $(start).addClass("noSelect");
+        });
+
+        $(document).mousemove(function(e) {
+            if(pressed) {
+                $(start).width(startWidth+(e.pageX-startX));
+            }
+        });
+
+        $(document).mouseup(function() {
+            if(pressed) {
+                $(start).removeClass("resizing");
+                $(start).removeClass("noSelect");
+                pressed = false;
+            }
+        });
+    });
+</script>
+</body>
+</html>
