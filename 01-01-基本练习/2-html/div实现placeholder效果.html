@@ -2,9 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        .rich{
+            color:black;
+            width:300px;
+            height:100px;
+            border:1px solid red;
+            border-radius:4px;
+            margin:20px auto;
+            padding:10px 8px;
+
+            overflow:hidden;
+        }
+        .rich:focus{
+            outline:none;
+        }
+        .rich:empty:before{
+            content:attr(placeholder);
+            color:#f00;
+        }
+        .rich:focus:before{
+            content:none;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="rich" contenteditable="true" placeholder="请输入"></div>
 </body>
 </html>

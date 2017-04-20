@@ -2,9 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        http://my-fe.pub/post/how-to-make-div-disabled.html
+    </title>
+    <style>
+        div.btn{
+            color:white;
+            background-color: #58a;
+            width:100px;
+            height:30px;
+
+            border:1px solid #58a;
+            border-radius:4px;
+
+            line-height:30px;
+            text-align: center;
+        }
+        div.btn.disabled{
+            /*background-color: #eee;*/
+            pointer-events:none !important;
+            cursor:not-allowed;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="btn disabled">
+    hello
+</div>
+
+<script>
+    window.onload = function () {
+      var o = document.querySelector('.btn')
+        o.addEventListener('click', function () {
+          console.log('test...')
+        })
+    }
+</script>
 </body>
 </html>
