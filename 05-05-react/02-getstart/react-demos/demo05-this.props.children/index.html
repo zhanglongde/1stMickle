@@ -4,6 +4,10 @@
     <script src="../build/react.js"></script>
     <script src="../build/react-dom.js"></script>
     <script src="../build/browser.min.js"></script>
+    <title>
+      this.props对象的属性与组件的属性一一对应，但是this.props.children属性
+      this.props.children表示组件的所有子节点
+    </title>
   </head>
   <body>
     <div id="example"></div>
@@ -14,7 +18,7 @@
             <ol>
               {
                 React.Children.map(this.props.children, function (child) {
-                  return <li>{child}</li>;
+                  return <li title="this.props.title">{child}</li>;
                 })
               }
             </ol>
@@ -24,7 +28,7 @@
 
       ReactDOM.render(
         <NotesList>
-          <span>hello</span>
+          <span title="title test">hello</span>
           <span>world</span>
         </NotesList>,
         document.getElementById('example')
