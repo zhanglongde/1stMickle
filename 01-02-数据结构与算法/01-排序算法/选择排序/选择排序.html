@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        1.思路:开始 结束 临界点
+        2.先基本算法，再容错判断
+        3.边界判断，就假设只有两个元素
+    </title>
+</head>
+<body>
+
+<script>
+    var arr = [5,4,3,0,34,1,30,100]
+
+    // 从小到大
+    function ChooseSort(arr) {
+        if (!Array.isArray(arr)) { // 容错判断
+          return arr
+        }
+        var LEN = arr.length
+//        比较LEN-1趟
+        for(var i = 0; i< LEN-1; i++){
+           for(var j = i + 1; j< LEN; j++){
+            if (arr[i] > arr[j]) { //交换顺序，数组引用直接改变
+              var t = arr[i]
+                arr[i] = arr[j]
+                arr[j] = t
+            }
+           }
+        }
+        return arr
+    }
+    var sortArr = ChooseSort(arr)
+    console.log(sortArr)
+</script>
+</body>
+</html>

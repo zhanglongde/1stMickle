@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        1.思路：选定基准元素，然后保证左小右大,然后递归
+        以第一个元素为基准元素，如果小于基准元素，就与基准元素交换位置
+        区别在于：
+               左小右大的思路不同
+    </title>
+</head>
+<body>
+<script>
+    function QuickSort(arr,left,right) {
+      if (arr.length <= 1) {
+        return arr
+      }
+        left = left || 0
+        right = right || arr.length - 1
+        if (left < right) {
+          var pivotIndex = Partition(arr,left,right)
+          Partition(arr,left,pivotIndex-1)
+          Partition(arr,pivotIndex+1,right)
+        }
+        return arr
+    }
+    // 区分操作,找到基准值应该所在的位置
+    function Partition(arr,left,right) {
+        var pivotIndex = left;//假定基准值为第一个元素
+        var index = pivotIndex+1;//基准值应该所在的位置
+        for(var i = index; i <= right; i++){
+          if (arr[i] < arr[pivotIndex]) {
+           Swap(arr,i,index)
+           index ++
+          }
+        }
+        // 将基准值应该所在的位置 与 第一个元素交换
+        Swap(arr,pivotIndex,index-1);
+        return index-1;
+    }
+//    交换
+    function Swap(arr,a,b) {
+      var t = arr[a]
+      arr[a] = arr[b]
+        arr[b] = t
+    }
+    var arr = [5,4,3,0,34,1,30,100]
+    var sortedArr = QuickSort(arr)
+    console.log(sortedArr)
+</script>
+</body>
+</html>

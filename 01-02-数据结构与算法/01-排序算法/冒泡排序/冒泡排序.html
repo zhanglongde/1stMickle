@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var arr = [5,4,3,0,34,1,30,100]
+
+    function BubbleSort(arr) {
+        if (!Array.isArray(arr)) {
+          return arr
+        }
+        var LEN = arr.length
+        // 比较LEN-1趟
+        for(var i = 0; i < LEN - 1; i++){
+//            比较范围为[0,LEN-趟数-1]
+         for(var j = 0; j < LEN - i - 1; j++){
+           if (arr[j] > arr[j+1]) {
+             var t = arr[j + 1]
+               arr[j+1] = arr[j]
+               arr[j] = t
+           }
+         }
+        }
+        return arr
+    }
+
+    var sortedArr = BubbleSort(arr)
+    console.log(sortedArr)
+</script>
+</body>
+</html>

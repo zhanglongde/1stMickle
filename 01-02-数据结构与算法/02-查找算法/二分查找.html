@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        前提：有序数组
+        如果无序，可以先用数组的sort方法排完序之后，再查找
+    </title>
+</head>
+<body>
+
+
+<script>
+//    二分查找，递归实现
+    function BinarySearch(target,arr,start,end) {
+        if (!Array.isArray(arr)) {
+          return
+        }
+        start = start || 0
+        end = end || arr.length - 1
+
+        var mid = parseInt(start + (end-start)/2)
+        if (arr[mid] === target) {
+          return mid
+        } else if (arr[mid] > target) {
+          return BinarySearch(target, arr, start, mid)
+        } else {
+            return BinarySearch(target, arr, mid, start)
+        }
+    }
+    var arr = [1,2,3,4,5,6,7,9,12,15,30]
+    var index = BinarySearch(9,arr)
+    console.log(index)
+</script>
+</body>
+</html>
