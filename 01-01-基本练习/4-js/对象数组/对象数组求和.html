@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        对象数组必须用上reduce的第二个参数，用作初始值来启动累积
+    </title>
 </head>
 <body>
-$END$
+
+
+<script>
+    var oArr = [{x:1},{x:2},{x:45}]
+    // 第一种做法：利用reduce的第二个参数
+    var sum = oArr.reduce((sum,next) => {
+        console.log(sum,next)
+        return sum+next.x
+    },0)
+    console.log(sum)
+
+    // 第二种做法：先map,再reduce
+    console.log(oArr.map(x => x.x).reduce((sum,next) => sum+next))
+</script>
 </body>
 </html>
