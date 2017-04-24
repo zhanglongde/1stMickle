@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        插入节点可以使用insertBefore和appendChild
+
+        3.请把<ul><li>第1行</li><li>第2行</li>...</ul>（ul之间有10个li元素）插入body里面，注意：需要考虑到性能问题。
+    </title>
+</head>
+<body>
+
+
+<script>
+    window.onload = function () {
+        // 解法1：innerHTML
+        var ul = document.createElement('ul')
+
+        var lis =''
+        //li以字符串形式生成
+        for(var i = 0; i<= 10; i++){
+            lis += '<li>第' + i + '行</li>';
+        }
+        //最后通过innerHTML插入ul里面
+        ul.innerHTML = lis
+
+        document.body.appendChild(ul)
+
+
+
+//        解法2：documentFragment
+        function CreateFragments(){
+
+            var fragment = document.createDocumentFragment();
+
+            for(var i = 0;i < 10000;i++){
+
+                var tmpNode = document.createElement("div");
+                tmpNode.innerHTML = "test" + i + "<br />";
+                fragment.appendChild(tmpNode);
+            }
+
+            document.body.appendChild(fragment);
+        }
+    }
+</script>
+</body>
+</html>
