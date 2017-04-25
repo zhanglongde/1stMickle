@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var a = [17,22]
+    var b = [15,20]
+    function Cross (a,b) {
+        if (!Array.isArray(a)|| !Array.isArray(b)) {
+          return
+        }
+        if (a[0] >= b[0] && a[0] <= b[1]) {
+          return [a[0], a[1]>b[1] ? b[1] : a[1]]
+        }
+        if (b[0] >= a[0] && b[0] <= a[1]) {
+          return [b[0], b[1]>a[1] ? a[1] : b[1]]
+        }
+
+    }
+    console.log(Cross(b,a))
+</script>
+</body>
+</html>
