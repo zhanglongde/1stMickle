@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script>
+    function Left() {
+        this.a = function () {
+          console.log('a')
+        }
+    }
+    var l = new Left()
+    l.a()
+</script>
 </body>
 </html>

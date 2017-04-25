@@ -2,9 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script>
+    var str= 'AbcAFGGuuuu'
+    function order(str) {
+     if (typeof str !== 'string') {
+       return str
+     }
+      var arr= str.split('')
+//        console.log(arr)
+//        var uppercase = []
+//        var lowercase = []
+//        uppercase = arr.filter((x) => {
+//            return x >= 'A' && x <= 'Z'
+//        })
+//        lowercase = arr.filter((x) => {
+//            return x >= 'a' && x <= 'z'
+//        })
+//        console.log(uppercase)
+//        console.log(lowercase)
+        return arr.filter((x) => { return x >= 'a' && x <= 'z'}).concat(arr.filter((x) => {return x >= 'A' && x <= 'Z'})).join('')
+    }
+    var r = order(str)
+    console.log(r)
+</script>
 </body>
 </html>
