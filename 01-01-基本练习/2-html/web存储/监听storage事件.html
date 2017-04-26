@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>点击</button>
+
+
+<script>
+    
+
+    
+    window.onload = function () {
+        window.addEventListener('storage',function(e){
+            console.log('key='+e.key+',oldValue='+e.oldValue+',newValue='+e.newValue);
+        })
+      window.localStorage.setItem('l', 'lst')
+      window.localStorage.setItem('l', 'lst2')
+        localStorage.l = '7777'
+        
+        document.querySelector('button').addEventListener('click', function () {
+            localStorage.l = '2222'
+        })
+    }
+</script>
+</body>
+</html>
