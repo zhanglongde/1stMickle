@@ -5,6 +5,21 @@
     <title>$Title$</title>
 </head>
 <body>
-$END$
+
+<script>
+    var data =  [1,1.5, [2, [ [3, 4], 5], 6]];
+
+    function Flat(data) {
+      return data.reduce((sum,next) => {
+        if (typeof next !== 'number') {
+          return sum.concat(Flat(next)) 
+        }
+        return sum.concat([next])
+      },[])
+    }
+    
+    var r = Flat(data)
+    console.log(r)
+</script>
 </body>
 </html>
