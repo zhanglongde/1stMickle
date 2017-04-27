@@ -3,12 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .ball-scale-multiple{
+            position:absolute;
+            left: 50%;
+            top: 30%;
+            transform: translate(-50%, -50%);
+        }
+        .ball-scale-multiple>div{
+            background-color:#6AB8FF;
+            border-radius:100%;
+        }
+        .ball-scale-multiple>div:nth-child(2){
+            animation-delay:-.4s;
+        }
+        .ball-scale-multiple>div:nth-child(3){
+            animation-delay:-.2s;
+        }
+        .ball-scale-multiple>div{
+            position:absolute;
+            left:0;
+            top:0;
+            opacity:0;
+            margin:0;
+            width:60px;
+            height:60px;
+            animation:ball-scale-multiple 1s 0s linear infinite;
+        }
+        @keyframes ball-scale-multiple {
+            0%{
+                transform:scale(0);
+                opacity:0;
+            }
+            5%{
+                opacity:1;
+            }
+            100%{
+                transform:scale(1);
+                opacity:0;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="loader">
-    <svg class="circular" viewBox="25 25 50 50">
-        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"/>
-    </svg>
+<div class="ball-scale-multiple" v-show="!contentLoaded">
+    <div></div>
+    <div></div>
+    <div></div>
 </div>
 </body>
 </html>
