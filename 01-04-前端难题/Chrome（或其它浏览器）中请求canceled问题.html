@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+请求是否被浏览器主动cancel掉，取决于 机器（computer） 和/或 网速 ：
+
+1.引起请求的DOM被删除。如img正在加载，但在加载完成前被删除。
+2.做了一些事，使得正在发生的请求（的数据）已经不需要了。比如你加载一个iframe，但加载完成前你改了iframe的src。
+3.向同一个服务器发起了大量请求，然后比较早的某个请求（指向该服务器的请求）遇到了网络问题——表明接下来的请求都不会work了，所以会主动cancel。网络问题包括：DNS错误，HTTP 4xx 错误等
+</body>
+</html>

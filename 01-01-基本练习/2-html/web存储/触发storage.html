@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        注意：在谷歌浏览器中，需要在不同标签页中修改 storage 才会触发该事件，即 网页A 监听该事件，在 网页B 中修改 localStorage，则 网页A 会触发事件函数。
+        但是在 IE 中，在同个网页修改 localStorage 都会触发该事件。
+    </title>
+</head>
+<body>
+<button>点击</button>
+
+
+<script>
+
+    window.onload = function () {
+                window.addEventListener('storage',function(e){
+                    console.log('key='+e.key+',oldValue='+e.oldValue+',newValue='+e.newValue);
+                })
+                window.localStorage.setItem('l', 'lst')
+                window.localStorage.setItem('l', 'lst2')
+                localStorage.l = '7777'
+
+                document.querySelector('button').addEventListener('click', function () {
+                    localStorage.l = '2222'
+                })
+            }
+            </script>
+</body>
+</html>
