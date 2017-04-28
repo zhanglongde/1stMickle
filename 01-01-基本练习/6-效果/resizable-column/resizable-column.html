@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        resizable column
+    </title>
+    <script src="../../../05-04-vuejs2/vue.js"></script>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        ul,li{
+            list-style: none;
+        }
+        /*垂直滚动条*/
+        .scroll-v{
+            overflow-y: scroll;
+            /*如果不加，由无滚动条到出现滚动条，会有横向滚动条的闪现*/
+            overflow-x: hidden;
+        }
+        .scroll-v::-webkit-scrollbar{
+            width: 5px;
+            height: 30px;
+            background-color: transparent;
+        }
+        .scroll-v::-webkit-scrollbar-track{
+            width:5px;
+            height:30px;
+            background-color: transparent;
+        }
+        .scroll-v::-webkit-scrollbar-thumb{
+            width:5px;
+            height:30px;
+
+            background-color: rgba(155, 155, 155, 0.32);
+            border-radius: 5px;
+        }
+        .left{
+            position:fixed;
+            left:0;
+            top:0;
+            width:213px;
+            height:100%;
+            color: #99A3B0;
+            background-color: #495361;
+        }
+        .main{
+            margin-left:213px;
+        }
+        .main .toolbar{
+            height:53px;
+            width:100%;
+            background-color: #fff;
+            border-bottom:1px solid #dcdcdc;
+        }
+        .main .main-bd {
+            position:relative;
+            min-height:calc(100vh - 53px);
+            width:100%;
+        }
+        .main .main-bd .mail-list{
+            position:absolute;top:0;left:0;
+            width:420px;
+            height:calc(100vh - 53px);
+            /*border-right:1px solid #dcdcdc;*/
+        }
+        .resizing{
+            position:absolute;left:420px;
+            width:5px;height:calc(100vh - 53px);
+            border-left:1px solid #bdbdbd;
+            border-right:1px solid #bdbdbd;
+            background-color:#fff;
+            cursor:col-resize;
+        }
+        .mail-list li {
+            width:100%;
+            height:84px;
+            border-bottom:1px solid #DCDCDC;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="app">
+    <div class="left"></div>
+    <div class="main">
+        <div class="toolbar"></div>
+        <div class="main-bd">
+            <ul class="mail-list scroll-v">
+                <li v-for="mail in mailList">{{mail}}</li>
+            </ul>
+            <div class="resizing" draggable="true" @dragstart="dragStart" @drag="drag" @dragend="dragEnd"></div>
+            <div class="content"></div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+ new Vue({
+     el:'#app',
+     data: {
+         mailList:[]
+     },
+     methods: {
+         dragStart() {
+
+         },
+         dragEnd(){
+
+         },
+         drag() {
+
+         }
+     },
+     mounted () {
+         this.mailList = [...new Array(30)].map((v,i) => i)
+     }
+ })
+</script>
+</body>
+</html>
