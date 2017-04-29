@@ -1,0 +1,34 @@
+<!DOCYTPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>
+        jQuery在append元素变为fragment的时候，找到其中script标签，再使用eval执行一遍
+    </title>
+    <script src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/js/lib/jquery-1.10.2_d88366fd.js"></script>
+</head>
+<body>
+<div>
+    用户名：
+</div>
+<div>
+    第一条状态：侯医生的状态1
+</div>
+<div>
+    第二条状态：侯医生的状态2
+</div>
+<div>
+    第三条状态：侯医生的状态3
+</div>
+<div>版权所有：<span id="username_info"></span></div>
+<script>
+    $('#username_info').append("\u003cscript\u003ealert('okok');");
+
+window.onload = function () {
+//    innerHTML赋值的script标签，不会被执行
+//    document.getElementById('username_info').innerHTML = '\u003cscript\u003ealert("test")\u003c/script\u003e';
+//    document.getElementById('username_info').innerHTML = '<script>alert("test")\<\/script>';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        对反斜杠进行转义，反斜杠就不会被当做unicode码的开头处理
+    </title>
+</head>
+<body>
+<div>
+    用户名：
+</div>
+<div>
+    第一条状态：侯医生的状态1
+</div>
+<div>
+    第二条状态：侯医生的状态2
+</div>
+<div>
+    第三条状态：侯医生的状态3
+</div>
+<div>版权所有：<span id="username_info"></span></div>
+<script>
+        document.getElementById('username_info').innerHTML = "\\u003cimg src=\\'\\' onerror=javascript:alert(\\'okok\\');\\u003e";
+//    document.getElementById('username_info').innerHTML = "<img src=\'\' onerror=javascript:alert(\'okok\');>";
+</script>
+</body>
+</html>

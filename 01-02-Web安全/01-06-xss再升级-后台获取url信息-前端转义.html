@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/js/lib/jquery-1.10.2_d88366fd.js"></script>
+    <title>
+        在地址后面加入：?username=<script>alert(%27test%27)</script>
+
+        防御再次升级：
+        从url中获取的信息，最好由后端获取，在前端转义后再行输出
+    </title>
+</head>
+<body>
+<div>
+    用户名：
+</div>
+<div>
+    第一条状态：侯医生的状态1
+</div>
+<div>
+    第二条状态：侯医生的状态2
+</div>
+<div>
+    第三条状态：侯医生的状态3
+</div>
+<div>版权所有：<span id="username_info"></span></div>
+<script>
+    var param = /=(.+)$/.exec(location.search);
+    var value = decodeURIComponent(param[1]);
+    $('#username_info').append(value);
+</script>
+</body>
+</html>

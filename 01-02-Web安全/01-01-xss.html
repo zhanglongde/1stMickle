@@ -1,0 +1,36 @@
+<!DOCYTPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>
+        xss:将脚本代码植入给其他用户使用的页面(其实是注入js)
+
+        表现：
+        1.script标签
+        给用户名起名称的时候，带上script标签，浏览器遇到script标签，就会执行标签中的js脚本代码
+        甚至可以在脚本中使用ajax,将其他用户在当前域名下的cookie获取并发送到自己的服务器上
+        2.jQuery append中执行的eval
+        3.innerHTML与img src onerror 的组合
+
+        防御：
+        将前端输出数据都进行转义，反斜杠\转义
+        升级防御：
+        将输出的字符串中的\反斜杠进行json转义，这样反斜杠\就不被被当做unicode码的开头来处理了
+
+    </title>
+</head>
+<body>
+<div>
+    用户名：<script>alert('侯医生');</script>
+</div>
+<div>
+    第一条状态：侯医生的状态1
+</div>
+<div>
+    第二条状态：侯医生的状态2
+</div>
+<div>
+    第三条状态：侯医生的状态3
+</div>
+</body>
+</html>
