@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        文件太大不能全部读取到内存中
+        FileReader
+        readAsArrayBuffer
+        slice 分割为chunks
+        CHUNK_SIZE
+    </title>
+</head>
+<body>
+Select a file to see the column count.<br>
+<input type=file id=f><br>
+Column size: <output id=out></output>
+
+
+<script>
+    document.getElementById('f').onchange = function() {
+        if (!this.files.length) return;
+//        parseFile1(this.files[0], function(columnLength) {
+//            document.getElementById('out').value = columnLength;
+//        });
+        parseFile(this.files[0]);
+    };
+
+    function findColumnLength(file, callback) {
+        // 1 KB at a time, because we expect that the column will probably small.
+        var CHUNK_SIZE = 1024;
+        var offset = 0;
+        var fr = new FileReader();
+        fr.onload = function() {
+            var view = new Uint8Array(fr.result);
+            for (var i = 0; i < view.length; ++i) {
+                if (view[i] === 10 || view[i] === 13) {
+                    // \n = 10 and \r = 13
+                    // column length = offset + position of \r or \n
+                    callback(offset + i);
+                    return;
+                }
+            }
+            // \r or \n not found, continue seeking.
+            offset += CHUNK_SIZE;
+            seek();
+        };
+        fr.onerror = function() {
+            // Cannot read file... Do something, e.g. assume column size = 0.
+            callback(0);
+        };
+        seek();
+
+        function seek() {
+            if (offset >= file.size) {
+                // No \r or \n found. The column size is equal to the full
+                // file size
+                callback(file.size);
+                return;
+            }
+            var slice = file.slice(offset, offset + CHUNK_SIZE);
+            fr.readAsArrayBuffer(slice);
+        }
+    }
+
+    function parseFile1(file, callback) {
+        var fileSize   = file.size;
+        var chunkSize  = 64 * 1024; // bytes
+        var offset     = 0;
+        var self       = this; // we need a reference to the current object
+        var chunkReaderBlock = null;
+
+        var readEventHandler = function(evt) {
+            if (evt.target.error == null) {
+                offset += evt.target.result.length;
+                callback(evt.target.result); // callback for handling read chunk
+            } else {
+                console.log("Read error: " + evt.target.error);
+                return;
+            }
+            if (offset >= fileSize) {
+                console.log("Done reading file");
+                return;
+            }
+
+            // of to the next chunk
+            chunkReaderBlock(offset, chunkSize, file);
+        }
+
+        chunkReaderBlock = function(_offset, length, _file) {
+            var r = new FileReader();
+            var blob = _file.slice(_offset, length + _offset);
+            r.onload = readEventHandler;
+            r.readAsText(blob);
+        }
+
+        // now let's start the read with the first block
+        chunkReaderBlock(offset, chunkSize, file);
+    }
+
+    /*
+     * Valid options are:
+     * - chunk_read_callback: a function that accepts the read chunk
+     as its only argument. If binary option
+     is set to true, this function will receive
+     an instance of ArrayBuffer, otherwise a String
+     * - error_callback:      an optional function that accepts an object of type
+     FileReader.error
+     * - success:             an optional function invoked as soon as the whole file has been
+     read successfully
+     * - binary:              If true chunks will be read through FileReader.readAsArrayBuffer
+     *                        otherwise as FileReader.readAsText. Default is false.
+     * - chunk_size:          The chunk size to be used, in bytes. Default is 64K.
+     */
+    function parseFile(file, options) {
+        var opts       = typeof options === 'undefined' ? {} : options;
+        var fileSize   = file.size;
+        var chunkSize  = typeof opts['chunk_size'] === 'undefined' ?  64 * 1024 : parseInt(opts['chunk_size']); // bytes
+        var binary     = typeof opts['binary'] === 'undefined' ? false : opts['binary'] == true;
+        var offset     = 0;
+        var self       = this; // we need a reference to the current object
+        var readBlock  = null;
+        var chunkReadCallback = typeof opts['chunk_read_callback'] === 'function' ? opts['chunk_read_callback'] : function() {};
+        var chunkErrorCallback = typeof opts['error_callback'] === 'function' ? opts['error_callback'] : function() {};
+        var success = typeof opts['success'] === 'function' ? opts['success'] : function() {};
+
+        var onLoadHandler = function(evt) {
+            if (evt.target.error == null) {
+                offset += evt.target.result.length;
+                chunkReadCallback(evt.target.result);
+            } else {
+                chunkErrorCallback(evt.target.error);
+                return;
+            }
+            if (offset >= fileSize) {
+                success(file);
+                return;
+            }
+
+            readBlock(offset, chunkSize, file);
+        }
+
+        readBlock = function(_offset, length, _file) {
+            var r = new FileReader();
+            var blob = _file.slice(_offset, length + _offset);
+            r.onload = onLoadHandler;
+            if (binary) {
+                r.readAsArrayBuffer(blob);
+            } else {
+                r.readAsText(blob);
+            }
+        }
+
+        readBlock(offset, chunkSize, file);
+    }
+</script>
+</body>
+</html>

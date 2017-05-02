@@ -26,6 +26,8 @@
            作用域：传入全局变量，作为局部变量，加快访问速度，比如(function($){})(jQuery)
            不需要所有的东西都是用jQuery,可以选用lodash等
 
+           避免在循环中使用try catch 可在外层使用
+
         4.CSS
              减小CSS文件数量及体积
              避免使用CSS表达式
@@ -41,10 +43,12 @@
             使用低消耗属性：transform opacity
             will-change
             使用requestAnimation优化动画事件
+            将动画元素设置为absolute或者fixed
 
         6.DOM操作
             减少重排重绘
             使用documentFragment
+            优化CSS样式转换:用一个class替代多个style
             使用虚拟DOM
 
         框架层面
@@ -67,6 +71,10 @@
 
         前端工程化
         基于webpack上的优化:chunk
+
+        服务器
+        开启gzip压缩
+        设置cache-control或者expires头
     </title>
 </head>
 <body>
