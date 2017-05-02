@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        将一个数按照大小顺序插入到一个数组中，并且找出这个数在该数组中的索引值。
+    </title>
+</head>
+<body>
+
+<script>
+  function where(arr,value) {
+      arr.unshift(value)
+      arr.sort((a,b) => a-b)
+      return arr.indexOf(value)
+  }
+//  对于一个无序数组
+  var arr = [20,3,5]
+  var r = where(arr,19);    // 2
+  console.log(arr)
+  console.log(r)
+    
+//  对于一个有序数组
+    var ary = [1,2,3,4,5,6]
+    var ist = 3
+    var index = ary.findIndex((v) =>  v >= ist)
+//    console.log(index)
+    ary.splice(index,0,ist)
+    console.log(ary)
+</script>
+</body>
+</html>

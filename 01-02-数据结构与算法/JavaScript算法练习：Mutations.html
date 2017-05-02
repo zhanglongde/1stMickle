@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Mutations 对一个包含两个元素的数组，
+        检测数组中的第二个元素的所有字母是否都在第一个元素中出现过，
+        如果出现过，返回的是true，否则返回的是false。
+        (其中忽略大小写)
+    </title>
+</head>
+<body>
+https://www.w3cplus.com/javascript/mutations-in-javascript.html
+
+<script>
+    window.onload = function () {
+        function mutation(arr) {
+          let first = arr[0].toLowerCase().split('')
+          let second = arr[1].toLowerCase().split('')
+          return second.every(function (letter) {
+              return first.indexOf(letter) >= 0
+          })
+        }
+        var a = ['zhanglongde','zld']
+        var b = ['zhanglongde','zld8']
+        console.log(mutation(a))
+        console.log(mutation(b))
+    }
+</script>
+</body>
+</html>
