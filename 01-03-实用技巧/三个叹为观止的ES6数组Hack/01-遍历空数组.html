@@ -2,7 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        js中的数组稀疏不连续的，底层用hash map实现，也是key,value表示
+        es5对数组的空位处理不一致
+        es6 统一undefine处理 Array.from copyWithIn也会拷贝空位
+        Array(4) // [,,,]
+        [1,,3]
+    </title>
 </head>
 <body>
 
@@ -13,6 +19,7 @@
     var result =[...new Array(10)].map((ele,index) => index)
     console.log(r)
     console.log(result)
+
 </script>
 </body>
 </html>

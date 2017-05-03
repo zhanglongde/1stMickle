@@ -14,6 +14,7 @@ https://www.w3cplus.com/javascript/mutations-in-javascript.html
 
 <script>
     window.onload = function () {
+        // es5中对字符串的遍历等操作，必须转化为数组
         function mutation(arr) {
           let first = arr[0].toLowerCase().split('')
           let second = arr[1].toLowerCase().split('')
@@ -25,6 +26,20 @@ https://www.w3cplus.com/javascript/mutations-in-javascript.html
         var b = ['zhanglongde','zld8']
         console.log(mutation(a))
         console.log(mutation(b))
+
+
+//        es6的做法
+        function mutationEs6(arr) {
+            for (let letter of arr[1].toLowerCase()) {
+                // 用es6 字符串扩展includes
+               if (!arr[0].toLowerCase().includes(letter)) {
+                 return false
+               }
+            }
+            return true
+        }
+        console.log(mutationEs6(a))
+        console.log(mutationEs6(b))
     }
 </script>
 </body>
