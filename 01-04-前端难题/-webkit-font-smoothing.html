@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            /*-webkit-font-smoothing:antialiased;*/
+        }
+    </style>
+</head>
+<body>
+<div>
+    上文提到过，决定块盒在包含块中与相邻块盒的垂直间距的便是margin-box。，上面的栗子就是这种情况。
+
+    演示中css属性设置：上面的box：margin-bottom: 100px;下面的box：margin-top: 100px;（他们是同一侧的margin，所以会发生margin重叠的情况，两个div的距离实际上只有100px。）
+
+    BFC的作用4：阻止margin重叠:
+
+    当两个相邻块级子元素分属于不同的BFC时可以阻止margin重叠
+
+    操作方法：给其中一个div外面包一个div，然后通过触发外面这个div的BFC，就可以阻止这两个div的margin重叠
+</div>
+</body>
+</html>
