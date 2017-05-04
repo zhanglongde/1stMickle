@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+
+<script>
+    let fmData = new FormData()
+    fmData.append('id','test')
+    fmData.append('name','zhanglongde')
+    for (let [key, value] of fmData.entries()) {
+        console.log(key, ':', value)
+    }
+</script>
 </body>
 </html>
