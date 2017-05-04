@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        jQuery中才有fail对应reject done对应resolve
+
+        promise reject处理ajax返回的异常，其实质还是正常
+        catch处理throw抛出的异常
+    </title>
+</head>
+<body>
+
+<script>
+    new Promise((resolve,reject) => {
+        resolve(2)
+        reject(1)
+    }).then((data)=>{
+        console.log(data)
+        return 22
+    },(data) => {
+        console.log(data)
+    }).then((data)=>{
+        console.log(data)
+        throw({e:9})
+    }).catch(e => {
+        console.log(e)
+    })
+</script>
+</body>
+</html>
