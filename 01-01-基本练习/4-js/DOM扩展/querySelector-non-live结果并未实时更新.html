@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="contani">
+    <div class="child">
+        Tencent
+    </div>
+    <div class="child">
+        Alibaba
+    </div>
+</div>
+<script>
+    var m = document.querySelectorAll('.child');
+    var n = document.getElementsByClassName('child');
+    console.log( 'querySelectorAll: ' + m.length )
+    console.log( 'getElementsByTagName: ' + n.length )
+    var newDiv = document.createElement('div');
+    newDiv.className = 'child';
+    contani.appendChild(newDiv);
+    console.log('---------append child---------')
+    console.log( 'querySelectorAll: ' + m.length )
+    console.log( 'getElementsByTagName: ' + n.length )
+</script>
+</body>
+</html>
