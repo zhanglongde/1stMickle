@@ -2,9 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script>
+    let msgs = [
+        {id:'123',messageId:'msg-123'},
+        {id:'125',messageId:'msg-125'},
+        {id:'126',messageId:'msg-126'},
+        {id:'124',messageId:'msg-124', draftId:'d124', inReplyTo:'msg-123'},
+        {id:'127',messageId:'msg-127', draftId:'d127', inReplyTo:'',internalDate:12345678},
+        {id:'128',messageId:'msg-128', draftId:'d128', inReplyTo:'',internalDate:22345678}
+    ]
+
+    let tmpMsg = []
+    let tmpDraft = []
+    tmpDraft = msgs.filter((msg)=>{
+        if (!msg.draftId) {
+            tmpMsg.push(msg)
+            return false
+        }
+        return true
+    })
+
+    let emptyIrtDraft = tmpDraft.filter((draft) => {
+        if (!draft.draftId || draft.draftId === '') { // 过滤掉无效的草稿
+            return false
+        }
+        if (!draft.inReplyTo || draft.inReplyTo === '') { // 返回没有归属的草稿
+            return true
+        }
+        let index = tmpMsg.findIndex((msg) => msg.messageId === draft.inReplyTo) // 为草稿找到归属的message
+        if (index >= 0) {
+            tmpMsg[index].draftID = draft.id // message通过draftID索引到其对应的草稿的id属性(非draftId属性)
+        }
+    })
+    // 将internalDate最新的无归属草稿，归到最新的message
+    let tmpMsgLength = tmpMsg.length
+    if (tmpMsgLength> 0 && !tmpMsg[tmpMsgLength - 1].draftID && emptyIrtDraft.length > 0) {
+        let newestEmptyIrtDraft = emptyIrtDraft.reduce((prev, next) => (prev.internalDate && next.internalDate && prev.internalDate > next.internalDate) ? prev : next)
+        tmpMsg[tmpMsgLength - 1].draftID = newestEmptyIrtDraft.id
+    }
+    console.log('Msg:',tmpMsg)
+    console.log('Draft:',tmpDraft)
+    console.log('Empty Draft:',emptyIrtDraft)
+    console.log(msgs)
+</script>
 </body>
 </html>

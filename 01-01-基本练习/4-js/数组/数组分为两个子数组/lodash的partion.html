@@ -2,9 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        partition返回两个元素的数组
+        如果没有符合条件的，可能为空数组
+    </title>
 </head>
 <body>
-$END$
+
+<script src="../../../../lib/lodash.js"></script>
+<script>
+    let msgs = [
+        {id:'123',messageId:'msg-123'},
+        {id:'125',messageId:'msg-125'},
+        {id:'126',messageId:'msg-126'},
+        {id:'124',messageId:'msg-124', draftId:'d124', inReplyTo:'msg-123'},
+        {id:'127',messageId:'msg-127', draftId:'d127', inReplyTo:'',internalDate:12345678},
+        {id:'128',messageId:'msg-128', draftId:'d128', inReplyTo:'',internalDate:22345678}
+    ]
+
+    let tmpMsg = []
+    let tmpDraft = []
+    let parts = _.partition(msgs,(msg)=> msg.draftId)
+    tmpDraft = _.cloneDeep(parts[0])
+    tmpMsg = _.cloneDeep(parts[1])
+    console.log(tmpDraft)
+    console.log(tmpMsg)
+    console.log(parts)
+</script>
 </body>
 </html>
