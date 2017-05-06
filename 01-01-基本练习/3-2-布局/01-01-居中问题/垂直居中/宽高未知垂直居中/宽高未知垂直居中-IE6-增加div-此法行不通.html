@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        宽高未知，兼容IE6，垂直居中
+        http://www.cnblogs.com/wangmeijian/p/4922144.html
+        position:relative
+        position:absolute
+        position:relative
+    </title>
+    <style type="text/css">
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: grey;
+            /*css使元素垂直居中*/
+            display: table;
+            /*兼容IE6、7*/
+            *position: relative;
+        }
+        .table-cell{
+            /*css使元素垂直居中*/
+            display: table-cell;
+            vertical-align: middle;
+            /*兼容IE6、7*/
+            *position: absolute;
+            *left: 50%;
+            *top: 50%;
+        }
+        .box .center{
+            width: 100px;
+            text-align: center;
+            background-color: #B5C8E8;
+            /*css使元素垂直居中*/
+            display: table-cell;
+            vertical-align: middle;
+            /*兼容IE6、7*/
+            *position: relative;
+            *left: -50%;
+            *top: -50%; /*为什么无效*/
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="table-cell">
+        <div class="center">请在IE6/7下查看此demo</div>
+    </div>
+</div>
+</body>
+</html>

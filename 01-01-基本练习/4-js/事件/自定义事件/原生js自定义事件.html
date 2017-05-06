@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // 创建自定义事件
+    var e = document.createEvent('HTMLEvents')
+    // 初始化事件
+    e.initEvent('hello',false,true)
+    document.addEventListener('hello', function () {
+        alert('触发自定义事件!')
+    })
+    document.dispatchEvent(e)
+</script>
+</body>
+</html>
