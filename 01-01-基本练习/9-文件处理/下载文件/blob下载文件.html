@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<!--<a href="">下载</a>-->
+
+<script>
+
+    window.onload = function () {
+        var blob = new Blob(['Hello World']);
+
+        var a = document.createElement('a');
+        a.href = window.URL.createObjectURL(blob);
+        a.donwload = 'hello-world.txt';
+        a.textContent = 'Download Hello World';
+
+        document.body.appendChild(a);
+    }
+
+</script>
 </body>
 </html>

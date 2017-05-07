@@ -2,9 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <!--<meta http-equiv="Access-Control-Allow-Origin" content="*">-->
+    <title>
+        服务器 node-webserver
+    </title>
 </head>
 <body>
-$END$
+<input type="file" name="file" id="myFile">
+
+<script>
+    var fileInput = document.getElementById('myFile')
+    fileInput.addEventListener('change', () => {
+        var formData= new FormData()
+        var file = fileInput.files[0]
+        console.log(file)
+        formData.append('myFile',file)
+        fetch('http://localhost:10108/test',{
+            method:'post',
+            body:formData
+        }).then(res =>{
+            console.log('%c-----------------------------------------------------------', 'background-color:#e66;color:#fff;font-size:30px;')
+            console.log(res)
+        }).catch(e => {
+            console.log(e)
+        })
+    })
+</script>
 </body>
 </html>

@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        以二进制数据读到内存中
+    </title>
 </head>
 <body>
-$END$
+
+<script>
+    var reader = new FileReader();
+    reader.onload = function(){
+        xhr.sendAsBinary(this.result);
+    }
+    // 把从input里读取的文件内容，放到fileReader的result字段里
+    reader.readAsBinaryString(file);
+
+
+    XMLHttpRequest.prototype.sendAsBinary = function(text){
+        var data = new ArrayBuffer(text.length);
+        var ui8a = new Uint8Array(data, 0);
+        for (var i = 0; i < text.length; i++){
+            ui8a[i] = (text.charCodeAt(i) & 0xff);
+        }
+        this.send(ui8a);
+    }
+</script>
 </body>
 </html>

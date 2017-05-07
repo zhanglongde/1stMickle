@@ -2,9 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        .blog{
+            display:grid;
+            grid-template-columns:400px 20px 180px;/*4根竖向分界线，三个空间*/
+            grid-template-rows:100px 20px 210px 20px 100px;/*6根横向分界线，5个空间*/
+            border:1px solid #ccc;
+        }
+        .blog>:nth-child(n){
+            border:1px solid #58a;
+        }
+        .header {
+           grid-area: 1 / 1 / 2 / 4;
+        }
+        .content {
+            grid-area: 3 / 1 / 4 / 2;
+        }
+        .sidebar {
+            grid-area: 3 / 3 / 4 / 4;
+        }
+        .footer {
+            grid-area: 5 / 1 / 6 / 4;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="blog">
+    <div class="header">header</div>
+    <div class="content">content</div>
+    <div class="sidebar">sidebar</div>
+    <div class="footer">footer</div>
+</div>
 </body>
 </html>

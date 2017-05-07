@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+
+<script>
+    var word = '123',
+            url = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+word+'&json=1&p=3';
+    (async ()=>{
+        try {
+            let res = await fetch(url, {mode: 'no-cors'});//等待fetch被resolve()后才能继续执行
+            console.log(res);
+        } catch(e) {
+            console.log(e);
+        }
+    })();
+</script>
 </body>
 </html>

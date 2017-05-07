@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script>
+    function numberFormat(val){
+        var numArr=String(val).split(".");
+        numArr[0] = numArr[0].replace(/(\d)(?=(\d{3})+$)/ig,"$1,");
+        return numArr.join(".");
+    }
+    //Test
+    console.log(numberFormat(123456.67));//123,456
+    console.log(numberFormat(12345678));//12,345,678
+</script>
 </body>
 </html>

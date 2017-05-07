@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        　Element继承了Node类，也就是说Element是Node多种类型中的一种，即当NodeType为1时Node即为ElementNode，
+          另外Element扩展了Node，Element拥有id、class、children等属性。
+
+        children是Element的属性，childNodes是Node的属性
+    </title>
 </head>
 <body>
-$END$
+<div id="test">
+    <p>One</p>
+    <p>Two</p>
+</div>
+
+<script>
+    var oDiv = document.getElementById('test')
+    console.log(oDiv instanceof Node)
+    console.log(oDiv instanceof Element)
+
+    var o = document.querySelector('#test')
+    console.log(o instanceof Node)
+    console.log(o instanceof Element)
+</script>
 </body>
 </html>

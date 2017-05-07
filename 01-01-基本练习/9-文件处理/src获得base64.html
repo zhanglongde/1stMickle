@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script>
+    function createImgData(img) {
+        var image = new Image();
+        image.src = img.src || img;
+        var tmpCanvas = $("<canvas></canvas>")[0];
+        var tmpCtx = tmpCanvas.getContext("2d");
+        if (tmpCanvas) {
+            tmpCanvas.width = image.width;
+            tmpCanvas.height = image.height;
+            tmpCtx.drawImage(image, 0, 0);
+            return tmpCanvas.toDataURL();
+        }
+    }
+</script>
 </body>
 </html>

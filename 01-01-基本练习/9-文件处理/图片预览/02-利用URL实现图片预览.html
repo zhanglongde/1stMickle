@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>
         获得blob src
+        blob对象 代表一段二进制数据
     </title>
 </head>
 <body>
@@ -17,10 +18,10 @@
         var img = document.createElement('img');
         var file = fileInput.files[0];
         // 通过filles[0]获得Blob的src
-        img.src = window.URL.createObjectURL(file)
+        img.src = window.URL.createObjectURL(file)//这里blob依然占据着内存
 
         img.onload = function () {
-          window.URL.revokeObjectURL(this.src)
+          window.URL.revokeObjectURL(this.src)//释放内存
         }
         previewArea.appendChild(img);
     }

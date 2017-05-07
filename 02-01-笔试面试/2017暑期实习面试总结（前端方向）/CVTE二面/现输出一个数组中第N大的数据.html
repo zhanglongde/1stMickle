@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+
+<script>
+    var a = [1,0,2,3,4,5,6,7]
+    function NMax(a,n) {
+        return a.sort((a,b)=>a-b)[n-1]
+    }
+    console.log(NMax(a,2))
+</script>
 </body>
 </html>

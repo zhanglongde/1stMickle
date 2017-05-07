@@ -2,9 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<input type="file">
+
+<script>
+    function upload(blobOrFile) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://localhost:10108/test', true);
+        xhr.onload = function(e) {
+            console.log(e)
+        };
+        xhr.send(blobOrFile);
+    }
+
+    document.querySelector('input[type="file"]').addEventListener('change', function(e) {
+        var blob = this.files[0];
+
+        var BYTES_PER_CHUNK = 1024 * 1024; // 1MB chunk sizes.
+        var SIZE = blob.size;
+
+        var start = 0;
+        var end = BYTES_PER_CHUNK;
+
+        while(start < SIZE) {
+            upload(blob.slice(start, end));
+
+            start = end;
+            end = start + BYTES_PER_CHUNK;
+        }
+    }, false);
+</script>
 </body>
 </html>

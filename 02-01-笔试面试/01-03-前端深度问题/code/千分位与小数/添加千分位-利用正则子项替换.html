@@ -2,7 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        ?= 是正向肯定 断言
+
+        先行断言：也叫零宽度正预测先行断言(?=表达式)，表示匹配表达式前面的位置
+
+        　　例如 [a-z]*(?=ing) 可以匹配cooking singing 中的cook与sing
+
+        　　注意：先行断言的执行步骤是这样的先从要匹配的字符串中的最右端找到第一个ing(也就是先行断言中的表达式)然后 再匹配其前面的表达式，若无法匹配则继续查找第二个ing 再匹配第二个 ing前面的字符串，若能匹配则匹配
+
+        　　例如：.*(?=ing) 可以匹配cooking singing 中的cooking sing 而不是 cook
+    </title>
 </head>
 <body>
 

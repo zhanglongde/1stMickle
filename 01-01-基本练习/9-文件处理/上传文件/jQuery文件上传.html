@@ -2,9 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        服务器 node-webserver
+    </title>
+    <script src="../../../lib/jquery-1.11.3.min.js"></script>
 </head>
 <body>
-$END$
+<input type="file" name="file" id="myFile">
+
+
+<script>
+    var fileInput = document.getElementById('myFile')
+    fileInput.addEventListener('change', () => {
+        var formData= new FormData()
+        var file = fileInput.files[0]
+        console.log(file)
+        formData.append('myFile',file)
+        $.ajax({
+            type: 'post',
+            url: 'http://localhost:10108/test',
+            data: formData,
+            processData : false,
+            contentType : false ,//必须false才会自动加上正确的Content-Type
+            xhr: function(){
+                var xhr = $.ajaxSettings.xhr();//实际上就是return new window.XMLHttpRequest()对象
+                if(xhr.upload) {
+                    xhr.upload.addEventListener("progress", function(e){
+                        console.log("jq upload progress:", e.loaded/e.total*100 + "%");
+                    }, false);
+                    xhr.upload.addEventListener("load", function(){
+                        console.log("jq upload onload.");
+                    });
+                    xhr.addEventListener("load", function(){
+                        console.log("jq onload.");
+                    });
+                    return xhr;
+                }
+            }
+        });
+    })
+</script>
 </body>
 </html>

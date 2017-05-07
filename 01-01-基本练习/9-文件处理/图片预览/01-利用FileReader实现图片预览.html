@@ -22,7 +22,7 @@
     var reader = new FileReader()
      reader.onload = (function (aImg) {
          return function (e) {
-             // 获得base64的src
+             // 获得base64的src data-uri对象
              aImg.src = e.target.result
          }
      })(img)
