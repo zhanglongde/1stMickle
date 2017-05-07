@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        获得blob src
+    </title>
+</head>
+<body>
+<input type="file" name="file" id="myFile">
+<div id="previewArea"></div>
+
+<script>
+    function handleImageFile() {
+        var previewArea = document.getElementById('previewArea');
+        var fileInput = document.getElementById("myFile");
+        var img = document.createElement('img');
+        var file = fileInput.files[0];
+        // 通过filles[0]获得Blob的src
+        img.src = window.URL.createObjectURL(file)
+
+        img.onload = function () {
+          window.URL.revokeObjectURL(this.src)
+        }
+        previewArea.appendChild(img);
+    }
+
+    document.getElementById("myFile").addEventListener('change', function () {
+        handleImageFile()
+    })
+</script>
+</body>
+</html>

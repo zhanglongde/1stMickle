@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        利用FileReader实现图片预览
+    </title>
+</head>
+<body>
+<input type="file" name="file" id="myFile">
+<div id="previewArea"></div>
+
+<script>
+  function handleImageFile() {
+    var previewArea = document.getElementById('previewArea')
+    var img = document.createElement('img')
+    var fileInput = document.getElementById('myFile')
+    var file = fileInput.files[0]
+    img.file = file
+    previewArea.appendChild(img)
+
+    var reader = new FileReader()
+     reader.onload = (function (aImg) {
+         return function (e) {
+             // 获得base64的src
+             aImg.src = e.target.result
+         }
+     })(img)
+
+     reader.readAsDataURL(file)
+  }
+
+  window.onload = function () {
+      var fileInput = document.getElementById('myFile')
+      fileInput.addEventListener('change', function () {
+          handleImageFile()
+      })
+  }
+</script>
+</body>
+</html>

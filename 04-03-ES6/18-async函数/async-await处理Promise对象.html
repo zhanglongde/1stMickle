@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    let wait = function(ts){
+        return new Promise(function(resolve, reject){
+            setTimeout(resolve,ts,'Copy that!');
+        });
+    };
+    (async function(){
+        try {
+            let res = await wait(2000);//① 等待2s后返回结果
+            console.log(res);
+            res = await wait(3000);//② 重复执行一次
+            console.log(res);
+        } catch(e) {
+            console.log(e);
+        }
+    })();
+</script>
+</body>
+</html>

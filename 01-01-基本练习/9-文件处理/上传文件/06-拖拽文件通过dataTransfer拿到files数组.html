@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width:300px;
+            height:300px;
+            background-color: #58a;
+        }
+    </style>
+</head>
+<body>
+<div id="dropArea"></div>
+<img src="" alt="" id="test">
+
+<script>
+    var dropArea;
+
+    dropArea = document.getElementById("dropArea");
+    dropArea.addEventListener("dragenter", handleDragenter, false);
+    dropArea.addEventListener("dragover", handleDragover, false);
+    dropArea.addEventListener("drop", handleDrop, false);
+
+    // 阻止dragenter和dragover的默认行为，这样才能使drop事件被触发
+    function handleDragenter(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    function handleDragover(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    function handleDrop(e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        var dt = e.dataTransfer;
+        var files = dt.files;
+        // handle files ...
+        console.log(files[0])
+        var img = document.getElementById('test')
+//        document.getElementById('test').setAttribute('src',files[0])
+
+        var reader = new FileReader()
+        reader.onload = (function (aImg) {
+            return function (e) {
+                aImg.src = e.target.result
+            }
+        })(img)
+
+        // files[0]对象可被FileReader识别
+        reader.readAsDataURL(files[0])
+
+    }
+</script>
+</body>
+</html>

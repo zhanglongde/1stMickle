@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="file" name="file" id="myFile">
+
+<script>
+    var fileInput = document.getElementById('myFile')
+    fileInput.addEventListener('change', () => {
+        var xhr = new XMLHttpRequest()
+        var formData= new FormData()
+        var file = fileInput.files[0]
+        console.log(file)
+        formData.append('myFile',file)
+        xhr.open('post','/upload.php')
+        xhr.onload = function () {
+            if (this.readyState === 4 && this.status === 200) {
+
+            }
+        }
+        xhr.send(formData)
+        xhr = null
+    })
+</script>
+</body>
+</html>
