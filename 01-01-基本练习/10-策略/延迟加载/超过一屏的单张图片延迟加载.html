@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+//    utils
+//    function offset(curEle) {
+//        var disLeft = curEle.offsetLeft, disTop = curEle.offsetTop, par = curEle.offsetParent;
+//        while (par) {
+//            if (navigator.userAgent.indexOf("MSIE 8") === -1) {
+//                disLeft += par.clientLeft;
+//                disTop += par.clientTop;
+//            }
+//            disLeft += par.offsetLeft;
+//            disTop += par.offsetTop;
+//            par = par.offsetParent;
+//        }
+//        return {left: disLeft, top: disTop};
+//    }
+//
+//    function win(attr, value) {
+//        if (typeof value === "undefined") {
+//            return document.documentElement[attr] || document.body[attr];
+//        }
+//        document.documentElement[attr] = value;
+//        document.body[attr] = value;
+//    }
+
+    window.onscroll = function () {
+        if (banner.isLoad) { // 已经加载过了
+            return;
+        }
+        var A = banner.offsetHeight + utils.offset(banner).top;
+        var B = utils.win('clientHeight') + utils.win('scrollTop');
+        if (A < B) {
+            console.log('ok');
+            // 当条件成立，加载真实的图片，第一次加载完成后，再让页面继续滚动的过程中，A<B一直成立，又重新的执行了下面的操作，导致了重复给一个容器中的图片进行加载，所以有下面的isLoad自定义属性
+            var oImg = new Image;
+            oImg.src = imgFir.getAttribute('trueImg');
+            oImg.onload = function () {
+                imgFir.src = this.src;
+                imgFir.style.display = 'block';
+                oImg = null;
+            };
+            // 设置一个自定义属性，告诉浏览器我已经把图片加载完了（不管是否正常的加载，只要处理过一次以后都不再处理了）
+            banner.isLoad = true;
+        }
+    }
+</script>
+</body>
+</html>

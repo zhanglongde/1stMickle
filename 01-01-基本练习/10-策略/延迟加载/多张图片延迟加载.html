@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多张图片的延迟加载</title>
+    <!--做移动端响应式布局页面,我们必须要加META:viewport-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <style type="text/css">
+        * {margin: 0; padding: 0; font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif; font-size: 14px;}
+        ul,li {
+            list-style: none;
+        }
+        img {
+            display: block;
+            border: none;
+        }
+        /* 最外层的容器是不设定固定宽高的 */
+        .news {
+            padding: 10px;
+        }
+
+        .news li {
+            position: relative;
+            height: 60px;
+            padding: 10px 0;
+            border-bottom: 1px dashed #ccc;
+        }
+        .news li > div:nth-child(1) {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 75px;
+            height: 60px;
+            background: url("img/default.jpg") no-repeat center center;
+            background-size: 100% 100%;
+        }
+        .news li > div:nth-child(1) img {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        .news li > div:nth-child(2) {
+            margin-left: 80px;
+            height: 60px;
+        }
+        .news li > div:nth-child(2) h2 {
+            height: 20px;
+            line-height: 20px;
+            /* 实现文字超出一行，自动裁切 */
+            overflow: hidden;
+            text-overflow: ellipsis; /*裁下去的步伐以三个省略号展示*/
+            white-space: nowrap;
+        }
+        .news li > div:nth-child(2) p {
+            height: 20px;
+            line-height: 20px;
+            font-size: 12px;
+            color: darkgrey;
+        }
+    </style>
+</head>
+<body>
+
+<ul class="news" id="news">
+    <!--<li>-->
+    <!--<div>-->
+    <!--<img src="" trueImg="img/1.jpg" alt="">-->
+    <!--</div>-->
+    <!--<div>-->
+    <!--<h2>AAAAAAAAAAAAAAAAAAAAAAAAAAAAA</h2>-->
+    <!--<p>BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</p>-->
+    <!--</div>-->
+    <!--</li>-->
+</ul>
+
+
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript">
+    var news = document.getElementById("news"), imgList = news.getElementsByTagName("img");
+
+    // 1、获取需要绑定的数据(Ajax)->json/newsList.txt中的JSON格式的字符串
+    var jsonData = null;
+    ~ function () {
+        var xhr = new XMLHttpRequest();
+        //URL地址后面加的随机数是在清除每一次请求数据时候(GET请求)产生的缓存
+        xhr.open("get", "json/newsList.txt?_=" + Math.random(), false);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && /^2\d{2}$/.test(xhr.status)) {
+                var val = xhr.responseText;
+                jsonData = utils.formatJSON(val);
+            }
+        };
+        xhr.send(null);
+    }();
+    console.log(jsonData);
+
+    //2、数据绑定->把jsonData中存储的数据绑定在页面中(字符串拼接)
+    ~function () {
+        var str = '';
+        if (jsonData) {
+            for (var i = 0, len = jsonData.length; i < len; i++) {
+                var curData = jsonData[i];
+                str += '<li>';
+                str += '<div><img src="" trueImg="' + curData["img"] + '"/></div>';
+                str += '<div>';
+                str += '<h2>' + curData["title"] + '</h2>';
+                str += '<p>' + curData["desc"] + '</p>';
+                str += '</div>';
+                str += '</li>';
+            }
+        }
+        news.innerHTML = str;
+    }();
+
+    // 3、图片延迟加载
+    //->我先编写一个方法,实现单张图片的延迟加载
+    function lazyImg(curImg) {
+        console.log('ok')
+        var oImg = new Image;
+        oImg.src = curImg.getAttribute("trueImg");
+        oImg.onload = function () {
+            curImg.src = this.src;
+            curImg.style.display = "block";
+            fadeIn(curImg);
+            oImg = null;
+        };
+        curImg.isLoad = true;
+    }
+
+    //->实现渐现的效果
+    function fadeIn(curImg) {
+        var duration = 500, interval = 10, target = 1;
+        var step = (target / duration) * interval;
+        var timer = window.setInterval(function () {
+            var curOp = utils.getCss(curImg, "opacity");
+            if (curOp >= 1) {
+                curImg.style.opacity = 1;
+                window.clearInterval(timer);
+                return;
+            }
+            curOp += step;
+            curImg.style.opacity = curOp;
+        }, interval);
+    }
+
+    //->循环处理每一张图片
+    function handleAllImg() {
+        for (var i = 0, len = imgList.length; i < len; i++) {
+            var curImg = imgList[i];
+
+            //->当前的图片处理过的话,就不需要在重新的进行处理了
+            if (curImg.isLoad) {
+                continue;
+            }
+
+            //->只有A<B的时候在进行处理:当前图片是隐藏的,我们计算的A的值其实是计算它父亲(容器)的值
+            var curImgPar = curImg.parentNode;
+            var A = utils.offset(curImgPar).top + curImgPar.offsetHeight, B = utils.win("clientHeight") + utils.win("scrollTop");
+            if (A < B) {
+                lazyImg(curImg);
+            }
+        }
+    }
+
+    //4、开始的时候(过500ms加载第一屏幕的图片)、滚动条滚动的时候加载其它图片
+    window.setTimeout(handleAllImg, 500);
+    window.onscroll = handleAllImg;
+</script>
+</body>
+</html>

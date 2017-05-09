@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        padding-top百分比，保证了无论宽度多大，占位容器的宽高比是固定的
+    </title>
+    <style>
+        .container{
+            position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;
+            width:500px;
+            min-height:100vh;
+            background-color: #9c3;
+        }
+        .placeholder-box{
+            position:relative;
+            padding-top:50%;
+            background-color: #58a;
+        }
+        .box{
+           position:absolute;top:0;left:0;
+           background-color: #85a;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="placeholder-box">
+        <div class="box">2</div>
+    </div>
+</div>
+</body>
+</html>
