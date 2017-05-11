@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        原理：
+        数字是object子类型，底层实现hash map（字典）
+    </title>
+</head>
+<body>
+
+<script>
+    var a = [1,2,3,3,4,5,5]
+    console.log(a) // console.log异步的?
+    setTimeout(function () {
+        a.length = 3
+        console.log(a)
+        console.log(a[4])
+    },0)
+
+    var o = {
+        name:'zld',
+        age:27
+    }
+    console.log(o)
+    delete o.age
+    console.log(o)
+</script>
+</body>
+</html>

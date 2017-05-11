@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a id="selector">123</a>
+<button id="copy">点击复制</button>
+
+<script>
+    var aEle = document.querySelector('#copy');
+    aEle.addEventListener('click',function(){
+        var copyDOM = document.querySelector('#selector');
+        var range = document.createRange();
+        range.selectNode(copyDOM);
+        window.getSelection().addRange(range);
+        var successful = document.execCommand('copy');
+        try {
+            // Now that we've selected the anchor text, execute the copy command
+
+            var msg = successful ? 'successful' : 'unsuccessful';
+            console.log('Copy email command was ' + msg);
+        } catch(err) {
+            console.log('Oops, unable to copy');
+        }
+
+        // Remove the selections - NOTE: Should use
+        // removeRange(range) when it is supported
+        window.getSelection().removeAllRanges();
+    },false);
+
+</script>
+</body>
+</html>

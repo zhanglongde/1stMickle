@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="test"></div>
+
+<script>
+   var elem = document.querySelector('#test')
+
+    var event = new Event('build');
+
+    // Listen for the event.
+    elem.addEventListener('build', function (e) {
+        console.log(event)
+    }, false);
+
+    // Dispatch the event.
+    elem.dispatchEvent(event);
+</script>
+</body>
+</html>

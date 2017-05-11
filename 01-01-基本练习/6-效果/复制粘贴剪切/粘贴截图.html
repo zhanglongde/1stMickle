@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>利用 clipboardData 在网页中实现截屏粘贴的功能</title>
+    <style type="text/css">
+        #box{ width:200px; height:200px; border:1px solid #ddd; }
+    </style>
+</head>
+<body>
+
+<h1>利用 clipboardData 在网页中实现截屏粘贴的功能</h1>
+<hr />
+<div><input type="text" id="testInput" placeholder="截屏后粘贴到输入框中" size="30" /></div>
+<script type="text/javascript">
+    (function(){
+        var imgReader = function( item ){
+            var blob = item.getAsFile(),
+                    reader = new FileReader();
+            // 读取文件后将其显示在网页中
+            reader.onload = function( e ){
+                var img = new Image();
+
+                img.src = e.target.result;
+                document.body.appendChild( img );
+            };
+            // 读取文件
+            reader.readAsDataURL( blob );
+        };
+        document.getElementById( 'testInput' ).addEventListener( 'paste', function( e ){
+            // 添加到事件对象中的访问系统剪贴板的接口
+            var clipboardData = e.clipboardData,
+                    i = 0,
+                    items, item, types;
+
+            if( clipboardData ){
+                items = clipboardData.items;
+                if( !items ){
+                    return;
+                }
+                item = items[0];
+                // 保存在剪贴板中的数据类型
+                types = clipboardData.types || [];
+                console.log(clipboardData)
+                console.log(types)
+                for( ; i < types.length; i++ ){
+                    if( types[i] === 'Files' ){
+                        item = items[i];
+                        break;
+                    }
+                }
+                // 判断是否为图片数据
+                if( item && item.kind === 'file' && item.type.match(/^image\//i) ){
+                    imgReader( item );
+                }
+            }
+        });
+    })();
+</script>
+</body>
+</html>

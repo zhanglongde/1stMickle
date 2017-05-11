@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+<script>
+    var elements = document.querySelectorAll("p"); // NodeList
+    var arrayElements = [].slice.call(elements); // Now the NodeList is an array
+    var arrayElements = Array.from(elements); // This is another way of converting NodeList to Array
+</script>
+</body>
+</html>

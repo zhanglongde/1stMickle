@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var a1 = [1,2,3]
+    var a2 = [4,5,6]
+    // 单独创建了一个新的数组空间，不适合大型数组
+    console.log(a1.concat(a2))
+
+
+    var aa = a1.push.apply(a1,a2)
+    console.log(a1)
+    console.log(aa)
+</script>
+</body>
+</html>

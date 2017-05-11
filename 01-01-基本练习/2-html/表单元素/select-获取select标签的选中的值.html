@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../../lib/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+
+<select name="" id="slt">
+    <option value="1">1</option>
+    <option value="2"selected>2</option>
+    <option value="3">3</option>
+</select>
+
+<button>获取</button>
+
+<script>
+    window.onload=function () {
+       var oBtn = document.querySelector('button')
+        oBtn.addEventListener('click', function () {
+            // 原生js方法
+           var obj = document.getElementById('slt')
+            // 获得索引
+           var index = obj.selectedIndex
+            var text = obj.options[index].textContent
+            var value = obj.options[index].value
+            console.log(text)
+            console.log(value)
+
+//            jQuery方法1
+            var t = $('#slt option:selected').text()
+            var v = $('#slt option:selected').val()
+            var i = $("#testSelect").get(0).selectedIndex;//索引
+            console.log(t,v)
+
+//            jQuery方法2
+            $("#tesetSelect").find("option:selected").text();//选中的文本
+            $("#tesetSelect").find("option:selected").val();
+            $("#tesetSelect").find("option:selected").get(0).selectedIndex;
+        })
+    }
+</script>
+</body>
+</html>
