@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../lodash.js"></script>
+<script>
+    var a = _.pad('hello',8,'0')
+    var d = _.padLeft('123456',8,'0') //填充到左边，实现高位补0
+    var b = _.pad('hello',8)  // 默认填充空格
+    var c = _.pad('hello',3) // 超过不做操作
+    console.log(a)
+    console.log(b)
+    console.log(c)
+    console.log(d)
+</script>
+</body>
+</html>
