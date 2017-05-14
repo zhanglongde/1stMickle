@@ -2,9 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script src="../lodash.js"></script>
+<script>
+var str = 'hi-diddly-ho there, neighborino'
+// 包括省略号，总共10个字符
+    var r = _.trunc(str,10)
+    console.log(r)
+</script>
 </body>
 </html>

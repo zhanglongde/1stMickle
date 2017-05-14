@@ -5,6 +5,23 @@
     <title>Title</title>
 </head>
 <body>
+<button>点击</button>
 
+<script src="../lodash.js"></script>
+<script>
+    function Send(msg) {
+        console.log(msg)
+    }
+//    两次点击间隔小于300ms,被认为是一次点击
+    var func = _.debounce(Send,300,{
+        name:'zhanglongde'
+    })
+//    var func2 = function() {
+//        Send({
+//            name:'zhanglongde'
+//        })
+//    }
+    document.querySelector('button').addEventListener('click',func)
+</script>
 </body>
 </html>

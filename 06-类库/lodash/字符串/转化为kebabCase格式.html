@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script src="../lodash.js"></script>
+<script>
+    var a = _.kebabCase('fooFun')
+    var b = _.kebabCase('foo   Fun')
+    console.log(a)
+    console.log(b)
+</script>
 </body>
 </html>

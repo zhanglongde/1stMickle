@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <title>
         lodash random
+        shuffle
     </title>
 </head>
 <body>
 
 <script>
     var a = [1,2,3,4,5,6,7]
+    // sort会改变原数组
     var b = a.sort(()=> Math.random()-0.5)
+    console.log(a)
     console.log(b)
 </script>
 </body>

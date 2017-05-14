@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script src="../lodash.js"></script>
+<script>
+    var r = _.escape('Hello & hi ?')
+    console.log(r)
+    // 逆操作
+    var rr = _.unescape('fred, barney, &amp; pebbles');
+    console.log(rr)
+</script>
 </body>
 </html>

@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script src="../lodash.js"></script>
+<script>
+    var a = [1,2,3,2]
+    var r = _.last(a)
+    console.log(r)
+    console.log(_.last([]))
+    // 原生实现
+    console.log([].slice(-1))
+    console.log([].slice(-1)[0])
+</script>
 </body>
 </html>

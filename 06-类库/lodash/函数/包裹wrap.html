@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script src="../lodash.js"></script>
+<script>
+    // _.escape将&等特殊字符转化为html标记
+    var p = _.wrap(_.escape, function (func,text) {
+        return '<p>' + func(text) + '</p>'
+    })
+    var s = p('fred, barney, & pebbles')
+    console.log(s)
+</script>
 </body>
 </html>

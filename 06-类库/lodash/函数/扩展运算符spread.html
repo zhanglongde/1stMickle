@@ -2,9 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+
+<script src="../lodash.js"></script>
+<script>
+    var say = _.spread(function (who,what) {
+       return who + ' says' + what
+    })
+    var r = say(['Jack','Hello'])
+    console.log(r)
+
+    var numbers = Promise.all([
+            Promise.resolve(40),
+            Promise.resolve(36)
+    ])
+    // 如果是axios有自带的spread
+    var rr = numbers.then(_.spread(function (x,y) {
+       return x+y
+    }))
+    console.log(rr)
+
+    // 如果不展平，是什么情况
+    var a = numbers.then(function (x,y) {
+        console.log(x,y)
+        return x+y
+    })
+    console.log(a)
+</script>
 </body>
 </html>
