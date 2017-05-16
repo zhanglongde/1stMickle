@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        包括父容器的padding，与父容器的box-sizing无关
+
+        如果要对于父容器的content,只能用margin
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .container{
+            width:400px;
+            height:200px;
+            padding:50px;
+            background-color: #58a;
+            position:relative;
+        }
+        .son{
+            position: absolute;
+            top:0;left:0;
+            height:50%;
+            width:50%;
+            background-color: #9c3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="son"></div>
+</div>
+</body>
+</html>
