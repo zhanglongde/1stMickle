@@ -2,9 +2,103 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>demo</title>
+    <script type="text/javascript" src="../../../lib/jquery-2.2.3.js"></script>
+    <!--clone(true)  同时复制元素的附加数据和绑定事件，默认为false。-->
+    <style>
+        p{
+            text-align: center;
+            background-color: #00AA88;
+            width: 600px;
+            margin:auto;
+        }
+        .box{
+            width: 600px;
+            height: 260px;
+            margin: 30px auto;
+            overflow: hidden;
+            position: relative;
+            /*border:2px solid #ccc;*/
+            background-color: #009f95;
+        }
+        .picBox{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+            width: 1500px;
+            position: absolute;
+        }
+        .picBox:hover{
+            cursor: pointer;
+        }
+        .picBox li{
+            float: left;
+            padding:30px 0px 30px 0;
+        }
+        .picBox img{
+            width: 200px;
+            height: 200px;
+        }
+        .arrow{
+            z-index:999;
+            height:52px;
+            position:relative;
+            top:45%;
+            font-weight: 900;
+            color:white;
+        }
+        .left-arrow{float:left;}
+        .right-arrow{float:right;}
+        .hide{
+            opacity: 0.3;
+            filter: alpha(opacity=30);
+        }
+        .hide:hover{
+            opacity: 1;
+            filter: alpha(opacity=100);
+        }
+    </style>
 </head>
 <body>
-$END$
+<div id="hover-text">hover-text</div>
+<p> 图片轮播</p>
+<div class="box">
+    <div class="arrow left-arrow">
+        <div class="hide">
+            &laquo;
+        </div>
+    </div>
+    <ul class="picBox">
+        <li><img src="img/1.jpg" /></li>
+        <li><img src="img/2.jpg" /></li>
+        <li><img src="img/3.jpg" /></li>
+        <li><img src="img/4.jpg" /></li>
+        <li><img src="img/5.jpg" /></li>
+    </ul>
+    <div class="arrow right-arrow">
+        <div class="hide">
+            &raquo;
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        var span = 1500;
+        function rollOne(){
+            //去掉判断，则为无缝轮播
+            if($(".picBox").is(":animated")){    //判断元素是否正处于动画状态
+//如果当前没有进行动画，则添加新动画
+                console.log("animated");
+            }else{
+                $(".picBox").animate({marginLeft:"-200px"},span,"linear",function(){
+                    $(this).css({marginLeft:"0px"});
+                    $(this).children("li").first().remove().clone(true).appendTo(".picBox");
+                });
+            }
+        }
+        setInterval(rollOne,span);
+    });
+</script>
 </body>
 </html>

@@ -3,12 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        对于特殊属性，例如radio的checked
-        用prop获取到的是true/false
-        如果是attr可能是undefined
+        对于特殊属性(表单属性)，例如radio的checked
+        用prop获取到的是true/false,
+        如果是attr可能是checked（undefined）
+
+        https://github.com/JChehe/blog/blob/master/posts/jQuery%20%E7%9A%84%20attr%20%E4%B8%8E%20prop%20%E7%9A%84%E5%8C%BA%E5%88%AB.md
+
+        attribute与property区别
+        attribute对应element 静态（querySelector）
+        property对应Node 动态(getElementById)  无法获取自定义属性
     </title>
 </head>
 <body>
+<input type="checkbox" checked="false" id="test" data-x="xx">
 
+<script src="../lib/jquery-1.11.3.min.js"></script>
+<script>
+    window.onload = function () {
+//        表单属性
+      console.log($('#test').prop('checked'))
+      console.log($('#test').attr('checked'))
+
+//      自定义属性
+      console.log($('#test').prop('data-x'))
+      console.log($('#test').attr('data-x'))
+      console.log($('#test').data('x'))
+
+        console.log($('#test').prop('type'))
+        console.log($('#test').attr('type'))
+    }
+</script>
 </body>
 </html>
