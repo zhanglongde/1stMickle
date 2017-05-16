@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            width:200px;
+            height:400px;
+            background-color: #9c3;
+            /*vertical-align: bottom;*/
+        }
+        .item{
+            /*相对父容器无效，相对兄弟元素有效*/
+            margin-bottom:100px;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="box">
+    <div class="item">item</div>
+</div>
 </body>
 </html>
