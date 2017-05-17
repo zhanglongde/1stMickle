@@ -3,16 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        _.assign与_.extend顺序相反
+        _.assign(_.extend)与defaults顺序相反
     </title>
-    <script src="../lodash.js"></script>
+    <script src="../../lodash.js"></script>
 </head>
 <body>
 
 <script>
-    var o = _.assign({ 'user': 'barney' }, { 'age': 40 }, { 'user': 'fred' });
-    // => { 'user': 'fred', 'age': 40 }
-    console.log(o)
+    var o1 = { 'user': 'barney'}
+    var o2 = { 'age': 40 ,clothes:{
+        shoe:'red',paint:'blue'
+    }}
+    var o3 = { 'user': 'fred'  ,clothes:{
+        shoe:'#f00',paint:'#00f'
+    }}
+    // 后面覆盖前面,并改变o1
+//    var object = _.assign(o1, o2, o3);
+//    console.log(object)
+//    console.log(o1,o2,o3)
+
+    // 前面覆盖后面，并改变o1
+    var object2 = _.defaults(o1, o2, o3);
+    console.log(object2)
+    console.log(o1,o2,o3)
+
+    // 前面覆盖后面，并改变O1
+    var object3 = _.defaultsDeep(o1, o2, o3);
+    console.log(object3)
+    console.log(o1,o2,o3)
 </script>
 </body>
 </html>
