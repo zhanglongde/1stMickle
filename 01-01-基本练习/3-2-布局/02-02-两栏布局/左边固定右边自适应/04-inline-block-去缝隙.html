@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        两栏布局 左边固定右边自适应
+    </title>
+    <style>
+        *{
+            margin:0;padding:0;
+            box-sizing: border-box;
+        }
+        body{
+            font-size:0;
+        }
+        body>:nth-child(n){
+            font-size:14px;
+        }
+        .left{
+            display:inline-block;
+            width:200px;
+            min-height:100vh;
+            background-color: #9c3;
+
+            border:1px solid #ccc;
+        }
+        .main{
+            display:inline-block;
+            width:calc(100% - 200px);
+            min-height:100vh;
+            background-color: #58a;
+
+            border:1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="left">left</div>
+<div class="main">main</div>
+</body>
+</html>
