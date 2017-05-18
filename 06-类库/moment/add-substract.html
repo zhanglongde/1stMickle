@@ -6,11 +6,13 @@
 </head>
 <body>
 
+<script src="./moment.js"></script>
 <script>
     window.onload = function () {
         var t2 = moment().subtract(1, 'days').format()
         console.log(t2)
         
+        console.log(moment().subtract(2, 'hours').format())
         console.log(moment().add(2, 'hours').format())
     }
 </script>
