@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Object.create无法拷贝对象字面量形式的对象
+    </title>
+</head>
+<body>
+<script>
+    function Base(){
+        this.str = 'base str';
+        this.conlog = function(){
+            console.log.apply(this,arguments);//借用console.log方法，arguments为类数组参数类表
+        }
+    }
+    var b = new Base()
+    var Sub = Object.create(b)
+    console.log(Sub)
+</script>
+</body>
+</html>
