@@ -2,9 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        figure#imagestrip{
+            width:500px;height:400px;
+            background: #000;
+            box-sizing: border-box;
+            background-image: url(../img/1.jpg),url(../img/2.jpg),url(../img/3.jpg),url(../img/4.jpg),url(../img/5.jpg);
+            background-repeat:no-repeat;
+            background-size:500px 400px,500px 400px,500px 400px,500px 400px,500px 400px;
+            background-position-x: 0,500px,1000px,1500px,2000px;
+            animation: slider 20s infinite;
+        }
+        @keyframes slider {
+            0%{  background-position-x:0,500px,1000px,1500px,2000px;}
+            20%{  background-position-x:0,500px,1000px,1500px,2000px;}
+            25%{  background-position-x:-500px,0,500px,1000px,1500px,2000px;}
+            45%{  background-position-x:-500px,0,500px,1000px,1500px,2000px;}
+            50%{  background-position-x:-1000px,-500px,0,500px,1000px,1500px;}
+            70%{  background-position-x:-1000px,-500px,0,500px,1000px,1500px}
+            75%{  background-position-x:-1500px,-1000px,-500px,0,500px,1000px}
+            95%{  background-position-x:-1500px,-1000px,-500px,0,500px,1000px}
+            100%{  background-position-x:-2000px,-1500px,-1000px,-500px,0,500px}
+        }
+
+
+        label{
+            display:block;
+            z-index:24;
+            transition: 0.3s all ease-in-out;
+        }
+        input:checked~figure#imagestrip{
+            animation-play-state: paused;
+        }
+        input#pause~label:before{
+            background-color: rgba(0,0,0,0.4);
+        }
+        input#pause:checked~label:before{
+            content:'||';
+            font-size:100px;
+            color:rgba(255,2555,255,0.7);
+            position: absolute;
+            left:160px;top:80px;
+        }
+    </style>
 </head>
 <body>
-$END$
+<input type="checkbox" id="pause"><label for="pause"></label>
+<figure id="imagestrip"></figure>
 </body>
 </html>
