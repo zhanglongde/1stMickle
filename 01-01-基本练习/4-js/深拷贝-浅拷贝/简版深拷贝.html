@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    function deepCopyObj(obj) {
+        if (null == obj || "object" != typeof obj) return obj;
+        if (obj instanceof Date) {
+            var copy = new Date();
+            copy.setTime(obj.getTime());
+            return copy;
+        }
+        if (obj instanceof Array) {
+            var copy = [];
+            for (var i = 0, len = obj.length; i < len; i++) {
+                copy[i] = obj[i];
+            }
+            return copy;
+        }
+        if (obj instanceof Object) {
+            var copy = {};
+            for (var attr in obj) {
+                if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+            }
+            return copy;
+        }
+        throw new Error("Unable to copy obj this object.");
+    }
+    var a = {
+        name:'qiu',
+        birth:new Date(),
+        pattern:/qiu/gim,
+        container:document.body,
+        hobbys:['book',new Date(),/aaa/gim,111]
+    };
+    var b = deepCopyObj(a);
+    b.name = 'zhanglongde'
+    console.log(a)
+    console.log(b)
+</script>
+</body>
+</html>
