@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        图片宽度一致
+    </title>
+    <script type="text/javascript" src="../../../../lib/jquery-2.2.3.js"></script>
+    <!--clone(true)  同时复制元素的附加数据和绑定事件，默认为false。-->
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            width: 600px;
+            height: 260px;
+            margin: 30px auto;
+            overflow: hidden;
+            position: relative;
+            /*border:2px solid #ccc;*/
+            background-color: #009f95;
+        }
+        .picBox{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+            width: 1500px;
+            position: absolute;
+        }
+        .picBox:hover{
+            cursor: pointer;
+        }
+        .picBox li{
+            float: left;
+            padding:30px 0px 30px 0;
+        }
+        .picBox img{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul class="picBox">
+        <li><img src="../img/1.jpg" /></li>
+        <li><img src="../img/2.jpg" /></li>
+        <li><img src="../img/3.jpg" /></li>
+        <li><img src="../img/4.jpg" /></li>
+        <li><img src="../img/5.jpg" /></li>
+    </ul>
+</div>
+
+<script>
+//    定时器周期与动画周期一致
+    $(document).ready(function(){
+        var span = 1500;
+        function rollOne(){
+            //去掉判断，则为无缝轮播
+            //判断元素是否正处于动画状态；是，则跳过本次定时器执行，下一周期定时器再执行动画
+            if($(".picBox").is(":animated")){
+                console.log("animated");
+                return
+            }
+
+            console.log('begin...')
+            //如果当前没有进行动画，则添加新动画
+            // 实际上动画周期时间大于span
+            $(".picBox").animate({marginLeft:"-200px"},span,"linear",function(){
+                $(this).css({marginLeft:"0px"});
+                $(this).children("li").first().remove().clone(true).appendTo(".picBox");
+                console.log('周期结束...')
+            });
+        }
+        setInterval(rollOne,span);
+    });
+</script>
+</body>
+</html>
