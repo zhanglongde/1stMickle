@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        宽高固定
+        1.margin计算
+        2.绝对定位+负margin
+        3.绝对零定位+margin:auto
+        4.弹性盒 父元素display:flex;align-item:center; 子元素宽度固定margin:auto;
+        5.table-cell与vertical-align 子元素宽度固定 margin:auto;
+
+        宽高不固定的方法对宽高固定的元素同样适用
+
+        宽高不固定
+        1.绝对定位+transform
+        2.弹性盒 父元素display:flex;justify-content:center;align-item:center;
+        3.行内块法
+        4.table-cell与vertical-align text-align:center 子元素display inline-block
+        5.table table-cell 增加一层middle元素, 宽高不固定, 支持IE8以下
+
+        浮动元素的居中
+        1.计算margin
+        2.弹性盒
+        3.绝对定位
+
+        行内元素居中
+        单行text-align:center line-height:父元素高度
+        多行text-align:center vertical-align
+            table-cell vertical-align
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .wrapper{
+            background-color: #58a;
+            width:500px;
+            height:500px;
+            text-align: center;
+        }
+        .content{
+            background-color: #fc3;
+            /*width:200px;*/
+            /*height:200px;*/
+            display:inline-block;
+            vertical-align: middle;
+        }
+        .wrapper:before{
+            content:'';
+            display:inline-block;
+            height:100%;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="content">
+        content
+    </div>
+</div>
+</body>
+</html>

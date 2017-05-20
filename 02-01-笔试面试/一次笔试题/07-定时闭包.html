@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+//    for(var i=0;i<10;i++){
+//        setInterval(function(){
+//            //一次打印出i的值
+//            console.log(i)
+//        },1000)
+//    }
+    for(var i=0;i<10;i++){
+        // 闭包：未执行前IIFE中缓存i值 遮蔽效应
+        (function (i) {
+            setTimeout(function(){
+                //一次打印出i的值
+                console.log(i)
+            },1000)
+        })(i)
+    }
+</script>
+</body>
+</html>

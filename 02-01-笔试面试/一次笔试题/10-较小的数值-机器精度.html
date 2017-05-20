@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //0.1+0.2并非刚好等于0.3,而是比较接近的数字0.3-----
+    console.log(0.1+0.2===0.3)
+    //机器精度：误差范围值
+    // ES6开始,机器精度Number.EPSILON
+    console.log(Math.abs(0.1+0.2-0.3)<Number.EPSILON)
+</script>
+</body>
+</html>

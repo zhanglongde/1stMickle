@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var a=[1,2,3,3,4,5,1]
+    function uniq(arr) {
+        var target = []
+        var obj = {}
+        arr.map(function (ele) {
+            if (!obj[ele]) {
+              target.push(ele)
+              obj[ele]=true
+            }
+        })
+        return target
+    }
+    var b = uniq(a)
+    console.log(b)
+</script>
+</body>
+</html>
