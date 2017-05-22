@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" v-cloak>
+        <header>todos</header>
+        <input type="text" class="fm_new" placeholder="添加一个任务..." v-model="todo_new" v-on:keyup.enter="addTodo()">
+
+        <section class="ctrl">
+            <span class="tip">{{ leftCount }}项剩余</span>
+            <span class="type" v-bind:class="{on: type == 'all'}" v-on:click="changeType('all')">全部</span>
+            <span class="type" v-bind:class="{on: type == 'active'}" v-on:click="changeType('active')">未完成</span>
+            <span class="type" v-bind:class="{on: type == 'completed'}" v-on:click="changeType('completed')">已完成</span>
+            <span class="clear_all" v-on:click="clearCompleted()">清除已完成</span>
+        </section>
+
+        <section class="main">
+            <div class="item" v-for="item in filterList" v-bind:class="{finish: item.status == 1}">
+                <span v-on:click="toggleTodo($index)"></span>
+                <p>
+                    <i v-time="item.time"></i>
+                    {{ item.title }}
+                </p>
+                <em v-on:click="removeTodo(item)"></em>
+            </div>
+        </section>
+
+    </div>
+
+    <script type="text/javascript" src="vue.min.js"></script>
+    <script type="text/javascript" src="util.js"></script>
+    <script type="text/javascript" src="style.js"></script>
+</body>
+</html>

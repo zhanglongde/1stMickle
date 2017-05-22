@@ -1,0 +1,143 @@
+[v-cloak]{
+    display: none;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: #eee;
+    color: #666;
+    -webkit-font-smoothing: antialiased;
+}
+header{
+    font-size: 40px;
+    color: rgba(175, 47, 47, 0.15);
+    text-align: center;
+    margin-top: 50px;
+}
+input{
+    display: block;
+    outline: none;
+    border: none;
+    color: #666;
+}
+.fm_new{
+    width: 500px;
+    height: 40px;
+    padding: 0 10px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+    margin: 20px auto 0;
+    font-size: 18px;
+}
+
+.main{
+    width: 500px;
+    background: #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin: 20px auto 0;
+}
+.item{
+    height: 50px;
+    line-height: 50px;
+    position: relative;
+    border-bottom: 1px solid #f2f2f2;
+}
+.item:last-child{
+    border-bottom: none;
+}
+.item:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.item span{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #dce0e3;
+    background-color: #fff;
+    border-radius: 100%;
+    margin-right: 5px;
+    position: relative;
+    top: 13px;
+    float: left;
+}
+.item.finish span:after{
+    content: '';
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background-color: #0099e5;
+    border-radius: 100%;
+}
+.item p{
+    height: 25px;
+    float: left;
+    margin-left: 10px;
+}
+.item.finish p{
+    text-decoration: line-through;
+    color: #ddd;
+}
+.item p i{
+    font-size: 12px;
+    font-style: normal;
+    color: #999;
+    position: relative;
+    top: -2px;
+}
+.item em{
+    width: 30px;
+    height: 30px;
+    float: right;
+    cursor: pointer;
+    display: none;
+    position: relative;
+    top: 10px;
+}
+.item:hover em{
+    display: block;
+}
+.item em:before,.item em:after{
+    content: '';
+    display: block;
+    width: 25px;
+    height: 1px;
+    background: #cc9a9a;
+    position: relative;
+    top: 13px;
+}
+.item em:before{
+    transform: rotate(45deg);
+}
+.item em:after{
+    transform: rotate(-45deg);
+}
+.ctrl{
+    width: 500px;
+    text-align: center;
+    margin: 20px auto 0;
+    font-size: 14px;
+}
+.ctrl .tip{
+    float: left;
+}
+.ctrl .type{
+    display: inline-block;
+    cursor: pointer;
+    margin: 0 4px;
+}
+.ctrl .type.on{
+    color: #0099e5;
+}
+.ctrl .clear_all{
+    float: right;
+    cursor: pointer;
+}
