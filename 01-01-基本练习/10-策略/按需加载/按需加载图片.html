@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>图片按需加载</title>
+</head>
+<body>
+<style>
+    li {float:left;width:200px;}
+</style>
+<div style="widh:100%;height:1200px;border:1px solid #000">这里是空白的内容，高度为900像素，目的是方便出现滚动条</div>
+<ul style="width:600px;">
+    <li> <img width="158" height="158" data-src="http://pic6.nipic.com/20100423/4537140_133035029164_2.jpg"  /> </li>
+    <li> <img width="158" height="158" data-src="http://www.jiujiuba.com/xxpict2/picnews/62223245.jpg"  /> </li>
+    <li> <img width="158" height="158" data-src="http://www.bz55.com/uploads/allimg/100729/095KS455-0.jpg"  /> </li>
+    <li> <img width="158" height="158" data-src="http://www.hyrc.cn/upfile/3/200611/1123539053c7e.jpg"/> </li>
+    <li> <img width="158" height="158" data-src="http://www.mjjq.com/blog/photos/Image/mjjq-photos-903.jpg" /> </li>
+    <li> <img width="158" height="158" data-src="http://c.cncnimg.cn/000/954/1416_2_b.jpg"  /> </li>
+    <li> <img width="158" height="158" data-src="http://www.jiujiuba.com/xxpict2/picnews/62223231.jpg" /> </li>
+    <li> <img width="158" height="158" data-src="http://www.mjjq.com/pic/20070530/20070530043314558.jpg" /> </li>
+</ul>
+<script>
+    var API = {
+        /**
+         025
+         * 兼容Mozilla(attachEvent)和IE(addEventListener)的on事件
+         026
+         * @param {String} element DOM对象 例如：window，li等
+         027
+         * @param {String} type on事件类型，例如：onclick，onscroll等
+         028
+         * @param {Function} handler 回调事件
+         029
+         */
+        on: function(element, type, handler) {
+            return element.addEventListener ? element.addEventListener(type, handler, false) : element.attachEvent('on' + type, handler)
+        },
+        /**
+         034
+         * 为对象绑定事件
+         035
+         * @param {Object} object 对象
+         036
+         * @param {Function} handler 回调事件
+         037
+         */
+        bind: function(object, handler) {
+            return function() {
+                return handler.apply(object, arguments)
+            }
+        },
+        /**
+         044
+         * 元素在页面中X轴的位置
+         045
+         * @param {String} element DOM对象 例如：window，li等
+         046
+         */
+        pageX: function(El) {
+            var left = 0;
+            do {
+                left += El.offsetLeft;
+
+            } while(El.offsetParent && (El = El.offsetParent).nodeName.toUpperCase() != 'BODY');
+            return left;
+
+        },
+        /**
+         057
+         * 元素在页面中Y轴的位置
+         058
+         * @param {String} element DOM对象 例如：window，li等
+         059
+         */
+        pageY: function(El) {
+            var top = 0;
+            do {
+                top += El.offsetTop;
+
+            } while(El.offsetParent && (El = El.offsetParent).nodeName.toUpperCase() != 'BODY');
+            return top;
+
+        },
+        /**
+         070
+         071
+         * @param {String} element DOM对象 例如：window，li等
+         072
+         * @param {String} className 样式名称
+         073
+         * @return {Boolean} 布尔值
+         074
+         */
+        hasClass: function(element, className) {
+//          return new RegExp('(^|\\s)' + className + '(<ahref="$)').test(element.className+">\\s|$)').test(element.className)
+          return element.classList.contains(className)
+        },
+        /**
+         079
+         * 获取或者设置当前元素的属性值
+         080
+         * @param {String} element DOM对象 例如：window，li等
+         081
+         * @param {String} attr 属性
+         082
+         * @param {String} (value) 属性的值，此参数如果没有那么就是获取属性值，此参数如果存在那么就是设置属性值
+         083
+         */
+        attr: function(element, attr, value) {
+            if (arguments.length == 2) {
+                return element.attributes[attr] ? element.attributes[attr].nodeValue : undefined
+            }
+            else if (arguments.length == 3) {
+                element.setAttribute(attr, value)
+            }
+        }
+    };
+
+    /**
+     095
+     * 按需加载
+     096
+     * @param {String} obj 图片区域元素ID
+     097
+     */
+    function lazyload(obj) {
+        this.lazy = typeof obj === 'string' ? document.getElementById(obj) : document.getElementsByTagName('body')[0];
+        this.aImg = this.lazy.getElementsByTagName('img');
+        this.fnLoad = API.bind(this, this.load);
+        this.load();
+        API.on(window, 'scroll', this.fnLoad);
+        API.on(window, 'resize', this.fnLoad);
+
+    }
+    lazyload.prototype = {
+
+        /**
+         110
+         * 执行按需加载图片，并将已加载的图片标记为已加载
+         111
+         * @return 无
+         112
+         */
+        load: function() {
+        var iScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        // 屏幕上边缘
+        var iClientHeight = document.documentElement.clientHeight + iScrollTop;
+        // 屏幕下边缘
+        var i = 0;
+        var aParent = [];
+        var oParent = null;
+        var iTop = 0;
+        var iBottom = 0;
+        var aNotLoaded = this.loaded(0);
+        if (this.loaded(1).length != this.aImg.length) {
+            var notLoadedLen = aNotLoaded.length;
+            for (i = 0; i < notLoadedLen; i++) {
+                iTop = API.pageY(aNotLoaded[i]) - 200;
+                iBottom = API.pageY(aNotLoaded[i]) + aNotLoaded[i].offsetHeight + 200;
+                var isTopArea = (iTop > iScrollTop && iTop < iClientHeight) ? true : false;
+                var isBottomArea = (iBottom > iScrollTop && iBottom <iClientHeight) ? true : false;
+                if (isTopArea || isBottomArea) {
+                    // 把预存在自定义属性中的真实图片地址赋给src
+                    aNotLoaded[i].src = API.attr(aNotLoaded[i], 'data-src') || aNotLoaded[i].src;
+                    if (!API.hasClass(aNotLoaded[i], 'loaded')) {
+                        if ('' != aNotLoaded[i].className) {
+                            aNotLoaded[i].className =aNotLoaded[i].className.concat(" loaded");
+
+                        }
+                    else {
+                            aNotLoaded[i].className = 'loaded';
+
+                        }
+                    }
+                }
+            }
+        }
+    },
+
+    /**
+     150
+     * 已加载或者未加载的图片数组
+     151
+     * @param {Number} status 图片是否已加载的状态，0代表未加载，1代表已加载
+     152
+     * @return Array 返回已加载或者未加载的图片数组
+     153
+     */
+    loaded: function(status) {
+        var array = [];
+        var i = 0;
+        for (i = 0; i < this.aImg.length; i++) {
+            var hasClass = API.hasClass(this.aImg[i], 'loaded');
+            if (!status) {
+                if (!hasClass)
+                array.push(this.aImg[i])
+            }
+            if (status) {
+                if (hasClass)
+                array.push(this.aImg[i])
+            }
+        }
+        return array;
+    }
+    };
+    // 按需加载初始化
+    API.on(window, 'load', function () {new lazyload()});
+</script>
+</body>
+</html>

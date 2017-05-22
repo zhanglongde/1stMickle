@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>按需解析HTML</title>
+</head>
+<body>
+<script type="text/x-template" id="suc_subscription">
+    <!--假设这里的样式box-dytz 引用了一张背景图--->
+    <div>
+        <!--这里暂且用这张图片作为测试，实际中，大家可以替换为任何图片-->
+        <img src="http://tid.tenpay.com/wp-content/uploads/2012/12/按需加载.jpg" />
+    </div>
+</script>
+<div id="success_dilog"></div>
+<input type="button" value="点我展示HTML"  onclick="showHTML()"  />
+<script>
+    function showHTML(){
+        document.getElementById('success_dilog').innerHTML =  document.getElementById('suc_subscription').innerHTML;
+    }
+</script>
+</body>
+</html>
