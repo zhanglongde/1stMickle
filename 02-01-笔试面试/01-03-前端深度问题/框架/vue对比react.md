@@ -12,3 +12,6 @@
         为了避免不必要的重新渲染，必须到处安装shouldComponentUpdate和使用不可变数据结构
    Vue组件渲染自动跟踪
 4. redux比vuex复杂很多，当然可以使用mobx
+
+React强大的生态圈，国外用得比较多
+Vue从今年的Vue Conference来看，使用的人应该不少

@@ -13,5 +13,5 @@ window.location.href
 window.history.back()
 13.PC端H5有个信工呢鞥可以是页面跳转页面不发生刷新，你知道是哪一个吗？
 history API无刷新更改地址栏
-window.history.pushState(null,null,''/profile/)
+window.history.pushState(null,null,'/profile/')
 14.

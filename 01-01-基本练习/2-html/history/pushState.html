@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        无刷新更改地址栏
+    </title>
+</head>
+<body>
+<button id="nofresh">点击</button>
+<button id="fresh">点击</button>
+
+<script>
+    window.onload = function () {
+        var o = document.querySelector('#nofresh')
+        o.addEventListener('click', function () {
+            window.history.pushState(null,null,'/test')
+        })
+        var o2 = document.querySelector('#fresh')
+        o2.addEventListener('click', function () {
+            window.location.href='/test'
+        })
+    }
+</script>
+
+</body>
+</html>
