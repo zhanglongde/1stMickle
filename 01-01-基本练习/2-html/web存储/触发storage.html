@@ -17,12 +17,12 @@
                 window.addEventListener('storage',function(e){
                     console.log('key='+e.key+',oldValue='+e.oldValue+',newValue='+e.newValue);
                 })
-                window.localStorage.setItem('l', 'lst')
-                window.localStorage.setItem('l', 'lst2')
-                localStorage.l = '7777'
+                window.localStorage.setItem('l', '1')
 
-                document.querySelector('button').addEventListener('click', function () {
-                    localStorage.l = '2222'
+                document.querySelector('button').addEventListener('click', () => {
+                    let v = parseInt(window.localStorage.getItem('l'))
+                    window.localStorage.setItem('l', ++v)
+                    console.log(window.localStorage.getItem('l'))
                 })
             }
             </script>

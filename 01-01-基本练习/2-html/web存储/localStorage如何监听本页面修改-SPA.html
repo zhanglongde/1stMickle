@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    var SetItem = localStorage.setItem;
+    // 修改localStorage的setItem方法
+    localStorage.setItem = function(key,value) {
+        var setItemEvent = new Event("setItemEvent");
+        setItemEvent.value = value;
+        setItemEvent.key = key;
+        // 手动触发setItemEvent
+        window.dispatchEvent(setItemEvent);
+        // 执行原方法
+        SetItem.apply(this,arguments);
+    }
+    window.addEventListener("setItemEvent", function(e) {
+        // 检测是否为需要监听的key值
+        if (e.key == "xxx") {
+            console.log(e.value);
+        }
+    });
+    localStorage.setItem("xxx","123");
+</script>
+</body>
+</html>

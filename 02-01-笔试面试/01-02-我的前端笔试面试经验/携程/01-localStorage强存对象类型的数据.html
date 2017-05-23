@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    var obj = {
+        a:'zld',
+        age:27
+    }
+    window.localStorage.setItem('obj',obj)
+    var lObj = window.localStorage.getItem('obj')
+    console.log(lObj)
+
+    //[object Object]
+    console.log(obj.toString())
+
+</script>
+</body>
+</html>

@@ -24,9 +24,10 @@ for(var i = 0; i< 5; i++){
   tasks.push(timeLog(i))
 }
 Promise.all(tasks).then(function () {
-    setTimeout(function () {
-      console.log(new Date, i)
-    }, 1000)
+//    setTimeout(function () {
+//      console.log(new Date, i)
+//    }, 1000)
+    console.log(new Date, i)
 })
 </script>
 

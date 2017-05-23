@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var a = 3
+    var b = {
+      a:4,
+      getA: function () {
+        this.a = 5
+        return function () {
+          return this.a    // 函数内部的函数执行，this为window
+        }
+      }  
+    }
+    var r1 = b.getA()()// b.getA()获得闭包函数,相当于window下声明的函数表达式
+    // 输出3
+
+
+
+    console.log(r1)
+//    如何输出b内部的a
+    console.log(b.getA().call(b))// call绑定this,并执行
+    console.log(b.getA().bind(b)())//bind绑定this返回一个函数，但是并不执行
+
+
+
+
+    console.log('%c-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+    var l = 10
+    function Test() {
+        var l = 11
+        function inner() {
+           console.log(this.l)
+        }
+        inner()
+    }
+    Test()
+</script>
+</body>
+</html>
