@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        when the myTeam gets invoked, JavaScript is passing the reference to me object as value,
+        as it is an object and invocation itself creates two independent references to the same object,
+        and hence, the reference variable themselves are independent.
+    </title>
+</head>
+<body>
+
+
+<script>
+    var me = {					// 1
+        'partOf' : 'A Team'
+    };
+
+    function myTeam(me) {		// 2
+
+        me = {					// 3
+            'belongsTo' : 'A Group'
+        };
+    }
+    myTeam(me)
+    console.log(me)
+
+//    对象本身存储在栈栈中，对象的属性存储在堆中
+</script>
+</body>
+</html>

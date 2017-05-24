@@ -20,6 +20,14 @@
     console.log(r)
     console.log(result)
 
+
+//    http://www.jstips.co/en/javascript/create-range-0...n-easily-using-one-line/
+    var a = Array.apply(null, {length: 10}).map(Function.call, Number);
+    var b = Array.from(new Array(10),(val,index)=>index);
+    var c = Array.from(Array(10).keys());
+    console.log(a)
+    console.log(b)
+    console.log(c)
 </script>
 </body>
 </html>

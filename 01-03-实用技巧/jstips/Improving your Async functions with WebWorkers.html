@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        有问题
+    </title>
+</head>
+<body>
+
+
+<script>
+    // my_worker.js
+    const do_a_lot_of_processing = (data) => {
+        console.log('processing')
+    }
+
+    onmessage = (e) => {
+        postMessage(do_a_lot_of_processing(e.data));
+    }
+
+    // main.js
+//    const myWorker = new Worker('my_worker.js');
+    const myWorker = new Worker('my_worker.js');
+
+    async function get_useful_data() {
+        const raw_data = await request(some_url);
+        myWorker.postmessage(raw_data);
+    }
+
+    const show_data = (e) =>{
+        const data = e.data;
+    }
+
+    myWorker.onmessage(show_data);
+    get_useful_data();
+</script>
+</body>
+</html>

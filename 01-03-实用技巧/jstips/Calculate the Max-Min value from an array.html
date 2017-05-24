@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    var a = [1,2,3,4,5,10,6]
+//    es5
+    var ma = Math.max.apply(null,a) //max函数会调用this.a,因为第一个参数为Null，所以this指的是window,window.a
+    var mi = Math.min.apply(null,a)
+    console.log(ma)
+    console.log(mi)
+
+//    es6
+    var max = Math.max(...a)
+    var min = Math.min(...a)
+    console.log(max)
+    console.log(min)
+</script>
+</body>
+</html>
