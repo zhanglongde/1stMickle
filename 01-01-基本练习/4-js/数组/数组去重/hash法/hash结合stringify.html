@@ -2,9 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+
+<script>
+    function dedup(arr) {
+        var hashTable = {};//把element的stringify作为键，可以对值为数组的元素去重
+
+        return arr.filter(function (el) {
+            var key = JSON.stringify(el);
+            var match = Boolean(hashTable[key]);
+
+            return (match ? false : hashTable[key] = true);
+        });
+    }
+
+    var deduped = dedup([
+        { a: 1 },
+        { a: 1 },
+        [ 1, 2 ],
+        [ 1, 2 ]
+    ]);
+
+    console.log(deduped); // [ {a: 1}, [1, 2] ]
+</script>
 </body>
 </html>
