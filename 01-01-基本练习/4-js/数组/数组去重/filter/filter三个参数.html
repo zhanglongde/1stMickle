@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        重复的元素，index必定迁移，过滤掉
+    </title>
+</head>
+<body>
+
+
+<script>
+    var deduped = [ 1, 1, 'a', 'a' , 'a' , 'a' , 'a' ].filter( (el, i, arr) => arr.indexOf(el) === i);
+
+    console.log(deduped); // [ 1, 'a' ]
+</script>
+</body>
+</html>
