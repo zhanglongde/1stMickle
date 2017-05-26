@@ -2,9 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<img src="../../../../images/mm1.jpg" alt="占位">
+<button>删除</button>
+
+<script>
+    window.onload = function () {
+      var o = document.querySelector('button')
+      o.addEventListener('click', function () {
+          document.querySelector('img').removeAttribute('src')
+      })
+    }
+</script>
 </body>
 </html>
