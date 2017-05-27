@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id='do'> Do long calc!</button>
+<div id='status'></div>
+<div id='result'></div>
+
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    window.onload = function () {
+        $('#do').on('click', function(){
+
+            $('#status').text('calculating....'); //此处会触发redraw事件的fired，但会放到队列里执行，直到long()执行完。
+
+            // without set timeout, user will never see "calculating...."
+//            long();//执行长时间任务，阻塞
+
+            // with set timeout, works as expected
+            setTimeout(long,50);//用定时器，大约50ms以后执行长时间任务，放入执行队列，但在redraw之后了，根据先进先出原则
+
+        })
+
+
+
+        function long(){
+            var result = 0
+            for (var i = 0; i<1000; i++){
+                for (var j = 0; j<1000; j++){
+                    for (var k = 0; k<1000; k++){
+                        result = result + i+j+k
+                    }
+                }
+            }
+            $('#status').text('calclation done') // has to be in here for this example. or else it will ALWAYS run instantly. This is the same as passing it a callback
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    function loadJs(jsurl, head, callback){
+        var script=document.createElement('script');
+        script.setAttribute("type","text/javascript");
+
+        if(callback){
+            if (script.readyState){  //IE
+                script.onreadystatechange = function(){
+                    if (script.readyState == "loaded" ||
+                            script.readyState == "complete"){
+                        script.onreadystatechange = null;
+                        callback();
+                    }
+                };
+            } else {  //Others
+                script.onload = function(){
+                    callback();
+                };
+            }
+        }
+        script.setAttribute("src", jsurl);
+
+        if(head)
+            document.getElementsByTagName('head')[0].appendChild(script);
+        else
+            document.body.appendChild(script);
+
+    }
+    window.onload = function () {
+      loadJs('./foo.js', true, function () {
+        console.log('加载完毕...')
+      })
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" manifest="manifest.appcache">
+<head>
+    <meta charset="UTF-8">
+    <title>APP CACHE
+        https://www.nihaoshijie.com.cn/index.php/archives/425/
+
+        站点离线存储的容量限制是5M
+
+        引用manifest的html必须与manifest文件同源，在同一个域下
+
+        当manifest文件发生改变时，资源请求本身也会触发更新
+    </title>
+    <!--<link rel="stylesheet" type="text/css" href="test.css">-->
+</head>
+<body>
+<img src="./mm1.jpg">
+<img src="./mm2.jpg">
+<button>先手动修改manifest.cache中的version,然后再监听</button>
+
+<script type="text/javascript">
+    window.onload = function () {
+        window.applicationCache.addEventListener('updateready', function(){
+            console.log('updateready!');
+            window.applicationCache.swapCache();
+        });
+
+        window.addEventListener('load', function(e){
+            console.log(window.applicationCache.status);
+        })
+
+        document.querySelector('button').addEventListener('click', function () {
+          window.applicationCache.update()
+        })
+    }
+
+</script>
+</body>
+</html>

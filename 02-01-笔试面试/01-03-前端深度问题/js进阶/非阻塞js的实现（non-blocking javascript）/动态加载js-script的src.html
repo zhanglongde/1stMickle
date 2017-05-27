@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    setTimeout(function(){
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "foo.js";
+        var head = true; //加在头还是尾
+        if(head)
+            document.getElementsByTagName("head")[0].appendChild(script);
+        else
+            document.body.appendChild(script);
+    }, 0);
+</script>
+</body>
+</html>
