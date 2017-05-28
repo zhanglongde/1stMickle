@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
+    <link href="../resources/demo.css" rel="stylesheet" type="text/css" />
+    <script src="../components/polymer/polymer.js"></script><!-- down/up events -->
+    <script src="../components/web-animations-js/web-animations.min.js"></script>
+    <style>
+        body {
+            overflow: hidden;
+            background: #2ebcfc;
+            will-change: transform;
+        }
+        div {
+            border-radius: 50%;
+            background: black;
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            opacity: 0.66;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body touch-action="none">
+<script>
+    var waves = [];
+    var duration = 450;
+
+    function Wave(x, y) {
+        waves.push(this);
+        this.element = document.createElement('div');
+        this.element.style.left = 'calc(' + x + 'px - 150px)';
+        this.element.style.top = 'calc(' + y + 'px - 150px)';
+        this.element.setAttribute('touch-action', 'none');
+        this.element.addEventListener('up', up);
+
+        var hue = Math.random() * 360;
+        this.element.style.backgroundColor = 'hsl(' + hue + ', 85%, 67%)';
+
+        document.body.appendChild(this.element);
+
+        this.scale = this.element.animate([
+            {transform: 'scale(0)'},
+            {transform: 'scale(1)'},
+        ], {
+            duration: duration,
+            easing: 'cubic-bezier(.22,.67,.52,.92)',
+            fill: 'forwards',
+        });
+    }
+
+    Wave.prototype = {
+        up: function() {
+            this.up = function() {};
+            this.opacity = this.element.animate([
+                {opacity: 0.66},
+                {opacity: 0},
+            ], {
+                duration: duration,
+                fill: 'forwards',
+            });
+            this.opacity.onfinish = function() {
+                this.element.remove();
+                waves.splice(waves.indexOf(this), 1);
+            }.bind(this);
+        }
+    };
+
+    document.body.addEventListener('down', function(e) {
+        waves.forEach(function(wave) { wave.up(); });
+        new Wave(e.clientX, e.clientY);
+    });
+
+    function up() {
+        waves.forEach(function(wave) { wave.up(); });
+    }
+
+    document.body.addEventListener('up', up);
+</script>
+</body>
+</html>

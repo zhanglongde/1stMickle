@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width:500px;
+            height:500px;
+            border-radius:250px;
+            background-color: #9c3;
+            position: absolute;top:0;left:0;bottom:0;right:0;
+            margin:auto;
+        }
+        .dot{
+            width:40px;
+            height:40px;
+            background-color: #f00;
+            border-radius:20px;
+            transform-origin:250px 250px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="dot"></div>
+</div>
+
+<script>
+    var dot = document.querySelector('.dot')
+    var frames = [
+        {transform:'rotate(0deg) translate(80px) translateZ(0)'},
+        {transform:'rotate(360deg) translate(80px) translateZ(0)'},
+    ]
+    var timing = {
+        duration:3500,
+        delay:0,
+        iterations:Infinity,
+        direction:'reverse',
+        easing:'linear',
+        fill:'forwards',
+        alternate:'rev'
+    }
+    dot.animate(frames,timing)
+</script>
+</body>
+</html>

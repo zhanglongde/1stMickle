@@ -26,10 +26,14 @@ https
 加密 身份验证 报文完整性
 
 
+https://github.com/ccforward/cc/issues/36
 http2.0
 1.服务器推
 2.多路复用=>keep alive
   连接共享，不需要反复建立连接
-3.压缩Header
+3.压缩Header HPACK算法
 4.解析基于二进制格式
   基于二进制更健壮，http1.x基于文本
+5.强制加密 http2基于SPDY，SPDY强制https
+
+实例 yahoo旗下的flickr:https://www.flickr.com/  

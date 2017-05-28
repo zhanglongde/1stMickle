@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var str = 'kkkkkkkaaakkkkkkaaaaasddd';
+
+    function theMost(str){
+        console.log(str.split('').sort().join('').match(/(\S)\1*/g))
+        return str.split('').sort().join('').match(/(\S)\1*/g).sort(function(a,b){
+            return b.length - a.length
+        })[0][0]
+    }
+    console.log(theMost(str));
+</script>
+</body>
+</html>

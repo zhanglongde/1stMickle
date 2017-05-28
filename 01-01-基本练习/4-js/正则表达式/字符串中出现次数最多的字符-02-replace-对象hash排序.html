@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    var str = 'kkkkkkkaaakkkkkkaaaaasddd';
+
+    function most(str) {
+      var obj = {}
+      str.replace(/(\w{1})/g, function ($1,$2) {
+        console.log($1,$2)
+          obj[$1] ? obj[$1]+=1:obj[$1]=1
+      })
+      var arr = Object.entries(obj).sort(function (a,b) {
+        return Object.entries(a)[1] - Object.entries(b)[1]
+      })
+      return '出现次数最多的字符是'+arr[0][0]+'出现了'+arr[0][1]+'次'
+    }
+    console.log(most(str))
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<div id="test">
+    <header>header</header>
+    <img data-x-src-cid="cid1" src="../.././../../images/mm1.jpg" alt="占位1">
+    <img src="../.././../../images/mm2.jpg" data-x-src-cid="cid2" alt="占位2">
+    <img src="../.././../../images/mm1.jpg" alt="占位3">
+    <footer>footer</footer>
+</div>
+
+<script>
+    window.onload = function () {
+        var html = document.querySelector('#test').outerHTML
+        var filteredHtml = html.replace(/<img [^>]*data-x-src-cid=['"]([^'"]+)[^>]*>/i, function (match,p1,index, all) {
+            console.log(match,p1,index,all)
+            return match.replace(/src=['"]([^'"]+)['"]+/ig, '')
+        })
+        console.log(filteredHtml)
+    }
+</script>
+</body>
+</html>
