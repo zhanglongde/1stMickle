@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        有一个数组譬如有十个数字，一秒钟打印一个怎么实现？
+    </title>
+</head>
+<body>
+
+<script>
+    var arr = [1,2,3,4,5,6,7,8,9,0];
+    // 制造单个promise
+    function Log(i) {
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log(i)
+                resolve(i)
+            },1000)
+        })
+    }
+
+//    产生任务队列
+    const tasks = arr.map(value=>Log(value))
+//    Promise.all(tasks).then((data)=>{
+//       console.log('结束:' + data)
+//    })
+
+    console.log('%c-----------------------------------------------------------', 'background-color:#e66;color:#fff;font-size:30px;')
+//    how to then one by one? reduce
+    arr.reduce((promises, page) => {
+        return promises.then((page) => {
+            setTimeout(()=>{
+                console.log(page);
+            },1000*page)
+            return Promise.resolve(page+1);
+        });
+    }, Promise.resolve(1))
+</script>
+</body>
+</html>

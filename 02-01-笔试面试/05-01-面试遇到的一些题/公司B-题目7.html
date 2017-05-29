@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        实现一个once函数 参数是一个函数 返回值也是个函数 只能执行一次 下次执行就是undefined 例如：
+
+        var foo = once(function() { console.log(123); });
+        foo();//123
+        foo();//undefined
+        foo();//undefined
+    </title>
+</head>
+<body>
+
+
+<script>
+//    函数的静态属性，具有记忆功能
+    function once(cb) {
+      var flag = 1;
+      return function () {
+        if (flag) {
+//          console.log(cb.caller,arguments)
+          typeof cb === 'function' && cb.apply(cb.caller,arguments)
+          flag = 0
+        }
+      }
+    }
+    var foo = once(function (i) {
+      console.log(i)
+    })
+    foo(11) // 调用者为window
+    foo(22)
+    foo(33)
+</script>
+</body>
+</html>

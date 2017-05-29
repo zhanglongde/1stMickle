@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header></header>
+
+<div>
+    <div>
+        <span></span>
+    </div>
+</div>
+<div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <h1></h1>
+</div>
+
+<footer></footer>
+
+<script>
+    //通过all获取,利用getElementsByTagName计算数量
+    function NodeMost(nodes){
+        if (!Array.isArray(nodes)) {
+          return
+        }
+        var obj = {}
+        nodes.map((ele) => {
+            var tagName = ele.tagName
+            obj[tagName] ? obj[tagName]++ : obj[tagName] = 1
+        })
+        return obj
+    }
+    var a = [].slice.call(document.all)
+//    console.log(typeof document.all)
+//    console.log(a)
+    var o = NodeMost(a)
+    console.log(o)
+</script>
+</body>
+</html>

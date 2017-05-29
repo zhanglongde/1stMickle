@@ -2,13 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        数组为Object子类型
+    </title>
 </head>
 <body>
 
 <script>
     console.log(typeof []);
     console.log([] instanceof Array);
+    // [object Object]
+    console.log(Object.prototype.toString([]))
+
+//    判断类型的坑
+    console.log(typeof null) //null应该是一种基本类型
+    console.log(isNaN('a'))
 
     //javascript 数据类型
 //    基本数据类型 boolean number string  null undefined

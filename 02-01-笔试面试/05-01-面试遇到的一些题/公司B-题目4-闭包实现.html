@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>
         有一个数组譬如有十个数字，一秒钟打印一个怎么实现？
+        方法1：闭包
+        方法2：promise
+        方法3：async await
     </title>
 </head>
 <body>
@@ -18,9 +21,11 @@
         }
         console.log(arr);
         for(var i = 0,LEN= arr.length;i<LEN;i++){
-            setTimeout(function(){
-                console.log(arr[i]);
-            },1000);
+            (function (i) {
+                setTimeout(function(){
+                    console.log(arr[i]);
+                },1000*i);
+            })(i)
         }
     }
 
