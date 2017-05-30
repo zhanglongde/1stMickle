@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        map 函数并不会等异步函数 asyncFn 执行完毕后再返回结果
+        async 执行后会返回一个 Promise 对象
+    </title>
+</head>
+<body>
+
+
+<script>
+    const arr = [1,2,3,4,5]
+    const asyncFn = (data,index) => {
+        // 异步处理函数
+        setTimeout(()=>{
+          console.log('log:',data, index)
+        },2000*index)
+    }
+    const p = arr.map(async (num,index) => {
+        await asyncFn(num,index)
+        return ++num
+    })
+
+    Promise.all(p).then(results => {
+        console.log(results)
+    })
+
+
+//    const main = async function () {
+//        const results = await Promise.all(arr.map(num => {
+//            await asyncFn()
+//            return ++num
+//        }))
+//        console.log(results)
+//    }
+//
+//    main()
+</script>
+</body>
+</html>
