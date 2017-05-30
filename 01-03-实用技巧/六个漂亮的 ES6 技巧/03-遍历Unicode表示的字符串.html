@@ -2,9 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script>
+    for( const ch of 'x\uD83D\uDE80y') {
+        console.log(ch,ch.length)
+    }
+    console.log([..."x\uD83D\uDE80y"].length)
+</script>
 </body>
 </html>

@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        https://75team.com/post/six-nifty-es6-tricks.html
+    </title>
 </head>
 <body>
-$END$
+
+<script>
+    function mandatory() {
+      throw new Error('Missing parameter')
+    }
+    function foo(mustBeProvided = mandatory()) {
+       return mustBeProvided
+    }
+    var r = foo(123)
+    console.log(r)
+    foo()
+</script>
 </body>
 </html>

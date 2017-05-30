@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script>
+    var a = {a: 1};
+    // a ---> Object.prototype ---> null
+
+    var b = Object.create(a);
+    // b ---> a ---> Object.prototype ---> null
+    console.log(b.a); // 1 (继承而来)
+
+//    注意打印b,看不到
+</script>
 </body>
 </html>

@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script>
+    const arr = ["a", "b", "c"];
+    for (var v in arr) {
+       console.log(v)
+    }
+
+    for(const [index,elem] of arr.entries()){
+      console.log(`index = ${index},elem = ${elem}`)
+    }
+</script>
 </body>
 </html>

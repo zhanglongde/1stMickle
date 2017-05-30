@@ -2,9 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        统计“1”的个数
+        给定一个非负整数 num，对于任意 i，0 ≤ i ≤ num，计算 i 的值对应的二进制数中 “1” 的个数，将这些结果返回为一个数组。
+
+        例如：
+
+        当 num = 5 时，返回值为 [0,1,1,2,1,2]。
+
+        /**
+        * @param {number} num
+        * @return {number[]}
+        */
+        var countBits = function(num) {
+        //在此处实现代码
+        };
+    </title>
 </head>
 <body>
-$END$
+
+
+<script>
+    function countBit(n) {
+      return n.toString(2).replace(/0/g,'').length
+    }
+    function countBits(nums) {
+        var ret = []
+        for(var i = 0; i<= nums; i++){
+          ret.push(countBit(i))
+        }
+        return ret
+    }
+    var r = countBits(5)
+    var r2 = countBits(6)
+    console.log(r)
+    console.log(r2)
+</script>
 </body>
 </html>
