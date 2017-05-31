@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function isPrime(num) {
+        return !/^1?$|^(11+?)\1+$/.test(Array(num+1).join('1'))
+    }
+
+    console.log(isPrime(19))
+</script>
+</body>
+</html>

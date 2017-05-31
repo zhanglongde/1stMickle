@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        字符串数组去重 ["a","b","c","a","b","c"] --> ["a","b","c"]
+        https://github.com/jawil/blog/issues/20
+    </title>
+</head>
+<body>
+
+<script>
+    var str_arr = ["a", "b", "c", "a", "b", "c"]
+
+    function unique(arr) {
+        return arr.sort().join(",,").
+        replace(/(,|^)([^,]+)(,,\2)+(,|$)/g, "$1$2$4").
+        replace(/,,+/g, ",").
+        replace(/,$/, "").
+        split(",")
+    }
+
+    console.log(unique(str_arr)) // ["a","b","c"]
+</script>
+</body>
+</html>

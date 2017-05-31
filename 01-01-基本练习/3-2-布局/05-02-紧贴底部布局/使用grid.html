@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+            min-height: 100%;
+            display: grid;
+            grid-template-rows: 1fr auto;
+        }
+        .content {
+            padding: 20px;
+        }
+        .footer {
+            grid-row-start: 2;
+            grid-row-end: 3;
+        }
+
+
+
+
+
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font: 16px Sans-Serif;
+        }
+        h1 {
+            margin: 0 0 20px 0;
+        }
+        p {
+            margin: 0 0 20px 0;
+        }
+        .footer {
+            background: #42A5F5;
+            color: white;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <h1>Sticky Footer with Grid</h1>
+    <p><button id="add">Add Content</button></p>
+</div>
+
+<footer class="footer">
+    Footer
+</footer>
+</body>
+</html>
