@@ -1,0 +1,44 @@
+<html>
+<body>
+<div id="demo" style="position:absolute; left:0px; top:100px;width:100px; height:100px; background:#cc0;"></div>
+<div id="time"></div>
+<script>
+    var timeDiv = document.getElementById('time'),
+            count = 0;
+    requestAnimationFrame = window.requestAnimationFrame
+            || window.mozRequestAnimationFrame
+            || window.webkitRequestAnimationFrame
+            || window.msRequestAnimationFrame
+            || window.oRequestAnimationFrame
+            || function(callback) {
+                setTimeout(callback, 1000 / 60);
+            };
+    function animate(element, name, from, to, time) {
+        time = time || 800; // 默认0.8秒
+        var style = element.style,
+                startTime = (new Date()).getTime();
+
+        function go(timestamp) {
+            timestamp = timestamp || (new Date()).getTime();
+            var progress = timestamp - startTime;
+            timeDiv.innerHTML += progress + '\t\t';
+            count++;
+            if (progress >= time) {
+                style[name] = to + 'px';
+                timeDiv.innerHTML += '<br>have do  ' + count + ' setting';
+                return;
+            }
+
+            var now = (to - from) * (progress / time);
+            style[name] = now.toFixed() + 'px';
+            requestAnimationFrame(go);
+        }
+
+        style[name] = from + 'px';
+
+        requestAnimationFrame(go);
+    }
+    animate(document.getElementById('demo'), 'left', 0, 400, 1000);
+</script>
+</body>
+</html>
