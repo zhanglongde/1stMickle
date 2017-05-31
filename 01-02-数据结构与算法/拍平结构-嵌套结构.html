@@ -2,9 +2,97 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script src="../lib/lodash.js"></script>
+<script>
+    var labels = [{"id":"INBOX","name":"INBOX","messageListVisibility":"hide","labelListVisibility":"labelShow","type":"system","messagesTotal":520,"messagesUnread":48,"threadsTotal":394,"threadsUnread":38,"initThread":true,"nextPageToken":"08486644863232948092"},{"id":"UNREAD","name":"UNREAD","type":"system","messagesUnread":0,"threadsUnread":0,"messagesTotal":98,"threadsTotal":69,"initThread":true,"nextPageToken":false},
+        {"id":"STARRED","name":"STARRED","messageListVisibility":"hide","labelListVisibility":"labelShow","type":"system","messagesUnread":0,"threadsUnread":0,"messagesTotal":67,"threadsTotal":62,"initThread":true,"nextPageToken":false},{"id":"SENT","name":"SENT","type":"system","messagesUnread":0,"threadsUnread":0,"messagesTotal":277,"threadsTotal":260},
+        {"id":"DRAFT","name":"DRAFT","type":"system","messagesTotal":35,"messagesUnread":35,"threadsTotal":33,"threadsUnread":33},
+        {"id":"IMPORTANT","name":"IMPORTANT","messageListVisibility":"hide","labelListVisibility":"labelHide","type":"system","messagesUnread":0,"threadsUnread":0,"messagesTotal":175,"threadsTotal":126},{"id":"SPAM","name":"SPAM","messageListVisibility":"hide","labelListVisibility":"labelHide","type":"system","messagesTotal":0,"messagesUnread":0,"threadsTotal":0,"threadsUnread":0},
+        {"id":"TRASH","name":"TRASH","messageListVisibility":"hide","labelListVisibility":"labelHide","type":"system","messagesUnread":0,"threadsUnread":0,"messagesTotal":921,"threadsTotal":917},
+        {"id":"Label_111","name":"1111111111111111111","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":7,"messagesUnread":0,"threadsTotal":4,"threadsUnread":0,"initThread":true,"nextPageToken":false},{"id":"Label_113","name":"1111111111111111111/211111111111111111","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":23,"messagesUnread":6,"threadsTotal":10,"threadsUnread":3,"initThread":true,"nextPageToken":false},
+        {"id":"Label_112","name":"1111111111111111111/222222222222222","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":0,"messagesUnread":0,"threadsTotal":0,"threadsUnread":0},{"id":"Label_76","name":"jianfeng.zhao@nextcont.com.old","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":35,"messagesUnread":15,"threadsTotal":30,"threadsUnread":10},
+        {"id":"Label_105","name":"jianfeng.zhao@nextcont.com.old/111","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":7,"messagesUnread":1,"threadsTotal":7,"threadsUnread":1,"initThread":true,"nextPageToken":false},{"id":"Label_107","name":"jianfeng.zhao@nextcont.com.old/333","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":6,"messagesUnread":5,"threadsTotal":4,"threadsUnread":3},
+        {"id":"Label_109","name":"jianfeng.zhao@nextcont.com.old/555","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":2,"messagesUnread":0,"threadsTotal":2,"threadsUnread":0},
+        {"id":"Label_97","name":"jianfeng.zhao@nextcont.com.old/A progressive, incrementally-adoptable JavaScript framework for building UI on the web. http://vuejs.org","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":0,"messagesUnread":0,"threadsTotal":0,"threadsUnread":0},
+        {"id":"Label_106","name":"jianfeng.zhao@nextcont.com.old/N1-Snoozed","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":3,"messagesUnread":2,"threadsTotal":2,"threadsUnread":1},{"id":"Label_85","name":"jianfeng.zhao@nextcont.com.old/test","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":57,"messagesUnread":30,"threadsTotal":44,"threadsUnread":20},
+        {"id":"Label_86","name":"jianfeng.zhao@nextcont.com.old/test01","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":51,"messagesUnread":26,"threadsTotal":42,"threadsUnread":21},
+        {"id":"Label_110","name":"jianfeng.zhao@nextcont.com.old/test01/23222222","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":1,"messagesUnread":0,"threadsTotal":1,"threadsUnread":0},{"id":"Label_91","name":"jianfeng.zhao@nextcont.com.old/test01/test01-son1","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":2,"messagesUnread":0,"threadsTotal":2,"threadsUnread":0},
+        {"id":"Label_92","name":"jianfeng.zhao@nextcont.com.old/test01/test01-son1/testq1","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":0,"messagesUnread":0,"threadsTotal":0,"threadsUnread":0},{"id":"Label_93","name":"jianfeng.zhao@nextcont.com.old/test01/test01-son1/testq1/testq2","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":0,"messagesUnread":0,"threadsTotal":0,"threadsUnread":0},
+        {"id":"Label_94","name":"jianfeng.zhao@nextcont.com.old/test01/test01-son1/testq1/testq2/testtesttesttestq3","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":0,"messagesUnread":0,"threadsTotal":0,"threadsUnread":0},{"id":"Label_95","name":"jianfeng.zhao@nextcont.com.old/test01/test01-son1/testq1/testq2/testtesttesttestq3/tt","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":0,"messagesUnread":0,"threadsTotal":0,"threadsUnread":0},
+        {"id":"Label_96","name":"jianfeng.zhao@nextcont.com.old/test01/test01-son1/testq1/testq2/testtesttesttestq3/tt/ttttttttttttttttttttttttttttttttttttttttttttttttttttttt","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":0,"messagesUnread":0,"threadsTotal":0,"threadsUnread":0},
+        {"id":"Label_99","name":"jianfeng.zhao@nextcont.com.old/test01/test01-son1/testq1/testq2/testtesttesttestq3/tt/ttttttttttttttttttttttttttttttttttttttttttttttttttttttt/rrr","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":0,"messagesUnread":0,"threadsTotal":0,"threadsUnread":0},
+        {"id":"Label_100","name":"jianfeng.zhao@nextcont.com.old/test01/test01-son1/testq1/testq2/testtesttesttestq3/tt/ttttttttttttttttttttttttttttttttttttttttttttttttttttttt/rrr/6776","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":0,"messagesUnread":0,"threadsTotal":0,"threadsUnread":0},
+        {"id":"Label_101","name":"jianfeng.zhao@nextcont.com.old/test01/test01-son1/testq1/testq2/testtesttesttestq3/tt/ttttttttttttttttttttttttttttttttttttttttttttttttttttttt/rrr/6776/asdfghj","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":0,"messagesUnread":0,"threadsTotal":0,"threadsUnread":0},
+        {"id":"Label_102","name":"jianfeng.zhao@nextcont.com.old/test01/test01-son1/testq1/testq2/testtesttesttestq3/tt/ttttttttttttttttttttttttttttttttttttttttttttttttttttttt/rrr/6776/asdfghj/2222","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":0,"messagesUnread":0,"threadsTotal":0,"threadsUnread":0},
+        {"id":"Label_103","name":"jianfeng.zhao@nextcont.com.old/test01/test01-son1/testq1/testq2/testtesttesttestq3/tt/ttttttttttttttttttttttttttttttttttttttttttttttttttttttt/rrr/6776/asdfghj/2222/333333333333333333","type":"user","messagesTotal":0,"messagesUnread":0,"threadsTotal":0,"threadsUnread":0},
+        {"id":"Label_98","name":"jianfeng.zhao@nextcont.com.old/zhangld","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":0,"messagesUnread":0,"threadsTotal":0,"threadsUnread":0},
+        {"id":"Label_90","name":"jianfeng.zhao@nextcont.com.old/图片1111111111111111111111111111111111111111111111222","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":4,"messagesUnread":2,"threadsTotal":3,"threadsUnread":2},{"id":"Label_89","name":"jianfeng.zhao@nextcont.com.old/学习qqqqqqqqqqqqqqqqqqqqqqqqqqqqqrrrr","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":33,"messagesUnread":20,"threadsTotal":28,"threadsUnread":15},
+        {"id":"Label_88","name":"jianfeng.zhao@nextcont.com.old/工作","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":21,"messagesUnread":13,"threadsTotal":16,"threadsUnread":8},{"id":"Label_77","name":"jianfeng.zhao@nextcont.com.old/测试测试子标签/子标签的子标签testtest","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":6,"messagesUnread":5,"threadsTotal":4,"threadsUnread":3},
+        {"id":"Label_104","name":"jianfeng.zhao@nextcont.com.old/狂风暴雨也要和你双飞，让我们牵手，生死在人间","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":17,"messagesUnread":1,"threadsTotal":17,"threadsUnread":1},
+        {"id":"Label_87","name":"jianfeng.zhao@nextcont.com.old/狂风暴雨也要和你双飞，让我们牵手，生死在人间/test02","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":35,"messagesUnread":22,"threadsTotal":30,"threadsUnread":17},
+        {"id":"Label_114","name":"test/test","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":0,"messagesUnread":0,"threadsTotal":0,"threadsUnread":0},
+        {"id":"Label_115","name":"test/test/test","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":0,"messagesUnread":0,"threadsTotal":0,"threadsUnread":0},
+        {"id":"Label_116","name":"test/test/test/test/test","messageListVisibility":"show","labelListVisibility":"labelShow","type":"user","messagesTotal":0,"messagesUnread":0,"threadsTotal":0,"threadsUnread":0}]
+    function isRoot (label, parentName, abnormal) {
+        if (!parentName) {
+          return label.name.indexOf('/') < 0
+        }
+        return label.name.lastIndexOf('/') === parentName.length
+    }
+
+    function handleLabels (oldData, hierachy, parentName) {
+        if (!Array.isArray(oldData) || oldData.length < 1) {
+            return
+        }
+        let rootData = []
+        let branchData = []
+        oldData.map(function (label) {
+            if (isRoot(label, parentName)) {
+                label.hierachy = hierachy
+                label.briefName = getSimpleLabelName(label.name,parentName)
+                label.parentName = !parentName ? '' : parentName
+                rootData.push(label)
+            } else {
+                branchData.push(label)
+            }
+        })
+        rootData.map(function (label) {
+            let children = []
+            children = _.remove(branchData, function (x) {
+                return x.name.indexOf(label.name + '/') >= 0
+            })
+            if (children.length > 0) {
+                label.children = handleLabels(children, hierachy+1, label.name)
+            }
+        })
+        if (branchData.length > 0) {
+            let data = []
+            branchData.map(function (label) {
+                let children = []
+                children = _.remove(branchData, function (x) {
+                    return x.name.indexOf(label.name + '/') >= 0
+                })
+                if (children.length > 0) {
+                    label.children = handleLabels(children, hierachy+1, label.name)
+                }
+                label.hierachy = hierachy
+                label.briefName = getSimpleLabelName(label.name,parentName)
+                label.parentName = !parentName ? '' : parentName
+                data.push(label)
+            })
+
+            rootData = rootData.concat(data)
+        }
+        return rootData
+    }
+    function getSimpleLabelName (labelName,parentName) {
+        return !parentName ? labelName : labelName.substring(parentName.length+1)
+    }
+    console.log(handleLabels(labels.filter(x => x.type === 'user'),0))
+</script>
 </body>
 </html>
