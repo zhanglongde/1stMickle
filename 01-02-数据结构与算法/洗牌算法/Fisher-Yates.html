@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        Fisher-Yates
+        从原始数组中随机抽取一个新的元素到新的数组中
+        时间复杂度O(n^2)
+    </title>
 </head>
 <body>
-$END$
+
+
+<script>
+    var arr = [1,2,3,4,55,6,7,8,9,0]
+    function shuffle(arr) {
+      var result = []
+      while (arr.length>0) {
+          var i = Math.floor(Math.random()*arr.length)
+          result.push(arr[i])
+          arr.splice(i,1)
+      }
+
+      return result
+    }
+    var r = shuffle(arr)
+    console.log(r)
+</script>
 </body>
 </html>

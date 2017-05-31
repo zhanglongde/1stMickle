@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        Fisher-Yates 洗牌算法的一个变种是 Knuth Shuffle
+
+        每次从未处理的数组中随机取一个元素，然后把该元素放到数组的尾部，即数组的尾部放的就是已经处理过的元素，
+        这是一种原地打乱的算法，每个元素随机概率也相等，时间复杂度从 Fisher 算法的 O(n2)提升到了 O(n)
+    </title>
 </head>
 <body>
-$END$
+
+<script>
+    var arr = [1,2,3,4,55,6,7,8,9,0]
+    function shuffle(arr) {
+       var LEN = arr.length
+       for (var i = 0;i<LEN;i++) {
+           var randomIndex = parseInt(Math.random()*(LEN-i))
+           var t= arr[LEN-1-i]
+           arr[LEN-1-i] = arr[randomIndex]
+           arr[randomIndex] = t
+       }
+       return arr
+    }
+    var r = shuffle(arr)
+    console.log(r)
+</script>
 </body>
 </html>

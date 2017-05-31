@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script>
+    var i = 1
+    function go() {
+        var ndDiv = document.createElement('div')
+        ndDiv.innerText = i
+        document.body.appendChild(ndDiv)
+        i++
+        console.log(i)
+        requestAnimationFrame(go)
+    }
+    requestAnimationFrame(go);
+</script>
 </body>
 </html>
