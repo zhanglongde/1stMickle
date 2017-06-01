@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        事件委托跟冒泡没有关系
+    </title>
+</head>
+<body>
+<ul id="list"></ul>
+
+<script>
+    window.onload = function () {
+        (function () {
+            var html = ''
+            var LEN = 3
+            for(var i = 0; i< LEN; i++){
+                html += `<li>${i+1}</li>`
+            }
+            var ndList = document.getElementById('list')
+            ndList.innerHTML = html
+
+            // 不设置第三个参数，则冒泡阶段触发父元素事件
+            ndList.addEventListener('click', function () {
+                // window.event
+               alert(event.target.innerText)
+            })
+        })()
+    }
+</script>
+</body>
+</html>

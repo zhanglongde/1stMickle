@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul class="list"></ul>
+
+<script>
+    window.onload = function () {
+//        最小作用域原则：IIFE
+        (function () {
+            var ndList = document.querySelector('.list')
+            var LEN = 3
+            for(var i = 0; i< LEN; i++){
+                var ndLi = document.createElement('li')
+                ndLi.innerText = i+1
+                ndList.appendChild(ndLi)
+            }
+        })()
+    }
+</script>
+</body>
+</html>

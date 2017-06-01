@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        页面上有个空的无序列表节点，用 <ul></ul> 表示，要往列表中插入 3 个 <li>，
+        每个列表项的文本内容是列表项的插入顺序，取值 1, 2, 3，怎么用原生的 JS 实现这个需求？
+        同时约定，为方便获取节点引用，可以根据需要为 <ul> 节点加上 id 或者 class 属性。
+    </title>
+</head>
+<body>
+<ul id="list"></ul>
+
+<script>
+    window.onload = function () {
+        (function () {
+            var html = ''
+            var LEN = 3
+            for(var i = 0; i< LEN; i++){
+                html += `<li>${i+1}</li>`
+            }
+            var ndList = document.getElementById('list')
+            ndList.innerHTML = html
+        })()
+    }
+</script>
+</body>
+</html>

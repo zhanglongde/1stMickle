@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        如果要在 <ul> 中插入 30000 个 <li>，会有什么问题？代码需要怎么改进？
+        几乎可以肯定，页面体验不再流畅，甚至会出现明显的卡顿感，该怎么解决？
+
+
+        减少DOM操作次数 DocumentFragment
+
+        requestAnimationFrame API解决非常好使的代码段对渲染的阻塞问题
+    </title>
+</head>
+<body>
+<ul id="list"></ul>
+
+<script>
+    window.onload = function () {
+        (function () {
+
+            const LEN = 30000
+            const batchSize = 4 // 每批插入的节点次数，越大越卡
+            const batchCount = LEN /batchSize // 需要批量处理多少次
+            let batchDone = 0 //已经完成的批处理次数
+            const ndContainer = document.getElementById('list')
+
+            function appendItems() {
+              const fragment = document.createDocumentFragment()
+              for(let i = 0; i< batchSize; i++){
+                const ndItem = document.createElement('li')
+                ndItem.innerText = (batchDone * batchSize) + i + 1
+                fragment.appendChild(ndItem)
+              }
+              
+//              每次批处理只修改一次DOM
+                ndContainer.appendChild(fragment)
+
+              batchDone += 1
+              doBatchAppend()
+            }
+
+            function doBatchAppend() {
+              if (batchDone < batchCount) {
+                window.requestAnimationFrame(appendItems)
+              }
+            }
+
+            doBatchAppend()
+
+            // 不设置第三个参数，则冒泡阶段触发父元素事件
+            ndContainer.addEventListener('click', function () {
+                if (event.target.tagName === 'LI') {
+                    // window.event
+                    alert(event.target.innerText)
+                }
+            })
+        })()
+    }
+</script>
+</body>
+</html>
