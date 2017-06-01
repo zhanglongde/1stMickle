@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        sort会修改原数据
+        对象属性为字符串，注意不能用-比较
+    </title>
 </head>
 <body>
 
+<script>
+    var arr = [{name:'zld'},{name:'hello'},{name:'zlb'}]
+    var r = arr.sort((a,b) => b.name>a.name)
+    console.log(arr)
+    console.log(r)
+</script>
 </body>
 </html>

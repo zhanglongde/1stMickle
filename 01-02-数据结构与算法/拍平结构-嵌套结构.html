@@ -54,7 +54,7 @@
             if (isRoot(label, parentName)) {
                 label.hierachy = hierachy
                 label.briefName = getSimpleLabelName(label.name,parentName)
-                label.parentName = !parentName ? '' : parentName
+//                console.log(label)
                 rootData.push(label)
             } else {
                 branchData.push(label)
@@ -70,27 +70,28 @@
             }
         })
         if (branchData.length > 0) {
+            let branchDataCopy = _.cloneDeep(branchData)
             let data = []
-            branchData.map(function (label) {
+            branchDataCopy.map(function (label) {
                 let children = []
                 children = _.remove(branchData, function (x) {
                     return x.name.indexOf(label.name + '/') >= 0
                 })
                 if (children.length > 0) {
-                    label.children = handleLabels(children, hierachy+1, label.name)
+                    label.children = handleLabels(children, label.name)
+                } else {
+                    label.hierachy = hierachy
+                    label.briefName = getSimpleLabelName(label.name,parentName)
+                    data.push(label)
                 }
-                label.hierachy = hierachy
-                label.briefName = getSimpleLabelName(label.name,parentName)
-                label.parentName = !parentName ? '' : parentName
-                data.push(label)
             })
 
-            rootData = rootData.concat(data)
+            rootData = rootData.concat(branchData)
         }
         return rootData
     }
     function getSimpleLabelName (labelName,parentName) {
-        return !parentName ? labelName : labelName.substring(parentName.length+1)
+        return !parentName ? labelName :parentName.substring(labelName.length+1)
     }
     console.log(handleLabels(labels.filter(x => x.type === 'user'),0))
 </script>
