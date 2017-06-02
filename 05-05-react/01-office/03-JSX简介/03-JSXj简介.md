@@ -1,0 +1,2 @@
+JSX代表Objects
+Babel转义器会把JSX转换成一个名为React.createElement()的方法调用。
