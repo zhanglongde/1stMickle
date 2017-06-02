@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        nodeType 1
+        tagName
+        childNodes
+    </title>
+</head>
+<body>
+<header></header>
+
+<div>
+    <div>
+        <span></span>
+    </div>
+</div>
+<div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <h1></h1>
+</div>
+
+<footer></footer>
+
+<script>
+    var map = {}
+    var arr = []
+    function dfs(node) {
+      if (node.nodeType === 1) {
+        var tagName = node.tagName
+        arr.push(node)
+        map[tagName] ? map[tagName] ++ : map[tagName] = 1;
+        [].slice.call(node.childNodes).map(cNode => dfs(cNode))
+      }
+    }
+    dfs(document.body)
+    console.log(map)
+    console.log(arr)
+</script>
+</body>
+</html>

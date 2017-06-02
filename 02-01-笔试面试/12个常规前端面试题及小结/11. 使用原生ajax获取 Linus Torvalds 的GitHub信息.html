@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        11. 使用原生ajax获取 Linus Torvalds 的GitHub信息
+        (API:https://api.github.com/users/torvalds，如记不清具体代码简述过程即可)，
+        并将JSON字符串解析为JSON对象，并讲讲对JSON的了解
+
+        JSON是一种轻量级数据交换格式
+        JSON解析
+        JSON格式化
+    </title>
+</head>
+<body>
+
+
+<script>
+    var api = 'https://api.github.com/users/zhanglongde'
+//    创建XHR对象
+    var xhr = new XMLHttpRequest()
+    
+    xhr.open('get',api,true)
+    xhr.send()
+    
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log(JSON.parse(xhr.responseText))
+      }
+    }
+</script>
+</body>
+</html>

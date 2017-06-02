@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>
         http://jerryzou.com/posts/dive-into-deep-clone-in-javascript/
+        Node对象 使用cloneNode
+        Date对象 newDate(obj.getTime())
+        RegExp对象比较复杂
     </title>
 </head>
 <body>
@@ -16,14 +19,25 @@
         //递归终结条件
         //null,undefined,non-object,function
         if(!obj || typeof obj != 'object'){
-            return;
+            return obj;
         }
 
         //DOM Node
-
+        if (obj.nodeType && 'cloneNode' in obj) {
+          return obj.cloneNode(true)
+        }
         //Date
-
+        if (_toString.call(obj) === '[object Date]') {
+          return new Date(obj.getTime())
+        }
         //RegExp
+        if (_toString.call(obj) === '[object RegExp]') {
+          var flags = []
+          obj.global && flags.push('g')
+          obj.multiline && flags.push('m')
+          obj.ignoreCase && flags.push('i')
+          return new RegExp(obj.source, flags.join(''))
+        }
 
         var result = Array.isArray(obj) ? [] :
                 obj.constructor ? new obj.constructor():{};

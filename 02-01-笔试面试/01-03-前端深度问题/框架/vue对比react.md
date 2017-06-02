@@ -6,6 +6,7 @@
 
 不同点
 1. Vue虚拟DOM fork自snabbdom
+   React.createElement
 2. Vue组件无需声明，实例化
 3. 组件更新 
    React手动跟踪： react的一个组件的state发生变化，将触发从跟组件开始整个组件树的重新渲染

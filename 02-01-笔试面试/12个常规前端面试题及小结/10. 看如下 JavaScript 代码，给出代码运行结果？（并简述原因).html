@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        函数声明提升优先？
+        立即执行函数声明也会提升
+    </title>
+</head>
+<body>
+
+
+<script>
+    var a = 2
+
+    function foo() {
+        console.log(a) // 1.???
+        console.log(bar())  // 2.???
+        var a = 1 // 变量声明提升，并对全局的a产生遮蔽效应
+        function bar(){ // 函数声明提升
+            return a
+        }
+        console.log(bar())  // 3.???
+    }
+
+    foo()
+    console.log(a) // 4. ???
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    function A() {
+        console.log('A')
+    }
+    console.log(A.constructor) // Function
+    console.log(A.prototype) // Object
+    console.log('%c-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+    var a = new A()
+    console.log(a.constructor)//函数 A
+    console.log(a.__proto__)// Object
+
+
+
+    console.log('%c-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+//    注意：对象字面量声明的对象,不能用于Object.create
+    var c = {
+        name:'c'
+    }
+    console.log(c.constructor) // Object
+    console.log(c.prototype) // undefined,不存在原型链
+    console.log(c.__proto__)
+</script>
+</body>
+</html>

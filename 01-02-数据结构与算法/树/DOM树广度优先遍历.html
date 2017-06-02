@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+<header>header</header>
 <div class="root">
     <div class="container">
         <section class="sidebar">
@@ -16,15 +17,18 @@
         </section>
     </div>
 </div>
+<footer>footer</footer>
 
 <script>
     const traverse = (ndRoot) => {
+        var arr = []
         const queue = [ndRoot];
 
         while (queue.length) {
             const node = queue.shift();
 
-            printInfo(node);
+//            printInfo(node);
+            arr.push(node)
 
             if (!node.children.length) {
                 continue;
@@ -32,6 +36,8 @@
 
             Array.from(node.children).forEach(x => queue.push(x));
         }
+
+        return arr
     };
 
     const printInfo = (node) => {
@@ -39,7 +45,8 @@
     };
 
     // kickoff
-    traverse(document.querySelector('.root'));
+    var arr = traverse(document.body);
+    console.log(arr)
 </script>
 </body>
 </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        递归实现
+        1.类型判断 作为递归中介条件
+        Object.prototype.toString.call用于检测基本数据类型  兼容性最好
+        2.遍历所有属性
+        数组 对象循环都用for in
+        3.浅拷贝
+        数组浅拷贝用push
+        对象浅拷贝用赋值
+    </title>
+</head>
+<body>
+
+<script>
+    function deepClone(obj) {
+//        Array.isArray(obj)
+       if (Object.prototype.toString.call(obj) === '[object Array]') {
+         var arr = []
+         var value
+         for (var key in obj) {
+           value = Object.prototype.toString.call(obj[key]) === '[object Object]' ? deepClone(obj[key]) : obj[key]
+           arr.push(value)
+         }
+         return arr
+       }
+       var o = {}
+       var v
+       for (var k in obj) {
+          v = Object.prototype.toString.call(obj[k]) === '[object Object]' ? deepClone(obj[k]) : obj[k]
+         o[k] = v
+       }
+       return o
+    }
+
+    function A(){
+        this.a = a;
+    }
+    var a = {
+        name:'qiu',
+        num:1,
+        is:false,
+        obj:{age:27},
+        hobbys:['book',{name:'hobbys'},111]
+    };
+
+    var c = new A();
+    var b = deepClone(c);
+    console.log(c.a === b.a);
+    console.log(c,b);
+</script>
+</body>
+</html>
