@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>
-        会被改变
-    </title>
+    <title>Title</title>
 </head>
 <body>
 
@@ -19,14 +17,14 @@
         {id:'128',messageId:'msg-128', draftId:'d128', inReplyTo:'',internalDate:22345678}
     ]
 
-    let filtered = msgs.filter(msg => {
+    let map = msgs.map(msg => {
         if (parseInt(msg.id) > 125) {
-          msg.extra = 'marked'
-          return true
+            msg.extra = 'marked'
         }
+         return msg
     })
     console.log(msgs)
-    console.log(filtered)
+    console.log(map)
 </script>
 </body>
 </html>

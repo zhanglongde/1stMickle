@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+//    构造函数
+    function Base () {
+
+    }
+    console.log(Base.prototype) //指向Object
+    console.log(Base.constructor) //Function
+
+    var b = new Base()
+    console.log(b.__proto__)//也指向Object
+    console.log(b.constructor)// 指向Base
+</script>
+</body>
+</html>

@@ -44,8 +44,8 @@
         let newestEmptyIrtDraft = emptyIrtDraft.reduce((prev, next) => (prev.internalDate && next.internalDate && prev.internalDate > next.internalDate) ? prev : next)
         tmpMsg[tmpMsgLength - 1].draftID = newestEmptyIrtDraft.id
     }
-    console.log('Msg:',tmpMsg)
-    console.log('Draft:',tmpDraft)
+    console.log('tmpMsg:',tmpMsg)
+    console.log('tmpDraft:',tmpDraft)
     console.log('Empty Draft:',emptyIrtDraft)
     console.log(msgs)
 </script>

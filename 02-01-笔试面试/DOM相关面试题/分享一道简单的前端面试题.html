@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+
+    </title>
+</head>
+<body>
+<ul id="list" class="foo">
+    <li>#0</li>
+    <li><span>#1</span></li>
+    <li>#2</li>
+    <li>#3</li>
+    <li><ul><li>#4</li></ul></li>
+    <li>#5</li>
+    <li>#6</li>
+    <li>#7</li>
+    <li>#8</li>
+    <li>#9</li>
+    <li>#10</li>
+    <li>#11</li>
+    <li>#12</li>
+    <li>#13</li>
+    <li>#14</li>
+    <li>#15</li>
+    <li>#16</li>
+    ...
+    <li><a href="//v2ex.com">#99998</a></li>
+    <li>#99999</li>
+    <li>#100000</li>
+</ul>
+
+<button id="no1">No1</button>
+<button id="no2">No2</button>
+<button id="no3">No3</button>
+
+
+<script>
+//    为 <ul> 添加一个类 bar
+//    删除第 10 个 <li>
+//    在第 500 个 <li> 后面增加一个 <li> , 其文字内容为 <v2ex.com />
+//    点击任意 <li> 弹窗显示其为当前列表中的第几项。
+
+    function no1() {
+        var ndUl = document.querySelector('#list')
+        ndUl.classList.add('bar')
+    }
+     document.querySelector('#no1').addEventListener('click',no1)
+
+
+    function no2() {
+        var ndLis = document.querySelectorAll('li')
+        ndLis[10].parentNode.removeChild(ndLis[10])
+    }
+    document.querySelector('#no2').addEventListener('click',no2)
+
+    function no3() {
+        var ndLi = document.createElement('li')
+        ndLi.innerText = '<v2ex.com>'
+        var ndUl = document.querySelector('#list')
+//        不能用childNodes 因为包括了一些文本节点
+        ndUl.insertBefore(ndLi,ndUl.children[15])
+    }
+    document.querySelector('#no3').addEventListener('click',no3)
+
+
+var ndUl = document.querySelector('#list')
+    ndUl.addEventListener('click',function(e){
+        alert(e.target.textContent)
+})
+</script>
+</body>
+</html>
