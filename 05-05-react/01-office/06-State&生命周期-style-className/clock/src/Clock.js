@@ -27,15 +27,22 @@ class Clock extends Component {
     })
   }
 
+  componentWillMount() {
+    console.log('called before render function')
+  }
+
   componentDidMount () {
+    console.log('called after render function')
     this.timerID = setInterval(() => this.tick(),1000)
   }
 
   componentWillUnmount() {
+    console.log('unmount')
     clearInterval(this.timerID)
   }
 
   render() {
+//     console.log('call render function')
     return (
       <div>
         <h1 style={{color:'#fb3'}} className="hello">定时器</h1>

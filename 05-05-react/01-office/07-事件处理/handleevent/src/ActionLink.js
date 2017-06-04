@@ -26,14 +26,28 @@ class ActionLink extends Component {
     // redux中才有store.getState
     let count = this.state.count
     e.target.innerText = count
-    this.setState({
+//     方法1：一般形式
+//     this.setState({
+//       count:++count
+//     })
+
+//     方法2：回调形式
+    this.setState(prevState => ({
       count:++count
-    })
+    }))
   }
 
   render () {
     return (
+      <div>
         <a href="#" onClick={this.handleClick.bind(this)} style={this.btnCls}>Click me</a>
+
+        {/*处于草案阶段*/}
+        {/*<a href="#" onClick={::this.handleClick} style={this.btnCls}>双冒号语法，只绑定不传参</a>*/}
+
+        {/*箭头函数*/}
+        <a href="#" onClick={(e) => {this.handleClick(e)}} style={this.btnCls}>Click me</a>
+      </div>
       )
   }
 }
