@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<button>click</button>
+
+<script>
+    var event = new MouseEvent('click', {
+        'view': window,
+        'bubbles': true,
+        'cancelable': true
+    });
+
+    var nd =  document.querySelector('button')
+    nd.addEventListener('click', function () {
+        console.log('.................')
+    })
+
+    nd.dispatchEvent(event)
+</script>
 </body>
 </html>

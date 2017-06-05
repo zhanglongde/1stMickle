@@ -20,33 +20,53 @@
 <footer>footer</footer>
 
 <script>
-    const traverse = (ndRoot) => {
+//    const traverse = (ndRoot) => {
+//        var arr = []
+//        const queue = [ndRoot];
+//
+//        while (queue.length) {
+//            const node = queue.shift();
+//
+////            printInfo(node);
+//            arr.push(node)
+//
+//            if (!node.children.length) {
+//                continue;
+//            }
+//
+//            Array.from(node.children).forEach(x => queue.push(x));
+//        }
+//
+//        return arr
+//    };
+//
+//    const printInfo = (node) => {
+//        console.log(node.tagName, `.${node.className}`);
+//    };
+//
+//    // kickoff
+//    var arr = traverse(document.body);
+//    console.log(arr)
+    
+     function bfs(ndRoot) {
         var arr = []
-        const queue = [ndRoot];
-
-        while (queue.length) {
-            const node = queue.shift();
-
-//            printInfo(node);
-            arr.push(node)
-
-            if (!node.children.length) {
-                continue;
+        var ndQueue = [ndRoot]
+        while(ndQueue.length > 0) {
+            // 开始从队列头开始遍历，遍历完，出队
+            var ndItem = ndQueue.shift()
+            arr.push(ndItem)
+            if (!ndItem.children.length) {
+              continue
             }
-
-            Array.from(node.children).forEach(x => queue.push(x));
+//            将其子树入队
+            ndQueue = ndQueue.concat(Array.from(ndItem.children))
         }
-
         return arr
-    };
+     }
 
-    const printInfo = (node) => {
-        console.log(node.tagName, `.${node.className}`);
-    };
+     var arr = bfs(document.body)
+     console.log(arr)
 
-    // kickoff
-    var arr = traverse(document.body);
-    console.log(arr)
 </script>
 </body>
 </html>

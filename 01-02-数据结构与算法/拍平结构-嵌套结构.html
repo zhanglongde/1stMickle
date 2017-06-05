@@ -70,9 +70,9 @@
             }
         })
         if (branchData.length > 0) {
-            let branchDataCopy = _.cloneDeep(branchData)
+//            let branchDataCopy = _.cloneDeep(branchData)
             let data = []
-            branchDataCopy.map(function (label) {
+            branchData.map(function (label) {
                 let children = []
                 children = _.remove(branchData, function (x) {
                     return x.name.indexOf(label.name + '/') >= 0
@@ -91,9 +91,43 @@
         return rootData
     }
     function getSimpleLabelName (labelName,parentName) {
-        return !parentName ? labelName :parentName.substring(labelName.length+1)
+        return !parentName ? labelName : parentName.substring(labelName.length+1)
     }
-    console.log(handleLabels(labels.filter(x => x.type === 'user'),0))
+
+    let userTree = handleLabels(labels.filter(x => x.type === 'user'),0)
+    console.log(userTree)
+
+
+//    删除子树
+    function removeSubtree(rootTree, subtreeId) {
+      if (!Array.isArray(rootTree) || typeof subtreeId !== 'string') {
+        return false
+      }
+      let LEN = rootTree.length
+      for (let i = 0; i < LEN; i++) {
+         if (rootTree[i].id === subtreeId) {
+             rootTree.splice(i,1)
+             return true
+         }
+      }
+      for (let i = 0; i < LEN; i++) {
+        let children = rootTree[i].children
+        if (!Array.isArray(rootTree)) {
+          continue
+        }
+        if (removeSubtree(children, subtreeId)) {
+          return true
+        }
+      }
+
+      return false
+    }
+
+//    let isRemoved = removeSubtree(userTree, 'Label_111')
+//    let isRemoved = removeSubtree(userTree, 'Label_115')
+    let isRemoved = removeSubtree(userTree, 'Label_104')
+    console.log(isRemoved)
+    console.log(userTree)
 </script>
 </body>
 </html>

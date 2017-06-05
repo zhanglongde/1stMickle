@@ -6,5 +6,21 @@
 </head>
 <body>
 
+<script>
+//    先不考虑浏览器兼容性问题,不考虑事件队列问题
+    function ready(fn) {
+        document.addEventListener('DOMContentLoaded', function () {
+            typeof fn === 'function' && fn()
+        })
+    }
+    
+    ready(function () {
+        console.log('ready...')
+    })
+
+    ready(function () {
+        console.log('ready...2')
+    })
+</script>
 </body>
 </html>

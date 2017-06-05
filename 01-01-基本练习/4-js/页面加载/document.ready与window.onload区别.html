@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+1.执行时间
+window.onload()方法是必须等到页面内包括图片的所有元素加载完毕后才能执行。
+$(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完毕。
+
+2.执行个数
+
+
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    window.onload = function () {
+      console.log('window.onload ...')
+    }
+
+    $(document).ready(function () {
+        console.log('jQuery ready...')
+    })
+
+    $(window).load(function () {
+        console.log('jQuery load...')
+    })
+</script>
+</body>
+</html>

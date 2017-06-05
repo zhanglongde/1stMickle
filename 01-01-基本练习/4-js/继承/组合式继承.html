@@ -18,10 +18,19 @@
         }
     }
     var base = new Base()
+//    方法1
     var sub = Object.create(base)
     sub.name='zld'
     console.log(base)
     console.log(sub)
+    
+    // 方法2：但是只有继承的部分不是本身属性，基类部分挂载原型对象上
+    var sub2 = Object.create(base,{
+        str: {
+            value:'sub2 str'
+        }
+    })
+    console.log(sub2)
 </script>
 </body>
 </html>

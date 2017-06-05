@@ -7,8 +7,9 @@
 <body>
 
 <script>
+
 //    DOM构建完成
-    document.addEventListener("DOMContentLoaded", function() {
+    window.addEventListener("DOMContentLoaded", function() {
         // ...代码...
         console.log('DOMContentLoaded...')
     }, false);
@@ -18,6 +19,18 @@
         // ...代码...
         console.log('load...')
     }, false);
+
+
+    window.addEventListener('domComplete', function () {
+        console.log('complete...')
+    })
+
+var start = window.performance.now()
+for (let i = 0; i < 100; i++) {
+    console.log(i)
+}
+var end = window.performance.now()
+console.log(end-start)
 </script>
 </body>
 </html>

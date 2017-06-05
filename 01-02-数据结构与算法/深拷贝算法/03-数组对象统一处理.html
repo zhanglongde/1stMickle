@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    Object.prototype.clone = function () {
+      var o = this.contructor === Array ? [] : {};
+      for(var e in this) {
+          o[e] = typeof this[e] === 'object' ? this[e].clone() : this[e];
+      }
+      return o
+    }
+
+    function A(){
+        this.prop = prop;
+    }
+    var prop = {
+        name:'qiu',
+        num:1,
+        is:false,
+        obj:{age:27},
+        hobbys:['book',{name:'hobbys'},111]
+    };
+
+    var a = new A()
+    var b = a.clone()
+    console.log(a)
+    console.log(b)
+</script>
+</body>
+</html>
