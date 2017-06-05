@@ -5,6 +5,20 @@
     <title>$Title$</title>
 </head>
 <body>
-$END$
+<input type="text" id="a">
+<span id="b"></span>
+
+<script>
+    var obj = {}
+    Object.defineProperty(obj,'hello',{
+        set: function (newValue) {
+          document.querySelector('#a').value = newValue
+          document.querySelector('#b').textContent = newValue
+        }
+    })
+    document.querySelector('#a').addEventListener('keyup',function (e) {
+        obj.hello = e.target.value
+    })
+</script>
 </body>
 </html>

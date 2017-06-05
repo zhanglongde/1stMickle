@@ -27,16 +27,14 @@
         }
     })
 
-    data.name = 'sss'
-    input1.onchange = function () {
-      console.log(333)
-        data.name = data.name
+
+    input1.oninput = function (e) {
+      data.name = e.target.value
     }
-    input2.onchange = function () {
-      console.log(444)
-        input1.value = this.value
-        console.log(data)
-    }
+
+    input2.addEventListener('input', function (e) {
+        data.name = e.target.value
+    })
 </script>
 </body>
 </html>

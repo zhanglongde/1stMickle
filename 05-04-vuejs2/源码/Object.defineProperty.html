@@ -5,6 +5,21 @@
     <title>$Title$</title>
 </head>
 <body>
-$END$
+
+
+<script>
+    var obj = {}
+    Object.defineProperty(obj,'hello',{
+        get:function () {
+            console.log('get...')
+        },
+        set: function () {
+            console.log('set...')
+        }
+    })
+
+    obj.hello = 'abc'
+    console.log(obj.hello)
+</script>
 </body>
 </html>
