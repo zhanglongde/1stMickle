@@ -1,0 +1,10 @@
+1.挂载卸载过程
+componentWillMount
+componentDidMount
+componentWillUnmount
+
+2.数据更新过程
+componentWillReceiveProps(nextProps) 外部传入props时调用
+shouldComponentUpdate(nextProps,nenxtState) return false阻止后续生命周期
+componentWillUpdate(nenxtProps,nextState) render函数之前
+componentDidUpdate(nextProps,nextState) render之后
