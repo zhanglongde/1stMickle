@@ -3,8 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>$Title$</title>
+    <style>
+        body{
+            margin:5%;
+            background-color:skyblue;
+        }
+    </style>
 </head>
 <body>
-$END$
+<h1>h5的history关于前端路由用到了3个新属性</h1>
+<ol>
+    <li>histroy.pushState(data,title,url)</li>
+    <li>histroy.replaceState(data,title,url)</li>
+    <li>popstate事件</li>
+</ol>
+<p>点击下面的两个数字，会看到浏览器url的跳转，同时看到数字的修改，按下后退前进，都可以进行回到上一个状态</p>
+<p>每次点击，都会将浏览器当前的url以及一些data通过pushState进行保存，这样，在前进后退的时候可以看到url的改变</p>
+<p>主要作用就是解决单页应用中无法进行保存状态的问题。这样，通过url的更改，可以在popstate事件中对原有元素进行还原（通过传递的data）</p>
+<div id='div1'>
+    <ul>
+        <li><a id='a1'>s0</a></li>
+        <li><a id='a2'>k0</a></li>
+    </ul>
+</div>
+
+<script>
+    ;(function(){
+        var div1 = document.getElementById('div1');
+        var a1 = document.getElementById('a1');
+        var a2 = document.getElementById('a2');
+        var count1 = 0;
+        var count2 = 0;
+
+//        replaceState与pusState区别：前者不会记录
+        history.replaceState({count1:count1,count2:count2},null,'');//最开始的状态，采用replace直接替换
+        a1.addEventListener('click',function(){
+            count1++;
+            history.pushState({count1:count1,count2:count2},null,'#/s'+count1);//之后的状态，需要进行保存
+            a1.innerHTML = 's'+count1;
+        })
+        a2.addEventListener('click',function(){
+            count2++;
+            history.pushState({count1:count1,count2:count2},null,'#/k'+count2);//之后的状态，需要进行保存
+            a2.innerHTML = 'k'+count2;
+        })
+//        popstate按前进后退键触发
+        window.addEventListener('popstate',function(e){
+            console.log(e.state);
+            a1.innerHTML = 's'+e.state.count1;//监听popstate事件，对状态进行还原
+            a2.innerHTML = 'k'+e.state.count2;
+        })
+    })()
+</script>
 </body>
 </html>

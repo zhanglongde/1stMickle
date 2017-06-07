@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        
+        html,body{
+            height:100%;
+        }
+        li{
+            height:40px;
+            line-height:40px;
+            border-bottom:1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><a href="#/">root</a></li>
+    <li><a href="#/yellow">yellow</a></li>
+    <li><a href="#/red">red</a></li>
+    <li><a href="#/purple">purple</a></li>
+</ul>
+
+<script>
+//    function Router() {
+//      this.currentUrl = ''
+//      this.routes = {}  
+//    }
+
+   function setBg(color) {
+       document.body.style.backgroundColor = color
+   }
+    
+    window.addEventListener('hashchange',function (e) {
+       let currentUrl = window.location.hash
+       switch (currentUrl) {
+           case '#/':
+               setBg('white')
+               break;
+           case '#/yellow':
+               setBg('yellow')
+            break;
+           case '#/red':
+               setBg('red')
+            break;
+           case '#/purple':
+               setBg('purple')
+            break;
+           default:
+            break;
+       }
+    })
+</script>
+</body>
+</html>

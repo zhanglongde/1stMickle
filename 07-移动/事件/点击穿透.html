@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>
+        由于click事件的滞后性（300ms，物理上的滞后性），在这300ms内上层元素隐藏或消失了，
+        下层同样位置的DOM元素触发了click事件（如果是input框则会触发focus事件），看起来就像点击的target“穿透”到下层去了。
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        html,body{
+            height:100%;
+        }
+        #underLayer{
+            position: absolute;
+            z-index: 1;
+            background-color: rgba(0,0,0,.4);
+
+            width:100%;
+            height:100%;
+        }
+        #popupLayer{
+            position: absolute;left:0;right:0;bottom:20px;margin:auto;
+            z-index: 2;
+            background-color: #fff;
+            text-align:center;
+
+            height:200px;
+            width:300px;
+        }
+        .layer-title{
+            height:40px;
+            padding: 8px 0;
+        }
+        .layer-action{
+            height:calc(100% - 40px)
+        }
+        .btn{
+            width:100px;
+            height:30px;
+            border:none;
+            line-height:30px;
+            background-color: #58a;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="underLayer">底层元素
+    tap mousedown mouseup click
+    移动端：touchend tap click
+    </div>
+
+    <div id="popupLayer">
+        <div class="layer-title">弹出层</div>
+        <div class="layer-action">
+            <button class="btn" id="closePopup">关闭</button>
+        </div>
+    </div>
+</div>
+<div id="bgMask"></div>
+
+<script src="./zepto.min.js"></script>
+<script>
+//    $('#closePopup').on('touchend', function () {
+//      alert('touchend')
+//    })
+    $('#closePopup').on('tap', function(e){
+        console.log('tap...')
+        $('#popupLayer').hide();
+        $('#bgMask').hide();
+    });
+
+//    注意chrome点击穿透，Safari不穿透
+    $('#underLayer').on('click', function(){
+        console.log('click...')
+        alert('underLayer clicked');
+    });
+
+
+
+//    var ndClose = document.querySelector('#closePopup')
+//    ndClose.addEventListener('tap', function (e) {
+//        e.stopPropagation()
+//      console.log(e.target.textContent + 'tap...')
+//        alert(e.target.textContent + 'tap...')
+//    })
+////    如果没有click事件,tap事件会触发两次
+//    ndClose.addEventListener('click', function (e) {
+//        e.stopPropagation()
+//      console.log(e.target.textContent + 'click...')
+//        alert(e.target.textContent + 'click...')
+//    })
+//    ndClose.addEventListener('mousedown', function (e) {
+//        console.log(e.target.textContent + 'mousedown...')
+//        alert(e.target.textContent + 'mousedown...')
+//    })
+//
+//    ndClose.addEventListener('mouseup', function (e) {
+//        console.log(e.target.textContent + 'mouseup...')
+//        alert(e.target.textContent + 'mouseup...')
+//    })
+
+//    document.querySelector('#underLayer').addEventListener('click',function (e) {
+//      console.log('click...')
+//        alert('click...')
+//    })
+</script>
+</body>
+</html>
