@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+//    给定两个字符串,求出它们的最长公共字串
+var str1="abcdefg";
+var str2="xyzabcd";
+
+//    暴力破解
+    function Longest(str1,str2) {
+       var arr1 = str1.split('')
+       var arr2 = str2.split('')
+       var LEN1 = arr1.length
+       var LEN2 = arr2.length
+       var target = []
+       var temp = []
+       for (let i = 0; i < LEN1; i++) {
+         temp = []
+         var startIndex = arr2.indexOf(arr1[i])
+         if (startIndex < 0) {
+           continue
+         }
+         var offset = 0
+         while((i+offset < LEN1) && (startIndex+offset < LEN2) && arr1[i+offset] === arr2[startIndex+offset]){
+           temp.push(arr1[i+offset])
+           offset++
+         }
+         temp.length > target.length && (target = [].slice.call(temp))
+       }
+       return target.join('')
+    }
+    console.log(Longest(str1,str2))
+</script>
+</body>
+</html>

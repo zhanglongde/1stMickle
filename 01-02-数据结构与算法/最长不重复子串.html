@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+//    给定一个字符串，返回字符串中没有重复字符的最长子串的长度
+    var str1 = 'abcabcbb' // 'abc' 3
+    var str2= 'bbbbb' // 'b' 1
+    var str3= 'pwwkew' // 'wke' 3
+
+//    暴力
+    function Longest(str) {
+       var target = []
+       var temp = []
+       var chArr = str.split('')
+       var LEN = chArr.length
+       for (let i = 0; i < LEN; i++) { // 循环N次
+         temp = []
+         for (let j = i; j < LEN; j++) {
+           if (temp.indexOf(chArr[j])>=0) { // 如果重复，说明本次循环的最长子串到此为止
+             break
+           }
+           temp.push(chArr[j])
+         }
+         temp.length > target.length && (target = [].slice.call(temp))
+       }
+       return target.join('')
+    }
+
+    console.log(Longest(str1))
+    console.log(Longest(str2))
+    console.log(Longest(str3))
+</script>
+</body>
+</html>
