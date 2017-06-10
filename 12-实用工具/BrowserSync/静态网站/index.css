@@ -1,0 +1,12 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.container{
+    width:500px;
+    height:300px;
+
+    background-color: #58a;
+    color:#fff;
+}
