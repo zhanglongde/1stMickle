@@ -5,6 +5,8 @@
     - 能对 commit history 进行搜索
     - 能查看指定时间范围的 commit history
 
+nodegit
+
 二、请开发一个 Todo Web 应用
 必选项：
 1. 选择 React / Vue / Angular 框架之一进行辅助开发
