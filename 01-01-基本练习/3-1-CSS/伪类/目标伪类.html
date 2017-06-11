@@ -2,9 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        *{
+          margin:0;
+          padding:0;
+          box-sizing: border-box;
+        }
+        .tab{
+          position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;
+          width:300px;
+          height:300px;
+            border:1px solid #bdbdbd;
+        }
+        .tab-page{
+           position:absolute;
+            height:100%;
+            width:100%;
+        }
+        .tab-page>a[href]{
+           height:40px;
+           width:100px;
+           background-color: #85a;
+           color:#fff;
+        }
+        .tab-page:nth-child(1)>a{
+            position:absolute;top:0;left:0;
+        }
+        .tab-page:nth-child(2)>a{
+            position:absolute;top:0;left:100px;
+        }
+        .tab-page:nth-child(3)>a{
+            position:absolute;top:0;left:200px;
+        }
+        .tab-body>:nth-child(2){
+            color:#fff;
+            background-color: #58a;
+        }
+        .tab-body>:nth-child(3){
+            background-color: #fb3;
+        }
+        .tab-page .tab-body{
+            visibility:hidden;
+            height:260px;
+            width:100%;
+            /*background-color: #fff;*/
+            position:absolute;top:40px;left:0;
+        }
+        .tab-page:target .tab-body{
+            visibility: visible;
+        }
+    </style>
 </head>
 <body>
-$END$
+
+<div class="tab">
+    <div class="tab-page">
+        <a href="#tab1">tab1</a>
+        <div class="tab-body">1</div>
+    </div>
+    <div class="tab-page">
+        <a href="#tab2">tab2</a>
+        <div class="tab-body">2</div>
+    </div>
+    <div class="tab-page">
+        <a href="#tab3">tab3</a>
+        <div class="tab-body">3</div>
+    </div>
+</div>
 </body>
 </html>
