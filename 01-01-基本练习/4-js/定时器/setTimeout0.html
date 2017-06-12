@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        HTML5最小时间间隔4ms
+        不过不同浏览器的实现不一样，比如，Chrome可以设置1ms，IE11/Edge是4ms。
+    </title>
+</head>
+<body>
+
+<script>
+    alert(1)
+    setTimeout(() => {
+      alert(2)
+    },0) // 定时器线程会在0s后,往主线程的任务队列中加入一个任务；执行的时间取决于任务队列
+    alert(3)
+</script>
+</body>
+</html>

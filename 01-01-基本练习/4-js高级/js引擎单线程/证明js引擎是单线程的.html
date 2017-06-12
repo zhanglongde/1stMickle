@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        http://www.cnblogs.com/fly-snow/p/5427865.html
+        如果说js引擎是多线程的,那么在1秒后,alert就会被执行.
+        然而实际情况是,页面会永远死循环下去.alert并没有执行.这很好的证明了,settimeout并不能作为多线程使用.js引擎执行是单线程的.
+    </title>
+</head>
+<body>
+
+<script>
+    var isEnd = true
+    setTimeout(function () {
+      isEnd = false
+    })
+    while(isEnd);
+    alert('end')
+</script>
+</body>
+</html>
