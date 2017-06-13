@@ -4,4 +4,5 @@
 3.Google API不合理
   存在嵌套调用
   node合并接口
+  过滤脏数据
 4.CDN
