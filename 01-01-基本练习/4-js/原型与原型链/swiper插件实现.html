@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container"></div>
+
+
+<script>
+    function Swiper(selector) {
+        // 可以直接改写构造函数吗，不需要init函数?
+        this.selector = selector
+//        this.start = function () {
+//          console.log(this.selector + ' start...')
+//        }
+//        this.stop = function () {
+//          console.log(this.selector + ' stop...')
+//        }
+    }
+    Swiper.prototype.start = function () {
+        console.log(this.selector + ' start...')
+    }
+    Swiper.prototype.stop = function () {
+        console.log(this.selector + ' start...')
+    }
+
+    var sw = new Swiper('.container')
+    sw.start()
+    sw.stop()
+
+//    如何挂在原型上
+</script>
+</body>
+</html>
