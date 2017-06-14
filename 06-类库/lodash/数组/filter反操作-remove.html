@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <title>
         彻底改变原数组
+        但是在vue中不起作用？
     </title>
 
 </head>
 <body>
 
+<script src="../lodash.js"></script>
+<script>
+    var arr = [{id:1,name:'zhanglongde'},{id:2,name:'jack'},{id:3,name:'Marry'},{id:4,name:'Frank'}]
+    var ids = [2,3]
+    var tar = _.remove(arr,function (ele) {
+        return ids.indexOf(ele.id) >= 0
+    })
+    console.log(arr,arr.length)
+    console.log(tar)
+</script>
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>
+        Curry,又叫部分求值，将大问题逐一拆解为小问题（表现为拆解函数参数）
         自动curry
         lodash实现curry的方式
     </title>
@@ -10,24 +11,50 @@
 <body>
 
 <script>
-    function curry(func,thisArg) {
-      if (!Array.isArray(thisArg)) {
-        thisArg = []
-      }  
-      return function () {
-          // 借用数组slice方法，将类数组对象转化为数组
-         let args = Array.prototype.slice.call(arguments)
-          //如果还未集齐部分应用的参数，继续curry,直到参数全部到齐
-         if ((args.length+thisArg.length) < func.length) {
-           return curry(func,thisArg.concat(args))
-         } 
-         // 递归，得到所有部分应用的参数，然后执行curry函数
-         return func.apply(this,thisArg.concat(args))
-      }
-    }
+//    function curry(func,thisArg) {
+//      if (!Array.isArray(thisArg)) {
+//        thisArg = []
+//      }
+//      return function () {
+//          // 借用数组slice方法，将类数组对象转化为数组
+//         let args = Array.prototype.slice.call(arguments)
+//          //如果还未集齐部分应用的参数，继续curry,直到参数全部到齐
+//         if ((args.length+thisArg.length) < func.length) {
+//           return curry(func,thisArg.concat(args))
+//         }
+//         // 递归，得到所有部分应用的参数，然后执行curry函数
+//         return func.apply(this,thisArg.concat(args))
+//      }
+//    }
 
+//    function curry (func, arg) {
+//       if (!Array.isArray(arg)) {
+//         arg = []
+//       }
+//       return function () {
+//           let args = [].slice.call(arguments) //arguments之前不能加this
+//           argsSum = arg.concat(args)
+//           if (arg.length + args.length < func.length) { //获取函数参数数量的方式
+//             return curry(func, argsSum)
+//           }
+//           return func.apply(this,argsSum)
+//       }
+//    }
+
+    function curry(func,lastArgs) {
+//       初始化判断
+       !Array.isArray(lastArgs) && (lastArgs = [])
+       return function () {
+//         获得累积参数
+         let argSum = lastArgs.concat([].slice.call(arguments))
+         if (argSum.length < func.length) {
+           return curry(func, argSum)
+         }
+         return func.apply(this,argSum)
+       }
+    }
     var add = curry(function (x,y,z) {
-        return x+y+z
+        return x*y+z
     })
     var incre = add(1)(10)(6)
     console.log(incre)

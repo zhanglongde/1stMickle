@@ -57,3 +57,29 @@ shift+esc
 
 Javascript内存释放
 http://www.jianshu.com/p/3b7946c4b118
+1.堆内存的释放
+如果堆地址被引用，就说这个内存被占用，不能被销毁
+var obj1 = {name:'Jack'}
+var obj2 = obj1
+只有把obj1和obj2都置为null，才会被释放
+
+2.栈内存释放
+2.1全局作用域
+页面关闭，全局作用于才会被销毁
+2.2私有作用域
+一般情况下，当室友作用域中的代码执行完成后，当前作用域就会主动进行释放和销毁
+但是，作用域内的部分内容被作用域以外占用，当前作用域就不能销毁了，比如：
+1)闭包
+2)给DOM元素绑定方法
+var btn = document.getElementById('btn1');
+~function () {
+    btn.onclick = function () {
+    }
+}();
+3)“不立即销毁”
+function fn() {
+    var num = 100;
+    return function () {
+    }
+}
+fn()(); // 首先执行fn，返回一个小函数对应的内存地址，然后紧接着让返回的小函数再执行

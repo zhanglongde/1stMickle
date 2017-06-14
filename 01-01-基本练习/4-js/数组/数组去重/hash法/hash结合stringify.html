@@ -9,7 +9,7 @@
 
 <script>
     function dedup(arr) {
-        var hashTable = {};//把element的stringify作为键，可以对值为数组的元素去重
+        var hashTable = {};//把element的stringify作为键，可以为值为引用元素的数组去重
 
         return arr.filter(function (el) {
             var key = JSON.stringify(el);

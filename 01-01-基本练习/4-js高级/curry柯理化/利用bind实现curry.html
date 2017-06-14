@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        bind可用于实现两步curry
+    </title>
 </head>
 <body>
-$END$
+
+<script>
+    function sayHi(greeting,ending) {
+       console.log(`My name is ${this.name},${greeting}. ${ending}`)
+    }
+    // 注意fn的参数拼接顺序
+    var fn = sayHi.bind({name:'zhanglongde'},'Love you')
+    fn('Thanks')
+</script>
 </body>
 </html>
