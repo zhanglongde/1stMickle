@@ -2,9 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        slice 获取到的元素，仍然会被改变
+    </title>
 </head>
 <body>
-$END$
+
+<script>
+    var oArray = [
+        {
+            name:'zhangld',
+            age:27
+        },
+        {
+            name:'zhanglongbao',
+            age:26
+        }
+    ]
+    
+    var ele = {}
+    Object.assign(ele, oArray.slice(-1)[0]) // 空数组取收元素，为undefined
+    ele.gender = 'man'
+    console.log(oArray)
+</script>
 </body>
 </html>
