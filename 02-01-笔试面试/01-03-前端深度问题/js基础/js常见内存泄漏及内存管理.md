@@ -53,3 +53,7 @@ js通过GC自动回收内存
 ```
 >谷歌浏览器查看内存使用
 shift+esc
+
+
+Javascript内存释放
+http://www.jianshu.com/p/3b7946c4b118
