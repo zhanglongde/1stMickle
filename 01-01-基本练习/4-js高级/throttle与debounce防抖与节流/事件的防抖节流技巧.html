@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        button{
+            border:none;
+            outline:0;
+            width:100px;height:40px;
+            background-color: #58a;
+            color:#fff;
+        }
+        button[disabled]{
+           cursor:not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+<button id="test">点击</button>
+
+<script>
+    document.querySelector('#test').addEventListener('click', function (event) {
+//       注意：如果是容器元素不是button这样的单一元素，要使用$().closest()来添加标记
+       let ele = event.target
+//        注意disabled坑，必须移除
+       if (ele.hasAttribute('disabled')) {
+         return
+       }
+       ele.setAttribute('disabled',true)
+        setTimeout(() => {
+           ele.removeAttribute('disabled')
+        },10000)
+        console.log('执行操作')
+    })
+</script>
+</body>
+</html>
