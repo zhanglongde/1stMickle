@@ -2,11 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        字体图标
+    </title>
+    <style>
+        .container>:nth-child(n){
+            display:inline-block;
+        }
+        .first{
+            font-size:10px;
+        }
+        .second{
+            font-size:10px;
+            transform:scale(0.75);
+        }
+    </style>
 </head>
 <body>
+<div class="container">
+    <div class="first">张龙德</div>
+    <div class="second">zhannglongde</div>
+</div>
 
-<div style="font-size: 12px;">张龙德</div>
-<div style="font-size: 12px;">zhannglongde</div>
 </body>
 </html>

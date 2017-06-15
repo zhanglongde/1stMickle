@@ -3,8 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .container{
+            position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;
+            width:500px;
+            height:300px;
+            border:1px solid #ccc;
+
+        }
+        .item{
+            /*width:100px;*/
+            /*height:50px;*/
+            color:#fff;
+            background-color: #58a;
+
+            text-align: center;
+            line-height:50px;
+
+            position:absolute;top:50%;left:50%;
+            transform:translate(-50%,-50%);
+        }
+    </style>
 </head>
 <body>
-
+<div class="container">
+    <div class="item">item</div>
+</div>
 </body>
 </html>
