@@ -2,9 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        inline-block默认顶端对齐
+        必须设置两层vertical-align?
+    </title>
+    <style>
+        *{
+            margin:0;padding:0;
+            box-sizing: border-box;
+        }
+        .container{
+            position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;
+            width:500px;
+            height:300px;
+            border:1px solid #ccc;
+            vertical-align: middle;
+        }
+        .item{
+            display:inline-block;
+            border:1px solid #ccc;
+            /*无效?*/
+            vertical-align: middle;
+        }
+        .item:nth-child(1){
+            background-color: #58a;
+            height:20px;width:40px;
+        }
+        .item:nth-child(2){
+            background-color: #85a;
+            height:40px;width:60px;
+        }
+        .item:nth-child(3){
+            background-color: #9c3;
+            height:60px;width:80px;
+        }
+        .item:nth-child(4){
+            background-color: #fa3;
+            height:80px;width:100px;
+        }
+    </style>
 </head>
 <body>
 
+<div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+</div>
 </body>
 </html>
