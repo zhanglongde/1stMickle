@@ -1,8 +1,6 @@
 https://www.ibm.com/developerworks/cn/web/1102_niugang_csrf/
 
-验证 HTTP Referer 字段；
-在请求地址中添加 token 并验证；
-在 HTTP 头中自定义属性并验证
+
 
 
 CSRF攻击对象
@@ -32,4 +30,8 @@ https://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html
 提交表单时，填写随机字符串，用户体验不好
 3.one-time tokens
 不同的表单包含一个不同的为随机值
+浏览器
+1.验证 HTTP Referer 字段；
+2.在请求地址中添加 token 并验证；
+3.在 HTTP 头中自定义属性并验证
 

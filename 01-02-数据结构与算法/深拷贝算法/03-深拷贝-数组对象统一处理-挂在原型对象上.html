@@ -8,6 +8,7 @@
 
 
 <script>
+//    将方法挂在原型上
     Object.prototype.clone = function () {
       var o = this.contructor === Array ? [] : {};
       for(var e in this) {

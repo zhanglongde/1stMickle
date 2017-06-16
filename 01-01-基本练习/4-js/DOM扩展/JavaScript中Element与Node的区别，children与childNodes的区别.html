@@ -7,6 +7,8 @@
           另外Element扩展了Node，Element拥有id、class、children等属性。
 
         children是Element的属性，childNodes是Node的属性
+
+        document.body的方法都挂在document.body.__proto__上，HTMLBodyElement
     </title>
 </head>
 <body>
@@ -19,10 +21,12 @@
     var oDiv = document.getElementById('test')
     console.log(oDiv instanceof Node)
     console.log(oDiv instanceof Element)
+    console.log(oDiv.__proto__)
 
     var o = document.querySelector('#test')
     console.log(o instanceof Node)
     console.log(o instanceof Element)
+    console.log(o.__proto__)
 </script>
 </body>
 </html>

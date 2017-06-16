@@ -17,20 +17,23 @@
 
 <script>
     function deepClone(obj) {
-        if (Object.prototype.toString.call(obj) === '[object Array]') {
+        let _toString = Object.prototype.toString
+        if (_toString.call(obj) === '[object Array]') {
             var arr = []
-            var value
-            for (var key in obj) {
-                value = Object.prototype.toString.call(obj[key]) === '[object Object]' ? deepClone(obj[key]) : obj[key]
-                arr.push(value)
+            for (let prop in obj) {
+                typeof obj[prop] === 'object' ? arr.push(deepClone(obj[prop])) : arr.push(obj[prop])
             }
             return arr
         }
+//        if (_toString.call(obj) === '[object Date]') {
+//          return new Date(obj.getTime())
+//        }
+        if (obj.nodeType && 'cloneNode' in obj) { // cloneNode方法在原型链上
+          return obj.cloneNode(true)
+        }
         var o = {}
-        var v
-        for (var k in obj) {
-            v = Object.prototype.toString.call(obj[k]) === '[object Object]' ? deepClone(obj[k]) : obj[k]
-            o[k] = v
+        for (let prop in obj) {
+            o[prop] = typeof obj[prop] ==='object' ? deepClone(obj[prop]) : obj[prop]
         }
         return o
     }
@@ -46,7 +49,8 @@
         birth:new Date(),
         pattern:/qiu/gim,
         container:document.body,
-        hobbys:['book',{name:'hobbys'},111,new Date(),/aaa/gim,]
+        hobbys:['book',{name:'hobbys'},111,new Date()]
+//        hobbys:['book',{name:'hobbys'},111,new Date(),/aaa/gim,]
     };
 
     var c = new A();

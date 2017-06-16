@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    function Clone(obj) {
+//        错误做法
+//      let _toString = Object.prototype.toString.call
+      let _toString = Object.prototype.toString
+
+      let o = _toString.call(obj) === '[object Object]' ? {} : []
+
+//      for in 连__proto__也一并拷贝
+      for (prop in obj) {
+          // 加上，反而画蛇添足
+//        (obj[prop] !== null && typeof obj[prop] === 'object') ? o[prop] = Clone(obj[prop]) : o[prop] = obj[prop]
+          o[prop] = typeof obj[prop] === 'object' ?  Clone(obj[prop]) : obj[prop]
+      }
+      return o
+    }
+
+//    拷贝对象字面量
+    var prop = {
+        name:'qiu',
+        num:1,
+        empty:null,
+        is:false,
+        obj:{age:27},
+        hobbys:['book',{name:'hobbys'},111]
+    };
+    var result = Clone(prop)
+    console.log(result)
+</script>
+</body>
+</html>
