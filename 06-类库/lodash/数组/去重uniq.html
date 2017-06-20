@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lodash.js"></script>
+</head>
+<body>
+<script>
+    var r = _.uniq([1,2,2,3,4,1])
+    console.log(r)
+    
+    var messages = [{
+        from:[{'1.qq.com':1}],
+        to:[{'2.qq.com':2},{'3.qq.com':3}]
+    },{
+        from:[{'1.qq.com':1}],
+        to:[{'2.qq.com':2},{'4.qq.com':4}]
+    }]
+    let to = messages.reduce((sum,next) => {
+       return sum.concat(next.to) 
+    },[])
+//    如何深度去重？
+    to = _.uniq(to)
+    console.log(to)
+</script>
+</body>
+</html>
