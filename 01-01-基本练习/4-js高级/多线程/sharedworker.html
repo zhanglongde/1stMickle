@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Shared Web Workers: Show And Tale</title>
+</head>
+<body>
+
+<article>
+
+    <output id="result"></output>
+</article>
+<script>
+  var worker = new SharedWorker('./sharedWorker.js');
+  worker.port.addEventListener("message", function(e) {
+    document.getElementById('result').textContent += " | " + e.data;
+  }, false);
+  worker.port.start();
+  // post a message to the shared web worker
+  console.log("Calling the worker from script 1");
+  worker.port.postMessage("script-1");
+</script>
+
+<script>
+  console.log("Calling the worker from script 2");
+  worker.port.postMessage("script-2");
+</script>
+</body>
+</html>
