@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        惰性函数
+        偏函数用法是指：创建一个调用另外一部分(函数或变量已经预置的函数)的函数的用法
+    </title>
+</head>
+<body>
+
+<script>
+    var toString = Object.prototype.toString
+    var isString = function (obj) {
+      return toString.call(obj) === '[object String]'
+    }
+    console.log(isString('hello'))
+    var isType = function (type) {
+      return function (obj) {
+        return toString.call(obj) === `[object ${type}]`
+      }
+    }
+    var isString2 = isType('String')
+    console.log(isString2('hi'))
+</script>
+</body>
+</html>
