@@ -5,7 +5,25 @@
     <title>Title</title>
 </head>
 <body>
+<div class="parent">
+    <button>点击</button>
+</div>
 
 
+<script>
+    window.onload = function () {
+      var oBtn = document.querySelector('button')
+      oBtn.addEventListener('click', function () {
+        console.log('click...')
+      })
+//      oBtn.addEventListener('dblclick', function () {
+//        console.log('dbclick...')
+//      })
+        
+      document.querySelector('.parent').addEventListener('dblclick', function () {
+          console.log('parent dbclick...')
+      })  
+    }
+</script>
 </body>
 </html>
