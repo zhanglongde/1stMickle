@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="birds">
+    <li>Orange</li>
+    <li class="endangered">Eagle</li>
+    <li>pelican</li>
+</ul>
+
+<script>
+
+    document.querySelector('#birds').addEventListener('click', function (e) {
+        console.log(this)
+        console.log(e.target)
+        console.log(this.contains(e.target))
+    })
+</script>
+</body>
+</html>
