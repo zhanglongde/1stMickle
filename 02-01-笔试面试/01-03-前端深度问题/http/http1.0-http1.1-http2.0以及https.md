@@ -41,4 +41,12 @@ http2.0
   基于二进制更健壮，http1.x基于文本
 5.强制加密 http2基于SPDY，SPDY强制https
 
-实例 yahoo旗下的flickr:https://www.flickr.com/  
+实例 yahoo旗下的flickr:https://www.flickr.com/
+
+前端工程师学习Nginx实践配置HTTP2.0篇
+http://cnt1992.xyz/2016/04/08/upgrade-nginx-to-http2/
+1.增加二进制分帧
+2.压缩头部
+3.多路复用 避免请求阻塞
+4.请求优先级
+5.服务器推 实现预加载
