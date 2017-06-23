@@ -32,7 +32,7 @@ https
 
 
 https://github.com/ccforward/cc/issues/36
-http2.0
+http2.0  Web性能权威指南
 1.服务器推
 2.多路复用=>keep alive
   连接共享，不需要反复建立连接
