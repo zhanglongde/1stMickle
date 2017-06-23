@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>::content&::shadow&/deep/</title>
+    <style type="text/css">
+        /* ::shadow */
+        /*.shadowhost::shadow h1 {
+            padding: 20px;
+            border: 1px solid #f00;
+        }*/
+        /* /deep/  */
+        .shadowhost /deep/ h1 {
+            padding: 20px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<div class="shadowhost">
+    <em class="shadowhost_content1">唱歌</em>
+    <em class="shadowhost_content2">跳舞</em>
+</div>
+<!-- S 模板标签 template -->
+<template class="template">
+    <style>
+        /* 定义宿主样式:host */
+        :host {
+            color: #E85E5E;
+        }
+        /* 定义宿主hover状态下的样式 */
+        :host(:hover) {
+            color: #000;
+        }
+        /* 分布节点的样式渲染需要用到 ::content,直接写 em {} 不生效 */
+        ::content > em {
+            padding: 10px;
+            color: #fff;
+            background: #FFCC00;
+            border-radius: 10px;
+        }
+    </style>
+    <h1>你<content select=".shadowhost_content1"></content>我<content select=".shadowhost_content2"></content>!</h1>
+</template>
+<!-- E 模板标签 template -->
+<script>
+    var shadowHost = document.querySelector('.shadowhost');
+    var shadowRoot = shadowHost.createShadowRoot();
+    var template = document.querySelector('.template');
+    shadowRoot.appendChild(document.importNode(template.content, true));
+</script>
+</body>
+</html>

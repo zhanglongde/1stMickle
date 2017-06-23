@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shadow DOM
+        shadowroot_son的样式color: #f00;不生效？！那是因为影子宿主和影子根之间存在影子边界（shadow boundary），
+        影子边界保证主 DOM写的 CSS 选择器和 JavaScript 代码都不会影响到Shadow DOM，当然也保护主文档不受 shadow DOM 样式的侵袭。
+    </title>
+    <style type="text/css">
+        .shadowroot_son {
+            color: #f00;
+        }
+    </style>
+</head>
+<body>
+<div class="shadowhost">Hello, world!</div>
+<script>
+    // 影子宿主（shadow host）
+    var shadowHost = document.querySelector('.shadowhost');
+    // 创建影子根（shadow root）
+    var shadowRoot = shadowHost.createShadowRoot();
+    // 影子根作为影子树的第一个节点，其他的节点比如p节点都是它的子节点。
+    shadowRoot.innerHTML = '<p class="shadowroot_son" style="background-color:#58a;">夏天夏天悄悄过去留下小秘密！</p>';
+</script>
+</body>
+</html>

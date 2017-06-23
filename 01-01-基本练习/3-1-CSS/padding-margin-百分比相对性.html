@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        padding-top百分比，相对于父元素宽度
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        div{
+            display:inline-block;
+        }
+        .container{
+            width:800px;
+            height:600px;
+            border:1px solid #ccc;
+        }
+        div.test1{
+            width:200px;
+            padding-top:50%;
+            background-color: #58a;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="test1">test1</div>
+    <div class="test2">test2</div>
+</div>
+
+</body>
+</html>

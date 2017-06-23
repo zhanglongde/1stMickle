@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        类 伪类 属性 权重一样大
+        伪类:not 不参与计算
+    </title>
+    <style>
+        div:not(.outer) p {color:green;}
+        div.outer p {color:orange;}
+    </style>
+</head>
+<body>
+<div class="outer">
+    <p>我是outer里面的文字</p>
+    <div class="inner">
+        <p>我是inner里面的文字</p>
+    </div>
+</div>
+</body>
+</html>

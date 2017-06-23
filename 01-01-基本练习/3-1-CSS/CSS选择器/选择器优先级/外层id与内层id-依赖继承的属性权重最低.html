@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        外层设置的color,对内部div的color起作用是依赖color属性的继承
+    </title>
+    <style>
+        #inner{
+            color:#0f0;
+        }
+        #outer{
+            color:#f00;
+        }
+
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner">inner</div>
+</div>
+</body>
+</html>
