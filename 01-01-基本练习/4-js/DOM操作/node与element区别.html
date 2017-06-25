@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="demo">
+    <li>15</li>
+    <li>25</li>
+    <li>35</li>
+    <li>45</li>
+    <li>55</li>
+</ul>
+
+<script>
+    window.onload = function () {
+      var ndDemo = document.body.querySelector('#demo')
+      console.log(ndDemo.childNodes)
+      for(var i = 0; i< ndDemo.childNodes.length; i++){
+       console.log( ndDemo.childNodes[i].__proto__)
+      }
+      console.log('%c-----------------------------------------------------------', 'background-color:#e66;color:#fff;font-size:30px;')
+      console.log(ndDemo.children)
+      for(var i = 0; i< ndDemo.children.length; i++){
+        console.log( ndDemo.children[i].__proto__)
+      }
+    }
+</script>
+</body>
+</html>

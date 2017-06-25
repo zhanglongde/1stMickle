@@ -1,0 +1,5 @@
+element是node的一种，当node的nodeType=1时
+
+childNodes包含文本注释节点
+children仅包含nodeType=1的节点
+

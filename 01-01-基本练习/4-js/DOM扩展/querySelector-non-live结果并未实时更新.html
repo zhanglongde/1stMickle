@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<div id="contani">
+<div id="contain">
     <div class="child">
         Tencent
     </div>
@@ -18,12 +18,17 @@
     var n = document.getElementsByClassName('child');
     console.log( 'querySelectorAll: ' + m.length )
     console.log( 'getElementsByTagName: ' + n.length )
-    var newDiv = document.createElement('div');
-    newDiv.className = 'child';
-    contani.appendChild(newDiv);
+
     console.log('---------append child---------')
+    var newDiv = document.createElement('div');
+    newDiv.textContent = 'append element'
+    newDiv.className = 'child';
+    m[0].parentNode.appendChild(newDiv);
     console.log( 'querySelectorAll: ' + m.length )
     console.log( 'getElementsByTagName: ' + n.length )
+
+    console.log(document.querySelectorAll('.child'))
+    console.log(document.getElementsByClassName('child'))
 </script>
 </body>
 </html>

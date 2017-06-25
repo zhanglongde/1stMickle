@@ -7,21 +7,20 @@
         *{
             margin:0;padding:0;
         }
-        .container{
-            width:500px;height:300px;
-            color:#f00;
-        }
     </style>
 </head>
 <body>
 
-<div class="item">item</div>
+
+<div class="delete">delete</div>
+
 
 <script src="../../../lib/jquery-1.11.3.min.js"></script>
 <script>
-    $(function () {
-      $('.item').wrap('<div class="container"></div>>')
-    })
+  $(function () {
+
+    $('.delete').remove()
+  })
 </script>
 </body>
 </html>

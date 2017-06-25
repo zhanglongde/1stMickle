@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        当且仅当querySelectorAll的选择器字符串是‘div div’时（如：dom.querySelectorAll(‘div div’)），
-        它匹配的元素包括了dom，也就是说如果该dom元素和它的子元素构成了div div这种父子结构时，也会被匹配到
+        当且仅当querySelectorAll的选择器字符串是‘div div’时（如：dom.querySelectorAll(‘div div’)），它匹配的元素包括了dom，
+        也就是说如果该dom元素和它的子元素构成了div div这种父子结构时，也会被匹配到
     </title>
 </head>
 <body>
-<div class="contani">
-    <div class="contani">
+<div class="contani test">
+    <div class="contani test">
         Qihoo
         <div>Safe</div>
     </div>
@@ -28,7 +28,7 @@
 </div>
 <script>
     console.log( document.querySelectorAll('.contani div div').length )
-    console.log( document.querySelector('.contani').querySelectorAll('div div').length )
+    console.log( document.querySelector('.contani').querySelectorAll('div.test div').length )
     console.log( document.querySelectorAll('div div').length )
 </script>
 </body>
