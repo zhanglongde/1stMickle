@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function TimeLog(i) {
+      return new Promise(function (resolve) {
+        setTimeout(function () {
+          console.log(i)
+          resolve()
+        },1000)
+      })
+    }
+
+    ( async function () {
+       for(var i = 0; i< 6; i++){
+         await TimeLog(i)
+       }
+    })()
+</script>
+</body>
+</html>

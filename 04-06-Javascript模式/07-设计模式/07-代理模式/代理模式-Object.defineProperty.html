@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        为其他对象提供代理以控制对这个对象的访问
+    </title>
+</head>
+<body>
+
+<script>
+    var o = {}
+    Object.defineProperty(o,'name',{
+      configurable: true,
+      set: function () {
+        console.log('set')
+      },
+      get:function () {
+        console.log('get')
+      }
+    })
+    o.name = 'zld'
+    console.log(o.name)
+</script>
+</body>
+</html>

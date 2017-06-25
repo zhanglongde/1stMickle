@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function Universe() {
+      var instance = this;
+
+      this.start_time = 0;
+      this.bang = 'Big';
+
+//      初始化之后，重写该构造函数
+      Universe = function () {
+        return instance
+      }
+    }
+
+    var a = new Universe()
+    var b = new Universe()
+    console.log(a === b)
+</script>
+</body>
+</html>

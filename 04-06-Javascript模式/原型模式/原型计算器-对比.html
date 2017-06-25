@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function BaseCalculator() {
+      this.add = function (p1,p2) {
+        return p1 + p2
+      }
+      this.substract =function (p1,p2) {
+        return p1 - p2
+      }
+    }
+    var bc = new BaseCalculator()
+    console.log(bc.add(1,4))
+    console.log(bc.substract(1,4))
+</script>
+</body>
+</html>

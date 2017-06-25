@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        原型模式可以将基类交给一个人写，子类交给另一个人写
+        但是，此方法的缺点在于：基类必须实例化一次
+    </title>
+</head>
+<body>
+<div class="container"></div>
+
+<script>
+    function BaseCalculator() {}
+    BaseCalculator.prototype.add = function (p1,p2) {
+      return p1 + p2
+    }
+    BaseCalculator.prototype.substract = function (p1,p2) {
+      return p1 - p2
+    }
+
+    function Calculator(unit) {
+      this.unit = unit
+    }
+//    子类的原型对象赋值以基类的实例
+    Calculator.prototype = new BaseCalculator()
+    var sub = new Calculator()
+    console.log(sub.add(1,6))
+    console.log(sub.substract(1,6))
+
+
+
+   var sub2 = new Calculator(' second(s)')
+   //改写原型方法
+   Calculator.prototype.add = function (p1,p2) {
+     return p1+p2+this.unit
+   }
+//   注意：Calculator.add = function(){}将获得一个静态方法，不是实例方法
+   Calculator.add = function (p1,p2) {
+     console.log(this.unit)
+     return p1+p2+this.unit
+   }
+   console.log(sub2.add(1,66))
+   console.log(Calculator.add(22,10))
+</script>
+</body>
+</html>

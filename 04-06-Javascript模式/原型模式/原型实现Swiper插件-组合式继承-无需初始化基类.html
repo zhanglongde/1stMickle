@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .container{
+          width:100px;
+          height:100px;
+            background-color: #58a;
+        }
+    </style>
+</head>
+<body>
+<div class="container"></div>
+<button class="btn-start">开始</button>
+<button class="btn-stop">结束</button>
+
+
+<script src="../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    function Swiper(selector) {
+      this.selector = selector
+    }
+    Swiper.prototype.start = function () {
+      console.log('start...')
+      $(this.selector).animate({opacity:0},3000, function () {
+        console.log('complete start')
+      })
+    }
+    Swiper.prototype.stop = function () {
+      console.log('stop...')
+      $(this.selector).animate({opacity:1},3000, function () {
+        console.log('complete stop')
+      })
+    }
+
+    function MySwiper(selector){
+      Swiper.apply(this,arguments)
+    }
+
+    MySwiper.prototype = Object.create(Swiper.prototype)
+    var swiper = new MySwiper('.container')
+    console.log(swiper)
+
+    document.querySelector('.btn-start').addEventListener('click', function () {
+      swiper.start()
+    })
+
+    document.querySelector('.btn-stop').addEventListener('click', function () {
+      swiper.stop()
+    })
+</script>
+</body>
+</html>

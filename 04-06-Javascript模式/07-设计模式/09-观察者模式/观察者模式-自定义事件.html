@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        将自定义事件绑定在一个DOM上
+    </title>
+</head>
+<body>
+<button>点击</button>
+
+<script>
+    var myEvent = new Event('ding')
+    var ndButton = document.querySelector('button')
+    ndButton.addEventListener('ding', function () {
+      console.log('ding...')
+    })
+
+    ndButton.addEventListener('click',function () {
+      ndButton.dispatchEvent(myEvent)
+    })
+</script>
+</body>
+</html>

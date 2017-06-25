@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        期望代码的输出变成 0 -> 1 -> 2 -> 3 -> 4 -> 5
+    </title>
+</head>
+<body>
+
+<script>
+    function TimeLog() {
+    }
+    TimeLog.factory =  function (i) {
+      return new Promise(function (resolve) {
+        setTimeout(() =>{
+          console.log(i)
+          resolve()
+        },1000)
+      })
+    }
+    let tasks = []
+    for(let i = 0; i< 6; i++){
+     tasks.push(TimeLog.factory(i))
+    }
+    Promise.all(tasks).then(function () {
+      console.log('all complete')
+    })
+</script>
+</body>
+</html>

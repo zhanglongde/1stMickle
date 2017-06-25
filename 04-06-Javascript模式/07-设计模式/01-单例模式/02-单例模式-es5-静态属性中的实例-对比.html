@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../../../lib/lodash.js"></script>
+<script>
+    function Universe() {
+      this.start_time = 0;
+      this.bang = 'Big'
+
+      Universe.instance = this;
+
+//      隐式返回this
+//      return this
+    }
+
+    var a = new Universe()
+    var b = new Universe()
+
+    console.log(a === b)
+    console.log(_.isEqual(a,b))
+</script>
+</body>
+</html>

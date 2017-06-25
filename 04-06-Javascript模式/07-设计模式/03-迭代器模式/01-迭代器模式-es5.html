@@ -1,5 +1,12 @@
-es5的方法
-迭代器模式 用闭包模拟权限访问
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
     function Eggs(i) {
       var index = i||0
       var data = [0,1,2,3,4,5]
@@ -24,22 +31,13 @@ es5的方法
         }
       }
     }
-    
-    
+    var eggs = new Eggs()
+    console.log(eggs.next())
+    console.log(eggs.next())
+    console.log(eggs.next())
+    eggs.rewind()
+    console.log(eggs.next())
 
-es6的方法
-class Home extends Component{
-// 构造函数 
-    constructor(props){
-      super(props)
-      this.prop1 = ''
-      this.prop2 = ''
-      ...
-    }
-    func1(){}
-    func2(){}
-    func3(){}
-    ...
-}
-
-后台领导或者从后端转前端的，特别喜欢问。
+</script>
+</body>
+</html>
