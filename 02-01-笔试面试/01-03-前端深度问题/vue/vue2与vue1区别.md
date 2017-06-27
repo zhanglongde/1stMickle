@@ -11,3 +11,6 @@ computed get/set
 指令钩子 inserted componentUpdated
 
 路由
+
+子组件索引 refs
+render
