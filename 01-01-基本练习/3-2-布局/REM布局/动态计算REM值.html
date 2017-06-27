@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0;padding:0;}
+        .container{
+            width:10rem;
+            height:10rem;
+            background-color: #58a;
+        }
+    </style>
+</head>
+<body>
+<div class="container">container</div>
+
+
+<script>
+  /**
+   * [以iPhone6的设计稿为例js动态设置文档 rem 值]
+   * @param  {[type]} currClientWidth [当前客户端的宽度]
+   * @param  {[type]} fontValue [计算后的 fontvalue值]
+   * @return {[type]}     [description]
+   */
+  var currClientWidth, fontValue,originWidth;
+  //originWidth用来设置设计稿原型的屏幕宽度（这里是以 Iphone 6为原型的设计稿）
+  originWidth=375;
+  __resize();
+
+  //注册 resize事件
+  window.addEventListener('resize', __resize, false);
+
+  function __resize() {
+    currClientWidth = document.documentElement.clientWidth;
+    console.log(document.documentElement.clientWidth)
+    //这里是设置屏幕的最大和最小值时候给一个默认值
+    if (currClientWidth > 640) currClientWidth = 640;
+    if (currClientWidth < 320) currClientWidth = 320;
+    //
+    fontValue = ((62.5 * currClientWidth) /originWidth).toFixed(2);
+    document.documentElement.style.fontSize = fontValue + '%';
+    console.log(document.documentElement.style.fontSize)
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var before = function (fn,before) {
+      return function () {
+        before.apply(this,arguments)
+        return fn.apply(this,arguments)
+      }
+    }
+
+    function fn1() {
+      console.log('1')
+    }
+    function fn2() {
+      console.log('2')
+    }
+    var a = before(fn1,fn2)
+    a()
+</script>
+</body>
+</html>
