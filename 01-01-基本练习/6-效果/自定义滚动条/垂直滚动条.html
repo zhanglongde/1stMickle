@@ -2,9 +2,88 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        /*垂直滚动条*/
+        .scroll-v{
+            overflow-y: scroll;
+            /*如果不加，由无滚动条到出现滚动条，会有横向滚动条的闪现*/
+            overflow-x: hidden;
+        }
+        .scroll-v::-webkit-scrollbar{
+            /*width: 5px;*/
+            /*width: 0px;*/
+            height: 20px;
+            background-color: transparent;
+            -webkit-appearance: none;
+        }
+        .scroll-v::-webkit-scrollbar-track{
+            width:5px;
+            height:20px;
+            background-color: transparent;
+        }
+        .scroll-v::-webkit-scrollbar-thumb{
+            width:5px;
+            height:20px;
+
+            background-color: #333;
+            border-radius: 5px;
+        }
+        .container{
+            width:200px;
+            height:400px;
+            position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;
+            background-color: #58a;
+            color:#fff;
+        }
+        .header{
+           height:40px;
+            /*width:120%;*/
+            width:240px;
+            line-height:40px;
+            border-bottom:1px solid #ccc;
+        }
+        .footer{
+            /*position:absolute;*/
+            /*bottom:0;*/
+            height:40px;
+            /*width:140%;*/
+            width:240px;
+            line-height:40px;
+            border-top:1px solid #ccc;
+        }
+        ul{
+            width:240px;
+        }
+        ul.bd > li {
+            height:50px;
+            /*width:120%;*/
+            width:240px;
+            line-height:50px;
+        }
+        li+li{
+            border-top:1px solid #ccc;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="container scroll-v">
+    <div class="header">header</div>
+    <ul class="bd">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <!--<li>8</li>-->
+    </ul>
+    <div class="footer">footer</div>
+</div>
 </body>
 </html>
