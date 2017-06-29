@@ -3,13 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        外观模式（Facade）为子系统中的一组接口提供了一个一致的界面，此模块定义了一个高层接口，这个接口值得这一子系统更加容易使用。
+        外观模式（Facade）为子系统中的一组接口提供了一个一致的界面，
+        此模块定义了一个高层接口，这个接口值得这一子系统更加容易使用。
+
+        处理浏览器兼容性问题
     </title>
 </head>
 <body>
+<button>点击</button>
+
 
 <script>
 //    跨浏览器的事件对象
+    var EventUtil = {
+        addHandler: function (element,type,handler) {
+          if (element.addEventListener) { // webkit DOM2级
+            element.addEventListener(type,handler)
+          } else if (element.attachEvent) { // IE DOM2级
+            element.attachEvent('on'+type,handler)
+          } else { // DOM0级别
+            element['on' +type] = handler; 
+          }
+        },
+        removeHandler: function (element,type,handler) {
+          if (element.removeEventListener) {
+            element.removeEventListener(type,handler)
+          } else if (element.detachEvent) {
+              element.detachEvent('on'+type,handler)
+          } else {
+              element['on'+type] = handler
+          }
+        }
+    }
+    var ndBtn = document.querySelector('button')
+    EventUtil.addHandler(ndBtn,'click', function (e) {
+      console.log(e.target.textContent)
+    })
 </script>
 </body>
 </html>

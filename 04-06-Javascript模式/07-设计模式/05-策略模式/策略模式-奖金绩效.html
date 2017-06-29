@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    定义策略类
+    var strategies = {
+       S:function (salary) {
+         return salary*4;
+       },
+       A:function (salary) {
+        return salary*3;
+       },
+       B: function (salary) {
+         return salary*2
+       }
+    }
+    var calculateBonus = function (level,salary) {
+      return strategies[level](salary)
+    }
+
+    console.log(calculateBonus('S',20000))
+    console.log(calculateBonus('A',10000))
+    console.log(calculateBonus('B',7000))
+</script>
+</body>
+</html>

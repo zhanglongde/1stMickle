@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var mult = function () {
+      console.log('开始计算乘积')
+      var a = 1
+      for (let i = 0,l=arguments.length; i < l; i++) {
+        a = a * arguments[i]
+      }
+      return a
+    }
+    console.log(mult(2,3))
+    console.log(mult(2,3,4))
+    
+//    加入缓存代理韩束
+    var proxyMult = (function () {
+        var cache = {};
+        return function () {
+          var args = Array.prototype.join.call(arguments,',')
+//          if (args in cache) {
+          if (cache.hasOwnProperty(args)) {
+            console.log('缓存取值')
+            return cache[args]
+          } 
+          return cache[args] = mult.apply(this,arguments)
+        }
+    })()
+    
+    console.log(proxyMult(1,2,3,4))
+    console.log(proxyMult(1,2,3,4))
+</script>
+</body>
+</html>
