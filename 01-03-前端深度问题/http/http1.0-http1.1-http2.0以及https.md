@@ -21,7 +21,7 @@ http1.x现存的问题
 与https
 1.明文
 2.无身份验证
-3.无法证明报文完整性
+3.无法证明报文完整性？？？
 
 
 https
@@ -33,15 +33,14 @@ https
 
 https://github.com/ccforward/cc/issues/36
 http2.0  Web性能权威指南
-1.服务器推
-2.多路复用=>keep alive
+1.服务器推 server push
+2.多路复用multiplexing=>keep alive
   连接共享，不需要反复建立连接
-3.压缩Header HPACK算法
+3.压缩头部HeaderCompression HPACK算法
 4.解析基于二进制格式
   基于二进制更健壮，http1.x基于文本
-5.强制加密 http2基于SPDY，SPDY强制https
+5.强制加密
 
-实例 yahoo旗下的flickr:https://www.flickr.com/
 
 前端工程师学习Nginx实践配置HTTP2.0篇
 http://cnt1992.xyz/2016/04/08/upgrade-nginx-to-http2/
