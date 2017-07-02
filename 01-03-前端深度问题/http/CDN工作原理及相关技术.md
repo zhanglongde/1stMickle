@@ -11,3 +11,9 @@ https://www.zhihu.com/question/28884646
 2.A类型、负载均衡
 3.DNS的edns-client-subnet
 智能DNS
+
+
+CDN主要功能
+1.中心节点 边缘节点
+2.智能DNS（相当于域名-IP映射关系的集合）
+3.负载均衡（负向代理都可以用来实现负载均衡，CDN就是负向代理的一个实践）
