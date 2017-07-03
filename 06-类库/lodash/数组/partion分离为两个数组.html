@@ -12,6 +12,18 @@
         return n % 2;
     });
     console.log(arr)
+    
+    
+    var ary = _.partition([1,2,3], function (n) {
+      return n>3
+    })
+    console.log(ary)
+
+
+    let [a,b] = _.partition([1,2,3], function (n) {
+        return n>3
+    })
+    console.log(a,b)
 </script>
 </body>
 </html>

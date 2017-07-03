@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>CSS3 PIE Margin Test</title>
+    
+    <meta name="robots" content="noindex, nofollow" />
+
+<!--
+    <script src="DD_roundies_0.0.2a.js"></script>
+    <script>
+        DD_roundies.addRule('#test, #test .inside, #test2 .inside, #control, #between .topmargin', 5);
+    </script>
+-->
+
+    <style type="text/css" media="screen">
+        .box {
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        .inside {
+            position: relative;
+            background: #fff;
+            border-radius: 5px;
+            margin: 20px;
+        }
+        
+        #test {
+            behavior: url(../build/PIE.htc);
+            background: red;
+        }
+
+        #test .inside {
+            behavior: url(../build/PIE.htc);
+        }
+
+        #test2 {
+            background: red;
+            position: relative;
+        }
+        #test2 .inside {
+            behavior: url(../build/PIE.htc);
+        }
+
+        #control {
+            behavior: url(../build/PIE.htc);
+            background: red;
+        }
+
+        #between {
+            background: red;
+        }
+        #between .topmargin {
+            behavior: url(../build/PIE.htc);
+            margin-top: 20px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <h1>Margin/Overflow Treatment with PIE</h1>
+    
+    <p>These boxes have <code>overflow:hidden</code>. Inside is a <code>div</code> with margin. The expected behavior is for that margin not to collapse (because of the overflow setting).</p>
+
+    <div id="test" class="box">
+        <div class="inside">
+            This box has PIE on the outside and the inside. This box should be spaced 20px on all sides.
+        </div><!--/inside-->
+    </div><!--/test-->
+    
+    <div id="test2" class="box">
+        <div class="inside">
+            This box has PIE on the inside only. This box should be spaced 20px on all sides.
+        </div><!--/inside-->
+    </div><!--/test2-->
+    
+    
+    <div id="control" class="box">
+        <div class="inside">
+            This box has PIE on the outside, but not on the inside.
+        </div><!--/test2-->
+    </div><!--/test-->
+
+    <div id="between" class="box">
+        <div class="inside">
+            These boxes should maintain their margin between.
+        </div>
+        <div class="inside topmargin">
+            These boxes should maintain their margin between.
+        </div>
+        <div class="inside topmargin">
+            These boxes should maintain their margin between.
+        </div>
+    </div>
+</body>
+</html>

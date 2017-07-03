@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>CSS实现图片模糊效果</title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width"/>
+<link rel="stylesheet" href="css/style.css"/>
+<style type="text/css">
+ * {margin: 0; padding: 0; }
+ul {width: 1000px; margin: 0 auto; }
+li {
+  background: #f5f5f5;
+  padding: 10px;
+  margin: 5px;
+  float: left;
+  list-style: none outside none;
+  text-align: center;
+  width: 45%;
+}
+li a, li span, li pre {
+  display: block;
+  text-align: center;
+}
+li span {
+  border-top: 2px dashed #ccc;
+  margin-top: 5px;
+  font-weight: bold;
+  font-family: arial,simsun;
+  line-height: 30px;
+}
+
+li a img {
+  margin: 0 5px;
+  width: 180px;
+  height: auto;
+}
+li pre {
+  background-color: #fafafa;
+  border: 1px solid #1684C8;
+  color: #195F91;
+  padding: 5px;
+  font-size: 12px;
+}
+li a img{
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+li a:hover img{
+    -webkit-filter:none;
+}
+li a .grayscale{
+    -webkit-filter:grayscale(1);
+}
+li a .sepia{
+    -webkit-filter:sepia(1);
+}
+li a .saturate{
+    -webkit-filter:saturate(0.5);
+}
+li a .saturate2{
+      -webkit-filter:saturate(3);
+  }
+li a .hue-rotate{
+    -webkit-filter:hue-rotate(90deg);
+}
+li a .invert{
+    -webkit-filter:invert(1);
+}
+li a .opacity{
+    -webkit-filter:opacity(.2);
+}
+li a .brightness{
+    -webkit-filter:brightness(.5);
+}
+li a .contrast{
+    -webkit-filter:contrast(2);
+}
+li a .blur{
+    -webkit-filter:blur(3px);
+}
+li a .drop-shadow{
+    -webkit-filter:drop-shadow(5px 5px 5px #ccc);
+}
+li a .custom{
+      -webkit-filter:saturate(5) hue-rotate(500deg) grayscale(0.3) sepia(0.7) contrast(1.5) invert(0.2) brightness(.9);
+  }
+
+li a .blursvg{
+	-webkit-filter:url(blur.svg#blur);
+}
+
+</style>
+</head>
+<body>
+<div class="g-doc">
+     <ul class="demo">
+	    <li>
+	        <a href="#"><img class="normal" title="normal" src="demo.png" /></a>
+	      <span>normal(无filter效果)</span>
+	      <pre>-webkit-filter:none;</pre>
+	    </li>
+	    <li>
+	      <a href="#">
+	        <img class="normal" title="normal" src="demo.png" />
+	        <img class="grayscale" title="grayscale" src="demo.png" />
+	      </a>
+	      <span>grayscale（灰度）</span>
+	      <pre>-webkit-filter:grayscale(1);</pre>
+	    </li>
+	    <li>
+	      <a href="#">
+	        <img class="normal" title="normal" src="demo.png" />
+	        <img class="sepia" title="sepia" src="demo.png" />
+	      </a>
+	      <span>sepia（褐色）</span>
+	      <pre>-webkit-filter:sepia(1);</pre>
+	    </li>
+	    <li>
+	      <a href="#">
+	        <img class="normal" title="normal" src="demo.png" />
+	        <img class="saturate" title="saturate" src="demo.png" />
+	      </a>
+	      <span>saturate（饱和度）</span>
+	      <pre>-webkit-filter:saturate(.5);</pre>
+	    </li>
+	    <li>
+	      <a href="#">
+	        <img class="normal" title="normal" src="demo.png" />
+	        <img class="saturate2" title="saturate" src="demo.png" />
+	      </a>
+	      <span>saturate（饱和度）</span>
+	      <pre>-webkit-filter:saturate(3);</pre>
+	    </li>
+	    <li>
+	      <a href="#">
+	        <img class="normal" title="normal" src="demo.png" />
+	        <img class="hue-rotate" title="hue-rotate" src="demo.png" />
+	      </a>
+	      <span>hue-rotate（色相旋转）</span>
+	      <pre> -webkit-filter:hue-rotate(90deg);</pre>
+	    </li>
+	    <li>
+	      <a href="#">
+	        <img class="normal" title="normal" src="demo.png" />
+	        <img class="invert" title="invert" src="demo.png" />
+	      </a>
+	      <span>invert（反色）</span>
+	      <pre>-webkit-filter:invert(1);</pre>
+	    </li>
+	    <li>
+	      <a href="#">
+	        <img class="normal" title="normal" src="demo.png" />
+	        <img class="opacity" title="opacity" src="demo.png" />
+	      </a>
+	      <span>opacity（透明度）</span>
+	      <pre>-webkit-filter:opacity(.2);</pre>
+	    </li>
+	    <li>
+	      <a href="#">
+	        <img class="normal" title="normal" src="demo.png" />
+	        <img class="brightness" title="brightness" src="demo.png" />
+	      </a>
+	      <span>brightness（亮度）</span>
+	      <pre>-webkit-filter:brightness(.5);</pre>
+	    </li>
+	    <li>
+	      <a href="#">
+	        <img class="normal" title="normal" src="demo.png" />
+	        <img class="contrast" title="contrast" src="demo.png" />
+	      </a>
+	      <span>contrast（对比度）</span>
+	      <pre>-webkit-filter:contrast(2);</pre>
+	    </li>
+	    <li>
+	      <a href="#">
+	        <img class="normal" title="normal" src="demo.png" />
+	        <img class="blur" title="blur" src="demo.png" />
+	      </a>
+	      <span>blur（模糊）</span>
+	      <pre>-webkit-filter:blur(3px);</pre>
+	    </li>
+	    <li>
+	      <a href="#">
+	        <img class="normal" title="normal" src="demo.png" />
+	        <img class="drop-shadow" title="drop-shadow" src="demo.png" />
+	      </a>
+	      <span>drop-shadow（阴影）</span>
+	      <pre>-webkit-filter:drop-shadow(5px 5px 5px #ccc);</pre>
+	    </li>
+	    <li>
+	      <a href="#">
+	        <img class="normal" title="normal" src="demo.png" />
+	        <img class="custom" title="drop-shadow" src="demo.png" />
+	      </a>
+	      <span>drop-shadow（阴影）</span>
+	      <pre>
+	        -webkit-filter:
+	          saturate(5) 
+	          hue-rotate(500deg) 
+	          grayscale(0.3) 
+	          sepia(0.7) 
+	          contrast(1.5) 
+	          invert(0.2) 
+	          brightness(.9);
+	      </pre>
+	    </li>
+	    <li>
+	      <a href="#">
+	        <img class="normal" title="normal" src="demo.png" />
+	        <img class="blursvg" title="blur-by-svg" src="demo.png" />
+	      </a>
+	      <span>blur-by-svg</span>
+	      <pre>
+	        -webkit-filter:url(blur.svg#blur);
+	      </pre>
+	    </li>
+
+
+
+	  </ul>
+</div>
+</body>
+</html>

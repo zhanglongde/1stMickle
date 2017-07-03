@@ -1,0 +1,220 @@
+<?xml version="1.0" ?>
+
+<project name="PIE" default="build" basedir=".">
+
+    <property name="version" value="2.0beta2-SNAPSHOT" />
+    <property name="build_dir" value="./build" />
+    <property name="src_dir" value="./sources" />
+
+    <target name="clean">
+        <delete dir="${build_dir}" />
+    </target>
+
+    <target name="build-uncompressed">
+        <mkdir dir="${build_dir}" />
+
+        <concat destfile="${build_dir}/PIE_IE678_uncompressed.js">
+            <fileset file="${src_dir}/js_open.js" />
+            <fileset file="${src_dir}/PIE_open.js" />
+            <fileset file="${src_dir}/Util.js" />
+            <fileset file="${src_dir}/GradientUtil.js" />
+            <fileset file="${src_dir}/Observable.js" />
+            <fileset file="${src_dir}/Heartbeat.js" />
+            <fileset file="${src_dir}/OnUnload.js" />
+            <fileset file="${src_dir}/OnResize.js" />
+            <fileset file="${src_dir}/OnScroll.js" />
+            <fileset file="${src_dir}/OnPrint.js" />
+            <fileset file="${src_dir}/OnMouseup.js" />
+            <fileset file="${src_dir}/Length.js" />
+            <fileset file="${src_dir}/BgPosition.js" />
+            <fileset file="${src_dir}/BgSize.js" />
+            <fileset file="${src_dir}/Angle.js" />
+            <fileset file="${src_dir}/Color.js" />
+            <fileset file="${src_dir}/Tokenizer.js" />
+            <fileset file="${src_dir}/BoundsInfo.js" />
+            <fileset file="${src_dir}/StyleInfoBase.js" />
+            <fileset file="${src_dir}/BackgroundStyleInfo.js" />
+            <fileset file="${src_dir}/BorderStyleInfo.js" />
+            <fileset file="${src_dir}/BorderRadiusStyleInfo.js" />
+            <fileset file="${src_dir}/BorderImageStyleInfo.js" />
+            <fileset file="${src_dir}/BoxShadowStyleInfo.js" />
+            <fileset file="${src_dir}/PaddingStyleInfo.js" />
+            <fileset file="${src_dir}/VisibilityStyleInfo.js" />
+            <fileset file="${src_dir}/VmlShape.js" />
+            <fileset file="${src_dir}/RendererBase.js" />
+            <fileset file="${src_dir}/RendererBase_IE678.js" />
+            <fileset file="${src_dir}/RootRenderer.js" />
+            <fileset file="${src_dir}/BackgroundRenderer.js" />
+            <fileset file="${src_dir}/BorderRenderer.js" />
+            <fileset file="${src_dir}/BorderImageRenderer.js" />
+            <fileset file="${src_dir}/BoxShadowOutsetRenderer.js" />
+            <!--<fileset file="${src_dir}/BoxShadowInsetRenderer.js" />-->
+            <fileset file="${src_dir}/ImgRenderer.js" />
+            <fileset file="${src_dir}/Element.js" />
+            <fileset file="${src_dir}/PIE_API.js" />
+            <fileset file="${src_dir}/js_close.js" />
+
+            <filterchain>
+                <tokenfilter>
+                    <replacestring from="$Version$" to="${version}" />
+                </tokenfilter>
+            </filterchain>
+        </concat>
+
+        <concat destfile="${build_dir}/PIE_IE9_uncompressed.js">
+            <fileset file="${src_dir}/js_open.js" />
+            <fileset file="${src_dir}/PIE_open.js" />
+            <fileset file="${src_dir}/Util.js" />
+            <fileset file="${src_dir}/GradientUtil.js" />
+            <fileset file="${src_dir}/Observable.js" />
+            <fileset file="${src_dir}/Heartbeat.js" />
+            <fileset file="${src_dir}/OnUnload.js" />
+            <fileset file="${src_dir}/OnResize.js" />
+            <fileset file="${src_dir}/OnScroll.js" />
+            <fileset file="${src_dir}/OnMouseup.js" />
+            <fileset file="${src_dir}/Length.js" />
+            <fileset file="${src_dir}/BgPosition.js" />
+            <fileset file="${src_dir}/BgSize.js" />
+            <fileset file="${src_dir}/Angle.js" />
+            <fileset file="${src_dir}/Color.js" />
+            <fileset file="${src_dir}/Tokenizer.js" />
+            <fileset file="${src_dir}/BoundsInfo.js" />
+            <fileset file="${src_dir}/StyleInfoBase.js" />
+            <fileset file="${src_dir}/BackgroundStyleInfo.js" />
+            <fileset file="${src_dir}/BorderStyleInfo.js" />
+            <fileset file="${src_dir}/BorderImageStyleInfo.js" />
+            <fileset file="${src_dir}/PaddingStyleInfo.js" />
+            <fileset file="${src_dir}/RendererBase.js" />
+            <fileset file="${src_dir}/IE9RootRenderer.js" />
+            <fileset file="${src_dir}/IE9BackgroundRenderer.js" />
+            <fileset file="${src_dir}/IE9BorderImageRenderer.js" />
+            <fileset file="${src_dir}/Element.js" />
+            <fileset file="${src_dir}/PIE_API.js" />
+            <fileset file="${src_dir}/js_close.js" />
+
+            <filterchain>
+                <tokenfilter>
+                    <replacestring from="$Version$" to="${version}" />
+                </tokenfilter>
+            </filterchain>
+        </concat>
+
+        <loadfile property="htc_script_uncompressed" srcFile="${src_dir}/htc_script.js">
+            <filterchain>
+                <tokenfilter>
+                    <replacestring from="$JSVariant$" to="_uncompressed" />
+                </tokenfilter>
+            </filterchain>
+        </loadfile>
+        <copy file="${src_dir}/htc_markup.htc" tofile="${build_dir}/PIE_uncompressed.htc">
+            <filterchain>
+                <tokenfilter>
+                    <replacestring from="$Version$" to="${version}" />
+                    <replacestring from="$Contents$" to="${htc_script_uncompressed}" />
+                </tokenfilter>
+            </filterchain>
+        </copy>
+    </target>
+
+    <target name="build-compressed" depends="build-uncompressed">
+        <exec executable="java">
+            <arg line='-jar tools/compiler.jar
+                       --js ${build_dir}/PIE_IE678_uncompressed.js
+                       --module "PIE_IE678:1"
+                       --module_output_path_prefix ${build_dir}/
+                       --compilation_level ADVANCED_OPTIMIZATIONS
+                       --externs ${src_dir}/closure_externs.js' />
+        </exec>
+
+        <exec executable="java">
+            <arg line='-jar tools/compiler.jar
+                       --js ${build_dir}/PIE_IE9_uncompressed.js
+                       --module "PIE_IE9:1"
+                       --module_output_path_prefix ${build_dir}/
+                       --compilation_level ADVANCED_OPTIMIZATIONS
+                       --externs ${src_dir}/closure_externs.js' />
+        </exec>
+
+        <exec executable="java">
+            <arg line='-jar tools/compiler.jar
+                       --js ${src_dir}/htc_script.js
+                       --js ${src_dir}/closure_preservefunctions.js
+                       --module "htc_script_compressed:1"
+                       --module "temp:1"
+                       --module_output_path_prefix ${build_dir}/
+                       --compilation_level ADVANCED_OPTIMIZATIONS
+                       --externs ${src_dir}/closure_externs.js' />
+        </exec>
+
+        <loadfile property="htc_script_compressed" srcFile="${build_dir}/htc_script_compressed.js">
+            <filterchain>
+                <tokenfilter>
+                    <replacestring from="$JSVariant$" to="" />
+                </tokenfilter>
+            </filterchain>
+        </loadfile>
+        <copy file="${src_dir}/htc_markup.htc" tofile="${build_dir}/PIE.htc">
+            <filterchain>
+                <striplinecomments>
+                    <comment value="//#" />
+                </striplinecomments>
+                <tokenfilter>
+                    <replacestring from="$Contents$" to="${htc_script_compressed}" />
+                    <replacestring from="$Version$" to="${version}" />
+                </tokenfilter>
+            </filterchain>
+        </copy>
+
+        <delete file="${build_dir}/temp.js" />
+        <delete file="${build_dir}/htc_script_compressed.js" />
+    </target>
+
+
+    <target name="copy-wrappers">
+        <copy todir="${build_dir}">
+            <fileset dir="${src_dir}/wrappers" />
+        </copy>
+    </target>
+
+
+    <target name="build" depends="build-uncompressed,build-compressed" />
+
+    <target name="package" depends="clean,build,copy-wrappers">
+        <!-- Create distribution bundle -->
+        <zip destfile="${build_dir}/PIE.zip" basedir="${build_dir}"/>
+    </target>
+
+
+
+    <target name="deploy" depends="build" description="Builds and pushes the files to the gh-pages branch">
+        <!-- Clone repo into temp dir, checking out the gh-pages branch -->
+        <exec executable="git">
+            <arg line="clone --reference . --branch gh-pages git@github.com:lojjic/PIE.git ${build_dir}/temp-git-clone" />
+        </exec>
+
+        <!-- Copy built files into correct version dir -->
+        <copy todir="${build_dir}/temp-git-clone/files/builds/${version}" overwrite="true">
+            <fileset file="${build_dir}/PIE.htc" />
+            <fileset file="${build_dir}/PIE_IE678.js" />
+            <fileset file="${build_dir}/PIE_IE9.js" />
+            <fileset file="${build_dir}/PIE_uncompressed.htc" />
+            <fileset file="${build_dir}/PIE_IE678_uncompressed.js" />
+            <fileset file="${build_dir}/PIE_IE9_uncompressed.js" />
+        </copy>
+
+        <!-- Commit and push -->
+        <exec executable="git" dir="${build_dir}/temp-git-clone">
+            <arg line='add files/builds/${version}/*' />
+        </exec>
+        <exec executable="git" dir="${build_dir}/temp-git-clone">
+            <arg line='commit -a -m "Update files for build ${version}"' />
+        </exec>
+        <exec executable="git" dir="${build_dir}/temp-git-clone">
+            <arg line='push origin gh-pages' />
+        </exec>
+
+        <!-- Cleanup -->
+        <delete dir="${build_dir}/temp-git-clone" />
+    </target>
+
+</project>

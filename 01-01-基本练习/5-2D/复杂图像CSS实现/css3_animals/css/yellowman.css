@@ -1,0 +1,872 @@
+/* line 1, ../scss/yellowman.scss */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 6, ../scss/yellowman.scss */
+:after, :before {
+  content: '';
+  position: absolute;
+}
+
+/* line 18, ../scss/yellowman.scss */
+.yellowman {
+  position: relative;
+  margin: 20px auto;
+  width: 140px;
+  height: 250px;
+  -webkit-perspective: 1500px;
+  -moz-perspective: 1500px;
+  perspective: 1500px;
+}
+/* line 27, ../scss/yellowman.scss */
+.yellowman * {
+  position: absolute;
+}
+/* line 48, ../scss/yellowman.scss */
+.yellowman .yellowman-body {
+  position: relative;
+  width: 140px;
+  height: 250px;
+  background: #FFCB4F;
+  -webkit-border-radius: 80px 80px 50px 50px;
+  -moz-border-radius: 80px 80px 50px 50px;
+  -ms-border-radius: 80px 80px 50px 50px;
+  border-radius: 80px 80px 50px 50px;
+  overflow: hidden;
+}
+/* line 55, ../scss/yellowman.scss */
+.yellowman .yellowman-body .yellowman-braces-bottom {
+  bottom: 0px;
+  width: 140px;
+  height: 40px;
+  background-color: #6D9CC6;
+  background-image: linear-gradient(#6D9CC6 45%, #4B6587 100%);
+  border-top: 1px solid #4883b8;
+}
+/* line 63, ../scss/yellowman.scss */
+.yellowman .yellowman-body .yellowman-braces-center {
+  bottom: 0;
+  width: 140px;
+  height: 90px;
+  border-top: 1px solid #4883b8;
+  overflow: hidden;
+}
+/* line 69, ../scss/yellowman.scss */
+.yellowman .yellowman-body .yellowman-braces-center:before, .yellowman .yellowman-body .yellowman-braces-center:after {
+  top: 0;
+  width: 56px;
+  height: 75px;
+  border: 1px solid #4883b8;
+  z-index: 2;
+}
+/* line 77, ../scss/yellowman.scss */
+.yellowman .yellowman-body .yellowman-braces-center:before {
+  left: -30px;
+  -webkit-border-radius: 0 0 35% 0;
+  -moz-border-radius: 0 0 35% 0;
+  -ms-border-radius: 0 0 35% 0;
+  border-radius: 0 0 35% 0;
+  -webkit-box-shadow: 40px -40px 30px 40px #6D9CC6;
+  -moz-box-shadow: 40px -40px 30px 40px #6D9CC6;
+  -ms-box-shadow: 40px -40px 30px 40px #6D9CC6;
+  box-shadow: 40px -40px 30px 40px #6D9CC6;
+}
+/* line 82, ../scss/yellowman.scss */
+.yellowman .yellowman-body .yellowman-braces-center:after {
+  right: -30px;
+  -webkit-border-radius: 0 0 0 35%;
+  -moz-border-radius: 0 0 0 35%;
+  -ms-border-radius: 0 0 0 35%;
+  border-radius: 0 0 0 35%;
+  -webkit-box-shadow: -40px -40px 30px 40px #6D9CC6;
+  -moz-box-shadow: -40px -40px 30px 40px #6D9CC6;
+  -ms-box-shadow: -40px -40px 30px 40px #6D9CC6;
+  box-shadow: -40px -40px 30px 40px #6D9CC6;
+}
+/* line 89, ../scss/yellowman.scss */
+.yellowman .yellowman-body .yellowman-braces-pocket {
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-17.5px);
+  height: 35px;
+  width: 35px;
+  -webkit-border-radius: 0 0 15px 15px;
+  -moz-border-radius: 0 0 15px 15px;
+  -ms-border-radius: 0 0 15px 15px;
+  border-radius: 0 0 15px 15px;
+  border: 1px solid #4883b8;
+  border-top: 0;
+  z-index: 3;
+}
+/* line 99, ../scss/yellowman.scss */
+.yellowman .yellowman-body .yellowman-braces-pocket:before {
+  top: 0;
+  width: 35px;
+  height: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent transparent #4883b8 transparent;
+  -webkit-border-radius: 0 0 10px 10px;
+  -moz-border-radius: 0 0 10px 10px;
+  -ms-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 10px 10px;
+}
+/* line 110, ../scss/yellowman.scss */
+.yellowman .yellowman-body .yellowman-braces-pocket .logo {
+  left: 50%;
+  top: 50%;
+  margin-top: -10px;
+  margin-left: -12.5px;
+  width: 25px;
+  height: 25px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  background: #333333;
+}
+/* line 119, ../scss/yellowman.scss */
+.yellowman .yellowman-body .yellowman-braces-pocket .logo:before, .yellowman .yellowman-body .yellowman-braces-pocket .logo:after {
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+/* line 126, ../scss/yellowman.scss */
+.yellowman .yellowman-body .yellowman-braces-pocket .logo:before {
+  width: 15px;
+  height: 15px;
+  background: #6D9CC6;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/* line 132, ../scss/yellowman.scss */
+.yellowman .yellowman-body .yellowman-braces-pocket .logo:after {
+  width: 7px;
+  height: 7px;
+  background: #333333;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+}
+/* line 139, ../scss/yellowman.scss */
+.yellowman .yellowman-body .yellowman-braces-pocket:after {
+  top: 17.5px;
+  right: 5px;
+  width: 12.5px;
+  height: 3px;
+  border-bottom: 1px solid #6D9CC6;
+  background: #333333;
+}
+/* line 148, ../scss/yellowman.scss */
+.yellowman .yellowman-body .yellowman-braces-top {
+  top: 127px;
+  width: 12px;
+  height: 60px;
+  background: #6D9CC6;
+  border: 1px solid #4883b8;
+  z-index: 3;
+}
+/* line 157, ../scss/yellowman.scss */
+.yellowman .yellowman-body .yellowman-braces-top.left {
+  left: 5px;
+  -webkit-transform: rotate(-65deg);
+  -moz-transform: rotate(-65deg);
+  -ms-transform: rotate(-65deg);
+  transform: rotate(-65deg);
+}
+/* line 160, ../scss/yellowman.scss */
+.yellowman .yellowman-body .yellowman-braces-top.left:after {
+  right: 2px;
+}
+/* line 164, ../scss/yellowman.scss */
+.yellowman .yellowman-body .yellowman-braces-top.right {
+  right: 5px;
+  -webkit-transform: rotate(65deg);
+  -moz-transform: rotate(65deg);
+  -ms-transform: rotate(65deg);
+  transform: rotate(65deg);
+}
+/* line 167, ../scss/yellowman.scss */
+.yellowman .yellowman-body .yellowman-braces-top.right:after {
+  left: 2px;
+}
+/* line 171, ../scss/yellowman.scss */
+.yellowman .yellowman-body .yellowman-braces-top:after {
+  bottom: 0;
+  width: 8px;
+  height: 8px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  background: #333333;
+}
+/* line 179, ../scss/yellowman.scss */
+.yellowman .yellowman-body:after {
+  width: 80%;
+  height: 250px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  border-radius: 20px;
+  background-image: -webkit-radial-gradient(40% 30%, rgba(250, 250, 250, 0.6) 0%, rgba(250, 250, 250, 0) 60%);
+}
+/* line 187, ../scss/yellowman.scss */
+.yellowman .yellowman-hair {
+  top: -15px;
+  list-style-type: none;
+}
+/* line 190, ../scss/yellowman.scss */
+.yellowman .yellowman-hair li {
+  width: 10px;
+  height: 30px;
+  float: left;
+  /*n=0,1,2...*/
+}
+/* line 194, ../scss/yellowman.scss */
+.yellowman .yellowman-hair li:nth-child(1) {
+  left: 8px;
+}
+/* line 197, ../scss/yellowman.scss */
+.yellowman .yellowman-hair li:nth-child(2) {
+  left: 18px;
+}
+/* line 200, ../scss/yellowman.scss */
+.yellowman .yellowman-hair li:nth-child(3) {
+  left: 30px;
+}
+/* line 203, ../scss/yellowman.scss */
+.yellowman .yellowman-hair li:nth-child(4) {
+  left: 45px;
+}
+/* line 206, ../scss/yellowman.scss */
+.yellowman .yellowman-hair li:nth-child(5) {
+  left: 60px;
+}
+/* line 209, ../scss/yellowman.scss */
+.yellowman .yellowman-hair li:nth-child(6) {
+  left: 76px;
+}
+/* line 212, ../scss/yellowman.scss */
+.yellowman .yellowman-hair li:nth-child(7) {
+  left: 93px;
+}
+/* line 215, ../scss/yellowman.scss */
+.yellowman .yellowman-hair li:nth-child(8) {
+  left: 107px;
+}
+/* line 218, ../scss/yellowman.scss */
+.yellowman .yellowman-hair li:nth-child(9) {
+  left: 119px;
+}
+/* line 222, ../scss/yellowman.scss */
+.yellowman .yellowman-hair li:nth-of-type(n+6) {
+  border-left: 1px solid #333333;
+  -webkit-border-radius: 80% 0 0 0;
+  -moz-border-radius: 80% 0 0 0;
+  -ms-border-radius: 80% 0 0 0;
+  border-radius: 80% 0 0 0;
+}
+/* line 227, ../scss/yellowman.scss */
+.yellowman .yellowman-hair li:nth-of-type(-n+4) {
+  border-right: 1px solid #333333;
+  -webkit-border-radius: 0 80% 0 0;
+  -moz-border-radius: 0 80% 0 0;
+  -ms-border-radius: 0 80% 0 0;
+  border-radius: 0 80% 0 0;
+}
+/* line 232, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.back {
+  z-index: -1;
+}
+/* line 234, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.back li:nth-child(1) {
+  margin-top: 36px;
+  -webkit-transform: rotate(-70deg);
+  -moz-transform: rotate(-70deg);
+  -ms-transform: rotate(-70deg);
+  transform: rotate(-70deg);
+}
+/* line 238, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.back li:nth-child(2) {
+  margin-top: 19px;
+  -webkit-transform: rotate(-50deg);
+  -moz-transform: rotate(-50deg);
+  -ms-transform: rotate(-50deg);
+  transform: rotate(-50deg);
+}
+/* line 242, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.back li:nth-child(3) {
+  margin-top: 12px;
+  -webkit-transform: rotate(-30deg);
+  -moz-transform: rotate(-30deg);
+  -ms-transform: rotate(-30deg);
+  transform: rotate(-30deg);
+}
+/* line 246, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.back li:nth-child(4) {
+  margin-top: 3px;
+  -webkit-transform: rotate(-10deg);
+  -moz-transform: rotate(-10deg);
+  -ms-transform: rotate(-10deg);
+  transform: rotate(-10deg);
+}
+/* line 250, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.back li:nth-child(5) {
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  transform: rotate(2deg);
+  border-left: 1px solid #333333;
+  -webkit-border-radius: 80% 0 0 0;
+  -moz-border-radius: 80% 0 0 0;
+  -ms-border-radius: 80% 0 0 0;
+  border-radius: 80% 0 0 0;
+}
+/* line 255, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.back li:nth-child(6) {
+  margin-top: 3px;
+  -webkit-transform: rotate(10deg);
+  -moz-transform: rotate(10deg);
+  -ms-transform: rotate(10deg);
+  transform: rotate(10deg);
+}
+/* line 259, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.back li:nth-child(7) {
+  margin-top: 12px;
+  -webkit-transform: rotate(30deg);
+  -moz-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+/* line 263, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.back li:nth-child(8) {
+  margin-top: 19px;
+  -webkit-transform: rotate(50deg);
+  -moz-transform: rotate(50deg);
+  -ms-transform: rotate(50deg);
+  transform: rotate(50deg);
+}
+/* line 267, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.back li:nth-child(9) {
+  margin-top: 36px;
+  -webkit-transform: rotate(70deg);
+  -moz-transform: rotate(70deg);
+  -ms-transform: rotate(70deg);
+  transform: rotate(70deg);
+}
+/* line 272, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.font {
+  margin-top: 3px;
+}
+/* line 274, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.font li:nth-of-type(1) {
+  -webkit-transform: rotate(-60deg);
+  -moz-transform: rotate(-60deg);
+  -ms-transform: rotate(-60deg);
+  transform: rotate(-60deg);
+  margin-top: 21px;
+}
+/* line 279, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.font li:nth-of-type(2) {
+  -webkit-transform: rotate(-46deg);
+  -moz-transform: rotate(-46deg);
+  -ms-transform: rotate(-46deg);
+  transform: rotate(-46deg);
+  margin-top: 12px;
+}
+/* line 284, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.font li:nth-of-type(3) {
+  -webkit-transform: rotate(-28deg);
+  -moz-transform: rotate(-28deg);
+  -ms-transform: rotate(-28deg);
+  transform: rotate(-28deg);
+  margin-top: 7px;
+}
+/* line 289, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.font li:nth-of-type(4) {
+  -webkit-transform: rotate(-12deg);
+  -moz-transform: rotate(-12deg);
+  -ms-transform: rotate(-12deg);
+  transform: rotate(-12deg);
+  margin-top: 5px;
+}
+/* line 294, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.font li:nth-of-type(5) {
+  -webkit-transform: rotate(-2deg);
+  -moz-transform: rotate(-2deg);
+  -ms-transform: rotate(-2deg);
+  transform: rotate(-2deg);
+  margin-top: 3px;
+  border-right: 1px solid #333333;
+  -webkit-border-radius: 0 80% 0 0;
+  -moz-border-radius: 0 80% 0 0;
+  -ms-border-radius: 0 80% 0 0;
+  border-radius: 0 80% 0 0;
+}
+/* line 301, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.font li:nth-of-type(6) {
+  -webkit-transform: rotate(12deg);
+  -moz-transform: rotate(12deg);
+  -ms-transform: rotate(12deg);
+  transform: rotate(12deg);
+  margin-top: 6px;
+}
+/* line 306, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.font li:nth-of-type(7) {
+  -webkit-transform: rotate(28deg);
+  -moz-transform: rotate(28deg);
+  -ms-transform: rotate(28deg);
+  transform: rotate(28deg);
+  margin-top: 7px;
+}
+/* line 311, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.font li:nth-of-type(8) {
+  -webkit-transform: rotate(46deg);
+  -moz-transform: rotate(46deg);
+  -ms-transform: rotate(46deg);
+  transform: rotate(46deg);
+  margin-top: 12px;
+}
+/* line 316, ../scss/yellowman.scss */
+.yellowman .yellowman-hair.font li:nth-of-type(9) {
+  -webkit-transform: rotate(60deg);
+  -moz-transform: rotate(60deg);
+  -ms-transform: rotate(60deg);
+  transform: rotate(60deg);
+  margin-top: 21px;
+}
+/* line 323, ../scss/yellowman.scss */
+.yellowman .yellowman-mouth {
+  top: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 22px;
+  border-bottom: 2px solid #DE9A33;
+  -webkit-border-radius: 70%;
+  -moz-border-radius: 70%;
+  -ms-border-radius: 70%;
+  border-radius: 70%;
+  -webkit-box-shadow: inset -1px 2px -1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset -1px 2px -1px rgba(0, 0, 0, 0.3);
+  -ms-box-shadow: inset -1px 2px -1px rgba(0, 0, 0, 0.3);
+  box-shadow: inset -1px 2px -1px rgba(0, 0, 0, 0.3);
+}
+/* line 334, ../scss/yellowman.scss */
+.yellowman .arm-shadow {
+  top: 180px;
+  width: 5px;
+  height: 30px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+}
+/* line 339, ../scss/yellowman.scss */
+.yellowman .arm-shadow.shadowleft {
+  left: 0;
+  -webkit-box-shadow: inset 2px 0 3px -1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 2px 0 3px -1px rgba(0, 0, 0, 0.3);
+  -ms-box-shadow: inset 2px 0 3px -1px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 2px 0 3px -1px rgba(0, 0, 0, 0.3);
+  -webkit-transform: rotate(5deg);
+  -moz-transform: rotate(5deg);
+  -ms-transform: rotate(5deg);
+  transform: rotate(5deg);
+}
+/* line 344, ../scss/yellowman.scss */
+.yellowman .arm-shadow.shadowright {
+  right: 0;
+  -webkit-box-shadow: inset -2px 0 3px -1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset -2px 0 3px -1px rgba(0, 0, 0, 0.3);
+  -ms-box-shadow: inset -2px 0 3px -1px rgba(0, 0, 0, 0.3);
+  box-shadow: inset -2px 0 3px -1px rgba(0, 0, 0, 0.3);
+  -webkit-transform: rotate(-5deg);
+  -moz-transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+}
+/* line 352, ../scss/yellowman.scss */
+.yellowman .yellowman-arm {
+  top: 160px;
+  width: 12px;
+  height: 80px;
+  background: #FFCB4F;
+}
+/* line 357, ../scss/yellowman.scss */
+.yellowman .yellowman-arm.armleft {
+  left: -12px;
+  -webkit-border-radius: 20px 0 0 0px/80px 0 0 0px;
+  -moz-border-radius: 20px 0 0 0px/80px 0 0 0px;
+  -ms-border-radius: 20px 0 0 0px/80px 0 0 0px;
+  border-radius: 20px 0 0 0px/80px 0 0 0px;
+}
+/* line 361, ../scss/yellowman.scss */
+.yellowman .yellowman-arm.armright {
+  right: -12px;
+  -webkit-border-radius: 0 20px 0px 0/0 80px 0px 0;
+  -moz-border-radius: 0 20px 0px 0/0 80px 0px 0;
+  -ms-border-radius: 0 20px 0px 0/0 80px 0px 0;
+  border-radius: 0 20px 0px 0/0 80px 0px 0;
+}
+/* line 369, ../scss/yellowman.scss */
+.yellowman .yellowman-hand {
+  bottom: 0;
+  width: 17px;
+  height: 18px;
+  background: #333333;
+}
+/* line 374, ../scss/yellowman.scss */
+.yellowman .yellowman-hand.handleft {
+  left: -14px;
+}
+/* line 376, ../scss/yellowman.scss */
+.yellowman .yellowman-hand.handleft:before {
+  bottom: -3px;
+  left: -3px;
+  -webkit-transform: rotate(20deg);
+  -moz-transform: rotate(20deg);
+  -ms-transform: rotate(20deg);
+  transform: rotate(20deg);
+}
+/* line 381, ../scss/yellowman.scss */
+.yellowman .yellowman-hand.handleft:after {
+  bottom: -4px;
+  left: 13px;
+  -webkit-transform: rotate(-30deg);
+  -moz-transform: rotate(-30deg);
+  -ms-transform: rotate(-30deg);
+  transform: rotate(-30deg);
+}
+/* line 386, ../scss/yellowman.scss */
+.yellowman .yellowman-hand.handleft .finger {
+  bottom: -6px;
+  left: 5px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+/* line 392, ../scss/yellowman.scss */
+.yellowman .yellowman-hand.handright {
+  right: -14px;
+}
+/* line 394, ../scss/yellowman.scss */
+.yellowman .yellowman-hand.handright:before {
+  bottom: -3px;
+  right: -3px;
+  -webkit-transform: rotate(-20deg);
+  -moz-transform: rotate(-20deg);
+  -ms-transform: rotate(-20deg);
+  transform: rotate(-20deg);
+}
+/* line 399, ../scss/yellowman.scss */
+.yellowman .yellowman-hand.handright:after {
+  bottom: -4px;
+  right: 13px;
+  -webkit-transform: rotate(30deg);
+  -moz-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+/* line 404, ../scss/yellowman.scss */
+.yellowman .yellowman-hand.handright .finger {
+  bottom: -6px;
+  right: 5px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+/* line 410, ../scss/yellowman.scss */
+.yellowman .yellowman-hand:before, .yellowman .yellowman-hand:after, .yellowman .yellowman-hand .finger {
+  width: 10px;
+  height: 20px;
+  background: #333333;
+  -webkit-border-radius: 0 0 20px 20px;
+  -moz-border-radius: 0 0 20px 20px;
+  -ms-border-radius: 0 0 20px 20px;
+  border-radius: 0 0 20px 20px;
+}
+/* line 416, ../scss/yellowman.scss */
+.yellowman .yellowman-hand .wrist {
+  width: 17px;
+  height: 3px;
+  background: #333333;
+  -webkit-border-radius: 40%;
+  -moz-border-radius: 40%;
+  -ms-border-radius: 40%;
+  border-radius: 40%;
+  top: -3px;
+}
+/* line 424, ../scss/yellowman.scss */
+.yellowman .yellowman-leg {
+  bottom: -15px;
+  width: 25px;
+  height: 15px;
+  background: #4B6587;
+  z-index: -1;
+}
+/* line 432, ../scss/yellowman.scss */
+.yellowman .yellowman-leg:after {
+  top: -10px;
+  height: 10px;
+  width: 20px;
+  background: #4B6587;
+}
+/* line 438, ../scss/yellowman.scss */
+.yellowman .yellowman-leg.legleft {
+  left: 40px;
+  -webkit-border-radius: 0 0 10% 20%/0 0 80% 80%;
+  -moz-border-radius: 0 0 10% 20%/0 0 80% 80%;
+  -ms-border-radius: 0 0 10% 20%/0 0 80% 80%;
+  border-radius: 0 0 10% 20%/0 0 80% 80%;
+}
+/* line 441, ../scss/yellowman.scss */
+.yellowman .yellowman-leg.legleft:after {
+  left: -12px;
+  -webkit-transform: rotate(55deg);
+  -moz-transform: rotate(55deg);
+  -ms-transform: rotate(55deg);
+  transform: rotate(55deg);
+}
+/* line 446, ../scss/yellowman.scss */
+.yellowman .yellowman-leg.legright {
+  right: 40px;
+  -webkit-border-radius: 0 0 20% 10%/0 0 80% 80%;
+  -moz-border-radius: 0 0 20% 10%/0 0 80% 80%;
+  -ms-border-radius: 0 0 20% 10%/0 0 80% 80%;
+  border-radius: 0 0 20% 10%/0 0 80% 80%;
+}
+/* line 449, ../scss/yellowman.scss */
+.yellowman .yellowman-leg.legright:after {
+  right: -12px;
+  -webkit-transform: rotate(-55deg);
+  -moz-transform: rotate(-55deg);
+  -ms-transform: rotate(-55deg);
+  transform: rotate(-55deg);
+}
+/* line 457, ../scss/yellowman.scss */
+.yellowman .yellowman-shoe {
+  bottom: -26px;
+  width: 30px;
+  height: 10px;
+  z-index: -2;
+  background: #333333;
+}
+/* line 466, ../scss/yellowman.scss */
+.yellowman .yellowman-shoe.shoeleft {
+  right: 75px;
+  -webkit-border-radius: 50px 20px 15px 10px;
+  -moz-border-radius: 50px 20px 15px 10px;
+  -ms-border-radius: 50px 20px 15px 10px;
+  border-radius: 50px 20px 15px 10px;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+/* line 470, ../scss/yellowman.scss */
+.yellowman .yellowman-shoe.shoeleft:before, .yellowman .yellowman-shoe.shoeleft:after {
+  right: 0;
+}
+/* line 473, ../scss/yellowman.scss */
+.yellowman .yellowman-shoe.shoeleft:after {
+  -webkit-border-radius: 10px 0 0 10px;
+  -moz-border-radius: 10px 0 0 10px;
+  -ms-border-radius: 10px 0 0 10px;
+  border-radius: 10px 0 0 10px;
+}
+/* line 477, ../scss/yellowman.scss */
+.yellowman .yellowman-shoe.shoeright {
+  left: 75px;
+  -webkit-border-radius: 20px 50px 10px 15px;
+  -moz-border-radius: 20px 50px 10px 15px;
+  -ms-border-radius: 20px 50px 10px 15px;
+  border-radius: 20px 50px 10px 15px;
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+}
+/* line 481, ../scss/yellowman.scss */
+.yellowman .yellowman-shoe.shoeright:before, .yellowman .yellowman-shoe.shoeright:after {
+  left: 0;
+}
+/* line 484, ../scss/yellowman.scss */
+.yellowman .yellowman-shoe.shoeright:after {
+  -webkit-border-radius: 0 10px 10px 0px;
+  -moz-border-radius: 0 10px 10px 0px;
+  -ms-border-radius: 0 10px 10px 0px;
+  border-radius: 0 10px 10px 0px;
+}
+/* line 488, ../scss/yellowman.scss */
+.yellowman .yellowman-shoe:before {
+  top: -10px;
+  height: 15px;
+  width: 22px;
+  background: #333333;
+}
+/* line 494, ../scss/yellowman.scss */
+.yellowman .yellowman-shoe:after {
+  bottom: -3px;
+  width: 30px;
+  height: 3px;
+  background-image: -webkit-linear-gradient(#666666 0%, #333333 58%);
+  background-image: -moz-linear-gradient(#666666 0%, #333333 58%);
+  background-image: -o-linear-gradient(#666666 0%, #333333 58%);
+  background-image: linear-gradient(#666666 0%, #333333 58%);
+}
+/* line 504, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses {
+  top: 40px;
+  left: 0;
+  width: 140px;
+  height: 60px;
+}
+/* line 511, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses .glasses {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #CCCCCC;
+  box-shadow: 14px 8px 8px rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  z-index: 4;
+  overflow: hidden;
+}
+/* line 519, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses .glasses .eye {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #666666;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+}
+/* line 526, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses .glasses .eye.eyeleft {
+  left: -3px;
+}
+/* line 529, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses .glasses .eye.eyeright {
+  right: -3px;
+}
+/* line 532, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses .glasses .eye .eyeball {
+  margin-top: 1px;
+  height: 46px;
+  width: 50px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  background: whitesmoke;
+  box-shadow: inset 0px 2px 10px 0px rgba(51, 51, 51, 0.5), inset 0px -1px 5px 0px rgba(51, 51, 51, 0.3);
+}
+/* line 539, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses .glasses .eye .eyeball:after {
+  top: 30%;
+  width: 15px;
+  height: 15px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  background-image: -webkit-radial-gradient(circle, #000000 0%, #e7a452 25%, #91695c 50%, #91695c 100%);
+}
+/* line 547, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses .glasses .eye .eyeball.ballleft:after {
+  right: 10px;
+}
+/* line 550, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses .glasses .eye .eyeball.ballright:after {
+  left: 10px;
+}
+/* line 558, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses .glassesleft {
+  left: 12px;
+}
+/* line 561, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses .glassesright {
+  right: 12px;
+}
+/* line 564, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses .nail {
+  top: 50%;
+  margin-top: -12.5px;
+  width: 5px;
+  height: 25px;
+  background: #999999;
+}
+/* line 572, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses .nail.leftnail {
+  left: 12px;
+}
+/* line 575, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses .nail.rightnail {
+  right: 12px;
+}
+/* line 579, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses .frame {
+  top: 50%;
+  margin-top: -8px;
+  width: 3px;
+  height: 12px;
+  z-index: 6;
+}
+/* line 588, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses .frame.leftframe {
+  left: -5px;
+  border-right: 14px solid #444444;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+}
+/* line 593, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses .frame.leftframe:after {
+  right: -14px;
+}
+/* line 597, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses .frame.rightframe {
+  right: -5px;
+  border-left: 14px solid #444444;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+}
+/* line 602, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses .frame.rightframe:after {
+  left: -14px;
+}
+/* line 606, ../scss/yellowman.scss */
+.yellowman .yellowman-glasses .frame:after {
+  top: 50%;
+  transform: translateY(-1px);
+  width: 14px;
+  border-bottom: 2px solid black;
+}
+/* line 614, ../scss/yellowman.scss */
+.yellowman .shadow {
+  bottom: -24px;
+  left: 20px;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
+  -webkit-transform: rotateX(90deg) translateZ(-125px);
+  -moz-transform: rotateX(90deg) translateZ(-125px);
+  -ms-transform: rotateX(90deg) translateZ(-125px);
+  -o-transform: rotateX(90deg) translateZ(-125px);
+  transform: rotateX(90deg) translateZ(-125px);
+}
+
+/*# sourceMappingURL=yellowman.css.map */
