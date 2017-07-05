@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .container{
+            display:flex;
+            flex-direction: column;
+            width:200px;
+            height:200px;
+
+            border:1px solid #bdbdbd;
+        }
+        .container::before{
+            content:'';
+            flex:1;
+        }
+        .footer{
+            width:100px;
+            height:50px;
+
+            line-height:50px;
+            text-align:center;
+
+            background-color: #58a;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--<div class="bd"></div>-->
+    <div class="footer">footer</div>
+</div>
+</body>
+</html>
