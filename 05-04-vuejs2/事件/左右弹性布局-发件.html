@@ -2,9 +2,152 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        html,body{
+            height:100%;
+            width:100%;
+            display: flex;
+        }
+        ul,li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        input{
+            outline:none;
+        }
+        .box{
+            position: absolute;
+            top:50%;left:50%;transform:translate(-50%,-50%);
+            /*flex:0 0 auto;*/
+            /*justify-content: center;*/
+            /*align-items: center;*/
+        }
+        .container{
+            position:relative;
+            display:flex;
+            width:500px;
+
+            box-shadow:0 0 4px rgba(0,0,0,0.4);
+        }
+        .left{
+            flex:1 0 auto;
+        }
+        ul.left>li {
+            height:40px;
+            padding:5px 0;
+            line-height:30px;
+        }
+        .left label{
+            display:flex;
+        }
+        label>span{
+            flex: 0 0 100px;
+            padding-left:10px;
+        }
+        label>input[type=text]{
+            flex: 1 0 auto;
+            padding:6px 8px;
+            border:1px solid #bdbdbd;
+            border-radius:2px;
+        }
+        .right{
+            flex:0 1 auto;
+            display:flex;
+            flex-direction: row;
+            justify-content: center;
+            /*方法1*/
+            align-items: flex-end;
+        }
+        .right .inner{
+            /*与left登高*/
+            height:40px;
+
+            /*方法2*/
+            /*align-self: flex-end;*/
+            /*方法3*/
+            /*margin-top:auto;*/
+        }
+        .right .inner a{
+          display:inline-block;
+          text-align:center;
+          width:50px;
+          height: 40px;
+          line-height: 40px;
+        }
+        .right .inner a+a{
+            /*margin-left:10px;*/
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="box" id="test">
+    <div class="container">
+        <ul class="left">
+            <li>
+                <label><span @click.prevent>收件人</span><input type="text"></label>
+            </li>
+            <li v-show="isCc">
+                <label><span @click.prevent>抄送</span><input type="text"></label>
+            </li>
+            <li v-show="isBcc">
+                <label><span @click.prevent>密送</span><input type="text"></label>
+            </li>
+        </ul>
+        <div class="right">
+            <div class="inner">
+                <a v-show="!isCc" @click="toggleCc" href="#">抄送</a>
+                <a v-show="!isBcc" @click="toggleBcc" href="#">密送</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:'.box',
+        data:{
+            isCc: false,
+            isBcc: false
+        },
+        methods: {
+            toggleCc: function () {
+              this.isCc = !this.isCc
+            },
+            toggleBcc: function () {
+              this.isBcc = !this.isBcc
+            },
+            reset: function () {
+                this.isCc = false
+                this.isBcc = false
+            }
+        },
+        mounted: function () {
+            window.addEventListener('click', (e) => {
+//                var ndBox = document.getElementById('test')
+                var clientRect = this.$el.getBoundingClientRect()
+                var width = parseInt(clientRect.width)
+                var height = parseInt(clientRect.height)
+                var left = parseInt(clientRect.left) + document.documentElement.scrollLeft
+                var top = parseInt(clientRect.top) + document.documentElement.scrollTop
+//                console.log(clientRect)
+//                console.log(e.pageX, e.pageY)
+                if ((e.pageX >= left) && (e.pageX <= (left + width)) && (e.pageY > top) && (e.pageY < (top+height))) {
+                    return
+                }
+                // 不在区域内，点击=>隐藏菜单
+                this.reset()
+            },true)
+        }
+    })
+</script>
 </body>
 </html>
