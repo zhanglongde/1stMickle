@@ -9,3 +9,6 @@ http://imweb.io/topic/55e3ba46771670e207a16bc8
 4.查找ISP DNS缓存
   网络配置中的DNS服务器地址
 5.递归搜索
+
+
+zone文件

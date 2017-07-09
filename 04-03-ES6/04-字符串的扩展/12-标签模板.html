@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        第一个参数：字符串数组
+        2~n个参数：变量的参数列表
+    </title>
+</head>
+<body>
+
+<script>
+    var a = 5
+    var b = 10
+    function tag(s,v1,v2) {
+      console.log(s[0])
+      console.log(s[1])
+      console.log(v1)
+      console.log(v2)
+    }
+    tag`Hello ${a+b} world ${a*b}`
+//    等同于
+    tag(['Hello','world',''],15,50)
+
+</script>
+</body>
+</html>
