@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var S = function (salary) {
+      return salary*4
+    }
+    var A = function (salary) {
+      return salary*3
+    }
+    var B = function (salary) {
+      return salary*2
+    }
+    
+    var calculateBonus = function (func,salary) {
+      return func(salary)
+    }
+    var sBonus = calculateBonus(S,10000)
+    var aBonus = calculateBonus(A,10000)
+    var bBonus = calculateBonus(B,10000)
+    console.log(sBonus)
+    console.log(aBonus)
+    console.log(bBonus)
+</script>
+</body>
+</html>
