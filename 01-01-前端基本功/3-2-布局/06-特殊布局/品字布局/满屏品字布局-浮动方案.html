@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        思路：上面的div宽100%，下面的两个div分别宽50%，然后用float或者inline-block使其不换行即可。
+    </title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        .header,.left,.right{
+            height:300px;
+        }
+        .header{
+            width:100%;
+            background-color: #ff0;
+        }
+        .left,.right{
+            width:50%;
+        }
+        .left{
+            float:left;
+            background-color: #f00;
+        }
+        .right{
+            float: right;
+            background-color: #58a;
+        }
+    </style>
+</head>
+<body>
+<div class="header">头部</div>
+<div class="left">左</div>
+<div class="right">右</div>
+</body>
+</html>

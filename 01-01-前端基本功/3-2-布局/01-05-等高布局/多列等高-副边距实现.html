@@ -2,7 +2,10 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>
+        父元素   overflow:hidden
+        等高元素 padding-bottom正值 margin-bottom负值
+    </title>
     <style>
         *{margin:0;padding:0;}
         .content{
@@ -11,6 +14,7 @@
             /*position: relative;*/
             color: #fff;}
         .box{
+            /*background-clip: content-box;*/
             background:green;
             padding-bottom: 100000px;
             margin-bottom: -100000px;
