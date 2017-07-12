@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        Symbol前面不能有new,参数为字符串，如果是对象会先用toString()方法转化
+        对象属性名可以是:字符串、Symbol类型
+        Symbol表示独一无二
+    </title>
 </head>
 <body>
-$END$
+
+<script>
+    var s1 = Symbol('foo')
+    var s2 = Symbol('bar')
+
+    console.log(typeof s1)
+    console.log(s1)
+    console.log(s2)
+</script>
 </body>
 </html>
