@@ -2,9 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        CSS3属性
+        目前来说还需要用私有前缀
+        表现类似position:relative和position:fixed的结合
+        目标区域在屏幕中可见时，它的行为就像position:relative
+        当页面滚动超出目标区域时，它的表现就像position:fixed,固定在目标位置
+    </title>
+    <style>
+        body{
+            margin:0;
+            text-align:center;
+            font-family: sans-serif;
+        }
+        .fixed{
+            position:fixed;
+            top:0;
+        }
+        .sticky{
+            position: -webkit-sticky; position:sticky; top: 0px;
+            width:100%;
+            background: #fc3;
+            padding:25px 0;
+            text-transform:uppercase;
+        }
+    </style>
 </head>
 <body>
-$END$
+<p style="margin-bottom: 100px;">Scroll this page.</p>
+<div class="sticky"><h3>Super amazing header</h3></div>
+<p style="margin-top:500px;">Still there?</p>
+<p style="margin-top:500px;">Yep!</p>
+<p style="margin-top:500px;">scroll so hard!</p>
+
+<script>
+//    var sticky = document.querySelector('.sticky')
+//    var origOffsetY = sticky.offsetTop
+//    document.addEventListener('scroll', function () {
+//      window.scrollY >= origOffsetY ? sticky.classList.add('fixed') : sticky.classList.remove('fixed')
+//    })
+</script>
 </body>
 </html>

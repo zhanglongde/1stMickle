@@ -20,7 +20,7 @@
             top:0;
         }
         .sticky{
-            position: -webkit-sticky; position:sticky; top: 15px;
+            /*position: -webkit-sticky; position:sticky; top: 15px;*/
             width:100%;
             background: #fc3;
             padding:25px 0;
@@ -36,11 +36,11 @@
 <p style="margin-top:500px;">scroll so hard!</p>
 
 <script>
-//    var sticky = document.querySelector('.sticky')
-//    var origOffsetY = sticky.offsetTop
-//    document.addEventListener('scroll', function () {
-//      window.scrollY >= origOffsetY ? sticky.classList.add('fixed') : sticky.classList.remove('fixed')
-//    })
+    var sticky = document.querySelector('.sticky')
+    var origOffsetY = sticky.offsetTop
+    document.addEventListener('scroll', function () {
+      window.scrollY >= origOffsetY ? sticky.classList.add('fixed') : sticky.classList.remove('fixed')
+    })
 </script>
 </body>
 </html>

@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        ES6 规定暂时性死区和let、const语句不出现变量提升
+    </title>
 </head>
 <body>
-$END$
+
+<script>
+    for(let i = 0; i< 5; i++){
+      setTimeout(function () {
+        console.log(i)
+      },i)
+    }
+</script>
 </body>
 </html>
