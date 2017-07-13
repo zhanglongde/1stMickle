@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>
+        position:absolute+top:具体值，才形成BFC,其子元素margin-box与包含块border-box相接
+        top:auto不形成BFC？
+
+
         包括父容器的padding，与父容器的box-sizing无关
 
         如果要对于父容器的content,只能用margin
@@ -27,6 +31,7 @@
             height:50%;
             width:50%;
             background-color: #9c3;
+            /*margin:30px;*/
         }
     </style>
 </head>
