@@ -128,6 +128,20 @@
     let isRemoved = removeSubtree(userTree, 'Label_104')
     console.log(isRemoved)
     console.log(userTree)
+
+    function flattenSubtree (subTree) {
+      let arrObj = []
+      let children = Array.isArray(subTree.children) ? _.cloneDeep(subTree.children) : []
+      delete subTree.children
+      arrObj.push(subTree)
+      for (let i = 0,LEN = children.length; i < LEN; i++) {
+          arrObj = arrObj.concat(flattenSubtree(children[i]))
+      }
+      return arrObj
+    }
+//    let arrObj = userTree[0]
+//    console.log(arrObj)
+    console.log(flattenSubtree(_.cloneDeep(userTree[2])))
 </script>
 </body>
 </html>

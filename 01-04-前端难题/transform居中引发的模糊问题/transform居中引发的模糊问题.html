@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        问题重现
+        https://segmentfault.com/q/1010000002926369
+
+        原因：宽高为期数+transform:tranalste(-50%,-50%)的综合结果
+        MAC不会出现模糊：retina屏，尽管CSS像素通过*50%得到xx.5,但是0.5映射到物理像素也是1px
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .show{
+            display:block;
+        }
+        .hidden{
+            display:none;
+        }
+        .fl{
+            float:left;
+        }
+        .fr{
+            float:right;
+        }
+        button{
+           padding:10px 20px;
+
+           border:1px solid #78a;
+           border-radius:2px;
+           outline:none;
+
+            background-color: #58a;
+            color:#fff;
+        }
+        body{
+            font-size: 16px;
+            font-weight: 800;
+            color: #212121;
+        }
+        .mask{
+            position:fixed;
+            top:0;left:0;right:0;bottom:0;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .popup-box{
+            position: fixed;
+            top:50%;left:50%;transform:translate(-50%,-50%);
+            width:801px;
+            height:601px;
+
+            background-color: #fff;
+            border-radius:2px;
+            box-shadow: 0 0 4px rgba(0,0,0,0.7);
+        }
+        .popup-hd{
+            height:40px;
+            padding:0 10px;
+
+            border-bottom:1px solid #ccc;
+        }
+        .popup-hd .title{
+            line-height:40px;
+        }
+        .popup-ft{
+            position:absolute;bottom:0;left:0;right:0;
+            height:40px;
+            padding:0 10px;
+
+            border-top:1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<button>toggle</button>
+
+<div class="popup hidden">
+    <div class="mask"></div>
+    <div class="popup-box">
+        <div class="popup-hd">
+            <span class="title">标题</span>
+            <div class="btn-group fr">
+                <button class="btn-minimize">最小化</button>
+                <button class="btn-maximize">最大化</button>
+                <button class="btn-close">&times;</button>
+            </div>
+        </div>
+        <div class="popup-bd">
+            <p>
+                可以看看这两个实例，第一个实例展示了3D变换导致元素模糊，第二个实例模糊状态得到净化：
+                http://demo.codingplayboy.com...
+                http://demo.codingplayboy.com...
+
+                元素显示模糊主要是因为使用了transform 3D变换,3D变换会开启GPU加速，GPU加速动画时，并不是把原生DOM传递给GPU，它生成一个元素图像，把该图像发送到GPU，GPU将图像应用为多边形纹理贴图代表元素，GPU可以流畅快速的对这些多边形进行旋转，缩放，转换，倾斜等变换，但由于只是传递元素图像到GPU进行处理，所以它并不能重新渲染内容，图像清晰度不能保证，元素显示清晰度自然就下降了。
+
+                更多详情可以查看我的博客http://blog.codingplayboy.com...
+            </p>
+        </div>
+        <div class="popup-ft">
+            <div class="btn-group fr">
+                <button class="btn-confirm">确定</button>
+                <button class="btn-cancel">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.onload = function () {
+      var btn = document.querySelector('button')
+      var ndMask = document.querySelector('.mask')
+      function togglePopup() {
+          var ndPopup = document.querySelector('.popup')
+          if (ndPopup.classList.contains('hidden')) {
+              ndPopup.classList.remove('hidden')
+              ndPopup.classList.add('show')
+          } else {
+              ndPopup.classList.add('hidden')
+              ndPopup.classList.remove('show')
+          }
+      }
+      ndMask.addEventListener('click', function () {
+          togglePopup()
+      })
+      btn.addEventListener('click', function () {
+          togglePopup()
+      })
+    }
+</script>
+</body>
+</html>

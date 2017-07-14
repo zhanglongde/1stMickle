@@ -1,6 +1,8 @@
 一面
 笔试题
 闭包
+变量声明提升 后定义覆盖
+同时定义变量 函数，哪一个优先？
 受控和非受控组件
 vuex namespace
      https://github.com/vuejs/vuex/issues/380
@@ -11,7 +13,7 @@ modal组件设计
   closeClick
   confirmClick
   cancelClick
-antDesign 组件设计风格
+antDesign/iView 组件设计风格
 position几个值 sticky
 盒子模型
 正常盒模型 IE盒模型
