@@ -13,6 +13,7 @@
 </head>
 <body>
 <div id="test">
+    <!--注释节点-->
     <p>One</p>
     <p>Two</p>
 </div>
@@ -27,6 +28,9 @@
     console.log(o instanceof Node)
     console.log(o instanceof Element)
     console.log(o.__proto__)
+
+    var ndP = document.querySelector('p')
+    console.log(ndP)
 </script>
 </body>
 </html>
