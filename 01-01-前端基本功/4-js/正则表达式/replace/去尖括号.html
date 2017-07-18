@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script>
+    var str1 = '<001a114440f08fbf8b05548f0832@google.com>'
+    var str2 = '001a114440f08fbf8b05548f0832@google.com'
+    
+    function Reduce(str) {
+      return str.replace(/[<>]/ig,'')
+    }
+    console.log(Reduce(str1))
+    console.log(Reduce(str2))
+</script>
 </body>
 </html>
