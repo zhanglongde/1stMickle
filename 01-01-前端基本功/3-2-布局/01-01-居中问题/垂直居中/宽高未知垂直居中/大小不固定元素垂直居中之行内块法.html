@@ -3,8 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        html,body{
+            width:100%;
+            height:100%;
+        }
+        .mask{
+          position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;
+          z-index:-1;
+          width:100%;
+          height:100%;
+          background-color: rgba(0,0,0,0.4);
+        }
+        .container{
+            position:absolute;
+            vertical-align: middle;
+            width:100%;height:100%;
+            text-align: center;
+        }
+        .popup{
+            /*position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;*/
+            /*width:800px;*/
+            /*height:600px;*/
+            /*position:absolute;*/
+            display:inline-block;
+            vertical-align: middle;
+            background-color: #fff;
+            border-radius:2px;
+            box-shadow: 0 0 4px rgba(0,0,0,0.4);
+        }
+        .container:before{
+            content:'';
+            display:inline-block;
+            vertical-align: middle;
+            height:100%;
+            width:0;
+        }
+        .popup p{
+            width:600px;
+            height:400px;
+        }
+    </style>
 </head>
 <body>
+<div class="container">
+    <div class="mask"></div>
+    <div class="popup">
+        <p>
+            首先，依旧是概念。介绍一下行内元素和块级元素，这个很重要，因为有的属性只能用于块元素，
+            而有的正好相反，在一定的情况下，它们也可以相互转换，比如用display来进行设置。
 
+            行内元素（又叫内联元素inline element）:
+
+            ①不占据一整行，随内容而定，有以下特点：
+
+            ②不可以设置宽高，也不可以设置行高，其宽度随着内容增加，高度随字体大小而改变。
+
+            ③内联元素可以设置外边界，但是外边界不对上下起作用，只能对左右起作用。
+
+            ④也可以设置内边界，但是内边界在ie6中不对上下起作用，只能对左右起作用。
+
+            常用的内联元素有：
+
+            a - 锚点，b - 粗体(不推荐)，br - 换行，em - 强调，font - 字体设定(不推荐)，i - 斜体，
+            img - 图片，input - 输入框，label - 表格标签，select - 项目选择，small - 小字体文本，
+            span - 常用内联容器，定义文本内区块，strike - 中划线，strong - 粗体强调
+        </p>
+    </div>
+</div>
 </body>
 </html>
