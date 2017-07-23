@@ -2,9 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        .circle{
+            position:absolute;left:0;top:0;
+            width:200px;
+            height:200px;
+            border-radius:50%;
+            background-color: #58a;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="circle"></div>
+
+<script>
+    var oDiv = document.querySelector('.circle')
+    window.onload = function () {
+//      setInterval(function () {
+//        var oDivStyle = window.getComputedStyle(oDiv, null)
+//        oDiv.style.left = parseInt(oDivStyle.left) + 10 + 'px'
+//        oDiv.style.top = parseInt(oDivStyle.left) + 5 + 'px'
+//      }, 30)
+      // 1000/12=83.33 1秒至少12帧才有视觉停留，30较为合适
+
+      function Animate() {
+        window.requestAnimationFrame(function () {
+          var oDivStyle = window.getComputedStyle(oDiv, null)
+          var nextLeft = parseInt(oDivStyle.left) + 10
+          var nextTop = parseInt(oDivStyle.top) + 5
+          if (nextLeft < window.innerWidth && nextLeft >= 0) {
+            oDiv.style.left = parseInt(oDivStyle.left) + 10 + 'px'
+          } else {
+            oDiv.style.left = parseInt(oDivStyle.left) - 10 + 'px'
+          }
+          if (nextTop < window.innerHeight && nextTop >= 0) {
+            oDiv.style.top = parseInt(oDivStyle.top) + 5 + 'px'
+          } else {
+            oDiv.style.top = parseInt(oDivStyle.top) - 5 + 'px'
+          }
+          Animate()
+        })
+      }
+
+      Animate()
+    }
+</script>
 </body>
 </html>
