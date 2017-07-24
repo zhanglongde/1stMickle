@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width:200px;
+            height:200px;
+            background-color: #58a;
+        }
+    </style>
+</head>
+<body>
+<input type="text">
+<div id="test"></div>
+
+<script>
+    var ipt = document.querySelector('#test')
+    ipt.addEventListener('keydown', function (e) {
+        if (e.keyCode === 13 && e.ctrlKey) {
+            console.log(e)
+        }
+        console.log('--------------------')
+    })
+</script>
+</body>
+</html>
