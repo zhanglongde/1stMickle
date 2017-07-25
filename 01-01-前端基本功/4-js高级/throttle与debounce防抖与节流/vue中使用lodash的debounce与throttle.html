@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.6/vue.js"></script>
+<script src="https://unpkg.com/underscore@1.8.3"></script> <!-- undescore import -->
+<div id="root">
+    <input v-model="message">Length: <span>{{ len() }}</span>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#root',
+        data: {
+            message: ''
+        },
+        methods: {
+            len: _.debounce(
+                function() {
+                    return this.message.length
+                },
+                150 // time
+            )
+        }
+    })
+</script>
 </body>
 </html>
