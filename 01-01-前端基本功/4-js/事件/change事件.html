@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="t1">
+<input type="radio" id="t2">
+<input type="checkbox" id="t3">
+
+<script>
+    var ipt1 = document.querySelector('#t1')
+    var ipt2 = document.querySelector('#t2')
+    var ipt3 = document.querySelector('#t3')
+    ipt1.addEventListener('change', function (e) {
+      console.log(e.target)
+      console.log(e.target.value)
+    })
+    ipt2.addEventListener('change', function (e) {
+      console.log(e.target)
+      console.log(e.target.checked)
+    })
+    ipt3.addEventListener('change', function (e) {
+      console.log(e.target)
+      console.log(e.target.checked)
+    })
+</script>
+</body>
+</html>

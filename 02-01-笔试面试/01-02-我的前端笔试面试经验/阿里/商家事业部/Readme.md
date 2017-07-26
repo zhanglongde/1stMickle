@@ -8,18 +8,21 @@ setState为什么是异步的
 bootstrap 栅格布局
 webpack
 浏览器兼容性问题
-express koa
+express koa co库
 
 
 二面
 自我介绍
+模块化原理
 react生命周期
 组件与元素的区别 你确定吗？
 react如何提高性能 同一层级的DOM diff
 es6 变量结构 箭头函数作用，就这些？
+let const 块作用域
 https tls连接建立过程，共享秘钥
 websocket机制
 html5 语义化
+伪类与伪元素区别
 css常见布局 垂直居中实现 父元素宽高不固定如何居中
 弹性盒为什么多用于移动端
 http状态码
