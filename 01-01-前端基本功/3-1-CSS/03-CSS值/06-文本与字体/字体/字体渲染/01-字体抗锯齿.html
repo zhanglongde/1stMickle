@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        字体抗锯齿：Win7以上自动打开的ClearType（msdn）、常见于Mac OS和MacType的次像素平滑（原理）、常用于Android和iOS等移动设备的灰度渲染
+
+        字体抗锯齿技术：仅仅只有webkit核支持使用一个CSS属性来控制字体平滑技术：
+        -webkit-font-smoothing: antialiased;，可以将chrome浏览器的字体渲染调为灰度渲染。
+        在The New Yorker、Path等网站中，均使用了这个方案，它可以使webkit内核的浏览器字重表现一致。
+        （使用了次像素平滑之后，字重普遍比灰度渲染之后的字体重，效果详见携程的这个DEMO）。
+    </title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        div{
+            width:600px;
+            height:120px;
+        }
+        .c1{
+            -webkit-font-smoothing: none;
+        }
+        .c2{
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+</head>
+<body>
+<div class="c1">
+    近期遇到一个项目，对字体要求十分严格，字体不使用bloder，并且使字体看起来更清晰更平滑无锯齿，
+    我对设计并不在行，对印刷排版也没有研究，但我知道什么字体好看，什么不好看。
+    几年前我就看到过CSS里有一些属性很奇怪，当我设置这些属性或取消这些属性后，字体看起来会变得好看和不那么好看。这就是字体平滑设置的效果。
+    但今天这里，只是介绍分享一下-webkit-font-smoothing它的基本用法：
+</div>
+<div class="c2">
+    近期遇到一个项目，对字体要求十分严格，字体不使用bloder，并且使字体看起来更清晰更平滑无锯齿，
+    我对设计并不在行，对印刷排版也没有研究，但我知道什么字体好看，什么不好看。
+    几年前我就看到过CSS里有一些属性很奇怪，当我设置这些属性或取消这些属性后，字体看起来会变得好看和不那么好看。这就是字体平滑设置的效果。
+    但今天这里，只是介绍分享一下-webkit-font-smoothing它的基本用法：
+</div>
+</body>
+</html>

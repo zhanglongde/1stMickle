@@ -4,3 +4,5 @@
 终端块状元素可继承：text-indent和text-align。
 列表元素可继承：list-style、list-style-type、list-style-position、list-style-image。
 表格元素可继承：border-collapse
+
+行内元素可以继承块元素样式，反之不行

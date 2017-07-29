@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="test">点击</button>
+
+<script>
+    var obj = {
+      doEvent: function (e) {
+        alert(e)
+      },
+      handleEvent: function (e) {
+        alert(this === obj)
+      }
+    }
+
+    document.getElementById('test').addEventListener('click',obj)
+</script>
+</body>
+</html>

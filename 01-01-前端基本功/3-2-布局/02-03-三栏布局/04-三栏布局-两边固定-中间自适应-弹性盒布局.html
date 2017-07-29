@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            display:flex;
+        }
+        .left,.right{
+            flex: 0 1 200px;
+            background-color: #9c3;
+        }
+        .middle{
+            /*flex:0 1 auto;*/
+            flex:0 1 calc(100% - 400px);
+            background-color: #58a;
+        }
+    </style>
+</head>
+<body>
+<div class="left">left</div>
+<div class="middle">middle</div>
+<div class="right">right</div>
+</body>
+</html>

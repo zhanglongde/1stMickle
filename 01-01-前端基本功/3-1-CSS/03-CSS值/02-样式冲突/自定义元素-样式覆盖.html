@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        插入到宿主中的 HTML 片段全都使用自定义元素（包括表单元素），并且覆盖掉所有的可继承样式
+    </title>
+</head>
+<body>
+
+<script>
+    const box = document.createElement('my-div')
+    box.textContent = 'test'
+    box.style.color = 'red'
+    box.style.display = 'block'
+    box.style.fontSize = '20px'
+
+    document.body.appendChild(box)
+</script>
+</body>
+</html>

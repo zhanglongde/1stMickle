@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        attachShadow
+        shadowRoot
+    </title>
+    <style>
+      *{
+          margin:0;
+          padding:0;
+      }
+        .box{
+            width:600px;
+            height:400px;
+        }
+    </style>
+</head>
+<body>
+<div id="hostElement" class="box">
+    test
+</div>
+
+<script>
+    window.onload  = function () {
+      var shadow = document.querySelector('#hostElement')
+      shadow.attachShadow({mode: 'open'});
+
+      shadow.innerHTML = '<div class="shadow-box"  style="background-color:#58a;">Here is some new text</div>'
+    }
+</script>
+</body>
+</html>

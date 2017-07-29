@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            font-size:0;
+        }
+        div{
+            display:inline-block;
+            font-size:16px;
+        }
+        .left,.right{
+            width:200px;
+            height:400px;
+            background-color: #9c3;
+        }
+        .middle{
+            width:auto;
+            /*width:calc(100% - 400px);*/
+            background-color: #58a;
+        }
+    </style>
+</head>
+<body>
+<div class="left">left</div>
+<div class="middle">middle</div>
+<div class="right">right</div>
+</body>
+</html>

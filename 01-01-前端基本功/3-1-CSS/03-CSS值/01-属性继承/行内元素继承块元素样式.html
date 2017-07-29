@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        行内元素可以继承块元素样式，反之不行
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .parent{
+            font-size:20px;
+            color:#58a;
+            background-color: #9c3;
+        }
+    </style>
+</head>
+<body>
+<div class="parent">
+    outer
+    <span>test</span>
+</div>
+</body>
+</html>
