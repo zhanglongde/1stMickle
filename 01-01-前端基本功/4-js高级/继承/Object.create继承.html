@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        子类实例 = Object.create(基类实例)
+        子类构造函数.prototype = Object.create(基类构造函数.prototype, {
+          prop: 2种属性配置对象
+        })
+    </title>
 </head>
 <body>
 
