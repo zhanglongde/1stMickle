@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+  //    基本数据类型作为元素的数组
+  var arr1 = [1,2,3,10,20,30]
+  var max1 = Math.max(...arr1)
+  console.log(max1)
+
+  //引用数据类型作为元素的数组
+  var arr2 = [{name:'Marry',age:20},{name:'Jack',age:57},{name:'zld',age:37}]
+  var max2 = Math.max(...arr2.map(x => x.age))
+  console.log(max2)
+</script>
+</body>
+</html>

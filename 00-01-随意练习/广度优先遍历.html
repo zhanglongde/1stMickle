@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>header</header>
+<div class="root">
+    <div class="container">
+        <section class="sidebar">
+            <ul class="menu"></ul>
+        </section>
+        <section class="main">
+            <article class="post"></article>
+            <p class="copyright"></p>
+        </section>
+    </div>
+</div>
+<footer>footer</footer>
+
+<script>
+    function Bfs(ndRoot) {
+      var arr = []
+      var ndQueue = [ndRoot]
+      while(ndQueue.length > 0) {
+        var ndItem = ndQueue.shift() // 索引小的出队
+        arr.push(ndItem)
+        if (!ndItem.children || !ndItem.children.length) {
+          continue
+        }
+        ndQueue = ndQueue.concat([].slice.call(ndItem.children))
+      }
+      return arr
+    }
+
+    var arr = Bfs(document.body)
+    console.log(arr)
+</script>
+
+</body>
+</html>

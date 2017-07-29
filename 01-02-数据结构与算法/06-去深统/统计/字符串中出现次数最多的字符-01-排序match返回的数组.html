@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        \S 匹配任何可见字符
+        \num 匹配num，其中num是一个正整数。对所获取的匹配的引用。例如，“(.)\1”匹配两个连续的相同字符。
+        * 任意次数，可以是0次
+        match \g 才会全部返回
+    </title>
+</head>
+<body>
+
+<script>
+    var str = 'kkkkkkkaaakkkkkkaaaaasddd112233';
+
+//    function theMost(str){
+//        console.log(str.split('').sort().join('').match(/(\S)\1*/g))
+//        return str.split('').sort().join('').match(/(\S)\1*/g).sort(function(a,b){
+//            return b.length - a.length
+//        })[0][0]
+//    }
+//    console.log(theMost(str));
+
+    function findMost(str) {
+//        分成N组，每组只允许一次重复一次,*是对\1的限定
+        var arr = str.split('').sort().join('').match(/(\S)\1*/ig)
+        console.log(arr)
+        return arr.sort(function (a,b) {
+          return b.length - a.length
+        })[0][0]
+    }
+    console.log(findMost(str))
+</script>
+</body>
+</html>

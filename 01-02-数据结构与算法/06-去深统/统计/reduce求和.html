@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    基本数据类型作为元素的数组
+    var arr1 = [1,2,3,10,20,30]
+    var sum1 = arr1.reduce((prev,next) => {
+     return prev + next
+    })
+    console.log(sum1)
+
+//引用数据类型作为元素的数组
+    var arr2 = [{name:'Marry',age:20},{name:'Jack',age:27},{name:'zld',age:37}]
+    var sum2 = arr2.reduce((sum,next) => {
+      return sum + next.age
+    },0)
+    console.log(sum2)
+</script>
+</body>
+</html>

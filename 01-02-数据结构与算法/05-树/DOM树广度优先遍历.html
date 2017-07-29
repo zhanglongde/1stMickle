@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>header</header>
+<div class="root">
+    <div class="container">
+        <section class="sidebar">
+            <ul class="menu"></ul>
+        </section>
+        <section class="main">
+            <article class="post"></article>
+            <p class="copyright"></p>
+        </section>
+    </div>
+</div>
+<footer>footer</footer>
+
+<script>
+     function Bfs(ndRoot) {
+        var ndArr = []
+        var ndQueue = [ndRoot]
+        while(ndQueue.length > 0) {
+          // 开始从队列头开始遍历，遍历完， // 索引小的出队
+          var ndItem = ndQueue.shift()
+          ndArr.push(ndItem)
+            if (!ndItem.children || !ndItem.children.length) {
+              continue
+            }
+//            将其子树入队
+//            ndQueue = ndQueue.concat(Array.from(ndItem.children))
+            ndQueue = ndQueue.concat([].slice.call(ndItem.children))
+        }
+        return ndArr
+     }
+
+     var ndArr = Bfs(document.body)
+     console.log(ndArr)
+
+</script>
+</body>
+</html>
