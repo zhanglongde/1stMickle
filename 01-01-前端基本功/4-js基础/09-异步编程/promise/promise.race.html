@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../../../lib/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+
+<script>
+    var url = 'https://hq.tigerbrokers.com/fundamental/finance_calendar/getType/2017-02-26/2017-06-10';
+    var url1 = 'https://hq.tigerbrokers.com/fundamental/finance_calendar/getType/2017-03-26/2017-06-10';
+
+    function renderRace() {
+        return Promise.race([$.getJSON(url), $.getJSON(url1)]);
+    }
+
+    renderRace().then(function(value) {
+        console.log(value);
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    
+    var a = [1,2,3],b=[5,6,7];
+    [].push.apply(a,b)
+    console.log(a)
+
+
+    (function () {
+      var a = [1,2,3,3,4],b=[7,8,9,10];
+      [].push.apply(a,b)
+      console.log(a)
+    })()
+</script>
+    
+</body>
+</html>

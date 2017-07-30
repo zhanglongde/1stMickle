@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul,li{
+            list-style:none;
+        }
+        ul{
+            width:600px;
+            margin:auto;
+            box-shadow:0 0 4px rgba(0,0,0,0.4);
+        }
+        ul>li{
+           height:40px;
+           line-height:40px;
+        }
+        ul>li+li{
+            border-top:1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div id="main">
+    <ul>
+        <li v-for="(value, index) in arr" @click="selectItem"><input type="checkbox"><span>{{value}}</span></li>
+    </ul>
+</div>
+
+
+<script src="../../../../lib/vue.js"></script>
+<script>
+  new Vue({
+      el:'#main',
+      data: {
+        arr: [1,2,3,4,5,6,7,8]
+      },
+      methods: {
+        selectItem (e) {
+          if (e.shiftKey) {
+            console.log('shift key')
+            console.log(e)
+          }
+          if (e.ctrlKey) {
+              console.log('ctrl key')
+              console.log(e)
+          }
+        }  
+      }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>2</title>
+    <link rel="stylesheet" href="../../css/bootstrap.css"/>
+    <script src="../../jquery-2.2.3.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <style>
+        /*.container{width:1000px;}/!*默认1140+15*2*!/*/
+        .col-md-4{background-color: #00CCFF;}
+    </style>
+    <script>
+        $(function(){
+            $("#back").on("click",function(){
+                window.history.back();
+            });
+            $("#forward").on("click",function(){
+                window.history.forward();
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="col-md-3">
+    <a href="1.html" class="href">111</a>
+</div>
+<div class="col-md-3">
+    <a href="./2.html" class="href">222</a>
+</div>
+<div class="col-md-3">
+    <a href="3.html" class="href">333</a>
+</div>
+<div class="col-md-3">
+    <a href="history.html" class="href">history</a>
+</div>
+</body>
+</html>

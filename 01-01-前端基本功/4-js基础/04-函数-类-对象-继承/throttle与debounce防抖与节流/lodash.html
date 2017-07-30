@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        throttle包裹了事件函数，throttle第一个参数任然是事件函数
+        debounce 防抖
+        throttle 节流
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        button{
+            border:none;
+            outline:0;
+            width:100px;height:40px;
+            background-color: #58a;
+            color:#fff;
+        }
+        button[disabled]{
+            cursor:not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+<button id="test">点击</button>
+
+<script src="../../../../lib/lodash.js"></script>
+<script>
+    document.querySelector('#test').addEventListener('click', _.throttle((event) => {
+        console.log(event.target.textContent + '  执行操作')
+    }, 5000))
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="start">start</button>
+<button id="stop">stop</button>
+
+<script src="../../../../lib/lodash.js"></script>
+<script>
+    var ndStart = document.querySelector('#start')
+    var ndStop = document.querySelector('#stop')
+    var debouncer =  _.debounce(function () {
+        console.log('debounce...')
+    }, 2000)
+    ndStart.addEventListener('click',debouncer)
+    ndStop.addEventListener('click', function () {
+        console.log(debouncer.cancel())
+    })
+</script>
+</body>
+</html>
