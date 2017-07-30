@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let proto = new Proxy({}, {
+    get(target, propertyKey, receiver) {
+      console.log('GET '+propertyKey);
+      return target[propertyKey];
+    }
+  });
+
+  let obj = Object.create(proto);
+//  obj.xxx = 'test'
+  console.log(obj.xxx)
+</script>
+</body>
+</html>
