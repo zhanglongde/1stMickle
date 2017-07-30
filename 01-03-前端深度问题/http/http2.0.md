@@ -1,4 +1,5 @@
 RFC 7540
+7540 中文 https://github.com/abbshr/rfc7540-translation-zh_cn
 6个特点
 1.serverPush
 2.二进制分帧层 流、消息、帧

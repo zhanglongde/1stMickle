@@ -1,3 +1,5 @@
+RFC7234
+
 强缓存
 http1.1 cache-control max-age 相对时间
 http1.0 expired 倍前者条带 绝对时间，因为服务器时间与客户端时间可能不同步，所以比较少用

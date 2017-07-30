@@ -1,7 +1,11 @@
-1.启动本地服务器，处理本地资源请求
-2.webpack hot middleware订阅webpack的编译更新
-通过执行Webpack的HMR API将代码模块的更新推送给服务器端
-3.HMR runtime根据JSON描述动态更新相应代码
+
+1.启动本地服务
+  启动本地服务器，处理本地资源请求
+2.中间件订阅变异更新
+  webpack hot middleware订阅webpack的编译更新
+  通过执行Webpack的HMR API将代码模块的更新推送给服务器端
+3.运行时动态动态更新代码
+  HMR runtime根据JSON描述动态更新相应代码
 
 HMR runtime
    check 发送http请求，更新manifest
