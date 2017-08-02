@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<input type="text" id="test">
+
+<script>
+    var ndTest = document.querySelector('#test')
+    ndTest.addEventListener('keyup', function (e) {
+      console.log(e.target.value)
+    })
+</script>
 </body>
 </html>
