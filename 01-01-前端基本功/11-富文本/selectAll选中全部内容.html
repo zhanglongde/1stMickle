@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<div contenteditable="true">
+    some [insertion point] content
+</div>
+
+<button id="btnSelectAll">全选</button>
+
+<script>
+    window.onload = function () {
+        var btnSelectAll = document.querySelector('#btnSelectAll')
+        btnSelectAll.addEventListener('click', function () {
+            document.execCommand('selectAll')
+        })
+    }
+</script>
 </body>
 </html>
