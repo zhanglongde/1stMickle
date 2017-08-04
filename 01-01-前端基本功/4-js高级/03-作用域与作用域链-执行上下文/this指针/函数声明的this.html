@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        函数声明中的this
+    </title>
 </head>
 <body>
-$END$
+<script>
+    var count = 0
+
+    function foo () {
+        console.log('%c-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+        console.log(count)
+//        此处的this指的是调用foo的对象，在下面的循环中，显然是window
+        this.count++
+        console.log(this.count)
+    }
+    foo.count = 0
+
+    for (var i = 0; i < 5; i++) {
+        foo()
+    }
+
+    var func = new foo()
+    console.log(func)
+</script>
 </body>
 </html>
