@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //JavaScript 将会把 var 表达式和 function 声明提升到当前作用域的顶部
+
+    console.log(value);
+    var value = 'World!'; //变量声明提升（Hoisting）
+
+    //立即执行函数的声明，提升
+//    如果立即执行函数不存在提升，则函数体中value应该是'World'
+    (function () {
+        if (typeof value === 'undefined') {
+            var value = 'Jack';
+            console.log('Goodbye ' + value);
+        } else {
+            console.log('Hello ' + value);
+        }
+    })();
+
+</script>
+</body>
+</html>

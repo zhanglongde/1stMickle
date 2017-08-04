@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        如果不存在赋值，则函数声明覆盖变量声明
+    </title>
+</head>
+<body>
+
+<script>
+    var counter
+    function counter() {
+      this.a = 1
+    }
+    console.log(counter)
+</script>
+</body>
+</html>
