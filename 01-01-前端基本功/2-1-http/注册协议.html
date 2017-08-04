@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\jinjj]
+"URL Protocol"="C:\\Program Files\\jinjj\\trans.exe"
+@="jinjjProtocol"
+
+[HKEY_CLASSES_ROOT\jinjj\DefaultIcon]
+@="C:\\Program Files\\jinjj\\trans.exe,1"
+
+[HKEY_CLASSES_ROOT\jinjj\shell]
+
+[HKEY_CLASSES_ROOT\jinjj\shell\open]
+
+[HKEY_CLASSES_ROOT\jinjj\shell\open\command]
+@="\"C:\\Program Files\\jinjj\\trans.exe" \"%1\""
 </body>
 </html>
