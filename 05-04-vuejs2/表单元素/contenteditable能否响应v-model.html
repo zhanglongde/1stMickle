@@ -2,9 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        div{
+            /*height:300px;*/
+            /*width:500px;*/
+            display:inline-block;
+            border:1px solid #eee;
+            padding: 6px 10px;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div id="box">
+    <span>{{content}}</span>
+    <div contenteditable="true" id="test" @keyup="keydownContent">{{content}}</div>
+</div>
+
+
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:'#box',
+        data: {
+          content:'默认内容'
+        },
+        methods: {
+            keydownContent: function (e) {
+              console.log('keydown', e.target.textContent)
+              this.content = e.target.textContent
+            }
+        }
+    })
+</script>
 </body>
 </html>

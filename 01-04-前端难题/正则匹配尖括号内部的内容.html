@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    let str = '张龙德<longde.zhang@nextcont.com>'
+    let target = str.match(/([^<]*)(<[^>]*>)/i)
+    console.log(target)
+    console.log(target[2].replace(/[<>]/ig,''))
+
+    let illegalStr1 = '张龙德<longde.zhang@nextcont.com'
+    let target1 = illegalStr1.match(/([^<]*)(<[^>]*>)/i)
+    console.log(target1)
+
+    let illegalStr2 = '<longde.zhang@nextcont.com>'
+    let target2 = illegalStr2.match(/([^<]*)(<[^>]*>)/i)
+    console.log(target2)
+
+    ~(function () {
+        console.log('%c-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+        let arr = str.replace(/([^<]*)(<[^>]*>)/ig, function (val, groups, index, all) {
+            console.log(val, groups, index, all)
+        })
+//        console.log(arr)
+    })()
+</script>
 </body>
 </html>

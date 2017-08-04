@@ -2,9 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        input{
+            /*min-width:300px;*/
+        }
+    </style>
 </head>
 <body>
-$END$
+<input type="text" value="adddddddddyyyyyyddddddyyyyyyyyyyyyy" id="test">
+
+<script src="../lib/jquery-1.11.3.min.js"></script>
+<script>
+
+window.onload = function () {
+//    获取文本宽度
+//    var textWidth = function(text, boxSelector){
+//        var sensor = $('<pre>'+ text +'</pre>').css({display: 'none'});
+//        $(boxSelector).append(sensor);
+//        var width = sensor.width();
+//        sensor.remove();
+//        return width;
+//    };
+//
+//    $('input').width(textWidth($('input').val(), 'body') + 10);
+//    //input宽度自适应
+//    $("input").on('keydown', function(){
+//        $(this).width(textWidth($(this).val(), 'body') + 10);
+//    });
+
+    function demo(node) {
+        var testLength = node.value.length
+        console.log(testLength)
+        nd.style.width = testLength*8 +'px'
+    }
+    var nd = document.getElementById('test')
+    demo(nd)
+}
+</script>
 </body>
 </html>

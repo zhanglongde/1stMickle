@@ -5,13 +5,27 @@
     <title>Title</title>
     <style>
         div{
-            height:300px;
-            width:500px;
+            /*height:300px;*/
+            /*width:500px;*/
+            display:inline-block;
+            border:1px solid #eee;
         }
     </style>
 </head>
 <body>
 
-<div contenteditable="true"></div>
+<div contenteditable="true" id="test">ddd</div>
+
+<script>
+   var nd = document.querySelector('#test')
+   nd.addEventListener('blur', function (e) {
+     console.log('blur...')
+     console.log(e.target)
+   })
+   nd.addEventListener('keydown', function (e) {
+     console.log('keydown')
+     console.log(e.target)
+   })
+</script>
 </body>
 </html>

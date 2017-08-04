@@ -2,9 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<input type="text" value="hello你好" id="test">
+
+<script>
+
+    function CountBytes(str) {
+        let bytesCount = 0
+        for (let i = 0; i < str.length; i++) {
+            let c = str.charAt(i)
+            if (/^[\u0000-\u00ff]$/.test(c)) //匹配双字节
+            {
+                bytesCount += 1
+            } else {
+                bytesCount += 2
+            }
+        }
+        return bytesCount
+    }
+    //结果是6
+    //原理也很简单，用正则判断是不是中文，如果是的话，字节数就加1。
+
+    let ndTest = document.querySelector('#test')
+    function CalculateWidth(ndTest) {
+        console.log(ndTest.value, CountBytes(ndTest.value))
+        ndTest.style.width = parseInt(CountBytes(ndTest.value) * 7.3) + 'px'
+    }
+    CalculateWidth(ndTest)
+    ndTest.addEventListener('keyup', function () {
+        CalculateWidth(ndTest)
+    })
+</script>
 </body>
 </html>
