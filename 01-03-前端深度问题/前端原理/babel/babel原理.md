@@ -24,3 +24,10 @@ http://www.ruanyifeng.com/blog/2016/01/babel.html
 
 webpack插件
 babel-preset-2015
+
+
+
+https://segmentfault.com/a/1190000010309799
+JS语法树与代码转化
+Code=>parse=>transform=>generate=>code
+
