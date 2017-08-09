@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .mail-box+.mail-box{
+            border-top: 2px solid #bdbdbd;
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <div v-for="(msg, index) in msgs" class="mail-box">
+        <div v-html="msg.html"></div>
+    </div>
+</div>
+
+
+<script src="../../lib/jquery-1.11.3.min.js"></script>
+<script src="../../lib/vue.js"></script>
+<script src="fold-03.js"></script>
+<script src="signature.js"></script>
+<script>
+//    console.log(msgs)
+//    console.log(signatureHtml)
+//    console.log(msgs[0].html)
+    var firstHtml = $(msgs[0].html).find('div[data-x-div-type=body]').children().html()
+    console.log(firstHtml)
+
+    for (let i = 1, LEN = msgs.length; i < LEN; i++) {
+//      console.log($(msgs[i].html).get(0))
+      let unWrapHtml =  $(msgs[i-1].html).find('div[data-x-div-type=body]').children().html()
+      let index = msgs[i].html.indexOf(unWrapHtml)
+      console.log(index)
+      let reg = new RegExp(unWrapHtml, 'ig')
+        msgs[i].html = msgs[i].html.replace(reg, '<div style="background-color: #ccc;color:#333;display:inline-block;width:12px;">...</div>')
+    }
+</script>
+<script>
+    new Vue({
+      el:'#main',
+      data: {
+        msgs: msgs,
+        signatureHtml: signatureHtml
+      },
+      methods: {
+      }
+    })
+</script>
+</body>
+</html>
