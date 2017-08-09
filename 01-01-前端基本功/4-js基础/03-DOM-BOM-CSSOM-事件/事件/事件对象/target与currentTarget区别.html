@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        arget在事件流的目标阶段；currentTarget在事件流的捕获，目标及冒泡阶段。
+        只有当事件流处在目标阶段的时候，两个的指向才是一样的， 而当处于捕获和冒泡阶段的时候，target指向被单击的对象而currentTarget指向当前事件活动的对象（一般为父级）。
+    </title>
+</head>
+<body>
+<div id="outer" style="background:#099">
+    click outer
+    <p id="inner" style="background:#9C0">click inner</p>
+    <br>
+</div>
+
+<script type="text/javascript">
+  function G(id){
+    return document.getElementById(id);
+  }
+  function addEvent(obj, ev, handler){
+    if(window.attachEvent){
+      obj.attachEvent("on" + ev, handler);
+    }else if(window.addEventListener){
+      obj.addEventListener(ev, handler, false);
+    }
+  }
+  function test(e){
+    alert("e.target.tagName : " + e.target.tagName + "\n e.currentTarget.tagName : " + e.currentTarget.tagName);
+  }
+  var outer = G("outer");
+  var inner = G("inner");
+  //addEvent(inner, "click", test);
+  addEvent(outer, "click", test);
+</script>
+</body>
+</html>
