@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        通过设置该属性的值为none，可以高效阻止元素的JavaScript事件行为（包含click和addEventListener)
+
+        但是会导致cursor:not-allowed无效
+    </title>
+    <style>
+        .disabled{
+            pointer-events: none;
+            /*cursor:not-allowed;*/
+        }
+    </style>
+</head>
+<body>
+<button id="test" class="disabled">点击</button>
+
+<script>
+    let btnTest = document.querySelector('#test')
+    btnTest.addEventListener('click', function (e) {
+        alert(e.target.textContent)
+    })
+</script>
+</body>
+</html>

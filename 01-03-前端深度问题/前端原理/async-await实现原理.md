@@ -1,0 +1,2 @@
+ES7的async-await建立在Promise上
+await后面紧跟一个promise
