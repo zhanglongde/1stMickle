@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    var arr = [1,2,3,1,'a',1,'a']
+    const exists = {}
+    ;arr = arr.filter(item => {
+        if (exists[item]) return false
+        exists[item] = true
+        return true
+    })
+    console.log(arr)
+</script>
+</body>
+</html>

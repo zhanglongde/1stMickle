@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+       如果内层已经catch到异常
+        外层不进行处理
+    </title>
+</head>
+<body>
+<script>
+    try {
+        try {
+            var obj = {}
+            var test = obj.prop.prop
+            console.log(test)
+        }
+//        catch (error) {
+//            console.log('11111111111111111')
+//            console.log(error)
+//        }
+        finally {
+
+        }
+    } catch (error) {
+        console.log('22222222222222222222')
+        console.log(error)
+    }
+
+</script>
+</body>
+</html>
