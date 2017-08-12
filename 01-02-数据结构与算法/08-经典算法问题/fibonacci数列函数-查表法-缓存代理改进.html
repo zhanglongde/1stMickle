@@ -7,7 +7,21 @@
 <body>
 
 <script>
-    
+    var result = []
+    function Fibonacci(n) {
+      if (n === 0) {
+        return 0
+      }
+      if (n === 1) {
+        return 1
+      }
+      if (r[n]) {
+        return r[n]
+      } else {
+        r[n] = arguments.callee(n-1) + arguments.callee(n-2)
+        return r[n]
+      }
+    }
 </script>
 </body>
 </html>
