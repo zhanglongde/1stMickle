@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    0,1,1,2,3...
+    function Fibonacci(n) {
+      if (n === 0) {
+        return 0
+      }
+      if (n === 1) {
+        return 1
+      }
+      return arguments.callee(n-1) + arguments.callee(n-2)
+    }
+    var result = Fibonacci(3)
+    var result2 = Fibonacci(5)
+    console.log(result)
+    console.log(result2)
+</script>
+</body>
+</html>
