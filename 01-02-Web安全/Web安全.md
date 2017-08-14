@@ -17,7 +17,11 @@
 1.4防御
     1）http only,js无法读取cookie
     2）输入输出检查转义
-    3）输入输出过滤XSS-filter
+       html编码
+       style CSS编码
+       script JavaScript编码
+    3）输入输出过滤XSS-filter  需要过滤哪些字符：没有闭合的标签
+       自定义白名单
     4）CSP 内容安全策略 白名单
 
 
@@ -61,3 +65,12 @@
       HTTP header,值为DENY时，浏览器拒绝当前页加载任何frame页面
 
 4.控制台攻击
+
+5.中间人攻击
+
+6.DNS劫持
+
+7.http劫持
+运营商在页面的HTML代码中，插入弹窗、广告等HTML代码
+
+8.盗链
