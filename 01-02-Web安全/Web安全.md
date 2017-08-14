@@ -40,8 +40,8 @@
    通过检查Referer是否合法合法来判断用户是否被CSRF攻击，只是充分条件
    服务器并非什么时候都能取到Referer
 3)Anti CSRF Token
-  Token需要同时放在表单和Session中。
-  在提交请求时，服务器只需验证表单中的token与用户Session（cookie）中的Token是否一致；如果一致，认为是合法请求
+  加密参数
+  Token需要同时放在表单和Session中。在提交请求时，服务器只需验证表单中的token与用户Session（cookie）中的Token是否一致；如果一致，认为是合法请求
 
 3.点击劫持 clickJacking
 3.1定义

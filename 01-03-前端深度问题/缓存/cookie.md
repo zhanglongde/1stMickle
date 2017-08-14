@@ -1,6 +1,10 @@
 https://imququ.com/post/host-only-cookie.html
 https://segmentfault.com/a/1190000004556040
 规范 rfc6265
+cookie作用
+保存用户相关信息
+
+
 cookie 跨域
 获取Cookie时，首先要检查Domain匹配性，其次才检查path secure http-only等属性的匹配性
 如果host-only-flag为true时，只有当前域名与该Cookie的Domain属性完全相等才可以进入后续流程
