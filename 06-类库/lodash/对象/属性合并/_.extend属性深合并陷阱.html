@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../../lodash.js"></script>
+<script>
+    var oldMsg = {labelIds: ['STARRED']}
+    var newMsg = {labelIds: []}
+    
+    var obj = _.extend(oldMsg, newMsg)
+    console.log(obj)
+</script>
+</body>
+</html>
