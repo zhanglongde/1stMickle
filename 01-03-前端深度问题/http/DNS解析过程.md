@@ -1,6 +1,7 @@
 http://www.ruanyifeng.com/blog/2016/06/dns.html
 http://imweb.io/topic/55e3ba46771670e207a16bc8
 https://zhuanlan.zhihu.com/p/28305778
+https://edu.unixhot.com/cache-dns.html
 
 当用户在浏览器中输入域名并按下回车键后：
 1.查找浏览器缓存
@@ -14,4 +15,5 @@ https://zhuanlan.zhihu.com/p/28305778
 6.递归搜索
 
 
+DNS Prefetching
 zone文件
