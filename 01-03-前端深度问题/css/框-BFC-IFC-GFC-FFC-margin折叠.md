@@ -1,4 +1,4 @@
-BFC
+BFC 块级格式上下文
 形成
     dof paf body元素
     display:inline-block
