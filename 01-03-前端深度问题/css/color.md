@@ -1,0 +1,9 @@
+color有几种取值
+6种
+white
+#ffffff
+#fff
+rgb()
+rgba()
+hsl()
+hslA()
