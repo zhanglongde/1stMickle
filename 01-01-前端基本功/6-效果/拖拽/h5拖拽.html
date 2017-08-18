@@ -5,7 +5,7 @@
     <title>
         注意：
         1.dragover必须阻止默认行为；
-        2.setDragImage第一个参数必须是图片元素;
+        2.setDragImage第一个参数必须是图片元素;?
         3.enter与leave指的是：鼠标;
         4.子元素上hover触发enter和leave事件是先enter再leave
         line-height text-align
@@ -93,6 +93,7 @@
 <body>
 <div class="container">
     <div class="dragbg">
+        <span>hello</span>
         <img src="../../2-html/web缓存/mm1.jpg" alt="drag image" width="300px" height="40px;" draggable="false">
     </div>
     <div class="dustbin fl">
@@ -155,7 +156,9 @@
                 ev.dataTransfer.effectAllowed = 'move'
 //                ev.dataTransfer.setData('text',ev.target.innerHTML)
 //                ev.dataTransfer.setDragImage(ev.target,0,0)
+
                 ev.dataTransfer.setDragImage($('.dragbg').get(0),0,0)
+//                ev.dataTransfer.setDragImage($('<div style="color:#f00;">test</div>').get(0),0,0)
 //                ev.dataTransfer.setDragImage($('img')[0], -10, -10);
                 eleDrag = ev.target
                 ev.target.classList.add('dragged-ele')

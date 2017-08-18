@@ -1,6 +1,11 @@
 https://segmentfault.com/a/1190000003931773
 前提：页面元素的布局尺寸全都以设计稿为基准等比例设置
 
+转换工具
+sublime 插件
+cli px2rem
+webpack loader plugin结合postcss
+
 1.媒体查询穷举
   移动端设计稿一般两倍像素，640/64
 
