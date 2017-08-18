@@ -3,18 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        注意：
-        1.dragover必须阻止默认行为；
-        2.setDragImage第一个参数必须是图片元素;?
-        3.enter与leave指的是：鼠标;
-        4.子元素上hover触发enter和leave事件是先enter再leave
-        drop事件中才能捕获到传递的数据getData
-        line-height text-align
-        color background-color 都能继承
-
-        整个拖拽过程的起止事件：ondragstart ondragend
-        拖拽的过程:drag
-        在目标元素上的起始、过程、终止事件：ondragenter ondragover ondrop
+      拖拽 回弹效果
     </title>
     <style>
         *{margin:0;padding:0;}
@@ -92,54 +81,48 @@
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="dragbg">
-        <span>hello</span>
-        <img src="../../2-html/web缓存/mm1.jpg" alt="drag image" width="300px" height="40px;" draggable="false">
+<div id="app">
+    <div class="container">
+        <div class="dragbg" :style="{'top': top + 'px', 'left': left + 'px', 'z-index': zIndex}">
+            移动<span>{{}}</span>个
+        </div>
+        <div class="dustbin fl">
+            <div>新邮件</div>
+            <ul>
+                <li v-for="(label,index) in labels">{{label}}</li>
+            </ul>
+        </div>
+        <div class="dragbox fr">
+            <div class="draglist" @drag="drag" @dragend="dragEnd" draggable="true" v-for="(mail,index) in mails">{{mail}}</div>
+        </div>
+        <div class="dragremind clear"></div>
     </div>
-    <div class="dustbin fl">
-        <div>垃圾箱</div>
-        <ul>
-            <li>li1</li>
-            <li>li2</li>
-            <li>li3</li>
-            <li>li4</li>
-        </ul>
-    </div>
-    <div class="dragbox fr">
-        <div class="draglist" draggable="true">列表1</div>
-        <div class="draglist" draggable="true">列表2</div>
-        <div class="draglist" draggable="true">列表3</div>
-        <div class="draglist" draggable="true">列表4</div>
-        <div class="draglist" draggable="true">列表5</div>
-        <div class="draglist" draggable="true">列表6</div>
-    </div>
-    <div class="dragremind clear"></div>
 </div>
 
 <script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script src="../../../lib/vue.js"></script>
 <script>
-    function stopRepeat() {
-        $('.dustbin').children().ondragenter = function (ev) {
-            ev.stopPropagation()
-            ev.preventDefault()
+    new Vue({
+        el:'#app',
+        data: {
+            labels:['收件箱','已加星标','重要邮件','已发邮件'],
+            mails:['邮件1','邮件2','邮件3','邮件4','邮件5','邮件6','邮件7'],
+            top:0,
+            left:0,
+            zIndex: -1
+        },
+        methods: {
+           drag: function (event) {
+               this.top = event.clientY
+               this.left = event.clientX
+               this.zIndex = 100
+           },
+            dragEnd: function (event) {
+                this.zIndex = -1
+            }
         }
-        $('.dustbin').children().ondragleave = function (ev) {
-            ev.stopPropagation()
-            ev.preventDefault()
-        }
-        $('li').ondragenter = function (ev) {
-            ev.stopPropagation()
-            ev.preventDefault()
-        }
-        $('li').ondragleave = function (ev) {
-            ev.stopPropagation()
-            ev.preventDefault()
-        }
-    }
-
+    })
     window.onload = function () {
-//        stopRepeat()
       var eleDustbin = document.querySelector('.dustbin') //直接取数组收个元素
       var eleDrags = document.querySelectorAll('.draglist')
         //用于提示的元素
@@ -158,7 +141,7 @@
 //                ev.dataTransfer.setData('text',ev.target.innerHTML)
 //                ev.dataTransfer.setDragImage(ev.target,0,0)
 
-                ev.dataTransfer.setDragImage($('.dragbg').get(0),0,0)
+//                ev.dataTransfer.setDragImage($('.dragbg').get(0),0,0)
 //                ev.dataTransfer.setDragImage($('<div style="color:#f00;">test</div>').get(0),0,0)
 //                ev.dataTransfer.setDragImage($('img')[0], -10, -10);
                 eleDrag = ev.target
