@@ -94,9 +94,9 @@
             <div class="draglist" @drag="drag" @dragstart="dragStart" @dragend="dragEnd" draggable="true" v-for="(mail,index) in mails">{{mail}}</div>
         </div>
         <div class="dragremind clear"></div>
-        <div v-show="isDragPanel" class="dragbg" :style="{'top': top + 'px', 'left': left + 'px'}">
-            移动<span>{{num}}</span>个
-        </div>
+    </div>
+    <div v-show="isDragPanel" class="dragbg" :style="{'top': top + 'px', 'left': left + 'px'}">
+        移动<span>{{num}}</span>个
     </div>
 </div>
 
@@ -118,25 +118,27 @@
         methods: {
            drag: function (ev) {
                if ((ev.clientY !== 0) && (ev.clientX !== 0)) {
-                   this.top = ev.clientY - ev.target.clientHeight
-                   this.left = ev.clientX - ev.target.clientWidth - 50
+                   this.top = ev.clientY + 4
+                   this.left = ev.clientX + 4
                }
 //               console.log(ev.target.clientHeight)
 //               console.log(ev.target.clientWidth)
 //               console.log(this.top, this.left, ev)
            },
             dragStart: function (ev) {
-                this.top = ev.clientY - ev.target.clientHeight
-                this.left = ev.clientX - ev.target.clientWidth - 50
-                this.oldTop = this.top
-                this.oldLeft = this.left
-                ev.dataTransfer.setDragImage($('<div></div>').get(0),0,0)
-                ev.target.classList.add('dragged-ele')
-                this.isDragPanel = true
+               setTimeout(() => {
+                   this.top = ev.clientY + ev.target.clientHeight
+                   this.left = ev.clientX + ev.target.clientWidth
+                   this.oldTop = this.top
+                   this.oldLeft = this.left
+                   ev.dataTransfer.setDragImage($('<div></div>').get(0),0,0)
+                   ev.target.classList.add('dragged-ele')
+                   this.isDragPanel = true
+               }, 400)
             },
             dragEnd: function (ev) {
                 console.log('--------------------------------dragEnd')
-                $('.dragbg').animate({top: this.oldTop, left:this.oldLeft}, 200, () => {
+                $('.dragbg').animate({top: this.oldTop - ev.target.clientHeight, left:this.oldLeft - ev.target.clientWidth}, 200, () => {
                   this.isDragPanel = false
                   this.oldTop = 0
                   this.oldLeft = 0
