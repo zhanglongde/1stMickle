@@ -47,15 +47,6 @@
             cursor:move;
         }
 
-        .dragbg{
-            position:absolute; z-index: -1;
-            width:400px;height:50px;
-
-            /*visibility: hidden;*/
-
-            box-shadow: 0 0 0 4px rgba(0,0,0,0.4);
-            border-radius:4px;
-        }
         .dragged-ele{
             border:1px solid #f00;
         }
@@ -66,12 +57,20 @@
             box-shadow: 0 0 0 4px rgba(0,0,0,0.4);
         }
         .dragbg{
-            /*display:none;*/
-            text-align: center;
-            position:absolute;
-            z-index:-1;
+            position:absolute;top:-1000px;left:-1000px;
+            z-index:100;
+            padding:0 6px;
 
-            background-color: #9c3;
+            height:26px;
+            line-height:26px;
+            text-align: center;
+            width:100px;
+
+            color:#000;
+            background-color: #fff;
+            border:1px solid #ccc;
+            border-radius:2px;
+            box-shadow:0 0 4px rgba(0,0,0,0.4);
         }
 
         ul,li{
@@ -83,19 +82,21 @@
 <body>
 <div id="app">
     <div class="container">
-        <div class="dragbg" :style="{'top': top + 'px', 'left': left + 'px', 'z-index': zIndex}">
-            移动<span>{{}}</span>个
-        </div>
         <div class="dustbin fl">
             <div>新邮件</div>
             <ul>
-                <li v-for="(label,index) in labels">{{label}}</li>
+                <li v-for="(label,index) in labels" @dragenter="dragEnter" @dragover="dragOver" @dragleave="dragLeave" @drop="drop">
+                    <div style="pointer-events: none;"><span>icon</span> <span>{{label}}</span><span>未读数</span></div>
+                </li>
             </ul>
         </div>
         <div class="dragbox fr">
-            <div class="draglist" @drag="drag" @dragend="dragEnd" draggable="true" v-for="(mail,index) in mails">{{mail}}</div>
+            <div class="draglist" @drag="drag" @dragstart="dragStart" @dragend="dragEnd" draggable="true" v-for="(mail,index) in mails">{{mail}}</div>
         </div>
         <div class="dragremind clear"></div>
+        <div v-show="isDragPanel" class="dragbg" :style="{'top': top + 'px', 'left': left + 'px'}">
+            移动<span>{{num}}</span>个
+        </div>
     </div>
 </div>
 
@@ -107,90 +108,61 @@
         data: {
             labels:['收件箱','已加星标','重要邮件','已发邮件'],
             mails:['邮件1','邮件2','邮件3','邮件4','邮件5','邮件6','邮件7'],
+            isDragPanel: false,
             top:0,
             left:0,
-            zIndex: -1
+            oldTop: 0,
+            oldLeft: 0,
+            num:1
         },
         methods: {
-           drag: function (event) {
-               this.top = event.clientY
-               this.left = event.clientX
-               this.zIndex = 100
+           drag: function (ev) {
+               if ((ev.clientY !== 0) && (ev.clientX !== 0)) {
+                   this.top = ev.clientY - ev.target.clientHeight
+                   this.left = ev.clientX - ev.target.clientWidth - 50
+               }
+//               console.log(ev.target.clientHeight)
+//               console.log(ev.target.clientWidth)
+//               console.log(this.top, this.left, ev)
            },
-            dragEnd: function (event) {
-                this.zIndex = -1
-            }
-        }
-    })
-    window.onload = function () {
-      var eleDustbin = document.querySelector('.dustbin') //直接取数组收个元素
-      var eleDrags = document.querySelectorAll('.draglist')
-        //用于提示的元素
-        var eleRemind = document.querySelector('.dragremind')
-        var eleDrag = null  //当前被拖拽元素
-
-        for(var i = 0,LEN = eleDrags.length; i < LEN; i++){
-            eleDrags[i].onselectstart = function () {
-               return false
-            }
-
-//            拖拽开始
-            eleDrags[i].ondragstart = function (ev) {
-//            拖拽效果
-                ev.dataTransfer.effectAllowed = 'move'
-//                ev.dataTransfer.setData('text',ev.target.innerHTML)
-//                ev.dataTransfer.setDragImage(ev.target,0,0)
-
-//                ev.dataTransfer.setDragImage($('.dragbg').get(0),0,0)
-//                ev.dataTransfer.setDragImage($('<div style="color:#f00;">test</div>').get(0),0,0)
-//                ev.dataTransfer.setDragImage($('img')[0], -10, -10);
-                eleDrag = ev.target
+            dragStart: function (ev) {
+                this.top = ev.clientY - ev.target.clientHeight
+                this.left = ev.clientX - ev.target.clientWidth - 50
+                this.oldTop = this.top
+                this.oldLeft = this.left
+                ev.dataTransfer.setDragImage($('<div></div>').get(0),0,0)
                 ev.target.classList.add('dragged-ele')
-                return true
-            }
-//            拖拽结束
-            eleDrags[i].ondragend = function (ev) {
-//                ev.dataTransfer.clearData('text')
-                eleDrag = null
+                this.isDragPanel = true
+            },
+            dragEnd: function (ev) {
+                console.log('--------------------------------dragEnd')
+                $('.dragbg').animate({top: this.oldTop, left:this.oldLeft}, 200, () => {
+                  this.isDragPanel = false
+                  this.oldTop = 0
+                  this.oldLeft = 0
+                })
                 ev.target.classList.remove('dragged-ele')
-                return false
-            }
-        }
-
-//        拖拽元素在目标元素上移动的时候
-        eleDustbin.ondragover = function (ev) {
-            ev.preventDefault()
-            return true;
-        }
-
-//        拖拽元素刚进入目标元素的时候
-        eleDustbin.ondragenter = function (ev) {
-            ev.preventDefault()
-            ev.target.classList.add('drop-ele')
-        }
-
-        eleDustbin.ondragleave = function (ev) {
-            ev.preventDefault()
-
-//            if ($(ev.target).is($('.dustbin')[0]))
-            {
+            },
+            dragOver: function (ev) {
+                ev.preventDefault()
+            },
+            dragEnter: function (ev) {
+                console.log('--------------------------------dragEnter')
+                ev.preventDefault()
+                ev.target.classList.add('drop-ele')
+            },
+            dragLeave: function (ev) {
+                console.log('--------------------------------dragLeave')
+                ev.preventDefault()
+                ev.target.classList.remove('drop-ele')
+            },
+            drop: function (ev) {
+               console.log('--------------------------------drop')
+                this.isDragPanel = false
                 ev.target.classList.remove('drop-ele')
             }
         }
-
-//        拖拽元素在目标元素上，同时松开鼠标
-        eleDustbin.ondrop = function (ev) {
-            if (eleDrag) {
-//                设置提示语句
-              eleRemind.innerHTML = '<strong>'+eleDrag.innerHTML+'</strong> 被扔进了垃圾箱'
-                //删除当前被拖拽元素
-                eleDrag.parentNode.removeChild(eleDrag)
-            }
-            this.style.color = '#d66'
-            ev.target.classList.remove('drop-ele')
-            return false
-        }
-    }
+    })
 </script>
 </body>
 </html>
