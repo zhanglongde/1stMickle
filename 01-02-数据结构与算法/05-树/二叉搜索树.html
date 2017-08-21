@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        https://github.com/HelloLeeChan/CS-in-JavaScript-by-nzakes/blob/master/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%EF%BC%8Cpart2.md
+    </title>
+</head>
+<body>
+
+<script>
+  function Node(data, left, right) { // 创建节点
+    this.data = data;
+    this.left = left;
+    this.right = right;
+    this.show = show
+  }
+
+  function show () { // 显示树的数据
+    return this.data
+  }
+
+  function BST () { // 二叉查找树类
+    this.root = null;
+    this.insert = insert;
+    this.show = show;
+    this.inOrder = inOrder; // inOrder是遍历BST的方式
+  }
+
+  function insert (data) { // 向树中插入数据
+    var n = new Node(data, null, null)
+    if (this.root == null) {
+      this.root = n;
+    } else {
+      var current = this.root;
+      var parent;
+      while (true) {
+        parent = current
+        if (data < current.data) {
+          current = current.left;
+          if (current == null) {
+            parent.left = n;
+            break;
+          }
+        } else {
+          current = current.right;
+          if (current == null) {
+            parent.right = n;
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  var bstree = new BST()
+  bstree.insert(1)
+  bstree.insert(2)
+  bstree.insert(3)
+  bstree.insert(4)
+  console.log(bstree.show())
+</script>
+</body>
+</html>

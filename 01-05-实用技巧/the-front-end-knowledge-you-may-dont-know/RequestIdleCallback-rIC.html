@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        https://github.com/justjavac/the-front-end-knowledge-you-may-dont-know/issues/9
+    </title>
+</head>
+<body>
+<script>
+  var myNonEssentialWork = deadline => {
+    console.log(deadline.timeRemaining());
+    // ...
+  };
+  window.requestIdleCallback(myNonEssentialWork,{timeout: 2000});
+//  window.requestIdleCallback(myNonEssentialWork);
+
+</script>
+</body>
+</html>

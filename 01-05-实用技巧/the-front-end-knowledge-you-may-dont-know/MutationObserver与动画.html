@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        https://chrisyip.github.io/post/mutation-events-and-mutationobserver/
+    </title>
+    <style>
+        @-webkit-keyframes NodeInserted {
+            from {}
+        }
+
+        @keyframes NodeInserted {
+            from {
+                clip: rect(0px, auto, auto, auto);
+            }
+            to {
+                clip: rect(0px, auto, auto, auto);
+            }
+        }
+
+        li {
+            -webkit-animation-duration: .001s;
+            animation-duration: .001s;
+            -webkit-animation-name: NodeInserted;
+            animation-name: NodeInserted;
+        }
+    </style>
+</head>
+<body>
+
+
+<ul></ul>
+
+<script>
+  var nodeInserted = function( event ) {
+    if ( 'NodeInserted' === event.animationName ) {
+      console.log( 'New node inserted!' )
+    }
+  }
+  document.addEventListener( 'webkitAnimationStart', nodeInserted, false )
+  document.addEventListener( 'animationstart', nodeInserted, false )
+
+  document.querySelector( 'ul' ).appendChild( document.createElement( 'li' ) )
+</script>
+</body>
+</html>

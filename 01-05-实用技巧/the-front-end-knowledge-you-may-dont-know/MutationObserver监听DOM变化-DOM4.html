@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        https://developers.google.com/web/updates/2012/02/Detect-DOM-changes-with-Mutation-Observers
+    </title>
+</head>
+<body>
+<ul></ul>
+
+<script>
+   var ul = document.querySelector('ul'), observer
+   try {
+      observer = new ( window.MutationObserver || window.WebKitMutationObserver )( function( mutationRecord, observer ) {
+        mutationRecord.forEach( function( mutation ) {
+          console.log('%c-----------------------------------------------------------', 'background-color:#e66;color:#fff;font-size:30px;')
+          console.log( mutation )
+        })
+      })
+      observer.observe( ul, { attributes: true, childList: true } )
+    } catch ( ex ) {}
+
+
+
+    ul.className = 'list'
+    ul.appendChild( document.createElement( 'li' ) )
+    // 不会触发
+    ul.children[0].className = 'item'
+
+    // 在不需要时，停止继续观察
+    observer.disconnect()
+</script>
+</body>
+</html>

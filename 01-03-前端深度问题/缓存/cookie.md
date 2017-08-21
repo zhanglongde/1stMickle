@@ -30,3 +30,9 @@ cookie使用  大小与限制
 一种是Third-party Cookie,又称本地Cookie；保存在本地
 third-party cookie是服务器在Set-Cookie时，指定了Expire,只有到了Expire时间后才会失效
 
+
+带上cookie的ajax跨域请求（credentials）
+https://github.com/brunoyang/blog/issues/11
+Access-Control-Allow-Credentials（可选） – 该项标志着请求当中是否包含cookies信息，只有一个可选值：true（必为小写）。如果不包含cookies，请略去该项，而不是填写false。这一项与XmlHttpRequest2对象当中的withCredentials属性应保持一致，
+即withCredentials为true时该项也为true；withCredentials为false时，省略该项不写。反之则导致请求失败。
+
