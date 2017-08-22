@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>
       拖拽 回弹效果
+
+      防止子元素反复触发dragleave:
+        1.在子元素上添加style = "pointer-events: none;"
+        2.拖拽的光标稍微偏离，模拟的拖拽框一点点
     </title>
     <style>
         *{margin:0;padding:0;}
