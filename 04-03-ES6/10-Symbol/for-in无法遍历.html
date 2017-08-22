@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var s = Symbol('test')
+    var person = {
+      name:'zhangld',
+      age:27,
+      [s]:'tt'
+    }
+    for(var p in person){
+      console.log(p, person[p])
+    }
+</script>
+</body>
+</html>
