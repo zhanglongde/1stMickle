@@ -3,11 +3,11 @@ https://github.com/FredWe/issue-blog/issues/29
 position取值static 如果元素为2声明position
             relative absolute
             fixed IE支持性不好
-            sticky absolute与fixed结合
+            sticky absolute与fixed结合,但是包含块并不是viewport
 
 基准位置
 包含块的padding-box边界
-如果不设置Top left的相对位置
+如果不设置Top left的相对位置:content-box
 
 absolute的containing block计算方式
 相当于inline-block
