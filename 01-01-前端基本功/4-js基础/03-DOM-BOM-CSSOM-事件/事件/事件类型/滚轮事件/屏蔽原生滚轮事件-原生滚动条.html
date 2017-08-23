@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        如何禁止浏览器滚动条滚动，但是又不让它消失
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            height:2000px;
+            width:100%;
+            /*overflow:hidden;*/
+        }
+        .box{
+            width:700px;
+            height:500px;
+            background-color: #58a;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    box
+</div>
+
+<script>
+  let ndBox = document.querySelector('.box')
+  window.addEventListener('mousewheel', function (e) {
+    //      e.preventDefault()
+    console.log('-----------------------mousewheel')
+    console.log(e.target)
+  })
+
+</script>
+</body>
+</html>

@@ -13,7 +13,7 @@
 <body>
 <div id="app">
     <div v-html="test"></div>
-    <button @contextmenu="contextmenu" @click="clk">点击</button>
+    <button @contextmenu.prevent="contextmenu" @click="clk">点击</button>
 </div>
 
 <script>

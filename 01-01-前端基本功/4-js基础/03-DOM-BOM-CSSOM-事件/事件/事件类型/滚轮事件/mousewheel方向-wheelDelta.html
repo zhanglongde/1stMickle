@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        向下 wheelDelta=-120
+        向上 wheelDelta=-120
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            height:2000px;
+            width:100%;
+        }
+        .box{
+            width:700px;
+            height:500px;
+            background-color: #58a;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    box
+</div>
+
+<script>
+  let ndBox = document.querySelector('.box')
+  ndBox.addEventListener('mousewheel', function (e) {
+    console.log('-----------------------mousewheel')
+    console.log(e.wheelDelta)
+  })
+</script>
+</body>
+</html>

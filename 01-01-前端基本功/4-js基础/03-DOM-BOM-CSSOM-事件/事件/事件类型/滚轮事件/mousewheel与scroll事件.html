@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            height:2000px;
+            width:100%;
+        }
+        .box{
+            width:700px;
+            height:500px;
+            background-color: #58a;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    box
+</div>
+
+<script>
+    let ndBox = document.querySelector('.box')
+    ndBox.addEventListener('mousewheel', function (e) {
+      console.log('-----------------------mousewheel')
+      console.log(e.target)
+    })
+    // wheel事件更优先
+    ndBox.addEventListener('wheel', function (e) {
+      console.log('-----------------------wheel')
+      console.log(e.target)
+    })
+    
+    window.addEventListener('scroll', function (e) {
+      console.log('-----------------------scroll')
+      console.log(e.target)
+    })
+</script>
+</body>
+</html>

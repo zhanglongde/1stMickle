@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        如果紧贴元素如果不用缝隙间隔开，触发顺序将是:上一个元素mouseenter 下一个元素的mouseenter 上一个元素的mouseleave
+    </title>
+    <style>
+        .container{
+            position: absolute;margin:auto;top:0;left:0;right:0;bottom:0;
+            width:500px;height:500px;
+
+            box-shadow: 0 0 5px rgba(0,0,0,0.4);
+
+        }
+        .row{
+            width:100%;height:50px;
+
+            background-color: #9c3;
+        }
+        .col{
+            display:inline-block;
+            width:40px;height:40px;
+            /*margin:0 20px 0 0;*/
+
+            line-height:40px;
+            text-align:center;
+
+            background-color: #58a;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row" id="row1">
+        <div class="col">1</div><div class="col">2</div><div class="col">3</div>
+    </div>
+    <div class="row" id="row2">
+        <div class="col">4</div><div class="col">5</div><div class="col">6</div>
+    </div>
+    <div class="row" id="row3">
+        <div class="col">7</div><div class="col">8</div><div class="col">9</div>
+    </div>
+</div>
+</body>
+
+<script>
+  window.onload = function () {
+    var oRow1 = document.getElementById('row1')
+    var oRow2 = document.getElementById('row2')
+    var oRow3 = document.getElementById('row3')
+    oRow1.addEventListener('mouseenter', function (e) {
+      console.log('mouseenter...1')
+      console.log(e.target)
+    })
+    oRow1.addEventListener('mouseleave', function (e) {
+      console.log('mouseleave...1')
+      console.log(e.target)
+    })
+    oRow2.addEventListener('mouseenter', function (e) {
+      console.log('mouseenter...2')
+      console.log(e.target)
+    })
+    oRow2.addEventListener('mouseleave', function (e) {
+      console.log('mouseleave...2')
+      console.log(e.target)
+    })
+  }
+</script>
+</html>

@@ -8,6 +8,7 @@
       防止子元素反复触发dragleave:
         1.在子元素上添加style = "pointer-events: none;"
         2.拖拽的光标稍微偏离，模拟的拖拽框一点点
+        3.计算enter与leave次数，注意紧贴元素元素的触发顺序，必须针对相邻元素设定不同的计数器
     </title>
     <style>
         *{margin:0;padding:0;}

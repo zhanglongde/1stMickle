@@ -9,8 +9,8 @@
         对于mouseover mouseenter，
         1.如果没有子元素，两者并没有区别
         2.如果存在子元素，
-          在父元素上绑定事件，进入父元素，都会触发事件，并没有区别；
-          对于绑定mouseover的元素，当鼠标从父元素进入其子元素或者子元素进入父元素以及子元素进入子元素，都会触发父元素上的mouseover事件
+        在父元素上绑定事件，进入父元素，都会触发事件，并没有区别；
+        对于绑定mouseover的元素，当鼠标从父元素进入其子元素或者子元素进入父元素以及子元素进入子元素，都会触发父元素上的mouseover事件
     </title>
     <style>
         .container{
@@ -53,16 +53,18 @@
 </body>
 
 <script>
-    window.onload = function () {
-      var oRow1 = document.getElementById('row1')
-      var oRow2 = document.getElementById('row2')
-      var oRow3 = document.getElementById('row3')
-        oRow1.addEventListener('mouseenter', function (e) {
-           console.log(e.target)
-        })
-        oRow2.addEventListener('mouseover', function (e) {
-           console.log(e.target)
-        })
-    }
+  window.onload = function () {
+    var oRow1 = document.getElementById('row1')
+    var oRow2 = document.getElementById('row2')
+    var oRow3 = document.getElementById('row3')
+    oRow1.addEventListener('mouseleave', function (e) {
+      console.log('mouseleave...')
+      console.log(e.target)
+    })
+    oRow2.addEventListener('mouseout', function (e) {
+      console.log('mouseout...')
+      console.log(e.target)
+    })
+  }
 </script>
 </html>
