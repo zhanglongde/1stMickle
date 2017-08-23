@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+  window.addEventListener('unhandledrejection', function (e) {
+    console.log(e)
+  })
+
+    let p = new Promise((resolve, reject) => {
+      setTimeout(function () {
+        console.log('test')
+        ll
+        resolve(1)
+      }, 3000)
+    })
+
+    p.then((v) => {
+      console.log(v)
+    })
+
+
+</script>
+</body>
+</html>
