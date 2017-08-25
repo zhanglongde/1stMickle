@@ -1,0 +1,20 @@
+ajax
+异步JavaScript和XML，有别于传统Web开发中采用的同步方式
+
+传统Web应用
+传统的Web应用交互由用户触发一个HTTP请求到服务器,服务器对其进行处理后再返回一个新的HTHL页到客户端。
+
+
+ajax工作原理
+相当于在用户和服务器之间加了一个中间层（ajax引擎），使用户操作与服务器响应异步化
+不是所有用户请求都提交给服务器，像一些数据验证和数据处理等都交给ajax引擎自己来做，只有确定需要从服务器读取新数据时，再由ajax引擎代为向服务器提交请求
+无刷新更新页面
+ajax核心:JavaScript XHR DOM对象，通过XHR对象向服务器发异步请求，从服务器获得获得数据，然后用JavaScript来操作DOM而更新页面
+
+
+创建ajax步骤
+new XHR
+open
+setRequestHeader post方法必须
+send
+onreadystatechange

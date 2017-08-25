@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        box设置溢出自动
+        box包裹一层wrapper,作为溢出部分的包含块
+        溢出部分绝对定位，脱离其父元素，找到更上层的元素wrapper作为其包含块
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul,li{
+            list-style:none;
+        }
+        .wrapper{
+            position:relative;
+            display:inline-block;
+        }
+        .box{
+            width:300px;
+            height:200px;
+            border:1px solid #ccc;
+            overflow-y:auto;
+        }
+        ul>li{
+            height:50px;
+            line-height:50px;
+        }
+        ul>li+li{
+            border-top:1px solid #ccc;
+        }
+        .popping-box{
+            position:absolute;top:0;right:-100px;
+            width:100px;
+            height:200px;
+            background-color: #58a;
+            border-radius:4px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="box">
+        <ul>
+            <li>li1</li>
+            <li>li2</li>
+            <li>li3</li>
+            <li>li4</li>
+            <li>li5</li>
+        </ul>
+        <div class="popping-box">溢出的盒子</div>
+    </div>
+</div>
+</body>
+</html>
