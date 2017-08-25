@@ -11,9 +11,13 @@
   draft draftId不变
   attachments
 5.难点
-列表加载 初始化：historyId 缓存：持久化缓存与内存缓存 同步：WebSocket与historyList
+列表 初始化：列表分标签初始化，如何处理标签交叉问题=>通过labelIds关联，historyId标记版本，用一个内存缓存队列保证数据唯一性
+            整页拉取id-historyId,分片拉取详情列表，分片大小由首屏所能够容纳的数量决定，与DB数据对比historyId，将版本更新的邮件合并成一片
+     同步：WebSocket通知，historyList处理
+     缓存：持久化缓存与内存缓存
 标签 排序 数量统计 同步 树形
-业务 会话模式与非会话模式
+
+业务 会话模式与非会话模式 搜索 未读优先
      列表与详情同步问题
 邮件详情 内联图片加载:CID替换与懒加载 图片缓存 重复内部分折叠:DOM diff
 发邮件 附件与内联图片的处理
