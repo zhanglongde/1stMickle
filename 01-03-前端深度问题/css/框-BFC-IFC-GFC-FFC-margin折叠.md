@@ -1,9 +1,17 @@
-BFC 块级格式上下文
+BFC
+块级格式上下文
+隔离的独立容器，容器内的元素不会影响到外面元素，反之亦然。
+区别于普通的块框
+
 形成
-    dof paf body元素
-    display:inline-block
+    body元素
+    dof display:inline-block,table-cell,table-caption
+    paf
+
 应用
-    布局 解决margin折叠 清除浮动
+    布局：阻止元素被浮动元素覆盖而产生文字环绕效果
+    解决margin折叠
+    清除浮动:计算BFC高度时，浮动元素也参与计算
 渲染规则
     隔离容器
     一一垂直放置

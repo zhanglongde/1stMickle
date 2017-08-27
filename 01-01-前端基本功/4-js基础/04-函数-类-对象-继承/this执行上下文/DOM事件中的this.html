@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+<div class="test1">test1</div>
+<div class="test2">test2</div>
+<div class="test3" onclick="console.log(this)">test3</div>
+
+<script>
+    let ndTest1 = document.querySelector('.test1')
+    let ndTest2 = document.querySelector('.test2')
+    ndTest1.onclick = function () {
+      console.log(this)
+    }
+    ndTest2.addEventListener('click', function () {
+      console.log(this)
+    })
+</script>
+</body>
+</html>

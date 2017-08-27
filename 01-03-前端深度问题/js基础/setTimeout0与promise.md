@@ -1,0 +1,1 @@
+setTimeout(fn, 0)其实就是在执行setTimeout(fn, 1)
