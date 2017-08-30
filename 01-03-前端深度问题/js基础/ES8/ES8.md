@@ -4,6 +4,6 @@ ES8
 字符串填充 padStart padEnd
 Object.values
 Object.entries
-Object.getOwnPropertyDescriptor
+Object.getOwnPropertyDescriptors
 函数参数列表和调用中的尾逗号
 异步函数
