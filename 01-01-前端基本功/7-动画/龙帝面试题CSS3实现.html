@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>龙帝</title>
+    <style>
+        .demo {
+            width: 60%;
+            height: 80px;
+            margin: 15% auto;
+            padding: 20px;
+            background: #343434;
+            position: relative;
+        }
+        
+        .w50 {
+            width: 50%;
+            height: 40px;
+            display: flex;
+        }
+        
+        .right {
+            float: right;
+        }
+        
+        .xie {
+            width: 20px;
+            height: 100%;
+        }
+        
+        .fang {
+            flex: 1;
+            background: #2196F3;
+            height: 100%;
+        }
+        
+        .xie1 {
+            transform: skew(0, 45deg);
+            transform-origin: left top;
+            background: red;
+        }
+        
+        .xie2 {
+            transform: skew(0, 45deg);
+            transform-origin: right bottom;
+            background: green;
+        }
+        
+        .right .fang {
+            background: #CDDC39;
+        }
+        
+        .h100 {
+            height: 100%;
+            background: #343434;
+        }
+        
+        .anim {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0px;
+            top: 0px;
+            display: flex;
+        }
+        
+        .a30 {
+            flex: 1;
+            background: rgba(204, 204, 204, 0);
+        }
+        
+        .a50 {
+            width: 50%;
+            animation: mymove 3s ease-in-out alternate infinite;
+            -moz-animation: mymove 3s ease-in-out alternate infinite;
+            -webkit-animation: mymove 3s ease-in-out alternate infinite;
+            -o-animation: mymove 3s ease-in-out alternate infinite;
+        }
+        
+        @keyframes mymove {
+            from {
+                width: 50%;
+            }
+            to {
+                width: 0%;
+            }
+        }
+        
+        @-moz-keyframes mymove {
+            from {
+                width: 50%;
+            }
+            to {
+                width: 0%;
+            }
+        }
+        
+        @-webkit-keyframes mymove {
+            from {
+                width: 50%;
+            }
+            to {
+                width: 0%;
+            }
+        }
+        
+        @-o-keyframes mymove {
+            from {
+                width: 50%;
+            }
+            to {
+                width: 0%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo">
+        <div class="w50">
+            <div class="fang"></div>
+            <div class="xie xie1"></div>
+        </div>
+        <div class="w50 right">
+            <div class="xie xie2"></div>
+            <div class="fang"></div>
+        </div>
+        <div class="anim">
+            <div class="h100 a50"></div>
+            <div class="h100 a30"></div>
+            <div class="h100 a50"></div>
+        </div>
+    </div>
+</body>
+
+</html>

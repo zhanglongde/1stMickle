@@ -23,13 +23,26 @@
             pointer-events:none !important;
             cursor:not-allowed;
         }
+        button.btn{
+            font-family: -apple-system, Roboto-Medium, SourceHanSansCN-Medium;
+            font-size: 14px;
+            color: #fff;
+            background-color: #5392FF;
+            border: 1px solid #3A82FF;
+            border-radius: 2px;
+            margin-left: 16px;
+            width: 64px;
+            height: 32px;
+            box-sizing: border-box;
+            line-height: 32px;
+        }
     </style>
 </head>
 <body>
 <div class="btn disabled">
     hello
 </div>
-
+<button class="btn" disabled>发送</button>
 <script>
     window.onload = function () {
       var o = document.querySelector('.btn')
