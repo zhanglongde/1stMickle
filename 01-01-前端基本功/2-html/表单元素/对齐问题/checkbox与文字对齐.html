@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        vertical-align:middle;顶部会出现缝隙？
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            display:inline-block;
+            vertical-align: baseline;
+            /*height:40px;*/
+            /*line-height:1;*/
+        }
+        .box>:nth-child(n){
+            display:inline-block;
+            vertical-align: baseline;
+        }
+        .box>input{
+            line-height:20px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <input type="checkbox"><span>记住密码</span>
+</div>
+</body>
+</html>

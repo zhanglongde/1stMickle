@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        getBoundingClient 相对于viewport
+        offset区域:border-box  偏移相对于包含块的margin-box
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .wrapper{
+            padding:50px;
+            margin:100px;
+        }
+        .box{
+            margin:30px;
+            display:inline-block;
+            width: 200px;height:200px;
+
+            border:10px solid #ccc;
+            background-color: #58a;
+        }
+        .top{
+            height:100px;
+            background-color: #fc3;
+        }
+    </style>
+</head>
+<body>
+<div class="top">top</div>
+<div class="wrapper">
+    <div class="box box2">box2</div>
+</div>
+
+<script>
+    let ndBox = document.querySelector('.box2')
+    console.log(ndBox.clientHeight, ndBox.clientWidth, ndBox.clientLeft)
+    console.log(ndBox.offsetHeight, ndBox.offsetWidth, ndBox.offsetLeft)
+    console.log(ndBox.getBoundingClientRect().left, ndBox.getBoundingClientRect().top)
+</script>
+</body>
+</html>

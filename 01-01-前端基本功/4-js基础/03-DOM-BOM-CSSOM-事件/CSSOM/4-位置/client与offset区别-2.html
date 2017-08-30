@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        client区域:content-box 偏移相对于border-box
+        offset区域:border-box  偏移相对于包含块的margin-box
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            margin:30px;
+            display:inline-block;
+            width: 200px;height:200px;
+
+            border:10px solid #ccc;
+            background-color: #58a;
+        }
+    </style>
+</head>
+<body>
+<div class="box box1">box1</div><div class="box box2">box2</div>
+
+<script>
+    let ndBox = document.querySelector('.box2')
+    console.log(ndBox.clientHeight, ndBox.clientWidth, ndBox.clientLeft)
+    console.log(ndBox.offsetHeight, ndBox.offsetWidth, ndBox.offsetLeft)
+</script>
+</body>
+</html>
