@@ -1,3 +1,4 @@
+https://doc.webpack-china.org/guides/hot-module-replacement
 http://shepherdwind.com/2017/02/07/webpack-hmr-principle/
 热加载实现主要分为几部分功能:
 服务器构建、推送更新消息
