@@ -7,6 +7,13 @@
     </title>
 </head>
 <body>
-
+<script>
+//    将所有的P标签替换为div标签
+    let str = '<p>Para/-1</p><p><br></p><p>Para-2</p><p>Para-3</p><div>This is already a div</div><p>Para-4</p>'
+    let r = str.replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, function (match, s) {
+        return `<div>${s}</div>`
+    })
+    console.log(r)
+</script>
 </body>
 </html>
