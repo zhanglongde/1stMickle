@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        replace并不会改变原字符串
+    </title>
 </head>
 <body>
 <div id="test">
@@ -20,7 +22,7 @@
             console.log(match,p1,index,all)
             return match.replace(/src=['"]([^'"]+)['"]+/ig, '')
         })
-        console.log(filteredHtml)
+        console.log(filteredHtml,html)
     }
 </script>
 </body>
