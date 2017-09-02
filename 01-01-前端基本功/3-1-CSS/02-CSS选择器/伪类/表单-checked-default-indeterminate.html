@@ -2,9 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        input:checked + label {
+            background: yellow;
+        }
+        :default  {
+            background: #58a;
+        }
+        :indeterminate + label {
+            background: orange;
+        }
+    </style>
 </head>
 <body>
-$END$
+<input type="checkbox"/>
+<label>我同意</label>
+
+
+
+<form action="#">
+    <button>重置</button>
+    <button type="submit">提交</button>
+</form>
+
+
+
+
+<ul>
+    <li>
+        <input type="radio" name="list" id="option1">
+        <label for="option1">Option 1</label>
+    </li>
+    <li>
+        <input type="radio" name="list" id="option2">
+        <label for="option2">Option 2</label>
+    </li>
+    <li>
+        <input type="radio" name="list" id="option3">
+        <label for="option3">Option 3</label>
+    </li>
+</ul>
 </body>
 </html>
