@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        当鼠标指针在子元素上，哪个先触发？
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        body{
+            height:2000px;
+            width:100%;
+        }
+        .box{
+            width:700px;
+            height:400px;
+
+            overflow-y:auto;
+
+            background-color: #58a;
+        }
+        ul>li{
+            height:80px;
+            line-height:80px;
+        }
+        ul>li+li{
+            border-bottom:1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+        <li>li4</li>
+        <li>li5</li>
+        <li>li6</li>
+        <li>li7</li>
+        <li>li8</li>
+        <li>li9</li>
+        <li>li10</li>
+    </ul>
+</div>
+
+<script>
+  let ndBox = document.querySelector('.box')
+  ndBox.addEventListener('mousewheel', function (e) {
+    console.log('**************************scroll')
+    console.log(e.target)
+  })
+
+  window.addEventListener('mousewheel', function (e) {
+    console.log('-----------------------scroll')
+    console.log(e.target)
+  })
+</script>
+</body>
+</html>

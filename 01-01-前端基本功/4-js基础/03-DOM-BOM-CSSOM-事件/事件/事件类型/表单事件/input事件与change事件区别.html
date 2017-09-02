@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        input事件在元素尚未失去焦点时触发
+    </title>
+</head>
+<body>
+<input type="text" id="test">
+
+<script>
+    let ndIpt = document.getElementById('test')
+    ndIpt.addEventListener('input', function () {
+      console.log('[input]:',ndIpt.value)
+    })
+
+    ndIpt.addEventListener('change', function () {
+      console.log('[change]:',ndIpt.value)
+    })
+</script>
+</body>
+</html>
