@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Parent(name) {
+        this.name = name
+        this.age = 27
+    }
+    Parent.prototype.show = function () {
+      console.log(this.name)
+      console.log(this.age)
+    }
+
+    function Son(name) {
+       Parent.apply(this,arguments)
+    }
+
+    Son.prototype = Object.create(Parent.prototype)
+
+    let s = new Son('zld')
+    s.show()
+    console.log(s)
+</script>
+</body>
+</html>

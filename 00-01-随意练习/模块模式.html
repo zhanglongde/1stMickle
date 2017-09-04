@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var module = (function (module) {
+        var name = ''
+        module.init = function (nameOuter) {
+          name = nameOuter
+        }
+        module.show = function () {
+          console.log(name)
+        }
+        return module
+    }(module || {}))
+
+    module.init('zld')
+    module.show()
+</script>
+</body>
+</html>

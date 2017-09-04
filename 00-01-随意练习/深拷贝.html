@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function DeepClone(obj) {
+      let _toString = Object.prototype.toString
+      let o = (_toString.call(obj) === '[object Array]') ? [] : {}
+      for (let prop in obj) {
+          o[prop] = (_toString.call(obj[prop]) === '[object Null]' || typeof obj[prop] !== 'object') ? obj[prop] : DeepClone(obj[prop])
+      }
+      return o
+    }
+
+    var o = {
+        name:'zld',
+        u:null,
+        hands: {
+            left:1,
+            rigt:'ugly',
+            third:null
+        }
+    }
+
+    console.log(DeepClone(o))
+</script>
+</body>
+</html>

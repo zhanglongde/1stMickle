@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../lib/lodash.js"></script>
+<script>
+//    静态属性中的实例
+    function Universe(name) {
+      this.name = 'zld'  // true
+//      this.name = name  // false
+
+        Universe.instance = this
+    }
+
+    let a = new Universe('zld')
+    let b = new Universe('zlb')
+    console.log(_.isEqual(a,b))
+</script>
+</body>
+</html>

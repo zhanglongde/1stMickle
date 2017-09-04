@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr = [1,2,3,4,5,2,4]
+//    index总是从头开始找，定位到第一个出现的位置
+    function Uniq1(arr) {
+      return arr.filter((value,index) => {
+          return arr.indexOf(value) === index
+      })
+    }
+
+//    Set数据唯一性
+    function Uniq2(arr) {
+      return [...new Set(arr)]
+    }
+
+//    哈希内存缓存,将数组值作为哈希键
+    function Uniq3(arr) {
+        var hash = {}
+        var a = []
+        for (let i = 0, LEN = arr.length; i < LEN; i++) {
+            let key = arr[i]
+            if (!hash[key]) {
+                hash[key] = true // 标记为已经缓存
+                a.push(key)
+            }
+        }
+        return a
+    }
+
+//    console.log(Uniq1(arr))
+//    console.log(Uniq2(arr))
+    console.log(Uniq3(arr))
+</script>
+</body>
+</html>

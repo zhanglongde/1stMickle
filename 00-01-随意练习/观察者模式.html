@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../lib/jquery-1.11.3.min.js"></script>
+<script>
+//    自定义事件
+   let testEvent = new Event('test')
+   document.documentElement.addEventListener('test', function () {
+     console.log('ding...')
+   })
+    document.documentElement.dispatchEvent(testEvent)
+
+
+//    利用jQuery实现
+    var o = (function () {
+        var o = $({})
+
+        o.subscribe = function () {
+          this.on.apply(this,arguments)
+        }
+
+        o.unsubscribe = function () {
+          this.off.apply(this, arguments)
+        }
+
+        o.publish = function () {
+          this.trigger.apply(this, arguments)
+        }
+        return o
+    }(o || {}))
+
+    function Handle(e, a, b, c) {
+        console.log(e)
+        console.log(a,b,c)
+    }
+
+    o.subscribe('/test',Handle)
+    o.publish('/test',[1,2,3])
+    o.unsubscribe('/test',Handle)
+    o.publish('/test',[1,2,3])
+</script>
+</body>
+</html>
