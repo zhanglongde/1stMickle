@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .container{
+            width:100%;
+            padding:10px;
+
+            font-size:0;
+            background-color:#0f0;
+        }
+        .container>.column{
+            display:inline-block;
+
+            font-size:16px;
+            background-color:#ccc;
+        }
+        .container>:nth-child(1){
+            width:400px;
+        }
+        .container>:nth-child(n+2){
+            /*width:calc((100% - 400px - 40px) / 2);*/
+            width:calc(50% - 220px);
+        }
+        .column+.column{
+            margin-left:10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="column">column1</div>
+    <div class="column">column2</div>
+    <div class="column">column3</div>
+</div>
+</body>
+</html>

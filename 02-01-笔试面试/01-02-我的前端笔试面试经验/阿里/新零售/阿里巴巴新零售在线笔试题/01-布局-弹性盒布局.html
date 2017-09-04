@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .container{
+            display:flex;
+            box-sizing: border-box;
+            width:100%;
+            padding:10px;
+
+            background-color:#0f0;
+        }
+        .container>:nth-child(n){
+            background-color: #ccc;
+        }
+        .container>:nth-child(1){
+           width:400px;
+        }
+        .container>:nth-child(n+1){
+           flex:1 1 auto;
+        }
+        .column+.column{
+           margin-left:10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="column">column1</div>
+    <div class="column">column2</div>
+    <div class="column">column3</div>
+</div>
+</body>
+</html>
