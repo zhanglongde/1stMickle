@@ -2,9 +2,123 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        整个工具栏浮在编辑器上
+        工具栏向下三角箭头在工具栏主体之上，在主体阴影box-shadow之上
+        主体内部一个个的tooltip提示层在三角箭头之上
+
+        夹心饼干:主体及其阴影与tooltip夹住三角箭头
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul,ul>li{
+            list-style:none;
+        }
+        a{
+          text-decoration: none;
+        }
+        .box{
+            position:relative;
+            left:50%;
+            margin-left:-350px;
+            width:700px;
+            height:320px;
+            display:flex;
+
+            background-color: #58a;
+            border:1px solid #ccc;
+            border-radius:4px;
+        }
+        .box>.bd{
+            /*如果z-index非auto，并且父元素为display:flex将创建一个层叠上下文，覆盖edit-bar*/
+            /*z-index:1;*/
+            z-index:auto;
+            height:260px;
+            width:100%;
+
+            overflow:auto;
+
+            background-color: #fff;
+        }
+        .box>.edit-bar{
+            position: absolute;
+            /*edit-bar与bd的z-index都是auto非层叠上下文，根据后来居上原则，edit-bar居上*/
+            z-index: auto;
+
+            height: 33px;
+            bottom: 39px;
+            display: flex;
+            border-radius: 2px;
+            overflow: visible;
+        }
+        .edit-bar:before{
+            display: block;
+            content: '';
+            position: absolute;
+            z-index: 1001;
+            bottom: -22px;
+            left:208px;
+            margin-left:-11px;
+
+            border-width: 11px;
+            border-style: solid;
+            border-color: #fff transparent transparent transparent;
+        }
+        ul.menu-group{
+            position: absolute;
+            /*如果z-index不设置为auto,无论内部tooltip怎么设置z-index都是无法浮在三角箭头之上*/
+            z-index: auto;
+            display: flex;
+            height: 33px;
+            overflow: visible;
+
+            border-radius: 2px;
+            background-color: #ffffff;
+            box-shadow: 0 25px 55px 0 rgba(0, 0, 0, 0.19), 0 16px 28px 0 rgba(0, 0, 0, 0.24);
+        }
+        ul.menu-group>li{
+            float:left;
+            width:25px;
+            height:25px;
+
+            text-align:center;
+            line-height:25px;
+        }
+        ul.menu-group>li+li{
+            border-left:1px solid #ccc;
+        }
+
+    </style>
+    <link rel="stylesheet" href="hint.css">
 </head>
 <body>
-$END$
+<div class="box">
+    <div class="bd">
+        bd
+    </div>
+    <div class="edit-bar">
+        <ul class="menu-group">
+            <li class="menu-item"><a href="#" class="hint--bottom" aria-label="1">1</a></li>
+            <li class="menu-item"><a href="#" class="hint--bottom" aria-label="2">2</a></li>
+            <li class="menu-item"><a href="#" class="hint--bottom" aria-label="3">3</a></li>
+            <li class="menu-item"><a href="#" class="hint--bottom" aria-label="4">4</a></li>
+            <li class="menu-item"><a href="#" class="hint--bottom" aria-label="5">5</a></li>
+            <li class="menu-item"><a href="#" class="hint--bottom" aria-label="6">6</a></li>
+            <li class="menu-item"><a href="#" class="hint--bottom" aria-label="7">7</a></li>
+            <li class="menu-item"><a href="#" class="hint--bottom" aria-label="8">8</a></li>
+            <li class="menu-item"><a href="#" class="hint--bottom" aria-label="9">9</a></li>
+            <li class="menu-item"><a href="#" class="hint--bottom" aria-label="10">10</a></li>
+            <li class="menu-item"><a href="#" class="hint--bottom" aria-label="11">11</a></li>
+            <li class="menu-item"><a href="#" class="hint--bottom" aria-label="12">12</a></li>
+            <li class="menu-item"><a href="#" class="hint--bottom" aria-label="13">13</a></li>
+            <li class="menu-item"><a href="#" class="hint--bottom" aria-label="14">14</a></li>
+            <li class="menu-item"><a href="#" class="hint--bottom" aria-label="15">15</a></li>
+            <li class="menu-item"><a href="#" class="hint--bottom" aria-label="16">16</a></li>
+        </ul>
+    </div>
+</div>
 </body>
 </html>
