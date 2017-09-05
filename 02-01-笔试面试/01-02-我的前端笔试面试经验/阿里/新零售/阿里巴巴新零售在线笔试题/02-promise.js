@@ -4,29 +4,27 @@
 
 var fs = require('fs')
 
-fs.readFile('./sample1.txt','utf8', function (error,data) {
-  return new Promise((resolve,reject) => {
-    if (error) { // 文件不存在等异常
-      reject(error)
-    }
-    resolve(data)
-  })
-}).then(data => {
-  console.log(data)
-  fs.readFile('./sample2.txt','utf8', function (error,data) {
+function readFileAsync(file, code) {
     return new Promise((resolve,reject) => {
-      if (error) {
-        reject(error)
-      }
-      resolve(data)
+      fs.readFile(file, code, function (error,data) {
+          if (error) {
+            reject(error)
+          }
+          resolve(data)
+      })
     })
-  })
-}).then(data => {
+}
+var p1 = readFileAsync('./sample1.txt','utf8')
+var p2 = readFileAsync('./sample2.txt','utf8')
+var p3 = readFileAsync('./sample3.txt','utf8')
+p1.then((data) => {
   console.log(data)
-  fs.readFile('./sample3.txt','utf8', function (error,data) {
-    if (error) {
-      throw error
-    }
+  return p2
+}).then((data) => {
     console.log(data)
-  })
+    return p3
+}).then((data) => {
+  console.log(data)
+}).catch((error) => {
+  throw error
 })
