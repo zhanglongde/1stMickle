@@ -2,9 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        https://www.w3cplus.com/css/caret-color.html
+    </title>
+    <style>
+        form {
+            width: 80vw;
+            margin: 20px auto;
+        }
+
+        .form-control {
+            color: red !important;
+            text-shadow: 0px 0px 0px #495057;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
 </head>
 <body>
-$END$
+<form>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Example textarea</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+</form>
 </body>
 </html>

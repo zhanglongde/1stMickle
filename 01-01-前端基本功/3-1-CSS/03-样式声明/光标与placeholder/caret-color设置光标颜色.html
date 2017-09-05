@@ -2,9 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        form {
+            width: 80vw;
+            margin: 20px auto;
+        }
+        .form-control {
+            color:  #495057;
+            caret-color: red;
+        }
+    </style>
 </head>
 <body>
-$END$
+<form>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Example textarea</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <div contenteditable class="form-control">contenteditable</div>
+    </div>
+</form>
 </body>
 </html>
