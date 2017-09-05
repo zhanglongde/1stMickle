@@ -9,24 +9,27 @@
             padding:0;
         }
         .box{
-            width:200px;
-            height:400px;
-            background-color: #9c3;
-            vertical-align: bottom;
+            width:400px;
+            height:200px;
+            /*overflow:hidden;*/
+
+            text-align:right;
+
+            border:1px solid #ccc;
         }
         .item{
             display:inline-block;
-            height:350px;
+            width:200px;
+            height:100px;
+            margin-right:-100px;
 
-            /*相对父容器无效，相对兄弟元素有效*/
-            margin-bottom:100px;
             background-color: #58a;
         }
     </style>
 </head>
 <body>
 <div class="box">
-    <div class="item">item</div>
+    <div class="item"></div>
 </div>
 </body>
 </html>
