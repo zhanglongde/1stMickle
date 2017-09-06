@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        延迟加载+抽纸效果
+
+        scale(0.9)=>scale(1)
+    </title>
+    <style>
+        *{
+            margin:0;
+        }
+        .box{
+            position:relative;
+            height:300px;
+            width:500px;
+            overflow:hidden;
+
+            border:1px solid #ccc;
+        }
+        .item{
+            position:absolute;
+            bottom:-300px;
+            width:200px;
+            height:200px;
+            background-color: #58a;
+
+
+        }
+        .box:hover .item{
+            animation:slidein 0.6s ease-in-out forwards;
+        }
+        @keyframes slidein {
+            to{
+                bottom:0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="item"></div>
+</div>
+</body>
+</html>
