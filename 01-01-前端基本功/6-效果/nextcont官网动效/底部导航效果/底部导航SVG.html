@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .center{
+            position:absolute;top:0;bottom:0;right:0;left:0;
+            margin:auto;
+        }
+        .clearFix:after{
+            content:'';
+            display:block;
+            clear:both;
+        }
+        .box{
+            width:500px;
+            height:300px;
+            padding:10px;
+
+            color:#333;
+            background-color: #3C3E63;
+            border-radius:2px;
+        }
+        .icon-box{
+            min-height:100px;
+        }
+        .icon-box>.item{
+            float:left;
+            width:34px;
+            height:34px;
+
+            text-align:center;
+            line-height:60px;
+
+            /*border-radius:100%;*/
+            /*background-color: #afb1d7;*/
+            cursor:pointer;
+            background-image:url('./Group 40.svg');
+            background-position:0 0;
+
+            /*-webkit-transition: ease all 0.2s;*/
+            /*-moz-transition: ease all 0.2s;*/
+            /*-o-transition: ease all 0.2s;*/
+            transition: ease margin-top 0.2s;
+        }
+        .item+.item{
+            margin-left:20px;
+        }
+        .item:hover{
+            /*background-color:#fff;*/
+            margin-top:2px;
+            background-position:166px 0;
+        }
+
+        .btn-box{
+            text-align:center;
+        }
+        button{
+            border:none;
+            outline:none;
+        }
+        button.btn-paper{
+            padding: 20px 38px;
+            margin-top: 40px;
+
+            cursor:pointer;
+            letter-spacing: 2px;
+            color: #fff;
+            background: #ff73b4;
+            border-radius:50px;
+            font-size:13px;
+            box-shadow: 0px 10px 60px rgba(228, 110, 148, 0.5);
+
+            -webkit-transition: ease all 0.2s;
+            -moz-transition: ease all 0.2s;
+            -o-transition: ease all 0.2s;
+            transition: ease all 0.2s;
+        }
+        button.btn-paper:hover {
+            margin-top: 35px;
+            color: #fff;
+            box-shadow: 0px 10px 80px rgba(228, 110, 148, 0.7);
+        }
+    </style>
+</head>
+<body>
+<div class="box center">
+    <div class="icon-box clearFix">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+    <div class="btn-box">
+        <button class="btn-paper">CONTACT US</button>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -24,26 +24,35 @@
             bottom:-300px;
             width:200px;
             height:200px;
-            background-color: #58a;
+            overflow:hidden;
 
+            background-color: #58a;
             opacity:0.7;
 
             animation:slidein 0.8s ease forwards;
+
         }
-        /*.box:hover .item{*/
-            /*animation:slidein 0.6s ease-in-out forwards;*/
-        /*}*/
         @keyframes slidein {
             to{
                 bottom:0;
                 opacity:1;
             }
         }
+        .item img{
+            width:100%;
+            transform:scale(0.8);
+            transition:transform 0.6s ease;
+        }
+        .item:hover img{
+           transform:scale(1);
+        }
     </style>
 </head>
 <body>
 <div class="box">
-    <div class="item"></div>
+    <div class="item">
+        <img src="../../../../images/mm2.jpg" alt="图片">
+    </div>
 </div>
 </body>
 </html>

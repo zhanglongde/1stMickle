@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .wrapper{
+            position:relative;
+            opacity: 0;
+            visibility: hidden;
+            -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            /*-webkit-transition: opacity 350ms,visibility 0s 350ms;*/
+            /*transition: opacity 350ms,visibility 0s 350ms;*/
+            transition: opacity 1s,transform 1s ease-out,-webkit-transform 1s ease-out;
+        }
+        .wrapper.load{
+            visibility: visible;
+            opacity:1;
+        }
+        .mask{
+            position:absolute;
+            z-index:1;
+            /*top:-200px;*/
+
+            width:200px;
+            height:200px;
+            /*-webkit-gradient(linear,left top,right top,from(rgba(255,255,255,0)),color-stop(10%,#fff),to(white));*/
+            /*background: linear-gradient(to right,rgba(85,136,170,0) 0,#58a 10%,#58a 100%);*/
+            background: linear-gradient(to right,rgba(255,255,255,0) 0,#fff 10%,#fff 100%);
+
+            transition: transform 1s cubic-bezier(.19,1,.22,1),-webkit-transform 1s cubic-bezier(.19,1,.22,1);
+        }
+        .box{
+            position:absolute;
+            width:200px;
+            height:200px;
+            background-color: #f00;
+        }
+        .mask.load{
+            /*top:0;*/
+            /*transform: none;*/
+            transform: translateX(100%);
+        }
+        /*.wrapper:hover .mask{*/
+        /*top:0;*/
+        /*transform: none;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="mask"></div>
+    <div class="box"></div>
+</div>
+
+<script>
+    window.onload = function () {
+        var ndWrapper = document.querySelector('.wrapper')
+        ndWrapper.classList.add('load')
+
+        var ndMask = document.querySelector('.mask')
+        ndMask.classList.add('load')
+    }
+</script>
+</body>
+</html>
