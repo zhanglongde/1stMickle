@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        @keyframes fadein-upwards {
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+        }
+        .box{
+            position:absolute;top:0;left:0;right:0;bottom:0;
+            margin:auto;
+            width:500px;
+            height:300px;
+            padding:20px;
+
+            opacity: 0;
+            -webkit-transform: translateY(15px);
+            transform: translateY(15px);
+
+            border-radius:4px;
+            border:1px solid #ccc;
+            animation:fadein-upwards ease 1s forwards;
+        }
+    </style>
+</head>
+<body>
+  <div class="box">
+      <p>
+          Collaborate on awesome projects
+          We believe great work is not done alone. Constant collaboration across our entire team is essential for creating world class work.
+      </p>
+  </div>
+</body>
+</html>

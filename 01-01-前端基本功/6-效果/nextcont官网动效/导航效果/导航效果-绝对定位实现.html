@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      *{
+          margin:0;
+          padding:0;
+      }
+      body{
+          text-align:center;
+      }
+      ul,li{
+          list-style: none;
+      }
+      .left{
+        float:left;
+      }
+      .right{
+        float:right;
+      }
+      .box{
+        margin-top:200px;
+          color:#fff;
+       }
+      .box ul>li{
+        float:left;
+      }
+      .box ul>li{
+        position:relative;
+        width:80px;
+        height:80px;
+        /*overflow:hidden;*/
+
+        line-height:80px;
+      }
+      .item{
+          height:100%;
+          width:100%;
+          position:absolute;
+          top:-100%;
+
+          background-color: #58a;
+          opacity:0;
+          transform:rotate(-10deg);
+      }
+      .left li:nth-of-type(1) .item{
+          animation:slide-in 0.8s ease forwards;
+      }
+      .left li:nth-of-type(2) .item{
+          animation:slide-in 0.8s ease 0.15s forwards;
+      }
+      .left li:nth-of-type(3) .item{
+          animation:slide-in 0.8s ease 0.3s forwards;
+      }
+      .left li:nth-of-type(4) .item{
+          animation:slide-in 0.8s ease 0.45s forwards;
+      }
+      .left li:nth-of-type(5) .item{
+          animation:slide-in 0.8s ease 0.6s forwards;
+      }
+      .left li:nth-of-type(6) .item{
+          animation:slide-in 0.8s ease 0.75s forwards;
+      }
+        @keyframes slide-in {
+            to{
+                top:0;
+                opacity:1;
+                transform:none;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul class="left">
+        <li>
+            <div class="item">1</div>
+        </li>
+        <li>
+            <div class="item">Google Home
+            </div>
+        </li>
+        <li>
+            <div class="item">Overview</div>
+        </li>
+        <li>
+            <div class="item">Features</div>
+        </li>
+        <li>
+            <div class="item">Apps & Partners</div>
+        </li>
+        <li>
+            <div class="item">Learn</div>
+        </li>
+    </ul>
+    <ul class="right">
+        <li>
+            <div class="item">1</div>
+        </li>
+        <li>
+            <div class="item">2</div>
+        </li>
+        <li>
+            <div class="item">3</div>
+        </li>
+        <li>
+            <div class="item">4</div>
+        </li>
+        <li>
+            <div class="item">5</div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
