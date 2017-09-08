@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <!--<link rel="stylesheet" href="skins/minimal/minimal.css">-->
+    <link rel="stylesheet" href="skins/all.css">
 </head>
 <body>
-$END$
+<label for="">test checkbox <input type="checkbox"></label>
+<label for="">test radio <input type="radio"></label>
+
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script src="icheck.js"></script>
+<script>
+  $("input[type=checkbox]").iCheck({
+    checkboxClass: 'icheckbox_minimal-blue',
+    increaseArea: '20%',
+    cursor: true
+  });
+    $('input[type=radio]').iCheck({
+      radioClass: 'iradio_minimal-blue'
+    });
+</script>
 </body>
 </html>

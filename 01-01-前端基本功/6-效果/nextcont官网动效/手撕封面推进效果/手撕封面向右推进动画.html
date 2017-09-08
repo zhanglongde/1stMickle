@@ -2,9 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            position:relative;
+            width:485px;
+            overflow:hidden;
+
+            font-size:80px;
+            will-change: transform;
+        }
+        .box:before{
+            content:'';
+            position:absolute;
+            width:100%;
+            height:100%;
+
+            /*background-color: #000;*/
+            background: linear-gradient(to right,rgba(0,0,0,0) 0,#000 5%,#000 100%);
+
+            will-change: transform;
+            animation:tear 0.8s ease-out 0.3s forwards;
+        }
+        @keyframes slide-in-to-right {
+           to{
+               transform:none;
+               opacity:1;
+           }
+        }
+        .animate-slide-in-to-right{
+            opacity:0.8;
+            transform:translateX(-98%);
+            animation:slide-in-to-right 0.3s ease forwards;
+        }
+        @keyframes tear {
+          to{
+              /*opacity:0.98;*/
+              transform:translateX(100%);
+          }
+        }
+        .animate-tear{
+            animation:tear 0.5s ease-in forwards;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="box animate-slide-in-to-right">
+    <div class="item">
+        Reinventing the Postcard
+    </div>
+</div>
 </body>
 </html>
