@@ -22,7 +22,7 @@
       }
       .box{
         margin-top:200px;
-          color:#fff;
+         /*color:#fff;*/
        }
       .box ul>li{
         float:left;
@@ -31,19 +31,17 @@
         position:relative;
         width:80px;
         height:80px;
-        /*overflow:hidden;*/
 
         line-height:80px;
       }
       .item{
           height:100%;
           width:100%;
-          position:absolute;
-          top:-100%;
 
-          background-color: #58a;
           opacity:0;
-          transform:rotate(-10deg);
+          transform: translateY(-100%) rotate(-10deg);
+          /*注意：交换顺序效果不一致*/
+          /*transform: rotate(-10deg) translateY(-100%);*/
       }
       .left li:nth-of-type(1) .item{
           animation:slide-in 0.8s ease forwards;
@@ -65,7 +63,6 @@
       }
         @keyframes slide-in {
             to{
-                top:0;
                 opacity:1;
                 transform:none;
             }
@@ -76,7 +73,7 @@
 <div class="box">
     <ul class="left">
         <li>
-            <div class="item">1</div>
+            <div class="item">logo</div>
         </li>
         <li>
             <div class="item">Google Home
