@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        offset-path
+    </title>
+    <style>
+        body {
+            width: 100%;
+            text-align: center;
+        }
+
+        #pen {
+            animation: motion, hide;
+            animation-duration: 5s, .1s;
+            animation-timing-function: linear;
+            animation-delay: 0s, 5s;
+            animation-fill-mode: forwards;
+
+            offset-rotate: 0deg;
+            offset-path: path('M 179.44695 56.6749951 L 99.820776 301.703394 309.632628 149.482963 50.450888 150.591211 258.383114 302.196491Z');
+            transform: translateX(0) translateY(-50px);
+        }
+
+        #ruler {
+            animation-name: ruler-move, hide;
+            animation-duration: 5s, .1s;
+            animation-timing-function: steps(1), linear;
+            animation-delay: 0s, 5s;
+            animation-fill-mode: forwards;
+
+            transform-origin: center center;
+            transform: rotate(108deg) translate(-40px, -182px);
+        }
+
+        #star {
+            animation-name: draw, shine;
+            animation-duration: 5s, 1s;
+            animation-delay: 0s, 5.2s;
+            animation-timing-function: linear, ease-out;
+            animation-fill-mode: forwards;
+
+            stroke-width: 3px;
+            stroke-dasharray: 1291.271240234375px;
+            stroke-dashoffset: 1291.271240234375px;
+        }
+
+        @keyframes shine {
+            50% {
+                stroke:gold;
+                stroke-width: 5px;
+                transform: scale(1.1);
+            }
+            100% {
+                stroke:gold;
+            }
+        }
+        @keyframes draw {
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+        @keyframes hide {
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes motion {
+            100% {
+                offset-distance: 100%;
+            }
+        }
+
+        @keyframes ruler-move {
+            0% {
+                /** 1 **/
+                /*transform: rotate(108deg) translateY(-7px) translateX(165px);*/
+            }
+
+            20% {
+                /** 2 **/
+                transform: rotate(-36deg) translateY(212px) translateX(-90px);
+            }
+
+            40% {
+                /** 3 **/
+                transform: rotate(-.5deg) translateY(154px) translateX(20px);
+            }
+
+            60% {
+                /** 4 **/
+                transform: rotate(36deg) translateY(196px) translateX(122px);
+            }
+
+            80%, 100% {
+                /** 5 **/
+                transform: rotate(72deg) translateY(18px) translateX(175px);
+            }
+        }
+    </style>
+</head>
+<body>
+<svg width="359px" height="359px" viewBox="0 0 359 359" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="draw-star" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="star" stroke="#000000" points="179.44695 56.6749951 99.820776 301.703394 309.632628 149.482963 50.450888 150.591211 258.383114 302.196491"></polygon>
+        <g id="pen" transform="translate(180.000000, 8.000000)">
+            <path d="M46.5103169,11.5949291 L42.8743099,15.2230142 L33.6885352,6.0582766 L37.3245423,2.43088652 C40.1934577,-0.431964539 44.5658451,-0.687042553 47.093831,1.83558865 C48.3647254,3.10333333 48.9354718,4.83466667 48.8215986,6.59380142 C48.7232535,8.36961702 47.9382183,10.1701064 46.5103169,11.5949291 L46.5103169,11.5949291 Z" id="path-19_1_" fill="#FF3A2F"></path>
+            <path d="M38.0988803,6.0447234 C37.9149577,6.0447234 37.7272394,6.00336879 37.5495282,5.91753191 C36.926331,5.61449645 36.6678732,4.86420567 36.9722254,4.24284397 C38.2400141,1.64758156 41.1986479,0.471234043 43.5813592,1.62812057 C44.2042113,1.93150355 44.4630141,2.68179433 44.159007,3.30350355 C43.8560352,3.92451773 43.1093028,4.18411348 42.4802394,3.8807305 C41.3522042,3.33130496 39.8918662,3.98498582 39.2282958,5.341 C39.0112465,5.78617021 38.5636901,6.0447234 38.0988803,6.0447234 L38.0988803,6.0447234 Z" id="path-20_1_" fill="#FFFFFF"></path>
+            <polyline id="path-21_1_" fill="#2476FF" points="4.35202817 35.2365603 34.5898592 5.19260993 43.8001338 14.3816738 13.1699577 44.7755745 13.1699577 44.7755745"></polyline>
+            <polygon id="path-22_1_" fill="#142A3B" points="5.32857746 46.7581631 0 48.832844 1.86407042 43.3017518"></polygon>
+            <polygon id="path-23_1_" fill="#FBB713" points="9.66783803 35.269227 6.25888732 35.269227 4.35202817 35.2365603 1.86407042 43.3017518 5.32857746 46.7581631 13.1699577 44.7755745 13.4366972 42.317234 13.4380775 39.0331915 9.59123239 39.562461"></polygon>
+            <path d="M43.5078592,0.149085106 C43.9091761,0.388524823 44.286338,0.674531915 44.6283028,1.01579433 C45.8988521,2.28319149 46.4692535,4.01487234 46.3560704,5.77470213 C46.2580704,7.54947518 45.4723451,9.34996454 44.0444437,10.7751348 L42.0523521,12.7629362 L43.6959225,14.4028723 L46.5103169,11.5949291 C47.9382183,10.1701064 48.7232535,8.36961702 48.8215986,6.59380142 C48.9354718,4.83501418 48.3643803,3.10333333 47.093831,1.83558865 C46.1121056,0.855241135 44.8505282,0.300255319 43.5078592,0.149085106 L43.5078592,0.149085106 Z" id="path-24_1_" fill="#020403" opacity="0.35"></path>
+            <path d="M33.9787394,5.67843972 L38.9643169,12.0592128 C39.8525282,13.1955957 39.7541831,14.8136383 38.7355352,15.8346454 L13.4432535,41.1853688 L13.1699577,44.7755745 L43.8001338,14.3816738 L34.5898592,5.19260993 L33.9787394,5.67843972 L33.9787394,5.67843972 Z" id="path-25_1_" fill="#020403" opacity="0.35"></path>
+            <polygon id="path-26" fill="#020403" opacity="0.35" points="8.86934507 35.269227 9.22407746 39.4404823 9.59123239 39.562461 9.66783803 35.269227"></polygon>
+            <polygon id="path-27" fill="#020403" opacity="0.35" points="11.2154789 43.7236383 4.1615493 45.5939787 5.32857746 46.7581631 13.1699577 44.7755745 13.4366972 42.317234 13.4380775 39.0331915 12.607493 39.1471773"></polygon>
+            <path d="M13.8783873,30.9613972 C13.5567817,30.9613972 13.2358662,30.8394184 12.9905211,30.594766 C12.499831,30.1058085 12.499831,29.312078 12.9905211,28.8234681 L31.2098944,10.6472482 C31.7005845,10.1575957 32.4949366,10.1575957 32.9856268,10.6472482 C33.4759718,11.1362057 33.4759718,11.9295887 32.9856268,12.4188936 L14.7659085,30.594766 C14.5209085,30.8394184 14.1996479,30.9613972 13.8783873,30.9613972 L13.8783873,30.9613972 Z" id="path-28" fill="#FFFFFF"></path>
+        </g>
+        <g id="ruler" transform="translate(165, -7)">
+            <rect id="Rectangle" fill="#FBB713" x="0" y="0" width="330" height="30"></rect>
+            <path d="M41.5,4.37603576 L41.5,11.1446795" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M57.5,4.37603576 L57.5,16.4091802" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M70.5,4.37603576 L70.5,11.1446795" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M57.5,4.37603576 L57.5,16.4091802" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M12.5,4.37603576 L12.5,11.1446795" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M28.5,4.37603576 L28.5,16.4091802" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M28.5,4.37603576 L28.5,16.4091802" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M70.5,4.37603576 L70.5,11.1446795" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M86.5,4.37603576 L86.5,16.4091802" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M99.5,4.37603576 L99.5,11.1446795" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M115.5,4.37603576 L115.5,16.4091802" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M128.5,4.37603576 L128.5,11.1446795" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M144.5,4.37603576 L144.5,16.4091802" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M157.5,4.37603576 L157.5,11.1446795" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M173.5,4.37603576 L173.5,16.4091802" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M186.5,4.37603576 L186.5,11.1446795" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M202.5,4.37603576 L202.5,16.4091802" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M215.5,4.37603576 L215.5,11.1446795" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M231.5,4.37603576 L231.5,16.4091802" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M244.5,4.37603576 L244.5,11.1446795" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M260.5,4.37603576 L260.5,16.4091802" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M273.5,4.37603576 L273.5,11.1446795" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M289.5,4.37603576 L289.5,16.4091802" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M302.5,4.37603576 L302.5,11.1446795" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M318.5,4.37603576 L318.5,16.4091802" id="Line" stroke="#142A3B" stroke-width="5" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>
+
+</body>
+</html>

@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        html, body {
+            background: #FFF
+        }
+        .pause *{
+            animation-play-state: paused !important;
+        }
+        label {
+            display: block;
+        }
+
+
+        /** css 生成脚本在 https://firekylin.org/static/js/main.js **/
+        svg.logo {
+            display: block;
+            margin: 100px auto 0;
+        }
+        svg.logo.show-moon *[id^="t"] {
+            opacity: 1;
+        }
+        svg.logo *[id^="t"], #node {
+            opacity: 0;
+        }
+        @-webkit-keyframes show {
+            to {opacity: 1;}
+        }
+        @keyframes show {
+            to {opacity: 1;}
+        }
+        /*@keyframes rotate {
+            from {
+                transform: rotate(360deg);
+            }
+            to {
+                transform: rotate(0deg);
+            }
+        }*/
+
+        .animate #moon #t1 {
+            -webkit-animation-name: show, rotate, move0;
+            animation-name: show, rotate, move0;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 1s, 1s, 4.2s;
+            animation-delay: 1s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(0, 100%, 70%);
+        }
+
+        @-webkit-keyframes move0 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(103.64839172363281px) translateY(77.77667999267578px);
+                transform: translateX(103.64839172363281px) translateY(77.77667999267578px);
+            }
+        }
+
+        @keyframes move0 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(103.64839172363281px) translateY(77.77667999267578px);
+                transform: translateX(103.64839172363281px) translateY(77.77667999267578px);
+            }
+        }
+
+        .animate #moon #t2 {
+            -webkit-animation-name: show, rotate, move1;
+            animation-name: show, rotate, move1;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 1.1s, 1s, 4.2s;
+            animation-delay: 1.1s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(11.612903225806452, 100%, 70%);
+        }
+
+        @-webkit-keyframes move1 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(138.79192352294922px) translateY(57.6048583984375px);
+                transform: translateX(138.79192352294922px) translateY(57.6048583984375px);
+            }
+        }
+
+        @keyframes move1 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(138.79192352294922px) translateY(57.6048583984375px);
+                transform: translateX(138.79192352294922px) translateY(57.6048583984375px);
+            }
+        }
+
+        .animate #moon #t3 {
+            -webkit-animation-name: show, rotate, move2;
+            animation-name: show, rotate, move2;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 1.2s, 1s, 4.2s;
+            animation-delay: 1.2s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(23.225806451612904, 100%, 70%);
+        }
+
+        @-webkit-keyframes move2 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(127.23739624023438px) translateY(-0.080352783203125px);
+                transform: translateX(127.23739624023438px) translateY(-0.080352783203125px);
+            }
+        }
+
+        @keyframes move2 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(127.23739624023438px) translateY(-0.080352783203125px);
+                transform: translateX(127.23739624023438px) translateY(-0.080352783203125px);
+            }
+        }
+
+        .animate #moon #t4 {
+            -webkit-animation-name: show, rotate, move3;
+            animation-name: show, rotate, move3;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 1.3s, 1s, 4.2s;
+            animation-delay: 1.3s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(34.83870967741935, 100%, 70%);
+        }
+
+        @-webkit-keyframes move3 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(135.05258178710938px) translateY(-42.839508056640625px);
+                transform: translateX(135.05258178710938px) translateY(-42.839508056640625px);
+            }
+        }
+
+        @keyframes move3 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(135.05258178710938px) translateY(-42.839508056640625px);
+                transform: translateX(135.05258178710938px) translateY(-42.839508056640625px);
+            }
+        }
+
+        .animate #moon #t5 {
+            -webkit-animation-name: show, rotate, move4;
+            animation-name: show, rotate, move4;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 1.4s, 1s, 4.2s;
+            animation-delay: 1.4s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(46.45161290322581, 100%, 70%);
+        }
+
+        @-webkit-keyframes move4 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(137.03964233398438px) translateY(-69.83683776855469px);
+                transform: translateX(137.03964233398438px) translateY(-69.83683776855469px);
+            }
+        }
+
+        @keyframes move4 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(137.03964233398438px) translateY(-69.83683776855469px);
+                transform: translateX(137.03964233398438px) translateY(-69.83683776855469px);
+            }
+        }
+
+        .animate #moon #t6 {
+            -webkit-animation-name: show, rotate, move5;
+            animation-name: show, rotate, move5;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 1.5s, 1s, 4.2s;
+            animation-delay: 1.5s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(58.064516129032256, 100%, 70%);
+        }
+
+        @-webkit-keyframes move5 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(122.6880111694336px) translateY(-77.23088073730469px);
+                transform: translateX(122.6880111694336px) translateY(-77.23088073730469px);
+            }
+        }
+
+        @keyframes move5 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(122.6880111694336px) translateY(-77.23088073730469px);
+                transform: translateX(122.6880111694336px) translateY(-77.23088073730469px);
+            }
+        }
+
+        .animate #moon #t7 {
+            -webkit-animation-name: show, rotate, move6;
+            animation-name: show, rotate, move6;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 1.6s, 1s, 4.2s;
+            animation-delay: 1.6s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(69.6774193548387, 100%, 70%);
+        }
+
+        @-webkit-keyframes move6 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(120.27301788330078px) translateY(-130.56619262695312px);
+                transform: translateX(120.27301788330078px) translateY(-130.56619262695312px);
+            }
+        }
+
+        @keyframes move6 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(120.27301788330078px) translateY(-130.56619262695312px);
+                transform: translateX(120.27301788330078px) translateY(-130.56619262695312px);
+            }
+        }
+
+        .animate #moon #t8 {
+            -webkit-animation-name: show, rotate, move7;
+            animation-name: show, rotate, move7;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 1.7000000000000002s, 1s, 4.2s;
+            animation-delay: 1.7000000000000002s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(81.29032258064515, 100%, 70%);
+        }
+
+        @-webkit-keyframes move7 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(110.20650482177734px) translateY(-130.75750732421875px);
+                transform: translateX(110.20650482177734px) translateY(-130.75750732421875px);
+            }
+        }
+
+        @keyframes move7 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(110.20650482177734px) translateY(-130.75750732421875px);
+                transform: translateX(110.20650482177734px) translateY(-130.75750732421875px);
+            }
+        }
+
+        .animate #moon #t9 {
+            -webkit-animation-name: show, rotate, move8;
+            animation-name: show, rotate, move8;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 1.8s, 1s, 4.2s;
+            animation-delay: 1.8s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(92.90322580645162, 100%, 70%);
+        }
+
+        @-webkit-keyframes move8 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(92.5755615234375px) translateY(-135.28268432617188px);
+                transform: translateX(92.5755615234375px) translateY(-135.28268432617188px);
+            }
+        }
+
+        @keyframes move8 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(92.5755615234375px) translateY(-135.28268432617188px);
+                transform: translateX(92.5755615234375px) translateY(-135.28268432617188px);
+            }
+        }
+
+        .animate #moon #t10 {
+            -webkit-animation-name: show, rotate, move9;
+            animation-name: show, rotate, move9;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 1.9s, 1s, 4.2s;
+            animation-delay: 1.9s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(104.51612903225808, 100%, 70%);
+        }
+
+        @-webkit-keyframes move9 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(63.74449157714844px) translateY(-130.85794067382812px);
+                transform: translateX(63.74449157714844px) translateY(-130.85794067382812px);
+            }
+        }
+
+        @keyframes move9 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(63.74449157714844px) translateY(-130.85794067382812px);
+                transform: translateX(63.74449157714844px) translateY(-130.85794067382812px);
+            }
+        }
+
+        .animate #moon #t11 {
+            -webkit-animation-name: show, rotate, move10;
+            animation-name: show, rotate, move10;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 2s, 1s, 4.2s;
+            animation-delay: 2s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(116.12903225806451, 100%, 70%);
+        }
+
+        @-webkit-keyframes move10 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(54.65869140625px) translateY(-122.8529052734375px);
+                transform: translateX(54.65869140625px) translateY(-122.8529052734375px);
+            }
+        }
+
+        @keyframes move10 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(54.65869140625px) translateY(-122.8529052734375px);
+                transform: translateX(54.65869140625px) translateY(-122.8529052734375px);
+            }
+        }
+
+        .animate #moon #t12 {
+            -webkit-animation-name: show, rotate, move11;
+            animation-name: show, rotate, move11;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 2.1s, 1s, 4.2s;
+            animation-delay: 2.1s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(127.74193548387098, 100%, 70%);
+        }
+
+        @-webkit-keyframes move11 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(38.687286376953125px) translateY(-114.52975463867188px);
+                transform: translateX(38.687286376953125px) translateY(-114.52975463867188px);
+            }
+        }
+
+        @keyframes move11 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(38.687286376953125px) translateY(-114.52975463867188px);
+                transform: translateX(38.687286376953125px) translateY(-114.52975463867188px);
+            }
+        }
+
+        .animate #moon #t13 {
+            -webkit-animation-name: show, rotate, move12;
+            animation-name: show, rotate, move12;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 2.2s, 1s, 4.2s;
+            animation-delay: 2.2s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(139.3548387096774, 100%, 70%);
+        }
+
+        @-webkit-keyframes move12 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(25.263336181640625px) translateY(-107.79696655273438px);
+                transform: translateX(25.263336181640625px) translateY(-107.79696655273438px);
+            }
+        }
+
+        @keyframes move12 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(25.263336181640625px) translateY(-107.79696655273438px);
+                transform: translateX(25.263336181640625px) translateY(-107.79696655273438px);
+            }
+        }
+
+        .animate #moon #t14 {
+            -webkit-animation-name: show, rotate, move13;
+            animation-name: show, rotate, move13;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 2.3s, 1s, 4.2s;
+            animation-delay: 2.3s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(150.96774193548387, 100%, 70%);
+        }
+
+        @-webkit-keyframes move13 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(13.267990112304688px) translateY(-97.35516357421875px);
+                transform: translateX(13.267990112304688px) translateY(-97.35516357421875px);
+            }
+        }
+
+        @keyframes move13 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(13.267990112304688px) translateY(-97.35516357421875px);
+                transform: translateX(13.267990112304688px) translateY(-97.35516357421875px);
+            }
+        }
+
+        .animate #moon #t15 {
+            -webkit-animation-name: show, rotate, move14;
+            animation-name: show, rotate, move14;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 2.4000000000000004s, 1s, 4.2s;
+            animation-delay: 2.4000000000000004s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(162.5806451612903, 100%, 70%);
+        }
+
+        @-webkit-keyframes move14 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-37.479095458984375px) translateY(-81.04954528808594px);
+                transform: translateX(-37.479095458984375px) translateY(-81.04954528808594px);
+            }
+        }
+
+        @keyframes move14 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-37.479095458984375px) translateY(-81.04954528808594px);
+                transform: translateX(-37.479095458984375px) translateY(-81.04954528808594px);
+            }
+        }
+
+        .animate #moon #t16 {
+            -webkit-animation-name: show, rotate, move15;
+            animation-name: show, rotate, move15;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 2.5s, 1s, 4.2s;
+            animation-delay: 2.5s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(174.19354838709677, 100%, 70%);
+        }
+
+        @-webkit-keyframes move15 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-47.7586669921875px) translateY(-55.019744873046875px);
+                transform: translateX(-47.7586669921875px) translateY(-55.019744873046875px);
+            }
+        }
+
+        @keyframes move15 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-47.7586669921875px) translateY(-55.019744873046875px);
+                transform: translateX(-47.7586669921875px) translateY(-55.019744873046875px);
+            }
+        }
+
+        .animate #moon #t17 {
+            -webkit-animation-name: show, rotate, move16;
+            animation-name: show, rotate, move16;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 2.6s, 1s, 4.2s;
+            animation-delay: 2.6s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(185.80645161290323, 100%, 70%);
+        }
+
+        @-webkit-keyframes move16 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-52.34246826171875px) translateY(-27.68353271484375px);
+                transform: translateX(-52.34246826171875px) translateY(-27.68353271484375px);
+            }
+        }
+
+        @keyframes move16 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-52.34246826171875px) translateY(-27.68353271484375px);
+                transform: translateX(-52.34246826171875px) translateY(-27.68353271484375px);
+            }
+        }
+
+        .animate #moon #t18 {
+            -webkit-animation-name: show, rotate, move17;
+            animation-name: show, rotate, move17;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 2.7s, 1s, 4.2s;
+            animation-delay: 2.7s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(197.41935483870967, 100%, 70%);
+        }
+
+        @-webkit-keyframes move17 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-125.90821838378906px) translateY(-33.600189208984375px);
+                transform: translateX(-125.90821838378906px) translateY(-33.600189208984375px);
+            }
+        }
+
+        @keyframes move17 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-125.90821838378906px) translateY(-33.600189208984375px);
+                transform: translateX(-125.90821838378906px) translateY(-33.600189208984375px);
+            }
+        }
+
+        .animate #moon #t19 {
+            -webkit-animation-name: show, rotate, move18;
+            animation-name: show, rotate, move18;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 2.8s, 1s, 4.2s;
+            animation-delay: 2.8s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(209.03225806451616, 100%, 70%);
+        }
+
+        @-webkit-keyframes move18 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-131.42738342285156px) translateY(-5.230133056640625px);
+                transform: translateX(-131.42738342285156px) translateY(-5.230133056640625px);
+            }
+        }
+
+        @keyframes move18 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-131.42738342285156px) translateY(-5.230133056640625px);
+                transform: translateX(-131.42738342285156px) translateY(-5.230133056640625px);
+            }
+        }
+
+        .animate #moon #t20 {
+            -webkit-animation-name: show, rotate, move19;
+            animation-name: show, rotate, move19;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 2.9000000000000004s, 1s, 4.2s;
+            animation-delay: 2.9000000000000004s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(220.6451612903226, 100%, 70%);
+        }
+
+        @-webkit-keyframes move19 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-132.21170043945312px) translateY(24.8211669921875px);
+                transform: translateX(-132.21170043945312px) translateY(24.8211669921875px);
+            }
+        }
+
+        @keyframes move19 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-132.21170043945312px) translateY(24.8211669921875px);
+                transform: translateX(-132.21170043945312px) translateY(24.8211669921875px);
+            }
+        }
+
+        .animate #moon #t21 {
+            -webkit-animation-name: show, rotate, move20;
+            animation-name: show, rotate, move20;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 3s, 1s, 4.2s;
+            animation-delay: 3s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(232.25806451612902, 100%, 70%);
+        }
+
+        @-webkit-keyframes move20 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-131.66217041015625px) translateY(46.29937744140625px);
+                transform: translateX(-131.66217041015625px) translateY(46.29937744140625px);
+            }
+        }
+
+        @keyframes move20 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-131.66217041015625px) translateY(46.29937744140625px);
+                transform: translateX(-131.66217041015625px) translateY(46.29937744140625px);
+            }
+        }
+
+        .animate #moon #t22 {
+            -webkit-animation-name: show, rotate, move21;
+            animation-name: show, rotate, move21;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 3.1s, 1s, 4.2s;
+            animation-delay: 3.1s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(243.87096774193546, 100%, 70%);
+        }
+
+        @-webkit-keyframes move21 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-146.62533569335938px) translateY(61.389404296875px);
+                transform: translateX(-146.62533569335938px) translateY(61.389404296875px);
+            }
+        }
+
+        @keyframes move21 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-146.62533569335938px) translateY(61.389404296875px);
+                transform: translateX(-146.62533569335938px) translateY(61.389404296875px);
+            }
+        }
+
+        .animate #moon #t23 {
+            -webkit-animation-name: show, rotate, move22;
+            animation-name: show, rotate, move22;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 3.2s, 1s, 4.2s;
+            animation-delay: 3.2s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(255.48387096774195, 100%, 70%);
+        }
+
+        @-webkit-keyframes move22 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-141.42286682128906px) translateY(67.56942749023438px);
+                transform: translateX(-141.42286682128906px) translateY(67.56942749023438px);
+            }
+        }
+
+        @keyframes move22 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-141.42286682128906px) translateY(67.56942749023438px);
+                transform: translateX(-141.42286682128906px) translateY(67.56942749023438px);
+            }
+        }
+
+        .animate #moon #t24 {
+            -webkit-animation-name: show, rotate, move23;
+            animation-name: show, rotate, move23;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 3.3000000000000003s, 1s, 4.2s;
+            animation-delay: 3.3000000000000003s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(267.0967741935484, 100%, 70%);
+        }
+
+        @-webkit-keyframes move23 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-131.6020050048828px) translateY(97.09059143066406px);
+                transform: translateX(-131.6020050048828px) translateY(97.09059143066406px);
+            }
+        }
+
+        @keyframes move23 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-131.6020050048828px) translateY(97.09059143066406px);
+                transform: translateX(-131.6020050048828px) translateY(97.09059143066406px);
+            }
+        }
+
+        .animate #moon #t25 {
+            -webkit-animation-name: show, rotate, move24;
+            animation-name: show, rotate, move24;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 3.4000000000000004s, 1s, 4.2s;
+            animation-delay: 3.4000000000000004s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(278.7096774193548, 100%, 70%);
+        }
+
+        @-webkit-keyframes move24 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-127.76608276367188px) translateY(85.31594848632812px);
+                transform: translateX(-127.76608276367188px) translateY(85.31594848632812px);
+            }
+        }
+
+        @keyframes move24 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-127.76608276367188px) translateY(85.31594848632812px);
+                transform: translateX(-127.76608276367188px) translateY(85.31594848632812px);
+            }
+        }
+
+        .animate #moon #t26 {
+            -webkit-animation-name: show, rotate, move25;
+            animation-name: show, rotate, move25;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 3.5s, 1s, 4.2s;
+            animation-delay: 3.5s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(290.3225806451613, 100%, 70%);
+        }
+
+        @-webkit-keyframes move25 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-94.24749755859375px) translateY(106.79798126220703px);
+                transform: translateX(-94.24749755859375px) translateY(106.79798126220703px);
+            }
+        }
+
+        @keyframes move25 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-94.24749755859375px) translateY(106.79798126220703px);
+                transform: translateX(-94.24749755859375px) translateY(106.79798126220703px);
+            }
+        }
+
+        .animate #moon #t27 {
+            -webkit-animation-name: show, rotate, move26;
+            animation-name: show, rotate, move26;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 3.6s, 1s, 4.2s;
+            animation-delay: 3.6s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(301.93548387096774, 100%, 70%);
+        }
+
+        @-webkit-keyframes move26 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-46.65374755859375px) translateY(123.51067352294922px);
+                transform: translateX(-46.65374755859375px) translateY(123.51067352294922px);
+            }
+        }
+
+        @keyframes move26 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-46.65374755859375px) translateY(123.51067352294922px);
+                transform: translateX(-46.65374755859375px) translateY(123.51067352294922px);
+            }
+        }
+
+        .animate #moon #t28 {
+            -webkit-animation-name: show, rotate, move27;
+            animation-name: show, rotate, move27;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 3.7s, 1s, 4.2s;
+            animation-delay: 3.7s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(313.5483870967742, 100%, 70%);
+        }
+
+        @-webkit-keyframes move27 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(1.2329864501953125px) translateY(129.36675262451172px);
+                transform: translateX(1.2329864501953125px) translateY(129.36675262451172px);
+            }
+        }
+
+        @keyframes move27 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(1.2329864501953125px) translateY(129.36675262451172px);
+                transform: translateX(1.2329864501953125px) translateY(129.36675262451172px);
+            }
+        }
+
+        .animate #moon #t29 {
+            -webkit-animation-name: show, rotate, move28;
+            animation-name: show, rotate, move28;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 3.8000000000000003s, 1s, 4.2s;
+            animation-delay: 3.8000000000000003s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(325.1612903225806, 100%, 70%);
+        }
+
+        @-webkit-keyframes move28 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-28.387527465820312px) translateY(123.97640228271484px);
+                transform: translateX(-28.387527465820312px) translateY(123.97640228271484px);
+            }
+        }
+
+        @keyframes move28 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-28.387527465820312px) translateY(123.97640228271484px);
+                transform: translateX(-28.387527465820312px) translateY(123.97640228271484px);
+            }
+        }
+
+        .animate #moon #t30 {
+            -webkit-animation-name: show, rotate, move29;
+            animation-name: show, rotate, move29;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 3.9000000000000004s, 1s, 4.2s;
+            animation-delay: 3.9000000000000004s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(336.7741935483871, 100%, 70%);
+        }
+
+        @-webkit-keyframes move29 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-19.325439453125px) translateY(122.51094818115234px);
+                transform: translateX(-19.325439453125px) translateY(122.51094818115234px);
+            }
+        }
+
+        @keyframes move29 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-19.325439453125px) translateY(122.51094818115234px);
+                transform: translateX(-19.325439453125px) translateY(122.51094818115234px);
+            }
+        }
+
+        .animate #moon #t31 {
+            -webkit-animation-name: show, rotate, move30;
+            animation-name: show, rotate, move30;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 4s, 1s, 4.2s;
+            animation-delay: 4s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(348.38709677419354, 100%, 70%);
+        }
+
+        @-webkit-keyframes move30 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-8.17071533203125px) translateY(118.92491149902344px);
+                transform: translateX(-8.17071533203125px) translateY(118.92491149902344px);
+            }
+        }
+
+        @keyframes move30 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(-8.17071533203125px) translateY(118.92491149902344px);
+                transform: translateX(-8.17071533203125px) translateY(118.92491149902344px);
+            }
+        }
+
+        .animate #moon #t32 {
+            -webkit-animation-name: show, rotate, move31;
+            animation-name: show, rotate, move31;
+            -webkit-animation-duration: 0.1s, 3s, 1.5s;
+            animation-duration: 0.1s, 3s, 1.5s;
+            -webkit-animation-delay: 4.1s, 1s, 4.2s;
+            animation-delay: 4.1s, 1s, 4.2s;
+            -webkit-animation-fill-mode: forwards, none, forwards;
+            animation-fill-mode: forwards, none, forwards;
+            -webkit-animation-iteration-count: 1, infinite, 1;
+            animation-iteration-count: 1, infinite, 1;
+            -webkit-animation-timing-function: ease, linear, ease;
+            animation-timing-function: ease, linear, ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            position: absolute;
+            fill: hsl(360, 100%, 70%);
+        }
+
+        @-webkit-keyframes move31 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(1.428131103515625px) translateY(106.67301177978516px);
+                transform: translateX(1.428131103515625px) translateY(106.67301177978516px);
+            }
+        }
+
+        @keyframes move31 {
+            to {
+                fill: #FFF;
+                -webkit-transform: translateX(1.428131103515625px) translateY(106.67301177978516px);
+                transform: translateX(1.428131103515625px) translateY(106.67301177978516px);
+            }
+        }
+
+        .rotate-animate #node {
+            -webkit-animation-name: rotate_node;
+            animation-name: rotate_node;
+            -webkit-animation-delay: 1s;
+            animation-delay: 1s;
+            -webkit-animation-duration: 3.2s;
+            animation-duration: 3.2s;
+            -webkit-animation-timing-function: ease;
+            animation-timing-function: ease;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+        }
+
+        @-webkit-keyframes rotate_node {
+            from {
+                /** fill: hsl(270, 80%, 60%); **/
+                fill: #FFF;
+                stroke: #000;
+                -webkit-transform: rotateZ(3600deg) scale(0);
+                transform: rotateZ(3600deg) scale(0);
+            }
+            to {
+                opacity: 1;
+            }
+            /**
+            60% {
+                fill: hsl(0, 80%, 60%);
+            }
+
+            to {
+                fill: hsl(0, 0%, 0%);
+            }
+            **/
+        }
+
+        @keyframes rotate_node {
+            from {
+                /** fill: hsl(270, 80%, 60%); **/
+                fill: #FFF;
+                stroke: #000;
+                -webkit-transform: rotateZ(3600deg) scale(0);
+                transform: rotateZ(3600deg) scale(0);
+            }
+            to {
+                opacity: 1;
+            }
+            /**
+            60% {
+                fill: hsl(0, 80%, 60%);
+            }
+
+            to {
+                fill: hsl(0, 0%, 0%);
+            }
+            **/
+        }
+    </style>
+</head>
+<body>
+<svg class="logo rotate-animate animate" width="250px" height="262px" viewBox="0 0 250 262" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="logo" transform="translate(51.000000, 42.000000)">
+        <polygon id="node" stroke="#000000" fill="#000000" points="74.810958 0 149.621916 46.8277035 149.621916 140.483111 74.810958 187.310814 0 140.483111 0 46.8277035"></polygon>
+        <g id="kylin" transform="translate(10.756159, 30.865501)" fill="#FFFFFF">
+            <polygon id="t1" points="67.8956333 47.000493 65.5810094 55.509203 94.128037 78.1990962 87.5699361 47.000493"></polygon>
+            <polygon id="t2" points="88.727248 47.4056697 94.8995783 77.3887428 104.158074 67.6645029"></polygon>
+            <polygon id="t3" points="73.2937219 30.8744618 75.771141 33.8200962 68.2871905 44.7801249"></polygon>
+            <polygon id="t4" points="73.2964223 29.5778965 76.3825874 32.4141331 86.4126242 6.48282663"></polygon>
+            <polygon id="t5" points="77.1541287 33.2244865 86.7983948 33.6296631 92.1991838 27.5520132 85.2553122 12.5604766"></polygon>
+            <polygon id="t6" points="76.2954033 34.3063081 86.3964218 34.7438989 88.1875549 45.7039277 68.8820488 45.7890148"></polygon>
+            <polygon id="t7" points="90.2703306 0 85.6410829 11.3449466 89.1130187 13.3708299"></polygon>
+            <polygon id="t8" points="86.7983948 13.3708299 95.285349 17.4225966 100.686138 29.9830731 92.9707251 26.3364832"></polygon>
+            <polygon id="t9" points="93.7422664 27.5520132 88.3414774 33.6296631 97.2142022 34.4400164 101.84345 32.0089565"></polygon>
+            <polygon id="t10" points="87.5699361 35.2503698 97.9857435 57.5350863 89.4987893 46.5953164"></polygon>
+            <polygon id="t11" points="99.528826 59.155793 111.487716 61.5868529 104.543844 65.6386196"></polygon>
+            <polygon id="t12" points="106.472698 66.0437962 111.873487 62.8023829 119.97467 74.1473295"></polygon>
+            <polygon id="t13" points="116.888505 67.6645029 123.446606 74.5525062 122.675065 77.3887428"></polygon>
+            <polygon id="t14" points="128.075854 76.1732128 122.675065 80.2249795 123.832377 75.7680362"></polygon>
+            <polygon id="t15" points="77.5398994 79.4146262 94.5138077 79.4146262 97.9857435 76.1732128 98.7572848 96.0268694"></polygon>
+            <polygon id="t16" points="99.528826 86.3026294 99.528826 96.4320461 107.244239 105.751109"></polygon>
+            <polygon id="t17" points="108.01578 106.156286 113.030799 108.992523 105.701156 109.397699"></polygon>
+            <polygon id="t18" points="35.8766699 83.8715695 51.3074956 84.2767461 41.6632295 92.3802794"></polygon>
+            <polygon id="t19" points="48.6071011 87.9233361 50.1501837 104.130403 42.0490002 93.5958094"></polygon>
+            <polygon id="t20" points="50.1501837 99.2682827 54.0078901 107.371816 51.3074956 107.371816"></polygon>
+            <polygon id="t21" points="51.3074956 108.587346 54.0078901 108.587346 56.7082846 111.018406 49.764413 111.423583"></polygon>
+            <polygon id="t22" points="36.2624405 107.776993 38.5770644 107.776993 41.2774589 110.613229 34.3335873 110.613229"></polygon>
+            <polygon id="t23" points="36.2624405 85.8974528 40.8916882 92.7854561 37.4197524 101.699343"></polygon>
+            <polygon id="t24" points="39.7343763 97.647576 38.5770644 106.561463 36.2624405 106.561463"></polygon>
+            <polygon id="t25" points="27.0039451 69.6903862 33.1762753 64.8282663 34.7193579 81.4405095"></polygon>
+            <polygon id="t26" points="34.3335873 64.0179129 56.7082846 61.9920296 51.3074956 83.0612161 35.8766699 82.6560395"></polygon>
+            <polygon id="t27" points="57.8655965 61.5868529 63.6521562 56.724733 68.2814039 79.0094495 52.4648075 82.6560395"></polygon>
+            <polygon id="t28" points="64.8094681 56.724733 69.4387158 78.1990962 92.9707251 78.6042728"></polygon>
+            <polygon id="t29" points="20.8316148 62.8023829 19.2885322 70.0955629 25.8466331 69.6903862"></polygon>
+            <path d="M12.3446606,65.2334429 C12.9368185,65.1645629 19.6743028,63.2075596 19.6743028,63.2075596 L18.1312202,70.0955629 L9.64426609,73.7421529 C9.64426609,73.7421529 11.7525027,65.3023229 12.3446606,65.2334429 L12.3446606,65.2334429 Z" id="t30"></path>
+            <path d="M1.15731193,70.9059162 C1.15731193,70.9059162 1.16888505,70.8978127 1.19125975,70.8856574 L11.1873487,65.2334429 L8.10118352,74.9576829 C8.10118352,74.9576829 2.08779072,71.4488529 1.25298305,70.9626409 L1.15731193,70.9059162 Z" id="t31"></path>
+            <path d="M0.771541287,70.0955629 C0.903860618,70.0388382 3.85770644,68.4748562 3.85770644,68.4748562 L0,62.8023829 C0,62.8023829 0.639221956,70.1522876 0.771541287,70.0955629 L0.771541287,70.0955629 Z" id="t32"></path>
+        </g>
+    </g>
+    <g id="moon" fill="#D8D8D8">
+        <polygon id="t1" points="26.0033857 42.0893191 23.6887618 50.598029 52.2357894 73.2879222 45.6776885 42.0893191"></polygon>
+        <polygon id="t2" points="11.6914775 62.6663195 17.8638078 92.6493926 27.1223033 82.9251527"></polygon>
+        <polygon id="t3" points="7.81248602 103.82032 10.2899051 106.765955 2.8059546 117.725983"></polygon>
+        <polygon id="t4" points="0 145.282897 3.08616515 148.119133 13.1162019 122.187827"></polygon>
+        <polygon id="t5" points="1.8706364 175.926831 11.5149025 176.332008 16.9156915 170.254358 9.97181992 155.262821"></polygon>
+        <polygon id="t6" points="15.3635592 184.402698 25.4645777 184.840289 27.2557108 195.800318 7.95020471 195.885405"></polygon>
+        <polygon id="t7" points="31.7534756 203.431709 27.1242278 214.776655 30.5961636 216.802539"></polygon>
+        <polygon id="t8" points="38.3480463 216.993823 46.8350004 221.045589 52.2357894 233.606066 44.5203765 229.959476"></polygon>
+        <polygon id="t9" points="62.9228584 235.700187 57.5220694 241.777837 66.3947942 242.58819 71.0240419 240.15713"></polygon>
+        <polygon id="t10" points="85.5816154 238.9738 95.9974228 261.258517 87.5104686 250.318747"></polygon>
+        <polygon id="t11" points="106.626275 254.87421 118.585165 257.30527 111.641293 261.357036"></polygon>
+        <polygon id="t12" points="129.541571 253.439032 134.94236 250.197619 143.043543 261.542565"></polygon>
+        <polygon id="t13" points="153.381311 248.326982 159.939412 255.214986 159.167871 258.051222"></polygon>
+        <polygon id="t14" points="176.56402 246.393864 171.163231 250.44563 172.320543 245.988687"></polygon>
+        <polygon id="t15" points="176.77514 233.329691 193.749048 233.329691 197.220984 230.088278 197.992525 249.941934"></polygon>
+        <polygon id="t16" points="209.043618 214.187868 209.043618 224.317285 216.759031 233.636348"></polygon>
+        <polygon id="t17" points="222.114401 206.705322 227.12942 209.541559 219.799777 209.946736"></polygon>
+        <polygon id="t18" points="223.54105 190.337254 238.971876 190.742431 229.32761 198.845964"></polygon>
+        <polygon id="t19" points="241.790629 166.018981 243.333711 182.226047 235.232528 171.691454"></polygon>
+        <polygon id="t20" points="244.118051 147.312617 247.975757 155.41615 245.275362 155.41615"></polygon>
+        <polygon id="t21" points="244.725815 135.15348 247.426209 135.15348 250.126604 137.58454 243.182732 137.989717"></polygon>
+        <polygon id="t22" points="244.643926 119.253071 246.95855 119.253071 249.658945 122.089307 242.715073 122.089307"></polygon>
+        <polygon id="t23" points="239.44146 91.1935246 244.070707 98.0815279 240.598771 106.995415"></polygon>
+        <polygon id="t24" points="233.092554 73.4224788 231.935242 82.3363654 229.620618 82.3363654"></polygon>
+        <polygon id="t25" points="216.526164 57.2399392 222.698494 52.3778193 224.241576 68.9900625"></polygon>
+        <polygon id="t26" points="190.337254 30.0854294 212.711951 28.059546 207.311162 49.1287326 191.880337 48.7235559"></polygon>
+        <polygon id="t27" points="166.27552 10.9416883 172.062079 6.07956831 176.691327 28.3642848 160.874731 32.0108748"></polygon>
+        <polygon id="t28" points="125.332639 0.223484395 129.961887 21.6978476 153.493896 22.1030243"></polygon>
+        <polygon id="t29" points="110.975312 11.6914775 109.43223 18.9846575 115.99033 18.5794808"></polygon>
+        <path d="M100.755902,13.5621139 L99.2128197,20.4501172 L90.7258655,24.0967072 C90.7258655,24.0967072 92.8341021,15.6568773 93.42626,15.5879972 C94.018418,15.5191172 100.755902,13.5621139 100.755902,13.5621139 Z" id="t30"></path>
+        <path d="M71.0841833,24.8464964 C71.0841833,24.8464964 71.0957564,24.8383929 71.1181311,24.8262376 L81.11422,19.1740231 L78.0280549,28.8982631 C78.0280549,28.8982631 72.0146621,25.3894332 71.1798544,24.9032212 L71.0841833,24.8464964 Z" id="t31"></path>
+        <path d="M61.0995653,36.2880442 C61.2318846,36.2313195 64.1857304,34.6673375 64.1857304,34.6673375 L60.328024,28.9948642 C60.328024,28.9948642 60.9672459,36.3447689 61.0995653,36.2880442 L61.0995653,36.2880442 Z" id="t32"></path>
+    </g>
+</svg>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            width: 100%;
+            text-align: center;
+        }
+        #status {
+            display: none;
+        }
+
+        .left, .right {
+            fill: #FFF;
+            transition: all .5s;
+        }
+
+        .left {
+            d: path('M0 1 0 49 22 38.183075 22 11.8525238Z');
+        }
+        .right {
+            d: path('M44.096035 24.8759317 44.096035 24.8759317 22 37.6656866 22 12.2530012Z');
+        }
+
+        #status:checked + svg .left {
+            d: path('M0 1 0 49 10 49 10 1Z');
+        }
+        #status:checked + svg .right {
+            d: path('M35 0 35 50 25 50 25 0Z');
+        }
+    </style>
+</head>
+<body>
+<label>
+    <input type="checkbox" id="status" />
+    <svg width="108px" height="108px" viewBox="-37 -29 108 108" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <circle id="bg-circle" stroke="none" fill="#F6A623" fill-rule="evenodd" cx="17" cy="25" r="54"></circle>
+        <path class="left"/>
+        <path class="right"/>
+    </svg>
+</label>
+
+</body>
+</html>

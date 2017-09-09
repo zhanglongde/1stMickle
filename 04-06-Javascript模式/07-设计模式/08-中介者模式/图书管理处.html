@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  //我们先假设图书管理系统只有借和还的功能
+  //个人
+  function Person(name){
+    this.name = name;
+  }
+  Person.prototype.lend = function(bookName){
+    Manager.assign('lend',this,bookName);
+  }
+  Person.prototype.back = function(bookName){
+    Manager.assign('back',this,bookName);
+  }
+  //创建一个工厂模式
+  var peopleFactory = (function(){
+    var people = {};
+    return function(name){
+      var person = people[name];
+      if(person){
+        return person;
+      }
+      person = new Person(name);
+      people[name] = person;
+      return person;
+    }
+  })();
+  //中介者，图书管理处
+  var Manager = (function(){
+    var lendList = {},
+      stock = {},
+      operations = {};
+    operations.lend = function(person,bookName){
+      var num = stock[bookName];
+
+      if(num===undefined){  //判断是否有书
+        console.log("图书馆没有该书");
+        return;
+      }
+      if(num===0){  //书本已经借完
+        console.log("该书已经借完");
+        return;
+      }
+      stock[bookName]--;  //将数量减一
+      lendList[person.name] = bookName;
+      console.log('借阅成功');
+    }
+    operations.back = function(person,bookName){
+      var bookName = lendList[person.name];  //返回借书人借的书名
+      if(bookName === null){
+        throw "该人，并没有借书";
+      }
+      stock[bookName]++;  //还书
+      lendList[person.name] = null;  //将借书人的清空
+    }
+    operations.addStock = function(){  //初始库存,addStock({bookName:jimmy,num:2})
+      for(var i = 0,book;book = arguments[i++];){
+        stock[book.bookName] = book.num;
+      }
+    }
+    var assign = function(){
+      var order = Array.prototype.shift.call(arguments);
+      operations[order].apply(this,arguments);
+    }
+    return {
+      assign
+    }
+  })();
+  Manager.assign('addStock',{bookName:"藏地密码",num:1},{bookName:"阿弥陀佛么么哒",num:3});
+  var xiaoMing = peopleFactory("xiaoMing");
+  var jimmy = peopleFactory("jimmy");
+  var hanMM = peopleFactory("hanMM");
+  xiaoMing.lend("藏地密码");
+  jimmy.lend("藏地密码");
+  //还书的过程
+  xiaoMing.back("藏地秘密");
+  jimmy.lend('藏地密码');  //终于借成功了
+</script>
+</body>
+</html>
