@@ -3,8 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        * {padding:0;margin:0;}
+        li {list-style-type:none}
+        .demoTab{
+            width:400px;
+            margin:20px auto;
+            font:14px/1.5 Microsoft YaHei,verdana,Helvetica,Arial,sans-serif;
+        }
+        .demoTab .demoTabNav{
+            height:28px;
+            overflow:hidden;
+            *zoom:1;
+            margin-bottom:-1px;
+            border-left:1px solid red;
+        }
+        .demoTab .demoTabList{
+            float:left;
+            padding:0 22px;
+            line-height:28px;
+            border-right:1px solid red;
+            border-top:1px solid red;
+            font-weight:bold;
+            color:#005590;
+            text-align:center;
+            cursor:pointer;
+        }
+        .demoTab .demoTabList.current{
+            position:relative;
+            background:#EAF0FD;
+        }
+        .demoTab .demoTabBd{
+            border:1px solid red;
+            padding:15px;
+        }
+        .demoTab .demoTabContent{display:none;}
+        .demoTab .demoTabContent.current{display:block;}
+    </style>
 </head>
 <body>
-
+<div id="demoTab" class="demoTab">
+    <ul class="demoTabNav clearfix">
+        <li class="demoTabList current">前端</li>
+        <li class="demoTabList">实战</li>
+        <li class="demoTabList">交互</li>
+        <li class="demoTabList">优化</li>
+    </ul>
+    <ul class="demoTabBd">
+        <li class="demoTabContent current">这是第一个选项卡的内容。</li>
+        <li class="demoTabContent">这是第二个选项卡的内容。</li>
+        <li class="demoTabContent">这是第三个选项卡的内容。</li>
+        <li class="demoTabContent">这是第四个选项卡的内容。</li>
+    </ul>
+</div>
 </body>
 </html>
