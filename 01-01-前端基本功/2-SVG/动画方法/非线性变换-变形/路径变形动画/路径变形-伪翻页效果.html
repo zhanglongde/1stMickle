@@ -1,0 +1,126 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="description" content="SVG path d路径参数变化与图片hover的动画效果 » 张鑫旭-鑫空间-鑫生活" />
+    <meta name="description" content="SVG path d路径参数变化与图片hover的动画效果" />
+    <meta name="keywords" content="SVG, javascript, Snap.svg, path, 路径" />
+    <meta name="author" content="张鑫旭, zhangxinxu" />
+    <title>SVG path d路径参数变化与图片hover的动画效果</title>
+    <style>
+        html, body { margin: 0; height: 100%; background-color: #012E72; font-family: 'microsoft yahei'; overflow: hidden; }
+        .show-box { width: 320px; height: 320px; position: absolute; left: 50%; top: 50%; margin: -160px 0 0 -160px; }
+        .show-list { cursor: pointer; position: relative; overflow: hidden; }
+        .show-list-1 { height: 160px; background-color: #FDE685; }
+        .show-list-2, .show-list-3 { width: 160px; height: 160px; float: left; }
+        .show-list-2 { background-color: #fff; }
+        .show-list-3 { background-color: #AE312F; }
+        .show-list > img { position: absolute; z-index: 1; }
+
+        .shape-svg { position: absolute; left: 0; bottom: 0; }
+
+        .white { padding: 10px; color: #fff; position: absolute; z-index: 2; }
+        .white:hover { text-decoration: none; }
+    </style>
+    <script src="../../../snap.svg/snap.svg.js"></script>
+</head>
+
+<body>
+<a href="http://www.zhangxinxu.com/wordpress/?p=4225" class="white">&laquo; 点击查看原文</a>
+<div class="show-box">
+    <div class="show-list show-list-1 showList" data-svgcolor="#ffaa8e">
+        <img src="svg-hover_01_320x160.png">
+    </div>
+    <div class="show-list show-list-2 showList" data-svgcolor="#ffdfba">
+        <img src="svg-hover_02_160x160.png">
+    </div>
+    <div class="show-list show-list-3 showList" data-svgcolor="#211a1b">
+        <img src="svg-hover_03_160x160.png">
+    </div>
+</div>
+
+
+<script>
+  // 列表元素
+  var eleList = document.querySelectorAll(".showList");
+
+  // 数组空格连接
+  Array.prototype.space = function() {
+    return this.join(" ");
+  };
+
+  // 为每个列表创建一个SVG
+  [].slice.call(eleList).forEach(function(list) {
+    // SVG的尺寸
+    // 1.5倍容器尺寸
+    var svg_width = list.clientWidth * 1.5, svg_height = list.clientHeight * 1.5;
+    // SVG的颜色
+    var svg_color = list.getAttribute("data-svgcolor");
+    // 创建SVG对象
+    var svg = Snap(svg_width, svg_height).attr({
+      fill: svg_color,
+      "class": "shape-svg"
+    });
+    // 创建路径元素
+    var path = svg.paper.path("");
+    // 强势插入
+    list.appendChild(svg.node);
+
+
+    // 变化图形示意如下
+      /*
+       o-----oo(2,4)
+       |
+       |
+       o
+
+       ↓
+
+       o-----o
+       |	   |
+       |     |
+       o-----o
+
+       */
+
+    // 确定点坐标
+    // 共四个点
+    // 可以使用polygon, 这里使用万能的path做演示
+    // 变化的只有点4, 点1-3都是固定的，于是
+    var p1 = [0, 0], p2 = [svg_width, 0], p3 = [svg_width, svg_height];
+    // p4则是从点[svg_width, 0]到[0, svg_height]不断变化的过程
+    var p4_start = [svg_width, 0], p4_end = [0, svg_height];
+    // 于是，我们可以得到p4的运动坐标
+    // 根据 y = ax + b;
+    // 得，a = ?; b = ?;
+    var a = -1 * svg_height / svg_width, b = svg_height;
+
+    // 事件
+    list.addEventListener("mouseover", function() {
+      // 鼠标移入，图形展开
+      Snap.animate(svg_width, 0, function(x) {
+        var p4 = [x, a * x + b];
+        // 路径变化走起
+        // M p1 L p2 L p3 L p4 L p1Z
+        path.attr({
+          d: "M" + [p1.space(), p2.space(), p3.space(), p4.space(), p1.space()].join("L") + "Z"
+        });
+      }, 200, mina.easein);
+    });
+    list.addEventListener("mouseout", function() {
+      // 鼠标移出，图形收起
+      Snap.animate(0, svg_width, function(x) {
+        var p4 = [x, a * x + b];
+        // 路径变化走起
+        // M p1 L p2 L p3 L p4 L p1Z
+        path.attr({
+          d: "M" + [p1.space(), p2.space(), p3.space(), p4.space(), p1.space()].join("L") + "Z"
+        });
+      }, 250, mina.easeout);
+    });
+  });
+
+</script>
+</body>
+</html>

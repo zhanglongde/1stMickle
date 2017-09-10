@@ -1,59 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
     <style>
-        * {padding:0;margin:0;}
-        li {list-style-type:none}
-        .demoTab{
-            width:400px;
-            margin:20px auto;
-            font:14px/1.5 Microsoft YaHei,verdana,Helvetica,Arial,sans-serif;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
         }
-        .demoTab .demoTabNav{
-            height:28px;
-            overflow:hidden;
-            *zoom:1;
-            margin-bottom:-1px;
-            border-left:1px solid red;
-        }
-        .demoTab .demoTabList{
-            float:left;
-            padding:0 22px;
-            line-height:28px;
-            border-right:1px solid red;
-            border-top:1px solid red;
-            font-weight:bold;
-            color:#005590;
+        body{
             text-align:center;
-            cursor:pointer;
         }
-        .demoTab .demoTabList.current{
-            position:relative;
-            background:#EAF0FD;
+        ul,ul>li{
+            list-style: none;
         }
-        .demoTab .demoTabBd{
-            border:1px solid red;
-            padding:15px;
+        .clearFix:after{
+            content:'';
+            display:table;
+            clear:both;
         }
-        .demoTab .demoTabContent{display:none;}
-        .demoTab .demoTabContent.current{display:block;}
+        .tab-box{
+            position:absolute;top:0;left:0;right:0;bottom:0;
+            margin:auto;
+            width:402px;
+            height:200px;
+        }
+        .tab-nav{
+            border:1px solid #f00;
+            border-bottom:none;
+            margin-bottom:-1px;
+        }
+        .tab-nav>li{
+           float:left;
+           width:100px;
+           height:40px;
+           line-height:40px;
+
+           cursor:pointer;
+        }
+        .tab-nav>li.active{
+            background-color: #9c3;
+        }
+        .tab-nav>li+li{
+            border-left:1px solid #f00;
+        }
+        .tab-bd{
+            height:calc(100% - 40px);
+            border:1px solid #f00;
+        }
+        .tab-bd>li{
+          display:none;
+        }
+        .tab-bd>li.active{
+            display:block;
+        }
     </style>
 </head>
 <body>
-<div id="demoTab" class="demoTab">
-    <ul class="demoTabNav clearfix">
-        <li class="demoTabList current">前端</li>
-        <li class="demoTabList">实战</li>
-        <li class="demoTabList">交互</li>
-        <li class="demoTabList">优化</li>
+<div class="tab-box">
+    <ul class="tab-nav clearFix">
+        <li class="active">nav1</li>
+        <li>nav2</li>
+        <li>nav3</li>
+        <li>nav4</li>
     </ul>
-    <ul class="demoTabBd">
-        <li class="demoTabContent current">这是第一个选项卡的内容。</li>
-        <li class="demoTabContent">这是第二个选项卡的内容。</li>
-        <li class="demoTabContent">这是第三个选项卡的内容。</li>
-        <li class="demoTabContent">这是第四个选项卡的内容。</li>
+    <ul class="tab-bd">
+        <li class="active">bd1</li>
+        <li>bd2</li>
+        <li>bd3</li>
+        <li>bd4</li>
     </ul>
 </div>
 </body>

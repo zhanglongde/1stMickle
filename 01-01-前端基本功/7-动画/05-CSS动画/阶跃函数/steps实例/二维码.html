@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            display:-webkit-box;
+            -webkit-box-pack:center;
+        }
+        .s-box{
+            text-align:center;
+        }
+        .content{
+            width:149px;
+            height:149px;
+            margin:10px;
+            background-image:url(./r.jpg);
+            background-repeat:no-repeat;
+            background-position:0 0;
+        }
+        .s1:hover{
+            background-position:0 -1800px;
+        }
+        .s2:hover{
+            -webkit-animation:movedown 500ms forwards;
+        }
+        .s3:hover{
+            -webkit-animation:movedown 500ms steps(12) forwards;
+        }
+        @-webkit-keyframes movedown{
+            0%{
+                background-position:0 0;
+            }
+            100%{
+                background-position:0 -1800px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+
+    <div class="s-box">
+        <div class="content s1">
+        </div>
+        <p>s1</p>
+    </div>
+
+    <div class="s-box">
+        <div class="content s2">
+        </div>
+        <p>s2</p>
+    </div>
+
+    <div class="s-box">
+        <div class="content s3">
+        </div>
+        <p>s3</p>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="snap.svg.js"></script>
+</head>
+<body>
+<svg id="svg" width="250" height="250"></svg>
+
+<input id="button" type="button" value="点击改变圈圈的顺序">
+
+
+<script>
+  var svg = Snap("#svg");
+  var p = svg.paper.path("M10-5-10,15M15,0,0,15M0-5-20,15").attr({
+      fill: "none",
+      stroke: "#beceeb",
+      strokeWidth: 5
+    }).pattern(0, 0, 10, 10),
+    c = svg.paper.circle(120, 120, 100);
+  c.attr({
+    // 斜纹图案填充
+    fill: p
+  });
+</script>
+</body>
+</html>
