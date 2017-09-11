@@ -2,9 +2,98 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        input{
+            outline:none;
+            border:none;
+        }
+        .box{
+            width:500px;
+            height:300px;
+            position:absolute;top:0;left:0;bottom:0;right:0;
+            margin:auto;
+        }
+        .input-container{
+            position:relative;
+            display:block;
+            height:40px;
+            margin-top:80px;
+        }
+        .input-container>span,.ipt-container>input{
+            display:inline-block;
+        }
+        .input-container input::-moz-placeholder{
+            opacity:0;
+        }
+        .input-container input::-webkit-input-placeholder{
+            opacity:0;
+        }
+        .input-container input:-ms-input-placeholder{
+            opacity:0;
+        }
+        .input-container>input{
+            padding:12px 1px;
+            font-size:16px;
+            border-bottom:1px solid #eeeeee;
+            caret-color: #2D8EFF;
+        }
+        .input-container>span{
+            position:absolute;
+            bottom:8px;left:0;
+
+            color:#757575;
+            font-size:16px;
+
+            letter-spacing: 0.53px;
+            transition:all 0.3s;
+        }
+        .input-container:hover input,
+        .input-container input:focus{
+            border-bottom:1px solid #2D8EFF;
+        }
+        .input-container input:focus+span,
+        .input-container input:not(:placeholder-shown) + span {
+            color:#858585;
+            font-size:12px;
+            letter-spacing: 0.6px;
+            transform: translate(0,-26px) scale(0.9);
+        }
+
+        .input-container.error>input{
+            border-bottom:1px solid #FF4949;
+        }
+        .input-container.error>span{
+            color:#FF4949;
+        }
+        .input-container.error:hover input,
+        .input-container.error input:focus{
+            border-bottom:1px solid #FF4949;
+        }
+        .input-container.error input:focus+span,
+        .input-container.error input:not(:placeholder-shown) + span{
+            color:#FF4949;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="box">
+    <label class="input-container">
+        <input type="input" placeholder="名字">
+        <span>名字</span>
+    </label>
+    <label class="input-container">
+        <input type="input" placeholder="姓氏">
+        <span>姓氏</span>
+    </label>
+    <label class="input-container error">
+        <input type="input" placeholder="姓氏">
+        <span>企业电子邮件</span>
+    </label>
+</div>
 </body>
 </html>
