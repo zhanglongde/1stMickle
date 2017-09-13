@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            position:relative;
+            width:485px;
+            /*overflow:hidden;*/
+
+            font-size:80px;
+            will-change: transform;
+
+            backface-visibility: hidden;
+            perspective: 1300px;
+        }
+        .box:before{
+            content:'';
+            position:absolute;
+            width:100%;
+            height:100%;
+
+            background-color: #58a;
+            /*background: linear-gradient(to right,rgba(0,0,0,0) 0,#000 5%,#000 100%);*/
+
+            will-change: transform;
+            /*transform-origin: right;*/
+            /*backface-visibility: hidden;*/
+            /*perspective: 1300px;*/
+            transform-style: preserve-3d;
+            transform: rotateY(0);
+            animation:tear 0.5s linear 0.5s forwards;
+        }
+        @keyframes slide-in-to-right {
+           90%{
+               transform:translateX(0%);
+               opacity:1;
+           }
+            100%{
+               transform:translateX(7%);;
+               opacity:1;
+           }
+        }
+        .animate-slide-in-to-right{
+            opacity:0.8;
+            transform:translateX(-100%);
+            animation:slide-in-to-right 0.5s ease-in-out forwards;
+        }
+        @keyframes tear {
+          99%{
+              /*opacity:0.98;*/
+              /*transform:rotateY(90deg);*/
+              transform:skew(20deg) rotateY(90deg);;
+          }
+            100%{
+                transform-style: flat;
+                transform:skew(20deg);
+            }
+
+        }
+    </style>
+</head>
+<body>
+<div class="box animate-slide-in-to-right">
+    <div class="item">
+        Reinventing the Postcard
+    </div>
+</div>
+</body>
+</html>
