@@ -2,9 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{
+            text-align:center;
+        }
+        ul,ul>li{
+            list-style:none;
+        }
+        .box{
+            position:absolute;top:0;left:0;right:0;bottom:0;
+            margin:auto;
+            width:800px;
+            height:400px;
+        }
+        .box>li{
+            float:left;
+            width:200px;
+            height:200px;
+
+            line-height:200px;
+
+            border:4px solid #ccc;
+        }
+        .box>li:not(:nth-of-type(4n+1)){
+            border-left:none;
+        }
+        .box>li:nth-of-type(n+5){
+            border-top:none;
+        }
+    </style>
 </head>
 <body>
-$END$
+<ul class="box">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+</ul>
 </body>
 </html>
