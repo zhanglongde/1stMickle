@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        加载完成，去掉占位图
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        @keyframes placeHolderShimmer{
+            0%{
+                background-position: -640px 0
+            }
+            100%{
+                background-position: 640px 0
+            }
+        }
+        .loading-box {
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: infinite;
+            animation-name: placeHolderShimmer;
+            animation-timing-function: linear;
+            background: #f6f7f8;
+            background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+            background-size: 800px 104px;
+            position: relative;
+            height:100vh;
+        }
+
+        .box{
+            position:relative;z-index: 2;
+        }
+    </style>
+</head>
+<body>
+<div class="loading-box">
+    <img style="width:100%;height:468px;" src="https://www1.nextcont.com/assets/images/banner/banner-product-ab08f1c00e.png" alt="load">
+</div>
+
+<div id="show" class="box">loading...</div>
+
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    var ndImg = document.querySelector('img')
+    var p1 = document.querySelector('#show')
+    $('img').on('load',function () {
+      p1.innerHTML = '加载完成';
+      $('.loading-box').removeClass('loading-box')
+    })
+</script>
+</body>
+</html>

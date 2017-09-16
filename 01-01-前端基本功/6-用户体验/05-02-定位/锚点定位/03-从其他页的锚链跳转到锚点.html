@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        从 03-test.html 跳转到当前页
+
+        利用扩大可点击区域实现锚点偏离，直至出现Tab导航
+
+
+        scrollIntoView是无法实现的？？？？
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        ul,ul>li{
+            list-style:none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .tab-nav{
+            width:400px;
+            height:40px;
+        }
+        .tab-nav>li{
+            float:left;
+            width:100px;
+            height:40px;
+            border:1px solid #ccc;
+
+            text-align:center;
+        }
+
+        .tab-bd-group>li{
+            position:relative;
+            padding-top:50px;
+            height:1500px;
+            width:100%;
+            background-color: #58a;
+
+            display:none;
+        }
+        .tab-bd-group>li:before{
+           position:absolute;top:-40px;bottom:-40px;left:-40px;right:-40px;
+        }
+
+        .box{
+            height:1500px;
+            width:100%;
+            background-color: #fce;
+        }
+        footer{
+            height:300px;
+            width:100%;
+            background-color: #9c3;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<ul class="tab-nav" id="test-nav">
+    <li>
+        <a href="#tab1">tab1</a>
+    </li>
+    <li>
+        <a href="#tab2">tab2</a>
+    </li>
+    <li>
+        <a href="#tab3">tab3</a>
+    </li>
+    <li>
+        <a href="#tab4">tab4</a>
+    </li>
+</ul>
+<ul class="tab-bd-group">
+    <li id="tab1">1</li>
+    <li id="tab2">2</li>
+    <li id="tab3">3</li>
+    <li id="tab4">4</li>
+</ul>
+<footer></footer>
+<script src="../../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    function PageChange () {
+      console.log('----------------------------------')
+      var tab = location.hash.slice(1);
+      $('#'+tab).show();
+          document.querySelector('#test-nav').scrollIntoView();
+//      document.querySelector('#tab2').scrollIntoView();
+    }
+  $(window).on('hashchange', PageChange)
+
+  $(window).on('resize', PageChange)
+    PageChange();
+</script>
+</body>
+</html>

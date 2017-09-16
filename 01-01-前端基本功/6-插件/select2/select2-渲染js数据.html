@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/select2.css">
+</head>
+<body>
+<select name="test" id="js-example-data-array"></select>
+<select name="test" id="js-example-data-array-selected"></select>
+
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script src="js/select2.js"></script>
+<script>
+  var data = [
+    {
+      id: 0,
+      text: 'enhancement'
+    },
+    {
+      id: 1,
+      text: 'bug'
+    },
+    {
+      id: 2,
+      text: 'duplicate'
+    },
+    {
+      id: 3,
+      text: 'invalid'
+    },
+    {
+      id: 4,
+      text: 'wontfix'
+    }
+  ];
+
+  $("#js-example-data-array").select2({
+    data: data
+  })
+
+  $("#js-example-data-array-selected").select2({
+    data: data
+  })
+</script>
+</body>
+</html>

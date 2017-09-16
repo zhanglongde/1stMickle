@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .toastr{
+            position:fixed;
+            top:0;left:0;
+            width:100%;
+            height:40px;
+
+            line-height:40px;
+            text-align:center;
+
+            color:#fff;
+            background-color: #58a;
+        }
+
+        .animate-init{
+            opacity:0;
+            transform:translateY(-100%);
+        }
+        .animate{
+            animation: slide-in 2s ease alternate;
+        }
+        .animate:hover{
+            animation-play-state: paused;
+        }
+
+        @keyframes slide-in {
+            50%,80%{
+                transform:none;
+                opacity:1;
+            }
+            100%{
+                opacity:0;
+                transform:translateY(-100%);
+            }
+        }
+
+        .box{
+            width:500px;
+            height:300px;
+            position:absolute;top:0;left:0;right:0;bottom:0;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+<div class="toastr animate-init">toastr</div>
+<div class="box">
+    <button id="test">确定</button>
+</div>
+
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    window.onload = function () {
+      var ndTest = document.querySelector('#test')
+      var ndTarget = document.querySelector('.toastr')
+
+      ndTest.addEventListener('click', function () {
+        ndTarget.classList.add('animate')
+      })
+
+      ndTarget.addEventListener("webkitAnimationEnd", function(){ //动画结束时事件
+        ndTarget.classList.remove('animate')
+      }, false);
+
+    }
+</script>
+</body>
+</html>
