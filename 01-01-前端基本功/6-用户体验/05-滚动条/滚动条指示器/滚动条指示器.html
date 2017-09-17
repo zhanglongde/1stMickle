@@ -2,9 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 5000px;
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            height: 8px;
+            top: 0;
+            left: 0;
+            background: #369;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="scroll-indicator j-scroll-indicator"></div>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script>
+  (function() {
+    var dh = $(document).height();
+    var vh = $(window).height();
+    var sHeight = dh - vh;
+    $(window).scroll(function () {
+      var perc = $(window).scrollTop() / (dh - vh);
+      $('.j-scroll-indicator').css({width: perc * 100 + '%'});
+    });
+  }());
+</script>
 </body>
 </html>

@@ -2,9 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        #box {
+            background-color:#fff;
+            height:225px;
+            width:400px;
+        }
+
+        .blur {
+            -webkit-filter: blur(3px);
+            width:100%;
+            height:100%;
+        }
+
+        .noblur{
+            width:100%;
+            height:100%;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div id = "box">
+    <img class="blur" id = "thisimg" src ="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Aqueduct_of_Segovia_08.jpg/380px-Aqueduct_of_Segovia_08.jpg">
+</div>
+
+<script>
+  setTimeout(function(){
+    document.getElementById('thisimg').className = "noblur";
+  },4000)
+</script>
 </body>
 </html>

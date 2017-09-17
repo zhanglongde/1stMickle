@@ -2,7 +2,11 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>
+        利用层叠顺序实现，锚点容器在最上层
+        缺点：宽高必须一致，才有办法实现遮掩下层的效果
+             可用left使得下层元素偏离出页面可视区域来实现：宽高自适应
+    </title>
     <style>
         *{
             margin:0;
@@ -26,12 +30,29 @@
             border:1px solid #ccc;
         }
         /*不设定z-index或者z-index相同,根据后来居上原则，最后一个在最上层*/
+        .tab-content{
+            position:relative;
+        }
         .tab-pane{
             position:absolute;
+            top:0;left:0;
+            z-index:1;
             height:300px;
             width:600px;
+
+            color:#fff;
             background-color: #58a;
         }
+
+        /*for test*/
+        /*.tab-pane:nth-of-type(2){*/
+            /*height:700px;*/
+            /*background-color: #fc3;*/
+        /*}*/
+        /*.tab-pane:nth-of-type(3){*/
+            /*height:800px;*/
+            /*background-color: #85a;*/
+        /*}*/
 
         .tab-pane:target {
             z-index:3;
