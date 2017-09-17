@@ -6,6 +6,7 @@
         利用层叠顺序实现，锚点容器在最上层
         缺点：宽高必须一致，才有办法实现遮掩下层的效果
              可用left使得下层元素偏离出页面可视区域来实现：宽高自适应
+        优点：可用于实现切换动画
     </title>
     <style>
         *{
@@ -42,6 +43,13 @@
 
             color:#fff;
             background-color: #58a;
+
+            /*transform: translateY(-100%);*/
+            /*transition: transform .35s .05s linear;*/
+        }
+        @keyframes slideupin {
+            0% {transform: translateY(100%); }
+            100% { transform: translateY(0%);}
         }
 
         /*for test*/
@@ -56,6 +64,8 @@
 
         .tab-pane:target {
             z-index:3;
+            transform: translateY(0%);
+            animation: slideupin .15s .05s linear forwards;
         }
     </style>
 </head>
