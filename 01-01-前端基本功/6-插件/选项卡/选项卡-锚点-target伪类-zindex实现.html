@@ -7,9 +7,13 @@
         *{
             margin:0;
             padding:0;
+            box-sizing: border-box;
         }
         ul,ul>li{
             list-style: none;
+        }
+        a{
+            text-decoration: none;
         }
         .clearFix:after{
             content:'';
@@ -21,37 +25,32 @@
             width:200px;
             border:1px solid #ccc;
         }
+        /*不设定z-index或者z-index相同,根据后来居上原则，最后一个在最上层*/
         .tab-pane{
+            position:absolute;
             height:300px;
-            width:500px;
+            width:600px;
             background-color: #58a;
         }
-        .tab-pane:target {
-            display: block;
-        }
 
-        .tab-pane:target ~ .tab-pane {
-            display: none;
+        .tab-pane:target {
+            z-index:3;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1 class="page-header">选项卡内容</h1>
-    <!--tabs-left:选项卡在左边显示  -->
     <div class="tabbable">
-        <!--nav-pills，nav-tabs，nav-stacked :改变选项卡的样式-->
         <ul class="nav nav-tabs clearFix">
-            <li class="active"><a href="#tab1" data-toggle="tab">Java</a>
+            <li><a href="#tab1" data-toggle="tab">Java</a>
             </li>
             <li><a href="#tab2" data-toggle="tab">C++</a>
             </li>
             <li><a href="#tab3" data-toggle="tab">.Net</a>
             </li>
         </ul>
-        <!-- 选项卡相对应的内容 -->
         <div class="tab-content">
-            <div class="tab-pane active" id="tab1">
+            <div class="tab-pane" id="tab1">
                 <p>Java</p>
             </div>
             <div class="tab-pane" id="tab2">
