@@ -19,3 +19,6 @@
 /06-类库/fullcalendar-3.4.0/locale
 /node_modules
 /14-node/third-party/node-xlsx/node_modules
+/14-node/third-party/js-xlsx/node_modules/
+/14-node/third-party/node-xlsx/node_modules/
+/14-node/third-party/pdfKit/node_modules/

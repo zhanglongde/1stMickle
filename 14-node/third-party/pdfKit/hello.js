@@ -1,4 +1,4 @@
-PDFDocument = require 'pdfkit'
+PDFDocument = require('pdfkit')
 
 
 // create a document and pipe to a blob
