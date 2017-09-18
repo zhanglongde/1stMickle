@@ -22,9 +22,17 @@
         a{
             text-decoration: none;
         }
+        .clearFix:after{
+            content:'';
+            display:table;
+            clear:both;
+        }
         .tab-nav{
             width:400px;
             height:40px;
+            margin-bottom: -40px;
+            position:relative;
+            z-index:10;
         }
         .tab-nav>li{
             float:left;
@@ -37,15 +45,23 @@
 
         .tab-bd-group>li{
             position:relative;
-            padding-top:50px;
+            /*padding-top:50px;*/
             height:1500px;
             width:100%;
+            padding:40px;
+            /*margin-top:50px;*/
+
             background-color: #58a;
+            border:1px solid #ccc;
 
             display:none;
         }
         .tab-bd-group>li:before{
-           position:absolute;top:-40px;bottom:-40px;left:-40px;right:-40px;
+           content:'';
+           display:inline-block;
+           position:absolute;
+            top:-40px;bottom:-40px;
+            /*left:-40px;right:-40px;*/
         }
 
         .box{
@@ -62,7 +78,7 @@
 </head>
 <body>
 <div class="box"></div>
-<ul class="tab-nav" id="test-nav">
+<ul class="tab-nav clearFix" id="test-nav">
     <li>
         <a href="#tab1">tab1</a>
     </li>
@@ -89,7 +105,7 @@
       console.log('----------------------------------')
       var tab = location.hash.slice(1);
       $('#'+tab).show();
-          document.querySelector('#test-nav').scrollIntoView();
+//          document.querySelector('#test-nav').scrollIntoView();
 //      document.querySelector('#tab2').scrollIntoView();
     }
   $(window).on('hashchange', PageChange)
