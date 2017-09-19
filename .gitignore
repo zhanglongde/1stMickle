@@ -22,3 +22,6 @@
 /14-node/third-party/js-xlsx/node_modules/
 /14-node/third-party/node-xlsx/node_modules/
 /14-node/third-party/pdfKit/node_modules/
+/14-node/third-party/js-xlsx/xlsx
+/14-node/third-party/js-xlsx/etc/
+/14-node/third-party/js-xlsx/xlsx.cmd
