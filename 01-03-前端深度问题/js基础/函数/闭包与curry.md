@@ -10,3 +10,5 @@ bind
 模拟权限
 高阶函数
 curry
+缓存代理 记忆函数
+        https://juejin.im/post/59bce30e6fb9a00a424755e9?utm_source=gold_browser_extension
