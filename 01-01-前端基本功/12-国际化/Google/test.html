@@ -2,9 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        https://juejin.im/post/59c070b76fb9a00a4a4cb7f2?utm_source=gold_browser_extension
+    </title>
 </head>
-<body>
-$END$
+<body id="">
+<div id="text">
+    你好，谢谢
+</div>
+<div id="translation">
+  <p>你好</p>
+</div>
+
+<script type="text/javascript" src="http://www.google.com/jsapi"></script >
+<script type="text/javascript">
+    google.load("language", "1");
+    function initialize()
+    {
+        var text = document.getElementById("text").innerHTML;
+        google.language.detect(text,
+            function(result)
+            {
+                if(!result.error && result.language)
+                {
+                    google.language.translate(text, result.language, "en",
+                        function(result)
+                        {
+                            var translated = document.getElementById("translation");
+                            if(result.translation)
+                            {
+                                translated.innerHTML = result.translation;
+                            }
+                        });
+                }
+            });
+    }
+    google.setOnLoadCallback(initialize);
+</script>
 </body>
 </html>
