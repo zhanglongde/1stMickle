@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        注意：输入空格无效的情形
+    </title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+        }
+        input {
+            padding: 15px;
+            align-self: center;
+            min-width: 80px;
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+<input type="text" class="width-dynamic proba dva" placeholder="Type text here to test."/>
+
+<script src="../../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+  $.fn.textWidth = function(text, font) {
+
+    if (!$.fn.textWidth.fakeEl) $.fn.textWidth.fakeEl = $('<span>').hide().appendTo(document.body);
+
+    $.fn.textWidth.fakeEl.text(text || this.val() || this.text() || this.attr('placeholder')).css('font', font || this.css('font'));
+
+    return $.fn.textWidth.fakeEl.width();
+  };
+
+  $('.width-dynamic').on('input', function() {
+    var inputWidth = $(this).textWidth();
+    $(this).css({
+      width: inputWidth
+    })
+  }).trigger('input');
+
+
+//  function inputWidth(elem, minW, maxW) {
+//    elem = $(this);
+//    console.log(elem)
+//  }
+//
+//  var targetElem = $('.width-dynamic');
+//
+//  inputWidth(targetElem);
+</script>
+</body>
+</html>

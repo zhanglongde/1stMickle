@@ -45,7 +45,8 @@
 
             cursor:pointer;
         }
-        .menu-list .menu-list-item:hover{
+        .menu-list .menu-list-item:hover,
+        .menu-list .menu-list-item.active{
             background-color: #eeeeee;
         }
         .menu-list .menu-list-item+.menu-list-item{
@@ -70,10 +71,10 @@
 <div id="app" class="container center1 search-container">
     <div class="hd">搜索</div>
     <div class="search-bar">
-      <input type="text" v-model="searchingContent">
+      <input ref="iptSearch" type="text" v-model="searchingContent" @keydown.stop="keydownLabel($event)" @keyup.stop="keyupLabel($event)">
     </div>
     <ul class="menu-list">
-        <li class="menu-list-item" v-for="value in searchedMenuListData" v-html="value"></li>
+        <li :class="['menu-list-item',{'active':currentIndex === index}]" v-for="(value,index) in searchedMenuListData" v-html="value"></li>
         <li class="menu-list-item" v-if="isSearching">"<span :style="emphasisStyle">{{searchingContent}}</span>"<span>(新建)</span></li>
     </ul>
     <div class="footer">
@@ -83,13 +84,15 @@
 </div>
 
 <script src="../../../lib/vue.js"></script>
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
 <script>
     new Vue({
         el:'#app',
         data: {
             emphasisStyle: 'font-weight:bold;',
             menuListData: ['zhanglongde','zhanglongbao','Mary','Jack','Linda','test','张龙德','测试','最远','最近','男人','女人'],
-            searchingContent: ''
+            searchingContent: '',
+            currentIndex: 0
         },
         computed: {
             searchedMenuListData: function () {
@@ -102,17 +105,56 @@
               return Array.isArray(this.searchedMenuListData) && (this.searchedMenuListData.length > 0)
             }
         },
-        methods:{
-            testKeyWord: function(text, keyword) {
-                return new RegExp(keyword, 'ig').test(text)
-            },
-            markKeyWord: function(text, keyword) {
-                if (!keyword) {
-                  return text
-                }
-                let pattern = new RegExp('(' + keyword + ')', 'ig')
-                return text.replace(pattern,`<span style="${this.emphasisStyle}">$1</span>`)
+        methods: {
+          testKeyWord: function (text, keyword) {
+            return new RegExp(keyword, 'ig').test(text)
+          },
+          markKeyWord: function (text, keyword) {
+            if (!keyword) {
+              return text
             }
+            let pattern = new RegExp('(' + keyword + ')', 'ig')
+            return text.replace(pattern, `<span style="${this.emphasisStyle}">$1</span>`)
+          },
+          keydownLabel: function (e) {
+            let keyCode = e.keyCode
+            if (keyCode === 38) {
+              if (this.hasSearchedResult) {
+                e.preventDefault() // 防止向上键，回退到输入内容的最前面
+              }
+            }
+          },
+          keyupLabel: function (e) {
+            let keyCode = e.keyCode
+            let LEN = this.searchedMenuListData.length
+            switch (keyCode) {
+              case 38: // 上
+                if (this.hasSearchedResult) {
+                  e.preventDefault() // 防止向上键，回退到输入内容的最前面
+                }
+                this.currentIndex = (this.currentIndex - 1 + LEN) % LEN
+                this.scrollBar(this.currentIndex)
+                break
+              case 40: // 下
+                this.currentIndex = (this.currentIndex + 1 + LEN) % LEN
+                  this.scrollBar(this.currentIndex)
+                break
+              case 27: // ESC
+                break
+              case 9: // Tab
+              case 13: // ENTER
+                break
+              default:
+
+            }
+          },
+          scrollBar: function (currentIndex) {
+            var itemHeight = $('.menu-list-item').outerHeight()
+            $('.menu-list').scrollTop(itemHeight*currentIndex)
+          }
+        },
+        mounted () {
+          this.$refs.iptSearch.focus()
         }
     })
 </script>

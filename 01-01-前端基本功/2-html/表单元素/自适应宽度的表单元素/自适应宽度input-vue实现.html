@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        仍然有一些瑕疵
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .container{
+            width:500px;
+            height:300px;
+            position:absolute;top:0;left:0;right:0;bottom:0;
+            margin:auto;
+        }
+        input{
+            border:none;
+            outline: none;
+        }
+        .ipt-wrapper{
+            display:inline-block;
+            /*width:100px;*/
+        }
+        .ipt-wrapper>input{
+            width:100%;
+            padding:6px 8px;
+
+            border:1px solid #ccc;
+            /*border-radius:2px;*/
+        }
+        /*一定要重设，inoput与span默认字体、字重等不同*/
+        .ipt-wrapper>input,
+        .ipt-there-by{
+            /*font-size:16px;*/
+            font: 400 16px Arial;
+            letter-spacing: 0;
+            line-height:1;
+        }
+        .ipt-there-by{
+            padding:0 9px;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="app">
+    <div class="ipt-container">
+        <div class="ipt-wrapper" :style="[{'width':calWidth +'px'}]">
+            <input type="text" @input="inputSearch" v-model="iptContent">
+        </div>
+        <span class="ipt-there-by" v-show="0" ref="eleCal">{{iptContent}}</span>
+    </div>
+</div>
+
+<script src="../../../../lib/vue.js"></script>
+<script src="../../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+new Vue({
+  el:'#app',
+  data: {
+    iptContent:'',
+    minWidth: 200,
+    calWidth: this.minWidth
+  },
+  methods: {
+    inputSearch: function() {
+      let valueWidth = $(this.$refs.eleCal).outerWidth()
+      this.calWidth = valueWidth > this.minWidth ? valueWidth + 10: this.minWidth
+    }
+  }
+})
+</script>
+</body>
+</html>
