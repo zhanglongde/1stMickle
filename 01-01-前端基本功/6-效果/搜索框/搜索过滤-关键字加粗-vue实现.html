@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索过滤，突出关键字</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        ul,ul>li{
+            list-style:none;
+        }
+        input{
+            border:none;
+            outline:none;
+        }
+        .center1{
+            position:absolute;top:0;bottom:0;right:0;left:0;
+            margin:auto;
+        }
+        .container{
+            width:500px;
+            height:500px;
+            border:1px solid #ccc;
+            padding:10px;
+            border-radius:4px;
+        }
+        .search-container>.hd{
+            padding:6px 8px;
+            font-weight: bold;
+        }
+        .menu-list{
+            width:100%;
+            max-height:300px;
+            overflow-y:auto;
+        }
+        .menu-list .menu-list-item{
+            width:100%;
+            height:40px;
+            padding:6px 8px;
+            line-height:28px;
+            white-space:nowrap;
+
+            cursor:pointer;
+        }
+        .menu-list .menu-list-item:hover{
+            background-color: #eeeeee;
+        }
+        .menu-list .menu-list-item+.menu-list-item{
+            border-top:1px solid #ccc;
+        }
+        .search-bar input{
+            width:100%;
+            height:40px;
+            padding:6px 8px;
+            border:1px solid #ccc;
+            border-radius:4px;
+        }
+        .footer{
+            border-top:1px solid #ccc;
+        }
+        .footer>.item{
+            padding:6px 8px;
+        }
+    </style>
+</head>
+<body >
+<div id="app" class="container center1 search-container">
+    <div class="hd">搜索</div>
+    <div class="search-bar">
+      <input type="text" v-model="searchingContent">
+    </div>
+    <ul class="menu-list">
+        <li class="menu-list-item" v-for="value in searchedMenuListData" v-html="value"></li>
+        <li class="menu-list-item" v-if="isSearching">"<span :style="emphasisStyle">{{searchingContent}}</span>"<span>(新建)</span></li>
+    </ul>
+    <div class="footer">
+        <div class="item new-label" v-if="!isSearching">新建</div>
+        <div class="item handle-label">管理标签</div>
+    </div>
+</div>
+
+<script src="../../../lib/vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data: {
+            emphasisStyle: 'font-weight:bold;',
+            menuListData: ['zhanglongde','zhanglongbao','Mary','Jack','Linda','test','张龙德','测试','最远','最近','男人','女人'],
+            searchingContent: ''
+        },
+        computed: {
+            searchedMenuListData: function () {
+              return this.menuListData.filter(x => this.testKeyWord(x, this.searchingContent)).map(x => this.markKeyWord(x, this.searchingContent))
+            },
+            isSearching: function () {
+              return this.searchingContent
+            },
+            hasSearchedResult: function () {
+              return Array.isArray(this.searchedMenuListData) && (this.searchedMenuListData.length > 0)
+            }
+        },
+        methods:{
+            testKeyWord: function(text, keyword) {
+                return new RegExp(keyword, 'ig').test(text)
+            },
+            markKeyWord: function(text, keyword) {
+                if (!keyword) {
+                  return text
+                }
+                let pattern = new RegExp('(' + keyword + ')', 'ig')
+                return text.replace(pattern,`<span style="${this.emphasisStyle}">$1</span>`)
+            }
+        }
+    })
+</script>
+</body>
+</html>
