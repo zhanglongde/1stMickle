@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        width:auto；会将元素撑开至整个父元素width，但是会减去子节点自己的margin，padding或者border的大小。
+        width:100%；会强制将元素变成和父元素一样的宽，并且添加额外的空间到这个元素的width上。
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            /*可以解决100%，并且设置padding，溢出的问题*/
+            /*box-sizing:border-box;*/
+        }
+        .container{
+            position:absolute;
+            top:0;bottom:0;left:0;right:0;
+            width:300px;
+            height:300px;
+
+            border:1px solid #ccc;
+        }
+        .box1,.box2,.box3,.box4{
+            height:50px;
+        }
+        .box1{
+            width:100%;
+            padding:10px 10px;
+            background-color: #58a;
+        }
+        .box2{
+            width:auto;
+            margin:10px 10px;
+            background: #fc3;
+        }
+        .box3{
+            width:100%;
+            margin:10px 10px;
+            background-color: #85a;
+        }
+        .box4{
+            width:100%;
+            padding:10px 10px;
+            background-color: #9c3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box1">100%</div>
+    <div class="box2">auto</div>
+    <div class="box3">100%</div>
+    <div class="box4">100%</div>
+</div>
+</body>
+</html>
