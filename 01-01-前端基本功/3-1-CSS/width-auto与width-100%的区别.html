@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>
         width:auto；会将元素撑开至整个父元素width，但是会减去子节点自己的margin，padding或者border的大小。
+                    无论多的宽度是padding，margin或者border，width:auto;都不会将子节点撑破父元素。
         width:100%；会强制将元素变成和父元素一样的宽，并且添加额外的空间到这个元素的width上。
+                    加上margin会撑爆父容器（比父容器还宽）
     </title>
     <style>
         *{

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        光标必须通过js实现
+        placeholder?
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .ipt{
+            display:inline-block;
+            min-width:100px;
+            height:30px;
+            border:1px solid #ccc;
+            border-radius:2px;
+
+            outline:none;
+        }
+        .container{
+            width:500px;
+            height:300px;
+            position: absolute;top:0;left:0;right:0;bottom:0;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <span class="ipt" id="test1" contenteditable="true" placeholder="test"></span>
+    <span class="ipt" contenteditable="true" tabindex="1"></span>
+</div>
+
+<script>
+    window.onload = function () {
+      var p = document.getElementById('test1')
+      p.focus();
+    }
+</script>
+</body>
+</html>

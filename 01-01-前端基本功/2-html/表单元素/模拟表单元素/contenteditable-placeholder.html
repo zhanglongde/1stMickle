@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [contenteditable=true]:empty:before{
+            content: attr(placeholder);
+            display: block; /* For Firefox */
+        }
+
+        /* */
+
+        div[contenteditable=true] {
+            border: 1px dashed #AAA;
+            width: 290px;
+            padding: 5px;
+        }
+
+        pre {
+            background:#EEE;
+            padding:5px;
+            width: 290px;
+        }
+    </style>
+</head>
+<body>
+<h1>Placeholder support for contentEditable elements, without JavaScript</h1>
+
+<div contenteditable="true" placeholder="Enter text here..."></div>
+
+<p>All you need is to add the following CSS:</p>
+<pre>
+[contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  display: block; /* For Firefox */
+}
+</pre>
+
+<h2>Notes</h2>
+<ul>
+    <li>Can add a different style than actual text like opacity, italic, etc</li>
+    <li>If your html needs to be 100% compliant, you can replace "placeholder" for "data-placeholder" on both files</li>
+    <li>Chrome will add &lt;br />'s inside contentEditable elements in some cases, breaking the :empty check. Can be fixed with a bit of JavaScript.</li>
+</ul>
+
+<i>By Ariel Flesler</i>
+</body>
+</html>

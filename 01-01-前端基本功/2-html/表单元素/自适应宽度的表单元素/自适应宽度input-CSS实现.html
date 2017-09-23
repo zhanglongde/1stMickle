@@ -4,33 +4,23 @@
     <meta charset="UTF-8">
     <title>
         CSS无法实现？
+        仅width:100%对input有效
     </title>
     <style>
         *{
             margin:0;
             padding:0;
         }
-        .ipt-wrapper{
-            display:inline-block;
-            /*width:100px;*/
-        }
-        .ipt-wrapper>input{
-            width: auto;
-            display: block;
-        }
-    </style>
-
+    </style>`
 </head>
 <body>
-<div class="container" id="app">
-    <div class="ipt-wrapper">
-        <input type="text">
-    </div>
+<div style='padding:30px;width:200px;background:red'>
+    <form action='' method='post' style='width:200px;background:blue;padding:3px'>
+        <input size='' style='width:100%;margin:-3px;border:2px inset #eee' />
+        <br /><br />
+        <input size='' style='width:100%' />
+    </form>
 </div>
 
-<script src="../../../../lib/vue.js"></script>
-<script>
-
-</script>
 </body>
 </html>
