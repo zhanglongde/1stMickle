@@ -1,0 +1,64 @@
+$count: 500;
+
+@function randomNum($max, $min: 0, $u: 1) {
+  @return ($min + random($max)) * $u;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  line-height: 100vh;
+  text-align: center;
+  font-size: 15vw;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px rgba(118, 218, 255, .8);;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 100;
+
+  .box {
+    position: relative;
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin: 4px;
+    // mix-blend-mode: multiply;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 50%;
+      transform: scale3d(0.1, 0.1, 1);
+      background-color: transparent;
+      transition: 2s transform ease-in,
+      2s background ease-in;
+    }
+  }
+
+  .box:hover {
+    &::before {
+      transform: scale3d(1.8, 1.8, 1.8);
+      transition: 0s transform;
+    }
+  }
+}
+
+@for $i from 1 through $count {
+  .box:nth-child(#{$i}):hover {
+    &::before {
+      background-color: rgba(randomNum(255), randomNum(255), randomNum(255), .8);
+    }
+  }
+}
