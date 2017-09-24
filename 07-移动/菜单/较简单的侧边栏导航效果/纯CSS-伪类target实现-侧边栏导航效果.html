@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        https://scotch.io/tutorials/off-canvas-menus-with-css3-transitions-and-transforms
+    </title>
+    <style>
+        /* https://scotch.io/tutorials/off-canvas-menus-with-css3-transitions-and-transforms */
+
+        #site-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+
+            height: 5000px; /* Temp: Simulates a tall page. */
+        }
+        #site-canvas {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+
+            padding: 1% 0; /* Temp: Just spacing. */
+        }
+        .show-nav #site-canvas {
+            -webkit-transform: translateX(300px);
+            transform: translateX(300px);
+
+            transform: translate3d(300px, 0, 0);
+            -webkit-transform: translate3d(300px, 0, 0);
+        }
+        #site-menu {
+            width: 300px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: -300px;
+            background: #428bca;
+            padding: 15px;
+        }
+
+
+        .ease { -webkit-transition: 300ms ease all; transition: 300ms ease all; }
+        .linear { -webkit-transition: 300ms linear all; transition: 300ms linear all; }
+        .ease-in { -webkit-transition: 300ms ease-in all; transition: 300ms ease-in all; }
+        .ease-out { -webkit-transition: 300ms ease-out all; transition: 300ms ease-out all; }
+        .ease-in-out { -webkit-transition: 300ms ease-out all; transition: 300ms ease-out all; }
+        .bounce { -webkit-transition: all 300ms cubic-bezier(0.32,1.25,0.375,1.15); transition: all 300ms cubic-bezier(0.32,1.25,0.375,1.15); }
+        .snappy { -webkit-transition: all 300ms cubic-bezier(.694, .0482, .335, 1); transition: all 300ms cubic-bezier(.694, .0482, .335, 1); }
+        .out-of-orbit { -webkit-transition: all 300ms cubic-bezier(1,0,.61,.15); transition: all 300ms cubic-bezier(1,0,.61,.15); }
+        .fat-kid-down-slide { -webkit-transition: all 300ms cubic-bezier(.2,1,.47,0); transition: all 300ms cubic-bezier(.2,1,.47,0); }
+        .none { -webkit-transition: none; -webkit-transition: none; }
+
+
+        .boring #site-menu {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+        .boring .show-nav #site-menu {
+            -webkit-transition: 300ms ease all;
+            transition: 300ms ease all;
+
+            -webkit-transform: translateX(300px);
+            transform: translateX(300px);
+
+            -webkit-transform: translate3d(300px, 0, 0);
+            transform: translate3d(300px, 0, 0);
+        }
+        .boring .show-nav #site-canvas {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+
+        .extra-pop #site-canvas {
+            -webkit-transition: 300ms ease all;
+            transition: 300ms ease all;
+        }
+        .extra-pop #site-menu * {
+            -webkit-transition: all 750ms cubic-bezier(0.32,1.25,0.375,1.15);
+            transition: all 750ms cubic-bezier(0.32,1.25,0.375,1.15);
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+            -webkit-transform: translate3d(-100%, 0, 0);
+            transform: translate3d(-100%, 0, 0);
+        }
+        .extra-pop .show-nav #site-menu * {
+            -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+            -webkit-transform: translate3d(0%, 0, 0);
+            transform: translate3d(0%, 0, 0);
+        }
+
+
+
+        /* Just styles... Not relevant to demo */
+        body {
+            box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+            background-color: #333;
+            color: #fff;
+        }
+        #hearts {
+            text-align: center;
+        }
+        #hearts a {
+            text-align: center;
+            font-size: 30px;
+            text-decoration: none;
+            color: #FF5A5A;
+            display: inline-block;
+            padding: 10px;
+        }
+        #hearts a:hover i {
+            -webkit-transform: scale(1.5);
+        }
+        #hearts a:hover {
+            color: #0EB69B;
+        }
+        #hearts i, #hearts span {
+            display: block;
+            text-align: center;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            -webkit-transition: all 400ms cubic-bezier(0.32,1.25,0.375,1.15);
+            transition: all 400ms cubic-bezier(0.32,1.25,0.375,1.15);
+        }
+    </style>
+    <script src="../../../lib/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<div id="site-wrapper">
+
+    <div id="site-canvas">
+
+        <div id="site-menu">
+
+            <h2>My Menu</h1>
+                <p class="lead">Put any HTML you want here.</p>
+                <p>Style it however you want.</p>
+
+                <ul>
+                    <li>Free to scroll up and down</li>
+                    <li>But not left and write</li>
+                </ul>
+                <p>Here's the story of a lovely lady, who was bringing up three very lovely girls. All of them had hair of gold, like their mother, the youngest one in curls. Here's the store, of a man named Brady, who was busy with three boys of his own. They were four men, living all together, yet they were all alone. 'Til the one day when the lady met this fellow. And they knew it was much more than a hunch, that this group would somehow form a family. That's the way we all became the Brady Bunch, the Brady Bunch. That's the way we all became the Brady Bunch. The Brady Bunch!</p>
+
+                <p>Man lives in the sunlit world of what he believes to be reality. But, there is, unseen by most, an underworld, a place that is just as real, but not as brightly lit... a darkside. The darkside is always there, waiting for us to enter, waiting to enter us. So until next time, try to enjoy the daylight.</p>
+
+                <p>Boy the way Glen Miller played, songs that made the hit parade. Guys like us we had it made, those were the days. And you knew who you were then, girls were girls and men were men. Mister, we could use a man like Herbert Hoover again. Didn't need no welfare state, everybody pulled his weight. Gee our old LaSalle ran great. Those were the days.</p>
+
+        </div>
+
+        <h1 class="text-center">Off Canvas Menu Demos</h1>
+
+        <p class="lead text-center">Cool Off Canvas Demos using Transitions and Transforms by <a href="https://scotch.io/tutorials/off-canvas-menus-with-css3-transitions-and-transforms">scotch.io</a>.</p>
+
+
+
+        <br>
+
+
+        <div id="hearts">
+
+            <h3>Default Transitions</h3>
+            <a href="#" data-transition="ease"><i class="fa fa-heart"></i><span>Ease</span></a>
+            <a href="#" data-transition="linear"><i class="fa fa-heart"></i><span>Linear</span></a>
+            <a href="#" data-transition="ease-in"><i class="fa fa-heart"></i><span>Ease-in</span></a>
+            <a href="#" data-transition="ease-out"><i class="fa fa-heart"></i><span>Ease-out</span></a>
+            <a href="#" data-transition="ease-in-out"><i class="fa fa-heart"></i><span>Ease-in-out</span></a>
+
+            <br>
+
+            <h3>Cubic Transitions</h3>
+            <a href="#" data-transition="bounce"><i class="fa fa-heart"></i><span>Bounce</span></a>
+            <a href="#" data-transition="snappy"><i class="fa fa-heart"></i><span>Snappy</span></a>
+            <a href="#" data-transition="out-of-orbit"><i class="fa fa-heart"></i><span>Out of Orbit</span></a>
+            <a href="#" data-transition="fat-kid-down-slide"><i class="fa fa-heart"></i><span>Fat kid down slide</span></a>
+
+            <br>
+
+            <h3>Misc</h3>
+            <a href="#" data-transition="none"><i class="fa fa-heart"></i><span>None</span></a>
+            <a href="#" data-transition="boring"><i class="fa fa-heart"></i><span>Boring</span></a>
+            <a href="#" data-transition="extra-pop"><i class="fa fa-heart"></i><span>Extra Pop</span></a>
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+</div>
+
+
+<script>
+    /*
+
+     NOW AS A SUPER EASY TO USE PLUGIN:
+     https://panels.scotch.io
+
+     */
+
+
+    $(function() {
+
+      var special = ['reveal', 'top', 'boring', 'perspective', 'extra-pop'];
+
+      // Toggle Nav on Click
+      $('#hearts a').click(function() {
+
+        var transitionClass = $(this).data('transition');
+
+        if ($.inArray(transitionClass, special) > -1) {
+          $('body').removeClass();
+          $('body').addClass(transitionClass);
+        } else {
+          $('body').removeClass();
+          $('#site-canvas').removeClass();
+          $('#site-canvas').addClass(transitionClass);
+        }
+
+        $('#site-wrapper').toggleClass('show-nav');
+
+        return false;
+
+      });
+
+    });
+</script>
+</body>
+</html>

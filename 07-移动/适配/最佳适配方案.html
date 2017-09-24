@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>
+        假设:设计稿适配iphone6 375px,以750px呈现
+        <!--假设:设计稿适配iphone6Plus 414px,以828px呈现-->
+        1rem = viewport宽度/device-width*(设计稿宽度)*100
+
+        根元素在html元素上设置font-size
+        icon、小图等，如果不需要根据rem等比例缩放，可以用预编译设置一个基准值，用媒体查询乘以该基准值
+        文字类以防小于12px,字体大小继承自body
+
+        box-sizing:border-box+width:100%,虽然margin仍然会撑破,但是可以避免padding撑破盒子的情形，所以涉及间距如果没有border,用padding
+        最外层最好用百分比布局
+        涉及纵向排列用弹性盒布局
+        涉及表格布局，用弹性盒布局,可以很好地折行
+        居中对齐问题用弹性盒布局
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        ul,ul>li{
+            list-style: none;
+        }
+        /*用于字体继承*/
+        @media screen and (max-width: 320px) {
+            body{font-size: 14px;}
+        }
+        @media screen and (min-width: 321px) and (max-width: 413px) {
+            body{font-size: 16px;}
+        }
+        @media screen and (min-width: 414px) and (max-width: 639px) {
+            body{font-size: 17px;}
+        }
+        @media screen and (min-width: 640px) {
+            body{font-size: 18px;}
+        }
+        html,body{
+            height:100%;
+            width:100%;
+        }
+        .container{
+            /*最外层最好用百分比布局*/
+            /*width:7.5rem;*/
+            width:100%;
+            height:100%;
+            background-color: #58a;
+            display:flex;
+            /*涉及纵向排列用弹性盒布局*/
+            flex-direction: column;
+        }
+        .container>.hd{
+            flex:0 1 1rem;
+
+            background-color: #fc3;
+        }
+        .container>.bd{
+            /*慎用calcAndroid支持不好*/
+            flex:1 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+        .container>.ft{
+            flex:0 1 1.6rem;
+            background-color: #85a;
+        }
+        .list{
+            flex:0 0 auto;
+            align-self: center;
+           width:6rem;
+           height:6rem;
+            /*涉及表格布局，用弹性盒布局,可以折行*/
+            display:flex;
+            flex-wrap: wrap;
+        }
+        .list>li{
+            flex:0 0 2rem;
+            width:2rem;
+            height:2rem;
+            background-color: #9c3;
+            border:1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="hd">hd</div>
+    <div class="bd">
+        <ul class="list">
+            <li>li1</li>
+            <li>li2</li>
+            <li>li3</li>
+            <li>li4</li>
+            <li>li5</li>
+            <li>li6</li>
+            <li>li7</li>
+            <li>li8</li>
+            <li>li9</li>
+        </ul>
+    </div>
+    <div class="ft">ft</div>
+</div>
+
+<script>
+  function PageChange(){
+    var html = document.documentElement;
+    var windowWidth = html.clientWidth;
+    console.log(windowWidth)
+    //      html.style.fontSize = windowWidth/6.4+'px' // iphone5
+    html.style.fontSize = windowWidth/7.5+'px'
+    //      html.style.fontSize = windowWidth/8.28+'px'
+  }
+  (function() {
+    document.addEventListener('DOMContentLoaded', PageChange)
+    document.addEventListener('resize', PageChange)
+  })();
+</script>
+</body>
+</html>
