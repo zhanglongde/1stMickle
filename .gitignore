@@ -13,6 +13,7 @@
 /01-01-前端基本功/7-动画/cancelTransition过渡取消-forwards作用/cancel.html2/
 /01-01-前端基本功/7-动画/cancelTransition过渡取消-forwards作用/pug
 /.idea
+<<<<<<< .mine
 /13-前端测试/puppeteer/node_modules/
 /13-前端测试/puppeteer/package.json
 /13-前端测试/puppeteer/AutomatingGoogleChromeWithNode.js/screen-600.png
@@ -21,3 +22,13 @@
 /13-前端测试/puppeteer/AutomatingGoogleChromeWithNode.js/landing-page.png
 /13-前端测试/puppeteer/AutomatingGoogleChromeWithNode.js/screen-500.png
 /13-前端测试/puppeteer/AutomatingGoogleChromeWithNode.js/screen-1000.png
+=======
+/06-类库/fullcalendar-3.4.0/locale/
+/01-01-前端基本功/10-策略/图标处理方案/SVG/gulp-svgstore/node_modules/
+/01-01-前端基本功/10-策略/图标处理方案/SVG/gulp-svgstore/package-lock.json
+
+
+
+
+
+>>>>>>> .theirs
