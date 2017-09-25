@@ -4,6 +4,8 @@ name keywords description=>name content
 meta里面怎么写charset=utf-8
 3.视口
 meta viewport
+meta name="viewport" content="width=device-width, initial-scale=1.0"
+禁止缩放 meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"
 4.缓存
 meta 缓存 =>http-equiv content
 5.cookie
