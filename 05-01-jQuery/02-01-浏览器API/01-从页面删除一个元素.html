@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .container{
+            position:absolute;top:0;left:0;right:0;bottom:0;
+            margin:auto;
+            width:500px;
+            height:500px;
+            background-color: #58a;
+        }
+        .test{
+
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="test">test</div>
+    <button>删除</button>
+</div>
+
+<script>
+   window.onload = function () {
+     document.querySelector('button').addEventListener('click', function () {
+       var elem = document.querySelector(".test"); //选中元素
+       elem.remove() //删除元素
+     })
+   }
+</script>
+</body>
+</html>
