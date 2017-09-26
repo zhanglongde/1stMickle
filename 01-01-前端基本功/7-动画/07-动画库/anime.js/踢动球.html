@@ -2,9 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .kick,.ball{
+            width:100px;
+            height:100px;
+            border-radius:100%;
+            background-color: #58a;
+        }
+    </style>
+
 </head>
 <body>
-$END$
+<div class="kick"></div>
+<div class="ball"></div>
+
+<script src="anime.js"></script>
+<script>
+  var bouncingBall = anime({
+    targets:'.kick',
+    scale:1.2,
+    duration:300,
+    easing:'easeInCubic',
+    complete: function () {
+      anime({
+        targets:'.ball',
+        translateX:'70vw',
+        scale:1.5,
+        easing:'easeOutBounce',
+        delay:150
+      });
+    }
+  })
+</script>
 </body>
 </html>

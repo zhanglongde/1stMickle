@@ -11,8 +11,11 @@
         .ball{
             width:100px;
             height:100px;
-            border-radius:100%;
+
             background-color: #58a;
+        }
+        .ball+.ball{
+            margin-top:20px;
         }
     </style>
 </head>
@@ -27,24 +30,29 @@
 <script src="../anime.js"></script>
 <script>
    window.onload = function () {
-     var playPauseAnim  = anime.timeline({
-       direction:'alternate',
-       loop:true,
-       autoplay:false
-     })
-
-     playPauseAnim.add({
-       targets:'.ball1',translateX:250
-     }).add({
-       targets:'.ball2',translateX:250,offset:'-=600'
-     }).add({
-       targets:'.ball3',translateX:250,offset:'-=900'
-     })
+     var playPauseAnim = anime({
+       targets: 'div',
+       translateX: 250,
+       rotate: 180,
+       loop: true,
+       duration: function(target) {
+         // Duration based on every div 'data-duration' attribute
+         return target.getAttribute('data-duration');
+       },
+       delay: function(target, index) {
+         // 100ms delay multiplied by every div index, in ascending order
+         return index * 100;
+       },
+       elasticity: function(target, index, totalTargets) {
+         // Elasticity multiplied by every div index, in descending order
+         return 200 + ((totalTargets - index) * 200);
+       }
+     });
 
      var ndPlay = document.querySelector('#play')
      var ndPause = document.querySelector('#pause')
      ndPlay.addEventListener('click', function () {
-       playPauseAnim.play();
+       playPauseAnim.restart();
      })
      ndPause.addEventListener('click', function () {
        playPauseAnim.pause();

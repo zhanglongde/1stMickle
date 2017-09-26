@@ -2,9 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .ball{
+            width:100px;
+            height:100px;
+            border-radius:100%;
+            background-color: #58a;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="ball ball1"></div>
+<div class="ball ball2"></div>
+<div class="ball ball3"></div>
+
+<button id="play">播放</button>
+<button id="pause">暂停</button>
+
+<script src="../anime.js"></script>
+<script>
+   window.onload = function () {
+     var playPauseAnim  = anime.timeline({
+       direction:'alternate',
+       loop:true,
+       autoplay:false
+     })
+
+     playPauseAnim.add({
+       targets:'.ball1',translateX:250
+     }).add({
+       targets:'.ball2',translateX:250,offset:'-=600'
+     }).add({
+       targets:'.ball3',translateX:250,offset:'-=900'
+     })
+
+     var ndPlay = document.querySelector('#play')
+     var ndPause = document.querySelector('#pause')
+     ndPlay.addEventListener('click', function () {
+       playPauseAnim.play();
+     })
+     ndPause.addEventListener('click', function () {
+       playPauseAnim.pause();
+     })
+   }
+</script>
 </body>
 </html>

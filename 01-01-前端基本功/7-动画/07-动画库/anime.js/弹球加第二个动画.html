@@ -2,9 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .ball{
+            width:100px;
+            height:100px;
+            border-radius:100%;
+            background-color: #58a;
+        }
+    </style>
+
 </head>
 <body>
-$END$
+<div class="ball"></div>
+
+<script src="anime.js"></script>
+<script>
+  var bouncingBall = anime({
+    targets:'.ball',
+    translateY:'50vh',
+    duration:300,
+    loop:false,
+    direction:'alternate',
+    easing:'easeInCubic',
+    scaleX:{
+      value:1.05,
+      duration:150,
+      delay:268
+    }
+  })
+</script>
 </body>
 </html>
