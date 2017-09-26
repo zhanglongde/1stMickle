@@ -9,20 +9,19 @@
 
 <script>
     window.onload = function () {
-      var t = moment(1487664301000).format('YYYY年MM月DD日 h点mm分 a')
-        console.log(t)
-
-        var t1 = moment(1492876800000).format('YYYY-MM-DD')
+        var t1 = moment().format('YYYY-MM-DD')
         console.log(t1)
         
-        var t2 = moment.unix(1487664301).subtract(1, 'days').format()
+        var t2 = moment(1505454111000).format('YYYY-MM-DD')
         console.log(t2)
-        
-        var timeStamp = moment('2017-04-18').unix() // 秒
-        console.log(timeStamp)
 
-        var time = moment('2017-04-18').valueOf() // 毫秒
-        console.log(time)
+        var b = moment('2017-01-01').isBefore(moment(1483200001000))
+        console.log(b)
+
+        console.log(moment().year(), moment('2017-01-01').year(), moment(1505454111000).year())
+
+//        是否当年内
+        console.log(moment().year() === moment('2017-01-01').year())
     }
 </script>
 </body>
