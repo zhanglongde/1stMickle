@@ -2,9 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script>
+    var a1 = [1,2,3,{},4,5];
+    var a2 = [211,{name:'zld'},221];
+    a1.splice(2, 0, ...a2);
+    console.log(a1)
+</script>
 </body>
 </html>
