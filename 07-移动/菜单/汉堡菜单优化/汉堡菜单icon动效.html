@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{  margin:0;  padding:0;  box-sizing: border-box;  }
+        a {  text-decoration: none;  color: #232323;  transition: color 0.3s ease;  }
+        a:hover {  color: tomato;  }
+        ul,ul>li{list-style: none;}
+        .hide{  display:none;  }
+        .show{  display:block;  }
+
+        .header-nav{
+            width:414px;
+            height:500px;
+            /*height:768px;*/
+            position:absolute;
+            top:0;left:0;right:0;bottom:0;
+            margin:auto;
+            overflow:hidden;
+
+            border:1px solid #ccc;
+        }
+        .header-nav>.hd{
+            position:relative;
+            z-index:2;
+            width:100%;
+            height:40px;
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+
+            border-bottom:1px solid #ccc;
+        }
+
+        .nav-icon-box{
+            /*border:1px solid #ccc;*/
+        }
+        .nav-icon-box span {
+            display: block;
+            width: 33px;
+            height: 4px;
+            margin-bottom: 5px;
+            position: relative;
+
+            background: #58a;
+            border-radius: 3px;
+
+            z-index: 1;
+
+            transform-origin: 4px 0px;
+
+            transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+            background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+            opacity 0.55s ease;
+        }
+
+        .nav-icon-box span:first-child {  transform-origin: 0% 0%;  }
+        .nav-icon-box span:nth-child(3) {  transform-origin: 0% 100%;  }
+        .nav-icon-box.active span {
+            background: #232323;
+        }
+        .nav-icon-box.active span:first-child{
+            opacity: 1;
+            transform: rotate(45deg) translate(2px, -2px);
+        }
+        .nav-icon-box.active span:nth-child(2) {
+            opacity: 0;
+            transform: rotate(0deg) scale(0.2, 0.2);
+        }
+        .nav-icon-box.active span:nth-child(3) {
+            opacity: 1;
+            transform: rotate(-45deg) translate(-1px, 4px);
+        }
+
+        .menu-list{
+            position:absolute;
+            z-index:1;
+            width:100%;
+            padding:20px 14px;
+            background-color: #fc3;
+        }
+        .menu-list>li{
+            height:56px;
+            line-height:56px;
+        }
+        @keyframes slide-in {
+            100%{
+                transform:none;
+                opacity:1;
+            }
+        }
+        .animate-init{
+            opacity:0;
+            transform:translateY(-100%);
+        }
+        .animate{
+            animation: slide-in 1s ease forwards;
+        }
+    </style>
+</head>
+<body>
+<nav role="navigation" class="header-nav">
+    <div class="hd">
+        <span class="logo">logo</span>
+        <div class="nav-icon-box">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <ul class="menu-list animate-init">
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+    </ul>
+</nav>
+
+<script>
+    window.onload = function () {
+      var ndBox = document.querySelector('.nav-icon-box')
+      var ndMenu = document.querySelector('.menu-list')
+      ndBox.addEventListener('click', function () {
+        ndBox.classList.toggle('active')
+        ndMenu.classList.toggle('animate')
+      })
+    }
+</script>
+</body>
+</html>
