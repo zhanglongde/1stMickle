@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var arr = [0,1,2,3,4,5,6]
+//    方法1:先插入再删除
+    function ChangeIndex(arr, newIndex, moveEles) {
+      arr.splice(newIndex, 0, ...moveEles)
+      for (let i = 0,LEN=moveEles.length; i < LEN; i++) {
+          let index = arr.indexOf(moveEles[i])
+          if (index>=0) {
+            arr.splice(index,1)
+          }
+      }
+      return arr
+    }
+    ChangeIndex(arr,4,[0,1,2])
+    console.log(arr)
+</script>
+</body>
+</html>
