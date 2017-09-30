@@ -41,13 +41,13 @@
         }
         .nav-icon-box span {
             display: block;
-            width: 33px;
-            height: 4px;
+            width: 18px;
+            height: 2px;
             margin-bottom: 5px;
             position: relative;
 
-            background: #58a;
-            border-radius: 3px;
+            background: #414141;
+            border-radius: 2px;
 
             z-index: 1;
 
@@ -61,11 +61,11 @@
         .nav-icon-box span:first-child {  transform-origin: 0% 0%;  }
         .nav-icon-box span:nth-child(3) {  transform-origin: 0% 100%;  }
         .nav-icon-box.active span {
-            background: #232323;
+            background: #414141;
         }
         .nav-icon-box.active span:first-child{
             opacity: 1;
-            transform: rotate(45deg) translate(2px, -2px);
+            transform: rotate(45deg) translate(2px, -1px);
         }
         .nav-icon-box.active span:nth-child(2) {
             opacity: 0;
@@ -73,7 +73,7 @@
         }
         .nav-icon-box.active span:nth-child(3) {
             opacity: 1;
-            transform: rotate(-45deg) translate(-1px, 4px);
+            transform: rotate(-45deg) translate(2px, 0);
         }
 
         .menu-list{
@@ -87,20 +87,20 @@
             height:56px;
             line-height:56px;
         }
-        @keyframes slide-in {
+        @keyframes menu-slide-in {
             100%{
                 transform:none;
                 opacity:1;
             }
         }
-        .animate-init{
+        .menu-slide-in-init{
             opacity:0;
             /*transform:translateY(-100%);*/
             transform:rotateX(30deg);
             transform-origin: 50% 0;
         }
-        .animate{
-            animation: slide-in 0.8s ease forwards;
+        .menu-animate{
+            animation: menu-slide-in 0.8s ease forwards;
         }
     </style>
 </head>
@@ -114,7 +114,7 @@
             <span></span>
         </div>
     </div>
-    <ul class="menu-list animate-init">
+    <ul class="menu-list menu-slide-in-init">
         <li>li1</li>
         <li>li2</li>
         <li>li3</li>
@@ -127,7 +127,7 @@
       var ndMenu = document.querySelector('.menu-list')
       ndBox.addEventListener('click', function () {
         ndBox.classList.toggle('active')
-        ndMenu.classList.toggle('animate')
+        ndMenu.classList.toggle('menu-animate')
       })
     }
 </script>
