@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        overflow:hidden并不会影响box-shadow
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            position:absolute;top:0;left:0;right:0;bottom:0;
+            margin:auto;
+            overflow:hidden;
+
+            width:500px;
+            height:300px;
+            border:1px solid #ccc;
+
+            box-shadow:0 0 10px rgba(0,0,0,.4);
+        }
+    </style>
+</head>
+<body>
+<div class="box">box</div>
+</body>
+</html>

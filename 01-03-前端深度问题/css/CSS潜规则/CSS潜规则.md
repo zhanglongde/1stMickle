@@ -1,0 +1,5 @@
+margin、padding的默认值
+
+inline-block的基线是最后一行文字的底部，flex里面的基线是第一行文字的底部
+
+只有一个元素属于inline或是inline-block水平，其身上的vertical-align属性才会起作用

@@ -4,7 +4,7 @@ https://github.com/riskers/blog/issues/2
 等高布局
 居中
 选项卡
-负margin加宽元素
+等间距布局：负margin加宽元素
 
 
 1.盒子大小content+padding+border+正margin
@@ -12,6 +12,7 @@ https://github.com/riskers/blog/issues/2
 
 2.定位布局/浮动布局
 无论正负，margin-right,margin-bottom也是有效的
+
 3.非定位布局/浮动布局
 margin为正时，默认margin-top,margin-left有效
              设置text-align:right，display:inline-block或者行内元素,margin-right有效
@@ -27,6 +28,9 @@ margin-right margin-bottom都会对兄弟元素产生影响
 
 4.增加宽度
 若width没有被设置，设定负margin-left/right会将元素拖向对应的方向，并增加宽度，此时的margin的作用就像padding一样
+bootstrap的等间距布局，就是一个很好的时间
+注意：
+不设定宽度，但是宽度却可以用子元素撑开
 
 
 left、top不论正负自己动，right、bottom不论正负别的元素动！正的向外，负的向内！

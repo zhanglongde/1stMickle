@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        如果是同一层级，后来居上
+    </title>
+    <style>
+        .test {
+            width: 100px;
+            height: 100px;
+        }
+
+        .test-1 {
+            -webkit-transform: scale(.9);
+            transform: scale(.9);
+            /*opacity: 0.9*/
+            background: #f20;
+        }
+
+        .test-2 {
+            margin-top: -50px;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+<div class="test test-1">
+</div>
+<div class="test test-2">
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        使用了transform或者perspective的时候，该父元素会取代viewport成为fixed子元素的定位基准
+    </title>
+    <style>
+        .box{
+            width:100px;
+            height:100px;
+            background-color: grey;
+            margin:50px;
+
+            transform:scale(1);
+        }
+        .fixed{
+            position:fixed;
+            top:0;
+            left:0;
+            width:50px;
+            height:50px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="fixed"></div>
+</div>
+</body>
+</html>

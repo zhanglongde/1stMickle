@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        如果是同一层级，后来居上
+        z-index:auto默认。堆叠顺序与父元素相等。
+    </title>
+    <style>
+        .test {
+            width: 100px;
+            height: 100px;
+        }
+
+        .test-1 {
+            /*设置relative之后，浮上来；但是又被transform压下去；relative设置z-index之后又可以浮上来*/
+            position: relative;
+            /*z-index:0;*/
+            background: #f20;
+        }
+
+        .test-2 {
+            -webkit-transform: scale(.9);
+            transform: scale(.9);
+            margin-top: -50px;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+<div class="test test-1">
+</div>
+<div class="test test-2">
+</div>
+</body>
+</html>
