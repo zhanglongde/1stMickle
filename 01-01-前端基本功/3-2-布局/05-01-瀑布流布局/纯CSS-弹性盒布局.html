@@ -1,12 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="App">
 <head>
-    <meta charset="UTF-8">
-    <title>
-        https://zhuanlan.zhihu.com/p/21974139
-    </title>
+    <title>照片墙</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <base href="https://xieranmaya.github.io/images/cats/">
+    <style>
+        section {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        section::after {
+            content: '';
+            flex-grow: 999999999;
+        }
+        div {
+            margin: 2px;
+            background-color: violet;
+            position: relative;
+        }
+        i{
+            display: block;
+        }
+        img {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            vertical-align: bottom;
+        }
+    </style>
 </head>
-<body>
+<body ng-controller="ImageLayout">
+<section>
+    <div  ng-repeat="img in imgs" style="width:{{img.width*200/img.height}}px;flex-grow:{{img.width*200/img.height}}">
+        <i style="padding-bottom:{{img.height/img.width*100}}%"></i>
+        <img src="{{img.url}}" alt="">
+    </div>
+</section>
 
+<script>
+  angular.module('App', [])
+
+    .controller('ImageLayout', ImageLayout)
+
+
+  function ImageLayout($scope, $http){
+    $http.get('https://xieranmaya.github.io/images/cats/cats.json').success(function(imgs){
+      $scope.imgs = imgs
+    })
+  }
+</script>
 </body>
 </html>
