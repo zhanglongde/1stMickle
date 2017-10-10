@@ -2,3 +2,7 @@ gulp
 非常类似Makefile
 以default为入口，建立任务依赖
 复杂任务依赖各种插件
+
+
+gulp是一种基于stream的前端构建工具
+相比于grunt使用临时文件的策略，会有较大的速度优势

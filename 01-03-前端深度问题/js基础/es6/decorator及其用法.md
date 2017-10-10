@@ -17,7 +17,7 @@ https://medium.com/google-developers/exploring-es7-decorators-76ecb65fb841
         react结合redux开发
         class MyReactComponent extends React.Component {}
         export default connect(mapStateToProps,mapDispatchToProps)(MyReactComponent)
-        装饰器改为为
+        装饰器改为
         @connect(mapStateToProps,mapDispatchToProps)
         export default class MyReactComponent extends React.Component{}
 2.方法的修饰
@@ -28,7 +28,7 @@ https://medium.com/google-developers/exploring-es7-decorators-76ecb65fb841
   2.5修饰对象属性:数据属性 访问器属性
      对类的字段做修饰
   2.6保证架构一致性，特别是开发大型类库
-    外层修饰器先执行
+     外层修饰器先执行
 3.为什么修饰器不能用于函数？
     修饰器只能用于类和类的方法，不能用于函数，因为存在函数提升。
 4.core-decorators.js
