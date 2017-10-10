@@ -28,12 +28,13 @@
 草稿 自动保存:防抖动 定时保存与通知冲突 保存延迟队列处理
      客户端同步
      离线缓存
-编辑器 兼容性 与非编辑器部分交互
+编辑器 兼容性 与非编辑器部分交互 原生js处理DOM
       图片粘贴 base64
+      execCommand selection range
 6.有意思的点
 转发 node-http-proxy
-国际化 node-xlsx
-字体
+国际化 node-xlsx js-xlsx
+字体 字体包还是font-family
 7.失败点
 7.1旧的列表同步策略
 404

@@ -33,7 +33,7 @@ WebSocket与Http
 在HTTP中永远是这样，也就是说一个request只能有一个response。而且这个response也是被动的，不能主动发起。
 
 
-websocket与长连接 循环连接 keep-alive http2.0多路复用的区别
+WebSocket与长连接 循环连接 keep-alive http2.0多路复用的区别
 
 
 
