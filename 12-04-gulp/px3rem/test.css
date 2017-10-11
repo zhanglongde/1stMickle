@@ -1,0 +1,42 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    height:100%;
+}
+
+body{
+    font-size:14px;
+}
+
+ul,ul>li{
+    list-style: none;
+}
+
+.by-container{
+    width:414px;
+    height:400px;
+
+    border:1px solid #ccc;
+    border-radius:4px;
+    box-shadow: 0 14px 10px -10px rgba(0,0,0,.4);
+}
+.by-content{
+    padding:0 14px;
+}
+
+.center1{
+    position:absolute;top:0;left:0;right:0;bottom:0;
+    margin:auto;
+}
+
+ul>li{
+    height:40px;
+    line-height:40px;
+}
+ul>li+li{
+    border-top:1px solid #ccc;
+}

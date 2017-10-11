@@ -1,0 +1,18 @@
+{
+  "name": "nextcont.com",
+  "version": "1.0.0",
+  "description": "html",
+  "keywords": [
+    "html"
+  ],
+  "author": "nextcont",
+  "license": "ISC",
+  "scripts": {
+    "build": "gulp build",
+    "dev": "gulp server"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-px3rem": "^0.3.0"
+  }
+}
