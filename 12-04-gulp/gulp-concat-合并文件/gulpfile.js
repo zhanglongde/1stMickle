@@ -1,16 +1,19 @@
 var gulp = require('gulp');
-var injectSvg = require('gulp-inject-svg');
-var injectSvgOptions = { base: './src' };
+var concat = require('gulp-concat');
+var order = require("gulp-order");
 
-gulp.task('injectSvg', function() {
-    console.log('inject...')
-    return gulp.src('./src/**/*.html')
-        .pipe(injectSvg(injectSvgOptions))
-        .pipe(gulp.dest('./dest'));
-
+gulp.task('scripts', function() {
+    return gulp.src('./src/*.js')
+        .pipe(order([
+            "c.js",
+            "b.js",
+            "a.js"
+        ]))
+        .pipe(concat('all.js'))
+        .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('build', ['injectSvg'], function () {
+gulp.task('build', ['scripts'], function () {
     console.log('ok...')
 })
 
