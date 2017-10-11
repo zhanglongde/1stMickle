@@ -2,9 +2,110 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        table {
+            overflow: hidden;
+        }
+
+        td, th {
+            padding: 10px;
+            position: relative;
+            outline: 0;
+        }
+
+        body:not(.nohover) tbody tr:hover {
+            background-color: #ffa;
+        }
+
+        td:hover::after,
+        thead th:not(:empty):hover::after,
+        td:focus::after,
+        thead th:not(:empty):focus::after {
+            content: '';
+            height: 10000px;
+            left: 0;
+            position: absolute;
+            top: -5000px;
+            width: 100%;
+            z-index: -1;
+        }
+
+        td:hover::after,
+        th:hover::after {
+            background-color: #ffa;
+        }
+
+        td:focus::after,
+        th:focus::after {
+            background-color: lightblue;
+        }
+
+        /* Focus stuff for mobile */
+        td:focus::before,
+        tbody th:focus::before {
+            background-color: lightblue;
+            content: '';
+            height: 100%;
+            top: 0;
+            left: -5000px;
+            position: absolute;
+            width: 10000px;
+            z-index: -1;
+        }
+    </style>
 </head>
 <body>
-$END$
+<main>
+    <table>
+        <thead>
+        <tr>
+            <th></th>
+            <th class="col">50kg</th>
+            <th class="col">55kg</th>
+            <th class="col">60kg</th>
+            <th class="col">65kg</th>
+            <th class="col">70kg</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th class="row">160cm</th>
+            <td>20</td>
+            <td>21</td>
+            <td>23</td>
+            <td>25</td>
+            <td>27</td>
+        </tr>
+
+        <tr>
+            <th class="row">165cm</th>
+            <td>18</td>
+            <td>20</td>
+            <td>22</td>
+            <td>24</td>
+            <td>26</td>
+        </tr>
+
+        <tr>
+            <th class="row">170cm</th>
+            <td>17</td>
+            <td>19</td>
+            <td>21</td>
+            <td>23</td>
+            <td>25</td>
+        </tr>
+
+        <tr>
+            <th class="row">175cm</th>
+            <td>16</td>
+            <td>18</td>
+            <td>20</td>
+            <td>22</td>
+            <td>24</td>
+        </tr>
+        <tbody>
+    </table>
+</main>
 </body>
 </html>
