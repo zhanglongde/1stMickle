@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        https://juejin.im/post/59dda175f265da4322402d5a?utm_source=gold_browser_extension
+    </title>
+</head>
+<body>
+<script>
+  function  timeout( milliseconds:  number  =  0 ) {
+
+    return  function( target, key, descriptor ) {
+
+      var originalMethod =  descriptor.value;
+
+      descriptor.value  =  function (...args) {
+
+        setTimeout(() => {
+
+          originalMethod.apply(this, args);
+
+        }, milliseconds);
+
+      };
+
+      return descriptor;
+
+    }
+
+  }
+
+
+  class  DemoComponent {
+
+    constructor() {}
+
+    @timeout()
+    demoMethod() {
+      // 这里的代码会延迟执行
+    }
+
+    // 传入数值
+    @timeout(2000)
+    demoMethod() {
+      // 这里的代码会延迟执行
+    }
+
+  }
+
+  new  DemoComponent().demoMethod();
+</script>
+</body>
+</html>
