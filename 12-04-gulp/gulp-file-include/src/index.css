@@ -1,0 +1,27 @@
+*{
+    margin:0;
+    padding:0;
+}
+ul,ul>li{
+    list-style: none;
+}
+.by-container{
+    width: 700px;
+    height:500px;
+    position:absolute;
+    top:0;left:0;right:0;bottom:0;
+    margin:auto;
+
+    box-shadow: 0 0 4px rgba(0,0,0,.4);
+}
+ul>li{
+    height:40px;
+    line-height:40px;
+}
+ul>li+li{
+    border-top:1px solid #ccc;
+}
+
+ul>li.active{
+    background-color: #58a;
+}

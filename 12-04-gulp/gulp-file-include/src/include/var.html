@@ -1,13 +1,14 @@
 <div class="by-container">
     <ul class="by-content">
-        <li>
+        <li class="@@if (item === 'index') {active} normal">
             <label>@@name</label>
             <label>@@age</label>
             <strong>@@socials.fb</strong>
             <strong>@@socials.tw</strong>
         </li>
-        <li>
+        <li class="@@if (item === 'product') {active} normal">
             2
+            @@context
         </li>
         <li>
             3

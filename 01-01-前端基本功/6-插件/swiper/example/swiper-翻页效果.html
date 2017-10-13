@@ -2,24 +2,84 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
     <title>Title</title>
     <link rel="stylesheet" href="../swiper-3.3.1.min.css">
     <script src="../zepto.min.js"></script>
     <script src="../swiper-3.3.1.jquery.min.js"></script>
     <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        html,body{
+            width:100%;
+            height:100%;
+        }
+        .swiper-container,.slide-wrapper,.swiper-slide{
+            width:100%;
+            height:100%;
+        }
         .swiper-slide{
-            width:300px;height:300px;
             margin:auto;
             text-align: center;
+
+            color:#fff;
+        }
+        .by-container{
+            position:relative;
+            padding:0 14px;
+        }
+        header{
+            height:50px;
+            line-height:50px;
+            border-bottom:1px solid #ccc;
+        }
+        footer{
+            position:absolute;bottom:0;
+            height:50px;
+            line-height:50px;
+            border-top:1px solid #ccc;
         }
     </style>
 </head>
 <body>
 <div class="swiper-container">
     <div class="swiper-wrapper">
-        <div class="swiper-slide" style="background-color: #e87d0d;">slider1</div>
-        <div class="swiper-slide" style="background-color: #9c3;">slider2</div>
-        <div class="swiper-slide" style="background-color: #58a;">slider3</div>
+        <div class="swiper-slide by-container" style="background-color: #e87d0d;">
+            <header>
+                header
+            </header>
+            <main>
+                slider1
+            </main>
+            <footer>
+                footer
+            </footer>
+        </div>
+        <div class="swiper-slide by-container" style="background-color: #9c3;">
+            <header>
+                header
+            </header>
+            <main>
+                slider2
+            </main>
+            <footer>
+                footer
+            </footer>
+        </div>
+        <div class="swiper-slide by-container" style="background-color: #58a;">
+            <header>
+                header
+            </header>
+            <main>
+                slider3
+            </main>
+            <footer>
+                footer
+            </footer>
+        </div>
     </div>
     <div class="swiper-pagination"></div>
 </div>
@@ -29,7 +89,8 @@
 //        autoplay:5000,
         loop: true,
         pagination: '.swiper-pagination',
-        paginationClickable: true
+        paginationClickable: true,
+        direction:'vertical'
     });
 </script>
 </body>

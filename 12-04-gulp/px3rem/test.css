@@ -9,7 +9,7 @@ html,body{
 }
 
 body{
-    font-size:14px;
+    font-size:14px;/*no*/
 }
 
 ul,ul>li{
@@ -20,7 +20,7 @@ ul,ul>li{
     width:414px;
     height:400px;
 
-    border:1px solid #ccc;
+    border:1px solid #ccc; /*no*/
     border-radius:4px;
     box-shadow: 0 14px 10px -10px rgba(0,0,0,.4);
 }
@@ -38,5 +38,5 @@ ul>li{
     line-height:40px;
 }
 ul>li+li{
-    border-top:1px solid #ccc;
+    border-top:1px solid #ccc;/*no*/
 }

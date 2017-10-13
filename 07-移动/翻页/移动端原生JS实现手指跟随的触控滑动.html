@@ -168,14 +168,14 @@
       e.stopPropagation()
       switch (this.swipe) {
         case 'X':
-          //swipe horizontal
+          //swiper horizontal
           this.move = X
           this.setX(current, X)
           next && (this.setX(next, X + this.width))
           prev && (this.setX(prev, X - this.width))
           break;
         case 'Y':
-          //swipe vertical
+          //swiper vertical
           this.move = Y
           this.setY(current, Y)
           next && (this.setY(next, Y + this.height))

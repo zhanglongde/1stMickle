@@ -1,7 +1,17 @@
-/**
- * Created by JUEXINPC-008 on 2017/10/13.
- */
+var fileinclude = require('gulp-file-include'),
+    gulp = require('gulp');
 
-(function () {
+gulp.task('fileinclude', function() {
+    gulp.src(['./src/*.html'])
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: '@file'
+        }))
+        .pipe(gulp.dest('./dest'));
+});
 
-}());
+gulp.task('build', ['fileinclude'], function () {
+    console.log('ok...')
+})
+
+gulp.task('default', ['build']);

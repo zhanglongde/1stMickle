@@ -13,6 +13,6 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-px3rem": "^0.3.0"
+    "gulp-file-include": "^1.2.0"
   }
 }

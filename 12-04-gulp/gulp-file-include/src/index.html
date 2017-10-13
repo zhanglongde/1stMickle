@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../src/index.css">
 </head>
 <body>
-@@include('./view.html')
-@@include('./var.html', {
+@@include('./include/view.html')
+@@include('./include/var.html', {
 "name": "haoxin",
 "age": 12345,
 "socials": {
-"fb": "facebook.com/include",
-"tw": "twitter.com/include"
-}
+"fb": "facebook.com",
+"tw": "twitter.com"
+},
+"item": "product"
 })
 </body>
 </html>
