@@ -7,14 +7,87 @@
     <link rel="stylesheet" href="froala_editor_2.7.0/css/froala_style.css">
     <link rel="stylesheet" href="froala_editor_2.7.0/css/froala_editor.pkgd.css">
     <style>
-        .fr-toolbar.fr-bottom{
+        *{
+            margin:0;padding:0;
+        }
+        ul,ul>li{
+            list-style: none;
+        }
+        .popup{
+            max-width:700px;
+            margin:auto;
+        }
+        .hidden{
+            visibility: hidden;
+        }
+        .visible{
+            visibility: visible !important;
+        }
+        .hide{
             display:none;
+        }
+        .fr-toolbar.fr-bottom{
+            visibility: hidden;
+            border:none;
+            /*box-shadow: none;*/
+            position: absolute;
+            display:inline-block;
+            bottom:36px !important;
+        }
+        .fr-box.fr-basic.fr-bottom .fr-wrapper{
+            box-shadow: none;
+        }
+        .toolbar{
+            height:40px;
+            line-height:40px;
+            background-color: #ccc;
+        }
+        .container-draft{
+            position:relative;
+        }
+        .container-draft .bd{
+            height:400px;
+            overflow:auto;
+            border:1px solid #ccc;
+        }
+        .ft{
+            /*position: absolute;bottom:0;*/
+        }
+        .fr-box{
+            position: static;
         }
     </style>
 </head>
 <body>
-<textarea id="testEditor"></textarea>
-<button id="btnInertMenu">菜单</button>
+<div class="popup">
+    <div class="popup-header"></div>
+    <div class="container-draft">
+        <div class="hd">
+            <div class="left">
+                <label for="">收件人</label>
+                <label for="">密送</label>
+                <label for="">抄送</label>
+            </div>
+            <div class="right"></div>
+        </div>
+        <div class="bd">
+            <textarea id="testEditor"></textarea>
+            <div class="attachment-body">
+
+            </div>
+        </div>
+        <div class="ft">
+           <div class="toolbar">
+               <button>发送</button>
+               <button id="btnInertMenu">菜单</button>
+               <button id="btnAttachment">附件</button>
+               <button id="btnDrive">网盘</button>
+               <button>图片</button>
+               <button id="btnLanguage">语言</button>
+           </div>
+        </div>
+    </div>
+</div>
 
 <script src="../../../lib/jquery-1.11.3.min.js"></script>
 <script src="froala_editor_2.7.0/js/froala_editor.min.js"></script>
@@ -25,9 +98,9 @@
             toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'color', '|', 'paragraphFormat', 'align', 'undo', 'redo', 'html'],            fontFamilySelection: true,
             fontSizeSelection: true,
             paragraphFormatSelection: true,
-            heightMin: 400,
-            heightMax: 500,
+            heightMin: 310,
             toolbarBottom: true,
+            language: 'zh_cn',
             // Colors list.
             colorsBackground: [
                 '#15E67F', '#E3DE8C', '#D8A076', '#D83762', '#76B6D8', 'REMOVE',
@@ -41,8 +114,20 @@
             ]
         }
     ) });
+    let signature = '<div><a href="mailto:longde.zhang@nextcont.com" style="font-family:verdana;font-size:13px" target="_blank">longde.zhang@nextcont.com</a>&nbsp;觉新&nbsp;</div>'
+    $('#btnDrive').on('click', function () {
+        $('#testEditor').froalaEditor('html.insert', signature, true)
+    })
     $('#btnInertMenu').on('click', function () {
-        $('.fr-toolbar.fr-bottom').toggle()
+        $('.fr-toolbar.fr-bottom').toggleClass('visible')
+    })
+    $('#btnAttachment').on('click', function () {
+        $('.attachment-body').append('<div>附件</div>')
+    })
+    $('#btnLanguage').on('click', function () {
+        $('#testEditor').froalaEditor({
+            language: 'ar'
+        })
     })
 </script>
 </body>

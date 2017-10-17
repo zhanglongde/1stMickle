@@ -2,50 +2,41 @@
 <html>
 <head>
     <meta charset="utf-8">
-
-    <!-- Include external CSS. -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
-
-    <!-- Include Editor style. -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.4/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.4/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="froala_editor_2.7.0/css/froala_editor.css">
+    <link rel="stylesheet" href="froala_editor_2.7.0/css/froala_style.css">
+    <link rel="stylesheet" href="froala_editor_2.7.0/css/froala_editor.pkgd.css">
+    <style>
+        .fr-toolbar.fr-bottom{
+            display:none;
+        }
+    </style>
 </head>
-
 <body>
-<!-- Create a tag that we will use as the editable area. -->
-<!-- You can use a div tag as well. -->
 <textarea id="testEditor"></textarea>
-<button id="btnInertSignature">插入签名</button>
-<button id="btnInertHtml">插入Html</button>
+<button id="btnInertMenu">菜单</button>
 
-<!-- Include external JS libs. -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<!--<script src="../../../lib/jquery-1.11.3.min.js"></script>-->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
-
-<!-- Include Editor JS files. -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.4/js/froala_editor.pkgd.min.js"></script>
-
-<!-- Initialize the editor. -->
-<script> $(function() { $('textarea').froalaEditor() }); </script>
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script src="froala_editor_2.7.0/js/froala_editor.min.js"></script>
+<script src="froala_editor_2.7.0/js/froala_editor.pkgd.min.js"></script>
 <script>
-    let signature = '<div><a href="mailto:longde.zhang@nextcont.com" style="font-family:verdana;font-size:13px" target="_blank">longde.zhang@nextcont.com</a>&nbsp;觉新&nbsp;</div>'
-
-//    $('#testEditor').froalaEditor({
+    $(function() { $('textarea').froalaEditor() });
+    //    $('#testEditor').froalaEditor({
 //        enter: $.FroalaEditor.ENTER_DIV
 //    });
 
     $('#testEditor').froalaEditor({
-        enter: $.FroalaEditor.ENTER_BR
+        enter: $.FroalaEditor.ENTER_BR,
+        toolbarButtons: ['fontFamily', '|', 'fontSize', '|', 'paragraphFormat', '|', 'bold', 'italic', 'underline', 'undo', 'redo', 'codeView'],
+        fontFamilySelection: true,
+        fontSizeSelection: true,
+        paragraphFormatSelection: true,
+        heightMin: 400,
+        heightMax: 500,
+        toolbarBottom: true
     });
-    $('#btnInertSignature').on('click', function () {
-        $('#testEditor').froalaEditor('html.insert', signature, true)
-    })
-
-    $('#btnInertHtml').on('click', function () {
-        $('#testEditor').froalaEditor('html.insert', '<div contenteditable="false" class="google_drive_chip" style="width: 396px; height: 30px; max-height: 30px; background-color: rgb(245, 245, 245); padding: 0; color: rgb(34, 34, 34); font-family: arial; font-style: normal; font-weight: bold; font-size: 13px; cursor: default; border: 1px solid rgb(221, 221, 221); line-height: 30px;"><a href="undefined" target="_blank" style="display:inline-block; max-width: 366px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-decoration: none; cursor: pointer; padding: 0; border: none; line-height: 30px;" title="客户端相关文档"><img contenteditable="false" style="vertical-align: bottom; border: none; margin-bottom: 7px; margin-left: 6px;width: 16px;height: 16px;" src="https://cdn10.inecm.cn/iconLink/vnd.google-apps.folder+shared.svg" />&nbsp;客户端相关文档</a><span contenteditable="false" class="remove_this_googledrive_file_item">×</span></div>&#8203;<br clear="all" />', true);
+    $('#btnInertMenu').on('click', function () {
+        $('.fr-toolbar.fr-bottom').toggle()
     })
 </script>
 </body>

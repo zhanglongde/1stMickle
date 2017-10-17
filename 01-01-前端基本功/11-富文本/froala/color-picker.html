@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="froala_editor_2.7.0/css/froala_style.css">
     <link rel="stylesheet" href="froala_editor_2.7.0/css/froala_editor.pkgd.css">
     <style>
-        .fr-toolbar.fr-top{
+        .fr-toolbar.fr-bottom{
             display:none;
         }
     </style>
@@ -20,22 +20,29 @@
 <script src="froala_editor_2.7.0/js/froala_editor.min.js"></script>
 <script src="froala_editor_2.7.0/js/froala_editor.pkgd.min.js"></script>
 <script>
-    $(function() { $('textarea').froalaEditor() });
-    //    $('#testEditor').froalaEditor({
-//        enter: $.FroalaEditor.ENTER_DIV
-//    });
-
-    $('#testEditor').froalaEditor({
-        enter: $.FroalaEditor.ENTER_BR,
-        toolbarButtons: ['fontFamily', '|', 'fontSize', '|', 'paragraphFormat', '|', 'bold', 'italic', 'underline', 'undo', 'redo', 'codeView'],
-        fontFamilySelection: true,
-        fontSizeSelection: true,
-        paragraphFormatSelection: true,
-        heightMin: 400,
-        heightMax: 500
-    });
+    $(function() { $('textarea').froalaEditor({
+            enter: $.FroalaEditor.ENTER_BR,
+            toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'color', '|', 'paragraphFormat', 'align', 'undo', 'redo', 'html'],            fontFamilySelection: true,
+            fontSizeSelection: true,
+            paragraphFormatSelection: true,
+            heightMin: 400,
+            heightMax: 500,
+            toolbarBottom: true,
+            // Colors list.
+            colorsBackground: [
+                '#15E67F', '#E3DE8C', '#D8A076', '#D83762', '#76B6D8', 'REMOVE',
+                '#1C7A90', '#249CB8', '#4ABED9', '#FBD75B', '#FBE571', '#FFFFFF'
+            ],
+            colorsDefaultTab: 'background',
+            colorsStep: 6,
+            colorsText: [
+                '#15E67F', '#E3DE8C', '#D8A076', '#D83762', '#76B6D8', 'REMOVE',
+                '#1C7A90', '#249CB8', '#4ABED9', '#FBD75B', '#FBE571', '#FFFFFF'
+            ]
+        }
+    ) });
     $('#btnInertMenu').on('click', function () {
-        $('.fr-toolbar.fr-top').toggle()
+        $('.fr-toolbar.fr-bottom').toggle()
     })
 </script>
 </body>
