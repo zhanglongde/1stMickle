@@ -92,6 +92,8 @@
 <script src="../../../lib/jquery-1.11.3.min.js"></script>
 <script src="froala_editor_2.7.0/js/froala_editor.min.js"></script>
 <script src="froala_editor_2.7.0/js/froala_editor.pkgd.min.js"></script>
+<script src="froala_editor_2.7.0/js/languages/zh_cn.js"></script>
+<script type="text/javascript" src="froala_editor_2.7.0/js/languages/ro.js"></script>
 <script>
     $(function() { $('textarea').froalaEditor({
             enter: $.FroalaEditor.ENTER_BR,
@@ -125,8 +127,9 @@
         $('.attachment-body').append('<div>附件</div>')
     })
     $('#btnLanguage').on('click', function () {
+        console.log('editor...')
         $('#testEditor').froalaEditor({
-            language: 'ar'
+            language: 'ro'
         })
     })
 </script>
