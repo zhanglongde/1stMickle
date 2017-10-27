@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        .fixed{
+            position: fixed;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+<div style="height:200px;background-color:#EFE4B0;"></div>
+<div id="fixed" style="height:40px;width:100%;background-color:#7092BE;color:#fff;">这个div到达顶部时悬浮在顶部，不到顶部不悬浮</div>
+<div style="height:2000px;background-color:#C3C3C3;"></div>
+<script type="text/javascript">
+    var fixedDom = document.getElementById('fixed');
+
+    window.addEventListener('scroll',winScroll);
+
+    function winScroll(e){
+        var top = getElementViewTop(fixedDom);
+        console.log(top)
+        top < 0 ? fixedDom.classList.add("fixed") : fixedDom.classList.remove("fixed");
+    }
+
+    function getElementViewTop(element){
+        var actualTop = element.offsetTop, elementScrollTop=document.body.scrollTop;
+        return actualTop-elementScrollTop;
+    }
+</script>
+
+
+</body>
+</html>
