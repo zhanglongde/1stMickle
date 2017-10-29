@@ -53,11 +53,17 @@
          return func.apply(this,argSum)
        }
     }
-    var add = curry(function (x,y,z) {
-        return x*y+z
+    var add = curry(function (x,y,z,q) {
+      var sum =0;
+      for(var i=0;i<arguments.length;i++){
+        sum += arguments[i];
+      }
+      return sum
     })
     var incre = add(1)(10)(6)
+    var incre2 = add(1)(10)(6)(7)
     console.log(incre)
+    console.log(incre2)
 </script>
 </body>
 </html>
