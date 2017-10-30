@@ -1,0 +1,1 @@
+npm script可以替代grunt gulp
