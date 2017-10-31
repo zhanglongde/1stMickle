@@ -8,3 +8,8 @@ destroyed
 数据更新
 beforeUpdate 可以访问
 updated
+
+
+vue2.5
+errorCapture
+errorCaptured

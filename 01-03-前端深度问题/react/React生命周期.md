@@ -8,3 +8,7 @@ componentWillReceiveProps(nextProps) 外部传入props时调用
 shouldComponentUpdate(nextProps,nenxtState) return false阻止后续生命周期
 componentWillUpdate(nenxtProps,nextState) render函数之前
 componentDidUpdate(nextProps,nextState) render之后
+
+
+React16
+componentDidCatch
