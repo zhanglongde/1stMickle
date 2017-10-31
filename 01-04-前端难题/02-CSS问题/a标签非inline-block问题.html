@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        a标签为非替换行内元素
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .container{
+            width:500px;
+            height:300px;
+            position: absolute;top:0;bottom:0;right:0;left:0;
+            margin:auto;
+
+            box-shadow: 0 10px 10px -10px rgba(0,0,0,.4);
+        }
+        .box{
+            border:1px solid #ccc;
+        }
+        a{
+            /*无法撑高？*/
+            /*display:inline-block;*/
+            padding:10px 20px;
+            border-radius:2px;
+            background-color: #58a;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box">
+        <a href="www.baidu.com">百度</a>
+    </div>
+</div>
+</body>
+</html>

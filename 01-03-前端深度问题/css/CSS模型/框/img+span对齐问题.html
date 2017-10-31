@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        img元素默认的表现形式和inline-block元素一样，它的基线就是margin底边缘，
+        而inline本身是有高度的，两者基线对齐。
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .test{
+            background-color: #f00;
+        }
+        img{
+            width:50px;
+            height:50px;
+            /*vertical-align: middle;*/
+        }
+        span{
+            background-color: #fff;
+            font-size:40px;
+            /*vertical-align: middle;*/
+        }
+    </style>
+</head>
+<body>
+<div class="test">
+    <img src="https://user-gold-cdn.xitu.io/2017/10/30/d939d49ba6d9be043bb7ca8cecb6f05a" alt=""><span>Xx</span>
+</div>
+</body>
+</html>
