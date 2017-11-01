@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        display 会影响 li 前面的小黑点
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .container{
+            width:500px;
+            height:300px;
+            position:absolute;top:0;bottom:0;left:0;right:0;
+            margin:auto;
+
+            border:1px solid #ccc;
+        }
+
+        ul>li{
+            display:inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul>
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+        <li>li4</li>
+        <li>li5</li>
+    </ul>
+</div>
+</body>
+</html>
