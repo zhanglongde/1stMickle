@@ -7,6 +7,8 @@ webpack3借鉴了Closure Compiler和RoolupJS这两个工具，链接所有比报
 放入一个函数，让执行速度更快，并且整体代码体积也会有所缩小
 
 该特性只支持ES Modules,是不支持CommonJs和AMD
+
+
 2.Magic Comments
 支持用注释的方式指定chunk的名称
 import(/* webpackChunkName: "my-chunk-name" */ 'module');
