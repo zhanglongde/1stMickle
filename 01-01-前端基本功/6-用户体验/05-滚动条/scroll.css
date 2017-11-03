@@ -1,0 +1,36 @@
+/*垂直滚动条*/
+.scroll-v{
+   overflow-y: auto;
+   /*overflow-x: hidden;*/
+}
+.scroll-v::-webkit-scrollbar{
+    width: 7px;
+    /*单项最小高度不得小于30px,否则无法滚动*/
+    height: 30px;
+    background-color: transparent;
+}
+.scroll-v::-webkit-scrollbar-track{
+    width:7px;
+    height:30px;
+    background-color: transparent;
+}
+.scroll-v::-webkit-scrollbar-thumb{
+    width:7px;
+    height:30px;
+
+    background-color: rgba(0, 0, 0, .2);
+    border-radius: 5px;
+}
+.scroll-v::-webkit-scrollbar-thumb:hover {
+     background-color: rgba(139, 139, 139, 0.73);
+ }
+.scroll-v::-webkit-scrollbar-thumb:active {
+     background-color: rgb(139, 139, 139);
+ }
+.scroll-v.no-transparent::-webkit-scrollbar-thumb{
+    width:7px;
+    height:30px;
+
+    background-color: rgba(139, 139, 139, 0.73);
+    border-radius: 5px;
+}
