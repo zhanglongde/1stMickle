@@ -51,6 +51,9 @@ js通过GC自动回收内存
     };
     setInterval(replaceThing, 1000);
 ```
+5.iframe
+  https://juejin.im/post/59fbdb46f265da4321536565?utm_source=gold_browser_extension
+6.WebWorker
 >谷歌浏览器查看内存使用
 shift+esc
 
