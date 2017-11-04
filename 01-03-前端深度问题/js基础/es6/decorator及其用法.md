@@ -1,4 +1,8 @@
 https://medium.com/google-developers/exploring-es7-decorators-76ecb65fb841
+decorator本质上就是一个高阶函数，它接收一个函数作为参数，然后返回一个新函数
+使用装饰器可以极大地简化代码，避免每个函数(比如日志、路由、性能检测)编写重复性代码。
+
+
 修饰器 es7
 1.类的修饰
     1.1修饰器的作用
