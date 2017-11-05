@@ -1,0 +1,11 @@
+一些基础
+首先，template被编译成AST
+AST经过generate得到render函数
+render返回VNode
+
+
+
+createCompiler
+compileToFunctions
+functionCompileCache 缓存
+baseCompile

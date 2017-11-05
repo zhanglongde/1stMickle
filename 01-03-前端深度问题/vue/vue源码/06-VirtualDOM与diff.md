@@ -1,0 +1,10 @@
+VNode
+修改视图
+patch
+sameVnode
+patchVnode
+updateChildren
+  在遍历中，如果存在key，并且满足sameVnode，会将该DOM节点进行复用，否则则会创建一个新的DOM节点。
+DOM操作
+  Vue为平台做了一层适配层，
+  虚拟DOM进行操作真实DOM节点们，只需要调用适配层的接口，而内部实现则不需要关心
