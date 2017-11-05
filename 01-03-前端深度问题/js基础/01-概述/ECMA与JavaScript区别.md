@@ -1,0 +1,2 @@
+JavaScript是ECMA在浏览器上的一个实现
+其他实现还有：ActionScript
