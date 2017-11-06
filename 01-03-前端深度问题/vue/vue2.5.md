@@ -7,3 +7,7 @@ errorCaputed 的传递行为特性
 单文件组件支持函数式组件
 修饰符
   .exact修饰符
+
+
+typescript支持
+
