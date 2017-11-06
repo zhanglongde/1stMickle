@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        选中事件，放开鼠标的时候，触发点击事件
+    </title>
+</head>
+<body>
+<p id="test">
+    test <br>
+    maybe it is a! <br>
+    mostly make sense!
+</p>
+
+<script>
+    var ndTest = document.querySelector('#test')
+    ndTest.addEventListener('click', function (e) {
+    var selection = window.getSelection();
+//    if(selection.toString().length === 0) {
+    if(!selection.toString()) {
+        console.log('no select...')
+    }
+    console.log('click:',selection.toString(),e)
+    })
+    ndTest.addEventListener('select', function () {
+      console.log('selection change:', e)
+    })
+</script>
+</body>
+</html>

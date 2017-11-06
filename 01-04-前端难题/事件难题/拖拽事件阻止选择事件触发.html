@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        how to prevent drag on mouse text selection
+
+        必要时，使用event.currentTarget:绑定事件的元素（此时为event.target的父元素）
+    </title>
+</head>
+<body>
+<div class="container" draggable="true">
+    <input type="text" value="test">
+</div>
+
+<script src="../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    var ndContainer = document.querySelector('.container')
+    ndContainer.addEventListener('dragstart', function (e) {
+        console.log('%c-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+        console.log('dragstart...', window.getSelection().toString())
+        console.log($('input').val())
+        if (window.getSelection().toString() !== 'test') {
+          e.preventDefault()
+        } else {
+          console.log('===')
+        }
+    })
+
+    $('input').focus().select()
+    $('input').on('select', function (e) {
+      console.log('select:',e)
+    })
+
+</script>
+</body>
+</html>
