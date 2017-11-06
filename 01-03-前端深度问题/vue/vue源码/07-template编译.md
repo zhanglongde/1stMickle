@@ -9,3 +9,9 @@ createCompiler
 compileToFunctions
 functionCompileCache 缓存
 baseCompile
+
+
+
+编译结束产生两个结果
+VNode
+实例化，及new Vue()
