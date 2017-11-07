@@ -6,3 +6,9 @@ style:格式（不影响代码运行的变动）
 refactor:重构（既不是新增功能，也不是修改bug）
 test:增加测试
 chore:构建过程或辅助工具的变动
+
+
+如何写好Git commit log?
+https://www.zhihu.com/question/21209619
+gitmoji
+https://gitmoji.carloscuesta.me/
