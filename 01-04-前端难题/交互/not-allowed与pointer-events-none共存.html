@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        利用两层元素模拟实现：
+        外部模拟光标
+        内部模拟事件，内部元素占满外部元素
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul,ul>li{
+            list-style: none;
+        }
+        .disabled{
+            cursor:not-allowed;
+        }
+        .pointer-none{
+            pointer-events: none;
+        }
+        .btn-bar{
+
+        }
+        .button{
+           display:inline-block;
+           width:100px;
+           height:40px;
+
+            line-height:40px;
+            text-align:center;
+
+            background-color: #58a;
+            color:#fff;
+        }
+        .button>div{
+            height:100%;
+            width:100%;
+        }
+        .container{
+            position:absolute;
+            top:0;left:0;right:0;bottom:0;
+            margin:auto;
+
+            width:500px;
+            height:300px;
+            border:1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul class="btn-bar">
+        <li>test</li>
+        <li class="disabled button"><div class="pointer-none test">点击</div></li>
+        <li>hello</li>
+    </ul>
+</div>
+
+<script>
+    window.onload = function () {
+      var ndTest = document.querySelector('.test')
+      ndTest.addEventListener('click', function (e) {
+        console.log(e.target)
+      })
+    }
+</script>
+</body>
+</html>
