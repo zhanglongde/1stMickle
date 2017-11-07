@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+   var foo = function () {
+      var t = new Date()
+      foo = function () { // 重写函数
+        return t
+      }
+      return foo
+    }
+    foo()
+    var t = foo()
+    console.log(t)
+
+
+</script>
 </body>
 </html>

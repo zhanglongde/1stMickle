@@ -1,0 +1,6 @@
+类数组对象
+拥有一个length属性和多干索引属性的对象
+
+
+arguments对象
+arguments对象除le类数组的索引属性和length属性之外，还有一个callee属性
