@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        auto
+        使用普通滚动, 当手指从触摸屏上移开，滚动会立即停止。
+        touch
+        使用具有回弹效果的滚动, 当手指从触摸屏上移开，内容会继续保持一段时间的滚动效果。继续滚动的速度和持续的时间和滚动手势的强烈程度成正比。同时也会创建一个新的堆栈上下文。
+    </title>
+    <style>
+        .container{
+            position:absolute;margin:auto;left:0;top:0;right:0;bottom:0;
+            width:360px;
+            /*height:667px;*/
+            /*overflow: auto;*/
+            -webkit-overflow-scrolling: touch;
+
+            text-align:center;
+
+            background-color: #fff;
+            box-shadow:0 0 3px 3px rgba(0,0,0,0.4);
+        }
+        .row{
+            height:38px;
+            border:1px solid #bdbdbd;
+
+            line-height:40px;
+
+            color:#fff;
+            background-color: #9c3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">01</div>
+    <div class="row">02</div>
+    <div class="row">03</div>
+    <div class="row">04</div>
+    <div class="row">05</div>
+    <div class="row">06</div>
+    <div class="row">07</div>
+    <div class="row">08</div>
+    <div class="row">09</div>
+    <div class="row">10</div>
+    <div class="row">11</div>
+    <div class="row">12</div>
+    <div class="row">13</div>
+    <div class="row">14</div>
+    <div class="row">15</div>
+    <div class="row">16</div>
+    <div class="row">17</div>
+    <div class="row">18</div>
+    <div class="row">19</div>
+    <div class="row">20</div>
+    <div class="row">21</div>
+    <div class="row">22</div>
+    <div class="row">23</div>
+</div>
+</body>
+</html>
