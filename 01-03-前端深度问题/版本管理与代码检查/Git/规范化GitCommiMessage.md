@@ -10,5 +10,3 @@ chore:构建过程或辅助工具的变动
 
 如何写好Git commit log?
 https://www.zhihu.com/question/21209619
-gitmoji
-https://gitmoji.carloscuesta.me/
