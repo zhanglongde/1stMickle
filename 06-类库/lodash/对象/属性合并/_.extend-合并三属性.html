@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../../lodash.js"></script>
+<script>
+    var a = {
+        labelIds:['STARRED','INBOX'],
+        isFlagged: true
+    } // new
+    var b = {
+        labelIds:['INBOX'],
+        isFlagged: false
+    } // old
+    var labelIds = a.labelIds
+    var n = _.extend(a,b,labelIds)
+    console.log(n)
+</script>
+</body>
+</html>

@@ -16,10 +16,23 @@
   profile emailAddress
   label 拍平与嵌套
   thread id historyId messages labelIds
+         除id外，labelIds等属性由messages属性计算而来
   message id historyId labelIds
+          只有labelIds isFlagged属性会变化，其他属性一旦形成，不在变化了
+          注意组件内部数据：
+          其draft属性由计算而来，属于组件内部显示数据
+          md5属性也是组件数据
   draft draftId不变
   attachments
-5.难点
+5.数据流
+                    (部分组件数据如ajax，md5等用于显示，数据封闭在组件内部)
+  store(state)=>getter=>view=>
+                                  =>
+       (commit)<=action(dispatch) <= indexedDB
+                  ^
+                  ||(notification/ajax:get)
+              server<=(ajax:post delete put)
+6.难点
 列表 初始化：列表分标签初始化，如何处理标签交叉问题=>通过labelIds关联，historyId标记版本，用一个内存缓存队列保证数据唯一性
             整页拉取id-historyId,分片拉取详情列表，分片大小由首屏所能够容纳的数量决定，与DB数据对比historyId，将版本更新的邮件合并成一片
      同步：WebSocket通知，historyList处理
@@ -42,17 +55,17 @@
 编辑器 兼容性 与非编辑器部分交互 原生js处理DOM
       图片粘贴 base64
       execCommand selection range
-6.有意思的点
+7.有意思的点
 转发 node-http-proxy
 国际化 node-xlsx js-xlsx
 字体 字体包还是font-family
-7.失败点
-7.1旧的列表同步策略
+8.失败点
+8.1旧的列表同步策略
 404失效，导致：1）很长时间没有打开，首次加载巨慢 2）虽然近期打开过，但是由于客户邮件量巨大，无法destroy
 向上向下
-7.2旧的持久化缓存策略
+8.2旧的持久化缓存策略
 vuex 插件钩子
-8.性能考虑
+9.性能考虑
 内存缓存的阈值
 indexDB阈值，超出阈值对indexDB的利用
 改成无限滚动，如何回收DOM
