@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .container{
+            width:300px;
+            height:300px;
+
+            border:20px solid #cdcdcd;
+            padding:30px;
+            margin:40px;
+
+            background-color: #58a;
+            background-clip:content-box;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    container
+</div>
+
+<script src="../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    console.log($('.container').height()) // content
+    console.log($('.container').innerHeight()) // content+padding
+    console.log($('.container').outerHeight()) // content+padding+border
+    console.log($('.container').outerHeight(true)) // content+padding+border+margin
+</script>
+</body>
+</html>
