@@ -90,7 +90,7 @@
                         </div>
                         <span v-if="message.draft.type!=='forward'">...</span>
                         <div v-else v-html="message.draft.html"></div>
-                        <div class="footer" :class="[{'sticky-footer':isSticky && message.draft.type==='forward'}]">draft footer</div>
+                        <div class="footer" :class="[{'sticky-footer':isSticky && (message.draft.type==='forward')}]">draft footer</div>
                     </div>
                 </div>
             </div>
@@ -108,7 +108,9 @@
         el:'#app',
         data: {
           thread: thread,
-            isSticky: true
+          isSticky: true,
+            lastIndex: -1,
+          curIndex: -1
         },
         methods: {
             reply (index){
@@ -126,6 +128,7 @@
                this.thread.messages[index].draft.type = 'forward'
                this.thread.messages[index].draft.html = 'forward <br/>' + this.thread.messages[index].html
                if (this.thread.messages[index].isOpen) {
+                   this.curIndex = index
                    this.messageScroll(index)
                }
             },
@@ -134,12 +137,29 @@
                 let ndMessage = $('.message-container').get(index)
                 let top = $(ndMessage).find('.draft').offset().top
 //                let heightToolbar = $('.toolbar').outerHeight()
-                console.log($(ndMessage).find('.draft').offset())
+//                console.log($(ndMessage).find('.draft').offset())
                 $('.container').scrollTop(top - (window.innerHeight - scrollInitHeight))
               })
             },
             scrollMail () {
-                console.log('%c-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+                if (this.curIndex < 0) {
+                  return
+                }
+//                console.log('%c-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+                let ndMessage = $('.message-container').get(this.curIndex)
+                console.log('top:', $(ndMessage).find('.draft').offset().top)
+                console.log('outerHeight:', $(ndMessage).find('.draft').outerHeight())
+                let top = $(ndMessage).find('.draft').offset().top
+                let outerHeight = $(ndMessage).find('.draft').outerHeight()
+                if (top > scrollInitHeight + 100 || (-top + 50) > outerHeight) {
+//                  console.log('cancel sticky')
+                  this.isSticky = false
+                  this.curIndex = -1
+//                  this.lastIndex = -1
+                } else {
+                  this.isSticky = true
+//                  this.curIndex = this.lastIndex
+                }
             }
         }
     })
