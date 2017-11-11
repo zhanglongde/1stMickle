@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function add(a) {
+      var sum = 0;
+      sum +=a;
+      return function temp(b) {
+        if (arguments.length === 0) {
+          return sum;
+        } else {
+          sum = sum+b;
+          return temp;
+        }
+      }
+    }
+    console.log(add(1)(2)())
+    console.log(add(1)(2)(3)())
+</script>
+</body>
+</html>

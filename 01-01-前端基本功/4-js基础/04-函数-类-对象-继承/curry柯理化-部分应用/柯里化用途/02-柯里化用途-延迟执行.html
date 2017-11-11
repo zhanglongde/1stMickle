@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  var add = function() {
+    var _this = this,
+      _args = arguments
+    return function() {
+      if (!arguments.length) {
+        var sum = 0;
+        for (var i = 0,
+               c; c = _args[i++];) sum += c
+        return sum
+      } else {
+        Array.prototype.push.apply(_args, arguments) return arguments.callee
+      }
+    }
+  }
+  add(1)(2)(3)(4)();//10
+</script>
+</body>
+</html>

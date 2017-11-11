@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        当一个对象转换成原始值时，先查看对象是否有valueOf方法。
+        如果有并且返回值是一个原始值，那么直接返回这个值
+        如果没有valueOf或反悔的不是原始值，那么调用toString方法，返回字符串表示。
+    </title>
+</head>
+<body>
+<script>
+    function add(a) {
+      var sum = 0;
+      sum += a;
+      var temp = function (b) {
+        if (arguments.length === 0) {
+          return sum
+        } else {
+          sum = sum+b;
+          return temp;
+        }
+      }
+      temp.toString = temp.valueOf = function () {
+        return Number(sum)
+      }
+      return temp;
+    }
+    var a = add(1)(5)
+    var b = add(1)(5)(10)
+    console.log(a, typeof a)
+    console.log(b, typeof b)
+    console.log(a+b)
+</script>
+</body>
+</html>

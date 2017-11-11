@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Curry,又叫部分求值，将大问题逐一拆解为小问题（表现为拆解函数参数）
+        自动curry
+        lodash实现curry的方式
+    </title>
+</head>
+<body>
+
+<script>
+    function curry(func,lastArgs) {
+//       初始化判断
+       !Array.isArray(lastArgs) && (lastArgs = [])
+       return function () {
+//         获得累积参数
+         let argSum = lastArgs.concat([].slice.call(arguments))
+         if (argSum.length < func.length) {
+           return curry(func, argSum)
+         }
+         return func.apply(this,argSum)
+       }
+    }
+    var add = curry(function (x,y,z,q) {
+      var sum =0;
+      for(var i=0;i<arguments.length;i++){
+        sum += arguments[i];
+      }
+      return sum
+    })
+    var incre = add(1)(10)(6)
+    var incre2 = add(1)(10)(6)(7)
+    console.log(incre)
+    console.log(incre2)
+</script>
+</body>
+</html>

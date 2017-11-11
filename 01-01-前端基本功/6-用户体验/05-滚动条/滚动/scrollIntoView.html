@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        让当前元素滚动到浏览器窗口的可视区域内
+        可以用scrollTop = offsetTop来模拟
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+<a href="javascript:void(0);"  style="margin-bottom:1200px; display:block;" id="btnTest">按钮2</a>
+<div id="showscroll" style="width:100px; height:1500px; background-color: pink;"></div>
+
+
+<script>
+    window.onload = function () {
+       var btnTest = document.querySelector('#btnTest')
+       btnTest.addEventListener('click',function () {
+//         document.getElementById('showscroll').scrollIntoView();
+         document.getElementById('showscroll').scrollIntoView({block: "end", behavior: "smooth"});
+       })
+    }
+</script>
+</body>
+</html>

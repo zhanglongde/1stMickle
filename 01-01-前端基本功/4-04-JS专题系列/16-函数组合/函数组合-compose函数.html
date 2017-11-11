@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  var toUpperCase = function (x) {
+    return x.toUpperCase();
+  }
+  var hello = function (x) {
+    return 'HELLO, ' + x
+  }
+  var compose = function (f,g) {
+    return function (x) {
+      return f(g(x))
+    }
+  }
+  var greet = compose(hello,toUpperCase)
+  console.log(greet('kevin'))
+</script>
+</body>
+</html>
