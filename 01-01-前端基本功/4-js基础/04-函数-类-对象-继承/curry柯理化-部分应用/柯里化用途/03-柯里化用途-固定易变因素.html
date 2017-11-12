@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        提前把易变因素，传参固定下来，生成一个更明确的应用函数
+        例如：bind函数用以固定this这个易变对象
+    </title>
+</head>
+<body>
+
+<script>
+    Function.prototype.newBind = function (context) {
+      var _this = this;
+      _args = Array.prototype.slice.call(arguments,1)
+      return function () {
+        return _this.apply(context,_args.concat(Array.prototype.slice.call(arguments)))
+      }
+    }
+
+    var foo = {
+      x:666
+    };
+    var bar = function () {
+      console.log(this.x)
+    }.newBind(foo)
+    bar();
+</script>
+</body>
+</html>

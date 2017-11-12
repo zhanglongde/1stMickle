@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        提高通用性
+    </title>
 </head>
 <body>
 <script>
@@ -22,6 +24,22 @@
     var c = map(square,[6,7,8,9,10])
     var d = map(double,[6,7,8,9,10])
     console.log(c,d)
+
+    function currying(fn) {
+      var slice = Array.prototype.slice;
+      var _args = slice.call(arguments,1)
+      return function () {
+        var _inargs = slice.call(arguments);
+        return fn.apply(null,_args.concat(_inargs));
+      };
+    }
+
+//    利用柯里化改造
+    var mapSQ = currying(map,square)
+    var mapDB = currying(map,double)
+    var e = mapSQ([1,2,3,4,5])
+    var f = mapDB([1,2,3,4,5])
+    console.log(e,f)
 </script>
 </body>
 </html>
