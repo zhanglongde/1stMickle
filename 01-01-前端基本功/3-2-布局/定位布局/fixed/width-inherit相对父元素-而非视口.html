@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .container {
+            position:absolute;top:0;left:0;right:0;bottom:0;
+            margin:auto;
+            width: 400px;
+            height:300px;
+
+            border: 10px solid red;
+            background-color: #58a;
+        }
+        /*通过套一层，达到fixed元素宽度撑满父元素的content-box，而不会多出border的宽度*/
+        .fixed-wrapper{
+            width:380px;
+        }
+        .fixed {
+            position: fixed;
+            width: inherit;
+            height:200px;
+            background-color: #fc3;
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="fixed-wrapper">
+        <div class="fixed">fixed</div>
+    </div>
+</div>
+</body>
+</html>
