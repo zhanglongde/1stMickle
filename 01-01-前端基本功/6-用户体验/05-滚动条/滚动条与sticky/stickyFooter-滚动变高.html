@@ -172,21 +172,22 @@
                 let domArray = $('.message-container .draft').toArray();
                 if (size > 0) {
                     domArray.map((item,index) => {
+                        let distanceThreshold = 200 // 滚动到离草稿边界的高度，消失
                         let parentOffsetTop = item.offsetTop // 相对父元素，不变
                         let height = $(item).outerHeight()
-                        let top = $(item).offset().top // 相对window
-//                        console.log(parentOffsetTop,containerScrollTop, top, window.innerHeight, height)
+//                        console.log(parentOffsetTop,containerScrollTop,height)
                         if ((containerScrollTop + clientHeight >= parentOffsetTop) && (containerScrollTop + clientHeight <= parentOffsetTop + height)) {
                             console.log('进入可视区域:',index)
                         } else {
                             console.log('离开可视区域:',index)
                         }
-                        if ((containerScrollTop + clientHeight >= parentOffsetTop + 50*2) && (containerScrollTop + clientHeight <= parentOffsetTop + height)) {
+                        if ((containerScrollTop + clientHeight >= parentOffsetTop + distanceThreshold) && (containerScrollTop + clientHeight <= parentOffsetTop + height)) {
                             this.isSticky = true
                         } else {
                             this.isSticky = false
                         }
-                        if ((top < 50) && (top > -(height - 200))) {
+
+                        if ((containerScrollTop > parentOffsetTop) && (containerScrollTop + distanceThreshold < parentOffsetTop + height)) {
                           this.isHeaderSticky = true
                         } else {
                           this.isHeaderSticky = false
