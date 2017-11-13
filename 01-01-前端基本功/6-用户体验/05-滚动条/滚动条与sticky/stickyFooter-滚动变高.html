@@ -2,7 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        sticky header and footer
+        随着滚动条的滚动，
+        当进入元素的可视区域，容器的scrollTop 元素的top都在变化
+        offsetTop:元素上边缘距离容器上边缘的距离，始终不变
+        元素高度、窗体高度始终不变
+
+        offset() offsetParent()
+    </title>
     <style>
         *{
             margin:0;
@@ -103,13 +111,12 @@
 <script src="../../../../lib/jquery-1.11.3.min.js"></script>
 <script src="../../../../lib/vue.js"></script>
 <script>
-    let scrollInitHeight = 400
+    let scrollInitHeight = 400 // 草稿高度大于可视区域时，显示的初始高度
     new Vue({
         el:'#app',
         data: {
           thread: thread,
           isSticky: true,
-            lastIndex: -1,
           curIndex: -1
         },
         methods: {
@@ -117,11 +124,17 @@
                this.thread.messages[index].isOpen = !this.thread.messages[index].isOpen
                this.thread.messages[index].draft.type = 'reply'
                this.thread.messages[index].draft.html = 'reply <br/>' + this.thread.messages[index].html
+               if (this.thread.messages[index].isOpen) {
+                  this.messageScroll(index)
+               }
            },
             replyAll (index) {
                 this.thread.messages[index].isOpen = !this.thread.messages[index].isOpen
                 this.thread.messages[index].draft.type = 'replyAll'
                 this.thread.messages[index].draft.html = 'reply all <br/>' + this.thread.messages[index].html
+                if (this.thread.messages[index].isOpen) {
+                   this.messageScroll(index)
+                }
             },
             forward (index){
                this.thread.messages[index].isOpen = !this.thread.messages[index].isOpen
@@ -135,30 +148,51 @@
             messageScroll (index) {
               this.$nextTick(() => {
                 let ndMessage = $('.message-container').get(index)
-                let top = $(ndMessage).find('.draft').offset().top
+                let parentOffsetTop = $(ndMessage).find('.draft').get(0).offsetTop // 草稿元素距离浏览器顶部的距离
 //                let heightToolbar = $('.toolbar').outerHeight()
-//                console.log($(ndMessage).find('.draft').offset())
-                $('.container').scrollTop(top - (window.innerHeight - scrollInitHeight))
+                $('.container').scrollTop(parentOffsetTop - (window.innerHeight - scrollInitHeight))
               })
             },
             scrollMail () {
-                if (this.curIndex < 0) {
+                let ndMessage = $('.message-container').get(this.curIndex)
+                let ndDraft = $(ndMessage).find('.draft')
+                if (!ndDraft.get(0)) {
                   return
                 }
-//                console.log('%c-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
-                let ndMessage = $('.message-container').get(this.curIndex)
-                console.log('top:', $(ndMessage).find('.draft').offset().top)
+                console.log('parentOffsetTop:', $(ndMessage).find('.draft').get(0).offsetTop)
                 console.log('outerHeight:', $(ndMessage).find('.draft').outerHeight())
-                let top = $(ndMessage).find('.draft').offset().top
+                let parentOffsetTop = $(ndMessage).find('.draft').get(0).offsetTop
                 let outerHeight = $(ndMessage).find('.draft').outerHeight()
-                if (top > scrollInitHeight + 100 || (-top + 50) > outerHeight) {
-//                  console.log('cancel sticky')
+//                if ((top > (window.innerHeight - 50*2)) || ((-top + window.innerHeight) > outerHeight)) {
 //                  this.isSticky = false
-//                  this.curIndex = -1
-//                  this.lastIndex = -1
-                } else {
+//                } else {
 //                  this.isSticky = true
-//                  this.curIndex = this.lastIndex
+//                }
+                this.getCurIndex();
+            },
+            getCurIndex () {
+//                console.log('container scrollTop:',document.querySelector('.container').scrollTop)
+                let containerScrollTop = document.querySelector('.container').scrollTop
+                let size = $('.message-container .draft').size()
+                let domArray = $('.message-container .draft').toArray();
+                if (size > 0) {
+                    console.log(size,domArray)
+                    domArray.map((item,index) => {
+                        let parentOffsetTop = item.offsetTop
+                        let height = $(item).outerHeight()
+                        let top = $(item).offset().top
+                        console.log(parentOffsetTop,containerScrollTop, top, window.innerHeight, height)
+                        if ((containerScrollTop + window.innerHeight >= parentOffsetTop) && (containerScrollTop + window.innerHeight <= parentOffsetTop + height)) {
+                            console.log('进入可视区域:',index)
+                        } else {
+                            console.log('离开可视区域:',index)
+                        }
+                        if ((containerScrollTop + window.innerHeight >= parentOffsetTop + 50*3) && (containerScrollTop + window.innerHeight <= parentOffsetTop + height)) {
+                            this.isSticky = true
+                        } else {
+                            this.isSticky = false
+                        }
+                    })
                 }
             }
         }
