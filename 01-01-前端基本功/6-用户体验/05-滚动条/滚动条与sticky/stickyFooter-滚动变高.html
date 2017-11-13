@@ -69,12 +69,12 @@
         .draft{
             min-height:400px;
         }
-        .sticky-footer{
+        .draft.sticky-footer .footer{
             position:fixed;
             left:auto;
             bottom:0;
         }
-        .sticky-header{
+        .draft.sticky-header .header{
             position:fixed;
             left:auto;
             top:50px;
@@ -99,12 +99,12 @@
                     </div>
                     <div class="message" v-html="message.html"></div>
                     <div class="draft" v-if="message.isOpen">
-                        <div class="header" :class="[{'sticky-header':isHeaderSticky}]">
+                        <div class="header">
                             draft header
                         </div>
                         <span v-if="message.draft.type!=='forward'">...</span>
                         <div v-else v-html="message.draft.html"></div>
-                        <div class="footer" :class="[{'sticky-footer':isSticky && (message.draft.type==='forward')}]">draft footer</div>
+                        <div class="footer" :class="[{'sticky-footer':(message.draft.type==='forward')}]">draft footer</div>
                     </div>
                 </div>
             </div>
@@ -121,10 +121,7 @@
         el:'#app',
         data: {
           scrollInitHeight: 300,   // 草稿高度大于可视区域时，显示的初始高度
-          thread: thread,
-          isSticky: true,
-          isHeaderSticky: false,
-          viewportDraft: []
+          thread: thread
         },
         methods: {
             reply (index){
@@ -182,15 +179,15 @@
                             console.log('离开可视区域:',index)
                         }
                         if ((containerScrollTop + clientHeight >= parentOffsetTop + distanceThreshold) && (containerScrollTop + clientHeight <= parentOffsetTop + height)) {
-                            this.isSticky = true
+                            $(item).addClass('sticky-footer')
                         } else {
-                            this.isSticky = false
+                            $(item).removeClass('sticky-footer')
                         }
 
                         if ((containerScrollTop > parentOffsetTop) && (containerScrollTop + distanceThreshold < parentOffsetTop + height)) {
-                          this.isHeaderSticky = true
+                          $(item).addClass('sticky-header')
                         } else {
-                          this.isHeaderSticky = false
+                          $(item).removeClass('sticky-header')
                         }
                     })
                 }
