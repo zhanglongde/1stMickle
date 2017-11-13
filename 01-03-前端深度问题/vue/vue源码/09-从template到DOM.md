@@ -10,7 +10,7 @@ Vue构造类
 调用init函数
 主要做了两件事
 1.初始化options：包括生命周期、事件、render函数、state
-2.$mount组件(挂在组件，应用真实DOM)
+2.$mount组件(挂载组件，应用真实DOM)
 
 在生命钩子beforeCreate与created之间会初始化state,
 在此过程中，会一次初始化props methods data computed与watch
@@ -36,7 +36,7 @@ generate
 watcher到视图
 watcher对象会通过updateComponent方法达到更新视图的目的
 watcher并不是实时更新视图的，
-会将watcher对象存在一个队列中，在下一个tick时个能信视图。
+会将watcher对象存在一个队列中，在下一个tick时刻更新视图。
 
 
 VNode
