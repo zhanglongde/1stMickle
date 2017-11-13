@@ -32,6 +32,7 @@
         }
         .header{
             height:50px;
+            width:500px;
             background-color: #58a;
         }
         .footer{
@@ -73,6 +74,11 @@
             left:auto;
             bottom:0;
         }
+        .sticky-header{
+            position:fixed;
+            left:auto;
+            top:50px;
+        }
     </style>
 </head>
 <body>
@@ -93,7 +99,7 @@
                     </div>
                     <div class="message" v-html="message.html"></div>
                     <div class="draft" v-if="message.isOpen">
-                        <div class="header">
+                        <div class="header" :class="[{'sticky-header':isHeaderSticky}]">
                             draft header
                         </div>
                         <span v-if="message.draft.type!=='forward'">...</span>
@@ -111,13 +117,14 @@
 <script src="../../../../lib/jquery-1.11.3.min.js"></script>
 <script src="../../../../lib/vue.js"></script>
 <script>
-    let scrollInitHeight = 400 // 草稿高度大于可视区域时，显示的初始高度
     new Vue({
         el:'#app',
         data: {
+          scrollInitHeight: 300,   // 草稿高度大于可视区域时，显示的初始高度
           thread: thread,
           isSticky: true,
-          curIndex: -1
+          isHeaderSticky: false,
+          viewportDraft: []
         },
         methods: {
             reply (index){
@@ -141,56 +148,48 @@
                this.thread.messages[index].draft.type = 'forward'
                this.thread.messages[index].draft.html = 'forward <br/>' + this.thread.messages[index].html
                if (this.thread.messages[index].isOpen) {
-                   this.curIndex = index
                    this.messageScroll(index)
                }
             },
             messageScroll (index) {
               this.$nextTick(() => {
                 let ndMessage = $('.message-container').get(index)
-                let parentOffsetTop = $(ndMessage).find('.draft').get(0).offsetTop // 草稿元素距离浏览器顶部的距离
+                let parentOffsetTop = $(ndMessage).find('.draft').get(0).offsetTop // 草稿元素距离父元素顶部的距离
+                let clientHeight =  $('.container').get(0).clientHeight
 //                let heightToolbar = $('.toolbar').outerHeight()
-                $('.container').scrollTop(parentOffsetTop - (window.innerHeight - scrollInitHeight))
+                $('.container').scrollTop(parentOffsetTop - (clientHeight - this.scrollInitHeight))
               })
             },
             scrollMail () {
-                let ndMessage = $('.message-container').get(this.curIndex)
-                let ndDraft = $(ndMessage).find('.draft')
-                if (!ndDraft.get(0)) {
-                  return
-                }
-                console.log('parentOffsetTop:', $(ndMessage).find('.draft').get(0).offsetTop)
-                console.log('outerHeight:', $(ndMessage).find('.draft').outerHeight())
-                let parentOffsetTop = $(ndMessage).find('.draft').get(0).offsetTop
-                let outerHeight = $(ndMessage).find('.draft').outerHeight()
-//                if ((top > (window.innerHeight - 50*2)) || ((-top + window.innerHeight) > outerHeight)) {
-//                  this.isSticky = false
-//                } else {
-//                  this.isSticky = true
-//                }
-                this.getCurIndex();
+              this.draftViewport();
             },
-            getCurIndex () {
-//                console.log('container scrollTop:',document.querySelector('.container').scrollTop)
+            draftViewport () { // 暂且考虑：仅有一个草稿元素在可视区域内
                 let containerScrollTop = document.querySelector('.container').scrollTop
+                let clientHeight = document.querySelector('.container').clientHeight
+//                console.log('container scrollTop:',containerScrollTop)
+//                console.log('clientHeight:',clientHeight)
                 let size = $('.message-container .draft').size()
                 let domArray = $('.message-container .draft').toArray();
                 if (size > 0) {
-                    console.log(size,domArray)
                     domArray.map((item,index) => {
-                        let parentOffsetTop = item.offsetTop
+                        let parentOffsetTop = item.offsetTop // 相对父元素，不变
                         let height = $(item).outerHeight()
-                        let top = $(item).offset().top
-                        console.log(parentOffsetTop,containerScrollTop, top, window.innerHeight, height)
-                        if ((containerScrollTop + window.innerHeight >= parentOffsetTop) && (containerScrollTop + window.innerHeight <= parentOffsetTop + height)) {
+                        let top = $(item).offset().top // 相对window
+//                        console.log(parentOffsetTop,containerScrollTop, top, window.innerHeight, height)
+                        if ((containerScrollTop + clientHeight >= parentOffsetTop) && (containerScrollTop + clientHeight <= parentOffsetTop + height)) {
                             console.log('进入可视区域:',index)
                         } else {
                             console.log('离开可视区域:',index)
                         }
-                        if ((containerScrollTop + window.innerHeight >= parentOffsetTop + 50*3) && (containerScrollTop + window.innerHeight <= parentOffsetTop + height)) {
+                        if ((containerScrollTop + clientHeight >= parentOffsetTop + 50*2) && (containerScrollTop + clientHeight <= parentOffsetTop + height)) {
                             this.isSticky = true
                         } else {
                             this.isSticky = false
+                        }
+                        if ((top < 50) && (top > -(height - 200))) {
+                          this.isHeaderSticky = true
+                        } else {
+                          this.isHeaderSticky = false
                         }
                     })
                 }
