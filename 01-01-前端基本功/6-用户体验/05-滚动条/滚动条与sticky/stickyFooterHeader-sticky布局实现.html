@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        sticky header and footer
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        html,body, #app{
+            height:100%;
+            overflow: hidden;
+        }
+        .toolbar{
+            height:50px;
+            width:500px;
+            margin:auto;
+        }
+        .container{
+            height:calc(100% - 50px);
+            overflow-y:auto;
+        }
+        .header{
+            height:50px;
+            width:500px;
+            background-color: #58a;
+        }
+        .footer{
+            height:50px;
+            width:500px;
+            background-color: #9c3;
+        }
+        .content{
+            /*position:relative;*/
+            width:500px;
+            margin:auto;
+            border: 1px solid #cdcdcd;
+
+            /*transform:scale(1);*/
+        }
+        .content>.bd{
+            border-top:2px solid #999;
+            padding-bottom:20px;
+        }
+        .content>.bd .message,
+        .content>.bd .draft{
+            font-size:20px;
+            line-height:3;
+        }
+        .bd>.message+.draft{
+            border-top:1px solid #f00;
+        }
+        .message{
+            background-color: #999;
+        }
+        .message-container+.message-container{
+            margin-top:50px;
+        }
+        .draft{
+            min-height:400px;
+        }
+        .draft .footer{
+            position:sticky;
+            left:auto;
+            bottom:0;
+        }
+        .draft .header{
+            position:sticky;
+            left:auto;
+            top:0;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="toolbar">
+        toolbar
+    </div>
+    <div class="container" @scroll="scrollMail">
+        <div class="content">
+            <div class="header">mail header</div>
+            <div class="bd">
+                <div class="message-container" v-for="(message,index) in thread.messages">
+                    <div class="reply">
+                        <div>{{index}}</div>
+                        <button @click="reply(index)">回复</button>
+                        <button @click="replyAll(index)">全部回复</button>
+                        <button @click="forward(index)">转发</button>
+                    </div>
+                    <div class="message" v-html="message.html"></div>
+                    <div class="draft" v-if="message.isOpen">
+                        <div class="header">
+                            draft header
+                        </div>
+                        <span v-if="message.draft.type!=='forward'">...</span>
+                        <div v-else v-html="message.draft.html"></div>
+                        <div class="footer" :class="[{'sticky-footer':(message.draft.type==='forward')}]">draft footer</div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">mail footer</div>
+        </div>
+    </div>
+</div>
+
+<script src="./mailData.js"></script>
+<script src="../../../../lib/jquery-1.11.3.min.js"></script>
+<script src="../../../../lib/vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data: {
+          scrollInitHeight: 300,   // 草稿高度大于可视区域时，显示的初始高度
+          thread: thread
+        },
+        methods: {
+            reply (index){
+               this.thread.messages[index].isOpen = !this.thread.messages[index].isOpen
+               this.thread.messages[index].draft.type = 'reply'
+               this.thread.messages[index].draft.html = 'reply <br/>' + this.thread.messages[index].html
+               if (this.thread.messages[index].isOpen) {
+                  this.messageScroll(index)
+               }
+           },
+            replyAll (index) {
+                this.thread.messages[index].isOpen = !this.thread.messages[index].isOpen
+                this.thread.messages[index].draft.type = 'replyAll'
+                this.thread.messages[index].draft.html = 'reply all <br/>' + this.thread.messages[index].html
+                if (this.thread.messages[index].isOpen) {
+                   this.messageScroll(index)
+                }
+            },
+            forward (index){
+               this.thread.messages[index].isOpen = !this.thread.messages[index].isOpen
+               this.thread.messages[index].draft.type = 'forward'
+               this.thread.messages[index].draft.html = 'forward <br/>' + this.thread.messages[index].html
+               if (this.thread.messages[index].isOpen) {
+                   this.messageScroll(index)
+               }
+            },
+            messageScroll (index) {
+              this.$nextTick(() => {
+                let ndMessage = $('.message-container').get(index)
+                let parentOffsetTop = $(ndMessage).find('.draft').get(0).offsetTop // 草稿元素距离父元素顶部的距离
+                let clientHeight =  $('.container').get(0).clientHeight
+//                let heightToolbar = $('.toolbar').outerHeight()
+                $('.container').scrollTop(parentOffsetTop - (clientHeight - this.scrollInitHeight))
+              })
+            },
+            scrollMail () {
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

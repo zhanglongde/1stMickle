@@ -159,6 +159,7 @@
             eleDrags[i].ondragstart = function (ev) {
 //            拖拽效果
                 ev.dataTransfer.effectAllowed = 'move'
+//                ev.dataTransfer.dropEffect = 'copy';
 //                ev.dataTransfer.setData('text',ev.target.innerHTML)
 //                ev.dataTransfer.setDragImage(ev.target,0,0)
 
@@ -181,6 +182,8 @@
 //        拖拽元素在目标元素上移动的时候
         eleDustbin.ondragover = function (ev) {
             ev.preventDefault()
+            console.log(ev.dataTransfer.files);
+            console.log(JSON.stringify(ev.dataTransfer.files[0]))
             return true;
         }
 

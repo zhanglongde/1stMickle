@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        弹性盒，sticky布局失效
+        解决：align-self: flex-start;
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .flexbox-wrapper {
+            display: flex;
+            height: 2000px;
+        }
+        .regular {
+            background-color: blue;
+        }
+        .sticky {
+            position: -webkit-sticky;
+            position: sticky;
+            align-self: flex-start;
+            top: 0;
+            background-color: red;
+            /*height:2000px;*/
+            transform:scale(1);
+        }
+    </style>
+</head>
+<body>
+<div class="flexbox-wrapper">
+    <div class="regular">
+        This is the regular box
+    </div>
+    <div class="sticky">
+        This is the sticky box
+    </div>
+</div>
+</body>
+</html>
