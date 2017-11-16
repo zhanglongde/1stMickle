@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<button>点击</button>
+<script>
+  document.querySelector('button').addEventListener('click', event => {
+    console.log('begin')
+
+    import('./dialogBox.js')
+      .then(dialogBox => {
+        dialogBox.open();
+      })
+      .catch(error => {
+          /* Error handling */
+      });
+  });
+</script>
 </body>
 </html>
