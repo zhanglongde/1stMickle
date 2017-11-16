@@ -12,6 +12,7 @@
 .scroll-v::-webkit-scrollbar-track{
     width:7px;
     height:30px;
+    /*background-color: #fff;*/
     background-color: transparent;
 }
 .scroll-v::-webkit-scrollbar-thumb{
