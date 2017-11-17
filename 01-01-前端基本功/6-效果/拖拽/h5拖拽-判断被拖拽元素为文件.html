@@ -2,9 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        "DragEnter" can not access dataTransfer.getData() due to security reason
+        event.dataTransfer.files
+        event.dataTransfer.items.length 可以得到拖拽的文件数
+        event.dataTransfer.types 可以得到类型
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        html,body{
+           height:100%;
+        }
+        .container{
+            width:500px;
+            height:500px;
+            position:absolute;top:0;left:0;right:0;bottom:0;
+            margin:auto;
+
+            border-radius:2px;
+            border:1px solid #ccc;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="container">
+    <div class="content"></div>
+</div>
+
+<script>
+    window.onload = function () {
+      document.body.addEventListener('dragenter', function (e) {
+//        console.log('dragenter', e, e.dataTransfer)
+        console.log('dragenter', e.dataTransfer, e.dataTransfer.files.length, e.dataTransfer.items.length, e.dataTransfer.types)
+      }, false)
+
+      document.body.addEventListener('dragover', function (e) {
+//        console.log('dragover', e, e.dataTransfer)
+      }, false)
+    }
+</script>
 </body>
 </html>
