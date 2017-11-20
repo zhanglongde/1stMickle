@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul,ul>li{
+            list-style: none;
+        }
+        .container{
+            width:500px;
+            height:300px;
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+        }
+
+        .menu-list{
+            position:absolute;
+            z-index:100;
+            padding:10px 0;
+
+            text-align:center;
+
+            background: #FFFFFF;
+            box-shadow: 0 3px 4px 0 rgba(0,0,0,0.17);
+            border-radius: 2.69px;
+
+        }
+        .menu-list>.menu-list-item{
+            padding:11px 12px;
+            min-width:150px;
+            min-height:22px;
+
+            font-size: 18px;
+            color: #414141;
+            letter-spacing: 0;
+            line-height: 16.15px;
+
+            cursor:pointer;
+        }
+        .menu-list>.menu-list-item:hover,.menu-list>.menu-list-item.active{
+            background: #D8D8D8;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul class="menu-list language-select" v-if="isLanguage">
+        <li class="menu-list-item active">test</li>
+        <li class="menu-list-item">test2</li>
+    </ul>
+</div>
+</body>
+</html>

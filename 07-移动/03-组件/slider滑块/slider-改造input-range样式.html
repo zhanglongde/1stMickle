@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #slider{ /*设置滑块下面那条线的样式*/
+            outline: none; /*去掉点击时出现的外边框*/
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none; /*这三个是去掉那条线原有的默认样式，划重点！！*/
+            width: 300px;
+            height: 4px;
+            background: orange;
+            /*这三个是设置滑块下面那条线的样式*/
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            /*::-webkit-slider-thumb是代表给滑块的样式进行变更*/
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none; /*//这三个是去掉滑块原有的默认样式，划重点！！*/
+            -webkit-box-shadow:0 0 2px ; /*设置滑块的阴影*/
+
+            width:20px;
+            height:20px;
+            border-radius:100%;
+            background-size: cover;
+            background: #fff;
+            /*//这几个是设置滑块的样式*/
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <input type="range" class="slider-block" id="slider" max="18" min="6" step="1" value="6" onchange="moveChange()">
+    </div>
+    <script>
+      function moveChange() {// 滑块的值改变，运行这个函数
+        console.log(document.getElementById('slider').value)
+      }
+    </script>
+</body>
+</html>

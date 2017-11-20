@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        html,body{
+            height:100%;
+
+            background-color: #58a;
+        }
+
+        .container{
+            width:500px;
+            height:300px;
+            position:absolute;top:0;right:0;left:0;bottom:0;
+            margin:auto;
+        }
+        .search-select{
+            height:40px;
+            width:200px;
+            transition:height 0.3s ease,width 0.3s ease;
+            transform-origin: center center;
+        }
+        .search-select>input[type=text]{
+            height:40px;
+            width:200px;
+        }
+        .search-select.popup{
+            position:fixed;
+            top:0;
+            left:0;
+            height:100%;
+            width:100%;
+            padding:10px;
+
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="search-select">
+        <input type="text">
+    </div>
+</div>
+
+<script>
+    var ndIpt = document.querySelector('input[type=text]')
+    ndIpt.addEventListener('focus', function (e) {
+//      console.log(e.target.parentNode)
+      e.target.parentNode.classList.add('popup')
+    })
+
+    ndIpt.addEventListener('keyup', function (e) {
+      if (e.key === 'Enter') {
+        e.target.parentNode.classList.remove('popup')
+      }
+    })
+</script>
+</body>
+</html>

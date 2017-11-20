@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        伪元素实现下拉箭头
+    </title>
+    <style>
+        .button {
+            border: 1px solid #bbb;
+            border-radius: 1px;
+            box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+            width: 300px;
+            background: #f3f3f3;
+            background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5));
+            background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 100%);
+            background: -o-linear-gradient(top, #ffffff 0%,#e5e5e5 100%);
+            background: -ms-linear-gradient(top, #ffffff 0%,#e5e5e5 100%);
+            background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+        }
+        /* --------------  */
+        /*  custom-select  */
+        /* --------------  */
+        .custom-select {
+            position: relative;
+        }
+        .custom-select select {
+            width:100%;
+            margin:0;
+            background:none;
+            border: 1px solid transparent;
+            outline: none;
+            /* Prefixed box-sizing rules necessary for older browsers */
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            /* Remove select styling */
+            appearance: none;
+            -webkit-appearance: none;
+            /* Font size must the 16px or larger to prevent iOS page zoom on focus */
+            /* General select styles: change as needed */
+            font-family: helvetica, sans-serif;
+            font-weight: bold;
+            color: #444;
+            padding: .6em 1.9em .5em .8em;
+            line-height:1.3;
+        }
+        .custom-select::after {
+            content: "";
+            position: absolute;
+            width: 0px;
+            height: 0px;
+            top: 50%;
+            right: 8px;
+            margin-top:-4px;
+            border:8px solid #929497;
+            border-width: 8px 5px 8px;
+            border-color: #929497 transparent transparent transparent;
+            z-index: 2;
+            pointer-events:none;
+        }
+        /* Hover style */
+        .custom-select:hover {
+            border:1px solid #888;
+        }
+        /* Focus style */
+        .custom-select select:focus {
+            outline:none;
+            box-shadow: 0 0 1px 3px rgba(180,222,250, 1);
+            background-color:transparent;
+            color: #222;
+            border:1px solid #aaa;
+        }
+        /* Set options to normal weight */
+        .custom-select option {
+            font-weight:normal;
+        }
+    </style>
+</head>
+<body>
+<div class="button custom-select">
+    <select name="" id="">
+        <option value="选择1">选择1</option>
+        <option value="选择2">选择2</option>
+        <option value="选择3">选择3</option>
+        <option value="选择4">选择4</option>
+    </select>
+</div>
+</body>
+</html>
