@@ -8,7 +8,7 @@
             margin:0;
             padding:0;
         }
-        #slider{ /*设置滑块下面那条线的样式*/
+        input[type="range"]{ /*设置滑块下面那条线的样式*/
             outline: none; /*去掉点击时出现的外边框*/
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -36,7 +36,7 @@
 </head>
 <body>
     <div class="container">
-      <input type="range" class="slider-block" id="slider" max="18" min="6" step="1" value="6" onchange="moveChange()">
+      <input type="range" max="18" min="6" step="1" value="6" onchange="moveChange()">
     </div>
     <script>
       function moveChange() {// 滑块的值改变，运行这个函数

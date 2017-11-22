@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>A styled slider</title>
+    <script src="../../../lib/jquery-1.11.3.min.js" type="text/javascript"></script>
+
+    <style type="text/css">
+        input[type='range'] {
+            -webkit-appearance: none;
+            width: 100%;
+            border-radius: 4px;
+            height: 5px;
+            border-color: #1f1f1f;
+            border-style: solid;
+            border-width: 1px;
+            background: -webkit-linear-gradient(left, green 0%, green 50%, black 50%);
+        }
+
+        input[type='range']::-webkit-slider-thumb {
+            -webkit-appearance: none !important;
+            -webkit-border-radius: 2px;
+            background-color: blue;
+            height: 21px;
+            width: 9px;
+        }
+
+        input[type=range]:focus {
+            outline: none;
+        }
+    </style>
+
+
+</head>
+<body>
+<div>
+    <input type="range" value="75" min="100" max="300" />
+</div>
+<script type="text/javascript" >
+    $('input[type="range"]').on('input', function () {
+        var percent = Math.ceil(((this.value - this.min) / (this.max - this.min)) * 100);
+        console.log(this.min);
+        $(this).css('background', '-webkit-linear-gradient(left, green 0%, green ' + percent + '%, black ' + percent + '%)');
+    });
+</script>
+</body>
+</html>
