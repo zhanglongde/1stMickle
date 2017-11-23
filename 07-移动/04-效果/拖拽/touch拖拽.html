@@ -2,9 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
     <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html,body {
+            width: 100%;
+            height:100%;
+        }
+        #div1 {
+            width: 50px;
+            height: 50px;
+            background: cyan;
+            position: absolute;
+        }
+    </style>
 </head>
 <body>
+<div id="div1">
+</div>
 
+<script>
+    var div1=document.querySelector('#div1');
+    var maxW=document.body.clientWidth-div1.offsetWidth;
+    var maxH=document.body.clientHeight-div1.offsetHeight;
+
+    div1.addEventListener('touchstart',function(e){
+        var ev = e || window.event;
+        var touch = ev.targetTouches[0];
+        oL = touch.clientX - div1.offsetLeft;
+        oT = touch.clientY - div1.offsetTop;
+        document.addEventListener("touchmove",defaultEvent,false);
+    })
+
+
+    div1.addEventListener('touchmove',function(e){
+        var ev = e || window.event;
+        var touch = ev.targetTouches[0];
+        var oLeft = touch.clientX - oL;
+        var oTop = touch.clientY - oT;
+        if(oLeft<0){
+            oLeft=0;
+        }else if (oLeft>=maxW) {
+            oLeft=maxW;
+        }
+        if(oTop<0){
+            oTop=0;
+        }else if (oTop>=maxH) {
+            oTop=maxH;
+        }
+
+        div1.style.left = oLeft + 'px';
+        div1.style.top = oTop + 'px';
+
+    })
+    div1.addEventListener('touchend',function(){
+        document.removeEventListener("touchmove",defaultEvent);
+    })
+    function defaultEvent(e) {
+
+
+        e.preventDefault();
+    }
+</script>
 </body>
 </html>
