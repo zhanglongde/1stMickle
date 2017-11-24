@@ -1,10 +1,296 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Document</title>
+    <link href="css/mobiscroll.custom-3.0.0-beta6.min.css" rel="stylesheet" type="text/css" />
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+    <script src="js/mobiscroll.custom-3.0.0-beta6.min.js" type="text/javascript"></script>
+    <style>
+        body,
+        .mbsc-page {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .demo-paging,
+        .md-paging,
+        .md-paging>div,
+        .md-paging .md-page {
+            height: 100%;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .md-paging .md-cont {
+            display: none;
+        }
+
+        .md-paging .md-selected {
+            display: block;
+        }
+
+        .md-paging .md-list,
+        .md-paging .mbsc-lv-cont {
+            height: 100%;
+            overflow: auto;
+        }
+
+        .md-paging .mbsc-lv-img {
+            border-radius: 2.8em;
+            height: 2.8em;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="md-paging">
+    <ul class="main-menu" style="display:none;">
+        <li data-id="1" data-icon="music" data-selected="true" data-page="md-music-cont">Music</li>
+        <li data-id="2" data-icon="book" data-page="md-book-cont">Books</li>
+        <li data-id="3" data-icon="film" data-page="md-movie-cont">Movies</li>
+    </ul>
+
+    <div class="md-cont md-music-cont md-selected">
+        <ul class="md-category md-music-category" style="display:none;">
+            <li data-id="1" data-page="md-pop" data-selected="true">Pop</li>
+            <li data-id="2" data-page="md-rock">Rock</li>
+            <li data-id="3" data-page="md-jazz">Jazz</li>
+            <li data-id="4" data-page="md-piano">Piano</li>
+            <li data-id="5" data-page="md-electric">Electric</li>
+        </ul>
+
+        <ul class="md-content" data-cat="md-music-category" style="display:none;">
+            <li class="md-pop">
+                <ul class="md-music-lv md-list" style="display:none;">
+                    <li data-icon="play" data-icon-align="right"><img src="/Content/img/demos/paging/Adele_1x.png" />
+                        <h4>Hello</h4>
+                        <p>Adele</p>
+                    </li>
+                    <!-- Showing partial data. Download full source. -->
+                </ul>
+
+            </li>
+
+            <li class="md-rock">
+                <ul class="md-music-lv md-list" style="display:none;">
+                    <li data-icon="play" data-icon-align="right"><img src="/Content/img/demos/paging/Elle_King_1x.png" />
+                        <h4>Ex's & Oh's</h4>
+                        <p>Elle King</p>
+                    </li>
+                </ul>
+
+            </li>
+
+            <li class="md-jazz">
+                <ul class="md-music-lv md-list" style="display:none;">
+                    <li data-icon="play" data-icon-align="right"><img src="/Content/img/demos/paging/Jeff_Lorber_1x.png" />
+                        <h4>Get Up</h4>
+                        <p>Jeff Lorber Fusion</p>
+                    </li>
+                </ul>
+
+            </li>
+
+            <li class="md-piano">
+                <ul class="md-music-lv md-list" style="display:none;">
+                    <li data-icon="play" data-icon-align="right"><img src="/Content/img/demos/paging/Rachmaninoff_1x.png" />
+                        <h4>Etudes Tableaux</h4>
+                        <p>Rachmaninoff</p>
+                    </li>
+                </ul>
+
+            </li>
+
+            <li class="md-electric">
+                <ul class="md-music-lv md-list" style="display:none;">
+                    <li data-icon="play" data-icon-align="right"><img src="/Content/img/demos/paging/Major-Lazer_1x.png" />
+                        <h4>Lean On</h4>
+                        <p>Major Lazer & DJ Snake Featuring M0</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="md-cont md-book-cont">
+        <ul class="md-category md-book-category" style="display:none;">
+            <li data-id="1" data-page="md-fantasy" data-selected="true">Fantasy</li>
+            <li data-id="2" data-page="md-edu">Education</li>
+            <li data-id="3" data-page="md-history">History</li>
+            <li data-id="4" data-page="md-scifi">Sci-Fi</li>
+            <li data-id="5" data-page="md-romance">Romance</li>
+        </ul>
+
+        <ul class="md-content" data-cat="md-book-category" style="display:none;">
+            <li class="md-fantasy">
+                <ul class="md-music-lv md-list" style="display:none;">
+                    <li data-icon="play" data-icon-align="right"><img src="/Content/img/demos/paging/The_Lord_Of_The_Rings_1x.png" />
+                        <h4>The Lord Of The Rings</h4>
+                        <p>J.R.R. Tolkien</p>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="md-edu">
+                <ul class="md-music-lv md-list" style="display:none;">
+                    <li data-icon="play" data-icon-align="right"><img src="/Content/img/demos/paging/Do_Androids_Dream_Of_Electric_Sheep_1x.png" />
+                        <h4>Do Androids Dream Of Electric Sheep?</h4>
+                        <p>Philip K. Dick</p>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="md-history">
+                <ul class="md-music-lv md-list" style="display:none;">
+                    <li data-icon="play" data-icon-align="right"><img src="/Content/img/demos/paging/Humans_of_New_York_Stories_1x.png" />
+                        <h4>Humans of New York: Stories</h4>
+                        <p>by Brandon Stanton</p>
+                    </li>
+                </ul>
+
+            </li>
+
+            <li class="md-scifi">
+                <ul class="md-music-lv md-list" style="display:none;">
+                    <li data-icon="play" data-icon-align="right"><img src="/Content/img/demos/paging/The_Mote_In_God's_Eye_1x.png" />
+                        <h4>The Mote In God's Eye</h4>
+                        <p>Larry NivenJerry Pournelle</p>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="md-romance">
+                <ul class="md-music-lv md-list" style="display:none;">
+                    <li data-icon="play" data-icon-align="right"><img src="/Content/img/demos/paging/Bad_Boy's_Baby_1x.png" />
+                        <h4>Bad Boy's Baby</h4>
+                        <p>by Sosie Frost</p>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="md-cont md-movie-cont">
+        <ul class="md-category md-movie-category" style="display:none;">
+            <li data-id="1" data-page="md-movie-fantasy" data-selected="true">Fantasy</li>
+            <li data-id="2" data-page="md-movie-edu">Horror</li>
+            <li data-id="3" data-page="md-movie-animation">Animation</li>
+            <li data-id="4" data-page="md-movie-scifi">Sci-Fi</li>
+            <li data-id="5" data-page="md-movie-romance">Romance</li>
+        </ul>
+
+        <ul class="md-content" data-cat="md-movie-category" style="display:none;">
+            <li class="md-movie-fantasy">
+                <ul class="md-music-lv md-list" style="display:none;">
+                    <li data-icon="play" data-icon-align="right"><img src="/Content/img/demos/paging/The_Seven_Samurai_1x.png" />
+                        <h4>The Seven Samurai</h4>
+                        <p>by Akira Kurosawa</p>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="md-movie-edu">
+                <ul class="md-music-lv md-list" style="display:none;">
+                    <li data-icon="play" data-icon-align="right"><img src="/Content/img/demos/paging/Psycho_1x.png" />
+                        <h4>Psycho</h4>
+                        <p>by Alfred Hitchcock</p>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="md-movie-animation">
+                <ul class="md-music-lv md-list" style="display:none;">
+                    <li data-icon="play" data-icon-align="right"><img src="/Content/img/demos/paging/Chaar_Sahibzaade_1x.png" />
+                        <h4>Chaar Sahibzaade</h4>
+                        <p>by Harry Baweja</p>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="md-movie-scifi">
+                <ul class="md-music-lv md-list" style="display:none;">
+                    <li data-icon="play" data-icon-align="right"><img src="/Content/img/demos/paging/Inception_1x.png" />
+                        <h4>Inception</h4>
+                        <p>by Christopher Nolan</p>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="md-movie-romance">
+                <ul class="md-music-lv md-list" style="display:none;">
+                    <li data-icon="play" data-icon-align="right"><img src="/Content/img/demos/paging/The_Princess_Bride_1x.png" />
+                        <h4>The Princess Bride</h4>
+                        <p>by Rob Reiner</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+  $(function () {
+
+    var $currContent,
+      $conts = $('.md-cont'),
+      $currMenu = $('.md-selected'),
+      $currCategory = $currMenu.find('.md-category');
+
+    // init bottom navigation
+    $('.main-menu').mobiscroll().nav({
+      theme: 'ios',
+      type: 'bottom',
+      onItemTap: function (event, inst) {
+        var item = $(event.target);
+        $currCategory = $('.' + item.data('page')).find('.md-category');
+        $currMenu = $('.' + item.data('page'));
+        $currContent = $currMenu.find('.md-content');
+        // show the new content
+        $conts.removeClass('md-selected');
+        $currMenu.addClass('md-selected');
+        // refresh category
+        $currCategory.mobiscroll('navigate', $currCategory.children().eq(0), true);
+        $currCategory.mobiscroll('refresh');
+        // refresh content
+        $currContent.mobiscroll('refresh');
+        $currContent.mobiscroll('navigate', $currContent.find('li').eq(0));
+
+      }
+    });
+
+    // init top tabs
+    $('.md-category').mobiscroll().nav({
+      theme: 'ios',
+      type: 'tab',
+      onItemTap: function (event, inst) {
+        $currMenu.find('.md-content').mobiscroll('navigate', $('.' + $(event.target).data('page')));
+      }
+
+    });
+
+    // init content scrollview
+    $('.md-content').mobiscroll().scrollview({
+      theme: 'ios',
+      layout: 1,
+      paging: true,
+      threshold: 15,
+      cssClass: 'md-page',
+      onAnimationStart: function (event, inst) {
+        if (event.destinationX != event.originX) {
+          $currCategory.mobiscroll('navigate', $('.' + $(this).data('cat') + ' li').eq(-(event.destinationX / inst.contWidth)));
+        }
+      }
+    });
+
+    // init content listview
+    $('.md-list').mobiscroll().listview({
+      theme: 'ios',
+      swipe: false,
+      striped: true,
+      onItemTap: function () {},
+      enhance: true,    });
+  });
+</script>
 </body>
 </html>

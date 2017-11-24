@@ -11,20 +11,36 @@
            margin:0;
            padding:0;
        }
-        .date-box{
+        .show-box{
             width:200px;
-            height:200px;
+            height:100px;
 
             border:1px solid #ccc;
         }
     </style>
 </head>
 <body>
-<div class="date-box" id="birthday"></div>
+<input type="text" class="date-box show-box" id="birthday">
+<input type="text" class="time-box show-box" id="time">
 <script>
   $('#birthday').mobiscroll().date({
     theme: 'material',
     display: 'center'
+  });
+
+//  $('#time').mobiscroll().time({
+//    theme: 'ios',
+//    display: 'bottom',
+//    headerText: false,
+//    maxWidth: 90
+//  });
+  $('#time').mobiscroll().time({
+    theme: 'ios',
+    display: 'bottom',
+    headerText: false,
+    maxWidth: 90,
+    timeFormat: 'HH:ii',
+    timeWheels: 'HHii'
   });
 </script>
 </body>

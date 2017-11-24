@@ -8,14 +8,35 @@
     <script src="js/mobiscroll.custom-3.0.0-beta6.min.js" type="text/javascript"></script>
 </head>
 <body>
-<input type="text" id="demo">
+<!-- 用于设置对话框 -->
+<div id="sqh_dialog">
+
+    <select name="Cities" id="demo_select" class="sqh_color_99" data-role="none">
+        <option value="">一个月</option>
+        <option value="1">Atlanta</option>
+        <option value="2">Berlin</option>
+        <option value="3">Boston</option>
+        <option value="4">Chicago</option>
+        <option value="5">London</option>
+        <option value="6">Los Angeles</option>
+        <option value="7">New York</option>
+        <option value="555中文">Paris</option>
+        <option value="9">San Francisco</option>
+    </select>
+
+</div>
 <script>
-    $('#demo').mobiscroll().calendar({
-        theme: 'mobiscroll',
-        lang: 'zh',
-        display: 'center',
-        controls: ['calendar'],
-    });
+  // Select demo initialization
+  $('#demo_select').mobiscroll().select({
+    theme: 'ios',
+    mode: 'scroller',
+    display: 'bottom',
+    inputClass: 'clear_border text-right ',
+    btnClass : 'sqh_color_56 font_16 sqh_line_height_15 margin_10 sqh_font_type',
+    //设置为false，则点击空白地方不会关闭弹出层，默认为true
+    closeOnOverlay:false,
+    lang: 'zh'
+  });
 </script>
 </body>
 </html>
