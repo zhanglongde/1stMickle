@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sandbox: overlay2 - Animsition</title>
+  <link href="sandbox.css" rel="stylesheet">
+  <link href="../dist/css/animsition.min.css" rel="stylesheet">
+  <style media="screen">
+    .bg-init,
+    .animsition-overlay-slide {
+      background-color: #81D4FA;
+    }
+  </style>
+</head>
+<body class="bg-init">
+
+  <div class="animsition-overlay">
+
+    <div class="item bg-green">
+      <h1>Animsition: overlay2</h1>
+    </div>
+
+    <h2>Defaults</h2>
+    <ol>
+      <li><a class="animsition-link" href="index.html">Basic</a></li>
+      <li><a class="animsition-link" href="options.html">Options</a></li>
+      <li><a class="animsition-link" href="data-options.html">Data options</a></li>
+      <li><a class="animsition-link" href="methods-in.html">Methods in</a></li>
+      <li><a class="animsition-link" href="methods-out.html">Methods out</a></li>
+    </ol>
+
+    <h2>Overlays</h2>
+    <ol>
+      <li><a class="animsition-link" href="overlay1.html" data-animsition-out-class="overlay-slide-out-left">Overlay1</a></li>
+      <li><a class="animsition-link" href="overlay2.html" data-animsition-out-class="overlay-slide-out-right">Overlay2</a></li>
+    </ol>
+
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+  <script src="../dist/js/animsition.min.js" charset="utf-8"></script>
+  <script>
+  $(document).ready(function() {
+    $('.animsition-overlay').animsition({
+      inClass: 'overlay-slide-in-bottom',
+      outClass: 'overlay-slide-out-top',
+      overlay : true,
+      overlayClass : 'animsition-overlay-slide',
+      overlayParentElement : 'body'
+    })
+    .one('animsition.inStart',function(){
+
+      $('body').removeClass('bg-init');
+
+      $(this)
+        .find('.item')
+        .append('<h2 class="target">Callback: Start</h2>');
+
+      console.log('event -> inStart');
+    })
+    .one('animsition.inEnd',function(){
+      $('.target', this).html('Callback: End');
+      console.log('event -> inEnd');
+    })
+    .one('animsition.outStart',function(){
+      console.log('event -> outStart');
+    })
+    .one('animsition.outEnd',function(){
+      $('.target', this).html('Callback: End');
+      console.log('event -> outEnd');
+    });
+
+  });
+  </script>
+
+</body>
+</html>

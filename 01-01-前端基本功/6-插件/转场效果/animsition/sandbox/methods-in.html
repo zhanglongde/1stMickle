@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sandbox: Methods in - Animsition</title>
+  <link href="sandbox.css" rel="stylesheet">
+  <link href="../dist/css/animsition.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="item bg-black">
+    <h1>Animsition: Methods in</h1>
+  </div>
+
+  <h2>$.ajax</h2>
+  <div id="js-albums"></div>
+
+  <h2>Defaults</h2>
+  <ol>
+    <li><a class="animsition-link" href="index.html">Basic</a></li>
+    <li><a class="animsition-link" href="options.html">Options</a></li>
+    <li><a class="animsition-link" href="data-options.html">Data options</a></li>
+    <li><a class="animsition-link" href="methods-in.html">Methods in</a></li>
+    <li><a class="animsition-link" href="methods-out.html">Methods out</a></li>
+  </ol>
+
+  <h2>Overlays</h2>
+  <ol>
+    <li><a class="animsition-link" href="overlay1.html">Overlay1</a></li>
+    <li><a class="animsition-link" href="overlay2.html">Overlay2</a></li>
+  </ol>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+  <script src="../dist/js/animsition.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    (function () {
+      var image = function() {
+        var d = $.Deferred();
+        $.ajax({
+          url: './data.json',
+          success: d.resolve
+        });
+        return d.promise();
+      };
+
+      image().then(function(data, textStatus, jqXHR) {
+        $('#js-albums')
+        .addClass('animsition')
+        .attr('data-animsition-in-class', data.items[0].inClass)
+        .attr('data-animsition-out-class', data.items[0].outClass)
+        .append(
+          $('<a>')
+          .addClass('col')
+          .addClass('animsition-link')
+          .attr('href', data.items[0].url)
+          .append(
+            $('<img>')
+            .attr('width', '600')
+            .attr('src', data.items[0].image)
+          )
+        );
+      }).then(function() {
+        $('.animsition').animsition({
+          onLoadEvent: false
+        })
+        .each(function(i){
+          $(this).animsition('in');
+        });
+      });
+
+    }());
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<button id="reset">还原</button>
+<div id="test" style="height: 50px;width: 50px;background:pink;position:absolute;top:40px;left:0;"></div>
+<script>
+  function getCSS(obj,style){
+    if(window.getComputedStyle){
+      return getComputedStyle(obj)[style];
+    }
+    return obj.currentStyle[style];
+  }
+  function move(obj,attr,target,step,fn){
+    //如果没有建立定时器对象，则在obj下建立定时器对象
+    if(!obj.timers){obj.timers = {};}
+    //清除定时器
+    clearInterval(obj.timers[attr]);
+    //声明当前值变量cur
+    var cur;
+    //判断步长step的正负值
+    step = parseInt(getCSS(obj,attr)) < target ? step : -step;
+    //开启定时器
+    obj.timers[attr] = setInterval(function(){
+      //获取样式当前值并赋值给cur
+      cur = parseFloat(getCSS(obj,attr));
+      //若步长设置值使得元素超过目标点时，将步长设置值更改为目标点值 - 当前值
+      if((cur + step - target)*step > 0){
+        step = target - cur;
+      }
+      //将合适的步长值赋值给元素的样式
+      obj.style[attr] = cur + step + 'px';
+      //当元素到达目标点后，停止定时器
+      if(step == target - cur){
+        clearInterval(obj.timers[attr]);
+        obj.timers[attr] = 0;
+        fn && fn.call(obj);
+      }
+    },30);
+  }
+  reset.onclick = function(){
+    history.go();
+  }
+  test.onmousedown = function(e){
+    e = e || event;
+    //声明投掷步长值
+    var stepX,stepY;
+    //声明上一次mousemove事件的坐标位置
+    var lastX2 = e.clientX;
+    var lastY2 = e.clientY;
+    //获取元素距离定位父级的x轴及y轴距离
+    var x0 = this.offsetLeft;
+    var y0 = this.offsetTop;
+    //获取此时鼠标距离视口左上角的x轴及y轴距离
+    var x1 = e.clientX;
+    var y1 = e.clientY;
+    document.onmousemove = function(e){
+      e = e || event;
+      //获取此时鼠标距离视口左上角的x轴及y轴距离
+      var x2 = e.clientX;
+      var y2 = e.clientY;
+      stepX = x2 - lastX2;
+      stepY = y2 - lastY2;
+      lastX2 = e.clientX;
+      lastY2 = e.clientY;
+      //计算此时元素应该距离视口左上角的x轴及y轴距离
+      var X = x0 + (x2 - x1);
+      var Y = y0 + (y2 - y1);
+      //将X和Y的值赋给left和top，使元素移动到相应位置
+      test.style.left = X + 'px';
+      test.style.top = Y + 'px';
+    }
+    document.onmouseup = function(e){
+      e = e || event;
+      var maxHeight = document.documentElement.clientHeight - test.offsetHeight;
+      var maxWidth = document.documentElement.clientWidth - test.offsetWidth;
+      //以设置的投掷速度来进行匀速运动
+      //向右投掷
+      if(stepX > 0){
+        move(test,'left',maxWidth,stepX);
+        //向左投掷
+      }else{
+        move(test,'left',0,stepX);
+      }
+      //向下投掷
+      if(stepY > 0){
+        move(test,'top',maxHeight,stepY);
+        //向上投掷
+      }else{
+        move(test,'top',0,stepY);
+      }
+      //当鼠标抬起时，拖拽结束，则将onmousemove赋值为null即可
+      document.onmousemove = null;
+      //释放全局捕获
+      if(test.releaseCapture){
+        test.releaseCapture();
+      }
+    }
+    //阻止默认行为
+    return false;
+    //IE8-浏览器阻止默认行为
+    if(test.setCapture){
+      test.setCapture();
+    }
+  }
+</script>
+</body>
+</html>
