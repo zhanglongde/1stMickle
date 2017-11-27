@@ -2,9 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        加overflow:auto;成为BFC，产生截断？
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .container{
+            width:300px;
+            height:300px;
+            border:1px solid #ccc;
+            border-radius:2px;
+            overflow:auto;
+
+            position:absolute;
+            top:0;left:0;right:0;bottom:0;
+            margin:auto;
+        }
+        ul,ul>li{
+            list-style: none;
+        }
+        .content{
+            /*padding:0 10px;*/
+            height:100px;
+            width:100%;
+            overflow-y:auto;
+            overflow-x:hidden;
+        }
+        .content>li{
+            height:40px;
+            line-height:40px;
+            text-align:center;
+
+            color:#fff;
+            background: #5968FF;
+            box-shadow: 0 8px 12px 0 rgba(89,104,255,0.59);
+            border-radius: 100px;
+        }
+        .content>li+li{
+            margin-top:10px;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="container">
+    <ul class="content">
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+        <li>li4</li>
+    </ul>
+</div>
 </body>
 </html>

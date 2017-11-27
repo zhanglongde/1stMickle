@@ -2,9 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .container{
+            width:500px;
+            height:500px;
+            border:1px solid #ccc;
+            border-radius:2px;
+
+            position:absolute;top:0;left:0;right:0;bottom:0;
+            margin:auto;
+        }
+        .content{
+            position:relative;
+            width:120px;
+            padding:0 10px;
+            word-break: break-all;
+
+            background-color: #58a;
+        }
+        .content:after{
+            content:'';
+            position: absolute;
+            top:0;left:-10px;right:-10px;bottom:0;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="container">
+    <div class="content">
+        TheCSSGridlayout (or perhaps, Flexbox) will feel like a shiny new toy if you do not know how we got to this point in the history of CSS layouts.
+    </div>
+</div>
 </body>
 </html>
