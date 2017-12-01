@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        checkbox无需双向绑定时，必须使用checked属性绑定
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+    </style>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="item in listData">
+            <label @click="selectItem(item)">
+                <input type="checkbox" :value="isChecked(item)"><span>{{item.name}}</span>
+            </label>
+            <label>
+                <input type="checkbox" :checked="isChecked(item)"><span>{{item.name}}</span>
+            </label>
+            <button @click="deleteItem(item)">删除</button>
+        </li>
+    </ul>
+</div>
+
+<script>
+    let conf = {
+        listData: Array.from(new Array(10), (val,index) => index+1).map(x => {
+          return {id: x, name: `item${x}`}
+        })
+    }
+     new Vue({
+         el:'#app',
+         data () {
+             return {
+               ...conf,
+                 selectedItems: []
+             }
+         },
+         methods: {
+             isChecked (item) {
+               return this.selectedItems.findIndex(x => x.id === item.id) >= 0
+             },
+             selectItem (item) {
+               let index = this.selectedItems.findIndex(x => x.id === item.id)
+                 if (index < 0) {
+                     this.selectedItems.push(item)
+                 } else {
+                     this.selectedItems.splice(index, 1)
+                 }
+             },
+             deleteItem (item) {
+                 console.log(item, this.listData)
+                 let index = this.listData.findIndex(x => x.id === item.id)
+                 if (index >= 0) {
+                     this.listData.splice(index, 1)
+                 } else {
+                     throw (new Error('删除失败'))
+                 }
+             }
+         }
+     })
+</script>
+</body>
+</html>

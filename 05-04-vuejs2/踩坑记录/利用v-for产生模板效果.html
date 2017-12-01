@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        checkbox无需双向绑定时，必须使用checked属性绑定
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+    </style>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="item in listData">
+            <label>
+                <input type="checkbox"><span>{{item.name}}</span>
+            </label>
+        </li>
+    </ul>
+</div>
+
+<script>
+    let conf = {
+        listData: Array.from(new Array(10), (val,index) => index+1).map(x => {
+            return {id: x, name: `item${x}`}
+        })
+    }
+    new Vue({
+        el:'#app',
+        data () {
+            return {
+                ...conf
+            }
+        }
+    })
+</script>
+</body>
+</html>
