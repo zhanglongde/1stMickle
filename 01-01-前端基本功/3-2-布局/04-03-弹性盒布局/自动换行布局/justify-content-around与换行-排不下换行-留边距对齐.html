@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        缺点：无法设置边距值，只能均匀分布
+        解决方式：套一层元素，用于设置边距
+    </title>
     <style>
         *{
             margin:0;
@@ -23,6 +26,7 @@
             display:flex;
             flex-wrap:wrap;
             justify-content: space-around;
+            /*margin-left:10px;*/
         }
         .container>.row>.item{
             background-color: #fc3;
