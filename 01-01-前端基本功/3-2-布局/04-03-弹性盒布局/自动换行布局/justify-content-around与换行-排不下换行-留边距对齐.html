@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .container{
+            position:absolute;
+            top:0;left:0;right:0;bottom:0;
+            margin:auto;
+
+            width:500px;
+            height:500px;
+
+            border:1px solid #ccc;
+            border-radius:2px;
+        }
+        .container>.row{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content: space-around;
+        }
+        .container>.row>.item{
+            background-color: #fc3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="item">1.Switch with text outline alternative</div>
+        <div class="item">2.Switch with text outline alternative</div>
+    </div>
+</div>
+</body>
+</html>
