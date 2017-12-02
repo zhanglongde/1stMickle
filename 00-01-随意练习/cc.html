@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  function Person(age, name) {
+    this.age = age;
+    this.name = name;
+  }
+  Person.say = function (something) {
+    console.log(something)
+  }
+  function Superman(power) {
+    Person.apply(this,arguments)
+    this.power = power;
+    this.fly = function (height) {
+      console.log('fly:',height)
+    }
+  }
+  Superman.prototype = Object.create(Person)
+  var sm = new Superman(12)
+  console.log(sm)
+</script>
 </body>
 </html>

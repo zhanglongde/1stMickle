@@ -2,9 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  function Sum(a, b) {
+    var aLen = a.length
+    var bLen = b.length
+    let r = aLen - bLen
+    if (r>0) { // a>b
+      // 将a分成两段
+      let sH = a.substr(0,r)
+      let sL = a.substr(r)
+      let sumLow = parseInt(sL) + parseInt(b)
+      return sumLow + sH
+    } else {
+      let sH = b.substr(0,r)
+      let sL = b.substr(r)
+      let sumLow = parseInt(sL) + parseInt(a)
+      return sumLow + sH
+    }
+  }
+  Sum('123')
+</script>
 </body>
 </html>

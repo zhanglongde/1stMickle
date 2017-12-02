@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    var obj = {"a_b":1}
+    function firstUpperCase(str) {
+      return str.toLowerCase().replace(/^\S/g,function(s){return s.toUpperCase();});
+    }
+    function GetCamel(json) {
+      var newJson = {}
+      for(var prop in json){
+        console.log(prop, typeof prop)
+       var arrWords = prop.split('_')
+       for(var i = 1,LEN = arrWords.length; i< LEN; i++){
+         arrWords[i] = firstUpperCase(arrWords[i])
+       }
+       let newProp = arrWords.join('')
+        newJson[newProp] = json[prop]
+      }
+      return newJson
+    }
+    let newObj = GetCamel(obj)
+    console.log(newObj)
+</script>
 </body>
 </html>
