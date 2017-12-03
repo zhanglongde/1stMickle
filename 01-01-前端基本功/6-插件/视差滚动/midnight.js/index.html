@@ -2,9 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        .fixed{
+            position:fixed;
+        }
+        .midnightHeader.default {
+            background: none;
+            color: black;
+        }
+        .midnightHeader.white {
+            background: white;
+            color: black;
+        }
+        .midnightHeader.blue {
+            background: blue;
+            color: white;
+        }
+        .midnightHeader.red {
+            background: red;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-$END$
+<nav class="fixed">
+    <a class="logo">Logo</a>
+</nav>
+<section data-midnight="white">
+    <h1>A section with a dark background, so a white nav would look better here</h1>
+</section>
+
+<div data-midnight="blue">
+    <h1>A blue nav looks better here</h1>
+</div>
+
+<footer>
+    <h1>This will just use the default header</h1>
+</footer>
+
+<script src="../../../../lib/jquery-1.11.3.min.js"></script>
+<script src="midnight.jquery.min.js"></script>
+<script>
+  // Start midnight
+  $(document).ready(function(){
+    // Change this to the correct selector for your nav.
+    $('nav.fixed').midnight();
+  });
+</script>
 </body>
 </html>
