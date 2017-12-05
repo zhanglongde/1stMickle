@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        缺点：第一次也必须wait秒之后才执行
+    </title>
 </head>
 <body>
 <script>
     function throttle(func, wait) {
         var timeout;
-        var previous = 0;
 
         return function() {
             context = this;
-            args = arguments;
+            let args = arguments;
             if (!timeout) {
                 timeout = setTimeout(function(){
                     timeout = null;
