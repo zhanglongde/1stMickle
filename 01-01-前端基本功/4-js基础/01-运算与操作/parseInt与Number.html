@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        Number:数字+字母，转化为NaN
+        parseInt能正确转化
+    </title>
 </head>
 <body>
-$END$
+
+<script>
+    var s1 = '12'
+    var s2 = '12a'
+    var s3 = 'a12'
+
+    console.log(parseInt(s1))
+    console.log(parseInt(s2))
+    console.log(parseInt(s3)) // NaN
+
+    console.log(Number(s1))
+    console.log(Number(s2)) //NaN
+    console.log(Number(s3)) //NaN
+</script>
 </body>
 </html>

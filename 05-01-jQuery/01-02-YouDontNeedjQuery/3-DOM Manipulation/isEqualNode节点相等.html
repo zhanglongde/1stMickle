@@ -5,6 +5,17 @@
     <title>Title</title>
 </head>
 <body>
+<ul id="birds">
+    <li>Orange</li>
+    <li class="endangered">Eagle</li>
+    <li>pelican</li>
+</ul>
 
+<script>
+    var ndBird = document.querySelector('#birds')
+    ndBird.addEventListener('click', function (e) {
+        console.log(ndBird.isEqualNode(ndBird))
+    })
+</script>
 </body>
 </html>
