@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        for 只能数组
+        forEach 只能数组
+        for in 可以对象
+        for of 不能用于对象遍历，可以遍历字符串、类数组对象
+        map
+    </title>
+</head>
+<body>
+<script>
+    var arr = [1,2,3,4]
+    var str = 'hello'
+    var obj = {name:'zhangld', age:27}
+
+    console.log('%c-----------------------------------------------------------字符串遍历', 'background-color:#85a;color:#fff;font-size:30px;')
+    console.log('for of 遍历')
+//    字符串遍历
+    for (let s of str) {
+      console.log(s)
+    }
+//    字符串转化为数组遍历
+    let transferArray = str.split('')
+    transferArray.forEach(x => {
+        console.log(x)
+    })
+
+
+    console.log('%c-----------------------------------------------------------对象遍历', 'background-color:#85a;color:#fff;font-size:30px;')
+//    对象遍历
+    for (let item in obj) {
+        console.log(item)
+    }
+//    for (let item of obj) {
+//        console.log(item)
+//    }
+//    转化为数组
+    let tArray = Object.keys(obj)
+    console.log(tArray)
+    console.log(Object.getOwnPropertyNames(obj))
+
+    console.log('%c-----------------------------------------------------------类数组对象遍历', 'background-color:#85a;color:#fff;font-size:30px;')
+//    类数组对象遍历
+    function func() {
+      for(let item of arguments) {
+          console.log(item)
+      }
+    }
+    func(1,3,5)
+</script>
+</body>
+</html>
