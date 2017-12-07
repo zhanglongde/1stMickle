@@ -1,10 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>demo</title>
+    <script src="../../../lib/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+        $.fn.RangeSlider = function(cfg){
+            this.sliderCfg = {
+                min: cfg && !isNaN(parseFloat(cfg.min)) ? Number(cfg.min) : null,
+                max: cfg && !isNaN(parseFloat(cfg.max)) ? Number(cfg.max) : null,
+                step: cfg && Number(cfg.step) ? cfg.step : 1,
+                callback: cfg && cfg.callback ? cfg.callback : null
+            };
+            var $input = $(this);
+            var min = this.sliderCfg.min;
+            var max = this.sliderCfg.max;
+            var step = this.sliderCfg.step;
+            var callback = this.sliderCfg.callback;
+            $input.attr('min', min)
+                .attr('max', max)
+                .attr('step', step);
+            $input.bind("input", function(e){
+                $input.attr('value', this.value);
+                $input.css( 'background', 'linear-gradient(to right, #059CFA, white ' + this.value + '%, white)' );
+                if ($.isFunction(callback)) {
+                    callback(this);
+                }
+            });
+        };
+    </script>
+    <style type="text/css">
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 300px;
+            border-radius: 10px; /*这个属性设置使填充进度条时的图形为圆角*/
+            background: -webkit-linear-gradient(#059CFA, #059CFA) no-repeat;
+            background-size: 0% 100%;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            height: 15px;
+            border-radius: 10px; /*将轨道设为圆角的*/
+            box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112; /*轨道内置阴影效果*/
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 25px;
+            width: 25px;
+            margin-top: -5px; /*使滑块超出轨道部分的偏移量相等*/
+            background: #ffffff;
+            border-radius: 50%; /*外观设置为圆形*/
+            border: solid 0.125em rgba(205, 224, 230, 0.5); /*设置边框*/
+            box-shadow: 0 .125em .125em #3b4547; /*添加底部阴影*/
+        }
+        input[type=range]::-moz-range-progress {
+            background: linear-gradient(to right, #059CFA, white 100%, white);
+            height: 13px;
+            border-radius: 10px;
+        }
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 300px;
+            border-radius: 10px;
+        }
+        input[type=range]::-ms-track {
+            height: 25px;
+            border-radius: 10px;
+            box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112;
+            border-color: transparent; /*去除原有边框*/
+            color: transparent; /*去除轨道内的竖线*/
+        }
+        input[type=range]::-ms-thumb {
+            border: solid 0.125em rgba(205, 224, 230, 0.5);
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            background: #ffffff;
+            margin-top: -5px;
+            box-shadow: 0 .125em .125em #3b4547;
+        }
+        input[type=range]::-ms-fill-lower {
+            /*进度条已填充的部分*/
+            height: 22px;
+            border-radius: 10px;
+            background: linear-gradient(to right, #059CFA, white 100%, white);
+        }
+        input[type=range]::-ms-fill-upper {
+            /*进度条未填充的部分*/
+            height: 22px;
+            border-radius: 10px;
+            background: #ffffff;
+        }
+        input[type=range]:focus::-ms-fill-lower {
+            background: linear-gradient(to right, #059CFA, white 100%, white);
+            background: linear-gradient(#059CFA, #059CFA) no-repeat;
+        }
+        input[type=range]:focus::-ms-fill-upper {
+            background: #ffffff;
+            background: linear-gradient(#059CFA, #059CFA) no-repeat;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div id="test">
+    <input type="range" value="0">
+</div>
+<script>
+    var change = function($input) {
+        /*内容可自行定义*/
+        console.log("123");
+    }
+    $('input').RangeSlider({ min: 0,   max: 100,  step: 0.1,  callback: change});
+</script>
 </body>
 </html>
