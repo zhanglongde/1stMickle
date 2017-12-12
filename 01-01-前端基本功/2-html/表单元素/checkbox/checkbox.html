@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        radio的name需要相同，checkbox不需要一样
+    </title>
     <style>
         label{}
         label[for=male]:before,
@@ -36,10 +38,11 @@
         **/
         /*#male:after{content:'hh';}*/ /*input等替换行内元素没有before和after伪元素*/
     </style>
+    <script src="../../../../lib/jquery-1.11.3.min.js"></script>
 </head>
 <body>
-<input type="checkbox" id="male">  <label for="male">male</label>
-<input type="checkbox" id="female"><label for="female">female</label>
+<input type="checkbox" id="male" name="gender" checked>  <label for="male">male</label>
+<input type="checkbox" id="female" name="gender"><label for="female">female</label>
 
 <div style="margin-top:100px;">
     ✓	U+2713	CHECK MARK（勾号）
@@ -47,5 +50,12 @@
     ☐	U+2610	BALLOT BOX（方格）
     ☑	U+2611	BALLOT BOX WITH CHECK（打勾方格
 </div>
+
+<script>
+    window.onload = function () {
+      console.log(document.querySelector('[name=gender]').checked)
+      console.log($("input[name=gender]").val())
+    }
+</script>
 </body>
 </html>
