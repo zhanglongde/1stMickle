@@ -2,9 +2,85 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        主要用于过滤filter和排序sortBy
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .grid-item{
+            height:200px;
+            width:200px;
+            background-color: #58a;
+            color:#fff;
+            border:1px solid #ccc;
+
+            display:flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .grid-item:nth-of-type(2n){
+            background-color: #9c3;
+        }
+    </style>
+
 </head>
 <body>
-$END$
+<div class="container">
+    <div class="content">
+        <div class="grid"
+             data-isotope='{ "itemSelector": ".grid-item", "masonry": { "columnWidth": 200 } }'>
+            <div class="grid-item">10</div>
+            <div class="grid-item transition">2</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+            <div class="grid-item">5</div>
+            <div class="grid-item">6</div>
+            <div class="grid-item">7</div>
+            <div class="grid-item">8</div>
+            <div class="grid-item">9</div>
+            <div class="grid-item name">10test</div>
+            <div class="grid-item">11</div>
+            <div class="grid-item transition">12</div>
+            <div class="grid-item transition">13</div>
+            <div class="grid-item">14</div>
+            <div class="grid-item">15</div>
+            <div class="grid-item">16</div>
+            <div class="grid-item name">17hello</div>
+            <div class="grid-item">18</div>
+            <div class="grid-item">19</div>
+            <div class="grid-item">20</div>
+            <div class="grid-item">21</div>
+            <div class="grid-item">22</div>
+            <div class="grid-item">23</div>
+            <div class="grid-item">24</div>
+            <div class="grid-item">25</div>
+            <div class="grid-item">26</div>
+            <div class="grid-item name">27 </div>
+            <div class="grid-item name">28</div>
+            <div class="grid-item">29</div>
+            <div class="grid-item">30</div>
+        </div>
+    </div>
+</div>
+
+<script src="../../../../lib/jquery-1.11.3.min.js"></script>
+<script src="isotope.pkgd.min.js"></script>
+<script>
+    window.onload = function () {
+      $('.grid').isotope({
+        // options
+//        sortBy: 'name',
+//        sortBy: 'number',
+//        filter: '.transition',
+        itemSelector: '.grid-item',
+        layoutMode: 'fitRows'
+      });
+    }
+</script>
 </body>
 </html>

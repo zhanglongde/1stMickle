@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+        调试：
+        Disable cache
+        Slow 3G
+    </title>
 </head>
 <body>
-$END$
+<div class="container" id="box">
+    <div class="content">
+        <img src="../../../../images/mm1.jpg" height="191" width="256"/>
+        <img src="https://cdn.pixabay.com/photo/2017/09/02/15/10/greece-2707528__340.jpg" height="191" width="256"/>
+        <img src="https://cdn.pixabay.com/photo/2016/05/14/12/58/butterfly-1391809__340.jpg" height="191" width="256"/>
+    </div>
+</div>
+
+<script src="../../../../lib/jquery-1.11.3.min.js"></script>
+<script src="imagesloaded.pkgd.min.js"></script>
+<script>
+    window.onload = function () {
+      $('#box').imagesLoaded({ background: true },function () {
+//        images hava loaded
+        console.log('hava loaded...')
+      })
+    }
+</script>
 </body>
 </html>
