@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .container{
+            position:absolute;top:0;left:0;right:0;bottom:0;
+            margin:auto;
+            width:500px;
+            height:500px;
+            border:1px solid #ccc;
+            background-color: #58a;
+        }
+        .content{
+            padding: 10px;
+            background-color: #9c3;
+        }
+        p{
+            padding:30px;
+            background-color: #fc3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <p>
+            hello
+        </p>
+    </div>
+</div>
+
+<button id="beforebegin">beforebegin</button>
+<button id="afterbegin">afterbegin</button>
+<button id="beforeend">beforeend</button>
+<button id="afterend">afterend</button>
+<script>
+   window.onload = function () {
+       let html = '<div>body</div><h2>标题</h2>'
+       document.querySelector('#beforebegin').addEventListener('click', function () {
+           document.querySelector('.content').insertAdjacentHTML('beforebegin',html)
+       })
+       document.querySelector('#beforeend').addEventListener('click', function () {
+           document.querySelector('.content').insertAdjacentHTML('beforeend',html)
+       })
+       document.querySelector('#afterbegin').addEventListener('click', function () {
+           document.querySelector('.content').insertAdjacentHTML('afterbegin',html)
+       })
+       document.querySelector('#afterend').addEventListener('click', function () {
+           document.querySelector('.content').insertAdjacentHTML('afterend',html)
+       })
+   }
+</script>
+</body>
+</html>

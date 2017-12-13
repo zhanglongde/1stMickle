@@ -13,7 +13,8 @@
         .box{
             position:absolute;margin:auto;left:0;top:0;right:0;bottom:0;
 
-            width:500px;height:500px;
+            width:500px;
+            height:500px;
         }
         #container {
             width: 50%;
@@ -21,6 +22,7 @@
             background-color: red;
             overflow: hidden;  /*需要触发BFC消除margin折叠的问题*/
         }
+        /*用伪元素撑高div#container*/
         .placeholder:after {
             content: '';
             display: block;
