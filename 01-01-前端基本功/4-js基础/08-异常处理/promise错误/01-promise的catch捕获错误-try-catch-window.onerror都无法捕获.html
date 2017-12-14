@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    window.addEventListener('error', (msg, url, row, col, error) => {
+        console.log('我感知不到 promise 错误');
+        console.log(
+            msg, url, row, col, error
+        );
+    }, true);
+    Promise.reject('promise error').catch(function(error) {
+        console.log(error)
+    });
+    new Promise((resolve, reject) => {
+        reject('promise error');
+    }).catch(function(error) {
+        console.log(error)
+    });
+    new Promise((resolve) => {
+        resolve();
+    }).then(() => {
+        throw 'promise error'
+    }).catch(function(error) {
+        console.log(error)
+    });
+</script>
+</body>
+</html>

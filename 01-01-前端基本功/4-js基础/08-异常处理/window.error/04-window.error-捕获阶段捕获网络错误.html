@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    window.onerror = function (msg, url, row, col, error) {
+        console.log('我知道异步错误了');
+        console.log({
+            msg,  url,  row, col, error
+        })
+        return true;
+    };
+</script>
+<img src="./404.png">
+</body>
+</html>
