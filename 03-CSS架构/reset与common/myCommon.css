@@ -22,8 +22,8 @@ textarea{overflow: auto;resize:vertical;}
 .fr{float:right;}
 .clearFix{clear: both;}
 
-.hide{display:block !important;}
-.show{display:none !important;}
+.hide{display:none !important;}
+.show{display:block !important;}
 
 .ellipsis{
     white-space:nowrap;
