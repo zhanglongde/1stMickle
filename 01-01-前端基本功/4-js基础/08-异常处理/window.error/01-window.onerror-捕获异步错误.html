@@ -9,10 +9,11 @@
 <script>
     window.onerror = function (e) {
       console.log(e)
-        setTimeout(() => {
-            error        // 异步错误
-        })
+      return true // 返回true才不会向上抛出
     }
+    setTimeout(() => {
+        error        // 异步错误
+    })
 </script>
 </body>
 </html>

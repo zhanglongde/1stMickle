@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    window.frames[0].onerror = function (msg, url, row, col, error) {
+        console.log('我知道 iframe 的错误了，也知道错误信息');
+        console.log({
+            msg,  url,  row, col, error
+        })
+        return true;
+    };
+</script>
 </body>
 </html>

@@ -6,14 +6,15 @@
 </head>
 <body>
 <script>
-    window.onerror = function (msg, url, row, col, error) {
-        console.log('我知道异步错误了');
-        console.log({
-            msg,  url,  row, col, error
-        })
+    window.addEventListener('error', (e, url, row, col, error) => {
+        e.preventDefault()
+        console.log('我知道 404 错误了');
+        console.log(
+            e, url, row, col, error
+        );
         return true;
-    };
+    }, true);
 </script>
-<img src="./404.png">
+<img src="./404.png" alt="">
 </body>
 </html>
