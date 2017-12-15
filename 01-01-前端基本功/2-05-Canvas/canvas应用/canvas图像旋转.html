@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        context.rotate()
+        https://aotu.io/notes/2017/05/25/canvas-img-rotate-and-flip/index.html
+    </title>
+    <style>
+        /*body { background: url("../../../images/mm1.jpg") repeat; }*/
+        #canvas { border: 1px solid #aaaaaa; display: block; margin: 50px auto; }
+    </style>
+</head>
+<body>
+<div id="canvas-warp">
+    <canvas id="canvas">
+        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+    </canvas>
+</div>
+
+<script>
+    window.onload = function(){
+        var canvas = document.getElementById("canvas");
+        canvas.width = 400;
+        canvas.height = 400;
+        var context = canvas.getContext("2d");
+
+        var img = new Image();
+        img.src = "../../../images/mm2.jpg";
+        img.onload = function(){
+            context.rotate(20*Math.PI/180)
+            context.drawImage(img,100,100,100,100);
+        }
+    };
+</script>
+</body>
+</html>

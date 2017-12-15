@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        http://blog.leanote.com/post/jiang/canvas%E5%AE%9E%E7%8E%B0%E6%94%BE%E5%A4%A7%E9%95%9C%E6%95%88%E6%9E%9C
+    </title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #canvas {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="800" height="600"></canvas>
+
+<!--<img src="../../../../images/mm1.jpg"/>-->
+<script>
+    var canvas = document.getElementById("canvas");
+    var context = canvas.getContext("2d");
+    var TOP = 30, LEFT = 30, RADIUS = 30 ;
+    var currentLoc = {}, canvasLoc;
+    var img = new Image();
+    img.src = '../../../../images/mm1.jpg';
+    img.onload = imgLoadded;
+    var offCanvas=document.createElement("canvas");
+    var offContext=offCanvas.getContext("2d");
+    offCanvas.width=2*RADIUS,offCanvas.height=2*RADIUS;
+    function imgLoadded() {
+        context.drawImage(img, 0, 0);
+        // 鼠标在over时
+        canvas.onmouseover = function (event) {
+            currentLoc = {
+                x: event.clientX,
+                y: event.clientY
+            };
+            canvasLoc = toCanvasLoc(currentLoc);
+            circleToOffCanvas(canvasLoc)
+        };
+        // 鼠标move时
+        canvas.onmousemove=function(event){
+            imgLoadded();
+            currentLoc = {
+                x: event.clientX,
+                y: event.clientY
+            };
+            canvasLoc = toCanvasLoc(currentLoc);
+            circleToOffCanvas(canvasLoc)
+        }
+        // 转化为相对于canvas的坐标地址
+        function toCanvasLoc(loc) {
+            var xyLoc = {};
+            xyLoc.x = loc.x - LEFT > 0 ? loc.x - LEFT : 0;
+            xyLoc.y = loc.y - TOP > 0 ? loc.y - TOP : 0;
+            return xyLoc;
+        }
+        // 以鼠标所在地址为正方形中心，并将正方形区域的像素数据放置到离屏canvas中 ， 在放大一定的倍数
+        function circleToOffCanvas(loc){
+            var x=loc.x-RADIUS<0 ? 0 :loc.x-RADIUS;
+            var y=loc.y-RADIUS<0 ? 0:loc.y-RADIUS;
+            // 将正放心区域内的像素数据放置到离屏canvas中
+            var imgData=context.getImageData(x,y,2*RADIUS,2*RADIUS);
+            offContext.putImageData(imgData,0,0);
+            context.drawImage(offCanvas,0,0,2*RADIUS,2*RADIUS,x,y,6*RADIUS,6*RADIUS)
+        }
+    }
+</script>
+</body>
+</html>
