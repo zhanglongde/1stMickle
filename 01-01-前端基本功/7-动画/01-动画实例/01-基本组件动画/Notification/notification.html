@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        https://www.youtube.com/watch?v=evaN55xnXG4
+    </title>
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+
+<!-- Section 1 - Notification-->
+<section class="section-notification">
+    <ul class="nav">
+        <li><i class="material-icons">home</i></li>
+        <li><i class="material-icons">search</i></li>
+        <li class="is-active"><i class="material-icons">star
+            <ul class="notifications">
+                <li><i class="material-icons">remove_red_eye</i><span>9</span></li>
+                <li><i class="material-icons">comment</i><span>4</span></li>
+                <li><i class="material-icons">account_circle</i><span>6</span></li>
+            </ul></i></li>
+        <li><i class="material-icons">face</i></li>
+    </ul>
+</section>
+<!-- Section 2 - Alert-->
+<section class="section-alert">
+    <div class="website">
+        <div class="title-block">
+            <div class="title"><i class="material-icons site-icon">face</i>
+                <!--span Obviously a website--><span>Many faces of murray</span>
+                <hr/>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+        <div class="alert-element">
+            <div class="icon"><i class="material-icons">notifications</i></div>
+            <div class="text"><span>You clicked a Murray!!</span></div>
+        </div>
+    </div>
+</section>
+<!-- Section 3 - Modal-->
+<section class="section-modal">
+    <div class="profile"><img src="http://www.fillmurray.com/130/130"/>
+        <div class="text">
+            <div class="name">Bill Murray</div>
+            <div class="meta">Click me!</div>
+        </div>
+    </div>
+    <div class="overlay">
+        <div class="modal">
+            <div class="title">You clicked a Murray!</div>
+            <div class="body">
+                <div class="img" style="background-image: url(http://www.fillmurray.com/180/180);"></div>
+                <div class="text">
+                    <p>Bill Murray loves you, and sends his most sincere regards.</p>
+                    <p>He also asks that you simply keep on hacking.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="../../../../../lib/jquery-2.2.3.js"></script>
+<script>
+  $('.nav li').click(function(){
+    $(this).addClass('is-active').siblings().removeClass('is-active');
+  });
+
+
+
+  $('.grid .item').click(function(){
+    $('.website .alert-element').toggleClass('is-active');
+  });
+
+
+
+  $('.section-modal .profile').click(function(){
+    $('.overlay').addClass('is-active');
+    setTimeout(function(){
+      $('.overlay').removeClass('is-active');
+    }, 5000);
+  });
+</script>
+</body>
+</html>

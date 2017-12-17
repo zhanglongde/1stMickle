@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        https://www.youtube.com/watch?v=GeuNIOuIEDA
+    </title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div class="intro">
+    <div class="titles">
+        <div class="headline">When to Animate</div>
+        <hr/><a class="title t1" href="#orientation">Orientation</a><a class="title t2" href="#functional-change">Functional Change</a><a class="title t3" href="#new-element">New Element</a><a class="title t4" href="#highlight">Highlight</a><a class="title t5" href="#visual-feedback">Visual Feedback</a><a class="title t6" href="#system-status">System Status</a>
+    </div>
+</div>
+<div class="slides">
+    <div class="slide slide1"><a name="orientation"></a>
+        <div class="blurb">
+            <div class="title">Orientation</div>
+            <div class="sub">Answers the Question: <strong>Where am I now?</strong></div>
+        </div>
+        <div class="example example-1 no-padding">
+            <div class="belt">
+                <div class="state state-1">
+                    <input placeholder="name"/>
+                    <div class="button">next</div>
+                </div>
+                <div class="state state-2">
+                    <div class="button">back</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide slide2"><a name="functional-change"></a>
+        <div class="blurb">
+            <div class="title">Functional Change</div>
+            <div class="sub">Answers the Question: <strong>What does this element do now?</strong></div>
+        </div>
+        <div class="example example-2 no-padding">
+            <div class="switch is-transitioned">
+                <div class="on">on</div>
+                <div class="off">off</div>
+                <div class="handle"></div>
+            </div>
+        </div>
+    </div>
+    <div class="slide slide3"><a name="new-element"></a>
+        <div class="blurb">
+            <div class="title">New Element</div>
+            <div class="sub">Answers the Question: <strong>What should I look at?</strong></div>
+        </div>
+        <div class="example example-3">
+            <div class="layout">
+                <div class="header"></div>
+                <div class="alert"></div>
+                <div class="col col-1"></div>
+                <div class="col col-2"></div>
+                <div class="col col-3">
+                    <div class="btn">trigger</div>
+                </div>
+                <div class="footer"></div>
+            </div>
+        </div>
+    </div>
+    <div class="slide slide4"><a name="highlight"></a>
+        <div class="blurb">
+            <div class="title">Highlight</div>
+            <div class="sub">Answers the Question: <strong>What is important here?</strong></div>
+        </div>
+        <div class="example example-4">
+            <div class="ui">
+                <div class="highlight1"></div>
+                <div class="highlight2"></div>
+                <div class="col col-1"></div>
+                <div class="col col-2"></div>
+            </div>
+        </div>
+    </div>
+    <div class="slide slide5"><a name="visual-feedback"></a>
+        <div class="blurb">
+            <div class="title">Visual Feedback</div>
+            <div class="sub">Answers the Question: <strong> Is the layout understanding what I am asking it to do?</strong></div>
+        </div>
+        <div class="example example-5">
+            <div class="email">
+                <div class="masthead"></div>
+                <div class="send"></div>
+            </div>
+        </div>
+    </div>
+    <div class="slide slide6"><a name="system-status"></a>
+        <div class="blurb">
+            <div class="title">System Status</div>
+            <div class="sub">Answers the Question: <strong>Is this working? How long will it take?</strong></div>
+        </div>
+        <div class="example example-6">
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+  $('.example-1 .button').click(function(){
+    $(this).parents('.example-1').toggleClass('is-transitioned');
+  });
+
+  $('.example-2 .switch').click(function(){
+    $(this).toggleClass('is-transitioned');
+  });
+
+  $('.example-3 .btn').click(function(){
+    $(this).parents('.layout').find('.alert').toggleClass('is-open');
+  });
+
+  $('.example-5 .send').click(function(){
+    $(this).parents('.email').addClass('is-sent');
+    setTimeout(function(){
+      $('.email').removeClass('is-sent');
+    }, 1800);
+
+  });
+</script>
+</body>
+</html>

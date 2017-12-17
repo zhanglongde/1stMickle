@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      TechScroll
+      Build a Bootstrap Theme With Scroll Animation
+      https://www.youtube.com/watch?v=ePgnR4gHIi4
+    </title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto%7CJosefin+Sans:100,300,400,500" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">TechScroll</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#showcase">Home</a></li>
+            <li><a href="#info1">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <section id="showcase">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <div class="showcase-left">
+              <img src="img/image1.jpg">
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <div class="showcase-right">
+              <h1>Hands-free help from the Google Assistant</h1>
+              <p>Google Home voice-activated speaker.consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+            </div>
+            <br>
+            <a class="btn btn-default btn-lg showcase-btn">Read More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonial">
+      <div class="container">
+        <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud"</p>
+        <p class="customer">- John Doe</p>
+      </div>
+    </section>
+
+    <section id="info1">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <div class="info-left">
+              <img src="img/image2.png">
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <div class="info-right">
+              <h2>Get To Know Google Home</h2>
+              <p>Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+              <br>
+              <a class="btn btn-default btn-lg">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr>
+    <section id="info2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <div class="info-left">
+              <h2>Info Block One</h2>
+              <p>Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <div class="info-right">
+              <h2>Info Block Two</h2>
+              <p>Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 col-sm-5">
+            <form>
+              <div class="form-group">
+                <label>Name: </label>
+                <input class="form-control" type="text" name="" value="" placeholder="Enter Name">
+              </div>
+              <div class="form-group">
+                <label>Email: </label>
+                <input class="form-control" type="text" name="" value="" placeholder="Enter Email">
+              </div>
+              <div class="form-group">
+                <label>Message: </label>
+                <textarea class="form-control" name="" value="" placeholder="Enter Message"></textarea>
+              </div>
+              <button class="btn btn-default">Submit</button>
+            </form>
+          </div>
+          <div class="col-md-7 col-sm-7">
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p class="text-center">TechScroll Copyright &copy; 2017</p>
+    </footer>
+
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+        window.sr = ScrollReveal();
+        sr.reveal('.navbar', {
+          duration: 2000,
+          origin:'bottom'
+        });
+        sr.reveal('.showcase-left', {
+          duration: 2000,
+          origin:'top',
+          distance:'300px'
+        });
+        sr.reveal('.showcase-right', {
+          duration: 2000,
+          origin:'right',
+          distance:'300px'
+        });
+        sr.reveal('.showcase-btn', {
+          duration: 2000,
+          delay: 2000,
+          origin:'bottom'
+        });
+        sr.reveal('#testimonial div', {
+          duration: 2000,
+          origin:'bottom'
+        });
+        sr.reveal('.info-left', {
+          duration: 2000,
+          origin:'left',
+          distance:'300px',
+          viewFactor: 0.2
+        });
+        sr.reveal('.info-right', {
+          duration: 2000,
+          origin:'right',
+          distance:'300px',
+          viewFactor: 0.2
+        });
+    </script>
+
+    <script>
+    $(function() {
+      // Smooth Scrolling
+      $('a[href*="#"]:not([href="#"])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html, body').animate({
+              scrollTop: target.offset().top
+            }, 1000);
+            return false;
+          }
+        }
+      });
+    });
+    </script>
+  </body>
+</html>

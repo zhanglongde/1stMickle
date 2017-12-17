@@ -15,5 +15,6 @@ js addClass 当animationEnd时，removeClass
 
 
 2.多物体动画
-利用less sass的循环，对delay duration iteration属性进行调整，产生一组相关动画类分别作用于一组物体上
+2.1通过变量，delay时间由前一动画的duration时间决定
+2.2利用less sass的循环，对delay duration iteration属性进行调整，产生一组相关动画类分别作用于一组物体上
 

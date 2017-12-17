@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        https://www.youtube.com/watch?v=3EPG1fsZ-qo
+    </title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div class="modal-wrap">
+    <div class="modal-header"><span class="is-active"></span><span></span><span></span></div>
+    <div class="modal-bodies">
+        <div class="modal-body modal-body-step-1 is-showing">
+            <div class="title">Step 1</div>
+            <div class="description">Hello there, Let's play a game.</div>
+            <form>
+                <input type="text" placeholder="Name"/>
+                <input type="email" placeholder="Email"/>
+                <div class="text-center">
+                    <div class="button">Start</div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-body modal-body-step-2">
+            <div class="title">Step 2</div>
+            <div class="description">Would you rather</div>
+            <form>
+                <label>
+                    <input type="radio" name="radio"/>live one life that lasts 1,000 years?
+                </label>
+                <label>
+                    <input type="radio" name="radio" id="radio2"/>live 10 lives that last 100 years each?
+                </label>
+                <div class="text-center fade-in">
+                    <div class="button">Next</div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-body modal-body-step-3">
+            <div class="title">Step 3</div>
+            <div class="description">Check your email for the game results.</div>
+            <div class="text-center">
+                <div class="button">Done!</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-center">
+    <div class="rerun-button">ReRun</div>
+</div>
+
+
+<script src="../../../../../lib/jquery-1.11.3.min.js"></script>
+<script>
+  $('.button').click(function(){
+    var $btn = $(this),
+      $step = $btn.parents('.modal-body'),
+      stepIndex = $step.index(),
+      $pag = $('.modal-header span').eq(stepIndex);
+
+    if(stepIndex === 0 || stepIndex === 1) { step1($step, $pag); }
+    else { step3($step, $pag); }
+
+  });
+
+
+  function step1($step, $pag){
+    console.log('step1');
+    // animate the step out
+    $step.addClass('animate-out');
+
+    // animate the step in
+    setTimeout(function(){
+      $step.removeClass('animate-out is-showing')
+        .next().addClass('animate-in');
+      $pag.removeClass('is-active')
+        .next().addClass('is-active');
+    }, 600);
+
+    // after the animation, adjust the classes
+    setTimeout(function(){
+      $step.next().removeClass('animate-in')
+        .addClass('is-showing');
+
+    }, 1200);
+  }
+
+
+  function step3($step, $pag){
+    console.log('3');
+
+    // animate the step out
+    $step.parents('.modal-wrap').addClass('animate-up');
+
+    setTimeout(function(){
+      $('.rerun-button').css('display', 'inline-block');
+    }, 300);
+  }
+
+  $('.rerun-button').click(function(){
+    $('.modal-wrap').removeClass('animate-up')
+      .find('.modal-body')
+      .first().addClass('is-showing')
+      .siblings().removeClass('is-showing');
+
+    $('.modal-header span').first().addClass('is-active')
+      .siblings().removeClass('is-active');
+    $(this).hide();
+  });
+
+</script>
+</body>
+</html>
