@@ -5,8 +5,69 @@
     <title>
         https://www.youtube.com/watch?v=Xv2dE5oWMNY
     </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        html,body{
+            height:100%;
+            background-color: #58a;
+            color:#fff;
+        }
+        ul,ul>li{
+            list-style: none;
+        }
+        .container{
+            width:70%;
+            height:300px;
+            position:absolute;top:0;left:0;right:0;bottom:0;
+            margin:auto;
+        }
+        .text-wrapper{
+            display:flex;
+            justify-content: space-between;
+        }
+        .text-wrapper.hidden>.item:nth-child(1){  opacity:0;  transform:translateX(-60px) translateY(-300px);  }
+        .text-wrapper.hidden>.item:nth-child(2){  opacity:0;  transform:translateX(50px) translateY(240px);  }
+        .text-wrapper.hidden>.item:nth-child(3){  opacity:0;  transform:translateX(-30px) translateY(-160px);  }
+        .text-wrapper.hidden>.item:nth-child(4){  opacity:0;  transform:translateX(30px) translateY(100px);  }
+        .text-wrapper.hidden>.item:nth-child(5){  opacity:0;  transform:translateX(-10px) translateY(400px);  }
+        .text-wrapper.hidden>.item:nth-child(6){  opacity:0;  transform:translateX(70px) translateY(-200px);  }
+        .text-wrapper.hidden>.item:nth-child(7){  opacity:0;  transform:translateX(-20px) translateY(320px);  }
+        .text-wrapper.hidden>.item:nth-child(8){  opacity:0;  transform:translateX(-40px) translateY(-120px);  }
+        .text-wrapper.hidden>.item:nth-child(9){  opacity:0;  transform:translateX(60px) translateY(-320px);  }
+        .text-wrapper>.item{
+            font-size:40px;
+
+            transition:all 2s ease;
+            opacity:1;
+            transform:none;
+        }
+    </style>
 </head>
 <body>
+<div class="container">
+    <ul class="text-wrapper hidden">
+        <li class="item">N</li>
+        <li class="item">E</li>
+        <li class="item">X</li>
+        <li class="item">T</li>
+        <li class="item">C</li>
+        <li class="item">O</li>
+        <li class="item">N</li>
+        <li class="item">T</li>
+        <!--<li class="item">9</li>-->
+    </ul>
+</div>
 
+<script>
+    window.onload = function () {
+      setTimeout(function () {
+          document.querySelector('.text-wrapper').classList.remove('hidden')
+      }, 500)
+    }
+</script>
 </body>
 </html>
