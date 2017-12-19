@@ -2,11 +2,82 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>
         http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
+        无限滚动时，最好在页面底部有一个页尾栏（又称sentinels）。
+        一旦页尾栏可见，就表示用户到达了页面底部，从而加载新的条目放在页尾栏前面。
+        这样做的好处是，不需要再一次调用observe()方法，现有的IntersectionObserver可以保持使用。
     </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .container{
+            width:500px;
+            height:500px;
+            position:absolute;
+            top:0;left:0;right:0;bottom:0;
+            margin:auto;
+        }
+        .content{
+            overflow-y:auto;
+            height:300px;
+        }
+        .content>li{
+            height:40px;
+            line-height:40px;
+            text-align:center;
+        }
+    </style>
 </head>
 <body>
-<script></script>
+<div class="container">
+    <div class="content">
+        <div class="item">001</div>
+        <div class="item">002</div>
+        <div class="item">003</div>
+        <div class="item">004</div>
+        <div class="item">005</div>
+        <div class="item">006</div>
+        <div class="item">007</div>
+        <div class="item">008</div>
+        <div class="item">009</div>
+        <div class="item">010</div>
+        <div class="item">011</div>
+        <div class="item">012</div>
+        <div class="item">013</div>
+        <div class="item">014</div>
+        <div class="item">015</div>
+        <div class="item">016</div>
+        <div class="item">017</div>
+        <div class="item">018</div>
+        <div class="item">019</div>
+        <div class="item">020</div>
+        <div class="scrollerFooter">
+            scrollerFooter
+        </div>
+    </div>
+</div>
+
+<script>
+    function loadItems() {
+      console.log('load items...')
+    }
+  var intersectionObserver = new IntersectionObserver(
+    function (entries) {
+      // 如果不可见，就返回
+      if (entries[0].intersectionRatio <= 0) return;
+      loadItems();
+      console.log('Loaded new items');
+    });
+
+  // 开始观察
+  intersectionObserver.observe(
+    document.querySelector('.scrollerFooter')
+  );
+</script>
 </body>
 </html>
