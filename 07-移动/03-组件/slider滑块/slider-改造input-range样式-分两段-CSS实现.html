@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        input[type='range'] {
+            overflow: hidden;
+            width: 180px;
+            height:30px;
+            -webkit-appearance: none;
+            background-color: #9a905d;
+        }
+
+        input[type='range']::-webkit-slider-runnable-track {
+            height: 3px;
+            -webkit-appearance: none;
+            color: #13bba4;
+            margin-top: -1px;
+        }
+
+        input[type='range']::-webkit-slider-thumb {
+            width: 10px;
+            -webkit-appearance: none;
+            height: 10px;
+            border-radius:100%;
+
+            position:relative;
+            cursor: ew-resize;
+            background: #000;
+            /*border-left: 80px solid #43e5f7;*/
+            box-shadow: -180px 0 0 180px #43e5f7, 0 5px 11px 0 rgba(0,0,0,0.15), 0 2px 3px 0 rgba(0,0,0,0.16), 0 3px 2px 0;
+        }
+        input[type='range']::-webkit-slider-thumb::after{
+            position:absolute;
+            top:0;left:0;
+            width:100px;
+            height:10px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <input type="range" max="18" min="6" step="1" value="6" onchange="moveChange()">
+    </div>
+    <script>
+      function moveChange() {// 滑块的值改变，运行这个函数
+        console.log(document.getElementById('slider').value)
+      }
+    </script>
+</body>
+</html>
