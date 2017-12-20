@@ -27,3 +27,15 @@
 /14-node/third-party/js-xlsx/translate/Nextcont 官网 中 英 日三语言版本翻译.xlsx
 /15-03-Python/.idea/
 /12-04-gulp/gulp-concat-合并文件/node_modules
+/12-04-gulp/gulp-file-include/node_modules/
+/12-04-gulp/gulp-concat-合并文件/node_modules/
+/12-04-gulp/gulp-inject-svg/node_modules/
+/12-04-gulp/px3rem/node_modules/
+/12-04-gulp/gulp-inject-svg/dest/
+/12-04-gulp/gulp-file-include/dest/
+/12-04-gulp/gulp-concat-合并文件/dist/
+/12-04-gulp/px3rem/dest/
+/12-04-gulp/gulp-inject-svg/package-lock.json
+/12-04-gulp/gulp-concat-合并文件/package-lock.json
+/12-04-gulp/gulp-file-include/package-lock.json
+/12-04-gulp/px3rem/package-lock.json
