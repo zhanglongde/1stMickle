@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        限制：一行间距之和小于一个元素的宽度
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        ul,ul>li{
+            list-style: none;
+        }
+        .container{
+            width:300px;
+            /*外部限定高度*/
+            height:500px;
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+            border:1px solid #ccc;
+
+            display:flex;
+            justify-content: center;
+        }
+        .drag-box{
+            /*内部限定宽度，时期折行*/
+            width:280px;
+            /*内部高度不做限定*/
+            display:flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-content: space-around;
+        }
+        .drag-box>li{
+            width:100px;
+            height:100px;
+            border:1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul class="drag-box">
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+        <li>item 4</li>
+        <li>item 5</li>
+        <li>item 6</li>
+    </ul>
+</div>
+</body>
+</html>

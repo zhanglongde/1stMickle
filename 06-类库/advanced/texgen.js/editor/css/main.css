@@ -1,0 +1,90 @@
+body {
+	background-color: #111;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	margin: 0;
+	overflow: hidden;
+}
+
+hr {
+	border: 0px;
+	border-top: 1px solid #ccc;
+}
+
+button {
+	position: relative;
+}
+
+input.Color {
+	width: 20px;
+	margin-right: 8px;
+}
+
+.Panel {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+
+	/* No support for these yet */
+	-o-user-select: none;
+	user-select: none;
+}
+
+	.Panel.Collapsible .Static {
+		margin: 0px;
+	}
+
+	.Panel.Collapsible .Static .Button {
+		float: left;
+		margin-right: 6px;
+		width: 0px;
+		height: 0px;
+		border: 6px solid transparent;
+	}
+
+	.Panel.Collapsible.collapsed .Static .Button {
+		margin-top: 2px;
+		border-left-color: #bbb;
+	}
+
+	.Panel.Collapsible:not(.collapsed) .Static .Button {
+		margin-top: 6px;
+		border-top-color: #bbb;
+	}
+
+	.Panel.Collapsible.collapsed .Content {
+		display: none;
+	}
+
+/**/
+
+#preview {
+	margin: 8px;
+}
+
+#editor {
+	position: absolute;
+	left: 280px;
+	padding: 10px;
+}
+
+.layer {
+	padding: 5px;
+	width: 600px;
+	background-color: #eee;
+	border-bottom: 1px solid #ddd
+}
+
+	.layer .operation {
+		width: 60px;
+		margin-right: 10px;
+	}
+
+	.layer .name {
+		width: 100px;
+		font-size: 13px;
+	}
+
+	.layer .propertyName {
+		margin-right: 5px;
+	}

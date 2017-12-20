@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        ul,ul>li{
+            list-style: none;
+        }
+        .container{
+            width:500px;
+            height:500px;
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+            border:1px solid #ccc;
+
+            display:flex;
+            justify-content: center;
+        }
+        .drag-box{
+            width:200px;
+            display:flex;
+            flex-wrap: wrap;
+            align-content: space-around;
+        }
+        .drag-box>li{
+            width:100px;
+            height:100px;
+            border:1px solid #ccc;
+
+            line-height:100px;
+            text-align:center;
+            background-color: #fc3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul id="items" class="drag-box">
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+        <li>item 4</li>
+        <li>item 5</li>
+        <li>item 6</li>
+    </ul>
+</div>
+
+<script src="Sortable.js"></script>
+<script>
+    var el = document.getElementById('items');
+    var sortable = Sortable.create(el);
+</script>
+</body>
+</html>
