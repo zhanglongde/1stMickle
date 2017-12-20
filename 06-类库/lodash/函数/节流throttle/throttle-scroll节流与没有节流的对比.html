@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        throttle 节流
+    </title>
+    <style>
+        .container{
+            width:1000px;
+            height:2000px;
+            background-color: #9c3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">container</div>
+
+<script src="../../lodash.js"></script>
+<script>
+    function updatePosition() {
+     console.log('%c-----------------------------------------------------------2', 'background-color:#e66;color:#fff;font-size:30px;')
+     console.log(arguments)
+    }
+    window.addEventListener('scroll',function () {
+        console.log('%c-----------------------------------------------------------1', 'background-color:#e66;color:#fff;font-size:30px;')
+        console.log(arguments)
+    })
+    window.addEventListener('scroll',_.throttle(updatePosition, 100))
+</script>
+</body>
+</html>
