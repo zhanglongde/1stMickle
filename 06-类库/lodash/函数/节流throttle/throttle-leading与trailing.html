@@ -19,14 +19,16 @@
 <script src="../../lodash.js"></script>
 <script>
     function updatePosition() {
-     console.log('%c-----------------------------------------------------------2', 'background-color:#e66;color:#fff;font-size:30px;')
+     console.log('%c-----------------------------------------------------------2', 'background-color:#58a;color:#fff;font-size:30px;')
      console.log(arguments)
     }
+    window.addEventListener('scroll',_.throttle(updatePosition, 4000, {leading: false})) // 将定时之前的那次调用取消，之后的那次并不取消
+//    window.addEventListener('scroll',_.throttle(updatePosition, 4000, {leading: false, trailing: false}))
+
     window.addEventListener('scroll',function () {
-        console.log('%c-----------------------------------------------------------1', 'background-color:#e66;color:#fff;font-size:30px;')
-        console.log(arguments)
+      console.log('%c-----------------------------------------------------------1', 'background-color:#ccc;color:#fff;font-size:30px;')
+      console.log(arguments)
     })
-    window.addEventListener('scroll',_.throttle(updatePosition, 100))
 </script>
 </body>
 </html>

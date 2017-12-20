@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>
         throttle 节流
+
+        默认leading=true,trailing=true
+        定时之前，先执行一次,之后再执行一次
     </title>
     <style>
         .container{
@@ -22,11 +25,13 @@
      console.log('%c-----------------------------------------------------------2', 'background-color:#e66;color:#fff;font-size:30px;')
      console.log(arguments)
     }
+    window.addEventListener('scroll',_.throttle(updatePosition, 100))
+
+
     window.addEventListener('scroll',function () {
-        console.log('%c-----------------------------------------------------------1', 'background-color:#e66;color:#fff;font-size:30px;')
+        console.log('%c-------------------------------------------------------更频繁----1', 'background-color:#ccc;color:#fff;font-size:30px;')
         console.log(arguments)
     })
-    window.addEventListener('scroll',_.throttle(updatePosition, 100))
 </script>
 </body>
 </html>
