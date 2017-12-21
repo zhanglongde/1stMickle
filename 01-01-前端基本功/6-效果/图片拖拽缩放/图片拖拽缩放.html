@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        .toolbar,
+        .toolbar>a,
+        img{
+            -webkit-user-select: none;
+        }
+        .container{
+            width:700px;
+            height:500px;
+            position:absolute;
+            top:0;left:0;right:0;bottom:0;
+            margin:auto;
+
+            border:1px solid #ccc;
+        }
+        .editor{
+            position:relative;
+        }
+        .img-wrapper{
+            position:relative;
+        }
+        .img-drag-container{
+            position:absolute;
+        }
+        .img-mask{
+            position:absolute;
+            top:0;left:0;right:0;bottom:0;
+            border:1px solid #0096fd;
+        }
+        .img-mask-corner-rect{
+            position: absolute;
+            width: 9px;
+            height: 9px;
+            background-color: #0096fd;
+        }
+        .img-mask-corner-rect:first-of-type{
+            top:0;
+            left:0;
+            transform:translate(-50%, -50%);
+            cursor: nw-resize;
+        }
+        .img-mask-corner-rect:nth-of-type(2){
+            top:0;
+            right:0;
+            transform:translate(50%, -50%);
+            cursor: ne-resize;
+        }
+        .img-mask-corner-rect:nth-of-type(3){
+            bottom:0;
+            left:0;
+            transform:translate(-50%, 50%);
+            cursor: sw-resize;
+        }
+        .img-mask-corner-rect:nth-of-type(4){
+            bottom:0;
+            right:0;
+            transform:translate(50%, 50%);
+            cursor: se-resize;
+        }
+        .toolbar{
+            height:50px;
+            line-height:30px;
+            white-space: nowrap;
+            padding:10px;
+
+            background-color: #fff;
+            border-radius: 2px;
+            border: 1px solid;
+            border-color: #bbb #bbb #a8a8a8;
+            box-shadow: 0 1px 3px rgba(0,0,0,.2);
+        }
+        .toolbar>a{
+            display:inline-block;
+            padding:0 10px;
+        }
+        .toolbar>a+a{
+            border-left:1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<div id="app" class="container">
+    <div class="editor">
+        <div class="content">
+            <img src="../../../images/mm1.jpg"/>
+            <img src="../../../images/mm2.jpg"/>
+        </div>
+        <div v-if="isDragContainer" class="img-drag-container" :style="{left: positionX + 'px', top: positionY + 'px'}">
+            <div class="img-wrapper" :style="{height: currentHeight + 'px', width: currentWidth + 'px'}">
+                <div class="img-mask"></div>
+                <span class="img-mask-corner-rect top-left"></span>
+                <span class="img-mask-corner-rect top-right"></span>
+                <span class="img-mask-corner-rect bottom-left"></span>
+                <span class="img-mask-corner-rect bottom-right"></span>
+            </div>
+            <div class="toolbar">
+                <a href="#" @click="minSize">小尺寸</a>
+                <a href="#">最适合尺寸</a>
+                <a href="#" @click="originSize">原始尺寸</a>
+                <a href="#" @click="remove">移除</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../../lib/jquery-1.11.3.min.js"></script>
+<script src="../../../lib/vue.js"></script>
+<script>
+    new Vue({
+      el: '#app',
+      data () {
+        return {
+          isDragContainer: false,
+          positionX: 0,
+          positionY: 0,
+          originWidth: 0,
+          originHeight: 0,
+          currentWidth: this.originWidth,
+          currentHeight: this.originHeight,
+          minWidth: 50,
+          minHeight: 50,
+          ndTarget: null
+        }
+      },
+      methods: {
+        showDragContainer ({positionX, positionY, originWidth, originHeight}) {
+          this.isDragContainer = true
+          this.positionX = positionX
+          this.positionY = positionY
+          this.originWidth = originWidth
+          this.originHeight = originHeight
+
+          this.currentWidth = originWidth
+          this.currentHeight = originHeight
+        },
+        hideDragContainer () {
+          this.isDragContainer = false
+        },
+        remove () {
+          this.ndTarget.parentNode.removeChild(this.ndTarget)
+        },
+        minSize () {
+          $(this.ndTarget).css({
+            width: this.minWidth,
+            height: this.minHeight
+          })
+        },
+        originSize () {
+          this.ndTarget.removeAttribute('style')
+        }
+      },
+      mounted () {
+        $('img').on('click', (e) => {
+          let ndTarget = e.target
+          this.ndTarget = ndTarget
+          this.showDragContainer({
+            positionX: ndTarget.offsetLeft,
+            positionY: ndTarget.offsetTop,
+            originWidth: ndTarget.offsetWidth,
+            originHeight: ndTarget.offsetHeight
+          })
+
+          this.$nextTick(() => {
+            let startX = 0, startY = 0, flag = false
+            $('.img-mask-corner-rect').on('mousedown', (event) => {
+              startX = event.pageX
+              startY = event.pageY
+              console.log(typeof startX)
+              flag = true
+              console.log(startX, startY)
+            })
+            $(document).on('mousemove', (event) => {
+              if (!flag) {
+                return
+              }
+              let currentX = event.pageX
+              let currentY = event.pageY
+              let scale = this.originHeight / this.originWidth
+              let dX = currentX - startX
+//              let dY = currentY - startY
+              let dY = dX * scale
+//              console.log(dX, dY, currentX, currentY)
+              let willW = this.originWidth + dX
+              let willH = this.originHeight + dY
+              this.currentWidth = willW < this.minWidth ? this.minWidth : willW
+              this.currentHeight = willH < this.minHeight ? this.minHeight: willH
+            })
+            $(document).on('mouseup', (event) => {
+              if (!flag) {
+                return
+              }
+              console.log('mouseup:')
+              let currentX = event.pageX
+              let currentY = event.pageY
+              let scale = this.originHeight / this.originWidth
+              let dX = currentX - startX
+//              let dY = currentY - startY
+              let dY = dX * scale
+              console.log(dX, dY, currentX, currentY)
+              let willW = this.originWidth + dX
+              let willH = this.originHeight + dY
+              this.currentWidth = willW < this.minWidth ? this.minWidth : willW
+              this.currentHeight = willH < this.minHeight ? this.minHeight: willH
+
+              console.log('%c-----------------------------------------------------------', 'background-color:#e66;color:#fff;font-size:30px;')
+              console.log(ndTarget, this.currentWidth, this.currentHeight)
+              $(ndTarget).css({
+                width: this.currentWidth,
+                height: this.currentHeight
+              })
+              flag = false
+            })
+          })
+        })
+
+        document.body.addEventListener('click', (event) => {
+          if (event.target.tagName.toLowerCase() === 'img') {
+            return
+          }
+          this.hideDragContainer()
+        }, true)
+      }
+    })
+</script>
+</body>
+</html>
