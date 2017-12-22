@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        map 函数并不会等异步函数 asyncFn 执行完毕后再返回结果
         async 执行后会返回一个 Promise 对象
+
+        map/forEach是并行的迭代,所以改用for吧
+        map 函数并不会等异步函数 asyncFn 执行完毕后再返回结果，所以返回的不是promise数组
     </title>
 </head>
 <body>
