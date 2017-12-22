@@ -191,12 +191,14 @@
             console.log(dX, dY, currentX, currentY, scale)
             let dirTop = 1
             let dirLeft = 1
+            let willPositionY = this.originY
+            let willPositionX = this.originX
             if ($(draggedRectTarget).hasClass('top')) {
-                this.positionY = this.originY + dY
+                willPositionY = this.originY + dY
                 dirTop = -1
             }
             if ($(draggedRectTarget).hasClass('left')) {
-                this.positionX = this.originX + dX
+                willPositionX = this.originX + dX
                 dirLeft = -1
             }
             dX *= dirLeft
@@ -206,8 +208,22 @@
             }
             let willW = this.originWidth + dX
             let willH = this.originHeight + dY
-            this.currentWidth = willW < this.minWidth ? this.minWidth : willW
-            this.currentHeight = willH < this.minHeight ? this.minHeight: willH
+            if (willW < this.minWidth) {
+                this.currentWidth = this.minWidth
+            } else {
+                this.currentWidth = willW
+                this.positionX = willPositionX
+            }
+            if (willH < this.minHeight) {
+                this.currentHeight = this.minHeight
+            } else {
+                this.currentHeight = willH
+                this.positionY = willPositionY
+            }
+//            this.positionY = willPositionY
+//            this.positionX = willPositionX
+//            this.currentWidth = willW < this.minWidth ? this.minWidth : willW
+//            this.currentHeight = willH < this.minHeight ? this.minHeight: willH
         }
       },
       mounted () {
