@@ -138,26 +138,46 @@
           currentHeight: this.originHeight,
           minWidth: 50,
           minHeight: 50,
-          ndTarget: null,
-          sizeStatus: 'best'
+          naturalWidth: 0,
+          naturalHeight: 0,
+          ndTarget: null
         }
+      },
+      computed: {
+          sizeStatus () {
+              if (this.currentWidth === this.minWidth && this.currentHeight === this.minHeight) {
+                return 'min'
+              }
+//              console.log('%c-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+//              console.log(this.currentWidth, this.naturalWidth)
+//              console.log(this.currentHeight, this.naturalHeight)
+//              if (this.currentWidth === this.naturalWidth && this.currentHeight === this.naturalHeight) {
+//                return 'best'
+//              }
+              if (!this.ndTarget.style.width && !this.ndTarget.style.height) {
+                  return 'origin'
+              }
+              return 'dragged'
+          }
       },
       methods: {
         showDragContainer ({positionX, positionY, originWidth, originHeight}) {
+//          console.log(arguments)
           this.isDragContainer = true
           this.positionX = positionX
           this.positionY = positionY
           this.originX = positionX
           this.originY = positionY
 
-
           this.originWidth = originWidth
           this.originHeight = originHeight
           this.currentWidth = originWidth
           this.currentHeight = originHeight
+          this.naturalWidth = this.ndTarget.naturalWidth
+          this.naturalHeight = this.ndTarget.naturalHeight
 
-          this.minWidth =  this.originWidth * 0.4
-          this.minHeight =  this.originHeight * 0.4
+          this.minWidth =  parseInt(this.naturalWidth * 0.4)
+          this.minHeight =  parseInt(this.naturalHeight * 0.4)
         },
         hideDragContainer () {
           this.isDragContainer = false
@@ -165,30 +185,35 @@
         remove () {
           this.ndTarget.parentNode.removeChild(this.ndTarget)
         },
-        setSizeStatus (status) {
-            this.sizeStatus = status
-        },
         minSize () {
+          if (this.sizeStatus === 'min') {
+            return
+          }
           $(this.ndTarget).css({
             width: this.minWidth,
             height: this.minHeight
           })
-          this.setSizeStatus('min')
         },
         originSize () {
           this.ndTarget.removeAttribute('style')
-          this.setSizeStatus('origin')
+//          this.naturalWidth = 0
+//          this.naturalHeight = 0
         },
         bestSize () {
-          this.originSize()
-          this.setSizeStatus('best')
+            this.naturalWidth = this.ndTarget.naturalWidth
+            this.naturalHeight = this.ndTarget.naturalHeight
+            $(this.ndTarget).css({
+                width: this.naturalWidth,
+                height: this.naturalHeight
+            })
+            console.log(this.ndTarget)
         },
         calCurrent ({currentX, currentY, startX, startY, draggedRectTarget}) {
             let scale = this.originHeight / this.originWidth
             let dX = currentX - startX
             let dY = currentY - startY
             dY = Math.abs(dX) * scale * Math.sign(dY)
-            console.log(dX, dY, currentX, currentY, scale)
+//            console.log(dX, dY, currentX, currentY, scale)
             let dirTop = 1
             let dirLeft = 1
             let willPositionY = this.originY
@@ -204,7 +229,7 @@
             dX *= dirLeft
             dY *= dirTop
             if (Math.sign(dY) !== Math.sign(dX)) {
-              dY *= -1
+              return
             }
             let willW = this.originWidth + dX
             let willH = this.originHeight + dY
@@ -276,7 +301,6 @@
                 draggedRectTarget
              })
 
-//              console.log('%c-----------------------------------------------------------', 'background-color:#e66;color:#fff;font-size:30px;')
 //              console.log(ndTarget, this.currentWidth, this.currentHeight)
               $(ndTarget).css({
                 width: this.currentWidth,
@@ -289,7 +313,6 @@
 
         document.body.addEventListener('click', (event) => {
           let tag = event.target.tagName.toLowerCase()
-          console.log(tag)
           if (tag === 'img') {
             return
           }
