@@ -156,8 +156,8 @@
           this.currentWidth = originWidth
           this.currentHeight = originHeight
 
-          this.minWidth =  this.originWidth * 0.3
-          this.minHeight =  this.originHeight * 0.3
+          this.minWidth =  this.originWidth * 0.4
+          this.minHeight =  this.originHeight * 0.4
         },
         hideDragContainer () {
           this.isDragContainer = false
@@ -165,27 +165,30 @@
         remove () {
           this.ndTarget.parentNode.removeChild(this.ndTarget)
         },
+        setSizeStatus (status) {
+            this.sizeStatus = status
+        },
         minSize () {
           $(this.ndTarget).css({
             width: this.minWidth,
             height: this.minHeight
           })
-          this.sizeStatus = 'min'
+          this.setSizeStatus('min')
         },
         originSize () {
           this.ndTarget.removeAttribute('style')
-          this.sizeStatus = 'origin'
+          this.setSizeStatus('origin')
         },
         bestSize () {
           this.originSize()
-          this.sizeStatus = 'best'
+          this.setSizeStatus('best')
         },
         calCurrent ({currentX, currentY, startX, startY, draggedRectTarget}) {
             let scale = this.originHeight / this.originWidth
             let dX = currentX - startX
             let dY = currentY - startY
             dY = Math.abs(dX) * scale * Math.sign(dY)
-//            console.log(dX, dY, currentX, currentY)
+            console.log(dX, dY, currentX, currentY, scale)
             let dirTop = 1
             let dirLeft = 1
             if ($(draggedRectTarget).hasClass('top')) {
@@ -196,8 +199,13 @@
                 this.positionX = this.originX + dX
                 dirLeft = -1
             }
-            let willW = this.originWidth + dirLeft * dX
-            let willH = this.originHeight + dirTop * dY
+            dX *= dirLeft
+            dY *= dirTop
+            if (Math.sign(dY) !== Math.sign(dX)) {
+              dY *= -1
+            }
+            let willW = this.originWidth + dX
+            let willH = this.originHeight + dY
             this.currentWidth = willW < this.minWidth ? this.minWidth : willW
             this.currentHeight = willH < this.minHeight ? this.minHeight: willH
         }
@@ -206,7 +214,6 @@
         $('img').on('click', (e) => {
           let ndTarget = e.target
           this.ndTarget = ndTarget
-//          this.sizeStatus = ndTarget.getAttribute('dragged') || 'best'
           this.showDragContainer({
             positionX: ndTarget.offsetLeft,
             positionY: ndTarget.offsetTop,
@@ -215,7 +222,7 @@
           })
 
           this.$nextTick(() => {
-            let startX = 0, startY = 0, flag = false, draggedTarget = null
+            let startX = 0, startY = 0, flag = false, draggedRectTarget = null
             $('.img-mask-corner-rect').on('mousedown', (event) => {
               draggedRectTarget = event.target
               startX = event.pageX
@@ -260,8 +267,6 @@
                 height: this.currentHeight
               })
               flag = false
-//              this.sizeStatus = 'dragged'
-//              ndTarget.setAttribute('sizeStatus', 'dragged')
             })
           })
         })
