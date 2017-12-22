@@ -39,3 +39,9 @@
 /12-04-gulp/gulp-concat-合并文件/package-lock.json
 /12-04-gulp/gulp-file-include/package-lock.json
 /12-04-gulp/px3rem/package-lock.json
+/12-04-gulp/01-gulp模板/01-01-pug/dest
+/12-04-gulp/01-gulp模板/01-01-pug/node_modules
+/12-04-gulp/01-gulp模板/01-02-scss/css
+/12-04-gulp/01-gulp模板/01-02-scss/node_modules
+/12-04-gulp/01-gulp模板/02-01-pug-scss/dest
+/12-04-gulp/01-gulp模板/02-01-pug-scss/node_modules

@@ -1,0 +1,14 @@
+html,body{
+  height:100%;
+}
+
+.by-container{
+  width:1000px;
+  .by-content{
+    padding:0 16px;
+
+    &>ul,&>li{
+      list-style:none;
+    }
+  }
+}

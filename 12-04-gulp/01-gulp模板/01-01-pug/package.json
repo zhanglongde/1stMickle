@@ -1,0 +1,18 @@
+{
+  "name": "gulp",
+  "version": "1.0.0",
+  "description": "html",
+  "keywords": [
+    "html"
+  ],
+  "author": "gulp",
+  "license": "ISC",
+  "scripts": {
+    "build": "gulp build",
+    "dev": "gulp server"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-pug": "^3.3.0"
+  }
+}
