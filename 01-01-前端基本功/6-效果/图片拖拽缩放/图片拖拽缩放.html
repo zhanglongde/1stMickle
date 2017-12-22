@@ -9,6 +9,10 @@
             padding:0;
             box-sizing:border-box;
         }
+        html,body{
+            height:100%;
+        }
+        .container,
         .toolbar,
         .toolbar>a,
         img{
@@ -83,6 +87,9 @@
             display:inline-block;
             padding:0 10px;
         }
+        .toolbar>a.active{
+            color:#000;
+        }
         .toolbar>a+a{
             border-left:1px solid #ccc;
         }
@@ -98,15 +105,15 @@
         <div v-if="isDragContainer" class="img-drag-container" :style="{left: positionX + 'px', top: positionY + 'px'}">
             <div class="img-wrapper" :style="{height: currentHeight + 'px', width: currentWidth + 'px'}">
                 <div class="img-mask"></div>
-                <span class="img-mask-corner-rect top-left"></span>
-                <span class="img-mask-corner-rect top-right"></span>
-                <span class="img-mask-corner-rect bottom-left"></span>
-                <span class="img-mask-corner-rect bottom-right"></span>
+                <span class="img-mask-corner-rect top left"></span>
+                <span class="img-mask-corner-rect top right"></span>
+                <span class="img-mask-corner-rect bottom left"></span>
+                <span class="img-mask-corner-rect bottom right"></span>
             </div>
             <div class="toolbar">
-                <a href="#" @click="minSize">小尺寸</a>
-                <a href="#">最适合尺寸</a>
-                <a href="#" @click="originSize">原始尺寸</a>
+                <a href="#" @click="minSize" :class="{'active': sizeStatus === 'min'}">小尺寸</a>
+                <a href="#" @click="bestSize" :class="{'active': sizeStatus === 'best'}">最适合尺寸</a>
+                <a href="#" @click="originSize" :class="{'active': sizeStatus === 'origin'}">原始尺寸</a>
                 <a href="#" @click="remove">移除</a>
             </div>
         </div>
@@ -123,13 +130,16 @@
           isDragContainer: false,
           positionX: 0,
           positionY: 0,
+          originX: 0,
+          originY: 0,
           originWidth: 0,
           originHeight: 0,
           currentWidth: this.originWidth,
           currentHeight: this.originHeight,
           minWidth: 50,
           minHeight: 50,
-          ndTarget: null
+          ndTarget: null,
+          sizeStatus: 'best'
         }
       },
       methods: {
@@ -137,11 +147,17 @@
           this.isDragContainer = true
           this.positionX = positionX
           this.positionY = positionY
+          this.originX = positionX
+          this.originY = positionY
+
+
           this.originWidth = originWidth
           this.originHeight = originHeight
-
           this.currentWidth = originWidth
           this.currentHeight = originHeight
+
+          this.minWidth =  this.originWidth * 0.3
+          this.minHeight =  this.originHeight * 0.3
         },
         hideDragContainer () {
           this.isDragContainer = false
@@ -154,15 +170,43 @@
             width: this.minWidth,
             height: this.minHeight
           })
+          this.sizeStatus = 'min'
         },
         originSize () {
           this.ndTarget.removeAttribute('style')
+          this.sizeStatus = 'origin'
+        },
+        bestSize () {
+          this.originSize()
+          this.sizeStatus = 'best'
+        },
+        calCurrent ({currentX, currentY, startX, startY, draggedRectTarget}) {
+            let scale = this.originHeight / this.originWidth
+            let dX = currentX - startX
+            let dY = currentY - startY
+            dY = Math.abs(dX) * scale * Math.sign(dY)
+//            console.log(dX, dY, currentX, currentY)
+            let dirTop = 1
+            let dirLeft = 1
+            if ($(draggedRectTarget).hasClass('top')) {
+                this.positionY = this.originY + dY
+                dirTop = -1
+            }
+            if ($(draggedRectTarget).hasClass('left')) {
+                this.positionX = this.originX + dX
+                dirLeft = -1
+            }
+            let willW = this.originWidth + dirLeft * dX
+            let willH = this.originHeight + dirTop * dY
+            this.currentWidth = willW < this.minWidth ? this.minWidth : willW
+            this.currentHeight = willH < this.minHeight ? this.minHeight: willH
         }
       },
       mounted () {
         $('img').on('click', (e) => {
           let ndTarget = e.target
           this.ndTarget = ndTarget
+//          this.sizeStatus = ndTarget.getAttribute('dragged') || 'best'
           this.showDragContainer({
             positionX: ndTarget.offsetLeft,
             positionY: ndTarget.offsetTop,
@@ -171,11 +215,11 @@
           })
 
           this.$nextTick(() => {
-            let startX = 0, startY = 0, flag = false
+            let startX = 0, startY = 0, flag = false, draggedTarget = null
             $('.img-mask-corner-rect').on('mousedown', (event) => {
+              draggedRectTarget = event.target
               startX = event.pageX
               startY = event.pageY
-              console.log(typeof startX)
               flag = true
               console.log(startX, startY)
             })
@@ -185,46 +229,47 @@
               }
               let currentX = event.pageX
               let currentY = event.pageY
-              let scale = this.originHeight / this.originWidth
-              let dX = currentX - startX
-//              let dY = currentY - startY
-              let dY = dX * scale
-//              console.log(dX, dY, currentX, currentY)
-              let willW = this.originWidth + dX
-              let willH = this.originHeight + dY
-              this.currentWidth = willW < this.minWidth ? this.minWidth : willW
-              this.currentHeight = willH < this.minHeight ? this.minHeight: willH
+              this.calCurrent({
+                  currentX,
+                  currentY,
+                  startX,
+                  startY,
+                  draggedRectTarget
+              })
             })
             $(document).on('mouseup', (event) => {
               if (!flag) {
                 return
               }
-              console.log('mouseup:')
+//              console.log('mouseup:')
+              this.hideDragContainer()
               let currentX = event.pageX
               let currentY = event.pageY
-              let scale = this.originHeight / this.originWidth
-              let dX = currentX - startX
-//              let dY = currentY - startY
-              let dY = dX * scale
-              console.log(dX, dY, currentX, currentY)
-              let willW = this.originWidth + dX
-              let willH = this.originHeight + dY
-              this.currentWidth = willW < this.minWidth ? this.minWidth : willW
-              this.currentHeight = willH < this.minHeight ? this.minHeight: willH
+              this.calCurrent({
+                currentX,
+                currentY,
+                startX,
+                startY,
+                draggedRectTarget
+             })
 
-              console.log('%c-----------------------------------------------------------', 'background-color:#e66;color:#fff;font-size:30px;')
-              console.log(ndTarget, this.currentWidth, this.currentHeight)
+//              console.log('%c-----------------------------------------------------------', 'background-color:#e66;color:#fff;font-size:30px;')
+//              console.log(ndTarget, this.currentWidth, this.currentHeight)
               $(ndTarget).css({
                 width: this.currentWidth,
                 height: this.currentHeight
               })
               flag = false
+//              this.sizeStatus = 'dragged'
+//              ndTarget.setAttribute('sizeStatus', 'dragged')
             })
           })
         })
 
         document.body.addEventListener('click', (event) => {
-          if (event.target.tagName.toLowerCase() === 'img') {
+          let tag = event.target.tagName.toLowerCase()
+          console.log(tag)
+          if (tag === 'img') {
             return
           }
           this.hideDragContainer()
