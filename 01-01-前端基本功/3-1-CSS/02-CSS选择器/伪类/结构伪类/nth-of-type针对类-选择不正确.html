@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        nth-of-type是针对父元素下的(某几类)标签而言的,即使用nth-of-type时，分成不同类型的标签
+        nth-child是针对父元素下的标签而言的
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        /*选择错误*/
+        .img-mask-corner-rect:nth-of-type(1){
+            color:#fc3;
+        }
+        .img-mask-corner-rect:nth-of-type(2){
+            font-size:30px;
+        }
+        .img-mask-corner-rect:nth-of-type(1){
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+<div class="img-wrapper">
+    <div class="img-mask">mask</div>
+    <div class="img-mask-corner-rect">1</div>
+    <div class="img-mask-corner-rect">2</div>
+    <div class="img-mask-corner-rect">3</div>
+    <div class="img-mask-corner-rect">4</div>
+</div>
+</body>
+</html>

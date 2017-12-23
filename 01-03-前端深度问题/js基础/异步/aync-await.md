@@ -6,3 +6,6 @@ await等待的虽然是promise对象，但不必写.then()，直接可以得到�
 
 
 如何进行for循环
+
+
+promise外面套一层async函数可以处理promise

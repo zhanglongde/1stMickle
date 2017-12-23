@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            width:300px;
+            height:300px;
+            background-color: #58a;
+        }
+        .container:hover{
+            background-color: #fc3;
+        }
+        ul>li{
+            height:40px;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <ul>
+            <li class="item">010</li>
+            <li class="item">009</li>
+            <li class="item">008</li>
+            <li class="item">007</li>
+            <li class="item">006</li>
+            <li class="item">005</li>
+            <li class="item">004</li>
+            <li class="item">003</li>
+            <li class="item">002</li>
+            <li class="item">001</li>
+        </ul>
+    </div>
+</div>
+<button id="btnDelete">删除</button>
+
+<script>
+    window.onload = function () {
+      document.querySelector('#btnDelete').addEventListener('click', function () {
+        let ndLis = document.querySelector('.item')
+        let parentNode = ndLis.parentNode
+        console.log(parentNode, parentNode.firstChild)
+        parentNode.removeChild(ndLis)
+//        ndLis.innerHTML = '1111'
+      })
+    }
+</script>
+</body>
+</html>

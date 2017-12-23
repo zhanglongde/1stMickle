@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        ul,ul>li{
+            list-style: none;
+        }
+        li{
+            height:40px;
+            line-height:40px;
+        }
+
+        ul{
+            margin:30px;
+        }
+        /*界定单边*/
+        /*-n本身表示前几个*/
+        /*元素数量<10,都被选中*/
+        ul>li:first-child:nth-last-child(-n+10),
+        ul>li:first-child:nth-last-child(-n+10)~li{
+            background-color: #fc3;
+        }
+
+        /*界定两边*/
+        /*6~30*/
+        li:first-child:nth-last-child(n+6):nth-last-child(-n+30),
+        li:first-child:nth-last-child(n+6):nth-last-child(-n+30) ~ li {
+            /* 当列表包含2～ 6项时，命中所有列表项 */
+            color:#58a;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+    <li>11</li>
+    <li>12</li>
+    <li>13</li>
+    <li>14</li>
+    <li>15</li>
+    <li>16</li>
+    <li>17</li>
+    <li>18</li>
+    <li>19</li>
+    <li>20</li>
+</ul>
+</body>
+</html>

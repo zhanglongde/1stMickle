@@ -2,18 +2,18 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="../../css/bootstrap.css"/>
-    <script src="../../jquery-2.2.3.js"></script>
-    <script src="../../js/bootstrap.js"></script>
+    <title>
+        如果存在两类标签，type选择器首先将其分成两类，两类分别命中
+        child则合成一类，不分标签类型
+    </title>
     <style>
-        /*.container{width:1000px;}/!*默认1140+15*2*!/*/
-        /*.col-md-4{background-color: #00CCFF;}*/
+        /*分别命中div标签和section标签的first*/
         .container>:first-of-type{
             background-color: #CC00FF;
         }
+
         .container>:last-child{
-            height:70px;
+            color:red;
         }
         .container>:last-of-type{
             border:3px solid #0000ff;
@@ -22,11 +22,6 @@
             color: #00CC00;
         }
     </style>
-    <script>
-        $(function(){
-
-        });
-    </script>
 </head>
 <body>
 <div class="container">
