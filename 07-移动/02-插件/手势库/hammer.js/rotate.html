@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Rotate</title>
+    <style type="text/css">
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .test {
+            width: 100%;
+            height: 50%;
+            background: #ffd800;
+            text-align: left;
+        }
+
+        .result {
+            width: 100%;
+            height: 50%;
+            background: #b6ff00;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div id="test" class="test">事件区域</div>
+<div id="result" class="result">事件结果：旋转触发<br /></div>
+
+<script src="hammer.min.js"></script>
+<script type="text/javascript">
+  //创建一个新的hammer对象并且在初始化时指定要处理的dom元素
+  var hammertime = new Hammer(document.getElementById("test"));
+  //为该dom元素指定触屏移动事件
+  hammertime.add(new Hammer.Rotate());
+  //添加事件
+  hammertime.on("rotate", function (e) {
+    document.getElementById("result").innerHTML += "X偏移量：【" + e.deltaX + "】，Y偏移量：【" + e.deltaY + "】<br />";
+    //控制台输出
+    console.log(e);
+  });
+</script>
+</body>
+</html>

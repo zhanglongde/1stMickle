@@ -7,21 +7,16 @@
         mousemove mouseup绑定在document上
 
 
+        拖拽的影响
+        不需要拖拽的元素-webkit-user-drag:none;或者draggable=false
 
+        排除选中文字的干扰
+        user-select:none;
 
         onmousedown可以嵌套
         onmousemove
         onmouseup
         先不嵌套，先不考虑event不存在的情形，先不考虑left或者top:auto的情形
-
-
-        ①鼠标按下+鼠标移动 → 拖拽
-        ②鼠标松开 → 无拖拽
-        ③鼠标偏移 → 拖拽距离
-        用JavaScript事件方法表示就是：
-        ① onmousedown + onmousemove → startDrag()
-        ② onmouseup → stopDrag()
-        ③ ……
     </title>
     <style>
         .container{
