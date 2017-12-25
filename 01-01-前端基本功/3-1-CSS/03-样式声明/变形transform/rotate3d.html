@@ -2,9 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .container{
+            width:800px;
+            height:500px;
+            position:absolute;
+            top:0;left:0;right:0;bottom:0;
+            margin:auto;
+        }
+        .content>.left{
+           transform: rotate3d(1, 1, 1, 45deg);
+        }
+        .content>.right{
+            transform: scaleX(-1)  rotate3d(1, 1, 1, 45deg);
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="container">
+    <div class="content">
+        <img class="left" src="../../../../images/mm1.jpg"/>
+        <img class="right" src="../../../../images/mm1.jpg"/>
+    </div>
+</div>
 </body>
 </html>
