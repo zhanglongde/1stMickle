@@ -10,11 +10,10 @@
 <body>
 <input type="file" name="file" id="myFile">
 <div id="previewArea"></div>
-<button id="btnDelete">删除</button>
 
 <script>
-  var previewArea = document.getElementById('previewArea');
     function handleImageFile() {
+        var previewArea = document.getElementById('previewArea');
         var fileInput = document.getElementById("myFile");
         var img = document.createElement('img');
         var file = fileInput.files[0];
@@ -29,10 +28,6 @@
 
     document.getElementById("myFile").addEventListener('change', function () {
         handleImageFile()
-    })
-
-    document.querySelector('#btnDelete').addEventListener('click', function () {
-      previewArea.removeChild(previewArea.firstChild)
     })
 </script>
 </body>

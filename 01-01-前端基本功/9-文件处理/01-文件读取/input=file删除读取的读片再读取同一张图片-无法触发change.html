@@ -2,9 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>
+       同一张图片change无法触发，怎木办？
+       方法1：利用其外层form元素的reset方法
+    </title>
+    <script src="../../../lib/jquery-1.11.3.min.js"></script>
 </head>
 <body>
-$END$
+<input type="file" name="file" id="myFile">
+
+<div id="previewArea"></div>
+<button id="btnDelete">删除</button>
+
+<script>
+  var previewArea = document.getElementById('previewArea');
+  function handleImageFile() {
+    var fileInput = document.getElementById("myFile");
+    var img = document.createElement('img');
+    var file = fileInput.files[0];
+    // 通过filles[0]获得Blob的src
+    img.src = window.URL.createObjectURL(file)//这里blob依然占据着内存
+
+    img.onload = function () {
+      window.URL.revokeObjectURL(this.src)//释放内存
+    }
+    previewArea.appendChild(img);
+
+    $('input[type=file]').wrap('<form>').closest('form').get(0).reset();
+  }
+
+  document.getElementById("myFile").addEventListener('change', function () {
+    handleImageFile()
+  })
+
+  document.querySelector('#btnDelete').addEventListener('click', function () {
+    previewArea.removeChild(previewArea.firstChild)
+  })
+</script>
 </body>
 </html>
