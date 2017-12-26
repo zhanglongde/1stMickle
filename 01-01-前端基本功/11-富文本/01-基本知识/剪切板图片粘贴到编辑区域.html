@@ -60,7 +60,8 @@
             let items = clipboardData && clipboardData.items
             for (let item of items) {
                 let fileType = item.type || ''
-                if (fileType.indexOf('image') >= 0) {
+//                if (fileType.indexOf('image') >= 0) {
+                if (/image/i.test(fileType)) {
                     let file = item.getAsFile()
                     ReadFile(file).then((event) => {
                         let src = event.target.result
