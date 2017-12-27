@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>
+       Clear a File Input
        同一张图片change无法触发，怎木办？
        方法1：利用其外层form元素的reset方法
+       方法2：重设value
     </title>
     <script src="../../../lib/jquery-1.11.3.min.js"></script>
 </head>
@@ -27,12 +29,15 @@
       window.URL.revokeObjectURL(this.src)//释放内存
     }
     previewArea.appendChild(img);
-
-    $('input[type=file]').wrap('<form>').closest('form').get(0).reset();
   }
 
-  document.getElementById("myFile").addEventListener('change', function () {
+  document.getElementById("myFile").addEventListener('change', function (e) {
     handleImageFile()
+//      方法1
+//    $('input[type=file]').wrap('<form>').closest('form').get(0).reset();
+//    $('input[type=file]').unwrap('<form>')
+//      方法2
+      e.target.value = ''
   })
 
   document.querySelector('#btnDelete').addEventListener('click', function () {
