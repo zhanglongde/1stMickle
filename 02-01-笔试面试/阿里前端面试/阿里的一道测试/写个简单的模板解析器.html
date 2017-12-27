@@ -8,5 +8,26 @@
 </head>
 <body>
 
+<script>
+  var greeting = 'My name is ${name}, age ${age}, I am a ${job.jobName}';
+  var employee = {
+    age: 11,
+    name: 'XiaoMing',
+    job: {
+      jobName: 'designer',
+      jobLevel: 'senior'
+    }
+  };
+  // 非常规解法,非常巧妙：with结合es6的模板字符串
+  String.prototype.render = function (obj) {
+//    利用``的前提是：将对象属性一一转化为变量
+    with(obj) {
+      console.log(obj)
+      return eval('`' + this + '`')
+    }
+  }
+  var result = greeting.render(employee);
+  console.log(result);
+</script>
 </body>
 </html>

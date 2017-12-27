@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        async 返回promise
+        await 等待promise
+
+        async Promise.all使用场景，例如：需要等待文件全局并发上传成功之后，做一些显示等操作
+    </title>
+</head>
+<body>
+<script>
+    function Timer(seconds) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve()
+        }, seconds*1000)
+      })
+    }
+    async function Wait(seconds, num) {
+      await Timer(seconds)
+      console.log(`第${num}个：${seconds}秒定时完成`)
+    }
+
+//    得到一个promise数组，不能用map和forEach，因为它们是串行的
+    let arrPromise = []
+    for(let i = 0; i < 5; i++){
+      arrPromise.push(Wait(2, i + 1))
+    }
+    Promise.all(arrPromise).then(() => {
+      console.log('全部并行完成')
+    })
+</script>
+</body>
+</html>

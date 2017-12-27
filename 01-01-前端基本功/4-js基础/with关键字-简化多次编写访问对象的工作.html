@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   var Person = {
+     name: 'zld',
+     age: 26,
+     gender: 'M',
+     location: 'Shanghai'
+   }
+
+   with(Person){
+     console.log(name)  // 否则需要写成Person.name
+     console.log(age)
+     console.log(gender)
+     console.log(location)
+   }
+</script>
+</body>
+</html>
