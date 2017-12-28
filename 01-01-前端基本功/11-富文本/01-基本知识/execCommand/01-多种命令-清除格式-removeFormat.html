@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        http://patisserie.keensoftware.com/en/pages/remove-word-formatting-from-rich-text-editor-with-javascript
+    </title>
+    <style>
+        blockquote{
+            margin: 0px 0px 0px 0.8ex;
+            border-left: 1px solid rgb(204, 204, 204);
+            padding-left: 1ex;
+        }
+    </style>
+</head>
+<body>
+<div contenteditable="true">
+    some content
+    bold
+    Italic
+    underline
+</div>
+
+<div>
+    fontName<input type="text" id="iptFontSize" value="4">
+    fontSize<input type="text" id="iptFontName" value="Arial">
+    <button id="btnFontSize">fontSize</button>
+    <button id="btnFontName">FontName</button>
+</div>
+
+<div>
+    <button id="btnBold">bold</button>
+    <button id="btnItalic">italic</button>
+    <button id="btnUnderline">underline</button>
+</div>
+
+<div>
+    foreColor<input type="text" id="iptForeColor" value="#000">
+    backColor<input type="text" id="iptBackColor" value="#fff">
+    <button id="foreColor">foreColor</button>
+    <button id="backColor">backColor</button>
+</div>
+
+<div>
+    <button id="insertOrderedList">insertOrderedList</button>
+    <button id="insertUnorderedList">insertUnorderedList</button>
+</div>
+
+<div>
+    <button id="justifyCenter">justifyCenter</button>
+    <button id="justifyFull">justifyFull</button>
+    <button id="justifyLeft">justifyLeft</button>
+    <button id="justifyRight">justifyRight</button>
+</div>
+
+<div>
+    <button id="quote">quote</button>
+    <button id="btnRemoveFormat">removeFormat</button>
+    blockquote 列表 取法使用removeFormat清除格式
+</div>
+
+<script>
+  window.onload = function () {
+    var btnFontSize = document.querySelector('#btnFontSize')
+    btnFontSize.addEventListener('click', function () {
+      let fontSize = document.querySelector('#iptFontSize').value
+      document.execCommand('fontSize', false, parseInt(fontSize))
+    })
+    var btnFontName = document.querySelector('#btnFontName')
+    btnFontName.addEventListener('click', function () {
+      let fontName = document.querySelector('#iptFontName').value
+      document.execCommand('fontName', false, fontName)
+    })
+
+
+    var btnBold = document.querySelector('#btnBold')
+    btnBold.addEventListener('click', function () {
+      document.execCommand('bold')
+    })
+    var btnItalic = document.querySelector('#btnItalic')
+    btnItalic.addEventListener('click', function () {
+      document.execCommand('italic')
+    })
+    var btnUnderline = document.querySelector('#btnUnderline')
+    btnUnderline.addEventListener('click', function () {
+      document.execCommand('underline')
+    })
+
+
+    var foreColor = document.querySelector('#foreColor')
+    foreColor.addEventListener('click', function () {
+      let foreColor = document.querySelector('#iptForeColor').value
+      document.execCommand('foreColor', false, foreColor)
+    })
+    var backColor = document.querySelector('#backColor')
+    backColor.addEventListener('click', function () {
+      let backColor = document.querySelector('#iptBackColor').value
+      document.execCommand('backColor', false, backColor)
+    })
+
+
+    var insertOrderedList = document.querySelector('#insertOrderedList')
+    insertOrderedList.addEventListener('click', function () {
+      document.execCommand('insertOrderedList')
+    })
+    var insertUnorderedList = document.querySelector('#insertUnorderedList')
+    insertUnorderedList.addEventListener('click', function () {
+      document.execCommand('insertUnorderedList')
+    })
+
+    var justifyCenter = document.querySelector('#justifyCenter')
+    justifyCenter.addEventListener('click', function () {
+      document.execCommand('justifyCenter')
+    })
+    var justifyFull = document.querySelector('#justifyFull')
+    justifyFull.addEventListener('click', function () {
+      document.execCommand('justifyFull')
+    })
+    var justifyLeft = document.querySelector('#justifyLeft')
+    justifyLeft.addEventListener('click', function () {
+      document.execCommand('justifyLeft')
+    })
+    var justifyRight = document.querySelector('#justifyRight')
+    justifyRight.addEventListener('click', function () {
+      document.execCommand('justifyRight')
+    })
+
+
+    var quote = document.querySelector('#quote')
+    quote.addEventListener('click', function () {
+      document.execCommand('formatBlock', false, 'BLOCKQUOTE')
+    })
+    var btnRemoveFormat = document.querySelector('#btnRemoveFormat')
+    btnRemoveFormat.addEventListener('click', function () {
+      document.execCommand('removeFormat', false, 'Arial')
+    })
+  }
+</script>
+</body>
+</html>

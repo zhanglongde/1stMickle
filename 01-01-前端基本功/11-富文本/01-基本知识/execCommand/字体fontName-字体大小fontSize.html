@@ -14,6 +14,8 @@
     fontSize
     fontName
 </div>
+fontName<input type="text" id="iptFontSize" value="4">
+fontSize<input type="text" id="iptFontName" value="Arial">
 
 <button id="btnFontSize">fontSize</button>
 <button id="btnFontName">FontName</button>
@@ -22,12 +24,14 @@
   window.onload = function () {
     var btnFontSize = document.querySelector('#btnFontSize')
     btnFontSize.addEventListener('click', function () {
-      document.execCommand('fontSize', false, 4)
+      let fontSize = document.querySelector('#iptFontSize').value
+      document.execCommand('fontSize', false, parseInt(fontSize))
     })
 
     var btnFontName = document.querySelector('#btnFontName')
     btnFontName.addEventListener('click', function () {
-      document.execCommand('fontName', false, 'Arial')
+      let fontName = document.querySelector('#iptFontName').value
+      document.execCommand('fontName', false, fontName)
     })
   }
 </script>
