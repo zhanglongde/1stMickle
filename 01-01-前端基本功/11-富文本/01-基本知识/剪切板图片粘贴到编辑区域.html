@@ -66,6 +66,7 @@
                     ReadFile(file).then((event) => {
                         let src = event.target.result
                         document.execCommand('insertHTML', false, `<img src="${src}">`);
+//                        document.execCommand('insertImage', false, src);
                     }).catch(function (error) {
                       console.log(error)
                     })

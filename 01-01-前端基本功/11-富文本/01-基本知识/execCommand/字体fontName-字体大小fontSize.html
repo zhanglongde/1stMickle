@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        字体尺寸参数：1-7,从小到大
+        同时还有：increaseFontSize decreaseFontSize
+        字体大小如何扩展
+    </title>
+</head>
+<body>
+<div contenteditable="true">
+    some content
+    fontSize
+    fontName
+</div>
+
+<button id="btnFontSize">fontSize</button>
+<button id="btnFontName">FontName</button>
+
+<script>
+  window.onload = function () {
+    var btnFontSize = document.querySelector('#btnFontSize')
+    btnFontSize.addEventListener('click', function () {
+      document.execCommand('fontSize', false, 4)
+    })
+
+    var btnFontName = document.querySelector('#btnFontName')
+    btnFontName.addEventListener('click', function () {
+      document.execCommand('fontName', false, 'Arial')
+    })
+  }
+</script>
+</body>
+</html>
