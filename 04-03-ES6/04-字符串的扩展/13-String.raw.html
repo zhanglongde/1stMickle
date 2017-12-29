@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        替换所有变量，斜杠转义（已转义的不进行转义）????不行
+        用法：
+        标签模板
+        普通函数
+    </title>
+</head>
+<body>
+<script>
+    let a = String.raw`Hi\n${2+3}!`;
+    // "Hi\\n5!"
+
+    let b = String.raw`Hi\u000A!`;
+    // 'Hi\\u000A!'
+
+    let c = String.raw`Hi\\n`
+    // "Hi\\n"
+
+    let d = String.raw({ raw: 'test' }, 0, 1, 2);
+    // 't0e1s2t'
+
+    // 等同于
+    let e = String.raw({ raw: ['t','e','s','t'] }, 0, 1, 2);
+
+    console.log(a,b,c,d,e)
+</script>
+</body>
+</html>
