@@ -8,5 +8,33 @@
 </head>
 <body>
 
+<script>
+    let sender = '<xxxx>' // 用户输入的字符串
+    let message = SaferHTML`<p>${sender} has sent you a message.</p>`;
+
+    /***
+     * 过滤字符
+     * @param template 散落字符串的数组
+     * @returns {*}
+     * @constructor
+     */
+    function SaferHTML(templateData) {
+      let s = templateData[0];
+//      遍历参数数组
+      for (let i = 1; i < arguments.length; i++) {
+          let arg = String(arguments[i]);
+          console.log(arg)
+          // Escape special characters
+          s += arg.replace(/&/g, "&amp;")
+              .replace(/</g, "&lt;")
+              .replace(/>/g, "&gt;")
+
+          s += templateData[i]
+      }
+      return s;
+    }
+
+    console.log(message)
+</script>
 </body>
 </html>
