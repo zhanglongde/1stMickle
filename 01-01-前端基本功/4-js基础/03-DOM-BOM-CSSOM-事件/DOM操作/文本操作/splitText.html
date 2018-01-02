@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="p">foobar</p>
+
+<script type="text/javascript">
+    var p = document.getElementById('p');
+    var textnode = p.firstChild;
+
+    // 将原文本节点分割成为内容分别为foo和bar的两个文本节点
+    var replacementNode = textnode.splitText(3);
+
+    // 创建一个包含了内容为' span contents '的文本节点的span元素
+    var span = document.createElement('span');
+    span.appendChild(document.createTextNode(' span contents '));
+
+    // 将span元素插入到后一个文本节点('bar')的前面
+    p.insertBefore(span, replacementNode);
+
+    // 现在的HTML结构成了<p id="p">foo <span>span contents</span> bar</p>
+</script>
+</body>
+</html>

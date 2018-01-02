@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    var wrapper = document.createElement("div");
+
+    wrapper.appendChild(document.createTextNode("Part 1 "));
+    wrapper.appendChild(document.createTextNode("Part 2 "));
+
+    // 这时(规范化之前),wrapper.childNodes.length === 2
+    // wrapper.childNodes[0].textContent === "Part 1 "
+    // wrapper.childNodes[1].textContent === "Part 2 "
+
+    wrapper.normalize();
+    // 现在(规范化之后), wrapper.childNodes.length === 1
+    // wrapper.childNodes[0].textContent === "Part 1 Part 2"
+
+    document.body.appendChild(wrapper)
+</script>
+</body>
+</html>

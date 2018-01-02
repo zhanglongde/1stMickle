@@ -27,6 +27,12 @@
            
        }
     });
+
+//    删除事件监听
+    document.body.addEventListener('DOMNodeRemoved', function (e) {
+      console.log('%c-----------------------------------------------------------', 'background-color:#85a;color:#fff;font-size:30px;')
+      console.log(e.target)
+    })
 </script>
 </body>
 </html>
