@@ -2,7 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        range与DOM
+        range.selectNode
+        document.createRange()
+
+        range与selection
+        window.getSelection().addRange(range)
+        window.getSelection().removeAllRanges()
+    </title>
 </head>
 <body>
 <a id="selector">123</a>
@@ -13,8 +21,12 @@
     aEle.addEventListener('click',function(){
         var copyDOM = document.querySelector('#selector');
         var range = document.createRange();
+//        在DOM上设定范围
         range.selectNode(copyDOM);
+
+//        在selection上设置拖蓝
         window.getSelection().addRange(range);
+
         var successful = document.execCommand('copy');
         try {
             // Now that we've selected the anchor text, execute the copy command

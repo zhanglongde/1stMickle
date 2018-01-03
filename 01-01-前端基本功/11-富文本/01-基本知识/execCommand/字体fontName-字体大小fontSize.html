@@ -28,8 +28,24 @@ fontSize<input type="text" id="iptFontName" value="Arial">
   window.onload = function () {
     var btnFontSize = document.querySelector('#btnFontSize')
     btnFontSize.addEventListener('click', function () {
-      let fontSize = document.querySelector('#iptFontSize').value
-      document.execCommand('fontSize', false, parseInt(fontSize))
+      let fontSize = parseInt(document.querySelector('#iptFontSize').value)
+      document.execCommand('fontSize', false, fontSize)
+
+      if (fontSize === 2) {
+        let selection = window.getSelection()
+          if (selection.rangeCount > 0) {
+              let range = selection.getRangeAt(0)
+              console.log(range)
+              let wrapper = range.commonAncestorContainer
+//              let innerHTML = wrapper.innerHTML
+//              console.log(wrapper, innerHTML)
+//              wrapper.replaceWith(innerHTML)
+
+//              移除并抽取
+              let extract = range.extractContents()
+              console.log(extract)
+          }
+      }
     })
 
     var btnFontName = document.querySelector('#btnFontName')

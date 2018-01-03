@@ -63,8 +63,23 @@
   window.onload = function () {
     var btnFontSize = document.querySelector('#btnFontSize')
     btnFontSize.addEventListener('click', function () {
-      let fontSize = document.querySelector('#iptFontSize').value
-      document.execCommand('fontSize', false, parseInt(fontSize))
+      let fontSize = parseInt(document.querySelector('#iptFontSize').value)
+      document.execCommand('fontSize', false, fontSize)
+
+        if (fontSize === 2) {
+            let selection = window.getSelection()
+            if (selection.rangeCount > 0) {
+                let range = selection.getRangeAt(0)
+                console.log(range)
+                let wrapper = range.commonAncestorContainer
+//                let innerHTML = wrapper.innerHTML
+                console.log(wrapper, range.startContainer, range.endContainer, range.startOffset, range.endOffset)
+//                wrapper.replaceWith(innerHTML)
+
+                let extract = range.extractContents()
+                console.log(extract)
+            }
+        }
     })
     var btnFontName = document.querySelector('#btnFontName')
     btnFontName.addEventListener('click', function () {
