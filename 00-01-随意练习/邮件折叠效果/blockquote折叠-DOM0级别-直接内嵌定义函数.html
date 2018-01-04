@@ -47,14 +47,14 @@
             <div>发自</div>
         </div>
     </div>`;
-    function FilterBlockquote(template) {
+    function ShrinkBlockquote(template) {
       return template.replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi,
-          `<span class="toggle-fold-box" onclick="(function() {
-                let event = window.event
-                let ndBlockquote = event.target.nextSibling
-                let style = window.getComputedStyle(ndBlockquote, null)
+          `<span class="toggle-fold-box" onclick="function ToggleBlockquote() {
+                var event = window.event || this
+                var ndBlockquote = event.target.nextSibling
+                var style = window.getComputedStyle(ndBlockquote, null)
                 ndBlockquote.style.display = style.display === 'block' ? 'none' : 'block'
-            })();">...</span><blockquote style="display: none;">$1</blockquote>`)
+            };ToggleBlockquote();">...</span><blockquote style="display: none;">$1</blockquote>`)
     }
     new Vue({
         el:'#app',
