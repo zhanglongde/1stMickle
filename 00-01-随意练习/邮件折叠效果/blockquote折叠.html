@@ -1,10 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .toggle-fold-box {
+            display: inline-block;
+            height: 12px;
+            width: 12px;
+            /*margin-left: 16px;*/
+            /*margin-bottom: 10px;*/
+            line-height: 4px;
+            color: #000;
+            background-color: #ccc;
+            cursor: pointer;
+            -webkit-user-select: none;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div id="app" v-html="msg">
+</div>
+
+<script src="../../lib/jquery-1.11.3.min.js"></script>
+<script src="../../lib/vue.js"></script>
+<script>
+    let html = `<div id="app" data-x-div-type="html">
+        <div data-x-div-type="body"><br>请发布到正式环境<br><br><br><br><br><br><br><br><br><br><br>
+            <blockquote>----------Original----------
+                <div>
+                    <div><br><br>
+                        <div><span style="white-space: pre"> </span>1.语言切换</div>
+                        <div><span style="white-space: pre"> </span>2.文件响应</div>
+                        <br><br><br><br>---
+                    </div>
+                </div>
+            </blockquote>
+            <p>--</p>
+            <div>发自</div>
+        </div>
+    </div>`;
+    function FilterBlockquote(template) {
+      return template.replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi,
+          `<span class="toggle-fold-box">...</span><blockquote style="display: none;">$1</blockquote>`)
+    }
+    new Vue({
+        el:'#app',
+        data: {
+          msg: FilterBlockquote(html)
+        },
+        mounted () {
+          document.querySelector('.toggle-fold-box').addEventListener('click', function (event) {
+            let ndBlockquote = event.target.nextSibling
+            let style = window.getComputedStyle(ndBlockquote, null)
+            ndBlockquote.style.display = style.display === 'block' ? 'none' : 'block'
+          })
+        }
+    })
+</script>
 </body>
 </html>
