@@ -23,6 +23,9 @@
             cursor: pointer;
             -webkit-user-select: none;
         }
+        .toggle-fold-box+blockquote{
+            display:none;
+        }
     </style>
 </head>
 <body>
@@ -48,18 +51,19 @@
         </div>
     </div>`;
     function ShrinkBlockquote(template) {
-      return template.replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi,
-          `<span class="toggle-fold-box" onclick="function ToggleBlockquote() {
+      return template.replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi, function (str) {
+        return `<span class="toggle-fold-box" onclick="function ToggleBlockquote() {
                 var event = window.event || this
                 var ndBlockquote = event.target.nextSibling
                 var style = window.getComputedStyle(ndBlockquote, null)
                 ndBlockquote.style.display = style.display === 'block' ? 'none' : 'block'
-            };ToggleBlockquote();">...</span><blockquote style="display: none;">$1</blockquote>`)
+            };ToggleBlockquote();">...</span>${str}`
+      })
     }
     new Vue({
         el:'#app',
         data: {
-          msg: FilterBlockquote(html)
+          msg: ShrinkBlockquote(html)
         }
     })
 </script>
