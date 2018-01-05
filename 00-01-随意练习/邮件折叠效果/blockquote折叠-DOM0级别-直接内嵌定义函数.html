@@ -48,17 +48,32 @@
             </blockquote>
             <p>--</p>
             <div>发自</div>
+            <blockquote>test blockquote1</blockquote>
+            <span class="toggle-fold-box" onclick="function ToggleBlockquote() {
+                var ndBlockquote = window.event && window.event.target.nextSibling || this.nextSibling
+                if (ndBlockquote.nodeType !== 1 || ndBlockquote.tagName.toLowerCase() !== 'blockquote') {
+                  return
+                }
+                var style = window.getComputedStyle(ndBlockquote, null)
+                ndBlockquote.style.display = style.display === 'block' ? 'none' : 'block'
+            };ToggleBlockquote();">...</span>
+            <blockquote>test blockquote2</blockquote>
         </div>
     </div>`;
     function ShrinkBlockquote(template) {
-      return template.replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi, function (str) {
+      return template.replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi, function (match, str) {
         return `<span class="toggle-fold-box" onclick="function ToggleBlockquote() {
-                var event = window.event || this
-                var ndBlockquote = event.target.nextSibling
+                var ndBlockquote = window.event && window.event.target.nextSibling || this.nextSibling
+                if (ndBlockquote.nodeType !== 1 || ndBlockquote.tagName.toLowerCase() !== 'blockquote') {
+                  return
+                }
                 var style = window.getComputedStyle(ndBlockquote, null)
                 ndBlockquote.style.display = style.display === 'block' ? 'none' : 'block'
-            };ToggleBlockquote();">...</span>${str}`
+            };ToggleBlockquote();">...</span><blockquote>${str}</blockquote>`
       })
+    }
+    function UnshrinkBlockquote (template) {
+        return template.replace(/<span [^>]*class="toggle-fold-box" [^>]*>[^>]*<\/span>/gm, '')
     }
     new Vue({
         el:'#app',
