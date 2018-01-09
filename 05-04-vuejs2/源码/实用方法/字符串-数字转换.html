@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     * Convert a value to a string that is actually rendered.
+     */
+    function toString (val) {
+        return val == null
+            ? ''
+            : typeof val === 'object'
+                ? JSON.stringify(val, null, 2)
+                : String(val)
+    }
+
+    /**
+     * Convert a input value to a number for persistence.
+     * If the conversion fails, return original string.
+     */
+    function toNumber (val) {
+        var n = parseFloat(val);
+        return isNaN(n) ? val : n
+    }
+</script>
+</body>
+</html>

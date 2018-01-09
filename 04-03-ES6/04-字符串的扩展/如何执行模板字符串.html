@@ -6,38 +6,14 @@
 </head>
 <body>
 <script>
-    function compile(template){
-        const evalExpr = /<%=(.+?)%>/g;
-        const expr = /<%([\s\S]+?)%>/g;
-
-        template = template
-            .replace(evalExpr, '`); \n  echo( $1 ); \n  echo(`')
-            .replace(expr, '`); \n $1 \n  echo(`');
-
-        template = 'echo(`' + template + '`);';
-
-        let script =
-            `(function parse(data){
-            let output = "";
-
-            function echo(html){
-              output += html;
-            }
-
-            ${ template }
-
-            return output;
-          })`;
-
-        return script;
-    }
     let signature = '<a>1039326495@qq.com</a> zhanglongde'
-    let test = 'test data'
-    let signatureTemplate = '<div class=signature> ${signature} <br> <%= test %></div>'
-    let parse = eval(compile(signatureTemplate))
-    console.log(parse)
-    let result = parse()
-    console.log(result)
+
+    function GetSignatureTemplate({signature}) {
+        let signatureTemplate = '<div class=signature> ${signature} </div>'
+        return eval('`' + signatureTemplate + '`')
+    }
+
+    console.log(GetSignatureTemplate({signature}))
 </script>
 </body>
 </html>

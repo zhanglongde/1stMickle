@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /**
+     * Camelize a hyphen-delimited string.
+     */
+    var camelizeRE = /-(\w)/g;
+    var camelize = cached(function (str) {
+        return str.replace(camelizeRE, function (_, c) { return c ? c.toUpperCase() : ''; })
+    });
+
+    /**
+     * Capitalize a string.
+     */
+    var capitalize = cached(function (str) {
+        return str.charAt(0).toUpperCase() + str.slice(1)
+    });
+
+    /**
+     * Hyphenate a camelCase string.
+     */
+    var hyphenateRE = /\B([A-Z])/g;
+    var hyphenate = cached(function (str) {
+        return str.replace(hyphenateRE, '-$1').toLowerCase()
+    });
+</script>
+</body>
+</html>
