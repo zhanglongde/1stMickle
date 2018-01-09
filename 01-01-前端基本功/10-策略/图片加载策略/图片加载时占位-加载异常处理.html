@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        1.加载中
+        图片加载过程中，图片元素宽高为0，所以img-placeholder不能靠img撑开
+        img-placeholder上设定一个占位背景图
+        padding-top百分比，相对于父容器宽度
+        2.加载异常
+        地址不正确等，进入onerror
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .container{
+            position:absolute;top:0;left:0;right:0;bottom:0;
+            margin:auto;
+            width:500px;
+            height:500px;
+        }
+        .img-placeholder{
+            display:inline-block;
+            vertical-align: middle;
+            /*如何让内部Img元素决定容器宽高？*/
+            width:100px;
+            height:100px;
+
+            border-radius: 2px;
+            border: 1px solid #dcdcdc;
+            /*仍然需要加载时间*/
+            background-image: url("../图片策略/header-bio.svg");
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+        .img-placeholder>img{
+            /*去除图片底部缝隙*/
+            vertical-align: middle;
+
+            /*如果不设定宽度，图片超出依然显示*/
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+<div id="app" class="container">
+    <div class="img-placeholder">
+        <img :src="imgSrc" alt="..." @error="imgOnError" @load="imgOnLoad">
+    </div>
+    <span>图片</span>
+</div>
+
+<script src="../../../05-04-vuejs2/vue.js"></script>
+<script>
+  new Vue({
+    el:'#app',
+    data () {
+      return {
+        imgSrc: 'https://cdn10.inecm.cn/googlebio/4df94bf721837b5f260b4c50e8d06e42delete.jpg',
+        defaultSrc: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgd2lkdGg9IjEzMHB4IiBoZWlnaHQ9IjEzMHB4IiB2aWV3Qm94PSIwIDAgMTMwIDEzMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4NCiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQyICgzNjc4MSkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+DQogICAgPHRpdGxlPkdyb3VwIDI5PC90aXRsZT4NCiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4NCiAgICA8ZGVmcz48L2RlZnM+DQogICAgPGcgaWQ9IumCruS7ti1WMi4w54mIIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4NCiAgICAgICAgPGcgaWQ9Ikdyb3VwLTI5Ij4NCiAgICAgICAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGUtMjQtQ29weS0yIiBmaWxsPSIjRjVGNUY1IiB4PSIzLjQxMDYwNTEzZS0xMyIgeT0iMCIgd2lkdGg9IjEzMCIgaGVpZ2h0PSIxMzAiIHJ4PSI3LjQyODU3MTQzIj48L3JlY3Q+DQogICAgICAgICAgICA8cGF0aCBkPSJNNjYuODU3MTQyOSw2My4xNDQ0ODIxIEM3NC4wMzk2NDI5LDYzLjE0NDQ4MjEgNzkuODU3MTQyOSw1Ny4zMjY5ODIxIDc5Ljg1NzE0MjksNTAuMTQyODU3MSBDNzkuODU3MTQyOSw0Mi45NjAzNTcxIDc0LjAzOTY0MjksMzcuMTQyODU3MSA2Ni44NTcxNDI5LDM3LjE0Mjg1NzEgQzU5LjY3MzAxNzksMzcuMTQyODU3MSA1My44NTcxNDI5LDQyLjk2MDM1NzEgNTMuODU3MTQyOSw1MC4xNDI4NTcxIEM1My44NTcxNDI5LDU3LjMyNjk4MjEgNTkuNjczMDE3OSw2My4xNDQ0ODIxIDY2Ljg1NzE0MjksNjMuMTQ0NDgyMSBMNjYuODU3MTQyOSw2My4xNDQ0ODIxIFogTTY2Ljg1NzE0MjksNjkuNjQyODU3MSBDNTguMTc5NjQyOSw2OS42NDI4NTcxIDQwLjg1NzE0MjksNzMuOTk5NDgyMSA0MC44NTcxNDI5LDgyLjY0NDQ4MjEgTDQwLjg1NzE0MjksODkuMTQyODU3MSBMOTIuODU3MTQyOSw4OS4xNDI4NTcxIEw5Mi44NTcxNDI5LDgyLjY0NDQ4MjEgQzkyLjg1NzE0MjksNzMuOTk5NDgyMSA3NS41MzMwMTc5LDY5LjY0Mjg1NzEgNjYuODU3MTQyOSw2OS42NDI4NTcxIEw2Ni44NTcxNDI5LDY5LjY0Mjg1NzEgWiIgaWQ9IkZpbGwtMTAzIiBmaWxsPSIjQ0NDQ0NDIj48L3BhdGg+DQogICAgICAgIDwvZz4NCiAgICA8L2c+DQo8L3N2Zz4='
+      }
+    },
+    methods: {
+      imgOnError (event) {
+        //              图片加载错误占位
+        event.target.src = this.defaultSrc
+      },
+      imgOnLoad () {
+//        加载完成
+        console.log('onload...')
+      }
+    }
+  })
+</script>
+</body>
+</html>

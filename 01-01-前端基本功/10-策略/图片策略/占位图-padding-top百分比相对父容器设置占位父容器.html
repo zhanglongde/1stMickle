@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>
+        padding和margin的百分比高度是基于其父元素的宽度的
+
         padding-top百分比，相对于父容器宽度
         padding-top百分比，保证了无论宽度多大，占位容器的宽高比是固定的
     </title>
     <style>
         .container{
-            position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;
+            position:absolute;
+            top:0;bottom:0;left:0;right:0;margin:auto;
             width:500px;
             min-height:100vh;
             background-color: #9c3;
