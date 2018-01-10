@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>
-        非正常流：定位 浮动才有效
-    </title>
+    <title>Title</title>
     <style>
         *{
             margin:0;
@@ -14,13 +12,15 @@
             width:200px;
             height:400px;
             background-color: #9c3;
-            vertical-align: bottom;
+
+            display:flex;
+            flex-direction: column;
+            justify-content: flex-end;
         }
         .item{
             display:inline-block;
-            height:350px;
+            height:50px;
 
-            /*相对父容器无效，相对兄弟元素有效*/
             margin-bottom:100px;
             background-color: #58a;
         }
