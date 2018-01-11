@@ -11,3 +11,7 @@ ExtractTextPlugin
 bundle-loader 用来分割代码，懒加载分割后的代码
 promise-loader 类似于bundle-loader
 3.动态导入：通过模块的内联函数调用来分离代码(借助模块化运行时)
+
+
+Webpack 大法之 Code Splitting
+https://zhuanlan.zhihu.com/p/26710831

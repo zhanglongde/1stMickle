@@ -1,6 +1,6 @@
 tree-shaking作用
 减小打包后的资源体积
-tree-shaking是uglify的一个步骤
+tree-shaking是uglifyJs的一个步骤
 
 DCE(dead code elimination)
 DCE是去除死代码，而tree-shaking是保留或代码，是实现DCE的一种方式
@@ -27,3 +27,10 @@ tree-shaking打包表现
 .babelrc配置
 babel-preset-es2015
 modules:false
+
+
+
+
+
+你的Tree-Shaking并没什么卵用
+webpack uglifyJs的tree-shaking对于babel过的第三方工具库、组件库没有作用

@@ -12,3 +12,8 @@ https://juejin.im/entry/58e4c7a3b123db15eb7c794a
 处理当前plugin的chunk
 开启多个worker进程,对chunk.files的uglify任务分不到多个worker进程中，完成后通知主进程进行统一处理
 文件缓存，缓存文件名的hash和文件内容的hash
+
+
+
+UglifyJs do not support ES6+, you can also use babel-minify for better treeshaking: https://github.com/babel/minify
+babel minify
