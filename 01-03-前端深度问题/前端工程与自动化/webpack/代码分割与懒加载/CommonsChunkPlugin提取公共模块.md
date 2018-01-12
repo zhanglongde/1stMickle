@@ -1,0 +1,7 @@
+CommonsChunkPlugin可以将公共的依赖模块提取到已有的入口中，
+或者提取到一个新生成的chunk
+
+
+Vue-cli默认生成的配置中
+提取../node_modules中的第三方依赖到chunk:vendor
+提取vendor公共部分到chunk:manifest

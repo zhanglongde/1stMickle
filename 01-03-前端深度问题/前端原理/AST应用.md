@@ -1,4 +1,4 @@
 借助Node.js编译
-webpack
-babel
-Vue
+webpack=>acorn
+babel=>babylon
+Vue=>new Function

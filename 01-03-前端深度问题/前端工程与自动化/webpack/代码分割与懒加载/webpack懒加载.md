@@ -6,3 +6,5 @@ https://doc.webpack-china.org/guides/lazy-loading
 1.前端路由
 2.vue 动态组件
 3.根据业务逻辑，合适的时机借助模块化运行时触发
+
+懒加载通常是在代码分割基础上实现
