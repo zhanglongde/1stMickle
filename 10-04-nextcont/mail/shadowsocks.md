@@ -1,0 +1,5 @@
+shadowsocks作者:clowwindy抛弃node.js版本
+shadowsocks-nodejs deprecated
+
+没有能力驾驭
+shadowsocks-libev
