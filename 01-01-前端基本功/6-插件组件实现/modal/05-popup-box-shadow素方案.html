@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        实验性功能
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .center1{
+            position:absolute;
+            top:0;left:0;right:0;bottom:0;
+            margin:auto;
+        }
+
+        dialog {
+            width: 350px;
+            padding: 40px;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            border-radius: 2px;
+            box-shadow: 0 5px 20px black;
+        }
+        dialog::backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            /*filter: blur(5px)*/
+        }
+    </style>
+</head>
+<body>
+<dialog class="center1">
+    <div>
+        dialog::backdrop test
+    </div>
+    <button id="close">Close</button>
+</dialog>
+<button id="show">Open Dialog!</button>
+
+<script>
+    //Trigger the dialog box
+    var dialog = document.querySelector('dialog');
+    document.querySelector('#show').onclick = function() {
+        dialog.showModal();
+    };
+    document.querySelector('#close').onclick = function() {
+        dialog.close();
+    };
+</script>
+</body>
+</html>
