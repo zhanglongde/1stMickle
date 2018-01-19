@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+    </title>
+    <style>
+        main {
+            transition: .6s;
+            background: white;
+        }
+
+        main.de-emphasized {
+            -webkit-filter: blur(3px);
+            filter: blur(3px);
+        }
+
+        dialog {
+            position: fixed;
+            top: 50%; left: 50%;
+            z-index: 1;
+            width: 10em;
+            padding: 2em;
+            margin: -5em;
+            border: 1px solid silver;
+            border-radius: .5em;
+            box-shadow: 0 .2em .5em rgba(0,0,0,.5),
+            0 0 0 100vmax rgba(0,0,0,.2);
+        }
+
+        dialog:not([open]) {
+            display: none;
+        }
+
+        body {
+            font: 150%/1.6 Baskerville, Palatino, serif;
+        }
+    </style>
+</head>
+<body>
+<dialog>O HAI, I’m a dialog. Click on me to dismiss.</dialog>
+<main>
+    <button>Show dialog</button>
+    <p>Bacon ipsum dolor sit amet consectetur
+        short loin
+        ut
+        tri-tip
+        alcatra
+        ground round
+        jowl
+        beef
+        meatloaf
+        in
+        pork.  Elit
+        chicken
+        ea
+        spare ribs.  Shank
+        andouille
+        ex
+        boudin
+        picanha
+        turkey
+        esse.  Do
+        doner
+        fugiat
+        tongue.</p><p>Pork chop
+    ad
+    cow
+    spare ribs
+    capicola
+    ball tip
+    alcatra
+    cillum
+    magna
+    short ribs
+    tempor.  Pork loin
+    do
+    sint
+    magna
+    ea
+    pork belly
+    duis.  Shoulder
+    ullamco
+    chicken
+    porchetta, ham
+    anim
+    veniam
+    venison.  Fugiat
+    tenderloin
+    venison, turducken
+    non
+    pork chop
+    ribeye
+    enim.  Beef
+    turkey
+    salami, ipsum
+    prosciutto
+    commodo
+    cupidatat.  Tri-tip
+    ham hock
+    non
+    brisket
+    pig
+    cupim commodo
+    ball tip
+    nulla
+    turkey
+    kielbasa
+    corned beef
+    flank.  Hamburger
+    pariatur
+    ham, porchetta
+    cupidatat
+    sirloin
+    pork loin
+    quis
+    nulla
+    culpa
+    tail
+    esse.</p><p>Chuck
+    filet mignon
+    flank
+    pork chop
+    mollit
+    enim
+    veniam
+    sed
+    pork loin
+    aliquip
+    sausage
+    prosciutto
+    in
+    deserunt.  Nostrud
+    porchetta
+    non
+    nulla
+    sunt.  Cupim et
+    velit
+    picanha
+    laborum salami
+    capicola
+    exercitation
+    alcatra
+    sausage
+    cillum
+    shoulder
+    minim
+    esse.  Pig
+    boudin
+    aliquip
+    aute, tail
+    ut
+    cow
+    incididunt
+    short loin
+    aliqua.</p><p>Et
+    dolor
+    occaecat
+    dolore
+    doner
+    shoulder.  Swine
+    pancetta
+    tri-tip
+    irure
+    turducken, kevin
+    est
+    meatball
+    aliqua
+    aute
+    quis
+    ham
+    venison
+    sunt.  Consequat
+    pancetta
+    sint
+    beef
+    turkey.  Fugiat
+    occaecat
+    commodo, short ribs
+    corned beef
+    aliquip
+    elit
+    eiusmod
+    pork belly
+    ut
+    eu
+    tri-tip.  Sint
+    aute
+    picanha
+    proident
+    corned beef
+    ad
+    beef
+    dolore
+    landjaeger.  Laboris
+    est
+    deserunt
+    tempor, bresaola
+    ham hock
+    non
+    brisket
+    frankfurter
+    ad
+    leberkas
+    aute
+    sirloin.  Minim
+    et
+    ribeye
+    shank
+    pork loin
+    sint
+    corned beef
+    ball tip
+    dolor.</p><p>Doner
+    alcatra
+    pastrami
+    pig, strip steak
+    eu
+    in
+    frankfurter
+    occaecat
+    in
+    filet mignon
+    chuck
+    short loin
+    nulla
+    meatloaf.  Adipisicing
+    aliqua
+    kielbasa
+    nulla
+    proident.  Ground round
+    meatloaf
+    kevin, shank
+    adipisicing
+    pork
+    frankfurter
+    t-bone
+    spare ribs
+    cupidatat.  Sed
+    ham
+    non
+    duis
+    enim, in
+    ipsum
+    fugiat
+    est
+    tongue
+    short ribs
+    ad
+    bresaola
+    prosciutto.  Non
+    minim
+    picanha, ad
+    in
+    occaecat
+    fugiat
+    veniam
+    dolor
+    deserunt.</p>
+</main>
+
+<script>
+    function $(sel) {
+        return document.querySelector(sel);
+    }
+
+    var dialog = $('dialog');
+    var main = $('main');
+
+    $('button').onclick = function() {
+
+        dialog.setAttribute('open', '');
+
+        main.classList.add('de-emphasized');
+    }
+
+    dialog.onclick = function() {
+        if (dialog.close) {
+            dialog.close();
+        }
+        else {
+            dialog.removeAttribute('open');
+        }
+
+        main.classList.remove('de-emphasized');
+    }
+</script>
+</body>
+</html>

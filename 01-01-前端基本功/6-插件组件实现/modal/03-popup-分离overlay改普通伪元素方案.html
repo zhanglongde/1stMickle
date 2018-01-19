@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .center1{
+            position:absolute;
+            top:0;left:0;right:0;bottom:0;
+            margin:auto;
+        }
+
+        .popup-container{
+            position:absolute;
+            padding: 26px;
+
+            border-radius: 2px;
+            color: #212121;
+            background-color: #fff;
+            box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        .overlay{
+            position:fixed;
+            /*撑满全屏*/
+            top:0;left:0;right:0;bottom:0;
+        }
+        .overlay::before{
+            content:'';
+            position:fixed;
+            /*撑满全屏*/
+            top:0;left:0;right:0;bottom:0;
+        }
+        /*阴影开关*/
+        .overlay.overlay-shadow::before{
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        /*定制样式：by-container by-content*/
+        .by-content{
+            width:400px;
+            height:400px;
+        }
+    </style>
+</head>
+<body>
+<div class="by-container overlay overlay-shadow">
+    <div class="by-content popup-container center1">
+        popup psuedo test
+    </div>
+</div>
+</body>
+</html>
