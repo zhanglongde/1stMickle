@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        html,body{
+            height:100%;
+        }
+        .container{
+            height:100%;
+            overflow-y:auto;
+        }
+        .container .editor{
+            margin:16px;
+        }
+        .editor{
+            width:calc(100% - 40px);
+            min-height:500px;
+            padding:16px;
+
+            border:1px solid #cdcdcd;
+            border-radius:2px;
+
+            resize:vertical;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="editor" contenteditable="true"></div>
+</div>
+</body>
+</html>
