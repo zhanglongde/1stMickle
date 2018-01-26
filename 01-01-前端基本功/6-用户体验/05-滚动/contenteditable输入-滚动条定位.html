@@ -18,10 +18,12 @@
         }
         .container .editor{
             margin:16px;
+            margin-top:300px;
         }
         .editor{
+            position:relative;
             width:calc(100% - 40px);
-            min-height:500px;
+            min-height:300px;
             padding:16px;
 
             border:1px solid #cdcdcd;
@@ -29,11 +31,33 @@
 
             resize:vertical;
         }
+        .ft{
+            height:40px;
+            background-color: #58a;
+            border-radius:2px;
+        }
+        .editor-ft{
+            position:sticky;
+            bottom:20px;
+        }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="editor" contenteditable="true"></div>
+    <div id="myeditor" class="editor" contenteditable="true">
+    </div>
+    <div class="ft editor-ft"></div>
 </div>
+
+<script>
+    let myeditor = document.querySelector('#myeditor')
+    let container = document.querySelector('.container')
+    myeditor.addEventListener('keyup', function () {
+        var range = window.getSelection().getRangeAt(0)
+        let p = range.getBoundingClientRect()
+        console.log(p)
+        container.scrollTop = container.scrollTop + 21
+    })
+</script>
 </body>
 </html>

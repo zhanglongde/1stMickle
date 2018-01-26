@@ -11,6 +11,17 @@
         2.如果存在子元素，
           在父元素上绑定事件，进入父元素，都会触发事件，并没有区别；
           对于绑定mouseover的元素，当鼠标从父元素进入其子元素或者子元素进入父元素以及子元素进入子元素，都会触发父元素上的mouseover事件
+
+
+        mouseover：
+        不论鼠标指针穿过被选元素或其子元素，都会触发 mouseover 事件。
+        支持事件冒泡。
+        相对应 mouseout 事件。
+
+        mouseenter :
+        只有在鼠标指针穿过被选元素时，才会触发 mouseenter 事件。
+        不支持事件冒泡。
+        相对应 mouseleave 事件。
     </title>
     <style>
         .container{
