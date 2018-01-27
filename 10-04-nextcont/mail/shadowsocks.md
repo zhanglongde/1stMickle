@@ -14,9 +14,16 @@ shadowsocks在客户端机器本地部署了一个socks5 server端，
 
 
 
+shadowsocks基本原理
+shadowsocks + 一台海外 VPS + License:Chrome(SwitchyOmega)/Firefox(AutoProxy)
 
 
 
+
+
+
+
+3种方式
 
 GFW
 利用境外服务器代理的方法来绕过 GFW 的过滤，其中包含了各种HTTP代理服务【http层】、Socks服务【TCP层】、VPN服务【IP层】… 其中以 ssh tunnel 的方法比较有代表性
