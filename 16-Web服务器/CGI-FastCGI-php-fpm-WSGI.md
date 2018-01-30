@@ -1,0 +1,6 @@
+
+CGI是HTTP Server和一个独立的进程之间的协议，把HTTP Request的Header设置成进程的环境变量，HTTP Request的正文设置成进程的标准输入，而进程的标准输出就是HTTP Response包括Header和正文。
+FASTCGI是和HTTP协议类似的概念。无非就是规定了在同一个TCP连接里怎么同时传多个HTTP连接。这实际上导致了个问题，有个HTTP连接传个大文件不肯让出FASTCGI连接，在同一个FASTCGI连接里的其他HTTP连接就傻了。所以Lighttpd? 引入了 X-SENDFILE 。
+php-fpm就相当于是Apache+mod_php。无非php-fpm自带了FASTCGI Server，而Apache是HTTP Server。
+
+那个WSGI和这个问题没啥关系吧。WSGI这个只是Python内部的一个接口。无论你前面是FASTCGI，HTTP，SCGI，uWSGI等协议，你的FASTCGI/HTTP/SCGI/uWSGI Server都以相同的参数格式去调用一个函数，这样你用Python写的Web应用并不需要修改代码，就可以运行在不同的Server后面了。无非CGI协议是进程间的，而WSGI是进程内的。
