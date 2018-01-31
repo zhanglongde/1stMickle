@@ -1,6 +1,7 @@
 Inbox
 离线版GMail
-YoMail
+YoMail toC 保存数据 安全单
+       数据不一致：IMAP SMTP
 Nylas Mail
 
 
