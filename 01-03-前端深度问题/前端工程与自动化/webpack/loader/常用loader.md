@@ -25,3 +25,7 @@ enforce:pre
 
 vue-loader：已经包括HTML和样式的相关Loader
 vux-loader：组件动态引用
+
+
+其他loader
+worker-loader
