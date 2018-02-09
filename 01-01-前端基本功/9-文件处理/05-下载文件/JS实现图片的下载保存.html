@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        网页上一般要保存图片都是从canvas里面拿到的图片数据，通过toDataURL转换为base64数据：
+    </title>
+</head>
+<body>
+
+
+<script>
+    /**
+     * 将某个canvas保存为图片
+     * @param canvasObj canvas对象
+     * @param saveName 保存的名称
+     * @param type 保存的图片格式，如 image/png
+     * @param quality 图片质量，可选0-1
+     */
+    function saveImage(canvasObj, saveName, type, quality)
+    {
+        if(!canvasObj) return;
+        type = type || 'image/png';
+        quality = quality || 0.92;
+        var url = canvasObj.toDataURL(type, quality).replace(/image\/.*?;/, 'image/octet-stream;');
+        openDownloadDialog(url, saveName);
+    }
+</script>
+</body>
+</html>

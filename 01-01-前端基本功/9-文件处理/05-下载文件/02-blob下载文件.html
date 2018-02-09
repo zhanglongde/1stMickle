@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        通过a标签实现，把要导出的数据用“\n”和“,”拼接成一个字符串，然后把字符串放到href中，这种方法只支持chrome，firefox等非ie浏览器
+
+        接收CSV文件内容，js通过blob转化
+
+        \uFEFF BOM头：解决中文乱码
+
+        content-disposition:文件处理方式，文件名
+        https://github.com/pagekit/vue-resource/issues/285
+    </title>
+</head>
+<body>
+<!--<a href="">下载</a>-->
+
+<script>
+
+//    window.onload = function () {
+//        var blob = new Blob(['Hello World']);
+//
+//        var a = document.createElement('a');
+//        a.href = window.URL.createObjectURL(blob);
+//        a.donwload = 'hello-world.txt';
+//        a.textContent = 'Download Hello World';
+//
+//        document.body.appendChild(a);
+//    }
+
+
+    let headers = response.headers
+    let blob = new Blob([['\uFEFF' + response.data]], {type: headers['content-type']})
+    let filename = (response.headers['content-disposition'] || '').split('filename=')[1]
+    let link = document.createElement('a')
+    link.href = window.URL.createObjectURL(blob)
+    link.download = filename
+    link.click()
+</script>
+</body>
+</html>

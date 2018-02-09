@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="src/FileSaver.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+    var blob = new Blob(["欢迎访问 hangge.com"], {type: "text/plain;charset=utf-8"});
+    saveAs(blob, "文件导出测试.txt");
+</script>
+</body>
+</html>

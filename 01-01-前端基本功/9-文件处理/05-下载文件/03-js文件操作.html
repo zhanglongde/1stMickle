@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        https://disjoint.ca/til/2017/09/20/how-to-download-a-binary-file-using-axios/
+    </title>
+</head>
+<body>
+
+<script>
+    import axios from 'axios';
+    import fs from 'fs';
+
+    // ...
+
+    return axios.request({
+        responseType: 'arraybuffer',
+        url: 'http://www.example.com/file.mp3',
+        method: 'get',
+        headers: {
+            'Content-Type': 'audio/mpeg',
+        },
+    }).then((result) => {
+        const outputFilename = '/tmp/file.mp3';
+        fs.writeFileSync(outputFilename, result.data);
+        return outputFilename;
+    });
+</script>
+</body>
+</html>
