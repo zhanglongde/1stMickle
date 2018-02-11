@@ -20,3 +20,4 @@ CDN主要功能
 概括为：
 DNS智能选择最近的访问节点
 镜像缓存静态内容
+https://www.zhihu.com/question/36514327/answer/145964866
