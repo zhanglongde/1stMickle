@@ -1,0 +1,1 @@
+JIT (Just-In-Time - 实时编译) 和 AOT (Ahead-Of-Time - 预先编译)
