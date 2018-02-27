@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button>导出</button>
+
+<script>
+    function handleCsvData (data) {
+        let tableHeader = '账号,账号状态,绑定状态,创建时间,最后一次绑定的时间,最后一次登录的时间\n'
+        return tableHeader + data
+    }
+
+    function exportData() {
+//        实际通过response获取
+        let testData = '01,0,0,2018,2018,2018'
+        let testType = 'text/csv; charset=UTF-8'
+        let testName = 'test.csv'
+
+        let data = handleCsvData(testData)
+        let blob = new Blob([['\uFEFF' + data]], {type: testType})
+        let filename = testName
+        let link = document.createElement('a')
+        link.href = window.URL.createObjectURL(blob)
+        link.download = filename
+        link.click()
+    }
+
+    window.onload = function () {
+      document.querySelector('button').addEventListener('click', function () {
+        exportData()
+      })
+    }
+</script>
+</body>
+</html>
