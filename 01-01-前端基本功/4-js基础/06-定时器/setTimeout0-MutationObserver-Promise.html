@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .outer{
+            width:200px;
+            height:200px;
+            padding:50px;
+
+            background-color: #58a;
+        }
+        .inner{
+            width:100px;
+            height:100px;
+
+            line-height:100px;
+
+            background-color: #85a;
+        }
+    </style>
+</head>
+<body>
+<div class="outer">
+    <div class="inner">inner</div>
+</div>
+
+<script>
+    var outer = document.querySelector('.outer')
+    var inner = document.querySelector('.inner')
+
+    new MutationObserver(function () {
+      console.log('mutate')
+    }).observe(outer, {
+        attributes:true
+    })
+
+    function onClick() {
+       console.log('begin click')
+
+        setTimeout(function () {
+          console.log('timeout')
+        },0)
+
+        Promise.resolve().then(function () {
+          console.log('promise')
+        })
+
+        outer.setAttribute('data-random', Math.random())
+    }
+    inner.addEventListener('click', onClick)
+    outer.addEventListener('click', onClick)
+</script>
+</body>
+</html>

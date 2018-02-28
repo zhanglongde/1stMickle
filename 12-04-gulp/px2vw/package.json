@@ -1,0 +1,20 @@
+{
+  "name": "gulp",
+  "version": "1.0.0",
+  "description": "html",
+  "keywords": [
+    "html"
+  ],
+  "author": "gulp",
+  "license": "ISC",
+  "scripts": {
+    "build": "gulp build",
+    "dev": "gulp server"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0"
+  }
+}
