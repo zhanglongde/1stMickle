@@ -1,6 +1,4 @@
-# ManyALittleMakesAMickle
 
-> 前端代码库  
-  每天积累一点，积少成多！
+> 人生有限，知识无限
 
 
