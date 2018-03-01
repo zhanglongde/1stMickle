@@ -4,6 +4,7 @@
 2.技术栈与组件库
   为什么选用Vue.js？经历Vue1.x到Vue2.x
   为什么组件库？如何维护？
+  webpack1.x=>2.x=>3.x
 3.布局
   左右布局
   右边：工具栏与主体，上下
@@ -58,13 +59,13 @@
       图片粘贴 base64
       execCommand selection range
 7.有意思的点
-转发 node-http-proxy
-国际化 node-xlsx js-xlsx
+接口转发 node-http-proxy
+国际化 node-xlsx js-xlsx python
 字体 字体包还是font-family
 8.失败点
 8.1旧的列表同步策略
 404失效，导致：1）很长时间没有打开，首次加载巨慢 2）虽然近期打开过，但是由于客户邮件量巨大，无法destroy
-        从而，每次进入邮件想看到最新邮件的列表，必须等待较旧
+        从而，每次进入邮件想看到最新邮件的列表，必须等待较久
 向上向下
 8.2旧的持久化缓存策略
 vuex 插件钩子
