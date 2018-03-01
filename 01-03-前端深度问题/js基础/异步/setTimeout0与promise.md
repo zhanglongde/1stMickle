@@ -14,3 +14,8 @@ task:UI更新
 microtask:数据更新
 根据HTML Standard，在每个 task 运行完以后，UI 都会重渲染，那么在 microtask 中就完成数据更新，当前 task 结束就可以得到最新的 UI 了。
 反之如果新建一个 task 来做数据更新，那么渲染就会进行两次。
+
+
+
+Promise的队列与setTimeout的队列有何关联？
+https://www.zhihu.com/question/36972010?utm_source=wechat_session&utm_medium=social&from=singlemessage
