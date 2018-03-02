@@ -1,4 +1,5 @@
-antd，element专门开发了babel插件，使得用户能以import { Button, Message } form 'antd'这样的方式去按需加载。本质上就是通过插件将上一句的代码又转化成如下：
+antd，element专门开发了babel插件，使得用户能以import { Button, Message } form 'antd'这样的方式去按需加载。
+本质上就是通过插件将上一句的代码又转化成如下：
 import Button from 'antd/lib/button';
 import Message from 'antd/lib/button';
 这样似乎是最完美的变相tree-shaking方案
