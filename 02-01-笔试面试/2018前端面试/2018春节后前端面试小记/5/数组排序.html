@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        原生js:快排 冒泡 选择
+
+        sort排序：
+        对原数组改变
+        默认按照字符串排序，数字类型先转化为字符串
+
+        比较函数
+        纯数字的数组排序 减号/加号
+        字符数组 大于号/小于号
+        对象数组
+    </title>
+</head>
+<body>
+<script>
+  var arr = [ 2, 4, 50, 20, 3 ];
+//  sort方法，默认按照字符串排序，改变了原数组
+  arr.sort(function (a,b) {
+    console.log(typeof a,typeof b)
+    return a-b // 升序,如果对于字符串数组的排序用>/<
+  })
+  console.log(arr)
+
+
+//  对象数组排序
+  var obj = [
+    { name: 'a', value: 21 },
+    { name: 'b', value: 37 },
+    { name: 'c', value: 45 },
+    { name: 'd', value: -12 },
+    { name: 'e' }
+  ];
+
+</script>
+</body>
+</html>

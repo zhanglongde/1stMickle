@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  var arr = [ 2, 4, 50, 20, 3 ];
+  function quickSort(a) {
+    return a.length <= 1 ? a : quickSort(a.slice(1).filter(item => item <= a[0])).concat(a[0], quickSort(a.slice(1).filter(item => item > a[0])));
+  }
+  let a = quickSort(arr)
+  console.log(a)
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*模拟其他语言中的 sleep*/
+  function Log(i) {
+    return new Promise((resolve,reject) => {
+      setTimeout(function () {
+        console.log(i)
+        resolve('success')
+      }, i*1000)
+    })
+  }
+
+  (async function () {
+    for(var i = 0; i< 5; i++){
+      await Log(i)
+    }
+  })()
+</script>
+</body>
+</html>

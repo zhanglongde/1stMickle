@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let iter;
+    
+    function* run() {
+      for(var i = 0; i< 5; i++){
+        setTimeout(() => iter.next(),1000)
+        yield;// 等待上面setTimeout执行完毕
+        console.log(i)
+      }
+    }
+
+    iter = run()
+    iter.next()
+</script>
+</body>
+</html>

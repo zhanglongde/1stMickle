@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*闭包传参*/
+//    for(var i = 0; i< 5; i++){
+//      (function (i) {
+//        setTimeout(function () {
+//          console.log(i)
+//        },1000)
+//      })(i)
+//    }
+
+    /*定时器传参*/
+//    for(var i = 0; i< 5; i++){
+//      (function () {
+//        setTimeout(function (i) {
+//          console.log(i)
+//        }, 1000, i)
+//      })(i)
+//    }
+
+    for(var i = 0; i< 5; i++){
+      setTimeout((function (i) {
+        console.log(i)
+      })(i), 1000)
+    }
+</script>
+</body>
+</html>
