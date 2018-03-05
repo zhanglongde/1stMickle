@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        1234567890 --> 1,234,567,890
+    </title>
+</head>
+<body>
+<script>
+
+//    方法2：字符串数组逆序
+//    方法3：正则
+    
+    
+//    方法4：API,toLocaleString,Intl
+    let a = 1234567890;
+    let r = a.toLocaleString('en-US')
+    console.log(r)
+    
+    let r2=new Intl.NumberFormat().format(a)
+    console.log(r2)
+</script>
+</body>
+</html>

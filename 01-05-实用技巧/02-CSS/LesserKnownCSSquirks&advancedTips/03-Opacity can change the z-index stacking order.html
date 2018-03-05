@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*#ontop {*/
+            /*opacity: .99;*/
+        /*}*/
+
+        .red, .green, .blue {
+            position: absolute;
+            width: 100px;
+            color: white;
+            line-height: 100px;
+            text-align: center;
+        }
+        span {
+            opacity: .95;
+        }
+
+        .red {
+            z-index: 10;
+            top: 20px;
+            left: 80px;
+            background: red;
+        }
+
+        .green {
+            z-index: 2;
+            top: 80px;
+            left: 20px;
+            background: green;
+        }
+
+        .blue {
+            z-index: 3;
+            top: 100px;
+            left: 100px;
+            background: blue;
+        }
+
+        button {
+            position: absolute;
+            top: 230px;
+        }
+    </style>
+</head>
+<body>
+<div id="ontop" >
+    <span class="red">z-index:10</span>
+</div>
+<div>
+    <span class="green">z-index:2</span>
+</div>
+<div>
+    <span class="blue">z-index:1</span>
+</div>
+
+<button id="foo">Add "opacity:0.99;" to red div</button>
+
+<script>
+    document.getElementById('foo').onclick = function(){
+        document.getElementById('ontop').style.opacity = '0.99';
+    }
+</script>
+</body>
+</html>

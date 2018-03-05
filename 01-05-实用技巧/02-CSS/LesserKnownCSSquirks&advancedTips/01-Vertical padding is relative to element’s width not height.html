@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        margin-top
+        padding-top百分比相对于父元素宽度
+    </title>
+    <style>
+        div {
+            position: relative;
+        }
+        .container {
+            height: 600px;
+            width: 200px;
+            background: lightgray;
+        }
+        .padding1 {
+            width: 100%;
+            /*margin-top:100%;*/
+            padding-top: 100%;
+            background: green;
+            color: white;
+        }
+        .padding2 {
+            width: 50%;
+            padding-top: 50%;
+            background: blue;
+            color: white;
+        }
+        span {
+            position: absolute;
+            bottom: 0;
+            font-size: 12px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="padding1">
+        <span>padding-top: 100%<br> width: 100%</span>
+    </div>
+    <div class="padding2">
+        <span>padding-top: 50%<br> width: 50%</span>
+    </div>
+
+    <span>height: 600px<br> width: 200px</span>
+</div>
+</body>
+</html>

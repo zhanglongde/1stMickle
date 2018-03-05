@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function sleep(sleepTime) {
+      return new Promise(resolve => setTimeout(resolve,sleepTime)) 
+    }
+
+    !async function () {
+      const t1 = +new Date();
+      await sleep(3000)
+      const t2 = +new Date()
+      console.log(t2-t1)  
+    }()
+</script>
+</body>
+</html>
