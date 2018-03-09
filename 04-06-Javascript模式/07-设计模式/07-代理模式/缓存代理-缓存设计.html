@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        [js]一道缓存类面试题
+        返回了缓存对象的引用，才导致调用者可以随意更改缓存的内容
+    </title>
 </head>
 <body>
 <script>
@@ -21,10 +24,10 @@
         const self = this.store[name]
         key = key || 1
         if (self.data[key]) {
-            return Promise.resolve(self.data[key])
+            return Promise.resolve(JSON.parse(self.data[key]))
         }
         return self.fn(key).then(data => {
-            self.data[key] = data
+            self.data[key] = JSON.stringify(data)
             return data
         })
     }
