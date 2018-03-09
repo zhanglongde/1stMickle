@@ -2,9 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    function Cache () {
+        this.store = {}
+    }
+
+    Cache.prototype.new = function (name, fn) {
+        if (!name || !fn || typeof fn !== 'function') {
+            return
+        }
+        this.store[name] = {name, fn, data: {}}
+    }
+
+    Cache.prototype.get = function (name, key) {
+        const self = this.store[name]
+        key = key || 1
+        if (self.data[key]) {
+            return Promise.resolve(self.data[key])
+        }
+        return self.fn(key).then(data => {
+            self.data[key] = data
+            return data
+        })
+    }
+
+    Cache.prototype.clear = function (name, key) {
+        this.store[name].data[key] = null
+    }
+
+    Cache.prototype.clearAll = function (name) {
+        this.store[name].data = {}
+    }
+
+    // 1.下面的代码说明Cache的实现存在一个bug，尝试修复它
+
+    const c = new Cache()
+
+    c.new('foo', function (key) {
+        return Promise.resolve([1])
+    })
+
+    c.get('foo').then(
+        list0 => {
+            console.log(list0)
+            list0.push(2)
+            return c.get('foo')
+        }).then(
+        list1 => {
+            console.log(list1)
+            list1.push(3)
+            return c.get('foo')
+        }).then(
+        list2 => {
+            console.log(list2)
+        })
+</script>
 </body>
 </html>
