@@ -1,0 +1,11 @@
+全局性状态管理
+
+单向数据流
+每个模块内部分为state getter action mutation
+state为内部状态，只能mutation的commit进行修改，由getter映射到模板
+action，模板通过dispatch分发action，action可以进行commit或者再分发
+
+大致形成:dispatch action 到store commit提交state state通过getter映射到模板
+
+
+系统庞大之后，逐渐进行modules划分 namespace

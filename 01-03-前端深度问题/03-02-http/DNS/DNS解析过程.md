@@ -3,6 +3,7 @@ http://imweb.io/topic/55e3ba46771670e207a16bc8
 https://zhuanlan.zhihu.com/p/28305778
 https://edu.unixhot.com/cache-dns.html
 
+域名解析过程
 当用户在浏览器中输入域名并按下回车键后：
 1.查找浏览器缓存
   chrome缓存的时间只有一分钟，查看chrome的缓存可打开：chrome://net-internals/#dns
