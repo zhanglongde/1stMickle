@@ -1,5 +1,6 @@
 vue-loader
-整合各个loader以及Vue编译器
+整合各个loader，替代Vue编译器？，与运行时共同发挥作用
+
 vue-loader 是自动用 css-loader 和 Vue 组件编译器来处理样式和模板文件的
 webpack通过vue-loader来解析*.vue文件，把template、js和style文件分离并让相应的loader去处理。
 
