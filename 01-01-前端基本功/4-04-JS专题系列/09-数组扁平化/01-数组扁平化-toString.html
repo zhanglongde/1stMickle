@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var arr = [1,2,3,[11,22,33,44],5]
+//    toString 返回一个逗号分隔的扁平的字符串
+    console.log(arr.toString())
+    console.log(new Array(arr.toString()))
+
+//    字符串数组转数字数组
+    function Flatten(arr) {
+      return arr.toString().split(',').map(val => +val)
+    }
+    console.log(Flatten(arr))
+</script>
+</body>
+</html>

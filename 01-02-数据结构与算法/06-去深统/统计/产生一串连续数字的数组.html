@@ -6,8 +6,13 @@
 </head>
 <body>
 <script>
+//    注意稀疏数组
     var arr = [...new Array(5)].map((v,i) => i)
     console.log(arr)
+
+//    对照组
+    var arr2 = new Array(5).map((v,i) => i)
+    console.log(arr2)
 </script>
 </body>
 </html>

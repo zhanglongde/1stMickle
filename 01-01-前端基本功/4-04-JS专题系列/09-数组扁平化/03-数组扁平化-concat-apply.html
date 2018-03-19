@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        借用数组的concat方法
+        只能解决一层嵌套
+    </title>
+</head>
+<body>
+<script>
+    var myArray = [[1, 2],[3, [4, 5]], [6, 7, 8, 9]];
+//    apply内部将数组展开为列表，以作为concat的参数列表
+    var newArray = [].concat.apply([],myArray)
+    console.log(newArray)
+</script>
+</body>
+</html>
