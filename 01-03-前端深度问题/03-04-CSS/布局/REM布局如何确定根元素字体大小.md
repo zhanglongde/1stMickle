@@ -28,7 +28,7 @@ window.addEventListener('resize',function(){
 几种常见屏幕宽度对于设计稿相应的font-size值
 deviceWidth=320,font-size=320/6.4  iphone5
 deviceWidth=375,font-size=375/6.4  iphone6/7
-deviceWidth=414,font-size=414/6.4  iphone7/7+
+deviceWidth=414,font-size=414/6.4  iphone6+/7+
 deviceWidth=500,font-size=500/6.4
 (function() {
    document.addEventListener('DOMContentLoaded', function(){

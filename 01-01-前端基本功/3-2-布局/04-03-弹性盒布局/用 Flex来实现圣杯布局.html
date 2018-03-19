@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 600px;
+            height: 100%;
+            font-size: 28px;
+            font-weight: bolder;
+        }
+
+        header,
+        footer {
+            height: 150px;
+            background-color: #666;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: none;
+        }
+
+        .content {
+            flex: 1; /* 高度自适应 */
+            display: flex;
+        }
+
+        nav,
+        aside {
+            background-color: #eb6f43;
+            flex: 0 1 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1; /* 宽度自适应 */
+            background-color: #d6d6d6;
+        }
+
+        nav {
+            order: -1; /* 调整顺序在main前面 */
+        }
+    </style>
+</head>
+<body>
+<header>
+    header
+</header>
+<div class="content">
+    <main>main</main>
+    <nav>nav</nav>
+    <aside>aside</aside>
+</div>
+<footer>
+    footer
+</footer>
+</body>
+</html>
