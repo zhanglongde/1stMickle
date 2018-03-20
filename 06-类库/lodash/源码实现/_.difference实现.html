@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        _.difference(array, *others)
+    </title>
+    <script src="../lodash.js"></script>
+</head>
+<body>
+
+
+<script>
+    var res = _.difference([1, 2, 3, 4, 5], [5, 2, 10], [4], 3);
+    console.log(res)
+</script>
+
+<script>
+//    扁平 others 的数组，筛选出 array 中不在扁平化数组中的值
+//与lodash区别：不会跳过非数组元素
+    function difference(array,...rest) {
+        rest = _.flatten(rest,true,true)
+        return array.filter((item) => {
+            return rest.indexOf(item) === -1
+        })
+    }
+    var r = difference([1, 2, 3, 4, 5], [5, 2, 10], [4], 3) //注意最后一个参数3
+    console.log(r)
+</script>
+</body>
+</html>

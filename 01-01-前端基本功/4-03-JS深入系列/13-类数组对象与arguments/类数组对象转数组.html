@@ -5,6 +5,21 @@
     <title>Title</title>
 </head>
 <body>
-
+<script>
+    
+    var arrayLike = {0: 'name',1:'age',2:'sex',length:3}
+//    1.slice
+    var a = Array.prototype.slice.call(arrayLike)
+    console.log(a,arrayLike)
+//    2.splice
+//    var b = Array.prototype.splice.call(arrayLike,0) // 改变类数组对象
+//    console.log(b,arrayLike)
+//    3.concat apply
+    var c = Array.prototype.concat.apply([],arrayLike)
+    console.log(c,arrayLike)
+//    var d = Array.prototype.push.apply([],arrayLike)
+//    console.log(d,arrayLike)
+//    4.Array.from
+</script>
 </body>
 </html>

@@ -3,6 +3,9 @@
 运行时和编译器
 
 
+Vue1 DocumentFragment
+Vue2 虚拟DOM
+
 
 生命周期 mounted替代ready,增加updated
 

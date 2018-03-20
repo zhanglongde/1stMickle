@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var foo = {
+        value:1,
+        bar:function () {
+          console.log(this.value)
+        }
+    }
+    foo.bar()
+</script>
+<script>
+    Function.prototype.call2 = function (context) {
+      context.fn = this // 将函数设为对象的属性
+        context.fn() // 执行函数
+        delete context.fn
+    }
+    var foo = {
+        value:1
+    }
+    function bar() {
+      console.log(this.value)
+    }
+    bar.call2(foo)
+</script>
+</body>
+</html>

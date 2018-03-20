@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const FULFILLED = 'fulfilled'
+    const REJECTED = 'rejected'
+    const PENDING = 'pending'
+    //构造函数中
+    function Promise(executor) {
+        let self = this;
+
+        /*初始化status*/
+        self.status = 'pending';
+        /*初始化value*/
+        self.value = undefined;
+        /*订阅事件的数组*/
+        self.onResolvedCallBacks = [];
+        self.onRejectedCallBacks = [];
+
+        /*此函数将Promise实例的状态由pending 转化为 fulfilled*/
+        function resolve(value) {
+            if (value instanceof Promise) {
+                return value.then(resolve, reject);
+            }
+            setTimeout(function () {
+                if (self.status === 'pending') {
+                    self.status = 'fulfilled';
+                    self.value = value;
+                    /*发布已经订阅过的事件*/
+                    self.onResolvedCallBacks.forEach(item => item(self.value))
+                }
+            }, 0)
+        }
+        /*此函数将Promise实例的状态由pending 转化为 rejected*/
+        function reject(reason) {
+            setTimeout(function () {
+                if (self.status === 'pending') {
+                    self.status = 'rejected';
+                    self.value = reason;
+                    /*发布已经订阅过的事件*/
+                    self.onRejectedCallBacks.forEach(item => item(self.value))
+                }
+            }, 0)
+        }
+
+        // new Promise 的时候，执行器（executor）的代码会立即执行
+        try {
+            executor(resolve, reject);
+        } catch (e) {
+            reject(e);
+        }
+
+    }
+
+
+    // 先封装一个方法
+    function resolvePromise(promise2,x,resolve,reject){
+//
+        if(promise2 === x){
+            return reject(new TypeError('循环引用'));
+        }
+        // 为了防止resolve和reject同时调用
+        let called = false;//promise2是否已经resolve 或reject了
+        if(x instanceof Promise){
+            if(x.status == PENDING){
+                x.then(function(y){
+                    resolvePromise(promise2,y,resolve,reject);
+                },reject);
+            }else{
+                x.then(resolve,reject);
+            }
+            //x是一个thenable对象或函数，只要有then方法的对象，
+        }else if(x!= null &&((typeof x=='object')||(typeof x == 'function'))){
+            //当我们的promise和别的promise进行交互，编写这段代码的时候尽量的考虑兼容性，
+            //允许别人瞎写，x可以是对象，也可以是函数
+            try{
+                let then = x.then;
+                if(typeof then == 'function'){
+                    //有些promise会同时执行成功和失败的回调
+                    then.call(x,function(y){
+                        //如果promise2已经成功或失败了，则不会再处理了
+                        if(called)return;
+                        called = true;
+                        resolvePromise(promise2,y,resolve,reject)
+                    },function(err){
+                        if(called)return;
+                        called = true;
+                        reject(err);
+                    });
+                }else{
+                    //到此的话x不是一个thenable对象，那直接把它当成值resolve promise2就可以了
+                    // 当返回一个对象 {name:'a',then:{age:8}},对象里的then不是thenable对象
+                    resolve(x);
+                }
+            }catch(e){
+                if(called)return;
+                called = true;
+                reject(e);
+            }
+
+        }else{
+            //如果X是一个普通 的值，则用x的值去resolve promise2
+            resolve(x);
+        }
+    }
+
+    Promise.prototype.then = function(onFulfilled,onRejected){
+        //如果成功和失败的回调没有传，则表示这个then没有任何逻辑，只会把值往后抛
+
+        onFulfilled = typeof onFulfilled == 'function'?onFulfilled:function(value){return  value};
+        onRejected = typeof onRejected == 'function'?onRejected:reason=>{throw reason};
+        //如果当前promise状态已经是成功态了，onFulfilled直接取值
+        let self = this;
+        let promise2;
+        if(self.status == FULFILLED){
+            return promise2 = new Promise(function(resolve,reject){
+                setTimeout(function(){
+                    try{
+                        let x =onFulfilled(self.value);
+                        //如果获取到了返回值x,会走解析promise的过程
+                        resolvePromise(promise2,x,resolve,reject);
+                    }catch(e){
+                        //如果执行成功的回调过程中出错了，用错误原因把promise2 reject
+                        reject(e);
+                    }
+                })
+
+            });
+        }
+        if(self.status == REJECTED){
+            return promise2 = new Promise(function(resolve,reject){
+                setTimeout(function(){
+                    try{
+                        let x =onRejected(self.value);
+                        resolvePromise(promise2,x,resolve,reject);
+                    }catch(e){
+                        reject(e);
+                    }
+                })
+            });
+        }
+        if(self.status == PENDING){
+            return promise2 = new Promise(function(resolve,reject){
+                self.onResolvedCallbacks.push(function(){
+                    try{
+                        let x =onFulfilled(self.value);
+                        //如果获取到了返回值x,会走解析promise的过程
+                        resolvePromise(promise2,x,resolve,reject);
+                    }catch(e){
+                        reject(e);
+                    }
+
+                });
+                self.onRejectedCallbacks.push(function(){
+                    try{
+                        let x =onRejected(self.value);
+                        resolvePromise(promise2,x,resolve,reject);
+                    }catch(e){
+                        reject(e);
+                    }
+                });
+            });
+        }
+
+    }
+
+    function Sleep(times) {
+        return new Promise((resolve, reject) => {
+            setTimeout(function () {
+              resolve(0)
+            }, times)
+        })
+    }
+    let s = Sleep(1000)
+    s.then((data) => {
+        console.log(data)
+    })
+</script>
+</body>
+</html>

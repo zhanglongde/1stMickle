@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="../../../lib/lodash.js"></script>
 </head>
 <body>
-
+<script>
+    var arr = [1, 2, [3, 4],[[5],6,7]];
+    var res = _.flatten(arr,true,true)
+    console.log(res)
+</script>
 </body>
 </html>

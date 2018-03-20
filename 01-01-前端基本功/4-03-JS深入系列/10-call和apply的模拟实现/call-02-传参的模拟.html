@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    Function.prototype.call3 = function (context) {
+      context.fn = this
+      var args = []
+      for (let i = 1,LEN=arguments.length; i < LEN; i++) {
+          args.push(`arguments[${i}]`)
+      }
+      eval(`context.fn(${args})`)
+      delete context.fn
+    }
+
+    var foo = {
+        value: 1
+    };
+
+    function bar(name, age) {
+        console.log(name)
+        console.log(age)
+        console.log(this.value);
+    }
+
+    bar.call3(foo, 'kevin', 18);
+
+</script>
+</body>
+</html>

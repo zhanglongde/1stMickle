@@ -2,9 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        原生js,new做了什么
+        new Object
+        构造object对象的属性访问规则：该对象可以访问构造函数的属性、原型对象上的属性
+        返回对象
+    </title>
 </head>
 <body>
+<script>
+    function objectFactory() {
+      var obj = new Object()
+      var Constructor = [].shift.call(arguments) // 类数组对象借用数组的shift方法，取出第一个参数
+        obj.__proto__ = Constructor.prototype //类比原型继承
+        Constructor.apply(obj,arguments) // 类比经典继承（构造函数继承）,obj继承传入的构造函数
+        return obj
+//        返回值效果
+//        var ret = Constructor.apply(obj,arguments)
+//        return typeof ret === 'object' ? ret : obj;
+    }
 
+    function Person(name,age) {
+      this.name = name;
+      this.age = age;
+      this.habit = 'Games'
+        return {
+          gender: 'Man'
+        }
+    }
+    Person.prototype.strength = 60;
+    Person.prototype.sayYourName = function () {
+      console.log(`I am ${this.name}`)
+    }
+
+    var person = objectFactory(Person, 'zld', 27)
+    console.log(person.name)
+    console.log(person.age)
+    console.log(person.habit)
+    console.log(person.strength)
+//    console.log(person.gender)
+    person.sayYourName()
+</script>
 </body>
 </html>
