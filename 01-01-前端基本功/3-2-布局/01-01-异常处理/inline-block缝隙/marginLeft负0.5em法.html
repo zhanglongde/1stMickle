@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .test{display:inline-block;
+            height:100px;width:300px;
+        }
+        .test:nth-of-type(1){
+            background-color: #fc0;}
+        .test:nth-of-type(2){
+            background-color: #9c3;
+            margin-left:-0.5em;
+        }
+
+        .sd{
+            height:100px;width:300px; /*不起作用*/
+        }
+        .sd:nth-of-type(1){
+            background-color: #5ba;
+        }
+        .sd:nth-of-type(2){
+            background-color: #e66;
+            margin-left:-0.5em;
+        }
+    </style>
+</head>
+<body>
+<div class="test">aaaaaaaaaa</div>
+<div class="test">bbbbbbbbbb</div>
+
+<div>
+    <span class="sd">11111111111</span>
+    <span class="sd">22222222222</span>
+</div>
+</body>
+</html>

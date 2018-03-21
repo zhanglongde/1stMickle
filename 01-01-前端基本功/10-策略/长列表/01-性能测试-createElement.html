@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var createEmptyElements = function(count) {
+        var start = new Date();
+
+        for (var i = 0; i < count; i++) {
+            var element = document.createElement('div');
+            element.appendChild(document.createTextNode('' + i));
+            document.body.appendChild(element);
+        }
+
+        setTimeout(function() {
+            alert(new Date() - start);
+        }, 0);
+    };
+    createEmptyElements(10000)
+</script>
+</body>
+</html>

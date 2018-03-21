@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        img 默认vertical-align: baseline;
+
+        底边到底几像素，有font-size或者line-height决定
+
+        img属于inline元素, inline元素一般都是文字,
+        而英文的小写字母y和g底部比别人多出来一段, 因此不管inline元素中有什么, 都会默认为y和g留出底部一段距离
+    </title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        .container{
+            position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;
+            width:500px;height:300px;
+
+            border:1px solid #ccc;
+        }
+        .container img{
+            /*display:block;*/
+            /*最佳解决方案*/
+            /*vertical-align: middle;*/
+            /*vertical-align: bottom;*/
+        }
+        .first{
+            font-size:80px;
+            /*font-size:0;*/
+            /*line-height:0;*/
+        }
+        .second{
+            /*height:50px;width:200px;*/
+            border:1px solid #f00;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="first">
+        <img src="../../../../images/mm1.jpg" alt="占位">
+        <span>图片1</span>
+    </div>
+    <div class="second">
+
+        原因在于块级元素内部默认有行框，行框撑高了块级元素。img和其他块级元素并列的时候，由于img默认是display:inline-block，因此也会产生匿名块框包裹img，匿名块框内部生成了行框，多余了几个像素。
+        这也是为何把图片添加上display:block，或者父层级font-size、line-height能够解决这个的原因。
+    </div>
+</div>
+</body>
+</html>

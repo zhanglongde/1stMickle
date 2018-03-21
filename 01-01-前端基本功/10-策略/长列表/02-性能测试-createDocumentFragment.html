@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var createElementsWithFragment = function(count) {
+        var start = new Date();
+        var fragment = document.createDocumentFragment();
+
+        for (var i = 0; i < count; i++) {
+            var element = document.createElement('div');
+            element.appendChild(document.createTextNode('' + i));
+            fragment.appendChild(element);
+        }
+
+        document.body.appendChild(fragment);
+
+        setTimeout(function() {
+            alert(new Date() - start);
+        }, 0);
+    };
+    createElementsWithFragment(10000)
+</script>
+</body>
+</html>

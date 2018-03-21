@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var createElementsWithHTML = function(count) {
+        var start = new Date();
+        var array = [];
+
+        for (var i = 0; i < count; i++) {
+            array.push('<div>' + i + '</div>');
+        }
+
+        var element = document.createElement('div');
+        element.innerHTML = array.join('');
+        document.body.appendChild(element);
+
+        setTimeout(function() {
+            alert(new Date() - start);
+        }, 0);
+    };
+    createElementsWithHTML(10000)
+</script>
+</body>
+</html>
