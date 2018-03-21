@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        promise回调在主线程执行
+        then下一个周期
+    </title>
+</head>
+<body>
+
+
+<script>
+  new Promise(resolve => {
+    resolve(1);
+    Promise.resolve().then(() => console.log(2)); // 抢先一步then
+    console.log(4)
+  }).then(t => console.log(t));
+  console.log(3);
+</script>
+</body>
+</html>

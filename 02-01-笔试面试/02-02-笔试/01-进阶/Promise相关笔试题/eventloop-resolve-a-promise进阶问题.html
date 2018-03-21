@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        https://segmentfault.com/q/1010000013721635?utm_source=weekly&utm_medium=email&utm_campaign=email_weekly
+    </title>
+</head>
+<body>
+<script>
+  var p1=new Promise(resolve => {
+    console.log(1)
+    resolve(2)
+  })
+  var p2=new Promise(resolve => {
+    console.log(3)
+    resolve(p1)
+  })
+  p1.then(re => {
+    console.log(re)
+  })
+  p2.then(re => {
+    console.log(re) // 执行p2的then方法，在此方法中又调用p1,此时，p1已经处于resolved状态，所以返回2.
+//    console.log(p1) // 对照
+  })
+//    setTimeout(()=> {
+//       console.log(p1)
+//    }, 1000)
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        类型不同做比较的过程中调用了valueOf,而你给当前对象添加了valueOf,就不会调用原型链上的valueOf了,所以拿到了0
+    </title>
+</head>
+<body>
+<script>
+  var x = 1;
+  var obj = {
+    valueOf: function() {
+      x = 2;
+      return 0;
+    },
+    toString: function () {
+      return 12
+    }
+  };
+  console.log(x); //1
+  console.log(obj.valueOf()); //0
+  console.log(obj.toString());
+  console.log(obj); //Object
+  console.log(obj == 0,x); // true 2
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        为什么在then中return Promise对象，在下一个then中被resolve了?
+    </title>
+</head>
+<body>
+<script>
+  function retPromise(str) {
+    return new Promise(resolve=>{
+      resolve(str);
+    })
+  }
+
+  console.log(retPromise("first")) // 返回一个Promise对象
+
+  retPromise("x").then(str=>{
+    return retPromise("first")
+  }).then(str=>{
+    console.log(str) // 返回"first"
+  })
+</script>
+</body>
+</html>

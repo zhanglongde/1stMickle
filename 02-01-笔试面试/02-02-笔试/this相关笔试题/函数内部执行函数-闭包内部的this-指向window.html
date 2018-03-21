@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+  var x = 20;
+  var a = {
+    x: 15,
+    fn: function() {
+      var x = 30;
+      return function() {
+        return this.x;
+      };
+    }
+  };
+  console.log(a.fn());//function() {}
+  console.log((a.fn())());//20,立即执行函数
+  console.log(a.fn()());//20
+  console.log(a.fn()() === (a.fn())());//true
+  console.log(a.fn().call(this));//20
+  console.log(a.fn().call(a));//15
+</script>
+</body>
+</html>
