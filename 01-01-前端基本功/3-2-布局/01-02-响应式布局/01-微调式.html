@@ -2,9 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        单一列展示大部分内容，随着视口宽的的增加，改变font-size值和padding间距，以保证内容的持续可读性。
+
+        微调式针对单列布局，简单的修改字体大小，padding和margin间距，保证内容可读性。
+    </title>
+    <style>
+        .c1 {
+            padding: 10px;
+            width: 100%;
+        }
+
+        @media (min-width: 600px) {
+            .c1 {
+                padding: 20px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (min-width: 960px) {
+            .c1 {
+                padding: 40px;
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
+<div class="c1">
+    .c1 {
+    padding: 10px;
+    width: 100%;
+    }
 
+    @media (min-width: 600px) {
+    .c1 {
+    padding: 20px;
+    font-size: 1.5rem;
+    }
+    }
+
+    @media (min-width: 960px) {
+    .c1 {
+    padding: 40px;
+    font-size: 2rem;
+    }
+    }
+</div>
 </body>
 </html>

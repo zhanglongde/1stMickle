@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        ?:和?=都用于子表达式里面，?:表示匹配且获取，?=表示匹配但不获取。
+    </title>
+</head>
+<body>
+
+
+<script>
+    function serilizeUrl (url) {
+        var reg = /(\w+)(?:=([^=&]*))?/g
+                , result = {}
+                , match;
+
+        url = (url || '').split('?');
+
+        if (!url || url.length <= 1) {
+            return null;
+        }
+
+        while (match = reg.exec(url[1])) {
+            result[match[1]] = match[2] === undefined ? undefined : decodeURIComponent(match[2] || '');
+        }
+
+        return result;
+    }
+
+    var r=serilizeUrl('http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e');
+    console.log(r)
+</script>
+</body>
+</html>

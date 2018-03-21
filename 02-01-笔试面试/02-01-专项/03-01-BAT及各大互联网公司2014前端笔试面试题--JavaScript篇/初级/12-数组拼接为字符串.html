@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        已知数组var stringArray = [“This”, “is”, “Baidu”, “Campus”]，Alert出”This is Baidu Campus”。
+    </title>
+</head>
+<body>
+
+<script>
+    /**
+     * 数组的join的方法将字符数组拼接为字符串
+     * @type {string[]}
+     */
+    var stringArray = ['This', 'is', 'Baidu', 'Campus'];
+
+    var t = stringArray.join(' ');
+    console.log(t);
+    console.log(typeof t);
+
+    /**
+     * 字符串的split方法将字符串按照分隔符将字符串分隔为若干数组项
+     * @type {Array}
+     */
+    var r = t.split(' ');
+    console.log(r);
+</script>
+</body>
+</html>

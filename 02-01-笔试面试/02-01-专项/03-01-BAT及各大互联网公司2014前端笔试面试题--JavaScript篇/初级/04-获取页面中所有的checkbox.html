@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="checkbox" id="football"> <label for="football">足球</label>
+<input type="checkbox" id="basketball"> <label for="football">篮球</label>
+<input type="checkbox" id="volleyball"> <label for="volleyball">排球</label>
+
+<script src="../../lib/jquery-1.11.3.min.js"></script>
+<script>
+    var checked = $('input[type=checkbox]');
+    console.log(checked);
+
+    $('input[type=checkbox]').on('change',function(){
+        console.log(this);
+    });
+</script>
+</body>
+</html>

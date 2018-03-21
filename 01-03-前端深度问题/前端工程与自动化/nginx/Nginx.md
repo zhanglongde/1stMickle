@@ -4,3 +4,12 @@ http://imweb.io/topic/56386972d12b230c26e1a17d
 场景一：环境切换
 场景二：sourceMap
 场景三：内容篡改
+
+
+Nginx基础
+6个区域
+Main events http
+server location upstream-proxypass
+
+nginx+lua
+openresty

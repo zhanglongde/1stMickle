@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function Animal(){
+        this.name = 'dog';
+        this.age = 10;
+        this.sayHello = function(){
+            console.log(this.name+':'+this.age);
+        }
+    }
+
+    function Person(){
+        this.gender = 'M';
+        Animal.call(this);
+    }
+
+    var p = new Person();
+    p.sayHello();
+</script>
+</body>
+</html>

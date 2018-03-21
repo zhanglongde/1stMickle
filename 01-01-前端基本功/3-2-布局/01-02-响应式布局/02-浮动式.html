@@ -3,8 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .main {
+            background-color: #8e352e;
+        }
+
+        .c2 {
+            background-color: #c84c44;
+        }
+
+        .c3{
+            background-color: #a53d36;
+        }
+
+        @media screen and (min-width: 37.5em) {
+            .c2, .c3 {
+                float: left;
+                width: 50%;
+            }
+        }
+    </style>
 </head>
 <body>
-
+<div id="pattern" class="pattern">
+    <div class="c">
+        <div class="main">
+            <h2>Main Content (1st in source order)</h2>
+            <p>1</p>
+        </div>
+        <div class="c2">
+            <h3>Column (2nd in source order)</h3>
+            <p>3</p>
+        </div>
+        <div class="c3">
+            <h3>Column (3nd in source order)</h3>
+            <p>4.</p>
+        </div>
+    </div>
+</div>
 </body>
 </html>

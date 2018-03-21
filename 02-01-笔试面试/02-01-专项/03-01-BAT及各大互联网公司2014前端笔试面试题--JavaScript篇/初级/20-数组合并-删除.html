@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>把两个数组合并，并删除第二个元素。</title>
+</head>
+<body>
+
+<script>
+    var arr1 = [9,19,30];
+    var arr2 = [29,109,320];
+
+    var target = arr1.concat(arr2);
+    console.log(target);
+
+    var t = target.splice(1,1);
+//    var t = target.slice(1,2);
+    console.log(t);
+    console.log(target);
+</script>
+</body>
+</html>

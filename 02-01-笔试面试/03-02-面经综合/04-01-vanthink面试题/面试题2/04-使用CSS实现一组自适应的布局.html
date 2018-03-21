@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        使用css实现一组自适应的布局; 参考： 图片1 图片2
+        无论屏幕分辨率如何变化,盒子的宽度和高度始终保持一致.
+
+        解决方案：流式布局 ,字体无法缩小？垂直居中无法使用line-height,可以使用行内块法
+                 弹性盒布局
+                 REM
+                 text-align:justify+百分比;
+        CSS方案字体无法成比例缩小
+    </title>
+    <style>
+        *{margin:0;padding:0;}
+        .container{
+            width:99vw;
+            height:99vh;
+
+            position:absolute;
+            margin:auto;top:0;left:0;right:0;bottom:0;
+
+            text-align: center;
+        }
+        .container .row{
+            width:100%;
+            height:50%
+        }
+        .container .row .col {
+            float:left;
+            width:25%;
+            height:100%;
+
+            /*border:1px solid #9c3;*/
+            box-shadow:0 0 0 2px #9c3;
+
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .col:before{
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -0.25em; /* Adjusts for spacing */
+        }
+
+        /*!* This parent can be any width and height *!*/
+        /*.block {*/
+            /*text-align: center;*/
+        /*}*/
+
+        /*!* The ghost, nudged to maintain perfect centering *!*/
+        /*.block:before {*/
+            /*content: '';*/
+            /*display: inline-block;*/
+            /*height: 100%;*/
+            /*vertical-align: middle;*/
+            /*margin-right: -0.25em; !* Adjusts for spacing *!*/
+        /*}*/
+
+        /*!* The element to be centered, can*/
+           /*also be of any width and height *!*/
+        /*.centered {*/
+            /*display: inline-block;*/
+            /*vertical-align: middle;*/
+            /*width: 50%;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col">col-01</div>
+        <div class="col">col-02</div>
+        <div class="col">col-03</div>
+        <div class="col">col-04</div>
+    </div>
+    <div class="row">
+        <div class="col">col-01</div>
+        <div class="col">col-02</div>
+        <div class="col">col-03</div>
+        <div class="col">col-04</div>
+    </div>
+</div>
+</body>
+</html>

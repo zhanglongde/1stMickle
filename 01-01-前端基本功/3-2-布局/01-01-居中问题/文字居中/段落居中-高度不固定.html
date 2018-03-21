@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        父级高度不固定的时，高度只能通过内部文本来撑开。
+        这样，我们可以通过设置内填充（padding）的值来使文本看起来垂直居中，只需设置padding-top和padding-bottom的值相等
+    </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #div1{
+            width: 300px;
+            margin: 50px auto;
+            border: 1px solid red;
+            text-align: center; /*设置文本水平居中*/
+            padding: 50px 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    这是多行文本垂直居中，
+    这是多行文本垂直居中，
+    这是多行文本垂直居中，
+    这是多行文本垂直居中。
+</div>
+</body>
+</html>

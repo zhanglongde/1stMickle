@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .container{
+            width:500px;
+            height:500px;
+            margin:auto;
+
+            background-color: #58a;
+            color:#fff;
+
+            position:relative;
+        }
+        .container>.wrapper{
+           width:100%;
+
+           position:absolute;
+           top:50%;  left:50%;
+           transform:translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="wrapper">
+        一、align-self / align-items
+
+        IE11 以下版本不支持。搜一下用法有案例，不写了。
+
+        二、table-cell
+
+        display:table-cell;
+        vertical-align:middle;
+    </div>
+</div>
+</body>
+</html>

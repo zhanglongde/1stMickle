@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        为了保证页面输出安全，我们经常需要对一些特殊的字符进行转义，
+        请写一个函数escapeHtml，将<, >, &, “进行转义
+    </title>
+</head>
+<body>
+
+<script>
+  function escapeHtml(str){
+     return str.replace(/[<>&"]/g,function(match){
+         switch(match){
+             case '<':
+                 return '&lt;';
+             case '>':
+                 return '&gt;';
+             case '&':
+                 return '&amp;';
+             case '\"':
+                 return '&quot;';
+             default:
+                 break;
+         }
+     });
+  }
+
+    var str = '<div></div>';
+    var target = escapeHtml(str);
+    console.log(target);
+</script>
+</body>
+</html>
