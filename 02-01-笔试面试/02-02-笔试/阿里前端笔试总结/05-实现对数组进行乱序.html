@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../../../06-类库/lodash/lodash.js"></script>
+<script>
+//    解法1：数组sort方法+Math.random()
+    var a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    var sign = 1;
+    a.sort(function (a, b) {
+        // 因为Math.random产生的数在0-1之间
+        //所以0.5两边的概率是相等的
+        //大于0.5是升序，小于0.5是为奖序
+        sign = (Math.random()>0.5)?1:-1
+        return (a-b)*sign
+    })
+
+    console.log(a)
+
+    //解法2:loadash的shuffle方法
+    var r = _.shuffle(a)
+    console.log(a)
+    console.log(r)
+</script>
+</body>
+</html>
