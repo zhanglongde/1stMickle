@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function add(a){
+
+        var sum = 0;
+        sum += a;
+
+        return function temp(b) {
+
+            if (arguments.length === 0) {
+                return sum;
+            } else {
+                sum= sum+ b;
+                return temp;
+            }
+        }
+    }
+
+    add(2)(3)(4)(5)(); //14
+</script>
+</body>
+</html>

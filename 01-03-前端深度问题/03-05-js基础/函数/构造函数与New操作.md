@@ -1,5 +1,9 @@
 new操作都做了什么
-1.生成一个新的简单的Object
-2.prototype等设置到这个对象上  Object.prototype = xxx
-3.执行构造函数，this指向这个新对象 Object.constructor(), this = Object
+传入参数：构造函数，初始化参数列表
+1.new Object()
+
+构造属性访问规则：
+2.设置新对象实例的__proto__为构造函数的原型对象  Object.__proto__ = Constructor.prototype
+3.执行构造函数，Constructor.apply(Object,arguments)
+
 4.返回这个新对象

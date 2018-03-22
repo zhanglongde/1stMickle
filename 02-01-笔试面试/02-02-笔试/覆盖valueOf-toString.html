@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>
+        valueOf优先于toString,valueOf覆盖了toString以及原型对象上的valueOf
         类型不同做比较的过程中调用了valueOf,而你给当前对象添加了valueOf,就不会调用原型链上的valueOf了,所以拿到了0
     </title>
 </head>
@@ -14,6 +15,7 @@
       x = 2;
       return 0;
     },
+//    删除valueOf，不返回或者返回的不是基本类型，返回toString才有效
     toString: function () {
       return 12
     }
