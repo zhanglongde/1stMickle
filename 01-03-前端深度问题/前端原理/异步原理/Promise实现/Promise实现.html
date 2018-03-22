@@ -5,9 +5,13 @@
     <title>
         https://www.cnblogs.com/huansky/p/6064402.html
     </title>
+
+    <!--<script src="pFull.js"></script>-->
 </head>
 <body>
+
 <script>
+
     function Sleep(times) {
         return new Promise((resolve, reject) => {
             setTimeout(function () {
@@ -17,7 +21,8 @@
     }
     let s = Sleep(1000)
     s.then((data) => {
-        console.log(data)
+      console.log('%c-----------------------------------------------------------', 'background-color:#e66;color:#fff;font-size:30px;')
+      console.log(data)
     })
 </script>
 </body>
