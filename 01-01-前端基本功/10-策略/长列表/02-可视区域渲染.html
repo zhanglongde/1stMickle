@@ -4,60 +4,84 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        .lazy-render-list {
-            border: 1px solid #666;
+        .list-view{
+            position:relative;
+            height:400px;
+            overflow:auto;
+            border:1px solid #666;
         }
-
-        .lazy-render-list-item {
-            padding: 5px;
-            color: #666;
-            height: 30px;
-            line-height: 30px;
+        .list-view-phantom{
+            position:absolute;
+            left:0;  right:0;
+            top:0;
+            z-index:-1;
+        }
+        .list-view-content{
+            position: absolute;
+            left:0;  right:0;
+            top:0;
+        }
+        .list-view-item{
+            padding:5px;
+            color:#666;
+            height:30px;
+            line-height:30px;
             box-sizing: border-box;
         }
     </style>
 
 </head>
 <body>
-    <div class="lazy-list" id="app">
-        <div class="lazy-render-list-item" v-for="item in data">{{ item }}</div>
+<div id="app">
+    <div ref="list" class="list-view" @scroll="handleScroll($event)">
+        <div class="list-view-phantom" :style="{height: data.length*30+'px'}"></div>
+        <div ref="content" class="list-view-content">
+            <div class="list-view-item" v-for="item in visibleData">{{item.value}}</div>
+        </div>
     </div>
+</div>
 
 <script src="../../../lib/vue.js"></script>
 <script>
-    new Vue({
-      el: '#app',
-      data() {
-        const count = 40;
-        const data = [];
+new Vue({
+  props: {
+    itemHeight: {
+      type:Number,
+      default:30
+    }
+  },
+  data() {
+    const data = []
+    for(let i = 0; i< 10000; i++){
+      data.push({value: i})
+    }
+    return {
+      data,
+      start: 0,
+      end:null,
+      visibleCount: null,
+      visibleData: [],
+      scrollTop:0
+    }
+  },
+  methods: {
+    handleScroll() {
+      const scrollTop = this.$refs.list.scrollTop;
+      const fixedScrollTop = scrollTop - scrollTop%30
+      this.$refs.content.style.webkitTransform = `translate3d(0,${fixedScrollTop}px,0`
 
-        for (let i = 0; i < count; i++) {
-          data.push(i);
-        }
-
-        return {
-          count,
-          data
-        };
-      },
-
-      mounted() {
-        window.onscroll = () => {
-//          最大可滚动高度
-          const maxScrollTop = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight) - window.innerHeight;
-//          当前滚动高度
-          const currentScrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
-
-          if (maxScrollTop - currentScrollTop < 20) {
-            const count = this.count;
-            for (let i = count; i < count + 40; i++) {
-              this.data.push(i);
-            }
-            this.count = count + 40;
-          }
-        };
-      }
-    })
+      this.start = Math.floor(scrollTop/30)
+      this.end = this.start+this.visibleCount
+      this.visibleData = this.data.slice(this.start,this.end)
+    }
+  },
+  mounted() {
+    this.visibleCount = Math.ceil(this.$el.clientHeight/this.itemHeight)
+    this.start = 0
+    this.end = this.start + this.visibleCount
+    this.visibleData = this.data.slice(this.start,this.end)
+  }
+}).$mount('#app')
 </script>
 </body>
 </html>
