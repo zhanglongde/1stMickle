@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        确定舞台元素、内部可滚动元素，从而确定可滚动最大高度
+    </title>
     <style>
         .list-view{
             position:relative;
             height:400px;
-            overflow:auto;
+            overflow:auto; /*滚动的舞台元素*/
             border:1px solid #666;
         }
         .list-view-phantom{
