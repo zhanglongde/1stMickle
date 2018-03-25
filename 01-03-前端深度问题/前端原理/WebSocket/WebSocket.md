@@ -1,5 +1,13 @@
-https://www.zhihu.com/question/20215561
-websocket原理
+
+## WebSocket使用 ##
+WebSocket对象不支持DOM2级事件监听
+断开重连
+心跳包
+自定义string
+多客户端同步问题
+
+
+## [WebSocket原理](https://www.zhihu.com/question/20215561) ##
 持久连接，如何维持？
 服务器和客户端之间发送Ping/Pong Frame，这种frame只包含一些元数据而不需要真正的Data Payload
 每个WebSocket连接都始于一个HTTP请求 Upgrade:websocket,如果服务器支持新的协议，则返回101

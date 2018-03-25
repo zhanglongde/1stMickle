@@ -1,6 +1,6 @@
 onerror
 心跳包 ping/pong frame维持链路
-reconnectingwebsocket
+断开重连 reconnectingwebsocket
 
 
 通过版本号保持唯一性
