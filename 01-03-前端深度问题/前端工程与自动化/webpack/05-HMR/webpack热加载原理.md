@@ -1,8 +1,9 @@
 https://doc.webpack-china.org/guides/hot-module-replacement
 http://shepherdwind.com/2017/02/07/webpack-hmr-principle/
+https://github.com/ShowJoy-com/showjoy-blog/issues/7
 热加载实现主要分为几部分功能:
 服务器构建、推送更新消息
-浏览器模块更新
+浏览器模块更新 消息冒泡机制
 模块更新后页面渲染
 
 代码与webpack_dev_server    通过中间件与webpack_dev_server的HMR插件联系起来    中间件通过node操作本地文件资源，获得差异描述

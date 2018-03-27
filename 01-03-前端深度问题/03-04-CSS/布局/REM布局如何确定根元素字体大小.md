@@ -18,7 +18,7 @@ window.addEventListener('resize',function(){
 为什么通过js计算font-size计算font-size?
 通过媒体查询设置html的font-size,并不能完成适配所有手机屏幕宽度类型
 
-如何计算？font-size=手机deviceWidth跟设计稿的比例值的100倍
+如何计算？当initial-scale=1.0，font-size=手机deviceWidth跟设计稿的比例值的100倍
 取当前viewport的deviceWidth与设计稿的宽的比例值
 比如我们的设计稿尺寸都是640px,iphone5的deviceWidth是320px,
 那么计算出来的font-size=320/640=0.5

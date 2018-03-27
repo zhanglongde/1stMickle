@@ -1,8 +1,8 @@
 
 http://octman.com/blog/2016-08-27-babel-notes/
-1.解析:使用 babylon 解析器对输入的源代码字符串进行解析并生成初始 AST（File.prototype.parse）
-2.转换-traverse:利用 babel-traverse 这个独立的包对 AST 进行遍历，并解析出整个树的 path，通过挂载的 metadataVisitor 读取对应的元信息
-3.转换-transform：遍历 AST 树并应用各 transformers（plugin） 生成变换后的 AST 树
+词法1.解析:使用 babylon 解析器对输入的源代码字符串进行解析并生成初始 AST（File.prototype.parse）
+语法2.转换-traverse:利用 babel-traverse 这个独立的包对 AST 进行遍历，并解析出整个树的 path，通过挂载的 metadataVisitor 读取对应的元信息
+语义3.转换-transform：遍历 AST 树并应用各 transformers（plugin） 生成变换后的 AST 树
 4.生成：利用 babel-generator 将 AST 树输出为转码后的代码字符串
 
 
