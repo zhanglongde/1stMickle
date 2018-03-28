@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        keydown compositionstart input compositionend keyup
+
+        compositionstart 事件在用户开始进行非直接输入的时候触发，而在非直接输入结束，也即用户点选候选词或者点击「选定」按钮之后，会触发 compositionend 事件。
+
+        添加一个 inputLock 变量，当用户未完成直接输入前，inputLock 为 true，不触发 input 事件中的逻辑，当用户完成有效输入之后，inputLock 设置为 false，触发 input 事件的逻辑。
+    </title>
+</head>
+<body>
+<input type="text">
+
+<script>
+  var inputLock = false;
+  let inputElement = document.querySelector('input')
+  function doInput(inputElement) {
+    var regex = /[^1-9a-zA-Z]/g;
+  inputElement.value = inputElement.value.replace(regex, '');
+  }
+
+  inputElement.addEventListener('compositionstart', function() {
+//    inputLock = true;
+  });
+
+
+  inputElement.addEventListener('compositionend', function(event) {
+    console.log('compositionend结束标志：', event)
+    inputLock = false;
+    doInput(event.target);
+  })
+
+
+  inputElement.addEventListener('input', function(event) {
+    if (!inputLock) {
+      doInput(event.target);
+        event.returnValue = false;
+    }
+  });
+</script>
+</body>
+</html>
