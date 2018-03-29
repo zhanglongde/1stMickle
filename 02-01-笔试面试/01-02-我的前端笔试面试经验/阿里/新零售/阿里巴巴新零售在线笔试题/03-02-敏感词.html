@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+  var text="内容文字86学潮.中共..hello,萨德,hi"
+  var arr = ["86学潮","萨德","中共"]
+
+  function FindSome(text, arr){
+    var arr = ["86学潮","萨德","中共"]
+    var str = `(${arr.join('|')})`
+    var pattern = new RegExp(str,'ig')
+    var s = text.replace(pattern,'<span style="color:red;">$1</span>')
+    return s
+  }
+  var r = FindSome(text,arr)
+  console.log(r)
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = 'to-upper'
+    function kebabToCamel(kebab) {
+      return kebab.replace(/-(\w)/ig,function (all,v,index,s) {
+        console.log(all,v,i,s)
+        return v ? v.toUpperCase() : v
+      })
+    }
+    let t = kebabToCamel(str)
+    console.log(t)
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../../../../lib/lodash.js"></script>
+</head>
+<body>
+
+<script>
+//  柯里化 参数复用
+  var text="内容文字86学潮.中共..hello,萨德,hi"
+  var arr = ["86学潮","萨德","中共"]
+
+  function FindSome(arr,text){
+    var str = '(' + arr.join('|') + ')'
+    var pattern = new RegExp(str,'ig')
+    var s = text.replace(pattern,'<span style="color:red;">$1</span>')
+    return s
+  }
+  var func = _.curry(FindSome)
+  var filter = func(arr)
+  var r = filter(text)
+  console.log(r)
+</script>
+</body>
+</html>
