@@ -18,3 +18,20 @@ function AnimateFadeIn(ndTarget, animateName) {
         ndTarget.addClass(animateName)
     }
 }
+
+function closeMenu(ndTarget, e) {
+    let rect = ndTarget.getBoundingClientRect()
+    let width = rect.width
+    let height = rect.height
+    let top = rect.top
+    let left = rect.left
+    if ((e.pageX > left) && (e.pageX < left + width) && (e.pageY > top) && (e.pageY < top + height)) {
+        return
+    }
+}
+
+function getMaxScroll(ndTarget, parentTarget) {
+  // parentTarget overflow:hidden
+  let maxScroll = ndTarget.scrollHeight - parentTarget.clientHeight
+  return maxScroll
+}
