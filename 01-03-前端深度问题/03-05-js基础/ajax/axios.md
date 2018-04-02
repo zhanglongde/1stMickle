@@ -11,3 +11,9 @@ error.response
 断网时没有response
 
 
+
+拦截器
+拦截请求 加header
+拦截响应 权限验证
+
+
