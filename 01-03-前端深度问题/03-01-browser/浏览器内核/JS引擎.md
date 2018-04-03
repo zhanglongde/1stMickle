@@ -1,3 +1,6 @@
-V8
+chrome V8
+safari JavascriptCore
 
-ChakraCore
+IE/Edge ChakraCore
+
+Mozilla SpiderMonkey
