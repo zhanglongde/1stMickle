@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>42度空间-定制简单的导航条(navbar)，样式2</title>
+    <style>
+        #navbar {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            height: 60px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            background: #222;
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            font-weight: 300;
+            min-width: 340px;
+        }
+        #navbar li {
+            position: relative;
+            float: left;
+            line-height: 60px;
+            background: inherit;
+            text-align: center;
+            transition: all .2s;
+        }
+        #navbar li a {
+            position: relative;
+            display: block;
+            padding: 0 20px;
+            line-height: inherit;
+            color: white;
+            text-decoration: none;
+        }
+        #navbar li:before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 50%;
+            margin-left: -30px;
+            width: 60px;
+            height: 60px;
+            background: #222;
+            border-radius: 50%;
+            transform: rotate(45deg);
+            transition: all 0, background .2s;
+        }
+        #navbar li:hover:before {
+            margin-top: 1px;
+            border-radius: 50% 50% 0 50%;
+            transition: all .1s, background .2s, margin-top .2s cubic-bezier(.5,30,.2,0);
+        }
+        #navbar li:hover,
+        #navbar li:hover:before {
+            background: #3a3a3a;
+        }
+        #navbar li.active,
+        #navbar li.active:before {
+            background: steelblue;
+        }
+    </style>
+</head>
+<body>
+<ul id="navbar">
+    <li class="active"><a href="#" title="42度空间">首页</a></li>
+    <li><a href="#">关于我们</a></li>
+    <li><a href="#">网站声明</a></li>
+</ul>
+</body>
+</html>
+

@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>42度空间-定制单选多选框（checkbox,radio）样式</title>
+    <style>
+        .checks {
+            padding: 16px 0;
+            font-size: 24px;
+        }
+        .checks > div {
+            display: inline-block;
+        }
+        input[type='radio'],
+        input[type='checkbox'] {
+            opacity: 0;
+            float: left;
+            width: 4px;
+        }
+        input[type='radio'] + label,
+        input[type='checkbox'] + label {
+            margin: 0;
+            clear: none;
+            padding: 5px 0 5px 28px;
+            cursor: pointer;
+            background: url(http://res.42du.cn/static/img/off.png) left center no-repeat;
+        }
+        input[type='radio']:checked + label {
+            background-image: url(http://res.42du.cn/static/img/radio.png);
+        }
+        input[type='checkbox']:checked + label {
+            background-image: url(http://res.42du.cn/static/img/check.png);
+        }
+    </style>
+</head>
+<body>
+<div style="height:140px; overflow:hidden;">
+    <div class="checks">
+        <div>
+            <input type="checkbox"  id="check1" checked>
+            <label for="check1">红色</label>
+        </div>
+        <div>
+            <input type="checkbox"  id="check2">
+            <label for="check2">蓝色</label>
+        </div>
+        <div>
+            <input type="checkbox"  id="check3">
+            <label for="check3">黄色</label>
+        </div>
+    </div>
+    <div class="checks">
+        <div>
+            <input type="radio" name="sex"  id="radio1" checked>
+            <label for="radio1">男性</label>
+        </div>
+        <div>
+            <input type="radio" name="sex" id="radio2">
+            <label for="radio2">女性</label>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

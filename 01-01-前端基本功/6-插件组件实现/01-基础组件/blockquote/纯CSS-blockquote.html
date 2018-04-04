@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>42度空间-定制块引用(Blockquote)的样式，简单就好</title>
+    <style>
+        blockquote{
+            display:block;
+            background: #fff;
+            padding: 15px 20px 15px 58px;
+            margin: 0 0 20px;
+            position: relative;
+            font-size: 16px;
+            font-family: Georgia, serif;
+            line-height: 1.75;
+            color: #666;
+            text-align: justify;
+            border-left: 15px solid #c76c0c;
+            border-right: 2px solid #c76c0c;
+            -moz-box-shadow: 2px 2px 15px #ccc;
+            -webkit-box-shadow: 2px 2px 15px #ccc;
+            box-shadow: 2px 2px 15px #ccc;
+            font-style: italic;
+        }
+        blockquote::before{
+            content: "\201C";
+            font-size: 60px;
+            font-weight: bold;
+            color: #999;
+            position: absolute;
+            left: 10px;
+            top:5px;
+        }
+        blockquote::after{
+            content: "";
+        }
+    </style>
+</head>
+<body>
+<blockquote>
+    人生的磨难是很多的，所以我们不可对于每一件轻微的伤害都过于敏感。在生活磨难面前，精神上的坚强和无动于衷是我们抵抗罪恶和人生意外的最好武器。------洛克
+</blockquote>
+</body>
+</html>

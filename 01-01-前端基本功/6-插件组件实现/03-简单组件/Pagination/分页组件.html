@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>42度空间-定制分页(Pagination )组件</title>
+    <style>
+        .pagination {
+            list-style: none;
+            display: inline-block;
+            padding: 0;
+            margin-top: 10px;
+        }
+        .pagination li {
+            display: inline;
+            text-align: center;
+        }
+        .pagination a {
+            float: left;
+            display: block;
+            font-size: 14px;
+            text-decoration: none;
+            padding: 5px 12px;
+            color: #fff;
+            margin-left: -1px;
+            border: 1px solid transparent;
+            line-height: 1.5;
+        }
+        .pagination a.active {
+            cursor: default;
+        }
+        .pagination a:active {
+            outline: none;
+        }
+        .modal-1 li:first-child a {
+            -moz-border-radius: 6px 0 0 6px;
+            -webkit-border-radius: 6px;
+            border-radius: 6px 0 0 6px;
+        }
+        .modal-1 li:last-child a {
+            -moz-border-radius: 0 6px 6px 0;
+            -webkit-border-radius: 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .modal-1 a {
+            border-color: #ddd;
+            color: #4285F4;
+            background: #fff;
+        }
+        .modal-1 a:hover {
+            background: #eee;
+        }
+        .modal-1 a.active, .modal-1 a:active {
+            border-color: #4285F4;
+            background: #4285F4;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<ul class="pagination modal-1">
+    <li><a href="#" class="prev">&laquo</a></li>
+    <li><a href="#" class="active">1</a></li>
+    <li> <a href="#">2</a></li>
+    <li> <a href="#">3</a></li>
+    <li> <a href="#">4</a></li>
+    <li> <a href="#">5</a></li>
+    <li><a href="#" class="next">&raquo;</a></li>
+</ul>
+</body>
+</html>
+

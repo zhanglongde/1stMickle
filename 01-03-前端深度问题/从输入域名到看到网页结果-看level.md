@@ -18,7 +18,7 @@ DNS解析获得IP
 
 ## 第三阶段 ##
 浏览器处理响应
-  解压gzip
+  解压gzip/deflate
 浏览器解析渲染
   HTML解释器构建DOM树
   CSS解析器构建CSSOM树:CSS匹配DOM Tree主要是从右到左解析CSS的Selector
@@ -38,8 +38,11 @@ DNS解析获得IP
 JS引擎解析
   对JS代码进行词法、语法等分析，通过编译器将代码编译成可执行的机器码让计算机去执行
   V8引擎由C++把源码直接编译成机器码
-  编译：词法分析 语法分析 预编译
+  编译：词法分析 语法分析 
+  预编译
   执行
+JS回流重绘
+  回流 首次 resize 尺寸位置 内部文字 字体大小 getComputedStyle/clientHeight等CSSOM fixed滚动
 DOMContentLoaded load
 释放连接
   4次握手

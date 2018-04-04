@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>42度空间-定制TAB样式，纯CSS实现</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .tabs {
+            margin:1rem;
+            max-width: 100%;
+            min-width: 320px;
+        }
+        .tabs input {
+            height: 2.5em;
+            visibility: hidden;
+        }
+        .tabs label {
+            background: #f9f9f9;
+            border-radius: .25em .25em 0 0;
+            color: #888;
+            cursor: pointer;
+            display: block;
+            float: left;
+            font-size: 1em;
+            height: 2.5em;
+            line-height: 2.5em;
+            margin-right: .25em;
+            padding: 0 1.5em;
+            text-align: center;
+        }
+        .tabs input:hover + label {
+            background: #ddd;
+            color: #666;
+        }
+        .tabs input:checked + label {
+            background: #f1f1f1;
+            color: #444;
+            position: relative;
+            z-index: 6;
+        }
+        .content {
+            background: #f1f1f1;
+            border-radius: 0 .25em .25em .25em;
+            min-height: 120px;
+            position: relative;
+            width: 100%;
+            z-index: 5;
+        }
+        .content div {
+            opacity: 0;
+            padding: 1.5em;
+            position: absolute;
+            z-index: -100;
+        }
+        .content p {
+            clear: both;
+            padding-bottom: 2rem;
+        }
+        .tabs input#tab-1:checked ~ .content #content-1,
+        .tabs input#tab-2:checked ~ .content #content-2,
+        .tabs input#tab-3:checked ~ .content #content-3 {
+            opacity: 1;
+            z-index: 100;
+        }
+        input.visible {
+            visibility: visible !important;
+        }
+    </style>
+</head>
+<body>
+<div class="tabs">
+    <input id="tab-1" type="radio" name="tab-group" checked="checked" />
+    <label for="tab-1">知 识</label>
+    <input id="tab-2" type="radio" name="tab-group" />
+    <label for="tab-2">名 言</label>
+    <input id="tab-3" type="radio" name="tab-group" />
+    <label for="tab-3">笑 话</label>
+    <div class="content">
+        <div id="content-1">
+            <p>
+                在JavaScript中，永远不要用for in循环来遍历数组。
+            </p>
+        </div>
+        <div id="content-2">
+            简单是稳定的前提。
+        </div>
+        <div id="content-3">
+            程序员最讨厌的四件事：写注释、写文档、别人不写注释、别人不写文档。
+        </div>
+    </div>
+</div>
+</body>
+</html>

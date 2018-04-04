@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>42度空间-定制文件输入框(input,type,file)样式</title>
+    <style>
+        .file-wrapper {
+            position: relative;
+            width: 225px;
+        }
+        .file-label {
+            display: block;
+            padding: 14px 20px;
+            background: #39D2B4;
+            color: #fff;
+            font-size: 1em;
+            text-align: center;
+            transition: all .4s;
+            cursor: pointer;
+        }
+        .input-file {
+            position: absolute;
+            top: 0; left: 0;
+            width: 225px;
+            opacity: 0;
+            padding: 14px 0;
+            cursor: pointer;
+        }
+        .input-file:hover + .file-label,
+        .input-file:focus + .file-label {
+            background: #34495E;
+            color: #39D2B4;
+        }
+        form {
+            padding: 1rem 0 0 1rem;
+        }
+    </style>
+</head>
+<body>
+<form action="#">
+    <div class="file-wrapper">
+        <input class="input-file" id="my-file" type="file">
+        <label tabindex="0" for="my-file" class="file-label">选择一个文件...</label>
+    </div>
+    <p class="file-name"></p>
+</form>
+<script>
+    var myfile  = document.querySelector( ".input-file" ),
+        result = document.querySelector(".file-name");
+    myfile.addEventListener( "change", function( event ) {
+        var name = this.value;
+        result.innerHTML = "已选文件："+name.substring(name.lastIndexOf("\\")+1);
+    });
+</script>
+</body>
+</html>

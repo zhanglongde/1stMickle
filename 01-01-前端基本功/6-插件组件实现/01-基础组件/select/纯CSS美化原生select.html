@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>42度空间-定制选择框(select)样式</title>
+    <style>
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            appearance: none;
+            outline: 0;
+            box-shadow: none;
+            border: 0 !important;
+            background: #2c3e50;
+            background-image: none;
+        }
+        .select {
+            position: relative;
+            display: block;
+            width: 16em;
+            height: 3em;
+            line-height: 3;
+            background: #2c3e50;
+            overflow: hidden;
+            border-radius: .25em;
+        }
+        select {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0 0 0 .5em;
+            color: #fff;
+            cursor: pointer;
+        }
+        select::-ms-expand {
+            display: none;
+        }
+        .select::after {
+            content: '\25BC';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            padding: 0 1em;
+            background: #34495e;
+            pointer-events: none;
+        }
+        .select:hover::after {
+            color: #f39c12;
+        }
+        .select::after {
+            -webkit-transition: .25s all ease;
+            -o-transition: .25s all ease;
+            transition: .25s all ease;
+        }
+        body > div {
+            margin: 1rem 0 0 1rem;
+        }
+    </style>
+</head>
+<body>
+<div class="select">
+    <select id="school">
+        <option>毕业院校：</option>
+        <option value="1">北京师范大学</option>
+        <option value="2">东北师范大学</option>
+        <option value="3">华东师范大学</option>
+    </select>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>42度空间-定制响应式表格(Responsive table)样式</title>
+    <style>
+        .rwd-table {
+            min-width: 300px;
+            max-width: 100%;
+            border-collapse: collapse;
+        }
+        .rwd-table tr:first-child {
+            border-top: none;
+            background: #428bca;
+            color: #fff;
+        }
+        .rwd-table tr {
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            background-color: #f5f9fc;
+        }
+        .rwd-table tr:nth-child(odd):not(:first-child) {
+            background-color: #ebf3f9;
+        }
+        .rwd-table th {
+            display: none;
+        }
+        .rwd-table td {
+            display: block;
+        }
+        .rwd-table td:first-child {
+            margin-top: .5em;
+        }
+        .rwd-table td:last-child {
+            margin-bottom: .5em;
+        }
+        .rwd-table td:before {
+            content: attr(data-th) ": ";
+            font-weight: bold;
+            width: 120px;
+            display: inline-block;
+            color: #000;
+        }
+        .rwd-table th,
+        .rwd-table td {
+            text-align: left;
+        }
+        .rwd-table {
+            color: #333;
+            border-radius: .4em;
+            overflow: hidden;
+        }
+        .rwd-table tr {
+            border-color: #bfbfbf;
+        }
+        .rwd-table th,
+        .rwd-table td {
+            padding: .5em 1em;
+        }
+        @media screen and (max-width: 601px) {
+            .rwd-table tr:nth-child(2) {
+                border-top: none;
+            }
+        }
+        @media screen and (min-width: 600px) {
+            .rwd-table tr:hover:not(:first-child) {
+                background-color: #d8e7f3;
+            }
+            .rwd-table td:before {
+                display: none;
+            }
+            .rwd-table th,
+            .rwd-table td {
+                display: table-cell;
+                padding: .25em .5em;
+            }
+            .rwd-table th:first-child,
+            .rwd-table td:first-child {
+                padding-left: 0;
+            }
+            .rwd-table th:last-child,
+            .rwd-table td:last-child {
+                padding-right: 0;
+            }
+            .rwd-table th,
+            .rwd-table td {
+                padding: 1em !important;
+            }
+        }
+        body {
+            background: #4B79A1;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <table class="rwd-table">
+        <tbody>
+        <tr>
+            <th>名称</th>
+            <th>国家</th>
+            <th>成就</th>
+        </tr>
+        <tr>
+            <td data-th="名称">
+                林纳斯·托瓦兹
+            </td>
+            <td data-th="国家">
+                芬兰
+            </td>
+            <td data-th="成就">
+                Linux之父
+            </td>
+        </tr>
+        <tr>
+            <td data-th="名称">
+                詹姆斯·高斯林
+            </td>
+            <td data-th="国家">
+                加拿大
+            </td>
+            <td data-th="成就">
+                Java之父
+            </td>
+        </tr>
+        <tr>
+            <td data-th="名称">
+                肯·汤普逊
+            </td>
+            <td data-th="国家">
+                美国
+            </td>
+            <td data-th="成就">
+                C语言和Unix创始人
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

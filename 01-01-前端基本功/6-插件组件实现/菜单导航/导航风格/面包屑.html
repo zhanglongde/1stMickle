@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>42度空间-定制面包屑导航（breadcrumb）</title>
+    <style>
+        * {margin: 0; padding: 0;}
+        .breadcrumb {
+            margin: 2rem 0 0 0.5rem;
+            text-align: center;
+            display: inline-block;
+            box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.35);
+            overflow: hidden;
+            border-radius: 5px;
+            counter-reset: flag;
+        }
+        .breadcrumb a {
+            text-decoration: none;
+            outline: none;
+            display: block;
+            float: left;
+            font-size: 12px;
+            line-height: 36px;
+            color: white;
+            padding: 0 10px 0 60px;
+            background: #666;
+            background: linear-gradient(#666, #333);
+            position: relative;
+        }
+        .breadcrumb a:first-child {
+            padding-left: 46px;
+            border-radius: 5px 0 0 5px;
+        }
+        .breadcrumb a:first-child:before {
+            left: 14px;
+        }
+        .breadcrumb a:last-child {
+            border-radius: 0 5px 5px 0;
+            padding-right: 20px;
+        }
+        .breadcrumb a.active, .breadcrumb a:hover{
+            background: #333;
+            background: linear-gradient(#333, #000);
+        }
+        .breadcrumb a.active:after, .breadcrumb a:hover:after {
+            background: #333;
+            background: linear-gradient(135deg, #333, #000);
+        }
+        .breadcrumb a:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -18px;
+            width: 36px;
+            height: 36px;
+            transform: scale(0.707) rotate(45deg);
+            z-index: 1;
+            background: #666;
+            background: linear-gradient(135deg, #666, #333);
+            box-shadow:
+                    2px -2px 0 2px rgba(0, 0, 0, 0.4),
+                    3px -3px 0 2px rgba(255, 255, 255, 0.1);
+            border-radius: 0 5px 0 50px;
+        }
+        .breadcrumb a:last-child:after {
+            content: none;
+        }
+        .breadcrumb a:before {
+            content: counter(flag);
+            counter-increment: flag;
+            border-radius: 100%;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            margin: 8px 0;
+            position: absolute;
+            top: 0;
+            left: 30px;
+            background: #444;
+            background: linear-gradient(#444, #222);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="breadcrumb">
+    <a href="#" class="active">首页</a>
+    <a href="#">文章</a>
+    <a href="#">图片</a>
+</div>
+</body>
+</html>
+
