@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>滑动删除效果Demo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1,user-scalable=no" />
+    <style>
+        *, *::before, *::after {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-size: 14px;
+        }
+        button {
+            border: 0 none;
+            background: none;
+            padding: 0;
+        }
+        .item {
+            position: relative;
+            border-bottom: 0.5px solid #ECECEC;
+        }
+        /* 按钮操作区 */
+        .operate {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            font-size: 0;
+            text-align: right;
+        }
+        .remove, .star {
+            height: 100%;
+            width: 80px;
+            text-align: center;
+            font-size: 12px;
+            color: #FFF;
+        }
+        .remove {
+            background: #D23934;
+        }
+        .star {
+            background: #336DD6;
+        }
+        /* 内容区 */
+        .content {
+            position: relative;
+            padding: 20px 15px;
+            background: #FFF;
+        }
+        .content.animated {
+            -webkit-transition: -webkit-transform 0.3s;
+            transition: transform 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+<div class="list" id="list"></div>
+
+<template id="list_item_tmpl">
+    <div class="item">
+        <div class="operate">
+            <button class="star">收藏</button>
+            <button class="remove">删除</button>
+        </div>
+        <div class="content">
+            <div>__i__. 我的<a href="https://wqsou.jd.com/search/searchn?key=%E6%BB%91%E6%9D%BF%E9%9E%8B&sf=11&as=1&PTAG=137571.2.3&version=V06">滑板鞋</a>，时尚最时尚，回家的路上我情不自禁的摩擦摩擦，在这光滑的地上摩擦</div>
+        </div>
+    </div>
+</template>
+
+<script>
+  function $(selector) {
+    return document.querySelectorAll(selector)
+  }
+
+  //找到指定className的父节点
+  function parent(el, cls) {
+    while (el && !el.classList.contains(cls)) {
+      el = el.parentNode
+      if (!el.classList) el = null
+    }
+    return el
+  }
+
+  //生成列表HTML
+  function buildList() {
+    var el = $('#list')[0],
+      tmpl = $('#list_item_tmpl')[0].innerHTML
+
+    for (var i = 0; i <= 50; i++) {
+      el.innerHTML += tmpl.replace('__i__', i + 1)
+    }
+  }
+
+  //按钮点击行为
+  function bindEvents() {
+    $('#list')[0].addEventListener('click', function(ev) {
+      if (ev.target.tagName.toUpperCase() == 'BUTTON') {
+        alert(ev.target.innerHTML + ' button did click')
+      }
+    })
+  }
+
+  //滑动处理
+  var slider = {
+    init: function() {
+      var el = $('#list')[0]
+      var eventList = 'ontouchstart' in window ?
+        ['touchstart', 'touchmove', 'touchend', 'touchcancel'] :
+        ['mousedown', 'mousemove', 'mouseup']
+
+      //事件绑定
+      eventList.forEach(function(ev) {
+        el.addEventListener(ev, this, false)
+      }.bind(this))
+
+      this.CONFIG = {
+        BUFFER   : 4,  //BUFFER范围内阻止默认事件，超出范围再判断是否有效滑动
+        DISTANCE : 160 //偏移距离
+      }
+    },
+    handleEvent: function(ev) {
+      switch (ev.type) {
+        case 'touchstart':
+        case 'mousedown':
+          this.start(ev)
+          break
+        case 'touchmove':
+        case 'mousemove':
+          this.move(ev)
+          break
+        case 'touchend':
+        case 'touchcancel':
+        case 'mouseup':
+          this.end(ev)
+      }
+    },
+    start: function(ev) {
+      console.log('start', ev.type, this.target)
+
+      var target = parent(ev.target, 'content')
+
+      if (!target) {
+        return
+      } else if (this.target) {
+        this.setOffset(0, true) //收起按钮
+        this.target = undefined
+        ev.preventDefault()
+        return
+      }
+      this.target = target
+
+      var touch  = ev.touches ? ev.touches[0] : ev
+      this.pageX = touch.pageX
+      this.pageY = touch.pageY
+
+      console.log('start', this.pageX)
+    },
+    move: function(ev) {
+      if (this.pageX === undefined) return
+
+      var touch  = ev.touches ? ev.touches[0] : ev
+      this.distX = touch.pageX - this.pageX
+      this.distY = touch.pageY - this.pageY
+
+      console.log('move', this.distX)
+
+      if (this.valid === undefined) {
+        if (this.distX > 0) {
+          this.valid = false //右滑无效
+        } else if (Math.abs(this.distX) > this.CONFIG.BUFFER ||
+          Math.abs(this.distY) > this.CONFIG.BUFFER) {
+          //超出BUFFER距离后判断是否有效（横向滑动有效、竖向无效）
+          this.valid = Math.abs(this.distX) > Math.abs(this.distY)
+        } else {
+          ev.preventDefault() //还未判断出是否有效滑动前阻止默认行为
+        }
+      }
+
+      if (this.valid === true) {
+        if (this.distX <= 0) {
+          if (Math.abs(this.distX) <= this.CONFIG.DISTANCE) {
+            this.setOffset(this.distX) //手指跟随
+          } else {
+            //减缓超出范围的滑动
+            var extra = (Math.abs(this.distX) - this.CONFIG.DISTANCE) * 0.5
+            this.setOffset(-(this.CONFIG.DISTANCE + extra))
+          }
+        }
+        ev.preventDefault() //阻止不必要的竖向滑动
+      }
+    },
+    end: function(ev) {
+      console.log('end', this.valid, this.target)
+
+      if (this.valid === true && this.target) {
+        if (this.distX < -this.CONFIG.DISTANCE * 0.2) {
+          this.setOffset(-this.CONFIG.DISTANCE, true) //距离够长就展开
+        } else {
+          this.setOffset(0, true) //距离不够则收回去
+          this.target = undefined
+        }
+      } else if (this.pageX !== undefined) {
+        this.target = undefined //点击范围在.content内，此时正在收起按钮，target置空
+      }
+
+      this.pageX = this.pageY = this.valid = undefined
+    },
+    setOffset: function(x, animated) {
+      if (this.target) {
+        //添加类名以开启transition动画
+        if (animated) {
+          var cb = (function(self, target) {
+            return function() {
+              target.classList.remove('animated')
+              target.removeEventListener('webkitTransitionEnd', cb)
+              target.removeEventListener('transitionend', cb)
+            }
+          })(this, this.target)
+
+          this.target.addEventListener('webkitTransitionEnd', cb)
+          this.target.addEventListener('transitionend', cb)
+          this.target.classList.add('animated')
+        }
+
+        this.target.style.webkitTransform = 'translate3d(' + x + 'px, 0, 0)'
+        this.target.style.transform = 'translate3d(' + x + 'px, 0, 0)'
+      }
+    }
+  }
+
+  buildList()
+  bindEvents()
+  slider.init()
+
+</script>
+</body>
+</html>
