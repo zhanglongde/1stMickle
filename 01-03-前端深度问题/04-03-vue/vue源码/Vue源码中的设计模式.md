@@ -6,5 +6,7 @@ subs订阅者列表 watcher 订阅者 =>update函数
 pub 发布者 =>set函数=>notify
 一对多
 
+Dep定义了发布者模型，在整个应用中使用位移的id对其实例进行标识
+
 1.2组件事件传递
 $on $emit
