@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * { margin:0; padding:0; }
+        body { font-family: sans-serif;}
+        #content { margin: 50px; }
+        a { text-decoration: none; }
+
+        .expandable {
+            background: #fff;
+            overflow: hidden;
+
+            transition: all .5s ease-in-out;
+            line-height: 0;
+            padding: 0 1em;
+            color: transparent;
+        }
+
+        .expandable:target {
+            line-height: 1.5;
+            padding-top: 1em;
+            padding-bottom: 1em;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<div id="content">
+    <a href="#nav"><span>Click Here</span></a>
+    <div class="expandable" id="nav">
+        <p>Cum enim magna parturient ac elementum, tincidunt tempor ac lectus platea placerat. Eros dis lectus. Ut aliquam. Porttitor risus mattis mauris lacus a, aliquam augue cras elementum! Adipiscing, vel ridiculus diam pellentesque sociis habitasse pellentesque, augue parturient sed elementum aenean. Tincidunt tristique.</p>
+    </div>
+    <a href="#nav2"><span>Click Here</span></a>
+    <div class="expandable" id="nav2">
+        <p>Cum enim magna parturient ac elementum, tincidunt tempor ac lectus platea placerat. Eros dis lectus. Ut aliquam. Porttitor risus mattis mauris lacus a, aliquam augue cras elementum! Adipiscing, vel ridiculus diam pellentesque sociis habitasse pellentesque, augue parturient sed elementum aenean. Tincidunt tristique.</p>
+    </div>
+</div>
+</body>
+</html>
