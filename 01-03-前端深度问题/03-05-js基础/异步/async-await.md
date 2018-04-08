@@ -9,3 +9,11 @@ await等待的虽然是promise对象，但不必写.then()，直接可以得到�
 
 
 promise外面套一层async函数可以处理promise
+
+
+为何要用async / await 替代Promise?
+https://blog.fundebug.com/2017/04/04/nodejs-async-await/
+https://github.com/xingbofeng/xingbofeng.github.io/issues/16
+
+
+在async/await中捕获异常
