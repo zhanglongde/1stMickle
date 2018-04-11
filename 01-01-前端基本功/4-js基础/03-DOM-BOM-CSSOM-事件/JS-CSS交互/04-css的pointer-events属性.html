@@ -6,21 +6,40 @@
         通过设置该属性的值为none，可以高效阻止元素的JavaScript事件行为（包含click和addEventListener)
 
         但是会导致cursor:not-allowed无效
+
+
+        pointer-events:none;不会被继承
+        子元素虽指定了pointer-events:none; 但是仍然会触发绑定在父元素上的事件，但是target和currentTarget都指向父元素
     </title>
     <style>
         .disabled{
             pointer-events: none;
             /*cursor:not-allowed;*/
         }
+        .normal{
+            pointer-events:auto;
+        }
     </style>
 </head>
 <body>
 <button id="test" class="disabled">点击</button>
 
+<div class="parent">
+    <div class="son disabled">
+        <div class="grandson grandson1">grandson1</div>
+        <div class="grandson grandson2 normal">grandson2</div>
+        <div class="grandson grandson3 normal">grandson3</div>
+    </div>
+</div>
+
 <script>
     let btnTest = document.querySelector('#test')
     btnTest.addEventListener('click', function (e) {
         alert(e.target.textContent)
+    })
+
+    document.querySelector('.parent').addEventListener('click', function (e) {
+      console.log(e.target, e.currentTarget)
     })
 </script>
 </body>

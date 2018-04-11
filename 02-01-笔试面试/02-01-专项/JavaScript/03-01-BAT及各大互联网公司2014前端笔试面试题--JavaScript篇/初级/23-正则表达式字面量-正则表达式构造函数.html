@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        正则表达式构造函数var reg=new RegExp("xxx")与正则表达字面量var reg=//有什么不同？
+        匹配邮箱的正则表达式？1039326495@qq.com
+    </title>
+</head>
+<body>
+
+<script>
+                                                         //后缀允许2-3个字母，包括.允许重复1-2次
+    var pattern = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+    var email ='1039326495@qq.com.cen';
+    var com = 'longde.zhang@sky-soft.co';
+    var res = pattern.test(email);
+    console.log(res);
+
+
+</script>
+</body>
+</html>
