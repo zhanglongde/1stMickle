@@ -16,7 +16,7 @@
 
 ## [移动端版式布局](https://www.xuanfengge.com/12-kinds-of-commonly-used-in-mobile-interface-design-layout.html) ##
 ### 主导航 ###
-陈列选九 旋行多图
+陈列选九 多图旋行
 列表式
 陈列式 升级版：瀑布流
 九宫格
@@ -27,7 +27,7 @@
 图表式
 
 ### 次导航  ###
-抽超弹轮
+抽超轮转弹
 抽屉式
 超级菜单式
 弹出式

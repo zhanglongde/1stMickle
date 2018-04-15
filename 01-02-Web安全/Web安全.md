@@ -23,7 +23,7 @@
     3）输入输出过滤XSS-filter  需要过滤哪些字符：没有闭合的标签
        自定义白名单
     4）CSP 内容安全策略 白名单
-    XSS Auditor在构建DOM树时(词法分析之后，语法分析之前)，验证词语Tokens
+    5) XSS Auditor在构建DOM树时(词法分析之后，语法分析之前)，验证词语Tokens
 
 
 2.CSRF
