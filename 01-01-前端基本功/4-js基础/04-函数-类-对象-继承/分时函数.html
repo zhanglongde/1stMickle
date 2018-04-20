@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function timeChunk(data,fn,count=1,wait) {
+      let obj,timer;
+
+      function start() {
+        let len = Math.min(count, data.length)
+        for (let i = 0; i < len; i++) {
+            val = data.shift()
+            fn(val)
+        }
+      }
+
+      return function () {
+        timer = setInterval(function () {
+          if (data.length === 0) {
+            return clearInterval(timer)
+          }
+          start()
+        },wait)
+      }
+    }
+
+    let arr = []
+    for (let i = 0; i < 1000; i++) {
+        arr.push(i)
+    }
+    let render = timeChunk(arr, function (n) {
+      let div = document.createElement('div')
+        div.innerHTML = n
+        document.body.appendChild(div)
+    },8,20)
+
+//    惰性求值
+    render()
+</script>
+</body>
+</html>

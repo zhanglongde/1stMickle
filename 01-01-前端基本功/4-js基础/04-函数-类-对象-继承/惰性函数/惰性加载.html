@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*惰性加载：事件绑定函数*/
+    // 常规的是这样写的
+/*    let addEvent = function(ele, type, fn) {
+        if (window.addEventListener) {
+            return ele.addEventListener(type, fn, false);
+        } else if (window.attachEvent) {
+            return ele.attachEvent('on' + type, function() {
+                fn.call(ele);
+            });
+        }
+    };*/
+
+
+
+    let addEvent = function(ele, type, fn) {
+        if (window.addEventListener) {
+            // 第一次进入分支后，重写函数
+            addEvent = function(ele, type, fn) {
+                ele.addEventListener(type, fn, false);
+            }
+        } else  if (window.attachEvent) {
+            addEvent = function(ele, type, fn) {
+                ele.attachEvent('on' + type, function() {
+                    fn.call(ele)
+                });
+            }
+        }
+
+        addEvent(ele, type, fn);
+    };
+</script>
+</body>
+</html>

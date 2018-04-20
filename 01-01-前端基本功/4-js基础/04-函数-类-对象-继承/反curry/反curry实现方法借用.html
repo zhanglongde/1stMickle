@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*借用数组方法slice*/
+    let arrayObject ={
+        length: 2,
+        0: 1,
+        1: 2
+    }
+    let sliceFunc = Array.prototype.slice
+    let r = sliceFunc.call(arrayObject)
+    console.log(r)
+
+
+    /*用反curry实现方法借用push方法*/
+    Function.prototype.uncurrying = function () {
+      let self = this
+      return function () {
+        let obj = Array.prototype.shift.call(arguments)
+        return self.apply(obj,arguments)
+      }
+    }
+    let push = Array.prototype.push.uncurrying()
+    push(arrayObject, 100)
+    console.log(arrayObject)
+
+
+    let slice = Array.prototype.slice.uncurrying()
+    let result = slice(arrayObject)
+    console.log(arrayObject, result)
+</script>
+</body>
+</html>

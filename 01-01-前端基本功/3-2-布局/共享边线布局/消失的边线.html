@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        ul,ul>li{
+            list-style: none;
+        }
+        .container{
+            width:300px;
+            /*height:150px;*/
+            margin:auto;
+            /*计算BFC的高度时，浮动元素也参与计算;否则，高度塌陷*/
+            overflow:hidden;
+
+            background-color: #557;
+            color:#fff;
+        }
+        .container>li{
+            /*触发BFC 防止margin折叠*/
+            float:left;
+            width:100px;
+            height: 40px;
+            margin:6px 0;
+            line-height:40px;
+            text-align: center;
+
+            border-left:1px solid #ccc;
+
+            margin-left:-1px;
+        }
+    </style>
+</head>
+<body>
+<ul class="container">
+    <li>测试</li>
+    <li>消失</li>
+    <li>边界线</li>
+    <li>右侧</li>
+    <li>边界线</li>
+    <li>消失</li>
+    <li>测试</li>
+</ul>
+</body>
+</html>

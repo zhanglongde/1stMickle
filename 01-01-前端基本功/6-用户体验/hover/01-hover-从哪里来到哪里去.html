@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .hover-border-ft{
+            position:relative;
+            width:200px;
+            height: 50px;
+
+            line-height: 50px;
+            text-align: center;
+        }
+        .hover-border-ft:before{
+            content:'';
+            position:absolute;
+            bottom:0;
+            left:0;
+            height:2px;
+            width:0;
+
+            background-color: #fc3;
+
+            transform:translateX(-100%);
+            transition:width 0.3s;
+        }
+        .hover-border-ft:hover:before{
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+<div class="hover-border-ft">Hover Me</div>
+</body>
+</html>

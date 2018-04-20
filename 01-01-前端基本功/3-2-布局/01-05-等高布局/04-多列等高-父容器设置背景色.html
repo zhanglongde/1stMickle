@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .container{
+            width:600px;
+            padding:10px 6px;
+            margin:auto;
+            overflow:hidden;
+
+            background-color: #587;
+            color:#fff;
+        }
+        .container>.col{
+            padding: 10px 6px;
+            float:left;
+        }
+        /* 当列表最多包含四项时，命中所有列表项 */
+        .col:first-child:nth-last-child(-n+4),
+        .col:first-child:nth-last-child(-n+4) ~ .col {
+
+            width:25%;
+        }
+        /* 当列表最多包含2项时，命中所有列表项 */
+        .col:first-child:nth-last-child(-n+2),
+        .col:first-child:nth-last-child(-n+2) ~ .col {
+            width:50%;
+        }
+        .container>:nth-child(2){
+            background-color: #fc3;
+            color:#333;
+        }
+        .container>:nth-child(4){
+            background-color: #58a;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="col">left</div>
+    <div class="col">
+        多列等高布局,使用父容器设置背景色的方式实现。多列等高布局,使用父容器设置背景色的方式实现。多列等高布局,使用父容器设置背景色的方式实现。多列等高布局,使用父容器设置背景色的方式实现。这个方法有个问题，只能适用于确定哪一列会毕竟高的情况下适用。
+    </div>
+    <div class="col">3</div>
+    <div class="col">4</div>
+</div>
+</body>
+</html>
