@@ -2,9 +2,93 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .z-slider{
+            position:relative;
+        }
+        .z-swiper{
+            height:200px;
+            overflow: hidden;
+            position: relative;
+        }
+        .z-swiper-item{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            background-color: #9c3;
+        }
+    </style>
+    <style>
+        .z-slider > .z-indicator-center {
+            right: 50%;
+            -webkit-transform: translateX(50%);
+            transform: translateX(50%);
+        }
+
+        .z-slider > .z-indicator, .z-slider .z-indicator-right {
+            position: absolute;
+            right: 30px;
+            bottom: 10px;
+        }
+
+        .z-slider > .z-indicator > a, .z-slider .z-indicator-right > a {
+            float: left;
+            margin-left: 6px;
+        }
+
+        .z-slider > .z-indicator > a > .z-icon-dot, .z-slider .z-indicator-right > a > .z-icon-dot {
+            display: inline-block;
+            vertical-align: middle;
+            width: 6px;
+            height: 6px;
+            border-radius: 3px;
+            background-color: #d0cdd1;
+        }
+        .z-slider > .z-indicator > a > .z-icon-dot.active{
+            background-color: #FF9900;
+        }
+    </style>
+    <script src="../../../../06-类库/lodash/lodash.js"></script>
+    <script src="swiper.js"></script>
 </head>
 <body>
-$END$
+<div class="z-slider">
+    <div class="z-swiper">
+        <div class="z-swiper-item">
+            <img src="../../../../images/avatar150.png"/>
+        </div>
+        <div class="z-swiper-item">
+            <img src="../../../../images/bg.gif"/>
+        </div>
+        <div class="z-swiper-item">
+            <img src="../../../../images/mm1.jpg"/>
+        </div>
+        <div class="z-swiper-item">
+            <img src="../../../../images/mm2.jpg"/>
+        </div>
+    </div>
+    <div class="z-indicator z-indicator-center">
+        <a href="javascript:;"><i class="z-icon-dot"></i></a>
+        <a href="javascript:;"><i class="z-icon-dot"></i></a>
+        <a href="javascript:;"><i class="z-icon-dot"></i></a>
+        <a href="javascript:;"><i class="z-icon-dot"></i></a>
+    </div>
+</div>
+
+<script>
+    new Swiper({
+        container: document.querySelector('.z-swiper'),
+        item: '.z-swiper-item'
+    })
+</script>
 </body>
 </html>
