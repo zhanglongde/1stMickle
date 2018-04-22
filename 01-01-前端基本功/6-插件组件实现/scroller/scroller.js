@@ -186,7 +186,7 @@ var members = {
       }
     }
 
-    self.selectByIndex(0, animate)
+    self.selectByIndex(0, true)
   },
 
   getValue () {

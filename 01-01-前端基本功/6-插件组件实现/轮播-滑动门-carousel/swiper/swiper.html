@@ -59,36 +59,49 @@
     </style>
     <script src="../../../../06-类库/lodash/lodash.js"></script>
     <script src="swiper.js"></script>
+    <script src="../../../../lib/vue.js"></script>
 </head>
 <body>
-<div class="z-slider">
+<div id="app" class="z-slider">
     <div class="z-swiper">
-        <div class="z-swiper-item">
+        <div class="z-swiper-item" data-index="0">
             <img src="../../../../images/avatar150.png"/>
         </div>
-        <div class="z-swiper-item">
+        <div class="z-swiper-item" data-index="1">
             <img src="../../../../images/bg.gif"/>
         </div>
-        <div class="z-swiper-item">
+        <div class="z-swiper-item" data-index="2">
             <img src="../../../../images/mm1.jpg"/>
         </div>
-        <div class="z-swiper-item">
+        <div class="z-swiper-item" data-index="3">
             <img src="../../../../images/mm2.jpg"/>
         </div>
     </div>
     <div class="z-indicator z-indicator-center">
-        <a href="javascript:;"><i class="z-icon-dot"></i></a>
-        <a href="javascript:;"><i class="z-icon-dot"></i></a>
-        <a href="javascript:;"><i class="z-icon-dot"></i></a>
-        <a href="javascript:;"><i class="z-icon-dot"></i></a>
+        <a href="javascript:" v-for="key in length">
+            <i class="z-icon-dot" :class="{'active': key - 1 === currentIndex}"></i>
+        </a>
     </div>
 </div>
 
 <script>
-    new Swiper({
-        container: document.querySelector('.z-swiper'),
-        item: '.z-swiper-item'
-    })
+   new Vue({
+     el: '#app',
+     data () {
+       return {
+         currentIndex: 0,
+         length: 4
+       }
+     },
+     mounted () {
+       new Swiper({
+         container: document.querySelector('.z-swiper'),
+         item: '.z-swiper-item'
+       }).on('swiped', (prev, index) => {
+         this.currentIndex = index
+       })
+     }
+   })
 </script>
 </body>
 </html>

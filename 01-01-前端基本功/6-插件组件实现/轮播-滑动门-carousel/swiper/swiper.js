@@ -11,7 +11,7 @@ class Swiper {
             threshold: 50,
             duration: 300,
             auto: false,
-            loop: false,
+            loop: true,
             interval: 3000,
             height: 'auto',
             minMovingDistance: 0
