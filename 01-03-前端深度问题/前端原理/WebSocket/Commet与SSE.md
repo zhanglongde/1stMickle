@@ -4,5 +4,15 @@ Comet 是对 Ajax 的进一步扩展，让服务器几乎能够实时地向客�
 
 
 SSE
-SSE（Server-Sent Events，服务器发送事件）是一种实现 Comet 交互的浏览器 API，既支持长轮询，也支持
-HTTP 流。
+SSE（Server-Sent Events，服务器发送事件）是一种实现 Comet 交互的浏览器 API，
+支持短轮询、长轮询和HTTP流
+
+
+短轮询与长轮询
+短轮询：浏览器定时向服务器发送请求，无论有无数据，服务器都立即返回
+长轮询：浏览器发送请求，服务器保持连接打开。直到有数据可送
+
+
+长连接（HTTP流）
+浏览器向服务器请求，服务器保持连接打开，周期性地向浏览器发送数据
+通过监听readystatechange事件及检测readyState的值是否为3

@@ -11,8 +11,12 @@ WebSocket对象不支持DOM2级事件监听
 持久连接，如何维持？
 服务器和客户端之间发送Ping/Pong Frame，这种frame只包含一些元数据而不需要真正的Data Payload
 每个WebSocket连接都始于一个HTTP请求 Upgrade:websocket,如果服务器支持新的协议，则返回101
-WebSocket基于http协议，或者说借用了http协议来完成一部分握手.WebSocket使用HTTP Upgrade机制升级到Web Socket协议。HTML5 Web Sockets有着兼容HTTP的握手机制
-WebSocket解决的第一个问题：通过第一个Http request 建立了TCP连接之后，之后的交换数据都不需要在发送Http request,使得这个长连接变成一个真长连接,不需要发送http header就能交换数据
+WebSocket基于http协议，或者说借用了http协议来完成一部分握手.
+WebSocket使用HTTP Upgrade机制升级到Web Socket协议。HTML5 Web Sockets有着兼容HTTP的握手机制
+WebSocket解决的第一个问题：
+    通过第一个Http request 建立了TCP连接之后，之后的交换数据都不需要再发送Http request,
+    使得这个长连接变成一个真长连接,不需要发送http header就能交换数据
+
 
 WebSocket两个版本
 ws =>http 80
