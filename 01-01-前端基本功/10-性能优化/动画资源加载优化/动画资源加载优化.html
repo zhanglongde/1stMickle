@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        等待动画所需静态资源加载完毕，再进行动画
+    </title>
+    <style>
+        /* The magic here that makes animations wait */
+        .js-loading *,
+        .js-loading *:before,
+        .js-loading *:after {
+            animation-play-state: paused !important;
+        }
+
+        .animated-header {
+            background: #000;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+        }
+
+        .animated-header:before {
+            animation: show-background 60s .5s cubic-bezier(0,1,.5,1) forwards;
+            background: url(https://cssanimation.rocks/images/random/space2.jpg) repeat center;
+            background-size: cover;
+            content: "";
+            opacity: 0;
+            height: 125vh;
+            position: absolute;
+            left: -10%;
+            top: -10%;
+            width: 125vw;
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #aaa;
+            font-size: 48px;
+            display: none;
+        }
+
+        .js-loading .loading {
+            display: block;
+        }
+
+        .earth {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: calc(50% - 100px);
+            left: calc(50% - 100px);
+        }
+
+        .moon {
+            animation: spin 30s linear infinite;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: calc(50% - 200px);
+            left: calc(50% - 200px);
+            transform-origin: 200px 200px;
+        }
+
+        .earth img, .moon img {
+            animation: show-on-load 1s .5s cubic-bezier(0,1.6,.6,1) forwards;
+            border-radius: 50%;
+            opacity: 0;
+            width: 100%;
+            box-shadow: 0 0 12em 1em rgba(110, 140, 200, .6);
+        }
+
+        .moon img {
+            animation: fade-in 2s 1s cubic-bezier(0,1.5,1,1) forwards, spin 30s linear reverse infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotateZ(360deg);
+            }
+        }
+
+        @keyframes show-background {
+            0% {
+                opacity: 0;
+                transform: none;
+            }
+            30% {
+                opacity: .5;
+            }
+            100% {
+                opacity: .5;
+                transform: scale(.8)
+            }
+        }
+
+        @keyframes show-on-load {
+            0% {
+                opacity: 0;
+                transform: scale(.5);
+            }
+            100% {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @keyframes fade-in {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+<header class="animated-header">
+    <div class="loading">Waiting for "load" event...</div>
+    <div class="earth">
+        <img src="https://cssanimation.rocks/images/random/earth.png">
+    </div>
+    <div class="moon">
+        <img src="https://cssanimation.rocks/images/random/moon.png">
+    </div>
+</header>
+
+<script>
+    document.body.classList.add('js-loading');
+
+    window.addEventListener("load", showPage, false);
+
+    function showPage() {
+        document.body.classList.remove('js-loading');
+    }
+</script>
+</body>
+</html>
