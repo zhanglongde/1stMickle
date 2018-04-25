@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Mac 滚动动条长度统一15
+        window
+    </title>
+</head>
+<body>
+<script>
+    var outer = document.createElement('div')
+    var inner = document.createElement('div')
+    outer.style.overflow = 'scroll'
+    document.body.appendChild(outer)
+    outer.appendChild(inner)
+    var scrollbarWidth = outer.offsetWidth - inner.offsetWidth
+    console.log(scrollbarWidth)
+    document.body.removeChild(outer)
+</script>
+</body>
+</html>

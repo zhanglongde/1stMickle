@@ -1,3 +1,5 @@
+分块打包
+
 
 chunk
 1.运行时 manifest.json

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: monospace;
+            margin: 0;
+            min-height: 500vh;
+        }
+        div {
+            position: fixed;
+            top: 10vh;
+            left: 10vh;
+            width: 0;
+            height: 0;
+            padding: 10.5vh;
+        }
+        div::before {
+            position: absolute;
+            top: 5vh;
+            left: 10vh;
+            width: 10vh;
+            text-align: center;
+            font-size: 10vh;
+            line-height: 1;
+            color: #fff;
+        }
+        /*div + div {*/
+            /*top: 55vh;*/
+        /*}*/
+        .r{
+            top:40vh;
+        }
+        .l{
+            top:70vh;
+        }
+        .r {
+            background-color: #cc342d;
+        }
+        .l {
+            background-color: #44709e;
+        }
+        .n {
+            background-color: #558;
+        }
+        .r::before {
+            content: 'R';
+        }
+        .l::before {
+            content: 'L';
+        }
+        .n::before {
+            content: 'N';
+        }
+    </style>
+    <script src="../../../lib/lodash.js"></script>
+</head>
+<body>
+<div class="n"></div>
+<div class="r"></div>
+<div class="l"></div>
+
+<script>
+    let ticking = false;
+    const rBox = document.querySelector('.r');
+    const lBox = document.querySelector('.l');
+    const nBox = document.querySelector('.n');
+
+    function onScroll() {
+        ticking = ticking || requestAnimationFrame(() => {
+                ticking = false;
+                rBox.style.width = `${window.scrollY}px`;
+            });
+    }
+
+    function throttledScroll() {
+        lBox.style.width = `${window.scrollY}px`;
+    }
+
+    function noDone() {
+        nBox.style.width = `${window.scrollY}px`;
+    }
+
+    window.addEventListener('scroll', noDone, false);
+
+    window.addEventListener('scroll', onScroll, false);
+
+    window.addEventListener('scroll', _.throttle(throttledScroll, 16), false);
+</script>
+</body>
+</html>
