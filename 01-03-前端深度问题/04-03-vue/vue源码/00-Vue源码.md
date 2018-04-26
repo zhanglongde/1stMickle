@@ -3,6 +3,7 @@ https://github.com/liutao/vue2.0-source
 
 
 独立构建和运行时构建
+运行时和编译器
 
 
 数据绑定 响应式：watcher触发update 异步更新
