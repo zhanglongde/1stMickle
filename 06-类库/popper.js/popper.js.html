@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .container{
+            width:300px;
+            height:300px;
+            margin:auto;
+
+            background-color: #58a;
+            color:#fff;
+        }
+        .container+.container{
+            margin-top:40px;
+        }
+
+        ul,ul>li{
+            list-style: none;
+        }
+        .menu-list{
+            background-color: #fc3;
+        }
+        .menu-list li{
+            height:40px;
+            line-height:40px;
+        }
+    </style>
+    <script src="https://unpkg.com/popper.js"></script>
+    <!--<script src="https://unpkg.com/popper.js@1.14.3/dist/umd/popper.min.js"></script>-->
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <button id="test">点击</button>
+        <ul class="menu-list">
+            <li>li1</li>
+            <li>li2</li>
+            <li>li3</li>
+            <li>li4</li>
+            <li>li5</li>
+        </ul>
+        <div>
+            test
+        </div>
+    </div>
+</div>
+
+<div class="container" id="ref-box">
+    <div>
+        test
+    </div>
+</div>
+
+
+
+<script>
+  document.querySelector('#test').addEventListener('click', function () {
+//    var referenceObject = document.body
+    var referenceObject = document.querySelector('#ref-box')
+    var popperNode = document.querySelector('.menu-list')
+    new Popper(referenceObject, popperNode, {
+      placement: 'right',
+//      positionFixed: true,
+      onCreate(data) {
+        console.log('onCreate...', data)
+      },
+      onUpdate (data) {
+        console.log('onUpdate...', data)
+      }
+    });
+  })
+</script>
+</body>
+</html>
