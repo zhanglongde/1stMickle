@@ -2,9 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .left{
+            width:200px;
+            background-color: #58a;
+            /*flex:1 1 auto;*/
+        }
+        .right{
+            width:100px;
+            background-color: #85a;
+            /*flex:1 1 auto;*/
+        }
+        .center{
+            background-color: #fc3;
+            width:400px;
+            /*flex:1 1 auto;*/
+        }
+        .row{
+            width: 1000px;
+            display:flex;
+            justify-content: space-between;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="container">
+    <div class="row">
+        <div class="left">left</div>
+        <div class="center">center</div>
+        <div class="right">right</div>
+    </div>
+</div>
 </body>
 </html>
