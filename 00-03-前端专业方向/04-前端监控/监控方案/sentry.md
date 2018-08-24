@@ -1,0 +1,1 @@
+Stop hoping your users will report errors
