@@ -5,7 +5,7 @@ how Virtual DOM?
 tagName children property
 
 Why DOM diff?
-计算出Virtual DOM中真正变化的部分，然后只针对该部分进行原生ＤＯＭ操作，并重新渲染整个页面
+计算出Virtual DOM中真正变化的部分，然后只针对该部分进行原生DOM操作，并重新渲染整个页面
 How DOM diff?
 tree diff
   分层比较，跨层忽略不计
