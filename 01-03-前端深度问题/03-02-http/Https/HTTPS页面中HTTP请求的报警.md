@@ -9,3 +9,10 @@ https://developers.google.cn/web/fundamentals/security/prevent-mixed-content/fix
 
 
 直接信任CA证书
+
+
+
+
+解决方式
+信任
+黑操作

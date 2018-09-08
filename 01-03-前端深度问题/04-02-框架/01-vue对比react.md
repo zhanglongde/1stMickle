@@ -2,13 +2,14 @@
 1. 虚拟DOM
 2. 响应式与组件化
 3. 配套路由与状态管理
+模板编译？？
 
 
 不同点
 1. Vue虚拟DOM fork自snabbdom
    React.createElement
 2. Vue组件无需声明，实例化
-3.组件控制强度
+3.组件控制强度、粒度
    React对组件的控制程度要强一些：可以对组件进行逻辑运算：JSX（JavaScript与元素的混合+render 高阶组件 无状态组件 组件的children属性(类似slot)
    vue对于组件的控制：slot 递归与嵌套，vue2中也有render
 4. 组件更新

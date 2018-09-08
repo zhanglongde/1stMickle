@@ -6,7 +6,8 @@ https://github.com/liutao/vue2.0-source
 运行时和编译器
 
 
-数据绑定 响应式：watcher触发update 异步更新
+数据绑定 响应式：setter函数 watcher触发update 异步更新
+        getter函数，依赖收集，添加订阅者到订阅者容器
 模板编译：得到render函数，render的结果是VNode
 虚拟DOM:patch触发DOM diff
 
