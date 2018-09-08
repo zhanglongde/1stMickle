@@ -2,13 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        对象key转化为小驼峰
+    </title>
 </head>
 <body>
 <script>
     var obj = {"a_b":1}
     function firstUpperCase(str) {
-      return str.toLowerCase().replace(/^\S/g,function(s){return s.toUpperCase();});
+//      return str.toLowerCase().replace(/^\S/g,function(s){return s.toUpperCase();});
+      let arr =  str.split('')
+      arr[0] = arr[0].toUpperCase();
+      return arr.join('');
     }
     function GetCamel(json) {
       var newJson = {}

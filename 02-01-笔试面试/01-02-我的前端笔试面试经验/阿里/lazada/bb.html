@@ -2,28 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        大数相加
+        js最大范围：正负2的53次方
+        Number.max_safe_integer
+        Math.pow(2,53)
+
+        https://segmentfault.com/a/1190000014684717
+    </title>
 </head>
 <body>
 <script>
-  function Sum(a, b) {
-    var aLen = a.length
-    var bLen = b.length
-    let r = aLen - bLen
-    if (r>0) { // a>b
-      // 将a分成两段
-      let sH = a.substr(0,r)
-      let sL = a.substr(r)
-      let sumLow = parseInt(sL) + parseInt(b)
-      return sumLow + sH
-    } else {
-      let sH = b.substr(0,r)
-      let sL = b.substr(r)
-      let sumLow = parseInt(sL) + parseInt(a)
-      return sumLow + sH
+//  function Sum(a, b) {
+//    var aLen = a.length
+//    var bLen = b.length
+//    let r = aLen - bLen
+//    if (r>0) { // a>b
+//      // 将a分成两段
+//      let sH = a.substr(0,r)
+//      let sL = a.substr(r)
+//      let sumLow = parseInt(sL) + parseInt(b)
+//      return sumLow + sH
+//    } else {
+//      let sH = b.substr(0,r)
+//      let sL = b.substr(r)
+//      let sumLow = parseInt(sL) + parseInt(a)
+//      return sumLow + sH
+//    }
+//  }
+//  Sum('123')
+
+
+//    转化为字符串，循环相加
+    function add(a,b) {
+      var res = '';
+//      保存两位数相加的结果和进位值
+      var c = 0;
+
+//      字符串转数组
+      a = a.split('');
+      b = b.split('');
+
+      while(a.length || b.length || c) {
+//        把两位相加的结果和进位值相加
+//        ~~undefined = 0，空数组pop得到undefined
+        c += ~~a.pop() + ~~b.pop();
+
+//        取余数，把榆树坪街道最终结果中
+        res = c % 10 + res;
+
+        c = c>9;
+      }
     }
-  }
-  Sum('123')
 </script>
 </body>
 </html>
