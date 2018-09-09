@@ -47,7 +47,7 @@
     { time: 1248998400000, temperature: [ 10.8, 16.1 ] }
   ];
   const averages = [
-    { time: 1246406400000, temperature: 21.5 },
+    { time: 1246406400000, temperature: 121.5 },
     { time: 1246492800000, temperature: 22.1 },
     { time: 1246579200000, temperature: 23 },
     { time: 1246665600000, temperature: 23.8 },
@@ -90,16 +90,18 @@
     }
   }
   ReactDOM.render((
-          <Chart height={window.innerHeight} scale={cols} forceFit data={[1]}>
+          <Chart height={500} scale={cols} forceFit data={[1]}>
               <Tooltip crosshairs={{type:'line'}}/>
               <View data={data} >
+                  <Legend/>
                   <Axis name="time" />
                   <Axis name="temperature" />
-                  <Geom type="area" position="time*temperature" tooltip={false}/>
+                  <Geom type="area" position="time*temperature" tooltip={true}/>
+                  <Geom type="line" position="time*temperature" tooltip={true}/>
               </View>
               <View data={averages} >
                   <Axis name="time" />
-                  <Axis name="temperature" />
+                  <Axis name="temperature" position="right" />
                   <Geom type="line" position="time*temperature" size={2} />
                   <Geom type="point" position="time*temperature" size={4} shape='circle' style={{stroke: '#fff',lineWidth: 1,fillOpacity: 1}}/>
               </View>
