@@ -27,7 +27,7 @@
     </div>
 </div>
 <script type="text/babel">
-  const {Chart, Axis, Geom, Tooltip} = window.BizCharts;
+  const {Chart, Axis, Geom, Tooltip, Legend} = window.BizCharts;
   const data = [
     {year: "1991", value: 3},
     {year: "1992", value: 4},
@@ -60,6 +60,7 @@
 
   ReactDOM.render((
           <Chart height={400} data={data} scale={cols} forceFit>
+              <Legend name="value" position="right" title={'Test'} dx={20} />
               <Axis name="year" title="年份"/>
               <Axis name="value" title={title}/>
               <Tooltip crosshairs={{type: "y"}}/>

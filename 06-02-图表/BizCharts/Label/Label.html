@@ -1,10 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"></script>
+
+
 </head>
 <body>
-$END$
-</body>
+<div id="mountNode">
+    <div>
+        <div>
+            <div style="position:relative;">
+                <canvas id="canvas_1" width="870" height="400"
+                        style="width: 870px; height: 400px;"></canvas>
+                <div class="g2-tooltip"
+                     style="position: absolute; visibility: hidden; white-space: nowrap; z-index: 8; transition: visibility 0.2s cubic-bezier(0.23, 1, 0.32, 1) 0s, left 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s, top 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s; background-color: rgba(0, 0, 0, 0.65); border-radius: 4px; color: rgb(255, 255, 255); font-size: 12px; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Helvetica, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, SimSun, sans-serif; line-height: 20px; padding: 10px 10px 6px;">
+                    <div class="g2-tooltip-title"></div>
+                    <ul class="g2-tooltip-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/babel">
+  const {Chart, Axis, Geom, Tooltip, Label} = window.BizCharts;
+  const data = [
+    {year: "1991", value: 3, value2: 33},
+    {year: "1992", value: 4, value2: 44},
+    {year: "1993", value: 3.5, value2: 13.5},
+    {year: "1994", value: 5, value2: 15},
+    {year: "1995", value: 4.9, value2: 14.9},
+    {year: "1996", value: 6, value2: 16},
+    {year: "1997", value: 7, value2: 17},
+    {year: "1998", value: 9, value2: 19},
+    {year: "1999", value: 13, value2: 131}
+  ];
+
+  const cols = {
+    'value': {min: 0},
+    'year': {range: [0, 1]}
+  };
+
+  ReactDOM.render((
+          <Chart height={400} data={data} scale={cols} forceFit>
+              <Axis name="year"/>
+              <Axis name="value"/>
+              <Tooltip crosshairs={{type: "y"}}/>
+              <Geom type="line" position="year*value" size={2}/>
+              <Geom type="line" position="year*value2" size={2}>
+                  <Label content="value2" htmlTemplate={(text, item, index)=>{
+                            var point = item.point;
+                            var percent = point['percent'];
+                            percent = (percent * 100).toFixed(2) + '%';
+                            return '<span class="title" style="display: inline-block;width: 50px;">' + text + '</span><br><span style="color:' + point.color + '">' + percent + '</span>';}}></Label>
+              </Geom>
+              <Geom type='point' position="year*value" size={4} shape={'circle'}
+                    style={{stroke: '#fff', lineWidth: 1}}>
+                  <Label content="value"/>
+              </Geom>
+          </Chart>
+  ), document.getElementById("mountNode"));
+</script>
+
+<b id="udataInstalled"></b></body>
 </html>
