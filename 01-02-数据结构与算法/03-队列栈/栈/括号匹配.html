@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        第二题的要求是给定一个字符串，这个字符串是由()、[]两种括号组成的，还是要求算法复杂度是O(n)，即遍历一次字符串。当时，看到这道题内心是拒绝的，由于长时间没有接触算法的东西，一下子也没什么好的办法。在思考的过程中，想出过一种解决方案：两个循环，从两边开始遍历，相等的情况直接提取，
+        不相等的情况，右边的变量继续往左移动，直到第二次相等，将剩余的字符串提取出来，继续进行相同的操作，直到最后两边的变量重合。
+    </title>
+</head>
+<body>
+
+<script>
+  var stack = [];
+  var string1 = '(([]()[])[])';
+
+  for(var i=0; i < string1.length; i++){
+    if(countNum(string1[i]) + countNum(string1[i+1]) === 0){    //首先判断当前字符与下一个字符是否匹配，若匹配直接打印，并将变量i加一
+      console.log(string1[i] + string1[i+1]);
+      i++;
+      continue;
+    }else{      //若不匹配
+      if(stack.length === 0){    // 先查看栈内是否有字符，没有就直接放入栈中
+        stack.push(string1[i]);
+        continue;
+      }else{       //若有的话，判断栈的最后一个字符是否与之匹配
+        var len = stack.length;
+        if(countNum(stack[len-1]) + countNum(string1[i]) === 0){   // 直接匹配的话，则打印两个字符，并且将栈的最后一个字符去除
+          console.log(stack[len-1]+string1[i]);
+          stack.pop();
+          continue;
+        }else{       //若不匹配，则将该字符继续放入栈中
+          stack.push(string1[i]);
+          continue;
+        }
+      }
+    }
+  }
+
+  function countNum(chr) {                   //为了方便匹配每个字符，将字符用数字表示
+    switch (chr) {
+      case '(':
+        return 1;
+        break;
+      case ')':
+        return -1;
+        break;
+      case '[':
+        return 2;
+        break;
+      case ']':
+        return -2;
+        break;
+      default:
+        return 0;
+    }
+  }
+
+</script>
+
+</body>
+</html>

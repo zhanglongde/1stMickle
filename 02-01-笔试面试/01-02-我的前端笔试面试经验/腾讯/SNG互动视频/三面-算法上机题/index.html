@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+//  JS算法实现：在大文本中查找重复次数最多的较长子字符串(至少2个字符)，返回该重复最多次数和该字符串
+//  (测试用例：abcedabcsdfsdfsabcs，出现最多较长字符串是abc，3次；测试用例2：abcesdabcsdfsdfsabcsdsda，出现最多较长的字符串是sd，5次）。
+
+//统计子串在长串中出现的次数
+function TotalNum(long, short) {
+    let num = 0;
+    let index = long.indexOf(short);
+    if (index >= 0) {
+      num++;
+      let rest = long.substr(index+1)
+      num += TotalNum(rest, short)
+    }
+    return num;
+}
+
+function FindMost(str) {
+  let longestStr = '';
+  let longestNum = 0;
+  for(var i = 0, LEN = str.length; i < LEN; i++){
+    let restLEN = LEN - i;
+    for(var j = 0; j < restLEN - 1; j++){
+      let shortStr = str.substr(i, j + 2);
+      let num = TotalNum(str, shortStr);
+      // 如果次数一样，则优先更长的串
+      if ((num > longestNum) || ((num === longestNum) && (shortStr.length > longestStr.length))) {
+        longestNum = num;
+        longestStr = shortStr;
+      }
+    }
+  }
+  return {
+    str: longestStr,
+    num: longestNum
+  }
+}
+
+console.log(FindMost('abcedabcsdfsdfsabcs'))
+console.log(FindMost('abcesdabcsdfsdfsabcsdsda'))
+</script>
+</body>
+</html>
