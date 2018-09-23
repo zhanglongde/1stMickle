@@ -7,6 +7,82 @@
     </title>
 </head>
 <body>
+<script>
+    function LinkedList() {
+      this._length = 0;
+      this._head = null;
+    }
+    LinkedList.prototype = {
+      add: function (data) {
+//        创建节点并放入数据
+        var node = {
+          data: data,
+          next: null
+        }
+        // 用于遍历链表的变量
+        var current;
+//        当链表为空时
+        if (this._head === null) {
+          this._head = node;
+        } else {
+          current = this._head;
+//          存在下一个节点
+          while(current.next){
+            current = current.next;
+          }
+//          将节点作为最后节点的下一个节点，插入
+          current.next = node;
+        }
+        this._length ++;
+      },
+      item: function (index) {
+//        越界判断
+        if ((index > -1) && (index < this._length)) {
+          var current = this._head,i=0;
+          while(i<index){
+            i++;
+            current = current.next;
+            return current.data;
+          }
+        } else {
+          return null;
+        }
+      },
+      remove: function (index) {
+        if ((index > -1) && (index < this._length)) {
+//          从头结点开始遍历
+          var current = this._head,previous,i=0;
+          if (index === 0) {
+            this._head = current.next;
+            return this._head;
+          } else {
+//            找到正确位置
+            while(i<index) {
+              i++;
+              previous = current;
+              current = current.next;
+            }
+//            跳过要删除的节点
+            previous.next = current.next;
+          }
+//          更新链表长度
+          this._length--;
+//          返回当前节点数据
+          return current.data;
+        } else {
+          return null;
+        }
+      }
+    }
 
+    var list = new LinkedList();
+    list.add('red')
+    list.add('orange')
+    list.add('yellow')
+
+    alert(list.item(1));
+    list.remove(1)
+    alert(list.item(1))
+</script>
 </body>
 </html>

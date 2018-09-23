@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Dictionary{
+      constructor(){
+        this.items = {};
+      }
+
+      set(key,value){
+        this.items[key]=value;
+      }
+      remove(key){
+        delete this.items[key]
+      }
+
+      get keys(){
+        return Object.keys(this.items)
+      }
+      get values(){
+        return Object.values(this.items)
+      }
+    }
+
+    const dictionary = new Dictionary()
+    dictionary.set('Gandalf', 'gandalf@email.com')
+    dictionary.set('John', 'johnsnow@email.com')
+    dictionary.set('Tyrion', 'tyrion@email.com')
+
+    console.log(dictionary)
+    console.log(dictionary.keys)
+    console.log(dictionary.values)
+    console.log(dictionary.items)
+</script>
+</body>
+</html>

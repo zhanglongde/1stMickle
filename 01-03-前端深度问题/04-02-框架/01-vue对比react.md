@@ -36,3 +36,5 @@
     Vue从今年的Vue Conference来看，使用的人应该不少
 11.语法差异
    vue存在指令 react没有
+
+React API要少很多

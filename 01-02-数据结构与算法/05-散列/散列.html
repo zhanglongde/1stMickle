@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  class HashTable {
+
+    constructor() {
+      this.table = []
+    }
+
+    // 散列函数
+    static loseloseHashCode(key) {
+      let hash = 0
+      for (let codePoint of key) {
+//        将每个键值中的每个字母的ASCII值相加
+        hash += codePoint.charCodeAt()
+      }
+      return hash % 37
+    }
+
+    // 修改和增加元素
+    put(key, value) {
+      const position = HashTable.loseloseHashCode(key)
+      console.log(`${position} - ${key}`)
+      this.table[position] = value
+    }
+
+    get(key) {
+      return this.table[HashTable.loseloseHashCode(key)]
+    }
+
+    remove(key) {
+      this.table[HashTable.loseloseHashCode(key)] = undefined
+    }
+  }
+
+  const hash = new HashTable()
+  hash.put('Surmon', 'surmon.me@email.com') // 19 - Surmon
+  hash.put('John', 'johnsnow@email.com') // 29 - John
+  hash.put('Tyrion', 'tyrion@email.com') // 16 - Tyrion
+
+  // 测试get方法
+  console.log(hash.get('Surmon')) // surmon.me@email.com
+  console.log(hash.get('Loiane')) // undefined
+  console.log(hash)
+</script>
+</body>
+</html>

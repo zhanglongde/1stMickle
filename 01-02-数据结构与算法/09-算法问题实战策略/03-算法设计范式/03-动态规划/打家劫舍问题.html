@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        子问题就是“数组长度为n-2的结果+第n项”与“数组长度为n-1的结果”
+        方程式：
+        f(0) = array[0]
+        f(1) = max(array[0], array[1])
+        f(n) = max( f(n-2) + array[n], f(n-1) )
+
+    </title>
+</head>
+<body>
+<script>
+    var rob = function (nums) {
+      var last = 0,now=0;
+      for(var i = 0,LEN=nums.length; i< LEN; i++){
+        var temp = last; // 上上次
+        last = now;// 上次
+        now = Math.max(temp+nums[i],now);
+      }
+      return now;
+    }
+    console.log(rob([2, 0, 0, 4, 5]))
+</script>
+</body>
+</html>

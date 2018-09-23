@@ -1,6 +1,10 @@
 manifest已经从web标准中移除，不建议使用，而替代品service workers在移动端目前基本仍未支持
+Service Worker 相关缓存的底层存储都使用了系统的文件系统（File System），而文件系统一般是不支持多进程访问的，当统一域名下有两个不同的 Service Worker 是无法同时对同一资源进行操作的。
+
+
 
 window.applicationCache
+CacheStorage
 
 
 
