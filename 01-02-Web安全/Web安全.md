@@ -51,6 +51,7 @@ XCDH劫持 控点盗中
   加密参数
   Token需要同时放在表单和Session中。在提交请求时，服务器只需验证表单中的token与用户Session（cookie）中的Token是否一致；如果一致，认为是合法请求
   加token实现方式：表单、隐藏域、meta、AJAX请求头部
+4）cookie sameSite
 2.5攻击步骤
     登录受信任网站A，并在本地生成Cookie。
     在不登出A的情况下，访问危险网站B。

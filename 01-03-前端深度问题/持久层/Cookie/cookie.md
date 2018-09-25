@@ -1,3 +1,16 @@
+Cookie几个字段
+key value
+过期时间
+domain 二级域名
+path secure
+http-only 是否允许通过JS来读写
+host-only=>sameSite 可用于防范CSRF
+
+读取cookie，key=value;key=value;
+
+
+
+
 https://imququ.com/post/host-only-cookie.html
 https://segmentfault.com/a/1190000004556040
 [把cookie聊清楚](https://juejin.im/post/59d1f59bf265da06700b0934?utm_source=gold_browser_extension)
