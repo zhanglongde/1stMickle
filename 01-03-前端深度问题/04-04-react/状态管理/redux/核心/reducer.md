@@ -1,0 +1,2 @@
+reducer是一个纯函数
+reducer是一个纯函数，state可预测
