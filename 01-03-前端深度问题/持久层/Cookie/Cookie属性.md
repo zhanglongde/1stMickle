@@ -8,5 +8,6 @@ Session
 HostOnly
 Secure 只能通过HTTPS传递
 HttpOnly
+SameSite
 
 Domain、Path可以区分同名Cookie

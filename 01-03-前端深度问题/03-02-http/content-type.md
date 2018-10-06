@@ -4,3 +4,4 @@ content-type
       image/png
       application/json post request payload
       application/x-www-form-urlencoded
+      multipart/form-data 表单上传文件
