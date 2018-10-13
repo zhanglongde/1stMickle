@@ -5,7 +5,7 @@
 3.state>store
   跟页面无关的不要放state
 4.第三方 immutable
-5.无状态组件
+5.无状态组件 pureComponent
 6.bind提前绑定
 
 
