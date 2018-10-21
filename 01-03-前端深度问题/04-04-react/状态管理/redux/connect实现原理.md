@@ -1,0 +1,1 @@
+connect用于组件获取redux里面的数据：state和action

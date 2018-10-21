@@ -1,3 +1,5 @@
+provider用于把store置于context
+
 http://www.jianshu.com/p/2501a9703d13
 https://www.robinwieruch.de/react-provider-pattern-context/
 
