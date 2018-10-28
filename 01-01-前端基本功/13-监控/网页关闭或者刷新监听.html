@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        https://juejin.im/post/5b21c61cf265da6e5415297f
+
+        new Image()方法可以作为sendBeacon()的不兼容时的降级处理方法
+    </title>
+</head>
+<body>
+
+<script>
+    window.addEventListener('unload',function () {
+      console.log('%c-----------------------------------------------------------3', 'background-color:#e66;color:#fff;font-size:30px;')
+      alert('close/refresh')
+    })
+
+    window.addEventListener('unload', logData, false);
+
+    function logData() {
+      console.log('%c-----------------------------------------------------------1', 'background-color:#e66;color:#fff;font-size:30px;')
+//      异步发送
+//      navigator.sendBeacon("/log", analyticsData);
+    }
+    window.addEventListener('onbeforeunload', function () {
+      console.log('%c-----------------------------------------------------------2', 'background-color:#e66;color:#fff;font-size:30px;')
+    });
+
+</script>
+</body>
+</html>
