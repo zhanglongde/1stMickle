@@ -22,7 +22,8 @@ function getGreeting(user) {
 
 const element = (
   <h1>
-    Hello,{getGreeting(user)}
+    {/*Hello,{getGreeting(user)}*/}
+   <App></App>
   </h1>
 )
 
