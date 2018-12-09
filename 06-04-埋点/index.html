@@ -2,9 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul,ul>li{
+            list-style: none;
+        }
+        .list-li{
+            display:flex;
+
+            width:500px;
+        }
+        .list-li>li{
+            width:50%;
+            height:100px;
+            background-color: #58a;
+
+            border:1px solid #ccc;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="container">
+    <ul class="list-li">
+        <li>
+            <div>li1</div>
+            <div>li11</div>
+        </li>
+        <li>li2</li>
+        <li>li3</li>
+        <li>li4</li>
+        <li>li5</li>
+        <li>li6</li>
+        <li>li7</li>
+        <li>li8</li>
+        <li>li9</li>
+    </ul>
+</div>
+
+<script>
+    document.addEventListener('click', function (el) {
+      console.log(el, el.target)
+    })
+</script>
 </body>
 </html>
