@@ -23,3 +23,9 @@ Access-Control-Allow-Origin不可以为 '*'，因为 '*' 会和 Access-Control-A
   状态码，其他header也需要一致，浏览器才会通过
 2.另一种解决方式OAuth2.0
 cookie-token,在头部返回服务器进行校验
+
+
+CORS容易忽视的细节
+登录验证
+ajax或者fetch没携带cookie
+preflight请求无法携带cookie

@@ -17,7 +17,8 @@ XCDH劫持 控点盗中
 1.3原理
    破坏html css js构造
 1.4防御
-    1）http only,js无法读取cookie
+    1）http only
+       js无法通过document.cookie读取cookie
     2）输入输出检查转义
        html编码
        style CSS编码
@@ -40,17 +41,20 @@ XCDH劫持 控点盗中
 2.4防御
 1）验证码
    导致用户体验不佳：出于用户体验考虑，网站不能给【所有的操作】都加上验证码。因此验证码只能作为一种辅助手段。
-2）Referer Check
-   document.referer:刚刚访问过的网页的URL。例如，提交发帖表单时，Referer值必然是发帖表单所在的页面
+2）Referrer Check
+   document.referrer:刚刚访问过的网页的URL。例如，提交发帖表单时，Referrer值必然是发帖表单所在的页面
    防止图片盗链
    检查请求是否来自合法的“源”
    缺点：
-   通过检查Referer是否合法合法来判断用户是否被CSRF攻击，只是充分条件
-   服务器并非什么时候都能取到Referer
+   通过检查Referrer是否合法合法来判断用户是否被CSRF攻击，只是充分条件
+   服务器并非什么时候都能取到Referrer
+
 3)Anti CSRF Token
   加密参数
+  前后端不分离：
   Token需要同时放在表单和Session中。在提交请求时，服务器只需验证表单中的token与用户Session（cookie）中的Token是否一致；如果一致，认为是合法请求
   加token实现方式：表单、隐藏域、meta、AJAX请求头部
+  纯静态的CDN资源中的请求？从页面header中获取token，再放入ajax header。
 4）cookie sameSite
 2.5攻击步骤
     登录受信任网站A，并在本地生成Cookie。
