@@ -32,7 +32,7 @@ JavaScript调用Native的方式有2种：1.注入API 2.拦截URL SCHEME
 iOS window.webkit.messageHandlers.nativeBridge.postMessage(message);
 Android window.nativeBridge.postMessage(message);
 ### 拦截URL SCHEME ###
-#### URL SCHEME ####
+#### URL SCHEME 应用内协议 ####
 URL SCHEME是一种类似于url的链接，是为了方便app直接互相调用设计的，形式和普通的 url 近似，主要区别是 protocol 和 host 一般是自定义的
 #### 拦截流程 ####
 Web端通过某种方式发送URL SCHEME请求之后，Native拦截到请求，并根据URL SCHEME进行相关操作
@@ -49,6 +49,13 @@ locaiton.href**连续调用**Native容易丢失一些调用
 
 Ajax请求
 有些方案为了规避 url 长度隐患的缺陷，在 iOS 上采用了使用 Ajax 发送同域请求的方式，并将参数放到 head 或 body 里。这样，虽然规避了 url 长度的隐患，但是 WKWebView 并不支持这样的方式。
+
+弊端
+URL长度受限制
+
+## prompt拦截 ##
+拦截BOM的prompt API实现
+缺陷：同步API，prompt会锁死UI线程
 
 ## Native调用JavaScript ##
 JavaScript方法挂在全局的window上
