@@ -25,7 +25,25 @@ Access-Control-Allow-Origin不可以为 '*'，因为 '*' 会和 Access-Control-A
 cookie-token,在头部返回服务器进行校验
 
 
-CORS容易忽视的细节
-登录验证
-ajax或者fetch没携带cookie
-preflight请求无法携带cookie
+
+
+
+CORS容易忽视的技术细节
+1.请求类型
+简单请求
+非简单请求：预检请求
+2.忽略登录验证
+Java后端没有收到前端请求，登录信息不对被重定向
+因为，CORS请求，ajax或者fetch默认不会携带cookie
+解决=>
+XHR:xhr.credential = true
+fetch:{credential: "include"}
+3.非简单请求的Option请求
+  自定义请求头白名单，变成非简单请求
+  浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些HTTP动词和头信息
+  解决=>
+  服务端返回头与客户端请求头一致
+4.preflight请求无法携带cookie
+解决=>
+修改拦截器逻辑
+在Login之前，放一个针对CORS的拦截器，只要是OPTIONS请求，判断必要的origin和method是否合法，然后直接返回状态码200.
