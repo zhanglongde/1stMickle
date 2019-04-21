@@ -18,7 +18,7 @@ const puppeteer = require('puppeteer');
   await page.click('.article > .author > .info > .name > a')
 
   await navigationPromise
-  
+
 
 //   await browser.close()
 
