@@ -1,0 +1,3 @@
+monorepo 和 multirepo 都是管理组织代码的方式
+monorepo 就是把所有的相关项目都放在一个仓库中，Lerna
+multirepo 则是按模块分为多个仓库。

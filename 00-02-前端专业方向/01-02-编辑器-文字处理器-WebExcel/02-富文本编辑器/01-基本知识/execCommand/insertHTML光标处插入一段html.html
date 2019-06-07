@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        insertHTML
+        没有选中的文字，插入
+        有选中的文字，替换掉选中的文字
+
+        &#8203;光标
+        执行命令同时，删除选中部分
+    </title>
+</head>
+<body>
+<div contenteditable="true">
+    some [insertion point] content
+</div>
+
+<button id="btnInsertHtml">插入</button>
+
+<script>
+    window.onload = function () {
+        function insertHTML(){
+            document.execCommand('insertHTML', false, '<span id="myId" style="color:red;">hi</span>');
+        }
+        var btnInsertHtml = document.querySelector('#btnInsertHtml')
+        btnInsertHtml.addEventListener('click', function () {
+          insertHTML()
+        })
+    }
+</script>
+</body>
+</html>

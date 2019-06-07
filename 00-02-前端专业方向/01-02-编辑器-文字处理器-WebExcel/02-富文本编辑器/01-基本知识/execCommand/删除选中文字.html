@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        document.execCommand('delete');
+    </title>
+</head>
+<body>
+<div contenteditable="true">
+    some [insertion point] content
+</div>
+
+<button id="btnInsertHtml">删除</button>
+
+<script>
+    window.onload = function () {
+        function insertHTML(){
+//            直接删除选中文字
+            document.execCommand('delete');
+        }
+        var btnInsertHtml = document.querySelector('#btnInsertHtml')
+        btnInsertHtml.addEventListener('click', function () {
+            insertHTML()
+        })
+    }
+</script>
+</body>
+</html>

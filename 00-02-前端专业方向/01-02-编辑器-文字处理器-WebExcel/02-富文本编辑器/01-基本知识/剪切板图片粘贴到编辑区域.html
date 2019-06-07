@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        .container{
+            width:500px;
+            height:500px;
+            position:absolute;
+            top:0;left:0;right:0;bottom:0;
+            margin:auto;
+
+            border:1px solid #ccc;
+        }
+        .editor{
+            min-height:300px;
+            padding:10px 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="editor" contenteditable="true">
+    </div>
+</div>
+
+<script>
+    function ReadFile(file) {
+      return new Promise(function (resolve, reject) {
+          let reader = new FileReader()
+
+          reader.onload = function(event) {
+              resolve(event)
+          }
+
+          reader.onloadend = function(){
+          }
+          reader.onerror = function(event){
+              console.log('读取文件错误');
+              reject(event)
+          }
+
+          reader.readAsDataURL(file);
+      })
+    }
+    function __Main() {
+        let ndEditor = document.querySelector('.editor')
+        ndEditor.addEventListener('paste', function (event) {
+            let clipboardData = event.clipboardData || event.originalEvent.clipboardData
+            let text = clipboardData.getData('text/plain') || clipboardData.getData('text/html')
+            if (text) {
+                return
+            }
+            let items = clipboardData && clipboardData.items
+            for (let item of items) {
+                let fileType = item.type || ''
+//                if (fileType.indexOf('image') >= 0) {
+                if (/image/i.test(fileType)) {
+                    let file = item.getAsFile()
+                    ReadFile(file).then((event) => {
+                        let src = event.target.result
+                        document.execCommand('insertHTML', false, `<img src="${src}">`);
+//                        document.execCommand('insertImage', false, src);
+                    }).catch(function (error) {
+                      console.log(error)
+                    })
+                }
+            }
+        })
+    }
+    window.onload = function () {
+      __Main()
+    }
+</script>
+</body>
+</html>
