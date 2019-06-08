@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>富文本编辑</title>
+</head>
+
+<body>
+<iframe frameborder="0" src="content.html" name="richedit" style="width:400px;height:300px;"></iframe>
+
+<button>执行</button>
+
+<script>
+  window.addEventListener('load', function () {
+    window.frames['richedit'].document.designMode = 'on';
+
+    document.querySelector('button').addEventListener('click', function () {
+      window.frames['richedit'].document.execCommand('bold', true, null);
+    })
+  }, false);
+</script>
+</body>
+</html>
