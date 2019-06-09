@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  const testWorker = new Worker('./worker.js')
+  setTimeout(() => {
+    testWorker.postMessage({})
+    testWorker.onmessage = function (ev) {
+      console.log(ev.data)
+    }
+  }, 500)
+</script>
+</body>
+</html>
