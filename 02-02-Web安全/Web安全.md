@@ -25,6 +25,7 @@ XCDH劫持 控点盗中
        script JavaScript编码
     3）输入输出过滤XSS-filter  需要过滤哪些字符：没有闭合的标签
        自定义白名单
+        需要根据实践，不断调整白名单，登录信息与富文本编辑器的内容极为不同
     4）CSP 内容安全策略 白名单
     5) XSS Auditor在构建DOM树时(词法分析之后，语法分析之前)，验证词语Tokens
 
@@ -54,7 +55,7 @@ XCDH劫持 控点盗中
   前后端不分离：
   Token需要同时放在表单和Session中。在提交请求时，服务器只需验证表单中的token与用户Session（cookie）中的Token是否一致；如果一致，认为是合法请求
   加token实现方式：表单、隐藏域、meta、AJAX请求头部
-  纯静态的CDN资源中的请求？从页面header中获取token，再放入ajax header。
+  纯静态的CDN资源中的请求？如果模板仍然有后端提供，则从页面header中获取token，再放入ajax header。
 4）cookie sameSite
 2.5攻击步骤
     登录受信任网站A，并在本地生成Cookie。
@@ -64,7 +65,10 @@ XCDH劫持 控点盗中
    这种方法也是使用token并验证，但是它是把token放在HTTP请求头部中。
     通过使用AJAX我们可以在我们的请求头部中添加我们的自定义属性，但是这种方法要求我们将整个站的请求全部改成AJAX，
     如果是新站还好，老站的话无疑是需要重写整个站点的，这是很不可取的。
-
+5）尽量使用POST
+6）加入自定义Header
+7）CSRF请求
+   CDN资源
 
 3.点击劫持 clickJacking
 3.1定义
