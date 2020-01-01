@@ -2,6 +2,7 @@
 脚本
 工具：截图
 工程化：webpack babel
-2.BFF API网关层
+2.BFF
+  API网关层：mtop
 3.服务端
   内部系统
