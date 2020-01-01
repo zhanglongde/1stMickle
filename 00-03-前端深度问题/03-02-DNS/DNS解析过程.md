@@ -15,15 +15,17 @@ https://edu.unixhot.com/cache-dns.html
 5.查找ISP DNS缓存
   网络配置中的DNS服务器地址
 第二阶段，代理查询
-6.递归搜索
+6.递归搜索【包办】
   根据本地域名服务器的配置
-  两种方式：localDNS 公共DNS
+  两种方式：localDNS【系统填写】 公共DNS
+浏览器向localDNS：递归
+localDNS向权威DNS：迭代
 
 
 [递归查询](https://www.zhihu.com/question/23042131)
 根据本地DNS服务器的设置进行查询
 记录类型:CNAME NSLOOKUP A
-非转发模式
+非转发模式【不属于权限范围内，才转发】
 根DNS服务器收到请求后会判断这个域名(.com)是谁来授权管理，并会返回一个负责该顶级域名服务器的一个IP。
 本地DNS服务器收到IP信息后，将会联系负责.com域的这台服务器。
 这台负责.com域的服务器收到请求后，如果自己无法解析，它就会找一个管理.com域的下一级DNS服务器地址(http://qq.com)给本地DNS服务器。
