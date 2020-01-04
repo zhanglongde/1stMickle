@@ -15,3 +15,12 @@ https://github.com/tcatche/tcatche.github.io/issues/85
 
 Render props、render callback 和高阶组件皆可互换
 https://segmentfault.com/a/1190000015455994
+
+
+
+子组件中
+render() {
+return this.props.children( this.state.position )
+}
+
+父组件渲染子组件

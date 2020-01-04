@@ -17,7 +17,7 @@ React模式历史演变
 1.条件渲染
 {isCondition ? xx : null}
 纯函数
-{isCOndition && (xx)}
+{isCondition && (xx)}
 
 2.props down
 属性解构传递属性
