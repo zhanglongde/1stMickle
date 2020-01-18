@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    Array.prototype.filter2 = function (cb, context) {
+      const context = context || this;
+      const len = this.length;
+      let r = []; // 结果
+      for (let i = 0; i < len; i++) {
+        if (cb.call(context, this[i], i, this)) {
+          r.push(this[i])
+        }
+      }
+      return r;
+    }
+</script>
+</body>
+</html>

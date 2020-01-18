@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function debounce(func, wait) {
+      var timeout;
+      return function() {
+        clearTimeout(timeout)
+        timeout = setTimeout(func, wait)
+      }
+    }
+</script>
+</body>
+</html>

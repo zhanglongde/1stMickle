@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    Array.prototype.map = function (fn, context) {
+      const context = context || this;
+      let newArr = [];
+      for (let i = 0; i < this.length; i++) {
+        newArr.push(fn.call(context, this[i], i, context));
+      }
+      return newArr;
+    }
+</script>
+</body>
+</html>
